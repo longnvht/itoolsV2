@@ -26,25 +26,14 @@ namespace itools_source.Views
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
-            //txtPassword.Text = Encryption.StrEncrypt(txtUserName.Text);
-            MySqlConnection conn = MySqlConnect.Open();
-            try
-            {
-                MessageBox.Show("Connect Open!");
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Cannot open connection!");
-            }
+            txtPassword.Text = Encryption.StrEncrypt(txtUserName.Text);
+            _log.Error("Passwrod Encrypt");
         }
 
         private void btnDencrypt_Click(object sender, EventArgs e)
         {
-            //txtRePassword.Text = Encryption.strDecrypt(txtPassword.Text);
-            lblTest.Text = "Ahihi";
-            //_log.Info("Log Info");
-            _log.Debug("Log Debug");
+            txtRePassword.Text = Encryption.StrDecrypt(txtPassword.Text);
+            _log.Info("Password Decrypt");
         }
     }
 }

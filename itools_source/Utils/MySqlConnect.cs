@@ -9,7 +9,7 @@ namespace itools_source.Utils
 {
     public class MySqlConnect
     {
-        private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(MySqlConnect).Name);
         private static string _strHOST = "192.168.0.12";
         private static string _strPORT = "3306";
         private static string _strDATABASE_MAME = "tqteamne_itools";
@@ -22,7 +22,7 @@ namespace itools_source.Utils
         {
             try
             {
-                if (_strConnect != null)
+                if (_strConnect == null)
                 {
                     return null;
                 }
@@ -32,7 +32,7 @@ namespace itools_source.Utils
             }
             catch (MySqlException e)
             {
-                log.Info(e.Message);
+                _log.Info(e.Message);
             }
             return null;
         }
