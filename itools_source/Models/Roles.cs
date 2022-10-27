@@ -8,44 +8,44 @@ namespace itools_source.Models
 {
     public class Roles
     {
-        private int _IRoleId;
+        private int _iRoleId;
 
-        public int IRoleId
+        public int iRoleId
         {
-            get { return _IRoleId; }
-            set { _IRoleId = value; }
+            get { return _iRoleId; }
+            set { _iRoleId = value; }
         }
 
-        private string _StrRoleName;
+        private string _strRoleName;
 
-        public string StrRoleName
+        public string strRoleName
         {
-            get { return _StrRoleName; }
-            set { _StrRoleName = value; }
+            get { return _strRoleName; }
+            set { _strRoleName = value; }
         }
 
-        private int _IRoleType;
+        private int _iRoleType;
 
-        public int IRoleType
+        public int iRoleType
         {
-            get { return _IRoleType; }
-            set { _IRoleType = value; }
+            get { return _iRoleType; }
+            set { _iRoleType = value; }
         }
 
-        private int _IsRole;
+        private int _isRole;
 
-        public int IsRole
+        public int isRole
         {
-            get { return _IsRole; }
-            set { _IsRole = value; }
+            get { return _isRole; }
+            set { _isRole = value; }
         }
 
-        private DateTime _DtUpdateDate;
+        private DateTime _dtUpdateDate;
 
-        public DateTime DtUpdateDate
+        public DateTime dtUpdateDate
         {
-            get { return _DtUpdateDate; }
-            set { _DtUpdateDate = value; }
+            get { return _dtUpdateDate; }
+            set { _dtUpdateDate = value; }
         }
     }
 }

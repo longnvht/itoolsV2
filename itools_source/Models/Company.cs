@@ -8,60 +8,60 @@ namespace itools_source.Models
 {
     public class Company
     {
-        private int _ICompanyId;
+        private int _iCompanyId;
 
-        public int ICompanyId
+        public int iCompanyId
         {
-            get { return _ICompanyId; }
-            set { _ICompanyId = value; }
+            get { return _iCompanyId; }
+            set { _iCompanyId = value; }
         }
 
-        private string _StrCompanyCode;
+        private string _strCompanyCode;
 
-        public string StrCompanyCode
+        public string strCompanyCode
         {
-            get { return _StrCompanyCode; }
-            set { _StrCompanyCode = value; }
+            get { return _strCompanyCode; }
+            set { _strCompanyCode = value; }
         }
 
-        private string _StrCompanyName;
+        private string _strCompanyName;
 
-        public string StrCompanyName
+        public string strCompanyName
         {
-            get { return _StrCompanyName; }
-            set { _StrCompanyName = value; }
+            get { return _strCompanyName; }
+            set { _strCompanyName = value; }
         }
 
-        private string _StrCompanyType;
+        private string _strCompanyType;
 
-        public string StrCompanyType
+        public string strCompanyType
         {
-            get { return _StrCompanyType; }
-            set { _StrCompanyType = value; }
+            get { return _strCompanyType; }
+            set { _strCompanyType = value; }
         }
 
-        private string _StrAddress;
+        private string _strAddress;
 
-        public string StrAddress
+        public string strAddress
         {
-            get { return _StrAddress; }
-            set { _StrAddress = value; }
+            get { return _strAddress; }
+            set { _strAddress = value; }
         }
 
-        private string _StrLocation;
+        private string _strLocation;
 
-        public string StrLocation
+        public string strLocation
         {
-            get { return _StrLocation; }
-            set { _StrLocation = value; }
+            get { return _strLocation; }
+            set { _strLocation = value; }
         }
 
-        private DateTime _DtUpdateDate;
+        private DateTime _dtUpdateDate;
 
-        public DateTime DtUpdateDate
+        public DateTime dtUpdateDate
         {
-            get { return _DtUpdateDate; }
-            set { _DtUpdateDate = value; }
+            get { return _dtUpdateDate; }
+            set { _dtUpdateDate = value; }
         }
     }
 }

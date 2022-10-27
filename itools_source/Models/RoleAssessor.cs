@@ -8,44 +8,44 @@ namespace itools_source.Models
 {
     public class RoleAssessor
     {
-        private int _IRoleAssessor;
+        private int _iRoleAssessor;
 
-        public int IRoleAssessor
+        public int iRoleAssessor
         {
-            get { return _IRoleAssessor; }
-            set { _IRoleAssessor = value; }
+            get { return _iRoleAssessor; }
+            set { _iRoleAssessor = value; }
         }
 
-        private int _IRoleId;
+        private int _iRoleId;
 
-        public int IRoleId
+        public int iRoleId
         {
-            get { return _IRoleId; }
-            set { _IRoleId = value; }
+            get { return _iRoleId; }
+            set { _iRoleId = value; }
         }
 
-        private int _IAssessorId;
+        private int _iAssessorId;
 
-        public int IAssessorId
+        public int iAssessorId
         {
-            get { return _IAssessorId; }
-            set { _IAssessorId = value; }
+            get { return _iAssessorId; }
+            set { _iAssessorId = value; }
         }
 
-        private DateTime _DtCreateDate;
+        private DateTime _dtCreateDate;
 
-        public DateTime DtCreateDate
+        public DateTime dtCreateDate
         {
-            get { return _DtCreateDate; }
-            set { _DtCreateDate = value; }
+            get { return _dtCreateDate; }
+            set { _dtCreateDate = value; }
         }
 
-        private byte _IsActive;
+        private byte _isActive;
 
-        public byte IsActive
+        public byte isActive
         {
-            get { return _IsActive; }
-            set { _IsActive = value; }
+            get { return _isActive; }
+            set { _isActive = value; }
         }
     }
 }

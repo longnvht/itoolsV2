@@ -8,68 +8,68 @@ namespace itools_source.Models
 {
     public class ToolsMachineTray
     {
-        private int _IToolsMachineTrayId;
+        private int _iToolsMachineTrayId;
 
-        public int IToolsMachineTrayId
+        public int iToolsMachineTrayId
         {
-            get { return _IToolsMachineTrayId; }
-            set { _IToolsMachineTrayId = value; }
+            get { return _iToolsMachineTrayId; }
+            set { _iToolsMachineTrayId = value; }
         }
 
-        private string _StrMachineCode;
+        private string _strMachineCode;
 
-        public string StrMachineCode
+        public string strMachineCode
         {
-            get { return _StrMachineCode; }
-            set { _StrMachineCode = value; }
+            get { return _strMachineCode; }
+            set { _strMachineCode = value; }
         }
 
-        private string _StrToolCode;
+        private string _strToolCode;
 
-        public string StrToolCode
+        public string strToolCode
         {
-            get { return _StrToolCode; }
-            set { _StrToolCode = value; }
+            get { return _strToolCode; }
+            set { _strToolCode = value; }
         }
 
-        private string _StrTrayIndex;
+        private string _strTrayIndex;
 
-        public string StrTrayIndex
+        public string strTrayIndex
         {
-            get { return _StrTrayIndex; }
-            set { _StrTrayIndex = value; }
+            get { return _strTrayIndex; }
+            set { _strTrayIndex = value; }
         }
 
-        private int _IQuantity;
+        private int _iQuantity;
 
-        public int IQuantity
+        public int iQuantity
         {
-            get { return _IQuantity; }
-            set { _IQuantity = value; }
+            get { return _iQuantity; }
+            set { _iQuantity = value; }
         }
 
-        private DateTime _DtCreateDate;
+        private DateTime _dtCreateDate;
 
-        public DateTime DtCreateDate
+        public DateTime dtCreateDate
         {
-            get { return _DtCreateDate; }
-            set { _DtCreateDate = value; }
+            get { return _dtCreateDate; }
+            set { _dtCreateDate = value; }
         }
 
-        private DateTime _DtUpdateDate;
+        private DateTime _dtUpdateDate;
 
-        public DateTime DtUpdateDate
+        public DateTime dtUpdateDate
         {
-            get { return _DtUpdateDate; }
-            set { _DtUpdateDate = value; }
+            get { return _dtUpdateDate; }
+            set { _dtUpdateDate = value; }
         }
 
-        private byte _IsActive;
+        private byte _isActive;
 
-        public byte IsActive
+        public byte isActive
         {
-            get { return _IsActive; }
-            set { _IsActive = value; }
+            get { return _isActive; }
+            set { _isActive = value; }
         }
     }
 }

@@ -8,20 +8,20 @@ namespace itools_source.Models
 {
     public class Job
     {
-        private string _StrJobNumber;
+        private string _strJobNumber;
 
-        public string StrJobNumber
+        public string strJobNumber
         {
-            get { return _StrJobNumber; }
-            set { _StrJobNumber = value; }
+            get { return _strJobNumber; }
+            set { _strJobNumber = value; }
         }
 
-        private int _IRunQty;
+        private int _iRunQty;
 
-        public int IRunQty
+        public int iRunQty
         {
-            get { return _IRunQty; }
-            set { _IRunQty = value; }
+            get { return _iRunQty; }
+            set { _iRunQty = value; }
         }
 
         private DateTime _DtShipBy;

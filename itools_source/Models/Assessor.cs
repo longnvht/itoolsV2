@@ -8,140 +8,140 @@ namespace itools_source.Models
 {
     public class Assessor
     {
-        private int _IAssessorId;
+        private int _iAssessorId;
 
-        public int IAssessorId
+        public int iAssessorId
         {
-            get { return _IAssessorId; }
-            set { _IAssessorId = value; }
+            get { return _iAssessorId; }
+            set { _iAssessorId = value; }
         }
 
-        private string _StrUserName;
+        private string _strUserName;
 
-        public string StrUserName
+        public string strUserName
         {
-            get { return _StrUserName; }
-            set { _StrUserName = value; }
+            get { return _strUserName; }
+            set { _strUserName = value; }
         }
 
-        private string _StrFingerId;
+        private string _strFingerId;
 
-        public string StrFingerId
+        public string strFingerId
         {
-            get { return _StrFingerId; }
-            set { _StrFingerId = value; }
+            get { return _strFingerId; }
+            set { _strFingerId = value; }
         }
 
-        private string _StrPassword;
+        private string _strPassword;
 
-        public string StrPassword
+        public string strPassword
         {
-            get { return _StrPassword; }
-            set { _StrPassword = value; }
+            get { return _strPassword; }
+            set { _strPassword = value; }
         }
 
-        private string _StrFirstName;
+        private string _strFirstName;
 
-        public string StrFirstName
+        public string strFirstName
         {
-            get { return _StrFirstName; }
-            set { _StrFirstName = value; }
+            get { return _strFirstName; }
+            set { _strFirstName = value; }
         }
 
-        private string _StrLastName;
+        private string _strLastName;
 
-        public string StrLastName
+        public string strLastName
         {
-            get { return _StrLastName; }
-            set { _StrLastName = value; }
+            get { return _strLastName; }
+            set { _strLastName = value; }
         }
 
-        private string _StrEmailAddress;
+        private string _strEmailAddress;
 
-        public string StrEmailAddress
+        public string strEmailAddress
         {
-            get { return _StrEmailAddress; }
-            set { _StrEmailAddress = value; }
+            get { return _strEmailAddress; }
+            set { _strEmailAddress = value; }
         }
 
-        private string _StrAddress;
+        private string _strAddress;
 
-        public string StrAddress
+        public string strAddress
         {
-            get { return _StrAddress; }
-            set { _StrAddress = value; }
+            get { return _strAddress; }
+            set { _strAddress = value; }
         }
 
-        private string _StrPhone;
+        private string _strPhone;
 
-        public string StrPhone
+        public string strPhone
         {
-            get { return _StrPhone; }
-            set { _StrPhone = value; }
+            get { return _strPhone; }
+            set { _strPhone = value; }
         }
 
-        private string _StrCompanyCode;
+        private string _strCompanyCode;
 
-        public string StrCompanyCode
+        public string strCompanyCode
         {
-            get { return _StrCompanyCode; }
-            set { _StrCompanyCode = value; }
+            get { return _strCompanyCode; }
+            set { _strCompanyCode = value; }
         }
 
-        private string _StrMachineCode;
+        private string _strMachineCode;
 
-        public string StrMachineCode
+        public string strMachineCode
         {
-            get { return _StrMachineCode; }
-            set { _StrMachineCode = value; }
+            get { return _strMachineCode; }
+            set { _strMachineCode = value; }
         }
 
-        private int _IsLocked;
+        private int _isLocked;
 
-        public int IsLocked
+        public int isLocked
         {
-            get { return _IsLocked; }
-            set { _IsLocked = value; }
+            get { return _isLocked; }
+            set { _isLocked = value; }
         }
 
-        private int _IsActive;
+        private int _isActive;
 
-        public int IsActive
+        public int isActive
         {
-            get { return _IsActive; }
-            set { _IsActive = value; }
+            get { return _isActive; }
+            set { _isActive = value; }
         }
 
-        private string _StrLastPassword;
+        private string _strLastPassword;
 
-        public string StrLastPassword
+        public string strLastPassword
         {
-            get { return _StrLastPassword; }
-            set { _StrLastPassword = value; }
+            get { return _strLastPassword; }
+            set { _strLastPassword = value; }
         }
 
-        private byte _IsFirstTimeLogin;
+        private byte _isFirstTimeLogin;
 
-        public byte IsFirstTimeLogin
+        public byte isFirstTimeLogin
         {
-            get { return _IsFirstTimeLogin; }
-            set { _IsFirstTimeLogin = value; }
+            get { return _isFirstTimeLogin; }
+            set { _isFirstTimeLogin = value; }
         }
 
-        private int _IFailTimes;
+        private int _iFailTimes;
 
-        public int IFailTimes
+        public int iFailTimes
         {
-            get { return _IFailTimes; }
-            set { _IFailTimes = value; }
+            get { return _iFailTimes; }
+            set { _iFailTimes = value; }
         }
 
-        private DateTime _DtUpdateDate;
+        private DateTime _dtUpdateDate;
 
-        public DateTime DtUpdateDate
+        public DateTime dtUpdateDate
         {
-            get { return _DtUpdateDate; }
-            set { _DtUpdateDate = value; }
+            get { return _dtUpdateDate; }
+            set { _dtUpdateDate = value; }
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using itools_source.Views;
 
+//[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+
 namespace itools_source
 {
     internal static class Program
@@ -15,6 +17,8 @@ namespace itools_source
         [STAThread]
         static void Main()
         {
+            log4net.Config.XmlConfigurator.Configure();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLoginView());

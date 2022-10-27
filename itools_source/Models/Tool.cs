@@ -8,76 +8,76 @@ namespace itools_source.Models
 {
     public class Tool
     {
-        private int _IToolId;
+        private int _iToolId;
 
-        public int IToolId
+        public int iToolId
         {
-            get { return _IToolId; }
-            set { _IToolId = value; }
+            get { return _iToolId; }
+            set { _iToolId = value; }
         }
 
-        private string _StrToolCode;
+        private string _strToolCode;
 
-        public string StrToolCode
+        public string strToolCode
         {
-            get { return _StrToolCode; }
-            set { _StrToolCode = value; }
+            get { return _strToolCode; }
+            set { _strToolCode = value; }
         }
 
-        private string _StrCompanyCode;
+        private string _strCompanyCode;
 
-        public string StrCompanyCode
+        public string strCompanyCode
         {
-            get { return _StrCompanyCode; }
-            set { _StrCompanyCode = value; }
+            get { return _strCompanyCode; }
+            set { _strCompanyCode = value; }
         }
 
-        private string _StrModel;
+        private string _strModel;
 
-        public string StrModel
+        public string strModel
         {
-            get { return _StrModel; }
-            set { _StrModel = value; }
+            get { return _strModel; }
+            set { _strModel = value; }
         }
 
-        private string _StrBarCode;
+        private string _strBarCode;
 
-        public string StrBarCode
+        public string strBarCode
         {
-            get { return _StrBarCode; }
-            set { _StrBarCode = value; }
+            get { return _strBarCode; }
+            set { _strBarCode = value; }
         }
 
-        private string _StrDescription;
+        private string _strDescription;
 
-        public string StrDescription
+        public string strDescription
         {
-            get { return _StrDescription; }
-            set { _StrDescription = value; }
+            get { return _strDescription; }
+            set { _strDescription = value; }
         }
 
-        private DateTime _DtCreateDate;
+        private DateTime _dtCreateDate;
 
-        public DateTime DtCreateDate
+        public DateTime dtCreateDate
         {
-            get { return _DtCreateDate; }
-            set { _DtCreateDate = value; }
+            get { return _dtCreateDate; }
+            set { _dtCreateDate = value; }
         }
 
-        private DateTime _DtUpdateDate;
+        private DateTime _dtUpdateDate;
 
-        public DateTime DtUpdateDate
+        public DateTime dtUpdateDate
         {
-            get { return _DtUpdateDate; }
-            set { _DtUpdateDate = value; }
+            get { return _dtUpdateDate; }
+            set { _dtUpdateDate = value; }
         }
 
-        private byte _IsActive;
+        private byte _isActive;
 
-        public byte IsActive
+        public byte isActive
         {
-            get { return _IsActive; }
-            set { _IsActive = value; }
+            get { return _isActive; }
+            set { _isActive = value; }
         }
     }
 }

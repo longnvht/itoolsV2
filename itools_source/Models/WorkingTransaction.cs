@@ -8,108 +8,108 @@ namespace itools_source.Models
 {
     public class WorkingTransaction
     {
-        private int _IWorkingTransactionId;
+        private int _iWorkingTransactionId;
 
-        public int IWorkingTransactionId
+        public int iWorkingTransactionId
         {
-            get { return _IWorkingTransactionId; }
-            set { _IWorkingTransactionId = value; }
+            get { return _iWorkingTransactionId; }
+            set { _iWorkingTransactionId = value; }
         }
 
-        private DateTime _DtTransactionDate;
+        private DateTime _dtTransactionDate;
 
-        public DateTime DtTransactionDate
+        public DateTime dtTransactionDate
         {
-            get { return _DtTransactionDate; }
-            set { _DtTransactionDate = value; }
+            get { return _dtTransactionDate; }
+            set { _dtTransactionDate = value; }
         }
 
-        private string _StrMachineCode;
+        private string _strMachineCode;
 
-        public string StrMachineCode
+        public string strMachineCode
         {
-            get { return _StrMachineCode; }
-            set { _StrMachineCode = value; }
+            get { return _strMachineCode; }
+            set { _strMachineCode = value; }
         }
 
-        private string _StrCompanyCode;
+        private string _strCompanyCode;
 
         public string StrCompanyCode
         {
-            get { return _StrCompanyCode; }
-            set { _StrCompanyCode = value; }
+            get { return _strCompanyCode; }
+            set { _strCompanyCode = value; }
         }
 
-        private string _StrAssessorId;
+        private string _strAssessorId;
 
-        public string StrAssessorId
+        public string strAssessorId
         {
-            get { return _StrAssessorId; }
-            set { _StrAssessorId = value; }
+            get { return _strAssessorId; }
+            set { _strAssessorId = value; }
         }
 
-        private string _StrWOCode;
+        private string _strWOCode;
 
-        public string StrWOCode
+        public string strWOCode
         {
-            get { return _StrWOCode; }
-            set { _StrWOCode = value; }
+            get { return _strWOCode; }
+            set { _strWOCode = value; }
         }
 
-        private string _StrToolCode;
+        private string _strToolCode;
 
-        public string StrToolCode
+        public string strToolCode
         {
-            get { return _StrToolCode; }
-            set { _StrToolCode = value; }
+            get { return _strToolCode; }
+            set { _strToolCode = value; }
         }
 
-        private string _StrTrayIndex;
+        private string _strTrayIndex;
 
-        public string StrTrayIndex
+        public string strTrayIndex
         {
-            get { return _StrTrayIndex; }
-            set { _StrTrayIndex = value; }
+            get { return _strTrayIndex; }
+            set { _strTrayIndex = value; }
         }
 
-        private int _IQuantity;
+        private int _iQuantity;
 
-        public int IQuantity
+        public int iQuantity
         {
-            get { return _IQuantity; }
-            set { _IQuantity = value; }
+            get { return _iQuantity; }
+            set { _iQuantity = value; }
         }
 
-        private DateTime _DtUpdateDate;
+        private DateTime _dtUpdateDate;
 
-        public DateTime DtUpdateDate
+        public DateTime dtUpdateDate
         {
-            get { return _DtUpdateDate; }
-            set { _DtUpdateDate = value; }
+            get { return _dtUpdateDate; }
+            set { _dtUpdateDate = value; }
         }
 
-        private string _StrTransactionStatus;
+        private string _strTransactionStatus;
 
         public string StrTransactionStatus
         {
-            get { return _StrTransactionStatus; }
-            set { _StrTransactionStatus = value; }
+            get { return _strTransactionStatus; }
+            set { _strTransactionStatus = value; }
         }
 
-        private string _StrRespondMessge;
+        private string _strRespondMessge;
 
-        public string StrRespondMessge
+        public string strRespondMessge
         {
-            get { return _StrRespondMessge; }
-            set { _StrRespondMessge = value; }
+            get { return _strRespondMessge; }
+            set { _strRespondMessge = value; }
         }
 
-        private string _StrTransactiomType;
+        private string _strTransactiomType;
 
-        public string StrTransactiomType
+        public string strTransactiomType
         {
-            get { return _StrTransactiomType; }
-            set { _StrTransactiomType = value; }
+            get { return _strTransactiomType; }
+            set { _strTransactiomType = value; }
         }
     }
 }

@@ -8,52 +8,52 @@ namespace itools_source.Models
 {
     public class ToolMachine
     {
-        private int _IToolsMachineId;
+        private int _iToolsMachineId;
 
-        public int IToolsMachineId
+        public int iToolsMachineId
         {
-            get { return _IToolsMachineId; }
-            set { _IToolsMachineId = value; }
+            get { return _iToolsMachineId; }
+            set { _iToolsMachineId = value; }
         }
 
-        private string _StrToolCode;
+        private string _strToolCode;
 
-        public string StrToolCode
+        public string strToolCode
         {
-            get { return _StrToolCode; }
-            set { _StrToolCode = value; }
+            get { return _strToolCode; }
+            set { _strToolCode = value; }
         }
 
-        private string _StrMachineCode;
+        private string _strMachineCode;
 
-        public string StrMachineCode
+        public string strMachineCode
         {
-            get { return _StrMachineCode; }
-            set { _StrMachineCode = value; }
+            get { return _strMachineCode; }
+            set { _strMachineCode = value; }
         }
 
-        private DateTime _DtCreateDate;
+        private DateTime _dtCreateDate;
 
-        public DateTime DtCreateDate
+        public DateTime dtCreateDate
         {
-            get { return _DtCreateDate; }
-            set { _DtCreateDate = value; }
+            get { return _dtCreateDate; }
+            set { _dtCreateDate = value; }
         }
 
-        private DateTime _DtUpdateDate;
+        private DateTime _dtUpdateDate;
 
-        public DateTime DtUpdateDate
+        public DateTime dtUpdateDate
         {
-            get { return _DtUpdateDate; }
-            set { _DtUpdateDate = value; }
+            get { return _dtUpdateDate; }
+            set { _dtUpdateDate = value; }
         }
 
-        private byte _IsActive;
+        private byte _isActive;
 
-        public byte IsActive
+        public byte isActive
         {
-            get { return _IsActive; }
-            set { _IsActive = value; }
+            get { return _isActive; }
+            set { _isActive = value; }
         }
     }
 }

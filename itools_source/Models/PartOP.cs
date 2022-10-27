@@ -8,52 +8,52 @@ namespace itools_source.Models
 {
     public class PartOP
     {
-        private int _IOPId;
+        private int _iOPId;
 
-        public int IOPId
+        public int iOPId
         {
-            get { return _IOPId; }
-            set { _IOPId = value; }
+            get { return _iOPId; }
+            set { _iOPId = value; }
         }
 
-        private string _StrOPNumber;
+        private string _strOPNumber;
 
-        public string StrOPNumber
+        public string strOPNumber
         {
-            get { return _StrOPNumber; }
-            set { _StrOPNumber = value; }
+            get { return _strOPNumber; }
+            set { _strOPNumber = value; }
         }
 
-        private int _IPartId;
+        private int _iPartId;
 
-        public int IPartId
+        public int iPartId
         {
-            get { return _IPartId; }
-            set { _IPartId = value; }
+            get { return _iPartId; }
+            set { _iPartId = value; }
         }
 
-        private string _StrOPType;
+        private string _strOPType;
 
-        public string StrOPType
+        public string strOPType
         {
-            get { return _StrOPType; }
-            set { _StrOPType = value; }
+            get { return _strOPType; }
+            set { _strOPType = value; }
         }
 
-        private string _StrJobNumber;
+        private string _strJobNumber;
 
-        public string StrJobNumber
+        public string strJobNumber
         {
-            get { return _StrJobNumber; }
-            set { _StrJobNumber = value; }
+            get { return _strJobNumber; }
+            set { _strJobNumber = value; }
         }
 
-        private bool _BForOnlyJob;
+        private bool _bForOnlyJob;
 
-        public bool BForOnlyJob
+        public bool bForOnlyJob
         {
-            get { return _BForOnlyJob; }
-            set { _BForOnlyJob = value; }
+            get { return _bForOnlyJob; }
+            set { _bForOnlyJob = value; }
         }
 
         private string _StrDescription;

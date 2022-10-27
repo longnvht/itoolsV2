@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTest = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtRePassword = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnDencrypt = new System.Windows.Forms.Button();
             this.btnEncrypt = new System.Windows.Forms.Button();
+            this.lblLogger = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lblTest
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(83, 117);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(83, 117);
+            this.lblTest.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(80, 39);
+            this.lblTest.TabIndex = 0;
+            this.lblTest.Text = "Test";
             // 
             // txtUserName
             // 
@@ -92,17 +93,28 @@
             this.btnEncrypt.UseVisualStyleBackColor = true;
             this.btnEncrypt.Click += new System.EventHandler(this.btnEncrypt_Click);
             // 
+            // lblLogger
+            // 
+            this.lblLogger.AutoSize = true;
+            this.lblLogger.Location = new System.Drawing.Point(83, 198);
+            this.lblLogger.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLogger.Name = "lblLogger";
+            this.lblLogger.Size = new System.Drawing.Size(53, 26);
+            this.lblLogger.TabIndex = 7;
+            this.lblLogger.Text = "Test";
+            // 
             // frmLoginView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1163, 604);
+            this.Controls.Add(this.lblLogger);
             this.Controls.Add(this.btnEncrypt);
             this.Controls.Add(this.btnDencrypt);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtRePassword);
             this.Controls.Add(this.txtUserName);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTest);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmLoginView";
@@ -115,11 +127,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTest;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtRePassword;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnDencrypt;
         private System.Windows.Forms.Button btnEncrypt;
+        private System.Windows.Forms.Label lblLogger;
     }
 }
