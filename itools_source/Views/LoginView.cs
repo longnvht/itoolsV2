@@ -52,7 +52,21 @@ namespace itools_source.Views
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
+        }
+
+        private void txtPassword_IconRightClick(object sender, EventArgs e)
+        {
+            if (txtPassword.UseSystemPasswordChar)
+            {
+                txtPassword.UseSystemPasswordChar = false;
+                txtPassword.IconRight = Properties.Resources.pass_hide_24px;
+            }
+            else
+            {
+                txtPassword.UseSystemPasswordChar = true;
+                txtPassword.IconRight = Properties.Resources.pass_show_24px;
+            }
         }
     }
 }

@@ -33,10 +33,8 @@
             this.btnCancel = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnLogin = new Guna.UI2.WinForms.Guna2GradientButton();
             this.txtUserName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.SuspendLayout();
             // 
             // guna2HtmlLabel1
@@ -63,7 +61,7 @@
             this.btnCancel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(318, 235);
+            this.btnCancel.Location = new System.Drawing.Point(318, 230);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(180, 45);
             this.btnCancel.TabIndex = 3;
@@ -84,7 +82,7 @@
             this.btnLogin.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(87, 235);
+            this.btnLogin.Location = new System.Drawing.Point(87, 230);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(180, 45);
             this.btnLogin.TabIndex = 2;
@@ -106,7 +104,8 @@
             this.txtUserName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtUserName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUserName.IconLeft = global::itools_source.Properties.Resources.user_name_24px;
-            this.txtUserName.IconLeftOffset = new System.Drawing.Point(10, 0);
+            this.txtUserName.IconLeftOffset = new System.Drawing.Point(12, 0);
+            this.txtUserName.IconLeftSize = new System.Drawing.Size(24, 24);
             this.txtUserName.Location = new System.Drawing.Point(101, 62);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PasswordChar = '\0';
@@ -115,6 +114,15 @@
             this.txtUserName.SelectedText = "";
             this.txtUserName.Size = new System.Drawing.Size(385, 50);
             this.txtUserName.TabIndex = 0;
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.AnimationType = Guna.UI2.WinForms.Guna2BorderlessForm.AnimateWindowType.AW_CENTER;
+            this.guna2BorderlessForm1.BorderRadius = 10;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // txtPassword
             // 
@@ -131,34 +139,20 @@
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPassword.IconLeft = global::itools_source.Properties.Resources.password_24px;
-            this.txtPassword.IconLeftOffset = new System.Drawing.Point(10, 0);
+            this.txtPassword.IconLeftOffset = new System.Drawing.Point(12, 0);
+            this.txtPassword.IconLeftSize = new System.Drawing.Size(24, 24);
             this.txtPassword.IconRight = global::itools_source.Properties.Resources.pass_show_24px;
-            this.txtPassword.IconRightOffset = new System.Drawing.Point(10, 0);
-            this.txtPassword.Location = new System.Drawing.Point(101, 148);
+            this.txtPassword.IconRightOffset = new System.Drawing.Point(12, 0);
+            this.txtPassword.IconRightSize = new System.Drawing.Size(24, 24);
+            this.txtPassword.Location = new System.Drawing.Point(97, 143);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '\0';
             this.txtPassword.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
             this.txtPassword.PlaceholderText = "Mật Khẩu";
             this.txtPassword.SelectedText = "";
             this.txtPassword.Size = new System.Drawing.Size(385, 50);
             this.txtPassword.TabIndex = 1;
-            // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.BorderRadius = 10;
-            this.guna2Elipse1.TargetControl = this;
-            // 
-            // guna2ShadowForm1
-            // 
-            this.guna2ShadowForm1.BorderRadius = 10;
-            this.guna2ShadowForm1.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.guna2ShadowForm1.TargetForm = this;
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this;
-            this.guna2DragControl1.UseTransparentDrag = true;
+            this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.IconRightClick += new System.EventHandler(this.txtPassword_IconRightClick);
             // 
             // frmLoginView
             // 
@@ -168,8 +162,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(578, 304);
-            this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.guna2HtmlLabel1);
@@ -189,9 +183,7 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnCancel;
         private Guna.UI2.WinForms.Guna2GradientButton btnLogin;
         private Guna.UI2.WinForms.Guna2TextBox txtUserName;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
-        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }
