@@ -12,13 +12,15 @@ namespace itools_source.Utils
     {
         private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(Encryption).Name);
         //private readonly static byte[] _byKey = new byte[32];
+        //private readonly static byte[] _byIV = new byte[16];
         private readonly static byte[] _byKey = Encoding.UTF8.GetBytes("MZygpewJsCdr4a1y");
+        private readonly static byte[] _byIV = Encoding.UTF8.GetBytes("MZygpewJsCpRrfOr");
 
         public static string StrEncrypt(string _strText)
         {
             try
             {
-                byte[] _byIV = new byte[16];
+                //byte[] _byIV = new byte[16];
                 byte[] _byArray;
 
                 using (Aes _aes = Aes.Create())
@@ -53,7 +55,7 @@ namespace itools_source.Utils
         {
             try
             {
-                byte[] _byIV = new byte[16];
+                //byte[] _byIV = new byte[16];
                 byte[] _byBuffer = Convert.FromBase64String(_strText);
 
                 using (Aes _aes = Aes.Create())

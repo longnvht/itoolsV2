@@ -1,4 +1,7 @@
-﻿using System;
+﻿using itools_source.Presenter;
+using itools_source.Utils;
+using log4net;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,40 +9,39 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using itools_source.Utils;
-using MySql.Data.MySqlClient;
-using log4net;
 using System.Web.UI.WebControls;
-using itools_source.Presenter;
+using System.Windows.Forms;
 
 namespace itools_source.Views
 {
-    public partial class frmLoginView : Form
+    public partial class frmTest : Form
     {
+        //private ILog _log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private ILog _log = log4net.LogManager.GetLogger(typeof(LoginView).Name);
 
-        public frmLoginView()
+        public frmTest()
         {
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnEncrypt_Click(object sender, EventArgs e)
         {
+            //txtPassword.Text = Encryption.StrEncrypt(txtUserName.Text);
+            //_log.Info("Passwrod Encrypt");
             string strUserName = txtUserName.Text;
             string strPassword = txtPassword.Text;
             _log.Info("Login with username: " + strUserName);
             try
             {
-                bool result = EmployeePresenter.CheckUserNameAndPassword(strUserName, strPassword);
+                bool result = EmployeePresenter.CheckUserNameAndPassword("admin", "123456");
                 if (result)
                 {
-                    MessageBox.Show("Đăng Nhập Thành Công!");
+                    MessageBox.Show("Login Success!");
                     _log.Info("Login Success!");
                 }
                 else
                 {
-                    MessageBox.Show("Đăng Nhập Thất Bại!");
+                    MessageBox.Show("Login Fail!");
                     _log.Info("Login Fail!");
                 }
             }
@@ -50,9 +52,10 @@ namespace itools_source.Views
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnDencrypt_Click(object sender, EventArgs e)
         {
-            this.Close();
+            txtRePassword.Text = Encryption.StrDecrypt(txtPassword.Text);
+            _log.Info("Password Decrypt");
         }
     }
 }

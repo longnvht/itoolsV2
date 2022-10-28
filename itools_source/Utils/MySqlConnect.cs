@@ -14,7 +14,7 @@ namespace itools_source.Utils
         private static string _strPORT = "3306";
         private static string _strDATABASE_MAME = "tqteamne_itools";
         private static string _strUSER_NAME = "admin";
-        private static string _strPASSWORD = "admin123";
+        private static string _strPASSWORD = "Vinam@123";
 
         private static string _strConnect = "server=" + _strHOST + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD;
 
@@ -32,7 +32,7 @@ namespace itools_source.Utils
             }
             catch (MySqlException e)
             {
-                _log.Info(e.Message);
+                _log.Error(e.Message);
             }
             return null;
         }
