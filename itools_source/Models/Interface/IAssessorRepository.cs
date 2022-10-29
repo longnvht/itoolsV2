@@ -11,7 +11,8 @@ namespace itools_source.Models.Interface
         void AddAssessor(Assessor assessor);
         void UpdateAssessor(Assessor assessor);
         void DeleteAssessor(Assessor assessor);
-        bool CheckUserNameAndPassword(string strUserName, string strPassword);
+        Assessor CheckUserNameAndPassword(string strUserName, string strPassword);
+        string GetRoleName(int iAssessorId);
         IEnumerable<Assessor> GetAllAssessor();
         IEnumerable<Assessor> GetByValue(); // Search
     }

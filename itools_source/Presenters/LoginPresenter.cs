@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
+using itools_source.Models;
 using itools_source.Models.Interface;
 using itools_source.Views;
 using itools_source.Views.Interface;
@@ -63,10 +64,12 @@ namespace itools_source.Presenter
             _log.Info("Login with username: " + strUserName);
             try
             {
-                bool result = EmployeePresenter.CheckUserNameAndPassword(strUserName, strPassword);
-                if (result)
+                Assessor assessor = _assessorRepository.CheckUserNameAndPassword(strUserName, strPassword);
+                if (assessor != null)
                 {
                     MessageBox.Show("Đăng Nhập Thành Công!");
+                    string strRoleName = _assessorRepository.GetRoleName(assessor.iAssessorId);
+                    MessageBox.Show(strRoleName);
                     _log.Info("Login Success!");
                 }
                 else

@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Windows.Forms;
+
 namespace itools_source.Repository
 {
     public class AssessorRepository : BaseRepository, IAssessorRepository
@@ -30,22 +32,62 @@ namespace itools_source.Repository
             throw new NotImplementedException();
         }
 
-        public bool CheckUserNameAndPassword(string strUserName, string strPassword)
+        public Assessor CheckUserNameAndPassword(string strUserName, string strPassword)
         {
+            Assessor assessor = null;
+
             string strSelect = @"SELECT * FROM assessor WHERE assessor.UserName = '" + strUserName.ToLower() + "' AND (assessor.Password = MD5('" + strPassword + "') OR assessor.LastPassword = MD5('" + strPassword + "')) AND assessor.IsActive = 1";
             _log.Info(strSelect);
             try
             {
                 MySqlConnection mySqlConnection = MySqlConnect.Open();
                 MySqlDataReader mySqlDataReader = MySqlConnect.DataQuery(strSelect, mySqlConnection);
-
-                while (mySqlDataReader.Read())
+                MessageBox.Show("1");
+                if (mySqlDataReader.Read())
                 {
-                    mySqlDataReader.Close();
-                    mySqlConnection.Close();
-                    return true;
+                    MessageBox.Show("2");
+                    if (!mySqlDataReader.IsDBNull(0))
+                    {
+                        MessageBox.Show("3");
+                        //MessageBox.Show(mySqlDataReader["AssessorID"].ToString());
+                        MessageBox.Show(mySqlDataReader.GetInt32(0).ToString());
+                        //return null;
+                    }
                 }
 
+                MessageBox.Show("4");
+                mySqlDataReader.Close();
+                mySqlConnection.Close();
+                MessageBox.Show("5");
+                return assessor;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return assessor;
+        }
+
+        public string GetRoleName(int iAssessorId)
+        {
+            string strName = "";
+            string strSelect = @"SELECT roles.RoleName
+	                                FROM roles, assessor, roleassessor
+		                                WHERE roles.RoleID = roleassessor.RoleID
+			                                AND assessor.AssessorID = roleassessor.AssessorID
+				                                AND assessor.AssessorID = '" + iAssessorId + "'";
+            _log.Info(strSelect);
+            try
+            {
+                MySqlConnection mySqlConnection = MySqlConnect.Open();
+                MySqlDataReader mySqlDataReader = MySqlConnect.DataQuery(strSelect, mySqlConnection);
+                if (mySqlDataReader.Read())
+                {
+                    if (!mySqlDataReader.IsDBNull(0))
+                    {
+                        strName = mySqlDataReader.GetString(0);
+                    }
+                }
                 mySqlDataReader.Close();
                 mySqlConnection.Close();
             }
@@ -53,7 +95,8 @@ namespace itools_source.Repository
             {
                 _log.Error(e.Message);
             }
-            return false;
+
+            return strName;
         }
 
         public IEnumerable<Assessor> GetAllAssessor()
