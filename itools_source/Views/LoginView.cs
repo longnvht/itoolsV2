@@ -12,61 +12,36 @@ using MySql.Data.MySqlClient;
 using log4net;
 using System.Web.UI.WebControls;
 using itools_source.Presenter;
+using itools_source.Views.Interface;
+using System.Runtime.Remoting.Messaging;
 
 namespace itools_source.Views
 {
-    public partial class frmLoginView : Form
+    public partial class LoginView : Form, ILoginView
     {
-        private ILog _log = log4net.LogManager.GetLogger(typeof(LoginView).Name);
+        //private ILog _log = log4net.LogManager.GetLogger(typeof(LoginView).Name);
 
-        public frmLoginView()
+        public LoginView()
         {
             InitializeComponent();
+            btnLogin.Click += delegate { LoginEvent?.Invoke(this, EventArgs.Empty); };
+            btnCancel.Click += delegate { CancelEvent?.Invoke(this, EventArgs.Empty); };
+            txtPassword.IconRightClick += delegate { PasswordIconRightClickEvent?.Invoke(txtPassword, EventArgs.Empty); };
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        public string strUserName
         {
-            string strUserName = txtUserName.Text;
-            string strPassword = txtPassword.Text;
-            _log.Info("Login with username: " + strUserName);
-            try
-            {
-                bool result = EmployeePresenter.CheckUserNameAndPassword(strUserName, strPassword);
-                if (result)
-                {
-                    MessageBox.Show("Đăng Nhập Thành Công!");
-                    _log.Info("Login Success!");
-                }
-                else
-                {
-                    MessageBox.Show("Đăng Nhập Thất Bại!");
-                    _log.Info("Login Fail!");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                _log.Error(ex.Message);
-            }
+            get { return txtUserName.Text; }
+            set { txtUserName.Text = value; }
+        }
+        public string strPassword
+        {
+            get { return txtPassword.Text; }
+            set { txtPassword.Text = value; }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void txtPassword_IconRightClick(object sender, EventArgs e)
-        {
-            if (txtPassword.UseSystemPasswordChar)
-            {
-                txtPassword.UseSystemPasswordChar = false;
-                txtPassword.IconRight = Properties.Resources.pass_hide_24px;
-            }
-            else
-            {
-                txtPassword.UseSystemPasswordChar = true;
-                txtPassword.IconRight = Properties.Resources.pass_show_24px;
-            }
-        }
+        public event EventHandler LoginEvent;
+        public event EventHandler CancelEvent;
+        public event EventHandler PasswordIconRightClickEvent;
     }
 }

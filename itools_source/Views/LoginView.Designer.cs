@@ -1,6 +1,6 @@
 ﻿namespace itools_source.Views
 {
-    partial class frmLoginView
+    partial class LoginView
     {
         /// <summary>
         /// Required designer variable.
@@ -61,7 +61,6 @@
             this.btnCancel.Size = new System.Drawing.Size(180, 45);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Thoát";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnLogin
             // 
@@ -71,7 +70,6 @@
             this.btnLogin.Size = new System.Drawing.Size(180, 45);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Đăng Nhập";
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblLogger
             // 
@@ -96,19 +94,34 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblTest);
-            this.groupBox1.Controls.Add(this.lblLogger);
-            this.groupBox1.Controls.Add(this.btnCancel);
-            this.groupBox1.Controls.Add(this.btnLogin);
-            this.groupBox1.Controls.Add(this.txtUserName);
-            this.groupBox1.Controls.Add(this.txtPassword);
-            this.groupBox1.Location = new System.Drawing.Point(12, 48);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(562, 264);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
+            this.txtPassword.Animated = true;
+            this.txtPassword.AutoRoundedCorners = true;
+            this.txtPassword.BorderRadius = 24;
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPassword.DefaultText = "";
+            this.txtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPassword.IconLeft = global::itools_source.Properties.Resources.password_24px;
+            this.txtPassword.IconLeftOffset = new System.Drawing.Point(12, 0);
+            this.txtPassword.IconLeftSize = new System.Drawing.Size(24, 24);
+            this.txtPassword.IconRight = global::itools_source.Properties.Resources.pass_show_24px;
+            this.txtPassword.IconRightOffset = new System.Drawing.Point(12, 0);
+            this.txtPassword.IconRightSize = new System.Drawing.Size(24, 24);
+            this.txtPassword.Location = new System.Drawing.Point(97, 143);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.txtPassword.PlaceholderText = "Mật Khẩu";
+            this.txtPassword.SelectedText = "";
+            this.txtPassword.Size = new System.Drawing.Size(385, 50);
+            this.txtPassword.TabIndex = 1;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
-            // frmLoginView
+            // LoginView
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
@@ -121,7 +134,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmLoginView";
+            this.Name = "LoginView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
             this.ResumeLayout(false);

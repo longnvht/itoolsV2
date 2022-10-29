@@ -4,6 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using itools_source.Views;
+using itools_source.Views.Interface;
+using itools_source.Presenter;
+using itools_source.Models.Interface;
+using itools_source.Models;
+using itools_source.Repository;
 
 //[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -21,7 +26,12 @@ namespace itools_source
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLoginView());
+
+            ILoginView view = new LoginView();
+            IAssessorRepository repository = new AssessorRepository();
+            new LoginPresenter(view, repository);
+
+            Application.Run((Form)view);
         }
     }
 }
