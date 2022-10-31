@@ -14,13 +14,12 @@ using System.Web.UI.WebControls;
 using itools_source.Presenter;
 using itools_source.Views.Interface;
 using System.Runtime.Remoting.Messaging;
+using itools_source.Models;
 
 namespace itools_source.Views
 {
     public partial class LoginView : Form, ILoginView
     {
-        //private ILog _log = log4net.LogManager.GetLogger(typeof(LoginView).Name);
-
         public LoginView()
         {
             InitializeComponent();
@@ -39,6 +38,8 @@ namespace itools_source.Views
             get { return txtPassword.Text; }
             set { txtPassword.Text = value; }
         }
+
+        public Assessor assessorCurrent { get; set; }
 
         public event EventHandler LoginEvent;
         public event EventHandler CancelEvent;

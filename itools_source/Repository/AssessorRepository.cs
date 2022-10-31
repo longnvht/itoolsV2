@@ -32,7 +32,7 @@ namespace itools_source.Repository
             throw new NotImplementedException();
         }
 
-        public Assessor CheckUserNameAndPassword(string strUserName, string strPassword)
+        public Assessor GetAssessor(string strUserName, string strPassword)
         {
             Assessor assessor = null;
 
@@ -54,28 +54,8 @@ namespace itools_source.Repository
                         assessor = new Assessor();
                     }
 
-                    //MessageBox.Show("Id: " + mySqlDataReader["AssessorID"].ToString());
-                    //MessageBox.Show("User Name: " + mySqlDataReader["UserName"].ToString());
-                    //MessageBox.Show("FingerID: " + mySqlDataReader["FingerID"].ToString());
-
-                    //MessageBox.Show("Password: " + mySqlDataReader["Password"].ToString());
-                    //MessageBox.Show("First Name: " + mySqlDataReader["FirstName"].ToString());
-                    //MessageBox.Show("Last Name: " + mySqlDataReader["LastName"].ToString());
-                    //MessageBox.Show("Email: " + mySqlDataReader["EmailAddress"].ToString());
-                    //MessageBox.Show("Address: " + mySqlDataReader["Address"].ToString());
-                    //MessageBox.Show("Phone: " + mySqlDataReader["Phone"].ToString());
-                    //MessageBox.Show("CompanyCode: " + mySqlDataReader["CompanyCode"].ToString());
-                    //MessageBox.Show("MachineCode: " + mySqlDataReader["MachineCode"].ToString());
-                    //MessageBox.Show("IsLocked: " + mySqlDataReader["IsLocked"].ToString());
-                    //MessageBox.Show("IsActive: " + mySqlDataReader["IsActive"].ToString());
-                    //MessageBox.Show("LastPassword: " + mySqlDataReader["LastPassword"].ToString());
-                    //MessageBox.Show("IsFirstTimeLogin: " + mySqlDataReader["IsFirstTimeLogin"].ToString());
-                    //MessageBox.Show("UpdatedDate: " + mySqlDataReader["UpdatedDate"].ToString());
-
-                    //MessageBox.Show("Total Count: " + mySqlDataReader.FieldCount.ToString());
                     if (!mySqlDataReader.IsDBNull(0))
                     {
-                        //assessor.iAssessorId = Convert.ToInt32(mySqlDataReader["AssessorID"].ToString());
                         assessor.iAssessorId = mySqlDataReader.GetInt32(0);
                     }
                     else

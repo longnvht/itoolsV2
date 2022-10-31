@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using itools_source.Models;
 using itools_source.Models.Interface;
+using itools_source.Presenters;
+using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using log4net;
@@ -35,6 +37,7 @@ namespace itools_source.Presenter
             _loginView.Show();
         }
 
+        #region Events
         private void PasswordIconRightClick(object sender, EventArgs e)
         {
             var txtPassword = ((Guna2TextBox)sender);
@@ -57,30 +60,35 @@ namespace itools_source.Presenter
 
         private void LoginAssessor(object sender, EventArgs e)
         {
-            //string strUserName = txtUserName.Text;
-            //string strPassword = txtPassword.Text;
             string strUserName = _loginView.strUserName;
             string strPassword = _loginView.strPassword;
             _log.Info("Login with username: " + strUserName);
             try
             {
-                Assessor assessor = _assessorRepository.CheckUserNameAndPassword(strUserName, strPassword);
-                if (assessor != null)
+                if (_loginView.assessorCurrent == null)
+                {
+                    _loginView.assessorCurrent = new Assessor();
+                }
+
+                _loginView.assessorCurrent = _assessorRepository.GetAssessor(strUserName, strPassword); // Check Role
+                if (_loginView.assessorCurrent != null)
                 {
                     MessageBox.Show("Đăng Nhập Thành Công!");
-                    string strRoleName = _assessorRepository.GetRoleName(assessor.iAssessorId);
-                    if (strRoleName != null)
+                    string strRoleName = _assessorRepository.GetRoleName(_loginView.assessorCurrent.iAssessorId);
+                    if (strRoleName == "Admin")
                     {
-                        if (strRoleName == "admin")
-                        {
+                        IPushToolView view = new PushToolView();
+                        IToolRepository repository = new ToolRepository();
+                        new PushToolPresenter(view, repository);
 
-                        }
-                        else
-                        {
+                        view.Show();
+                        //_loginView.Hide();
+                        _loginView.Close();
+                    }
+                    else
+                    {
 
-                        }
-                    }    
-                    MessageBox.Show(strRoleName);
+                    }
                     _log.Info("Login Success!");
                 }
                 else
@@ -95,5 +103,6 @@ namespace itools_source.Presenter
                 _log.Error(ex.Message);
             }
         }
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using itools_source.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace itools_source.Views.Interface
         #region Properties - Fields
         string strUserName { get; set; }
         string strPassword { get; set; }
+        Assessor assessorCurrent { get; set; }
         #endregion
 
         #region Events
@@ -23,6 +25,7 @@ namespace itools_source.Views.Interface
         #region Methods
         void Show();
         void Close();
+        void Hide();
         #endregion
     }
 }

@@ -117,6 +117,7 @@
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Interface\IAssessorRepository.cs" />
     <Compile Include="Models\Interface\IRolesRepository.cs" />
+    <Compile Include="Models\Interface\IToolRepository.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\PartOP.cs" />
     <Compile Include="Models\RoleAssessor.cs" />
@@ -128,14 +129,17 @@
     <Compile Include="Models\WorkingTransaction.cs" />
     <Compile Include="Presenters\EmployeePresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
+    <Compile Include="Presenters\PushToolPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AssessorRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\RolesRepository.cs" />
+    <Compile Include="Repository\ToolRepository.cs" />
     <Compile Include="Utils\Encryption.cs" />
     <Compile Include="Utils\MySqlConnect.cs" />
     <Compile Include="Views\Interface\ILoginView.cs" />
+    <Compile Include="Views\Interface\IPushToolView.cs" />
     <Compile Include="Views\JobView.cs">
       <SubType>Form</SubType>
     </Compile>
