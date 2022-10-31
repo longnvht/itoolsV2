@@ -69,6 +69,17 @@ namespace itools_source.Presenter
                 {
                     MessageBox.Show("Đăng Nhập Thành Công!");
                     string strRoleName = _assessorRepository.GetRoleName(assessor.iAssessorId);
+                    if (strRoleName != null)
+                    {
+                        if (strRoleName == "admin")
+                        {
+
+                        }
+                        else
+                        {
+
+                        }
+                    }    
                     MessageBox.Show(strRoleName);
                     _log.Info("Login Success!");
                 }

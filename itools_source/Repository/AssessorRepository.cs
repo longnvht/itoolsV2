@@ -36,29 +36,137 @@ namespace itools_source.Repository
         {
             Assessor assessor = null;
 
-            string strSelect = @"SELECT * FROM assessor WHERE assessor.UserName = '" + strUserName.ToLower() + "' AND (assessor.Password = MD5('" + strPassword + "') OR assessor.LastPassword = MD5('" + strPassword + "')) AND assessor.IsActive = 1";
+            string strSelect = @"SELECT *
+                                    FROM assessor
+                                        WHERE assessor.UserName = '" + strUserName.ToLower() + 
+                                            "' AND (assessor.Password = MD5('" + strPassword +  "') OR assessor.LastPassword = MD5('" + strPassword + "'))" +
+                                            "AND assessor.IsActive = 1";
             _log.Info(strSelect);
             try
             {
                 MySqlConnection mySqlConnection = MySqlConnect.Open();
                 MySqlDataReader mySqlDataReader = MySqlConnect.DataQuery(strSelect, mySqlConnection);
-                MessageBox.Show("1");
+
                 if (mySqlDataReader.Read())
                 {
-                    MessageBox.Show("2");
+                    if (assessor == null)
+                    {
+                        assessor = new Assessor();
+                    }
+
+                    //MessageBox.Show("Id: " + mySqlDataReader["AssessorID"].ToString());
+                    //MessageBox.Show("User Name: " + mySqlDataReader["UserName"].ToString());
+                    //MessageBox.Show("FingerID: " + mySqlDataReader["FingerID"].ToString());
+
+                    //MessageBox.Show("Password: " + mySqlDataReader["Password"].ToString());
+                    //MessageBox.Show("First Name: " + mySqlDataReader["FirstName"].ToString());
+                    //MessageBox.Show("Last Name: " + mySqlDataReader["LastName"].ToString());
+                    //MessageBox.Show("Email: " + mySqlDataReader["EmailAddress"].ToString());
+                    //MessageBox.Show("Address: " + mySqlDataReader["Address"].ToString());
+                    //MessageBox.Show("Phone: " + mySqlDataReader["Phone"].ToString());
+                    //MessageBox.Show("CompanyCode: " + mySqlDataReader["CompanyCode"].ToString());
+                    //MessageBox.Show("MachineCode: " + mySqlDataReader["MachineCode"].ToString());
+                    //MessageBox.Show("IsLocked: " + mySqlDataReader["IsLocked"].ToString());
+                    //MessageBox.Show("IsActive: " + mySqlDataReader["IsActive"].ToString());
+                    //MessageBox.Show("LastPassword: " + mySqlDataReader["LastPassword"].ToString());
+                    //MessageBox.Show("IsFirstTimeLogin: " + mySqlDataReader["IsFirstTimeLogin"].ToString());
+                    //MessageBox.Show("UpdatedDate: " + mySqlDataReader["UpdatedDate"].ToString());
+
+                    //MessageBox.Show("Total Count: " + mySqlDataReader.FieldCount.ToString());
                     if (!mySqlDataReader.IsDBNull(0))
                     {
-                        MessageBox.Show("3");
-                        //MessageBox.Show(mySqlDataReader["AssessorID"].ToString());
-                        MessageBox.Show(mySqlDataReader.GetInt32(0).ToString());
-                        //return null;
+                        //assessor.iAssessorId = Convert.ToInt32(mySqlDataReader["AssessorID"].ToString());
+                        assessor.iAssessorId = mySqlDataReader.GetInt32(0);
+                    }
+                    else
+                    {
+                        _log.Info("Id NULL!");
+                        return null;
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(1))
+                    {
+                        assessor.strUserName = mySqlDataReader["UserName"].ToString();
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(2))
+                    {
+                        assessor.strFingerId = mySqlDataReader["FingerID"].ToString();
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(3))
+                    {
+                        assessor.strPassword = mySqlDataReader.GetString(3);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(4))
+                    {
+                        assessor.strFirstName = mySqlDataReader.GetString(4);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(5))
+                    {
+                        assessor.strLastName = mySqlDataReader.GetString(5);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(6))
+                    {
+                        assessor.strEmailAddress = mySqlDataReader.GetString(6);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(7))
+                    {
+                        assessor.strAddress = mySqlDataReader.GetString(7);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(8))
+                    {
+                        assessor.strPhone = mySqlDataReader.GetString(8);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(9))
+                    {
+                        assessor.strCompanyCode = mySqlDataReader.GetString(9);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(10))
+                    {
+                        assessor.strMachineCode = mySqlDataReader.GetString(10);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(11))
+                    {
+                        assessor.isLocked = mySqlDataReader.GetInt32(11);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(12))
+                    {
+                        assessor.isActive = mySqlDataReader.GetInt32(12);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(13))
+                    {
+                        assessor.strLastPassword = mySqlDataReader.GetString(13);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(14))
+                    {
+                        assessor.isFirstTimeLogin = mySqlDataReader.GetByte(14);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(15))
+                    {
+                        assessor.iFailTimes = mySqlDataReader.GetInt32(15);
+                    }
+
+                    if (!mySqlDataReader.IsDBNull(16))
+                    {
+                        assessor.dtUpdateDate = mySqlDataReader.GetDateTime(16);
                     }
                 }
 
-                MessageBox.Show("4");
                 mySqlDataReader.Close();
                 mySqlConnection.Close();
-                MessageBox.Show("5");
                 return assessor;
             }
             catch (MySqlException e)

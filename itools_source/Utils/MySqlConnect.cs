@@ -16,7 +16,7 @@ namespace itools_source.Utils
         private static string _strUSER_NAME = "admin";
         private static string _strPASSWORD = "Vinam@123";
 
-        private static string _strConnect = "server=" + _strHOST + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD;
+        private static string _strConnect = "server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD;
 
         public static MySqlConnection Open()
         {
@@ -40,7 +40,9 @@ namespace itools_source.Utils
         public static MySqlDataReader DataQuery(string strQuery, MySqlConnection mySqlConn)
         {
             MySqlCommand cmd = new MySqlCommand(strQuery, mySqlConn);
-            return cmd.ExecuteReader();
+            MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
+            //return cmd.ExecuteReader();
+            return mySqlDataReader;
         }
 
         public static MySqlDataReader DataQuery(string strquery, MySqlParameter[] paramerter, MySqlConnection mySqlConn)

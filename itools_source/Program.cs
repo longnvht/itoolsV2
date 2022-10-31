@@ -32,6 +32,7 @@ namespace itools_source
             new LoginPresenter(view, repository);
 
             Application.Run((Form)view);
+            //Application.Run(new GetToolView());
         }
     }
 }
