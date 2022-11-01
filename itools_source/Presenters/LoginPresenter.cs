@@ -22,6 +22,8 @@ namespace itools_source.Presenter
         #region Fields
         private ILoginView _loginView;
         private IAssessorRepository _assessorRepository;
+        private IPushToolView _pushToolView;
+        private IJobView _jobView;
         #endregion
 
         public LoginPresenter(ILoginView loginView, IAssessorRepository assessorRepository)
@@ -77,18 +79,15 @@ namespace itools_source.Presenter
                     string strRoleName = _assessorRepository.GetRoleName(_loginView.assessorCurrent.iAssessorId);
                     if (strRoleName == "Admin")
                     {
-                        IPushToolView view = new PushToolView();
-                        IToolRepository repository = new ToolRepository();
-                        new PushToolPresenter(view, repository);
-
-                        view.Show();
-                        //_loginView.Hide();
-                        _loginView.Close();
+                        System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadProc1));
+                        t.Start();
                     }
                     else
                     {
-
+                        System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadProc2));
+                        t.Start();
                     }
+                    _loginView.Close();
                     _log.Info("Login Success!");
                 }
                 else
@@ -102,6 +101,23 @@ namespace itools_source.Presenter
                 MessageBox.Show(ex.Message);
                 _log.Error(ex.Message);
             }
+        }
+        #endregion
+        #region Method
+        public void ThreadProc1()
+        {
+            _pushToolView = new PushToolView();
+            IToolRepository repository = new ToolRepository();
+            new PushToolPresenter(_pushToolView, repository);
+            Application.Run((Form)_pushToolView);
+        }
+
+        public void ThreadProc2()
+        {
+            _jobView = new JobView();
+            IJobRepository repository = new JobRepository();
+            new JobPresenter(_jobView, repository);
+            Application.Run((Form)_jobView);
         }
         #endregion
     }

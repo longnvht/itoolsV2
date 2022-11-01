@@ -25,5 +25,10 @@ namespace itools_source.Views
         public event EventHandler TakeOut;
         public event EventHandler Add;
         public event EventHandler AddNew;
+
+        void IPushToolView.ShowDialog()
+        {
+            this.ShowDialog();
+        }
     }
 }

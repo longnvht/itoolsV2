@@ -23,6 +23,7 @@ namespace itools_source.Views.Interface
         #region Methods
         void Show();
         void Close();
+        void ShowDialog();
         #endregion
     }
 }
