@@ -120,9 +120,11 @@
     <Compile Include="Models\Interface\IRolesRepository.cs" />
     <Compile Include="Models\Interface\IToolRepository.cs" />
     <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\Machine.cs" />
     <Compile Include="Models\PartOP.cs" />
     <Compile Include="Models\RoleAssessor.cs" />
     <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\Slock.cs" />
     <Compile Include="Models\Tool.cs" />
     <Compile Include="Models\ToolForOP.cs" />
     <Compile Include="Models\ToolMachine.cs" />
@@ -141,6 +143,7 @@
     <Compile Include="Repository\ToolRepository.cs" />
     <Compile Include="Utils\Encryption.cs" />
     <Compile Include="Utils\MySqlConnect.cs" />
+    <Compile Include="Utils\Session.cs" />
     <Compile Include="Views\Interface\IJobView.cs" />
     <Compile Include="Views\Interface\ILoginView.cs" />
     <Compile Include="Views\Interface\IPushToolView.cs" />

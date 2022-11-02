@@ -22,8 +22,8 @@ namespace itools_source.Presenter
         #region Fields
         private ILoginView _loginView;
         private IAssessorRepository _assessorRepository;
-        private IPushToolView _pushToolView;
-        private IJobView _jobView;
+        //private IPushToolView _pushToolView;
+        //private IJobView _jobView;
         #endregion
 
         public LoginPresenter(ILoginView loginView, IAssessorRepository assessorRepository)
@@ -73,6 +73,9 @@ namespace itools_source.Presenter
                 }
 
                 _loginView.assessorCurrent = _assessorRepository.GetAssessor(strUserName, strPassword); // Check Role
+                Program.sessionLogin["Id"] = _loginView.assessorCurrent.iAssessorId;
+                Program.sessionLogin["UserName"] = _loginView.assessorCurrent.strUserName;
+                Program.sessionLogin["Password"] = _loginView.assessorCurrent.strPassword;
                 if (_loginView.assessorCurrent != null)
                 {
                     MessageBox.Show("Đăng Nhập Thành Công!");
@@ -106,7 +109,7 @@ namespace itools_source.Presenter
         #region Method
         public void ThreadProc1()
         {
-            _pushToolView = new PushToolView();
+            IPushToolView _pushToolView = new PushToolView();
             IToolRepository repository = new ToolRepository();
             new PushToolPresenter(_pushToolView, repository);
             Application.Run((Form)_pushToolView);
@@ -114,7 +117,7 @@ namespace itools_source.Presenter
 
         public void ThreadProc2()
         {
-            _jobView = new JobView();
+            IJobView _jobView = new JobView();
             IJobRepository repository = new JobRepository();
             new JobPresenter(_jobView, repository);
             Application.Run((Form)_jobView);

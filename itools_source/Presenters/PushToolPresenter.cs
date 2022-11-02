@@ -17,15 +17,54 @@ namespace itools_source.Presenters
         #region Fields
         private IPushToolView _pushToolView;
         private IToolRepository _toolRepository;
+        #endregion
 
         public PushToolPresenter(IPushToolView pushToolView, IToolRepository toolRepository)
         {
             _pushToolView = pushToolView;
             _toolRepository = toolRepository;
 
+
+            _pushToolView.ClickTakeOut += TakeOut;
+            _pushToolView.ClickAddOld += AddOld;
+            _pushToolView.ClickAddNew += AddNew;
+            _pushToolView.ClickNext += Next;
+            _pushToolView.ClickPrevious += Previous;
+            _pushToolView.Search += Search;
+            
             _pushToolView.Show();
         }
-        //private 
+
+        #region Events
+        private void Search(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Previous(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Next(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddNew(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddOld(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void TakeOut(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

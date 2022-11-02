@@ -17,18 +17,27 @@ namespace itools_source.Views
         public PushToolView()
         {
             InitializeComponent();
+            btnTakeOut.Click += delegate { ClickTakeOut?.Invoke(this, EventArgs.Empty); };
+            btnAddOld.Click += delegate { ClickAddOld?.Invoke(this, EventArgs.Empty); };
+            btnAddNew.Click += delegate { ClickAddNew?.Invoke(this, EventArgs.Empty); };
+            btnNext.Click += delegate { ClickNext?.Invoke(this, EventArgs.Empty); };
+            btnPrev.Click += delegate { ClickPrevious?.Invoke(this, EventArgs.Empty); };
+            btnSearch.Click += delegate { Search?.Invoke(this, EventArgs.Empty); };
         }
 
-        public int _iToolId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Tool toolCurrent { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int _iToolId { get => Convert.ToInt32(txtToolId.Text); set => txtToolId.Text = value.ToString(); }
+        public Tool toolCurrent { get; set; }
+        public int _iTrayId { get => Convert.ToInt32(txtTrayId.Text); set => txtTrayId.Text = value.ToString(); }
+        public int _iCurrentQuantity { get => Convert.ToInt32(txtCurrentQuantity.Text); set => txtCurrentQuantity.Text = value.ToString(); }
+        public int _iOperateQuantity { get => Convert.ToInt32(txtOperateQuantity.Text); set => txtOperateQuantity.Text = value.ToString(); }
+        public int _iRemainQuantity { get => Convert.ToInt32(txtRemainQuantity.Text); set => txtRemainQuantity.Text = value.ToString(); }
+        public string strSearch { get => txtSearch.Text; set => txtSearch.Text = value; }
 
-        public event EventHandler TakeOut;
-        public event EventHandler Add;
-        public event EventHandler AddNew;
-
-        void IPushToolView.ShowDialog()
-        {
-            this.ShowDialog();
-        }
+        public event EventHandler ClickTakeOut;
+        public event EventHandler ClickAddOld;
+        public event EventHandler ClickAddNew;
+        public event EventHandler ClickNext;
+        public event EventHandler ClickPrevious;
+        public event EventHandler Search;
     }
 }

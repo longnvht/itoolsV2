@@ -10,6 +10,7 @@ using itools_source.Models.Interface;
 using itools_source.Models;
 using itools_source.Repository;
 using itools_source.Presenters;
+using itools_source.Utils;
 
 //[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -17,6 +18,8 @@ namespace itools_source
 {
     internal static class Program
     {
+        public static Session sessionLogin = new Session();
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
