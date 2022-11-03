@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnTool = new System.Windows.Forms.Button();
+            this.flpListTool = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
@@ -44,17 +43,16 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtRemainQuantity = new System.Windows.Forms.TextBox();
+            this.txtOperateQuantity = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCurrentQuantity = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTrayId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtToolId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtCurrentQuantity = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtOperateQuantity = new System.Windows.Forms.TextBox();
-            this.txtRemainQuantity = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -73,28 +71,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Push Tool";
             // 
-            // flowLayoutPanel1
+            // flpListTool
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.flowLayoutPanel1.Controls.Add(this.btnTool);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 43);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(299, 356);
-            this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // btnTool
-            // 
-            this.btnTool.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTool.Location = new System.Drawing.Point(2, 2);
-            this.btnTool.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTool.Name = "btnTool";
-            this.btnTool.Size = new System.Drawing.Size(294, 60);
-            this.btnTool.TabIndex = 3;
-            this.btnTool.Text = "Công Cụ";
-            this.btnTool.UseVisualStyleBackColor = true;
+            this.flpListTool.AutoScroll = true;
+            this.flpListTool.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.flpListTool.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flpListTool.Location = new System.Drawing.Point(0, 43);
+            this.flpListTool.Margin = new System.Windows.Forms.Padding(2);
+            this.flpListTool.Name = "flpListTool";
+            this.flpListTool.Size = new System.Drawing.Size(299, 356);
+            this.flpListTool.TabIndex = 2;
             // 
             // btnSearch
             // 
@@ -275,6 +261,50 @@
             this.panel2.Size = new System.Drawing.Size(619, 356);
             this.panel2.TabIndex = 9;
             // 
+            // txtRemainQuantity
+            // 
+            this.txtRemainQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRemainQuantity.Location = new System.Drawing.Point(165, 268);
+            this.txtRemainQuantity.Name = "txtRemainQuantity";
+            this.txtRemainQuantity.Size = new System.Drawing.Size(221, 24);
+            this.txtRemainQuantity.TabIndex = 9;
+            // 
+            // txtOperateQuantity
+            // 
+            this.txtOperateQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOperateQuantity.Location = new System.Drawing.Point(165, 201);
+            this.txtOperateQuantity.Name = "txtOperateQuantity";
+            this.txtOperateQuantity.Size = new System.Drawing.Size(221, 24);
+            this.txtOperateQuantity.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(90, 89);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 18);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Mã Tool";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(91, 32);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 18);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Mã Tray";
+            // 
+            // txtCurrentQuantity
+            // 
+            this.txtCurrentQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentQuantity.Location = new System.Drawing.Point(165, 139);
+            this.txtCurrentQuantity.Name = "txtCurrentQuantity";
+            this.txtCurrentQuantity.Size = new System.Drawing.Size(221, 24);
+            this.txtCurrentQuantity.TabIndex = 5;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -321,57 +351,13 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Số Lượng Hiện Có";
             // 
-            // txtCurrentQuantity
-            // 
-            this.txtCurrentQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentQuantity.Location = new System.Drawing.Point(165, 139);
-            this.txtCurrentQuantity.Name = "txtCurrentQuantity";
-            this.txtCurrentQuantity.Size = new System.Drawing.Size(221, 24);
-            this.txtCurrentQuantity.TabIndex = 5;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(91, 32);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 18);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Mã Tray";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(90, 89);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 18);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Mã Tool";
-            // 
-            // txtOperateQuantity
-            // 
-            this.txtOperateQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOperateQuantity.Location = new System.Drawing.Point(165, 201);
-            this.txtOperateQuantity.Name = "txtOperateQuantity";
-            this.txtOperateQuantity.Size = new System.Drawing.Size(221, 24);
-            this.txtOperateQuantity.TabIndex = 8;
-            // 
-            // txtRemainQuantity
-            // 
-            this.txtRemainQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRemainQuantity.Location = new System.Drawing.Point(165, 268);
-            this.txtRemainQuantity.Name = "txtRemainQuantity";
-            this.txtRemainQuantity.Size = new System.Drawing.Size(221, 24);
-            this.txtRemainQuantity.TabIndex = 9;
-            // 
             // PushToolView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 452);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flpListTool);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.label1);
@@ -380,7 +366,6 @@
             this.Name = "PushToolView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nhập Và Lấy Công Cụ";
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -396,8 +381,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btnTool;
+        private System.Windows.Forms.FlowLayoutPanel flpListTool;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnPrev;
         private System.Windows.Forms.Button btnNext;

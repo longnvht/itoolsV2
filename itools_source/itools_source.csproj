@@ -141,6 +141,8 @@
     <Compile Include="Repository\JobRepository.cs" />
     <Compile Include="Repository\RolesRepository.cs" />
     <Compile Include="Repository\ToolRepository.cs" />
+    <None Include="Utils\Config.properties" />
+    <Compile Include="Utils\Config.cs" />
     <Compile Include="Utils\Encryption.cs" />
     <Compile Include="Utils\MySqlConnect.cs" />
     <Compile Include="Utils\Session.cs" />
