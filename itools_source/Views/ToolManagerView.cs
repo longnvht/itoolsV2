@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace itools_source.Views
 {
-    public partial class PushToolView : Form, IPushToolView
+    public partial class ToolManagerView : Form, IToolManagerView
     {
-        public PushToolView()
+        public ToolManagerView()
         {
             InitializeComponent();
             btnTakeOut.Click += delegate { ClickTakeOut?.Invoke(this, EventArgs.Empty); };

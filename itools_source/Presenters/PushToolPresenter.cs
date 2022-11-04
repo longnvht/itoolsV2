@@ -15,11 +15,11 @@ namespace itools_source.Presenters
         log4net.ILog _log = log4net.LogManager.GetLogger(typeof(PushToolPresenter).Name);
 
         #region Fields
-        private IPushToolView _pushToolView;
+        private IToolManagerView _pushToolView;
         private IToolRepository _toolRepository;
         #endregion
 
-        public PushToolPresenter(IPushToolView pushToolView, IToolRepository toolRepository)
+        public PushToolPresenter(IToolManagerView pushToolView, IToolRepository toolRepository)
         {
             _pushToolView = pushToolView;
             _toolRepository = toolRepository;

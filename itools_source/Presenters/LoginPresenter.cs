@@ -22,7 +22,7 @@ namespace itools_source.Presenter
         #region Fields
         private ILoginView _loginView;
         private IAssessorRepository _assessorRepository;
-        //private IPushToolView _pushToolView;
+        //private IPushToolView _toolManagerView;
         //private IJobView _jobView;
         #endregion
 
@@ -109,10 +109,10 @@ namespace itools_source.Presenter
         #region Method
         public void ThreadProc1()
         {
-            IPushToolView _pushToolView = new PushToolView();
+            IToolManagerView _toolManagerView = new ToolManagerView();
             IToolRepository repository = new ToolRepository();
-            new PushToolPresenter(_pushToolView, repository);
-            Application.Run((Form)_pushToolView);
+            new PushToolPresenter(_toolManagerView, repository);
+            Application.Run((Form)_toolManagerView);
         }
 
         public void ThreadProc2()

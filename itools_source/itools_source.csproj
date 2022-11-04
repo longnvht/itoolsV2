@@ -148,7 +148,7 @@
     <Compile Include="Utils\Session.cs" />
     <Compile Include="Views\Interface\IJobView.cs" />
     <Compile Include="Views\Interface\ILoginView.cs" />
-    <Compile Include="Views\Interface\IPushToolView.cs" />
+    <Compile Include="Views\Interface\IToolManagerView.cs" />
     <Compile Include="Views\JobView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,11 +167,11 @@
     <Compile Include="Views\GetToolView.Designer.cs">
       <DependentUpon>GetToolView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\PushToolView.cs">
+    <Compile Include="Views\ToolManagerView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\PushToolView.Designer.cs">
-      <DependentUpon>PushToolView.cs</DependentUpon>
+    <Compile Include="Views\ToolManagerView.Designer.cs">
+      <DependentUpon>ToolManagerView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -195,8 +195,8 @@
     <EmbeddedResource Include="Views\GetToolView.resx">
       <DependentUpon>GetToolView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PushToolView.resx">
-      <DependentUpon>PushToolView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ToolManagerView.resx">
+      <DependentUpon>ToolManagerView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

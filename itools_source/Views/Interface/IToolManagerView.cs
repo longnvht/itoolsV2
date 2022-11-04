@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace itools_source.Views.Interface
 {
-    public interface IPushToolView
+    public interface IToolManagerView
     {
         #region Fields
         int _iToolId { get; set; }

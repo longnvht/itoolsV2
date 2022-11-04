@@ -1,6 +1,6 @@
 ﻿namespace itools_source.Views
 {
-    partial class PushToolView
+    partial class ToolManagerView
     {
         /// <summary>
         /// Required designer variable.
