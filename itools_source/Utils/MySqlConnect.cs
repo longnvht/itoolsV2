@@ -40,9 +40,7 @@ namespace itools_source.Utils
         public static MySqlDataReader DataQuery(string strQuery, MySqlConnection mySqlConn)
         {
             MySqlCommand cmd = new MySqlCommand(strQuery, mySqlConn);
-            MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
-            //return cmd.ExecuteReader();
-            return mySqlDataReader;
+            return cmd.ExecuteReader();
         }
 
         public static MySqlDataReader DataQuery(string strquery, MySqlParameter[] paramerter, MySqlConnection mySqlConn)

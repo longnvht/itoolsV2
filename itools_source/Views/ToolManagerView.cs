@@ -26,6 +26,8 @@ namespace itools_source.Views
             btnSearch.Click += delegate { Search?.Invoke(this, EventArgs.Empty); };
 
             CreateButtonTool();
+            this.flpListTool.PerformLayout();
+            guna2VScrollBar1.Size = new System.Drawing.Size(30, flpListTool.Height);
         }
 
         private void CreateButtonTool()
@@ -36,11 +38,11 @@ namespace itools_source.Views
                 btn.Size = new Size(280, 60);
                 if (i < 10)
                 {
-                    btn.Text = "TRAY_0" + i.ToString();
+                    btn.Text = "TRAY 0" + i.ToString();
                 }
                 else
                 {
-                    btn.Text = "TRAY_" + i.ToString();
+                    btn.Text = "TRAY " + i.ToString();
                 }
                 btn.UseVisualStyleBackColor = true;
                 

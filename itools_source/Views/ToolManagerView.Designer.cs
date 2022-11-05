@@ -47,7 +47,6 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblValueGuna = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblValueFlow = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.txtRemainQuantity = new System.Windows.Forms.TextBox();
             this.txtOperateQuantity = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -82,12 +81,11 @@
             this.flpListTool.AutoScroll = true;
             this.flpListTool.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.flpListTool.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flpListTool.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flpListTool.Location = new System.Drawing.Point(0, 43);
             this.flpListTool.Margin = new System.Windows.Forms.Padding(2);
             this.flpListTool.Name = "flpListTool";
             this.flpListTool.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.flpListTool.Size = new System.Drawing.Size(331, 356);
+            this.flpListTool.Size = new System.Drawing.Size(305, 356);
             this.flpListTool.TabIndex = 2;
             // 
             // btnSearch
@@ -257,7 +255,6 @@
             this.panel2.Controls.Add(this.guna2HtmlLabel1);
             this.panel2.Controls.Add(this.lblValueGuna);
             this.panel2.Controls.Add(this.lblValueFlow);
-            this.panel2.Controls.Add(this.vScrollBar1);
             this.panel2.Controls.Add(this.txtRemainQuantity);
             this.panel2.Controls.Add(this.txtOperateQuantity);
             this.panel2.Controls.Add(this.label6);
@@ -269,9 +266,9 @@
             this.panel2.Controls.Add(this.txtToolId);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(331, 43);
+            this.panel2.Location = new System.Drawing.Point(305, 43);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(587, 356);
+            this.panel2.Size = new System.Drawing.Size(613, 356);
             this.panel2.TabIndex = 9;
             // 
             // guna2HtmlLabel2
@@ -309,13 +306,6 @@
             this.lblValueFlow.Size = new System.Drawing.Size(55, 15);
             this.lblValueFlow.TabIndex = 12;
             this.lblValueFlow.Text = "Value Flow";
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(522, 3);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(33, 322);
-            this.vScrollBar1.TabIndex = 11;
             // 
             // txtRemainQuantity
             // 
@@ -410,15 +400,16 @@
             // guna2VScrollBar1
             // 
             this.guna2VScrollBar1.AutoRoundedCorners = true;
+            this.guna2VScrollBar1.AutoSize = true;
             this.guna2VScrollBar1.BindingContainer = this.flpListTool;
-            this.guna2VScrollBar1.BorderRadius = 17;
+            this.guna2VScrollBar1.BorderRadius = 12;
             this.guna2VScrollBar1.InUpdate = false;
             this.guna2VScrollBar1.LargeChange = 10;
-            this.guna2VScrollBar1.Location = new System.Drawing.Point(295, 43);
+            this.guna2VScrollBar1.Location = new System.Drawing.Point(279, 43);
             this.guna2VScrollBar1.Name = "guna2VScrollBar1";
-            this.guna2VScrollBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.guna2VScrollBar1.ScrollbarSize = 36;
-            this.guna2VScrollBar1.Size = new System.Drawing.Size(36, 356);
+            this.guna2VScrollBar1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.guna2VScrollBar1.ScrollbarSize = 26;
+            this.guna2VScrollBar1.Size = new System.Drawing.Size(26, 356);
             this.guna2VScrollBar1.TabIndex = 10;
             this.guna2VScrollBar1.ThumbSize = 100F;
             // 
@@ -482,6 +473,5 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblValueGuna;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblValueFlow;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }
