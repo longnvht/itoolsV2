@@ -43,6 +43,11 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblValueGuna = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblValueFlow = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.txtRemainQuantity = new System.Windows.Forms.TextBox();
             this.txtOperateQuantity = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -53,6 +58,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtToolId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.guna2VScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -76,10 +82,12 @@
             this.flpListTool.AutoScroll = true;
             this.flpListTool.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.flpListTool.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flpListTool.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flpListTool.Location = new System.Drawing.Point(0, 43);
             this.flpListTool.Margin = new System.Windows.Forms.Padding(2);
             this.flpListTool.Name = "flpListTool";
-            this.flpListTool.Size = new System.Drawing.Size(299, 356);
+            this.flpListTool.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.flpListTool.Size = new System.Drawing.Size(331, 356);
             this.flpListTool.TabIndex = 2;
             // 
             // btnSearch
@@ -245,6 +253,11 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.guna2HtmlLabel2);
+            this.panel2.Controls.Add(this.guna2HtmlLabel1);
+            this.panel2.Controls.Add(this.lblValueGuna);
+            this.panel2.Controls.Add(this.lblValueFlow);
+            this.panel2.Controls.Add(this.vScrollBar1);
             this.panel2.Controls.Add(this.txtRemainQuantity);
             this.panel2.Controls.Add(this.txtOperateQuantity);
             this.panel2.Controls.Add(this.label6);
@@ -256,15 +269,58 @@
             this.panel2.Controls.Add(this.txtToolId);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(299, 43);
+            this.panel2.Location = new System.Drawing.Point(331, 43);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(619, 356);
+            this.panel2.Size = new System.Drawing.Size(587, 356);
             this.panel2.TabIndex = 9;
+            // 
+            // guna2HtmlLabel2
+            // 
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(28, 45);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(32, 15);
+            this.guna2HtmlLabel2.TabIndex = 15;
+            this.guna2HtmlLabel2.Text = "Guna:";
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(32, 6);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(28, 15);
+            this.guna2HtmlLabel1.TabIndex = 14;
+            this.guna2HtmlLabel1.Text = "Flow:";
+            // 
+            // lblValueGuna
+            // 
+            this.lblValueGuna.BackColor = System.Drawing.Color.Transparent;
+            this.lblValueGuna.Location = new System.Drawing.Point(77, 45);
+            this.lblValueGuna.Name = "lblValueGuna";
+            this.lblValueGuna.Size = new System.Drawing.Size(59, 15);
+            this.lblValueGuna.TabIndex = 13;
+            this.lblValueGuna.Text = "Value Guna";
+            // 
+            // lblValueFlow
+            // 
+            this.lblValueFlow.BackColor = System.Drawing.Color.Transparent;
+            this.lblValueFlow.Location = new System.Drawing.Point(77, 6);
+            this.lblValueFlow.Name = "lblValueFlow";
+            this.lblValueFlow.Size = new System.Drawing.Size(55, 15);
+            this.lblValueFlow.TabIndex = 12;
+            this.lblValueFlow.Text = "Value Flow";
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Location = new System.Drawing.Point(522, 3);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(33, 322);
+            this.vScrollBar1.TabIndex = 11;
             // 
             // txtRemainQuantity
             // 
             this.txtRemainQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRemainQuantity.Location = new System.Drawing.Point(165, 268);
+            this.txtRemainQuantity.Location = new System.Drawing.Point(244, 268);
             this.txtRemainQuantity.Name = "txtRemainQuantity";
             this.txtRemainQuantity.Size = new System.Drawing.Size(221, 24);
             this.txtRemainQuantity.TabIndex = 9;
@@ -272,7 +328,7 @@
             // txtOperateQuantity
             // 
             this.txtOperateQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOperateQuantity.Location = new System.Drawing.Point(165, 201);
+            this.txtOperateQuantity.Location = new System.Drawing.Point(244, 201);
             this.txtOperateQuantity.Name = "txtOperateQuantity";
             this.txtOperateQuantity.Size = new System.Drawing.Size(221, 24);
             this.txtOperateQuantity.TabIndex = 8;
@@ -281,7 +337,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(90, 89);
+            this.label6.Location = new System.Drawing.Point(169, 89);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 18);
             this.label6.TabIndex = 7;
@@ -291,7 +347,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(91, 32);
+            this.label5.Location = new System.Drawing.Point(170, 32);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 18);
             this.label5.TabIndex = 6;
@@ -300,7 +356,7 @@
             // txtCurrentQuantity
             // 
             this.txtCurrentQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentQuantity.Location = new System.Drawing.Point(165, 139);
+            this.txtCurrentQuantity.Location = new System.Drawing.Point(244, 139);
             this.txtCurrentQuantity.Name = "txtCurrentQuantity";
             this.txtCurrentQuantity.Size = new System.Drawing.Size(221, 24);
             this.txtCurrentQuantity.TabIndex = 5;
@@ -309,7 +365,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(26, 274);
+            this.label3.Location = new System.Drawing.Point(105, 274);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 18);
             this.label3.TabIndex = 4;
@@ -318,7 +374,7 @@
             // txtTrayId
             // 
             this.txtTrayId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTrayId.Location = new System.Drawing.Point(165, 26);
+            this.txtTrayId.Location = new System.Drawing.Point(244, 26);
             this.txtTrayId.Name = "txtTrayId";
             this.txtTrayId.Size = new System.Drawing.Size(221, 24);
             this.txtTrayId.TabIndex = 4;
@@ -327,7 +383,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(14, 207);
+            this.label2.Location = new System.Drawing.Point(93, 207);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(139, 18);
             this.label2.TabIndex = 2;
@@ -336,7 +392,7 @@
             // txtToolId
             // 
             this.txtToolId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtToolId.Location = new System.Drawing.Point(165, 83);
+            this.txtToolId.Location = new System.Drawing.Point(244, 83);
             this.txtToolId.Name = "txtToolId";
             this.txtToolId.Size = new System.Drawing.Size(221, 24);
             this.txtToolId.TabIndex = 3;
@@ -345,17 +401,33 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(23, 145);
+            this.label4.Location = new System.Drawing.Point(102, 145);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(130, 18);
             this.label4.TabIndex = 0;
             this.label4.Text = "Số Lượng Hiện Có";
             // 
-            // PushToolView
+            // guna2VScrollBar1
+            // 
+            this.guna2VScrollBar1.AutoRoundedCorners = true;
+            this.guna2VScrollBar1.BindingContainer = this.flpListTool;
+            this.guna2VScrollBar1.BorderRadius = 17;
+            this.guna2VScrollBar1.InUpdate = false;
+            this.guna2VScrollBar1.LargeChange = 10;
+            this.guna2VScrollBar1.Location = new System.Drawing.Point(295, 43);
+            this.guna2VScrollBar1.Name = "guna2VScrollBar1";
+            this.guna2VScrollBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.guna2VScrollBar1.ScrollbarSize = 36;
+            this.guna2VScrollBar1.Size = new System.Drawing.Size(36, 356);
+            this.guna2VScrollBar1.TabIndex = 10;
+            this.guna2VScrollBar1.ThumbSize = 100F;
+            // 
+            // ToolManagerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 452);
+            this.Controls.Add(this.guna2VScrollBar1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.flpListTool);
             this.Controls.Add(this.panel1);
@@ -363,7 +435,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "PushToolView";
+            this.Name = "ToolManagerView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nhập Và Lấy Công Cụ";
             this.panel1.ResumeLayout(false);
@@ -405,5 +477,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtRemainQuantity;
         private System.Windows.Forms.TextBox txtOperateQuantity;
+        private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblValueGuna;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblValueFlow;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }

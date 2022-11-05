@@ -30,19 +30,10 @@ namespace itools_source.Views
 
         private void CreateButtonTool()
         {
-            List<Button> lstBtn = new List<Button>();
-            int iTemp = 0;
-
             for (int i = 1; i < 61; i++)
             {              
                 Button btn = new Button();
-                btn.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left)
-                | AnchorStyles.Right)));
-                btn.Location = new Point(2 + iTemp, 2);
-                btn.Margin = new Padding(2);
-                btn.Name = "btnTool";
-                btn.Size = new Size(294, 60);
-                //btn.TabIndex = 3;
+                btn.Size = new Size(280, 60);
                 if (i < 10)
                 {
                     btn.Text = "TRAY_0" + i.ToString();
@@ -51,11 +42,9 @@ namespace itools_source.Views
                 {
                     btn.Text = "TRAY_" + i.ToString();
                 }
-                //btn.Text = Config.strTRAY_01;
                 btn.UseVisualStyleBackColor = true;
-
+                
                 this.flpListTool.Controls.Add(btn);
-                iTemp += 296;
             }
         }
 
