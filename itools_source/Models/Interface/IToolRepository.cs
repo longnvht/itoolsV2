@@ -12,5 +12,7 @@ namespace itools_source.Models.Interface
         void AddNewTool(Tool newTool);
         void UpdateTool(Tool tool);
         void DeleteTool(Tool tool);
+        ToolsMachineTray GetToolByTrayIndex(string strTrayIndex, string strMachineCode);
+        int GetToolQuantity(string strTrayIndex);
     }
 }

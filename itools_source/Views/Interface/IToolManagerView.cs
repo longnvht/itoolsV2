@@ -10,13 +10,13 @@ namespace itools_source.Views.Interface
     public interface IToolManagerView
     {
         #region Fields
-        int _iToolId { get; set; }
-        Tool toolCurrent { get; set; }
-        int _iTrayId { get; set; }
-        int _iCurrentQuantity { get; set; }
-        int _iOperateQuantity { get; set; }
-        int _iRemainQuantity { get; set; }
+        string strToolCode { get; set; }
+        int iTrayId { get; set; }
+        int iCurrentQuantity { get; set; }
+        int iOperateQuantity { get; set; }
+        int iRemainQuantity { get; set; }
         string strSearch { get; set; }
+        ToolsMachineTray toolTrayCurrent { get; set; }
         #endregion
 
         #region Events
@@ -26,11 +26,14 @@ namespace itools_source.Views.Interface
         event EventHandler ClickNext;
         event EventHandler ClickPrevious;
         event EventHandler Search;
+        event EventHandler ClickBtnFlowPanel;
         #endregion
 
         #region Methods
         void Show();
         void Close();
+        void ShowMessage(string e);
+        void SetButtonState(int iStatus);
         #endregion
     }
 }

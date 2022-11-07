@@ -78,7 +78,7 @@ namespace itools_source.Presenter
                 Program.sessionLogin["Password"] = _loginView.assessorCurrent.strPassword;
                 if (_loginView.assessorCurrent != null)
                 {
-                    MessageBox.Show("Đăng Nhập Thành Công!");
+                    //MessageBox.Show("Đăng Nhập Thành Công!");
                     string strRoleName = _assessorRepository.GetRoleName(_loginView.assessorCurrent.iAssessorId);
                     if (strRoleName == "Admin")
                     {
@@ -111,7 +111,7 @@ namespace itools_source.Presenter
         {
             IToolManagerView _toolManagerView = new ToolManagerView();
             IToolRepository repository = new ToolRepository();
-            new PushToolPresenter(_toolManagerView, repository);
+            new ToolManagerPresenter(_toolManagerView, repository);
             Application.Run((Form)_toolManagerView);
         }
 

@@ -38,7 +38,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTakeOut = new System.Windows.Forms.Button();
-            this.btnAddOld = new System.Windows.Forms.Button();
+            this.btnAddPlugin = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
@@ -169,7 +169,7 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.btnTakeOut);
-            this.flowLayoutPanel2.Controls.Add(this.btnAddOld);
+            this.flowLayoutPanel2.Controls.Add(this.btnAddPlugin);
             this.flowLayoutPanel2.Controls.Add(this.btnAddNew);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(123, 3);
@@ -190,18 +190,18 @@
             this.btnTakeOut.Text = "Lấy Ra";
             this.btnTakeOut.UseVisualStyleBackColor = true;
             // 
-            // btnAddOld
+            // btnAddPlugin
             // 
-            this.btnAddOld.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnAddPlugin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddOld.Location = new System.Drawing.Point(144, 2);
-            this.btnAddOld.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddOld.Name = "btnAddOld";
-            this.btnAddOld.Size = new System.Drawing.Size(138, 38);
-            this.btnAddOld.TabIndex = 7;
-            this.btnAddOld.Text = "Thêm Hiện Có";
-            this.btnAddOld.UseVisualStyleBackColor = true;
+            this.btnAddPlugin.Location = new System.Drawing.Point(144, 2);
+            this.btnAddPlugin.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddPlugin.Name = "btnAddPlugin";
+            this.btnAddPlugin.Size = new System.Drawing.Size(138, 38);
+            this.btnAddPlugin.TabIndex = 7;
+            this.btnAddPlugin.Text = "Thêm Bổ Sung";
+            this.btnAddPlugin.UseVisualStyleBackColor = true;
             // 
             // btnAddNew
             // 
@@ -461,7 +461,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button btnTakeOut;
-        private System.Windows.Forms.Button btnAddOld;
+        private System.Windows.Forms.Button btnAddPlugin;
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.TextBox txtCurrentQuantity;
         private System.Windows.Forms.Label label6;
