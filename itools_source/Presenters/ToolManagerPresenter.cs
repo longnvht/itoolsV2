@@ -1,5 +1,6 @@
 ﻿using itools_source.Models.Interface;
 using itools_source.Presenter;
+using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using LoginView = itools_source.Views.LoginView;
 
 namespace itools_source.Presenters
 {
@@ -27,10 +29,9 @@ namespace itools_source.Presenters
             _toolRepository = toolRepository;
 
             _toolManagerView.ClickTakeOut += TakeOut;
-            _toolManagerView.ClickAddOld += AddOld;
+            _toolManagerView.ClickAddPlugin += AddPlugin;
             _toolManagerView.ClickAddNew += AddNew;
-            _toolManagerView.ClickNext += Next;
-            _toolManagerView.ClickPrevious += Previous;
+            _toolManagerView.ClickSave += Save;
             _toolManagerView.Search += Search;
             _toolManagerView.ClickBtnFlowPanel += ClickBtnFlowPanelEvent;
 
@@ -83,23 +84,17 @@ namespace itools_source.Presenters
             //((Form)sender).
         }
 
-        private void Previous(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-            System.Windows.Forms.Button btn = (System.Windows.Forms.Button)sender;
-        }
-
-        private void Next(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void AddNew(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void AddOld(object sender, EventArgs e)
+        private void Save(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddPlugin(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }

@@ -13,6 +13,7 @@ namespace itools_source.Models.Interface
         void DeleteAssessor(Assessor assessor);
         Assessor GetAssessor(string strUserName, string strPassword);
         string GetRoleName(int iAssessorId);
+        int GetById(string strUserName, string strPassword);
         IEnumerable<Assessor> GetAllAssessor();
         IEnumerable<Assessor> GetByValue(); // Search
     }

@@ -21,10 +21,9 @@ namespace itools_source.Views.Interface
 
         #region Events
         event EventHandler ClickTakeOut;
-        event EventHandler ClickAddOld;
+        event EventHandler ClickAddPlugin;
         event EventHandler ClickAddNew;
-        event EventHandler ClickNext;
-        event EventHandler ClickPrevious;
+        event EventHandler ClickSave;
         event EventHandler Search;
         event EventHandler ClickBtnFlowPanel;
         #endregion
@@ -32,7 +31,7 @@ namespace itools_source.Views.Interface
         #region Methods
         void Show();
         void Close();
-        void ShowMessage(string e);
+        void ShowMessage(string strMessage);
         void SetButtonState(int iStatus);
         #endregion
     }

@@ -39,19 +39,6 @@ namespace itools_source.Repository
         {
             ToolsMachineTray toolsMachineTray = null;
 
-            //string strSelect = @"SELECT DISTINCT tools.ToolID,
-            //                     tools.ToolCode,
-            //                     tools.CompanyCode,
-            //                     tools.Model,
-            //                     tools.Barcode,
-            //                     tools.Description,
-            //                     tools.CreatedDate,
-            //                     tools.UpdatedDate,
-            //                     tools.IsActive
-            //                 FROM tools, toolsmachinetray
-            //                  WHERE tools.ToolCode = toolsmachinetray.ToolCode
-            //                            AND toolsmachinetray.TrayIndex = '" + strTrayIndex + "'" +
-            //                            "AND YEAR(toolsmachinetray.UpdatedDate) = \"2022\"";
             string strSelect = @"SELECT DISTINCT *
 	                                FROM toolsmachinetray
 				                        where toolsmachinetray.TrayIndex = '" + strTrayIndex + "'" +

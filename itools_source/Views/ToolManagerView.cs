@@ -19,10 +19,9 @@ namespace itools_source.Views
         {
             InitializeComponent();
             btnTakeOut.Click += delegate { ClickTakeOut?.Invoke(this, EventArgs.Empty); };
-            btnAddPlugin.Click += delegate { ClickAddOld?.Invoke(this, EventArgs.Empty); };
+            btnAddPlugin.Click += delegate { ClickAddPlugin?.Invoke(this, EventArgs.Empty); };
             btnAddNew.Click += delegate { ClickAddNew?.Invoke(this, EventArgs.Empty); };
-            btnNext.Click += delegate { ClickNext?.Invoke(this, EventArgs.Empty); };
-            btnPrev.Click += delegate { ClickPrevious?.Invoke(this, EventArgs.Empty); };
+            btnSave.Click += delegate { ClickSave?.Invoke(this, EventArgs.Empty); };
             btnSearch.Click += delegate { Search?.Invoke(this, EventArgs.Empty); };
 
             CreateButtonTool();
@@ -36,15 +35,15 @@ namespace itools_source.Views
             this.txtOperateQuantity.Enabled = false;
         }
 
-        public void ShowMessage(string e)
+        public void ShowMessage(string strMessage)
         {
-            MessageBox.Show(e);
+            MessageBox.Show(strMessage);
         }
 
         private void CreateButtonTool()
         {
             for (int i = 1; i < 61; i++)
-            {              
+            {
                 Button btn = new Button();
                 btn.Size = new Size(280, 60);
                 if (i < 10)
@@ -70,10 +69,9 @@ namespace itools_source.Views
         public ToolsMachineTray toolTrayCurrent { get; set; }
 
         public event EventHandler ClickTakeOut;
-        public event EventHandler ClickAddOld;
+        public event EventHandler ClickAddPlugin;
         public event EventHandler ClickAddNew;
-        public event EventHandler ClickNext;
-        public event EventHandler ClickPrevious;
+        public event EventHandler ClickSave;
         public event EventHandler Search;
         public event EventHandler ClickBtnFlowPanel;
 
@@ -98,6 +96,28 @@ namespace itools_source.Views
                 this.btnAddPlugin.Enabled = false;
                 this.btnTakeOut.Enabled = true;
             }
+        }
+
+        // Singleton pattern (Open a single form instance)
+        private static ToolManagerView instance;
+        public static ToolManagerView GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new ToolManagerView();
+                instance.MdiParent = parentContainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
+            return instance;
         }
         #endregion
     }

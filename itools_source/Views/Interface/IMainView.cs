@@ -4,29 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace itools_source.Views.Interface
 {
-    public interface ILoginView
+    public interface IMainView
     {
         #region Properties - Fields
-        string strUserName { get; set; }
-        string strPassword { get; set; }
         Assessor assessorCurrent { get; set; }
+        string strName { get; set; }
         #endregion
 
-        #region Events
-        event EventHandler LoginEvent;
-        event EventHandler CancelEvent;
-        event EventHandler PasswordIconRightClickEvent;
+        #region Event
+        event EventHandler FormLoad;
+        event EventHandler Previous;
+        event EventHandler Next;
         #endregion
 
-        #region Methods
+        #region Method
         void Show();
         void Close();
         void Hide();
-        void ShowMessage(string strMessage);
         #endregion
     }
 }

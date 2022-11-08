@@ -196,5 +196,46 @@ namespace itools_source.Repository
         {
             throw new NotImplementedException();
         }
+
+        public int GetById(string strUserName, string strPassword)
+        {
+            int iAssessorID = -1;
+            string strSelect = @"SELECT *
+                                    FROM assessor
+                                        WHERE assessor.UserName = '" + strUserName.ToLower() +
+                                            "' AND (assessor.Password = MD5('" + strPassword + "') OR assessor.LastPassword = MD5('" + strPassword + "'))" +
+                                            "AND assessor.IsActive = 1";
+            _log.Info(strSelect);
+            try
+            {
+                MySqlConnection mySqlConnection = MySqlConnect.Open();
+                MySqlDataReader mySqlDataReader = MySqlConnect.DataQuery(strSelect, mySqlConnection);
+                
+                if (mySqlDataReader.Read())
+                {
+                    if (!mySqlDataReader.IsDBNull(0))
+                    {
+                        iAssessorID = mySqlDataReader.GetInt32(0);
+                    }
+                    else
+                    {
+                        _log.Error("AssessorID is Null!");
+                        return iAssessorID;
+                    }
+                }
+
+                mySqlDataReader.Close();
+                mySqlConnection.Close();
+                
+                return iAssessorID;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+                return iAssessorID; // Login Fail.
+            }
+
+            //return iAssessorID; // Login Fail.
+        }
     }
 }

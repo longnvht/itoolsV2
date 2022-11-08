@@ -47,6 +47,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>tool_generator.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
@@ -130,9 +138,9 @@
     <Compile Include="Models\ToolMachine.cs" />
     <Compile Include="Models\ToolsMachineTray.cs" />
     <Compile Include="Models\WorkingTransaction.cs" />
-    <Compile Include="Presenters\EmployeePresenter.cs" />
     <Compile Include="Presenters\JobPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
+    <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\ToolManagerPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +155,7 @@
     <Compile Include="Utils\Session.cs" />
     <Compile Include="Views\Interface\IJobView.cs" />
     <Compile Include="Views\Interface\ILoginView.cs" />
+    <Compile Include="Views\Interface\IMainView.cs" />
     <Compile Include="Views\Interface\IToolManagerView.cs" />
     <Compile Include="Views\JobView.cs">
       <SubType>Form</SubType>
@@ -165,6 +174,12 @@
     </Compile>
     <Compile Include="Views\GetToolView.Designer.cs">
       <DependentUpon>GetToolView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ToolManagerView.cs">
       <SubType>Form</SubType>
@@ -193,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\GetToolView.resx">
       <DependentUpon>GetToolView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ToolManagerView.resx">
       <DependentUpon>ToolManagerView.cs</DependentUpon>
@@ -234,6 +252,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tool_generator.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -28,6 +28,7 @@ namespace itools_source.Views
             txtPassword.IconRightClick += delegate { PasswordIconRightClickEvent?.Invoke(txtPassword, EventArgs.Empty); };
         }
 
+        #region Properties - Fields
         public string strUserName
         {
             get { return txtUserName.Text; }
@@ -38,11 +39,21 @@ namespace itools_source.Views
             get { return txtPassword.Text; }
             set { txtPassword.Text = value; }
         }
+        #endregion
 
+        #region Events
         public Assessor assessorCurrent { get; set; }
 
         public event EventHandler LoginEvent;
         public event EventHandler CancelEvent;
         public event EventHandler PasswordIconRightClickEvent;
+        #endregion
+
+        #region Method
+        public void ShowMessage(string strMessage)
+        {
+            MessageBox.Show(strMessage);
+        }
+        #endregion
     }
 }
