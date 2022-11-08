@@ -33,12 +33,13 @@ namespace itools_source
 
             //string strConnectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
 
-            ILoginView view = new LoginView();
-            IAssessorRepository repository = new AssessorRepository();
-            new LoginPresenter(view, repository);
+            //ILoginView view = new LoginView();
+            //IAssessorRepository repository = new AssessorRepository();
+            //new LoginPresenter(view, repository);
 
-            Application.Run((Form)view);
-            //Application.Run(new MainView());
+            //Application.Run((Form)view);
+
+            Application.Run(new Form1()); ;
         }
     }
 }

@@ -11,10 +11,9 @@ namespace itools_source.Views.Interface
     {
         #region Fields
         string strToolCode { get; set; }
-        int iTrayId { get; set; }
+        int iTrayIndex { get; set; }
         int iCurrentQuantity { get; set; }
         int iOperateQuantity { get; set; }
-        int iRemainQuantity { get; set; }
         string strSearch { get; set; }
         ToolsMachineTray toolTrayCurrent { get; set; }
         #endregion

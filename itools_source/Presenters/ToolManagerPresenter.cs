@@ -64,7 +64,7 @@ namespace itools_source.Presenters
                 _toolManagerView.toolTrayCurrent = _toolRepository.GetToolByTrayIndex(stTrayIndex, "VM-6");
                 if (_toolManagerView.toolTrayCurrent != null)
                 {
-                    _toolManagerView.iTrayId = Convert.ToInt32(btn.Text.Split(' ').GetValue(1));
+                    _toolManagerView.iTrayIndex = Convert.ToInt32(btn.Text.Split(' ').GetValue(1));
                     _toolManagerView.strToolCode = _toolManagerView.toolTrayCurrent.strToolCode;
                 }
                 else

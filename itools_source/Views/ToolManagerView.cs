@@ -60,11 +60,11 @@ namespace itools_source.Views
             }
         }
 
-        public string strToolCode { get => txtToolId.Text; set => txtToolId.Text = value.ToString(); }
-        public int iTrayId { get => Convert.ToInt32(txtTrayId.Text); set => txtTrayId.Text = value.ToString(); }
+        public string strToolCode { get => txtToolCode.Text; set => txtToolCode.Text = value.ToString(); }
+        public int iTrayIndex { get => Convert.ToInt32(txtTrayIndex.Text); set => txtTrayIndex.Text = value.ToString(); }
         public int iCurrentQuantity { get => Convert.ToInt32(txtCurrentQuantity.Text); set => txtCurrentQuantity.Text = value.ToString(); }
         public int iOperateQuantity { get => Convert.ToInt32(txtOperateQuantity.Text); set => txtOperateQuantity.Text = value.ToString(); }
-        public int iRemainQuantity { get => Convert.ToInt32(txtRemainQuantity.Text); set => txtRemainQuantity.Text = value.ToString(); }
+        //public int iRemainQuantity { get => Convert.ToInt32(txtRemainQuantity.Text); set => txtRemainQuantity.Text = value.ToString(); }
         public string strSearch { get => txtSearch.Text; set => txtSearch.Text = value; }
         public ToolsMachineTray toolTrayCurrent { get; set; }
 
