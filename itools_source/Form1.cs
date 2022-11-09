@@ -20,6 +20,12 @@ namespace itools_source
         private void button1_Click(object sender, EventArgs e)
         {
             Form1 frm = new Form1();
+            //serialPort1.
+        }
+
+        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            lblTest.Text = guna2TextBox1.Text;
         }
     }
 }
