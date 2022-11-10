@@ -14,5 +14,6 @@ namespace itools_source.Models.Interface
         void DeleteTool(Tool tool);
         ToolsMachineTray GetToolByTrayIndex(string strTrayIndex, string strMachineCode);
         int GetToolQuantity(string strTrayIndex);
+        IEnumerable<string> GetToolCodeList();
     }
 }

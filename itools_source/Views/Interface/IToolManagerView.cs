@@ -26,6 +26,7 @@ namespace itools_source.Views.Interface
         bool txtCurrentQuantityEnbale { get; set; }
         char cStatusForm { get; set; }
         char cStatusButton { get; set; }
+        List<string> toolCodeList { get; set; }
         #endregion
 
         #region Events
@@ -47,6 +48,7 @@ namespace itools_source.Views.Interface
         void SetButtonState(char cStatus);
         void txtCurrentQuantityFocus();
         void txtOperateQuantityFocus();
+        void AddNewListTool();
         #endregion
     }
 }

@@ -1,7 +1,6 @@
 ﻿using itools_source.Models;
 using itools_source.Models.Interface;
 using itools_source.Utils;
-using log4net;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -56,7 +55,7 @@ namespace itools_source.Repository
                         toolsMachineTray = new ToolsMachineTray();
                     }
 
-                    if (!mySqlDataReader.IsDBNull(2))
+                    if (!mySqlDataReader.IsDBNull(0))
                     {
                         toolsMachineTray.iToolsMachineTrayId = mySqlDataReader.GetInt32(0);
                     }
@@ -152,6 +151,75 @@ namespace itools_source.Repository
                 _log.Error(e.Message);
             }
             return -1;
+        }
+
+        public IEnumerable<string> GetToolCodeList()
+        {
+            var toolCodeList = new List<string>();
+            string strSelect = "SELECT DISTINCT tools.ToolCode FROM tools";
+
+            _log.Info(strSelect);
+            try
+            {
+                MySqlConnection mySqlConnection = MySqlConnect.Open();
+
+                using (var mySqlDataReader = MySqlConnect.DataQuery(strSelect, mySqlConnection))
+                {
+                    if (toolCodeList == null)
+                    {
+                        _log.Error("List ToolCode is Null!");
+                        return null;
+                    }
+
+                    string strToolCode = string.Empty;
+                    while (mySqlDataReader.Read())
+                    {
+                        if (!mySqlDataReader.IsDBNull(0))
+                        {
+                            strToolCode = mySqlDataReader.GetString(0);
+                            toolCodeList.Add(strToolCode);
+                        }
+                        else
+                        {
+                            _log.Info("ToolCode is NULL!: " + mySqlDataReader.FieldCount);
+                        }
+                    }
+
+                    mySqlDataReader.Close();
+                    mySqlConnection.Close();
+                    return toolCodeList;
+                }
+
+                //MySqlDataReader mySqlDataReader = MySqlConnect.DataQuery(strSelect, mySqlConnection);
+
+                //if (listToolCode == null)
+                //{
+                //    listToolCode = new List<string>();
+                //}
+
+                //string strToolCode = string.Empty;
+                //while (mySqlDataReader.Read())
+                //{
+                //    if (!mySqlDataReader.IsDBNull(0))
+                //    {
+                //        strToolCode = mySqlDataReader.GetString(0);
+                //        //listToolCode.
+                //    }
+                //    else
+                //    {
+                //        _log.Info("ToolCode is NULL!: " + mySqlDataReader.FieldCount);
+                //    }
+                //}
+
+                //mySqlDataReader.Close();
+                //mySqlConnection.Close();
+                //return listToolCode;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return null;
         }
     }
 }

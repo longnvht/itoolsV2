@@ -141,6 +141,8 @@ namespace itools_source.Presenters
         {
             _toolManagerView.cStatusButton = '0';
             _toolManagerView.SetButtonState(_toolManagerView.cStatusButton);
+            _toolManagerView.toolCodeList = _toolRepository.GetToolCodeList().ToList();
+            _toolManagerView.AddNewListTool();
         }
 
         private void Save(object sender, EventArgs e)
@@ -148,6 +150,7 @@ namespace itools_source.Presenters
             if (_toolManagerView.iOperateQuantity == 0)
             {
                 _toolManagerView.ShowMessage("Bạn Chưa Nhập Số Lượng!");
+                _toolManagerView.txtOperateQuantityFocus();
             }
             else
             {
@@ -162,7 +165,7 @@ namespace itools_source.Presenters
 
                         break;
                 }
-                
+                MessageBox.Show("Lưu Thành Công!");
                 _toolManagerView.cStatusForm = '4';
                 _toolManagerView.SetStatusForm(_toolManagerView.cStatusForm);
             }
