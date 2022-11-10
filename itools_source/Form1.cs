@@ -15,6 +15,8 @@ namespace itools_source
 {
     public partial class frmTest : Form
     {
+        private bool _bActive = true;
+
         public frmTest()
         {
             InitializeComponent();
@@ -26,7 +28,9 @@ namespace itools_source
         private void Form1_Load(object sender, EventArgs e)
         {
             //flpListTray.PerformLayout();
-            CreateButtonTool();
+            //CreateButtonTool();
+
+            tlpTooList.Visible = false;
         }
 
         private void CreateButtonTool()
@@ -129,6 +133,20 @@ namespace itools_source
 
                 //btn.Click += (s, e) => ClickBtnFlowPanel?.Invoke(s, e);
                 //flpListTool.Controls.Add(btn);
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (tlpTooList.Visible == true)
+            {
+                _bActive = false;
+                tlpTooList.Visible = false;
+            }
+            else
+            {
+                _bActive = true;
+                tlpTooList.Visible = true;
             }
         }
     }

@@ -35,6 +35,7 @@ namespace itools_source.Views
             guna2VScrollBar1.Size = new System.Drawing.Size(30, flpListTray.Height);
 
             SetStatusForm('3');
+            tlpTooList.Visible = false;
         }
 
         #region Fields
