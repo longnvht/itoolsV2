@@ -39,15 +39,18 @@
             this.btnSearch = new Guna.UI2.WinForms.Guna2GradientButton();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.tlpFooter = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tlpFooter = new System.Windows.Forms.TableLayoutPanel();
+            this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2VScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
-            this.flpListTray = new System.Windows.Forms.FlowLayoutPanel();
-            this.tlpDetailTray = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpTooList = new System.Windows.Forms.TableLayoutPanel();
+            this.pToolFooter = new System.Windows.Forms.Panel();
+            this.btnToolCancel = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnToolSelect = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pToolContent = new System.Windows.Forms.Panel();
+            this.VScrollBarToolList = new Guna.UI2.WinForms.Guna2VScrollBar();
+            this.flpListTool = new System.Windows.Forms.FlowLayoutPanel();
             this.txtTrayIndex = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtToolCode = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCurrentQuantity = new Guna.UI2.WinForms.Guna2TextBox();
@@ -58,11 +61,19 @@
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtTotalQuantity = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.guna2VScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
+            this.flpListTray = new System.Windows.Forms.FlowLayoutPanel();
+            this.tlpContent = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpDetailTray = new System.Windows.Forms.TableLayoutPanel();
             this.tlpHeader.SuspendLayout();
-            this.tlpFooter.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tlpFooter.SuspendLayout();
+            this.tlpTooList.SuspendLayout();
+            this.pToolFooter.SuspendLayout();
+            this.pToolContent.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tlpContent.SuspendLayout();
             this.tlpDetailTray.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +109,7 @@
             this.btnAddNew.Size = new System.Drawing.Size(144, 47);
             this.btnAddNew.TabIndex = 5;
             this.btnAddNew.Text = "Thêm Mới";
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // notifiAddPlugin
             // 
@@ -217,26 +229,15 @@
             this.tlpHeader.Size = new System.Drawing.Size(900, 50);
             this.tlpHeader.TabIndex = 25;
             // 
-            // btnSave
+            // panel1
             // 
-            this.btnSave.Animated = true;
-            this.btnSave.AutoRoundedCorners = true;
-            this.btnSave.BorderRadius = 22;
-            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(603, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(144, 47);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.panel1.Controls.Add(this.tlpFooter);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 400);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(900, 53);
+            this.panel1.TabIndex = 24;
             // 
             // tlpFooter
             // 
@@ -260,103 +261,162 @@
             this.tlpFooter.Size = new System.Drawing.Size(900, 53);
             this.tlpFooter.TabIndex = 6;
             // 
-            // panel1
+            // btnSave
             // 
-            this.panel1.Controls.Add(this.tlpFooter);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 400);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(900, 53);
-            this.panel1.TabIndex = 24;
+            this.btnSave.Animated = true;
+            this.btnSave.AutoRoundedCorners = true;
+            this.btnSave.BorderRadius = 22;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSave.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(603, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(144, 47);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Lưu";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // guna2Elipse2
             // 
             this.guna2Elipse2.BorderRadius = 20;
+            this.guna2Elipse2.TargetControl = this.tlpTooList;
             // 
-            // tableLayoutPanel1
+            // tlpTooList
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.4F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.6F));
-            this.tableLayoutPanel1.Controls.Add(this.tlpDetailTray, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 50);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(900, 350);
-            this.tableLayoutPanel1.TabIndex = 26;
+            this.tlpTooList.AutoScroll = true;
+            this.tlpTooList.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.tlpTooList.ColumnCount = 1;
+            this.tlpTooList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpTooList.Controls.Add(this.pToolFooter, 0, 2);
+            this.tlpTooList.Controls.Add(this.btnToolSearch, 0, 0);
+            this.tlpTooList.Controls.Add(this.pToolContent, 0, 1);
+            this.tlpTooList.Location = new System.Drawing.Point(545, 51);
+            this.tlpTooList.Name = "tlpTooList";
+            this.tlpTooList.RowCount = 3;
+            this.tlpTooList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
+            this.tlpTooList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76F));
+            this.tlpTooList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
+            this.tlpTooList.Size = new System.Drawing.Size(320, 350);
+            this.tlpTooList.TabIndex = 29;
+            this.tlpTooList.Visible = false;
             // 
-            // panel2
+            // pToolFooter
             // 
-            this.panel2.Controls.Add(this.guna2VScrollBar1);
-            this.panel2.Controls.Add(this.flpListTray);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(303, 344);
-            this.panel2.TabIndex = 0;
+            this.pToolFooter.Controls.Add(this.btnToolCancel);
+            this.pToolFooter.Controls.Add(this.btnToolSelect);
+            this.pToolFooter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pToolFooter.Location = new System.Drawing.Point(3, 311);
+            this.pToolFooter.Name = "pToolFooter";
+            this.pToolFooter.Size = new System.Drawing.Size(314, 36);
+            this.pToolFooter.TabIndex = 29;
             // 
-            // guna2VScrollBar1
+            // btnToolCancel
             // 
-            this.guna2VScrollBar1.AutoRoundedCorners = true;
-            this.guna2VScrollBar1.AutoSize = true;
-            this.guna2VScrollBar1.BindingContainer = this.flpListTray;
-            this.guna2VScrollBar1.BorderRadius = 8;
-            this.guna2VScrollBar1.InUpdate = false;
-            this.guna2VScrollBar1.LargeChange = 10;
-            this.guna2VScrollBar1.Location = new System.Drawing.Point(288, -3);
-            this.guna2VScrollBar1.Name = "guna2VScrollBar1";
-            this.guna2VScrollBar1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.guna2VScrollBar1.ScrollbarSize = 18;
-            this.guna2VScrollBar1.Size = new System.Drawing.Size(18, 350);
-            this.guna2VScrollBar1.TabIndex = 32;
-            this.guna2VScrollBar1.ThumbSize = 100F;
+            this.btnToolCancel.Animated = true;
+            this.btnToolCancel.AutoRoundedCorners = true;
+            this.btnToolCancel.BorderRadius = 17;
+            this.btnToolCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnToolCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnToolCancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnToolCancel.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnToolCancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnToolCancel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnToolCancel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.btnToolCancel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToolCancel.ForeColor = System.Drawing.Color.White;
+            this.btnToolCancel.Location = new System.Drawing.Point(170, 0);
+            this.btnToolCancel.Name = "btnToolCancel";
+            this.btnToolCancel.Size = new System.Drawing.Size(144, 36);
+            this.btnToolCancel.TabIndex = 28;
+            this.btnToolCancel.Text = "Hủy";
+            this.btnToolCancel.Click += new System.EventHandler(this.btnToolCancel_Click);
             // 
-            // flpListTray
+            // btnToolSelect
             // 
-            this.flpListTray.AutoScroll = true;
-            this.flpListTray.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.flpListTray.Location = new System.Drawing.Point(-4, -3);
-            this.flpListTray.Margin = new System.Windows.Forms.Padding(2);
-            this.flpListTray.Name = "flpListTray";
-            this.flpListTray.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.flpListTray.Size = new System.Drawing.Size(310, 350);
-            this.flpListTray.TabIndex = 31;
+            this.btnToolSelect.Animated = true;
+            this.btnToolSelect.AutoRoundedCorners = true;
+            this.btnToolSelect.BorderRadius = 17;
+            this.btnToolSelect.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnToolSelect.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnToolSelect.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnToolSelect.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnToolSelect.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnToolSelect.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnToolSelect.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.btnToolSelect.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToolSelect.ForeColor = System.Drawing.Color.White;
+            this.btnToolSelect.Location = new System.Drawing.Point(0, 0);
+            this.btnToolSelect.Name = "btnToolSelect";
+            this.btnToolSelect.Size = new System.Drawing.Size(144, 36);
+            this.btnToolSelect.TabIndex = 7;
+            this.btnToolSelect.Text = "Chọn";
             // 
-            // tlpDetailTray
+            // btnToolSearch
             // 
-            this.tlpDetailTray.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpDetailTray.ColumnCount = 4;
-            this.tlpDetailTray.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlpDetailTray.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tlpDetailTray.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tlpDetailTray.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpDetailTray.Controls.Add(this.txtTrayIndex, 2, 1);
-            this.tlpDetailTray.Controls.Add(this.txtToolCode, 2, 2);
-            this.tlpDetailTray.Controls.Add(this.txtCurrentQuantity, 2, 3);
-            this.tlpDetailTray.Controls.Add(this.txtOperateQuantity, 2, 4);
-            this.tlpDetailTray.Controls.Add(this.guna2HtmlLabel2, 1, 2);
-            this.tlpDetailTray.Controls.Add(this.guna2HtmlLabel1, 1, 1);
-            this.tlpDetailTray.Controls.Add(this.guna2HtmlLabel3, 1, 3);
-            this.tlpDetailTray.Controls.Add(this.guna2HtmlLabel4, 1, 4);
-            this.tlpDetailTray.Controls.Add(this.txtTotalQuantity, 2, 5);
-            this.tlpDetailTray.Controls.Add(this.guna2HtmlLabel5, 1, 5);
-            this.tlpDetailTray.Location = new System.Drawing.Point(312, 3);
-            this.tlpDetailTray.Name = "tlpDetailTray";
-            this.tlpDetailTray.RowCount = 6;
-            this.tlpDetailTray.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpDetailTray.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpDetailTray.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpDetailTray.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpDetailTray.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpDetailTray.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpDetailTray.Size = new System.Drawing.Size(585, 344);
-            this.tlpDetailTray.TabIndex = 23;
+            this.btnToolSearch.BorderRadius = 8;
+            this.btnToolSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.btnToolSearch.DefaultText = "";
+            this.btnToolSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.btnToolSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.btnToolSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.btnToolSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.btnToolSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnToolSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnToolSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToolSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnToolSearch.Location = new System.Drawing.Point(3, 4);
+            this.btnToolSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnToolSearch.Name = "btnToolSearch";
+            this.btnToolSearch.PasswordChar = '\0';
+            this.btnToolSearch.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
+            this.btnToolSearch.PlaceholderText = "Tìm Kiếm";
+            this.btnToolSearch.SelectedText = "";
+            this.btnToolSearch.Size = new System.Drawing.Size(314, 34);
+            this.btnToolSearch.TabIndex = 28;
+            this.btnToolSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pToolContent
+            // 
+            this.pToolContent.Controls.Add(this.VScrollBarToolList);
+            this.pToolContent.Controls.Add(this.flpListTool);
+            this.pToolContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pToolContent.Location = new System.Drawing.Point(3, 45);
+            this.pToolContent.Name = "pToolContent";
+            this.pToolContent.Size = new System.Drawing.Size(314, 260);
+            this.pToolContent.TabIndex = 29;
+            // 
+            // VScrollBarToolList
+            // 
+            this.VScrollBarToolList.AutoRoundedCorners = true;
+            this.VScrollBarToolList.AutoSize = true;
+            this.VScrollBarToolList.BindingContainer = this.flpListTool;
+            this.VScrollBarToolList.BorderRadius = 8;
+            this.VScrollBarToolList.InUpdate = false;
+            this.VScrollBarToolList.LargeChange = 10;
+            this.VScrollBarToolList.Location = new System.Drawing.Point(296, 0);
+            this.VScrollBarToolList.Name = "VScrollBarToolList";
+            this.VScrollBarToolList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.VScrollBarToolList.ScrollbarSize = 18;
+            this.VScrollBarToolList.Size = new System.Drawing.Size(18, 260);
+            this.VScrollBarToolList.TabIndex = 28;
+            this.VScrollBarToolList.ThumbSize = 100F;
+            // 
+            // flpListTool
+            // 
+            this.flpListTool.AutoScroll = true;
+            this.flpListTool.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            this.flpListTool.Location = new System.Drawing.Point(0, 0);
+            this.flpListTool.Margin = new System.Windows.Forms.Padding(2);
+            this.flpListTool.Name = "flpListTool";
+            this.flpListTool.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.flpListTool.Size = new System.Drawing.Size(314, 260);
+            this.flpListTool.TabIndex = 29;
             // 
             // txtTrayIndex
             // 
@@ -538,13 +598,97 @@
             this.guna2HtmlLabel5.Text = "Số Lượng Tổng";
             this.guna2HtmlLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.guna2VScrollBar1);
+            this.panel2.Controls.Add(this.flpListTray);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(303, 344);
+            this.panel2.TabIndex = 0;
+            // 
+            // guna2VScrollBar1
+            // 
+            this.guna2VScrollBar1.AutoRoundedCorners = true;
+            this.guna2VScrollBar1.AutoSize = true;
+            this.guna2VScrollBar1.BindingContainer = this.flpListTray;
+            this.guna2VScrollBar1.BorderRadius = 8;
+            this.guna2VScrollBar1.InUpdate = false;
+            this.guna2VScrollBar1.LargeChange = 10;
+            this.guna2VScrollBar1.Location = new System.Drawing.Point(285, 0);
+            this.guna2VScrollBar1.Name = "guna2VScrollBar1";
+            this.guna2VScrollBar1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.guna2VScrollBar1.ScrollbarSize = 18;
+            this.guna2VScrollBar1.Size = new System.Drawing.Size(18, 344);
+            this.guna2VScrollBar1.TabIndex = 32;
+            this.guna2VScrollBar1.ThumbSize = 100F;
+            // 
+            // flpListTray
+            // 
+            this.flpListTray.AutoScroll = true;
+            this.flpListTray.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            this.flpListTray.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpListTray.Location = new System.Drawing.Point(0, 0);
+            this.flpListTray.Margin = new System.Windows.Forms.Padding(2);
+            this.flpListTray.Name = "flpListTray";
+            this.flpListTray.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.flpListTray.Size = new System.Drawing.Size(303, 344);
+            this.flpListTray.TabIndex = 31;
+            // 
+            // tlpContent
+            // 
+            this.tlpContent.ColumnCount = 2;
+            this.tlpContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.4F));
+            this.tlpContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.6F));
+            this.tlpContent.Controls.Add(this.tlpDetailTray, 1, 0);
+            this.tlpContent.Controls.Add(this.panel2, 0, 0);
+            this.tlpContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpContent.Location = new System.Drawing.Point(0, 50);
+            this.tlpContent.Name = "tlpContent";
+            this.tlpContent.RowCount = 1;
+            this.tlpContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpContent.Size = new System.Drawing.Size(900, 350);
+            this.tlpContent.TabIndex = 26;
+            // 
+            // tlpDetailTray
+            // 
+            this.tlpDetailTray.ColumnCount = 4;
+            this.tlpDetailTray.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlpDetailTray.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tlpDetailTray.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tlpDetailTray.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpDetailTray.Controls.Add(this.txtTrayIndex, 2, 1);
+            this.tlpDetailTray.Controls.Add(this.txtToolCode, 2, 2);
+            this.tlpDetailTray.Controls.Add(this.txtCurrentQuantity, 2, 3);
+            this.tlpDetailTray.Controls.Add(this.txtOperateQuantity, 2, 4);
+            this.tlpDetailTray.Controls.Add(this.guna2HtmlLabel2, 1, 2);
+            this.tlpDetailTray.Controls.Add(this.guna2HtmlLabel1, 1, 1);
+            this.tlpDetailTray.Controls.Add(this.guna2HtmlLabel3, 1, 3);
+            this.tlpDetailTray.Controls.Add(this.guna2HtmlLabel4, 1, 4);
+            this.tlpDetailTray.Controls.Add(this.txtTotalQuantity, 2, 5);
+            this.tlpDetailTray.Controls.Add(this.guna2HtmlLabel5, 1, 5);
+            this.tlpDetailTray.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpDetailTray.Location = new System.Drawing.Point(312, 3);
+            this.tlpDetailTray.Name = "tlpDetailTray";
+            this.tlpDetailTray.RowCount = 6;
+            this.tlpDetailTray.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpDetailTray.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tlpDetailTray.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tlpDetailTray.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tlpDetailTray.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tlpDetailTray.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpDetailTray.Size = new System.Drawing.Size(585, 344);
+            this.tlpDetailTray.TabIndex = 23;
+            // 
             // frmTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(900, 453);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tlpTooList);
+            this.Controls.Add(this.tlpContent);
             this.Controls.Add(this.tlpHeader);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -553,11 +697,15 @@
             this.Text = "Search Job";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tlpHeader.ResumeLayout(false);
-            this.tlpFooter.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tlpFooter.ResumeLayout(false);
+            this.tlpTooList.ResumeLayout(false);
+            this.pToolFooter.ResumeLayout(false);
+            this.pToolContent.ResumeLayout(false);
+            this.pToolContent.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.tlpContent.ResumeLayout(false);
             this.tlpDetailTray.ResumeLayout(false);
             this.tlpDetailTray.PerformLayout();
             this.ResumeLayout(false);
@@ -568,19 +716,14 @@
 
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiAddNew;
-        private Guna.UI2.WinForms.Guna2GradientButton btnAddNew;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiAddPlugin;
-        private Guna.UI2.WinForms.Guna2GradientButton btnAddPlugin;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiTakeout;
-        private Guna.UI2.WinForms.Guna2GradientButton btnTakeOut;
         private Guna.UI2.WinForms.Guna2GradientButton btnSearch;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
-        private Guna.UI2.WinForms.Guna2GradientButton btnSave;
-        private System.Windows.Forms.TableLayoutPanel tlpFooter;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tlpContent;
         private System.Windows.Forms.Panel panel2;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar1;
         private System.Windows.Forms.FlowLayoutPanel flpListTray;
@@ -595,6 +738,19 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2TextBox txtTotalQuantity;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
+        private System.Windows.Forms.TableLayoutPanel tlpTooList;
+        private Guna.UI2.WinForms.Guna2TextBox btnToolSearch;
+        private System.Windows.Forms.Panel pToolContent;
+        private Guna.UI2.WinForms.Guna2VScrollBar VScrollBarToolList;
+        private Guna.UI2.WinForms.Guna2GradientButton btnAddNew;
+        private Guna.UI2.WinForms.Guna2GradientButton btnAddPlugin;
+        private Guna.UI2.WinForms.Guna2GradientButton btnTakeOut;
+        private System.Windows.Forms.TableLayoutPanel tlpFooter;
+        private Guna.UI2.WinForms.Guna2GradientButton btnSave;
+        private System.Windows.Forms.FlowLayoutPanel flpListTool;
+        private System.Windows.Forms.Panel pToolFooter;
+        private Guna.UI2.WinForms.Guna2GradientButton btnToolCancel;
+        private Guna.UI2.WinForms.Guna2GradientButton btnToolSelect;
     }
 }
 

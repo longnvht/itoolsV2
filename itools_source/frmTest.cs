@@ -15,7 +15,7 @@ namespace itools_source
 {
     public partial class frmTest : Form
     {
-        private bool _bActive = true;
+        //private bool _bActive = true;
 
         public frmTest()
         {
@@ -30,7 +30,8 @@ namespace itools_source
             //flpListTray.PerformLayout();
             //CreateButtonTool();
 
-            tlpTooList.Visible = false;
+            MessageBox.Show(tlpTooList.Visible.ToString());
+            //tlpTooList.Visible = false;
         }
 
         private void CreateButtonTool()
@@ -138,14 +139,31 @@ namespace itools_source
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnToolCancel_Click(object sender, EventArgs e)
+        {
+            tlpHeader.Enabled = true;
+            tlpFooter.Enabled = true;
+            tlpContent.Enabled = true;
+
             if (tlpTooList.Visible == true)
             {
-                _bActive = false;
+                //_bActive = false;
                 tlpTooList.Visible = false;
             }
-            else
+        }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            tlpHeader.Enabled = false;
+            tlpFooter.Enabled = false;
+            tlpContent.Enabled = false;
+
+            if (tlpTooList.Visible == false)
             {
-                _bActive = true;
+                //_bActive = true;
                 tlpTooList.Visible = true;
             }
         }

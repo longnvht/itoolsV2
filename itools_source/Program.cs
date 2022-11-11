@@ -39,8 +39,9 @@ namespace itools_source
 
             //Application.Run((Form)view);
 
-            Application.Run(new frmTest());
+            //Application.Run(new frmTest());
             //Application.Run(new FormTest());
+            Application.Run(new frmTest2());
         }
     }
 }

@@ -114,11 +114,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="frmTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Assessor.cs" />
     <Compile Include="Models\CompanyMachine.cs" />
@@ -159,6 +159,12 @@
     <Compile Include="Views\FormTest.Designer.cs">
       <DependentUpon>FormTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmTest2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmTest2.Designer.cs">
+      <DependentUpon>frmTest2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Interface\IJobView.cs" />
     <Compile Include="Views\Interface\ILoginView.cs" />
     <Compile Include="Views\Interface\IMainView.cs" />
@@ -193,8 +199,8 @@
     <Compile Include="Views\ToolManagerView.Designer.cs">
       <DependentUpon>ToolManagerView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -208,6 +214,9 @@
     </Compile>
     <EmbeddedResource Include="Views\FormTest.resx">
       <DependentUpon>FormTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmTest2.resx">
+      <DependentUpon>frmTest2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\JobView.resx">
       <DependentUpon>JobView.cs</DependentUpon>
