@@ -17,7 +17,7 @@ namespace itools_source.Views
             InitializeComponent();
         }
 
-        bool _bActive = false;
+        //bool _bActive = false;
 
         private void FormTest_Load(object sender, EventArgs e)
         {

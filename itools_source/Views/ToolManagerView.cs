@@ -31,12 +31,17 @@ namespace itools_source.Views
             txtOperateQuantity.TextChanged += delegate { OperateQuantityTextChanged?.Invoke(this, EventArgs.Empty); };
 
             CreateButtonTray();
-            this.flpListTray.PerformLayout();
-            guna2VScrollBar1.Size = new System.Drawing.Size(30, flpListTray.Height);
+            this.flpTrayList.PerformLayout();
+            guna2VScrollBar_flpTrayList.Size = new System.Drawing.Size(30, flpTrayList.Height);
 
             SetStatusForm('3');
-            MessageBox.Show(tlpTooList.Visible.ToString());
-            //tlpTooList.Visible = true;
+            //MessageBox.Show(tlpTooList.Visible.ToString());
+            //txtSearch.Text = tlpTooList.Visible.ToString();
+            tlpTooList.Visible = false;
+            //tlpDetailTray.Visible = false;
+            tlpTooList.Dock = DockStyle.Right;
+            tlpTooList.BringToFront();
+
         }
 
         #region Fields
@@ -258,8 +263,9 @@ namespace itools_source.Views
                 btn.ForeColor = System.Drawing.Color.White;
                 btn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 btn.FillColor = Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(168)))), ((int)(((byte)(255)))));
+                btn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
                 btn.Click += (s, e) => this.ClickBtnFlowPanel?.Invoke(s, e);
-                this.flpListTray.Controls.Add(btn);
+                this.flpTrayList.Controls.Add(btn);
             }
         }
 
@@ -281,11 +287,15 @@ namespace itools_source.Views
 
             tlpHeader.Enabled = false;
             tlpFooter.Enabled = false;
-            tlpContent.Enabled = false;
+            pLeftContent.Enabled = false;
+            tlpTrayDetail.Enabled = false;
+            //tlpContent.Enabled = false;
 
             if (tlpTooList.Visible == false)
             {
                 tlpTooList.Visible = true;
+                tlpTooList.Dock = DockStyle.Right;
+                tlpTooList.BringToFront();
             }
 
             //Panel panelAddToolCode = new Panel();
@@ -422,5 +432,22 @@ namespace itools_source.Views
         public event KeyPressEventHandler KeyPressOperateQuantity;
         public event EventHandler OperateQuantityTextChanged;
         #endregion
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            tlpHeader.Enabled = false;
+            tlpFooter.Enabled = false;
+            pLeftContent.Enabled = false;
+            tlpTrayDetail.Enabled = false;
+            //tlpContent.Enabled = false;
+
+            if (tlpTooList.Visible == false)
+            {
+                tlpTooList.Visible = true;
+                tlpTooList.Dock = DockStyle.Right;
+                tlpTooList.BringToFront();
+            }
+
+        }
     }
 }

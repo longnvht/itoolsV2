@@ -138,19 +138,19 @@ namespace itools_source.Repository
                     else
                     {
                         _log.Info("Id NULL!");
-                        return -1;
+                        return -2;
                     }
                 }
 
                 mySqlDataReader.Close();
                 mySqlConnection.Close();
-                return -1;
+                return -3;
             }
             catch (MySqlException e)
             {
                 _log.Error(e.Message);
             }
-            return -1;
+            return -4;
         }
 
         public IEnumerable<string> GetToolCodeList()

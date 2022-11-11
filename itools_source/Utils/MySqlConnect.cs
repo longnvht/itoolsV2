@@ -10,11 +10,17 @@ namespace itools_source.Utils
     public class MySqlConnect
     {
         private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(MySqlConnect).Name);
-        private static string _strHOST = "192.168.0.12";
-        private static string _strPORT = "3306";
+        //private static string _strHOST = "192.168.0.12";
+        //private static string _strPORT = "3306";
+        //private static string _strDATABASE_MAME = "tqteamne_itools";
+        //private static string _strUSER_NAME = "admin";
+        //private static string _strPASSWORD = "Vinam@123";
+
+        private static string _strHOST = "127.0.0.1";
+        private static string _strPORT = "3308";
         private static string _strDATABASE_MAME = "tqteamne_itools";
-        private static string _strUSER_NAME = "admin";
-        private static string _strPASSWORD = "Vinam@123";
+        private static string _strUSER_NAME = "root";
+        private static string _strPASSWORD = "0306ht@1502";
 
         private static string _strConnect = "server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD;
 

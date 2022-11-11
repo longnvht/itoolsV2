@@ -60,10 +60,12 @@
             this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.tlpHeader.SuspendLayout();
             this.tlpFooter.SuspendLayout();
             this.tlpContent.SuspendLayout();
             this.pLeftContent.SuspendLayout();
+            this.flpListTray.SuspendLayout();
             this.tlpRightContent.SuspendLayout();
             this.tlpToolAddNew.SuspendLayout();
             this.tlpToolAddNewFooter.SuspendLayout();
@@ -268,13 +270,11 @@
             this.VScrollBar_flpListTray.BindingContainer = this.flpListTray;
             this.VScrollBar_flpListTray.BorderRadius = 8;
             this.VScrollBar_flpListTray.InUpdate = false;
-            this.VScrollBar_flpListTray.LargeChange = 327;
+            this.VScrollBar_flpListTray.LargeChange = 10;
             this.VScrollBar_flpListTray.Location = new System.Drawing.Point(285, 0);
-            this.VScrollBar_flpListTray.Maximum = 349;
             this.VScrollBar_flpListTray.Name = "VScrollBar_flpListTray";
             this.VScrollBar_flpListTray.ScrollbarSize = 18;
             this.VScrollBar_flpListTray.Size = new System.Drawing.Size(18, 344);
-            this.VScrollBar_flpListTray.SmallChange = 5;
             this.VScrollBar_flpListTray.TabIndex = 1;
             this.VScrollBar_flpListTray.ThumbSize = 100F;
             // 
@@ -282,6 +282,7 @@
             // 
             this.flpListTray.AutoScroll = true;
             this.flpListTray.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            this.flpListTray.Controls.Add(this.guna2GradientButton1);
             this.flpListTray.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpListTray.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flpListTray.Location = new System.Drawing.Point(0, 0);
@@ -291,7 +292,6 @@
             // 
             // tlpRightContent
             // 
-            //this.tlpRightContent.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.tlpRightContent.ColumnCount = 3;
             this.tlpRightContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tlpRightContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.7F));
@@ -357,7 +357,6 @@
             this.btnToolAddNewCancel.Size = new System.Drawing.Size(148, 30);
             this.btnToolAddNewCancel.TabIndex = 1;
             this.btnToolAddNewCancel.Text = "Hủy";
-            this.btnToolAddNewCancel.Click += this.btnToolAddNewCancel_Click;
             // 
             // btnToolAddNewSelect
             // 
@@ -650,13 +649,31 @@
             this.guna2TextBox4.Size = new System.Drawing.Size(198, 43);
             this.guna2TextBox4.TabIndex = 9;
             // 
+            // guna2GradientButton1
+            // 
+            this.guna2GradientButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2GradientButton1.Animated = true;
+            this.guna2GradientButton1.AutoRoundedCorners = true;
+            this.guna2GradientButton1.BorderRadius = 22;
+            this.guna2GradientButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientButton1.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2GradientButton1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GradientButton1.ForeColor = System.Drawing.Color.White;
+            this.guna2GradientButton1.Location = new System.Drawing.Point(156, 3);
+            this.guna2GradientButton1.Name = "guna2GradientButton1";
+            this.guna2GradientButton1.Size = new System.Drawing.Size(144, 47);
+            this.guna2GradientButton1.TabIndex = 7;
+            this.guna2GradientButton1.Text = "Lưu";
+            // 
             // frmTest2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 453);
-            //this.Controls.Add(this.tlpDetailTray);
-            //this.Controls.Add(this.tlpRightContent);
             this.Controls.Add(this.tlpContent);
             this.Controls.Add(this.tlpFooter);
             this.Controls.Add(this.tlpHeader);
@@ -668,6 +685,7 @@
             this.tlpContent.ResumeLayout(false);
             this.pLeftContent.ResumeLayout(false);
             this.pLeftContent.PerformLayout();
+            this.flpListTray.ResumeLayout(false);
             this.tlpRightContent.ResumeLayout(false);
             this.tlpToolAddNew.ResumeLayout(false);
             this.tlpToolAddNewFooter.ResumeLayout(false);
@@ -713,5 +731,6 @@
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox4;
+        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
     }
 }
