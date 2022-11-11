@@ -11,8 +11,8 @@ namespace itools_source.Views.Interface
     public interface IToolManagerView
     {
         #region Fields
-        string strToolCode { get; set; }
         int iTrayIndex { get; set; }
+        string strToolCode { get; set; }
         int iCurrentQuantity { get; set; }
         int iOperateQuantity { get; set; }
         int iTotalQuantity { get; set; }
@@ -30,14 +30,20 @@ namespace itools_source.Views.Interface
         #endregion
 
         #region Events
-        event EventHandler ClickTakeOut;
-        event EventHandler ClickAddPlugin;
-        event EventHandler ClickAddNew;
-        event EventHandler ClickSave;
-        event EventHandler Search;
-        event EventHandler ClickBtnFlowPanel;
-        event KeyPressEventHandler KeyPressOperateQuantity;
-        event EventHandler OperateQuantityTextChanged;
+        event EventHandler txtSearch_TextChanged;
+        event EventHandler btnSearch_Click;
+        event EventHandler btnflpTrayList_Click;
+        event KeyPressEventHandler txtOperateQuantity_KeyPress;
+        event EventHandler txtOperateQuantity_TextChanged;
+        event EventHandler txtOperateQuantity_MouseClick;
+        event EventHandler txtToolSearch_TextChanged;
+        event EventHandler btnflpToolList_Click;
+        event EventHandler btnToolSelect_Click;
+        event EventHandler btnToolCancel_Click;
+        event EventHandler btnTakeOut_Click;
+        event EventHandler btnAddPlugin_Click;
+        event EventHandler btnAddNew_Click;
+        event EventHandler btnSave_Click;
         #endregion
 
         #region Methods
@@ -46,9 +52,10 @@ namespace itools_source.Views.Interface
         void ShowMessage(string strMessage);
         void SetStatusForm(char cStatus);
         void SetButtonState(char cStatus);
-        void txtCurrentQuantityFocus();
-        void txtOperateQuantityFocus();
+        void txtCurrentQuantity_Focus();
+        void txtOperateQuantity_Focus();
         void AddNewListTool();
+        void CancelListTool();
         #endregion
     }
 }

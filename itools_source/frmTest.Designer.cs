@@ -296,7 +296,7 @@
             this.tlpTooList.Controls.Add(this.pToolFooter, 0, 2);
             this.tlpTooList.Controls.Add(this.btnToolSearch, 0, 0);
             this.tlpTooList.Controls.Add(this.pToolContent, 0, 1);
-            this.tlpTooList.Location = new System.Drawing.Point(545, 51);
+            this.tlpTooList.Location = new System.Drawing.Point(575, 51);
             this.tlpTooList.Name = "tlpTooList";
             this.tlpTooList.RowCount = 3;
             this.tlpTooList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
@@ -489,6 +489,7 @@
             this.txtCurrentQuantity.Size = new System.Drawing.Size(198, 36);
             this.txtCurrentQuantity.TabIndex = 8;
             this.txtCurrentQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCurrentQuantity.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCurrentQuantity_MouseClick);
             // 
             // txtOperateQuantity
             // 

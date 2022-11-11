@@ -21,35 +21,86 @@ namespace itools_source.Presenters
             _toolManagerView = pushToolView;
             _toolRepository = toolRepository;
 
-            _toolManagerView.ClickTakeOut += TakeOut;
-            _toolManagerView.ClickAddPlugin += AddPlugin;
-            _toolManagerView.ClickAddNew += AddNew;
-            _toolManagerView.ClickSave += Save;
-            _toolManagerView.Search += Search;
-            _toolManagerView.ClickBtnFlowPanel += ClickBtnFlowPanelEvent;
-            _toolManagerView.KeyPressOperateQuantity += KeyPressOperateQuantityEvent;
-            _toolManagerView.OperateQuantityTextChanged += OperateQuantityTextChangedEvent;
+            _toolManagerView.txtSearch_TextChanged += _toolManagerView_txtSearch_TextChanged;
+            _toolManagerView.btnSearch_Click += _toolManagerView_btnSearch_Click;
+            _toolManagerView.btnflpTrayList_Click += _toolManagerView_btnflpTrayList_Click;
+            _toolManagerView.txtOperateQuantity_KeyPress += _toolManagerView_txtOperateQuantity_KeyPress;
+            _toolManagerView.txtOperateQuantity_TextChanged += _toolManagerView_txtOperateQuantity_TextChanged;
+            _toolManagerView.txtOperateQuantity_MouseClick += _toolManagerView_txtOperateQuantity_MouseClick;
+            _toolManagerView.txtToolSearch_TextChanged += _toolManagerView_txtToolSearch_TextChanged;
+            _toolManagerView.btnflpToolList_Click += _toolManagerView_btnflpToolList_Click;
+            _toolManagerView.btnToolSelect_Click += _toolManagerView_btnToolSelect_Click;
+            _toolManagerView.btnToolCancel_Click += _toolManagerView_btnToolCancel_Click;
+            _toolManagerView.btnTakeOut_Click += _toolManagerView_btnTakeOut_Click;
+            _toolManagerView.btnAddPlugin_Click += _toolManagerView_btnAddPlugin_Click;
+            _toolManagerView.btnAddNew_Click += _toolManagerView_btnAddNew_Click;
+            _toolManagerView.btnSave_Click += _toolManagerView_btnSave_Click;
 
             _toolManagerView.Show();
         }
 
-        #region Properties - Fields
-        log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolManagerPresenter).Name);
-        private int _iCurrentQuantity = 0;
-
-        private IToolManagerView _toolManagerView;
-        private IToolRepository _toolRepository;
-        #endregion
-
-        #region Method
-        private bool CheckInputCharacterLetter(char cInput)
-        {
-            return ((cInput < '0' || cInput > '9') && ((Keys)cInput != Keys.Back) && ((Keys)cInput != Keys.Enter));
-        }
-        #endregion
-
         #region Events
-        private void OperateQuantityTextChangedEvent(object sender, EventArgs e)
+        private void _toolManagerView_btnSave_Click(object sender, EventArgs e)
+        {
+            if (_toolManagerView.iOperateQuantity == 0)
+            {
+                _toolManagerView.ShowMessage("Bạn Chưa Nhập Số Lượng!");
+                _toolManagerView.txtOperateQuantity_Focus();
+            }
+            else
+            {
+                switch (_toolManagerView.cStatusButton)
+                {
+                    case '0': // AddNew
+
+                        break;
+                    case '1': // AddPlugin
+                        break;
+                    case '2': // TakeOut
+
+                        break;
+                }
+                MessageBox.Show("Lưu Thành Công!");
+                _toolManagerView.cStatusForm = '4';
+                _toolManagerView.SetStatusForm(_toolManagerView.cStatusForm);
+            }
+        }
+
+        private void _toolManagerView_btnAddNew_Click(object sender, EventArgs e)
+        {
+            _toolManagerView.cStatusButton = '0';
+            _toolManagerView.SetButtonState(_toolManagerView.cStatusButton);
+        }
+
+        private void _toolManagerView_btnToolCancel_Click(object sender, EventArgs e)
+        {
+            _toolManagerView.CancelListTool();
+        }
+
+        private void _toolManagerView_btnToolSelect_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void _toolManagerView_btnflpToolList_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void _toolManagerView_txtToolSearch_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void _toolManagerView_txtOperateQuantity_MouseClick(object sender, EventArgs e)
+        {
+            _toolManagerView.cStatusButton = '0';
+            _toolManagerView.SetButtonState(_toolManagerView.cStatusButton);
+            _toolManagerView.toolCodeList = _toolRepository.GetToolCodeList().ToList();
+            _toolManagerView.AddNewListTool();
+        }
+
+        private void _toolManagerView_txtOperateQuantity_TextChanged(object sender, EventArgs e)
         {
             int iOperateQuantity = _toolManagerView.iOperateQuantity;
             int iTotalQuantity;
@@ -60,7 +111,7 @@ namespace itools_source.Presenters
                 {
                     _toolManagerView.iOperateQuantity = 0;
                     _toolManagerView.iTotalQuantity = 0;
-                    _toolManagerView.txtOperateQuantityFocus();
+                    _toolManagerView.txtOperateQuantity_Focus();
                     MessageBox.Show("Tray không đủ số lượng để lấy.");
                 }
                 else
@@ -76,17 +127,17 @@ namespace itools_source.Presenters
             }
         }
 
-        private void KeyPressOperateQuantityEvent(object sender, KeyPressEventArgs e)
+        private void _toolManagerView_txtOperateQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (CheckInputCharacterLetter(e.KeyChar))
             {
                 e.Handled = true;
                 _toolManagerView.ShowMessage("Không Được Nhập Chữ!");
-                _toolManagerView.txtOperateQuantityFocus();
+                _toolManagerView.txtOperateQuantity_Focus();
             }
         }
 
-        private void ClickBtnFlowPanelEvent(object sender, EventArgs e)
+        private void _toolManagerView_btnflpTrayList_Click(object sender, EventArgs e)
         {
             Guna2Button btn = (Guna2Button)sender;
             string stTrayIndex = btn.Text.Replace(" ", "_");
@@ -132,55 +183,41 @@ namespace itools_source.Presenters
             }
         }
 
-        private void Search(object sender, EventArgs e)
+        private void _toolManagerView_btnSearch_Click(object sender, EventArgs e)
         {
-
+            
         }
 
-        private void AddNew(object sender, EventArgs e)
-        {
-            _toolManagerView.cStatusButton = '0';
-            _toolManagerView.SetButtonState(_toolManagerView.cStatusButton);
-            _toolManagerView.toolCodeList = _toolRepository.GetToolCodeList().ToList();
-            _toolManagerView.AddNewListTool();
-        }
-
-        private void Save(object sender, EventArgs e)
-        {
-            if (_toolManagerView.iOperateQuantity == 0)
-            {
-                _toolManagerView.ShowMessage("Bạn Chưa Nhập Số Lượng!");
-                _toolManagerView.txtOperateQuantityFocus();
-            }
-            else
-            {
-                switch (_toolManagerView.cStatusButton)
-                {
-                    case '0': // AddNew
-
-                        break;
-                    case '1': // AddPlugin
-                        break;
-                    case '2': // TakeOut
-
-                        break;
-                }
-                MessageBox.Show("Lưu Thành Công!");
-                _toolManagerView.cStatusForm = '4';
-                _toolManagerView.SetStatusForm(_toolManagerView.cStatusForm);
-            }
-        }
-
-        private void AddPlugin(object sender, EventArgs e)
+        private void _toolManagerView_btnAddPlugin_Click(object sender, EventArgs e)
         {
             _toolManagerView.cStatusButton = '1';
             _toolManagerView.SetButtonState(_toolManagerView.cStatusButton);
         }
 
-        private void TakeOut(object sender, EventArgs e)
+        private void _toolManagerView_txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void _toolManagerView_btnTakeOut_Click(object sender, EventArgs e)
         {
             _toolManagerView.cStatusButton = '2';
             _toolManagerView.SetButtonState(_toolManagerView.cStatusButton);
+        }
+        #endregion
+
+        #region Properties - Fields
+        log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolManagerPresenter).Name);
+        private int _iCurrentQuantity = 0;
+
+        private IToolManagerView _toolManagerView;
+        private IToolRepository _toolRepository;
+        #endregion
+
+        #region Method
+        private bool CheckInputCharacterLetter(char cInput)
+        {
+            return ((cInput < '0' || cInput > '9') && ((Keys)cInput != Keys.Back) && ((Keys)cInput != Keys.Enter));
         }
         #endregion
     }
