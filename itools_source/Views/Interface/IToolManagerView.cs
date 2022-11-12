@@ -35,9 +35,10 @@ namespace itools_source.Views.Interface
         event EventHandler btnflpTrayList_Click;
         event KeyPressEventHandler txtOperateQuantity_KeyPress;
         event EventHandler txtOperateQuantity_TextChanged;
-        event EventHandler txtOperateQuantity_MouseClick;
+        event EventHandler txtToolCode_MouseClick;
         event EventHandler txtToolSearch_TextChanged;
         event EventHandler btnflpToolList_Click;
+        event EventHandler btnflpToolList_DoubleClick;
         event EventHandler btnToolSelect_Click;
         event EventHandler btnToolCancel_Click;
         event EventHandler btnTakeOut_Click;
@@ -56,6 +57,8 @@ namespace itools_source.Views.Interface
         void txtOperateQuantity_Focus();
         void AddNewListTool();
         void CancelListTool();
+        void SetCheckedButton(string strContinueButton);
+        bool CheckedSelectTool();
         #endregion
     }
 }

@@ -27,7 +27,7 @@ namespace itools_source.Views
             btnSave.Click += delegate { btnSave_Click?.Invoke(this, EventArgs.Empty); };
             txtOperateQuantity.KeyPress += (s, e) => { txtOperateQuantity_KeyPress(s, e); };
             txtOperateQuantity.TextChanged += delegate { txtOperateQuantity_TextChanged?.Invoke(this, EventArgs.Empty); };
-            txtOperateQuantity.MouseClick += delegate { txtOperateQuantity_MouseClick?.Invoke(this, EventArgs.Empty); };
+            txtToolCode.MouseClick += delegate { txtToolCode_MouseClick?.Invoke(this, EventArgs.Empty); };
             txtToolSearch.TextChanged += delegate { txtToolSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
             btnToolSelect.Click += delegate { btnToolSelect_Click?.Invoke(this, EventArgs.Empty); };
             btnToolCancel.Click += delegate { btnToolCancel_Click?.Invoke(this, EventArgs.Empty); };
@@ -41,13 +41,9 @@ namespace itools_source.Views
             guna2VScrollBar_flpTrayList.Size = new System.Drawing.Size(30, flpTrayList.Height);
 
             SetStatusForm('3');
-            //MessageBox.Show(tlpTooList.Visible.ToString());
-            //txtSearch.Text = tlpTooList.Visible.ToString();
             tlpTooList.Visible = false;
-            //tlpDetailTray.Visible = false;
             tlpTooList.Dock = DockStyle.Right;
             tlpTooList.BringToFront();
-
         }
 
         #region Fields
@@ -147,6 +143,7 @@ namespace itools_source.Views
         public void SetStatusForm(char cStatus)
         {
             this.txtOperateQuantity.Enabled = false;
+            this.txtToolCode.Enabled = false;
             this.btnSave.Enabled = false;
             this.notifiTakeout.Text = "Off";
             this.notifiAddPlugin.Text = "Off";
@@ -213,10 +210,9 @@ namespace itools_source.Views
             {
                 case '0': // AddNew
                     this.btnTakeOut.Enabled = false;
-                    this.btnAddPluginEnable = false;
+                    this.btnAddPlugin.Enabled = false;
                     this.btnSaveEnable = true;
-                    this.txtOperateQuantity.Enabled = true;
-                    this.txtOperateQuantity_Focus();
+                    this.txtToolCode.Enabled = true;
                     this.notifiAddNew.FillColor = Color.LimeGreen;
                     this.notifiAddNew.Text = "On";
                     break;
@@ -295,6 +291,32 @@ namespace itools_source.Views
                 tlpTooList.Dock = DockStyle.Right;
                 tlpTooList.BringToFront();
             }
+
+            for (int i = 0; i < 49; i++)
+            {
+                //Guna2Button btn = new Guna2Button();
+                Guna2GradientButton btn = new Guna2GradientButton();
+                btn.Size = new Size(280, 60);
+                btn.Text = toolCodeList[i];
+                btn.BackColor = Color.Transparent;
+                btn.BorderRadius = 15;
+                btn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+                btn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+                btn.Animated = true;
+                btn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+                btn.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+                btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+                btn.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+                btn.ForeColor = System.Drawing.Color.White;
+                btn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                btn.FillColor = Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(168)))), ((int)(((byte)(255)))));
+                btn.CheckedState.FillColor = System.Drawing.Color.DarkOrchid;
+                btn.CheckedState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+                btn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+                btn.Click += (s, e) => this.btnflpToolList_Click?.Invoke(s, e);
+                btn.DoubleClick += (s, e) => this.btnflpToolList_DoubleClick?.Invoke(s, e);
+                this.flpToolList.Controls.Add(btn);
+            }
         }
 
         public void CancelListTool()
@@ -310,12 +332,31 @@ namespace itools_source.Views
             tlpFooter.Enabled = true;
             pLeftContent.Enabled = true;
             tlpTrayDetail.Enabled = true;
+            this.txtToolCode.Enabled = true;
 
             if (tlpTooList.Visible == true)
             {
                 tlpTooList.Visible = false;
                 tlpTooList.Dock = DockStyle.None;
                 tlpTooList.SendToBack();
+            }
+
+            // Reset button in flpToolList
+            if (flpToolList.Controls.Count > 0)
+            {
+                foreach (Control item in flpToolList.Controls)
+                {
+                    Guna2GradientButton btn = (Guna2GradientButton)item;
+                    if (item.GetType() != typeof(Guna2GradientButton))
+                    {
+                        continue;
+                    }
+                    if (((Guna2GradientButton)item).Checked)
+                    {
+                        ((Guna2GradientButton)item).Checked = false;
+                        return;
+                    }
+                }
             }
         }
 
@@ -351,6 +392,50 @@ namespace itools_source.Views
         {
             txtOperateQuantity.Focus();
         }
+
+        public void SetCheckedButton(string strContinueButton)
+        {
+            if (flpToolList.Controls.Count > 0)
+            {
+                foreach (Control item in flpToolList.Controls)
+                {
+                    Guna2GradientButton btn = (Guna2GradientButton)item;
+                    if (item.GetType() != typeof(Guna2GradientButton) || strContinueButton == ((Guna2GradientButton)item).Text)
+                    {
+                        continue;
+                    }
+                    if (((Guna2GradientButton)item).Checked)
+                    {
+                        ((Guna2GradientButton)item).Checked = false;
+                        return;
+                    }
+                }
+            }
+        }
+
+        public bool CheckedSelectTool()
+        {
+            if (flpToolList.Controls.Count > 0)
+            {
+                MessageBox.Show("1");
+                foreach (Control item in flpToolList.Controls)
+                {
+                    MessageBox.Show("2");
+                    Guna2GradientButton btn = (Guna2GradientButton)item;
+                    if (item.GetType() != typeof(Guna2GradientButton))
+                    {
+                        continue;
+                    }
+                    MessageBox.Show(((Guna2GradientButton)item).Checked.ToString());
+                    if (((Guna2GradientButton)item).Checked)
+                    {
+                        return true;
+                    }
+                }
+            }
+            MessageBox.Show("3");
+            return false;
+        }
         #endregion
 
         #region Events
@@ -359,9 +444,10 @@ namespace itools_source.Views
         public event EventHandler btnflpTrayList_Click;
         public event KeyPressEventHandler txtOperateQuantity_KeyPress;
         public event EventHandler txtOperateQuantity_TextChanged;
-        public event EventHandler txtOperateQuantity_MouseClick;
+        public event EventHandler txtToolCode_MouseClick;
         public event EventHandler txtToolSearch_TextChanged;
         public event EventHandler btnflpToolList_Click;
+        public event EventHandler btnflpToolList_DoubleClick;
         public event EventHandler btnToolSelect_Click;
         public event EventHandler btnToolCancel_Click;
         public event EventHandler btnTakeOut_Click;

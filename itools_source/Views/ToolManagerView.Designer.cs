@@ -41,13 +41,13 @@
             this.btnAddNew = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2VScrollBar_flpTrayList = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.flpTrayList = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2ElipseflpTrayList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse_pLeftContent = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pLeftContent = new System.Windows.Forms.Panel();
             this.tlpTooList = new System.Windows.Forms.TableLayoutPanel();
             this.txtToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pToolContent = new System.Windows.Forms.Panel();
             this.guna2VScrollBar2 = new Guna.UI2.WinForms.Guna2VScrollBar();
-            this.flpListTool = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpToolList = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnToolCancel = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnToolSelect = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -232,8 +232,11 @@
             // guna2VScrollBar_flpTrayList
             // 
             this.guna2VScrollBar_flpTrayList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2VScrollBar_flpTrayList.AutoRoundedCorners = true;
             this.guna2VScrollBar_flpTrayList.AutoSize = true;
+            this.guna2VScrollBar_flpTrayList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.guna2VScrollBar_flpTrayList.BindingContainer = this.flpTrayList;
+            this.guna2VScrollBar_flpTrayList.BorderRadius = 8;
             this.guna2VScrollBar_flpTrayList.InUpdate = false;
             this.guna2VScrollBar_flpTrayList.LargeChange = 10;
             this.guna2VScrollBar_flpTrayList.Location = new System.Drawing.Point(285, 0);
@@ -257,10 +260,10 @@
             this.flpTrayList.Size = new System.Drawing.Size(303, 344);
             this.flpTrayList.TabIndex = 33;
             // 
-            // guna2ElipseflpTrayList
+            // guna2Elipse_pLeftContent
             // 
-            this.guna2ElipseflpTrayList.BorderRadius = 20;
-            this.guna2ElipseflpTrayList.TargetControl = this.pLeftContent;
+            this.guna2Elipse_pLeftContent.BorderRadius = 20;
+            this.guna2Elipse_pLeftContent.TargetControl = this.pLeftContent;
             // 
             // pLeftContent
             // 
@@ -317,7 +320,7 @@
             // pToolContent
             // 
             this.pToolContent.Controls.Add(this.guna2VScrollBar2);
-            this.pToolContent.Controls.Add(this.flpListTool);
+            this.pToolContent.Controls.Add(this.flpToolList);
             this.pToolContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pToolContent.Location = new System.Drawing.Point(3, 54);
             this.pToolContent.Name = "pToolContent";
@@ -328,11 +331,12 @@
             // 
             this.guna2VScrollBar2.AutoRoundedCorners = true;
             this.guna2VScrollBar2.AutoSize = true;
-            this.guna2VScrollBar2.BindingContainer = this.flpListTool;
+            this.guna2VScrollBar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            this.guna2VScrollBar2.BindingContainer = this.flpToolList;
             this.guna2VScrollBar2.BorderRadius = 8;
             this.guna2VScrollBar2.InUpdate = false;
             this.guna2VScrollBar2.LargeChange = 10;
-            this.guna2VScrollBar2.Location = new System.Drawing.Point(296, 0);
+            this.guna2VScrollBar2.Location = new System.Drawing.Point(296, 1);
             this.guna2VScrollBar2.Name = "guna2VScrollBar2";
             this.guna2VScrollBar2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.guna2VScrollBar2.ScrollbarSize = 18;
@@ -340,17 +344,17 @@
             this.guna2VScrollBar2.TabIndex = 28;
             this.guna2VScrollBar2.ThumbSize = 100F;
             // 
-            // flpListTool
+            // flpToolList
             // 
-            this.flpListTool.AutoScroll = true;
-            this.flpListTool.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.flpListTool.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpListTool.Location = new System.Drawing.Point(0, 0);
-            this.flpListTool.Margin = new System.Windows.Forms.Padding(2);
-            this.flpListTool.Name = "flpListTool";
-            this.flpListTool.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.flpListTool.Size = new System.Drawing.Size(314, 232);
-            this.flpListTool.TabIndex = 29;
+            this.flpToolList.AutoScroll = true;
+            this.flpToolList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            this.flpToolList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpToolList.Location = new System.Drawing.Point(0, 0);
+            this.flpToolList.Margin = new System.Windows.Forms.Padding(2);
+            this.flpToolList.Name = "flpToolList";
+            this.flpToolList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.flpToolList.Size = new System.Drawing.Size(314, 232);
+            this.flpToolList.TabIndex = 29;
             // 
             // tableLayoutPanel1
             // 
@@ -751,7 +755,7 @@
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiAddPlugin;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiAddNew;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar_flpTrayList;
-        private Guna.UI2.WinForms.Guna2Elipse guna2ElipseflpTrayList;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_pLeftContent;
 
         private System.Windows.Forms.TableLayoutPanel tlpTooList;
         // Header
@@ -759,7 +763,6 @@
 
         // Content
         private System.Windows.Forms.Panel pToolContent;
-        private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar2;
         private System.Windows.Forms.TableLayoutPanel tlpContent;
         private System.Windows.Forms.Panel pLeftContent;
         private Guna.UI2.WinForms.Guna2GradientButton btnTakeOut;
@@ -783,10 +786,11 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnToolCancel;
         private Guna.UI2.WinForms.Guna2GradientButton btnToolSelect;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flpTrayList;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_tlpToolList;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_tlpTrayDetail;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_pToolContent;
-        private System.Windows.Forms.FlowLayoutPanel flpListTool;
+        private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar2;
+        private System.Windows.Forms.FlowLayoutPanel flpToolList;
+        private System.Windows.Forms.FlowLayoutPanel flpTrayList;
     }
 }
