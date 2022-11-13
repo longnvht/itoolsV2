@@ -417,10 +417,8 @@ namespace itools_source.Views
         {
             if (flpToolList.Controls.Count > 0)
             {
-                MessageBox.Show("1");
                 foreach (Control item in flpToolList.Controls)
                 {
-                    MessageBox.Show("2");
                     Guna2GradientButton btn = (Guna2GradientButton)item;
                     if (item.GetType() != typeof(Guna2GradientButton))
                     {
@@ -433,7 +431,6 @@ namespace itools_source.Views
                     }
                 }
             }
-            MessageBox.Show("3");
             return false;
         }
         #endregion

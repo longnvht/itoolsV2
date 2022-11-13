@@ -153,10 +153,10 @@ namespace itools_source.Presenters
             {
                 if (iOperateQuantity > _iCurrentQuantity)
                 {
-                    _toolManagerView.iOperateQuantity = 0;
-                    _toolManagerView.iTotalQuantity = 0;
                     _toolManagerView.txtOperateQuantity_Focus();
                     MessageBox.Show("Tray không đủ số lượng để lấy.");
+                    _toolManagerView.iOperateQuantity = 0;
+                    _toolManagerView.iTotalQuantity = 0;
                 }
                 else
                 {
@@ -168,6 +168,14 @@ namespace itools_source.Presenters
             {
                 iTotalQuantity = _iCurrentQuantity + iOperateQuantity;
                 _toolManagerView.iTotalQuantity = iTotalQuantity;
+                if (_toolManagerView.iTotalQuantity > 10)
+                {
+                    _toolManagerView.ShowMessage("Tray Chỉ Chứa Tối Đa 10 Công Cụ!");
+                    _log.Info("Warehouse management adds too many tools: " + Program.sessionLogin["UserName"]);
+                    _toolManagerView.iOperateQuantity = 0;
+                    _toolManagerView.iTotalQuantity = 0;
+                    _toolManagerView.txtOperateQuantity_Focus();
+                }
             }
         }
 
@@ -245,8 +253,17 @@ namespace itools_source.Presenters
 
         private void _toolManagerView_btnAddPlugin_Click(object sender, EventArgs e)
         {
-            _toolManagerView.cStatusButton = '1';
-            _toolManagerView.SetButtonState(_toolManagerView.cStatusButton);
+            if (_toolManagerView.iTotalQuantity > 10)
+            {
+                _toolManagerView.ShowMessage("Tray Chỉ Chứa Tối Đa 10 Công Cụ!");
+                _log.Info("Warehouse management adds too many tools: " + Program.sessionLogin["UserName"]);
+            }
+            else
+            {
+                _toolManagerView.cStatusButton = '1';
+                _toolManagerView.SetButtonState(_toolManagerView.cStatusButton);
+                _log.Info("Switch to save state!");
+            }
         }
 
         private void _toolManagerView_txtSearch_TextChanged(object sender, EventArgs e)
