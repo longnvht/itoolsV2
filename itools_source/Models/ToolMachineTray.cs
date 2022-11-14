@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace itools_source.Models
 {
-    public class ToolsMachineTray
+    public class ToolMachineTray
     {
         private int _iToolsMachineTrayId;
 
@@ -48,9 +48,9 @@ namespace itools_source.Models
             set { _iQuantity = value; }
         }
 
-        private DateTime _dtCreateDate;
+        private DateTime? _dtCreateDate;
 
-        public DateTime dtCreateDate
+        public DateTime? dtCreateDate
         {
             get { return _dtCreateDate; }
             set { _dtCreateDate = value; }

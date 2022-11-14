@@ -9,6 +9,7 @@ using itools_source.Models;
 using itools_source.Models.Interface;
 using itools_source.Presenters;
 using itools_source.Repository;
+using itools_source.Utils;
 using itools_source.Views;
 using itools_source.Views.Interface;
 
@@ -84,6 +85,7 @@ namespace itools_source.Presenter
                 {
                     Program.sessionLogin["UserName"] = strUserName;
                     Program.sessionLogin["Password"] = strPassword;
+                    Program.sessionLogin["Time"] = ServerTime.GetServerTime().ToLocalTime().ToString();
 
                     System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
                         () => {

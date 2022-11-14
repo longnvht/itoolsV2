@@ -12,7 +12,7 @@ namespace itools_source.Repository
 {
     public class ToolRepository : IToolRepository
     {
-        private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(AssessorRepository).Name);
+        private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolRepository).Name);
 
         public void AddNewTool(Tool newTool)
         {
@@ -34,9 +34,9 @@ namespace itools_source.Repository
             throw new NotImplementedException();
         }
 
-        public ToolsMachineTray GetToolByTrayIndex(string strTrayIndex, string strMachineCode)
+        public ToolMachineTray GetToolByTrayIndex(string strTrayIndex, string strMachineCode)
         {
-            ToolsMachineTray toolsMachineTray = null;
+            ToolMachineTray toolsMachineTray = null;
 
             string strSelect = @"SELECT DISTINCT *
 	                                FROM toolsmachinetray
@@ -52,7 +52,7 @@ namespace itools_source.Repository
                 {
                     if (toolsMachineTray == null)
                     {
-                        toolsMachineTray = new ToolsMachineTray();
+                        toolsMachineTray = new ToolMachineTray();
                     }
 
                     if (!mySqlDataReader.IsDBNull(0))
@@ -220,6 +220,90 @@ namespace itools_source.Repository
                 _log.Error(e.Message);
             }
             return null;
+        }
+
+        public bool AddToolMachineTray(ToolMachineTray toolMachineTray)
+        {
+            string strInsert = @"INSERT INTO toolsmachinetray VALUE(@ToolsMachineTrayID, @MachineCode, @ToolCode, @TrayIndex, @Quantity, @CreatedDate, @UpdatedDate, 1)";
+            List<MySqlParameter> lstPar = new List<MySqlParameter>();
+            lstPar.Add(new MySqlParameter("@ToolsMachineTrayID", toolMachineTray.iToolsMachineTrayId));
+            lstPar.Add(new MySqlParameter("@ToolsMachineTrayID", toolMachineTray.strMachineCode));
+            lstPar.Add(new MySqlParameter("@ToolsMachineTrayID", toolMachineTray.strToolCode));
+            lstPar.Add(new MySqlParameter("@ToolsMachineTrayID", toolMachineTray.strTrayIndex));
+            lstPar.Add(new MySqlParameter("@ToolsMachineTrayID", toolMachineTray.iQuantity));
+            lstPar.Add(new MySqlParameter("@ToolsMachineTrayID", toolMachineTray.dtUpdateDate));
+            _log.Info(strInsert);
+
+            try
+            {
+                if (lstPar[0].Value == null)
+                {
+                    _log.Info("ToolMachineTrayID is NULL!");
+                    return false;
+                }
+
+                foreach (var parCheck in lstPar)
+                {
+                    if (parCheck.Value == null)
+                    {
+                        parCheck.Value = DBNull.Value;
+                    }
+                }
+
+                MySqlConnection mySqlConnection = MySqlConnect.Open();
+                bool bResult = MySqlConnect.CmdExecution(strInsert, lstPar.ToArray(), mySqlConnection);
+                mySqlConnection.Close();
+
+                _log.Info("Add ToolMachineTray Successfully.");
+                return bResult;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+                return false;
+            }
+        }
+
+        public int? GetTheLargestToolMachineTray()
+        {
+            string strQuery = @"SELECT MAX(ToolsMachineTrayID) FROM toolsmachinetray";
+            int? iLargestId = null;
+
+            _log.Info(strQuery);
+            try
+            {
+                MySqlConnection mySqlConnection = MySqlConnect.Open();
+
+                using (var mySqlDataReader = MySqlConnect.DataQuery(strQuery, mySqlConnection))
+                {
+                    //if (iLargestId is null)
+                    //{
+                    //    _log.Error("List ToolCode is Null!");
+                    //    return iLargestId;
+                    //}
+
+                    if (mySqlDataReader.Read())
+                    {
+                        if (!mySqlDataReader.IsDBNull(0))
+                        {
+                            iLargestId = Convert.ToInt32(mySqlDataReader.GetString(0));
+                        }
+                        else
+                        {
+                            _log.Info("ToolCode is NULL!: " + mySqlDataReader.FieldCount);
+                        }
+                    }
+
+                    mySqlDataReader.Close();
+                    mySqlConnection.Close();
+                    return iLargestId;
+                }
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return iLargestId;
         }
     }
 }

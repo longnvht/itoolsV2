@@ -10,8 +10,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,7 +27,7 @@ namespace itools_source.Views
         {
             InitializeComponent();
 
-            txtSearch.TextChanged += delegate { txtSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
+            txtTraySearch.TextChanged += delegate { txtSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
             btnSave.Click += delegate { btnSave_Click?.Invoke(this, EventArgs.Empty); };
             txtOperateQuantity.KeyPress += (s, e) => { txtOperateQuantity_KeyPress(s, e); };
             txtOperateQuantity.TextChanged += delegate { txtOperateQuantity_TextChanged?.Invoke(this, EventArgs.Empty); };
@@ -39,8 +43,8 @@ namespace itools_source.Views
             CreateButtonTray();
             this.flpTrayList.PerformLayout();
             guna2VScrollBar_flpTrayList.Size = new System.Drawing.Size(30, flpTrayList.Height);
-
-            SetStatusForm('3');
+            cStatusForm = '3';
+            SetStatusForm();
             tlpTooList.Visible = false;
             tlpTooList.Dock = DockStyle.Right;
             tlpTooList.BringToFront();
@@ -53,25 +57,25 @@ namespace itools_source.Views
         {
             get
             {
-                if (string.IsNullOrEmpty(strToolCode))
+                if (string.IsNullOrEmpty(txtToolCode.Text))
                 {
-                    return txtToolCode.Text;
+                    return "";
                 }
-                return "";
+                return txtToolCode.Text;
             }
-            set => txtToolCode.Text = value.ToString();
+            set => txtToolCode.Text = value;
         }
-        public int iTrayIndex
+        public string strTrayIndex
         {
             get
             {
                 if (string.IsNullOrEmpty(txtTrayIndex.Text))
                 {
-                    return Convert.ToInt32(txtTrayIndex.Text);
+                    return "";
                 }
-                return 0;
+                return txtTrayIndex.Text;
             }
-            set => txtTrayIndex.Text = value.ToString();
+            set => txtTrayIndex.Text = value;
         }
         public int iCurrentQuantity
         {
@@ -79,9 +83,9 @@ namespace itools_source.Views
             {
                 if (string.IsNullOrEmpty(txtCurrentQuantity.Text))
                 {
-                    Convert.ToInt32(txtCurrentQuantity.Text);
+                    return 0;
                 }
-                return 0;
+                return Convert.ToInt32(txtCurrentQuantity.Text);
             }
             set => txtCurrentQuantity.Text = value.ToString();
         }
@@ -109,9 +113,19 @@ namespace itools_source.Views
             }
             set => txtTotalQuantity.Text = value.ToString();
         }
-        public string strSearch { get => txtSearch.Text; set => txtSearch.Text = value; }
-        public ToolsMachineTray toolTrayCurrent { get; set; }
-        public char _cSatusView { get; set; }
+        public string strTraySearch
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(txtTraySearch.Text))
+                {
+                    return "";
+                }
+                return txtTraySearch.Text;
+            }
+            set => txtTraySearch.Text = value;
+        }
+        public ToolMachineTray toolTrayCurrent { get; set; }
         public bool btnAddNewEnable
         {
             get => btnAddNew.Enabled;
@@ -140,7 +154,7 @@ namespace itools_source.Views
         #endregion
 
         #region Method
-        public void SetStatusForm(char cStatus)
+        public void SetStatusForm()
         {
             this.txtOperateQuantity.Enabled = false;
             this.txtToolCode.Enabled = false;
@@ -152,7 +166,7 @@ namespace itools_source.Views
             this.notifiAddPlugin.FillColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.notifiAddNew.FillColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
 
-            switch (cStatus)
+            switch (cStatusForm)
             {
                 case '0': // AddNew
                     this.btnAddNew.Enabled = true;
@@ -188,7 +202,7 @@ namespace itools_source.Views
 
                     //this.iCurrentQuantity = 0;
                     this.iOperateQuantity = 0;
-                    //this.iTrayIndex = 0;
+                    //this.strTrayIndex = 0;
                     //this.strToolCode = string.Empty;
 
                     //this.txtTrayIndex.Text = string.Empty;
@@ -201,12 +215,27 @@ namespace itools_source.Views
                     this.txtOperateQuantity.Text = string.Empty;
                     this.txtTotalQuantity.Text = string.Empty;
                     break;
+                case '6': // Select Tool in List
+                    this.txtOperateQuantity.Enabled = false;
+                    this.btnTakeOut.Enabled = false;
+                    this.btnAddPlugin.Enabled = false;
+                    this.btnAddNew.Enabled = false;
+                    this.btnSave.Enabled = true;
+
+                    //this.iCurrentQuantity = 0;
+                    //this.strTrayIndex = 0;
+                    //this.strToolCode = string.Empty;
+
+                    //this.txtTrayIndex.Text = string.Empty;
+                    //this.txtToolCode.Text = string.Empty;
+                    //this.txtCurrentQuantity.Text = string.Empty;
+                    break;
             }
         }
 
-        public void SetButtonState(char cStatus)
+        public void SetButtonState()
         {
-            switch (cStatus)
+            switch (cStatusButton)
             {
                 case '0': // AddNew
                     this.btnTakeOut.Enabled = false;
@@ -235,11 +264,6 @@ namespace itools_source.Views
                     this.notifiTakeout.Text = "On";
                     break;
             }
-        }
-
-        public void ShowMessage(string strMessage)
-        {
-            MessageBox.Show(strMessage);
         }
 
         private void CreateButtonTray()
@@ -424,7 +448,6 @@ namespace itools_source.Views
                     {
                         continue;
                     }
-                    MessageBox.Show(((Guna2GradientButton)item).Checked.ToString());
                     if (((Guna2GradientButton)item).Checked)
                     {
                         return true;

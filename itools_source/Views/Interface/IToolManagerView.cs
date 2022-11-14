@@ -11,13 +11,13 @@ namespace itools_source.Views.Interface
     public interface IToolManagerView
     {
         #region Fields
-        int iTrayIndex { get; set; }
+        string strTrayIndex { get; set; }
         string strToolCode { get; set; }
         int iCurrentQuantity { get; set; }
         int iOperateQuantity { get; set; }
         int iTotalQuantity { get; set; }
-        string strSearch { get; set; }
-        ToolsMachineTray toolTrayCurrent { get; set; }
+        string strTraySearch { get; set; }
+        ToolMachineTray toolTrayCurrent { get; set; }
         bool btnAddNewEnable { get; set; }
         bool btnAddPluginEnable { get; set; }
         bool btnTakeOutEnable { get; set; }
@@ -50,9 +50,8 @@ namespace itools_source.Views.Interface
         #region Methods
         void Show();
         void Close();
-        void ShowMessage(string strMessage);
-        void SetStatusForm(char cStatus);
-        void SetButtonState(char cStatus);
+        void SetStatusForm();
+        void SetButtonState();
         void txtCurrentQuantity_Focus();
         void txtOperateQuantity_Focus();
         void AddNewListTool();

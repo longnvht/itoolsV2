@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolManagerView));
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
             this.btnSearch = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtTraySearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.notifiTakeout = new Guna.UI2.WinForms.Guna2NotificationPaint(this.components);
             this.btnTakeOut = new Guna.UI2.WinForms.Guna2GradientButton();
             this.notifiAddPlugin = new Guna.UI2.WinForms.Guna2NotificationPaint(this.components);
@@ -70,6 +70,7 @@
             this.guna2Elipse_tlpToolList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse_tlpTrayDetail = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse_pToolContent = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tlpHeader.SuspendLayout();
             this.pLeftContent.SuspendLayout();
             this.tlpTooList.SuspendLayout();
@@ -89,7 +90,8 @@
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpHeader.Controls.Add(this.btnSearch, 2, 0);
-            this.tlpHeader.Controls.Add(this.txtSearch, 0, 0);
+            this.tlpHeader.Controls.Add(this.txtTraySearch, 0, 0);
+            this.tlpHeader.Controls.Add(this.dateTimePicker1, 1, 0);
             this.tlpHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpHeader.Location = new System.Drawing.Point(0, 0);
             this.tlpHeader.Name = "tlpHeader";
@@ -118,29 +120,29 @@
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Tìm Kiếm";
             // 
-            // txtSearch
+            // txtTraySearch
             // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.BorderRadius = 8;
-            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearch.DefaultText = "";
-            this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Location = new System.Drawing.Point(3, 7);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PasswordChar = '\0';
-            this.txtSearch.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
-            this.txtSearch.PlaceholderText = "Tìm Kiếm";
-            this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(319, 36);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTraySearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTraySearch.BorderRadius = 8;
+            this.txtTraySearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTraySearch.DefaultText = "";
+            this.txtTraySearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTraySearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTraySearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTraySearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTraySearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTraySearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTraySearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTraySearch.Location = new System.Drawing.Point(3, 7);
+            this.txtTraySearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTraySearch.Name = "txtTraySearch";
+            this.txtTraySearch.PasswordChar = '\0';
+            this.txtTraySearch.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
+            this.txtTraySearch.PlaceholderText = "Tìm Kiếm";
+            this.txtTraySearch.SelectedText = "";
+            this.txtTraySearch.Size = new System.Drawing.Size(319, 36);
+            this.txtTraySearch.TabIndex = 0;
+            this.txtTraySearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // notifiTakeout
             // 
@@ -715,6 +717,13 @@
             this.guna2Elipse_pToolContent.BorderRadius = 20;
             this.guna2Elipse_pToolContent.TargetControl = this.pToolContent;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(328, 3);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 24);
+            this.dateTimePicker1.TabIndex = 2;
+            // 
             // ToolManagerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -749,7 +758,7 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
-        private Guna.UI2.WinForms.Guna2TextBox txtSearch;
+        private Guna.UI2.WinForms.Guna2TextBox txtTraySearch;
         private Guna.UI2.WinForms.Guna2GradientButton btnSearch;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiTakeout;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiAddPlugin;
@@ -792,5 +801,6 @@
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar2;
         private System.Windows.Forms.FlowLayoutPanel flpToolList;
         private System.Windows.Forms.FlowLayoutPanel flpTrayList;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
