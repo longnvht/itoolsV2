@@ -276,12 +276,6 @@ namespace itools_source.Repository
 
                 using (var mySqlDataReader = MySqlConnect.DataQuery(strQuery, mySqlConnection))
                 {
-                    //if (iLargestId is null)
-                    //{
-                    //    _log.Error("List ToolCode is Null!");
-                    //    return iLargestId;
-                    //}
-
                     if (mySqlDataReader.Read())
                     {
                         if (!mySqlDataReader.IsDBNull(0))
@@ -290,20 +284,64 @@ namespace itools_source.Repository
                         }
                         else
                         {
-                            _log.Info("ToolCode is NULL!: " + mySqlDataReader.FieldCount);
+                            _log.Info("ToolCode is NULL!");
                         }
                     }
 
                     mySqlDataReader.Close();
                     mySqlConnection.Close();
+
+                    if (iLargestId is null)
+                    {
+                        _log.Error("List ToolCode is Null!");
+                    }
                     return iLargestId;
                 }
             }
             catch (MySqlException e)
             {
                 _log.Error(e.Message);
+                return iLargestId;
             }
-            return iLargestId;
+        }
+
+        public bool UpdateToolMachineTray(ToolMachineTray toolMachineTray)
+        {
+            string strQuery = @"UPDATE toolsmachinetray
+	                                SET ToolCode = @ToolCode, Quantity = @Quantity, UpdatedDate = @UpdatedDate
+		                                WHERE TrayIndex = '" + toolMachineTray.strTrayIndex + "'" + "AND MachineCode = '" + toolMachineTray.strMachineCode + "'" + "AND ToolCode = '" + toolMachineTray.strToolCode + "'";
+            _log.Info(strQuery);
+            try
+            {
+                List<MySqlParameter> lstPar = new List<MySqlParameter>();
+                lstPar.Add(new MySqlParameter("@ToolCode", toolMachineTray.strToolCode));
+                lstPar.Add(new MySqlParameter("@Quantity", toolMachineTray.iQuantity));
+                lstPar.Add(new MySqlParameter("@UpdateDate", toolMachineTray.dtUpdateDate));
+
+                foreach (var parCheck in lstPar)
+                {
+                    if (parCheck.Value == null)
+                    {
+                        parCheck.Value = DBNull.Value;
+                    }
+                }
+
+                MySqlConnection mySqlConnection = MySqlConnect.Open();
+                bool bResult = MySqlConnect.CmdExecution(strQuery, lstPar.ToArray(), mySqlConnection);
+                mySqlConnection.Close();
+
+                if (bResult == true)
+                {
+                    _log.Info("Add ToolMachineTray Susccessfully!");
+                }
+
+                return bResult;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+                return false;
+            }
         }
     }
 }

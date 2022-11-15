@@ -55,6 +55,7 @@ namespace itools_source.Presenters
             }
             else
             {
+                bool bResult = false;
                 switch (_toolManagerView.cStatusButton)
                 {
                     case '0': // AddNew
@@ -86,27 +87,38 @@ namespace itools_source.Presenters
                             int? iToolMachineID = _toolRepository.GetTheLargestToolMachineTray() + 1;
                             
                             _toolManagerView.toolTrayCurrent.iToolsMachineTrayId = iToolMachineID.Value;
-                            _toolManagerView.toolTrayCurrent.strMachineCode = _toolManagerView.strToolCode;
+                            _toolManagerView.toolTrayCurrent.strMachineCode = "VM-5";
+                            _toolManagerView.toolTrayCurrent.strToolCode = _toolManagerView.strToolCode;
                             _toolManagerView.toolTrayCurrent.strTrayIndex = _toolManagerView.strTrayIndex;
                             _toolManagerView.toolTrayCurrent.iQuantity = _toolManagerView.iTotalQuantity;
                             _toolManagerView.toolTrayCurrent.dtCreateDate = null;
 
                             CultureInfo cul = new CultureInfo("vi-VN");
-                            cul.DateTimeFormat.ShortDatePattern = "yyyy/MM/dd";
-                            cul.DateTimeFormat.LongDatePattern = "yyyy/MM/dd";
+                            cul.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
+                            cul.DateTimeFormat.LongDatePattern = "yyyy-MM-dd";
                             cul.DateTimeFormat.ShortTimePattern = "HH:mm:ss";
                             cul.DateTimeFormat.LongTimePattern = "HH:mm:ss";
                             Thread.CurrentThread.CurrentCulture = cul;
+
                             _toolManagerView.toolTrayCurrent.dtUpdateDate = ServerTime.GetServerTime().ToLocalTime();
                             _toolManagerView.toolTrayCurrent.isActive = 1;
 
                             MessageBox.Show("ID: " + _toolManagerView.toolTrayCurrent.iToolsMachineTrayId +
                                             "\nMachine Code: " + _toolManagerView.toolTrayCurrent.strMachineCode +
+                                            "\nTool Code: " + _toolManagerView.toolTrayCurrent.strToolCode +
                                             "\nTray Index: " + _toolManagerView.toolTrayCurrent.strTrayIndex +
                                             "\nQuantity: " + _toolManagerView.toolTrayCurrent.iQuantity +
                                             "\nCreate Date: " + _toolManagerView.toolTrayCurrent.dtCreateDate +
                                             "\nUpdate Date: " + _toolManagerView.toolTrayCurrent.dtUpdateDate +
                                             "\nIsActive: " + _toolManagerView.toolTrayCurrent.isActive);
+
+                            bResult = _toolRepository.UpdateToolMachineTray(_toolManagerView.toolTrayCurrent);
+                            MessageBox.Show("bResult: " + bResult.ToString());
+                            if (bResult)
+                            {
+                                MessageBox.Show("bResult: " + bResult.ToString());
+                                //bResult = true;
+                            }
                         }
                         break;
                     case '1': // AddPlugin
@@ -115,9 +127,19 @@ namespace itools_source.Presenters
 
                         break;
                 }
-                MessageBox.Show("Lưu Thành Công!");
-                _toolManagerView.cStatusForm = '4';
-                _toolManagerView.SetStatusForm();
+
+                if (bResult == true)
+                {
+                    MessageBox.Show("Lưu Thành Công!");
+                    _toolManagerView.cStatusForm = '4';
+                    _toolManagerView.SetStatusForm();
+                }
+                else
+                {
+                    MessageBox.Show("Lưu Thất Bại!");
+                    _toolManagerView.cStatusForm = '4';
+                    _toolManagerView.SetStatusForm();
+                }
             }
         }
 

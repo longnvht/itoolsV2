@@ -17,5 +17,6 @@ namespace itools_source.Models.Interface
         IEnumerable<string> GetToolCodeList();
         bool AddToolMachineTray(ToolMachineTray toolMachineTray);
         int? GetTheLargestToolMachineTray();
+        bool UpdateToolMachineTray(ToolMachineTray toolMachineTray);
     }
 }

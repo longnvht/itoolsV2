@@ -70,7 +70,6 @@
             this.guna2Elipse_tlpToolList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse_tlpTrayDetail = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse_pToolContent = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tlpHeader.SuspendLayout();
             this.pLeftContent.SuspendLayout();
             this.tlpTooList.SuspendLayout();
@@ -91,7 +90,6 @@
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpHeader.Controls.Add(this.btnSearch, 2, 0);
             this.tlpHeader.Controls.Add(this.txtTraySearch, 0, 0);
-            this.tlpHeader.Controls.Add(this.dateTimePicker1, 1, 0);
             this.tlpHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpHeader.Location = new System.Drawing.Point(0, 0);
             this.tlpHeader.Name = "tlpHeader";
@@ -717,13 +715,6 @@
             this.guna2Elipse_pToolContent.BorderRadius = 20;
             this.guna2Elipse_pToolContent.TargetControl = this.pToolContent;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(328, 3);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 24);
-            this.dateTimePicker1.TabIndex = 2;
-            // 
             // ToolManagerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -801,6 +792,5 @@
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar2;
         private System.Windows.Forms.FlowLayoutPanel flpToolList;
         private System.Windows.Forms.FlowLayoutPanel flpTrayList;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

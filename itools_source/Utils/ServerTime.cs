@@ -44,7 +44,12 @@ namespace itools_source.Utils
                 return DateTime.MinValue;
             }
 
-            MessageBox.Show(strTime);
+            //MessageBox.Show(strTime + ", " + strTime.Length.ToString());
+            if (strTime.Length <= 38)
+            {
+                return DateTime.MinValue;
+            }
+
             if (strTime.Substring(38, 9) != "UTC(NIST)")
             {
                 return DateTime.MinValue;
