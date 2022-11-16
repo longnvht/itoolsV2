@@ -1,5 +1,6 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Guna.UI2.WinForms;
+using itools_source.Models;
 using itools_source.Models.Interface;
 using itools_source.Presenter;
 using itools_source.Repository;
@@ -56,72 +57,58 @@ namespace itools_source.Presenters
             else
             {
                 bool bResult = false;
+                string strTrayIndexTemp = "TRAY_" + _toolManagerView.strTrayIndex;
+
+                _toolManagerView.toolTrayCurrent.strMachineCode = _strMachineCode;
+                _toolManagerView.toolTrayCurrent.strToolCode = _toolManagerView.strToolCode;
+                _toolManagerView.toolTrayCurrent.strTrayIndex = strTrayIndexTemp;
+                _toolManagerView.toolTrayCurrent.iQuantity = _toolManagerView.iTotalQuantity;
+                _toolManagerView.toolTrayCurrent.dtCreateDate = null;
+
+                CultureInfo cul = new CultureInfo("vi-VN");
+                cul.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
+                cul.DateTimeFormat.LongDatePattern = "yyyy-MM-dd";
+                cul.DateTimeFormat.ShortTimePattern = "HH:mm:ss";
+                cul.DateTimeFormat.LongTimePattern = "HH:mm:ss";
+                Thread.CurrentThread.CurrentCulture = cul;
+
+                _toolManagerView.toolTrayCurrent.dtUpdateDate = ServerTime.GetServerTime().ToLocalTime();
+                _toolManagerView.toolTrayCurrent.isActive = 1;
+
+                MessageBox.Show("ID: " + _toolManagerView.toolTrayCurrent.iToolsMachineTrayId +
+                                "\nMachine Code: " + _toolManagerView.toolTrayCurrent.strMachineCode +
+                                "\nTool Code: " + _toolManagerView.toolTrayCurrent.strToolCode +
+                                "\nTray Index: " + _toolManagerView.toolTrayCurrent.strTrayIndex +
+                                "\nQuantity: " + _toolManagerView.toolTrayCurrent.iQuantity +
+                                "\nCreate Date: " + _toolManagerView.toolTrayCurrent.dtCreateDate +
+                                "\nUpdate Date: " + _toolManagerView.toolTrayCurrent.dtUpdateDate +
+                                "\nIsActive: " + _toolManagerView.toolTrayCurrent.isActive);
+
                 switch (_toolManagerView.cStatusButton)
                 {
                     case '0': // AddNew
-                        if (_toolManagerView.iOperateQuantity == 0)
+                        if (_toolManagerView.iOperateQuantity > 10)
                         {
-                            MessageBox.Show("Bạn Chưa Nhập Số Lượng!");
-                        }
-                        else if (_toolManagerView.iOperateQuantity > 10)
-                        {
-                            MessageBox.Show("Số Lượng Tối Đa Thêm Vào Là 10!");
+                            MessageBox.Show("Chỉ Thêm Tối Đa 10 Tool!");
                         }
                         else
                         {
-                            /*
-                             * 1. ToolsMachineTrayID
-                             * 2. MachineCode
-                             * 3. ToolCode
-                             * 4. TrayIndex
-                             * 5. Quantity
-                             * 6. CreateDate
-                             * 7. UpdateDate
-                             * 8. IsActive
-                             */
-                            if (_toolRepository.GetTheLargestToolMachineTray() is null)
+                            if (!_toolRepository.IsMachineTray(_strMachineCode, strTrayIndexTemp))
                             {
-                                _log.Info("ToolMachineID is null!");
+                                _log.Info("Tool is not Manchine and Tray!");
                                 return;
                             }
-                            int? iToolMachineID = _toolRepository.GetTheLargestToolMachineTray() + 1;
-                            
-                            _toolManagerView.toolTrayCurrent.iToolsMachineTrayId = iToolMachineID.Value;
-                            _toolManagerView.toolTrayCurrent.strMachineCode = "VM-5";
-                            _toolManagerView.toolTrayCurrent.strToolCode = _toolManagerView.strToolCode;
-                            _toolManagerView.toolTrayCurrent.strTrayIndex = _toolManagerView.strTrayIndex;
-                            _toolManagerView.toolTrayCurrent.iQuantity = _toolManagerView.iTotalQuantity;
-                            _toolManagerView.toolTrayCurrent.dtCreateDate = null;
 
-                            CultureInfo cul = new CultureInfo("vi-VN");
-                            cul.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
-                            cul.DateTimeFormat.LongDatePattern = "yyyy-MM-dd";
-                            cul.DateTimeFormat.ShortTimePattern = "HH:mm:ss";
-                            cul.DateTimeFormat.LongTimePattern = "HH:mm:ss";
-                            Thread.CurrentThread.CurrentCulture = cul;
-
-                            _toolManagerView.toolTrayCurrent.dtUpdateDate = ServerTime.GetServerTime().ToLocalTime();
-                            _toolManagerView.toolTrayCurrent.isActive = 1;
-
-                            MessageBox.Show("ID: " + _toolManagerView.toolTrayCurrent.iToolsMachineTrayId +
-                                            "\nMachine Code: " + _toolManagerView.toolTrayCurrent.strMachineCode +
-                                            "\nTool Code: " + _toolManagerView.toolTrayCurrent.strToolCode +
-                                            "\nTray Index: " + _toolManagerView.toolTrayCurrent.strTrayIndex +
-                                            "\nQuantity: " + _toolManagerView.toolTrayCurrent.iQuantity +
-                                            "\nCreate Date: " + _toolManagerView.toolTrayCurrent.dtCreateDate +
-                                            "\nUpdate Date: " + _toolManagerView.toolTrayCurrent.dtUpdateDate +
-                                            "\nIsActive: " + _toolManagerView.toolTrayCurrent.isActive);
-
-                            bResult = _toolRepository.UpdateToolMachineTray(_toolManagerView.toolTrayCurrent);
+                            bResult = _toolRepository.AddNewToolMachineTray(_toolManagerView.toolTrayCurrent);
                             MessageBox.Show("bResult: " + bResult.ToString());
                             if (bResult)
                             {
-                                MessageBox.Show("bResult: " + bResult.ToString());
-                                //bResult = true;
+                                bResult = true;
                             }
                         }
                         break;
                     case '1': // AddPlugin
+
                         break;
                     case '2': // TakeOut
 
@@ -130,9 +117,47 @@ namespace itools_source.Presenters
 
                 if (bResult == true)
                 {
-                    MessageBox.Show("Lưu Thành Công!");
-                    _toolManagerView.cStatusForm = '4';
-                    _toolManagerView.SetStatusForm();
+                    bool bTemp = false;
+                    if (_toolManagerView.toolTrayCurrent != null)
+                    {
+                        WorkingTransaction workingTransaction = new WorkingTransaction();
+                        workingTransaction.dtTransactionDate = _toolManagerView.toolTrayCurrent.dtUpdateDate;
+                        workingTransaction.strMachineCode = _strMachineCode;
+                        workingTransaction.strCompanyCode = "VINAMOILTOOLS";
+                        workingTransaction.strAssessorId = Program.sessionLogin["Id"].ToString();
+                        workingTransaction.strJobNumber = null;
+                        workingTransaction.strOPNumber = null;
+                        workingTransaction.strToolCode = _toolManagerView.toolTrayCurrent.strToolCode;
+                        workingTransaction.strTrayIndex = _toolManagerView.toolTrayCurrent.strTrayIndex;
+                        workingTransaction.iQuantity = _toolManagerView.toolTrayCurrent.iQuantity;
+                        workingTransaction.strTransactionStatus = "Complete";
+
+                        if (_toolManagerView.cStatusButton == '0')
+                        {
+                            workingTransaction.strTransactiomType = "Add New";
+                        }
+                        else if (_toolManagerView.cStatusButton == '1')
+                        {
+                            workingTransaction.strTransactiomType = "Add Plugin";
+                        }
+                        else
+                        {
+                            workingTransaction.strTransactiomType = "Take Out";
+                        }
+
+                        bTemp = _toolRepository.AddWorkingTransaction(workingTransaction);
+                    }
+
+                    if (bTemp)
+                    {
+                        MessageBox.Show("Lưu Thành Công!");
+                        _toolManagerView.cStatusForm = '4';
+                        _toolManagerView.SetStatusForm();
+                    }
+                    else
+                    {
+                        MessageBox.Show(bTemp.ToString());
+                    }
                 }
                 else
                 {
@@ -295,8 +320,8 @@ namespace itools_source.Presenters
                         _toolManagerView.SetStatusForm();
                     }
 
-                    string strMachine = "VM-6";
-                    _toolManagerView.toolTrayCurrent = _toolRepository.GetToolByTrayIndex(strTrayIndex, strMachine);
+                    _strMachineCode = "VM-1";
+                    _toolManagerView.toolTrayCurrent = _toolRepository.GetToolByTrayIndex(strTrayIndex, _strMachineCode);
                     if (_toolManagerView.toolTrayCurrent != null)
                     {
                         _toolManagerView.strTrayIndex = btn.Text.Split(' ').GetValue(1).ToString();
@@ -321,6 +346,11 @@ namespace itools_source.Presenters
             }
         }
 
+        private void _toolManagerView_txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void _toolManagerView_btnSearch_Click(object sender, EventArgs e)
         {
             
@@ -341,11 +371,6 @@ namespace itools_source.Presenters
             }
         }
 
-        private void _toolManagerView_txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void _toolManagerView_btnTakeOut_Click(object sender, EventArgs e)
         {
             _toolManagerView.cStatusButton = '2';
@@ -360,6 +385,7 @@ namespace itools_source.Presenters
 
         private IToolManagerView _toolManagerView;
         private IToolRepository _toolRepository;
+        private string _strMachineCode = "VM-1";
         #endregion
 
         #region Method

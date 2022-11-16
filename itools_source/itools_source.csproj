@@ -127,6 +127,7 @@
     <Compile Include="Models\Interface\IJobRepository.cs" />
     <Compile Include="Models\Interface\IRolesRepository.cs" />
     <Compile Include="Models\Interface\IToolRepository.cs" />
+    <Compile Include="Models\Interface\IWorkingTransactionRepository.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Machine.cs" />
     <Compile Include="Models\PartOP.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Repository\JobRepository.cs" />
     <Compile Include="Repository\RolesRepository.cs" />
     <Compile Include="Repository\ToolRepository.cs" />
+    <Compile Include="Repository\WorkingTransactionRepository.cs" />
     <Compile Include="Utils\Config.cs" />
     <Compile Include="Utils\Encryption.cs" />
     <Compile Include="Utils\MySqlConnect.cs" />

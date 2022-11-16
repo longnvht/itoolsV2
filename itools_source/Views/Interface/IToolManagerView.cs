@@ -11,6 +11,7 @@ namespace itools_source.Views.Interface
     public interface IToolManagerView
     {
         #region Fields
+        string strMachineCode { get; set; }
         string strTrayIndex { get; set; }
         string strToolCode { get; set; }
         int iCurrentQuantity { get; set; }

@@ -151,6 +151,7 @@ namespace itools_source.Views
         public char cStatusForm { get; set; }
         public char cStatusButton { get; set; }
         public List<string> toolCodeList { get; set; }
+        public string strMachineCode { get; set; }
         #endregion
 
         #region Method

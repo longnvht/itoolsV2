@@ -34,7 +34,7 @@ namespace itools_source.Models
 
         private string _strCompanyCode;
 
-        public string StrCompanyCode
+        public string strCompanyCode
         {
             get { return _strCompanyCode; }
             set { _strCompanyCode = value; }
@@ -48,13 +48,22 @@ namespace itools_source.Models
             set { _strAssessorId = value; }
         }
 
-        private string _strWOCode;
+        private string _strJobNumber;
 
-        public string strWOCode
+        public string strJobNumber
         {
-            get { return _strWOCode; }
-            set { _strWOCode = value; }
+            get { return _strJobNumber; }
+            set { _strJobNumber = value; }
         }
+
+        private string _strOPNumber;
+
+        public string strOPNumber
+        {
+            get { return _strOPNumber; }
+            set { _strOPNumber = value; }
+        }
+
 
         private string _strToolCode;
 
@@ -80,28 +89,12 @@ namespace itools_source.Models
             set { _iQuantity = value; }
         }
 
-        private DateTime _dtUpdateDate;
-
-        public DateTime dtUpdateDate
-        {
-            get { return _dtUpdateDate; }
-            set { _dtUpdateDate = value; }
-        }
-
         private string _strTransactionStatus;
 
-        public string StrTransactionStatus
+        public string strTransactionStatus
         {
             get { return _strTransactionStatus; }
             set { _strTransactionStatus = value; }
-        }
-
-        private string _strRespondMessge;
-
-        public string strRespondMessge
-        {
-            get { return _strRespondMessge; }
-            set { _strRespondMessge = value; }
         }
 
         private string _strTransactiomType;
