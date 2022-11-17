@@ -121,12 +121,11 @@
       <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Assessor.cs" />
-    <Compile Include="Models\CompanyMachine.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Interface\IAssessorRepository.cs" />
     <Compile Include="Models\Interface\IJobRepository.cs" />
     <Compile Include="Models\Interface\IRolesRepository.cs" />
-    <Compile Include="Models\Interface\IToolRepository.cs" />
+    <Compile Include="Models\Interface\IToolMachineTrayRepository.cs" />
     <Compile Include="Models\Interface\IWorkingTransactionRepository.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Machine.cs" />
@@ -136,7 +135,6 @@
     <Compile Include="Models\Slock.cs" />
     <Compile Include="Models\Tool.cs" />
     <Compile Include="Models\ToolForOP.cs" />
-    <Compile Include="Models\ToolMachine.cs" />
     <Compile Include="Models\ToolMachineTray.cs" />
     <Compile Include="Models\WorkingTransaction.cs" />
     <Compile Include="Presenters\JobPresenter.cs" />
@@ -149,7 +147,7 @@
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\JobRepository.cs" />
     <Compile Include="Repository\RolesRepository.cs" />
-    <Compile Include="Repository\ToolRepository.cs" />
+    <Compile Include="Repository\ToolMachineTrayRepository.cs" />
     <Compile Include="Repository\WorkingTransactionRepository.cs" />
     <Compile Include="Utils\Config.cs" />
     <Compile Include="Utils\Encryption.cs" />

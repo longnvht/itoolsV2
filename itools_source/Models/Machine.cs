@@ -79,5 +79,13 @@ namespace itools_source.Models
 			get { return _isActive; }
 			set { _isActive = value; }
 		}
-	}
+
+        private int _iCompanyId;
+
+        public int iCompanyId
+        {
+            get { return _iCompanyId; }
+            set { _iCompanyId = value; }
+        }
+    }
 }

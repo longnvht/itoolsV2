@@ -14,9 +14,9 @@ namespace itools_source.Views.Interface
         string strMachineCode { get; set; }
         string strTrayIndex { get; set; }
         string strToolCode { get; set; }
-        int iCurrentQuantity { get; set; }
-        int iOperateQuantity { get; set; }
-        int iTotalQuantity { get; set; }
+        int? iCurrentQuantity { get; set; }
+        int? iOperateQuantity { get; set; }
+        int? iTotalQuantity { get; set; }
         string strTraySearch { get; set; }
         ToolMachineTray toolTrayCurrent { get; set; }
         bool btnAddNewEnable { get; set; }

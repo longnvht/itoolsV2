@@ -66,7 +66,7 @@ namespace itools_source.Presenters
                 if (strRoleName == "Admin")
                 {
                     IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
-                    IToolRepository toolRepository = new ToolRepository();
+                    IToolMachineTrayRepository toolRepository = new ToolMachineTrayRepository();
                     new ToolManagerPresenter(toolManagerView, toolRepository);
                 }
                 else

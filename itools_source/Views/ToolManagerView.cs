@@ -77,7 +77,7 @@ namespace itools_source.Views
             }
             set => txtTrayIndex.Text = value;
         }
-        public int iCurrentQuantity
+        public int? iCurrentQuantity
         {
             get
             {
@@ -89,7 +89,7 @@ namespace itools_source.Views
             }
             set => txtCurrentQuantity.Text = value.ToString();
         }
-        public int iOperateQuantity
+        public int? iOperateQuantity
         {
             get
             {
@@ -101,7 +101,7 @@ namespace itools_source.Views
             }
             set => txtOperateQuantity.Text = value.ToString();
         }
-        public int iTotalQuantity
+        public int? iTotalQuantity
         {
             get
             {
@@ -201,15 +201,15 @@ namespace itools_source.Views
                     this.btnAddNew.Enabled = false;
                     this.btnSave.Enabled = false;
 
-                    //this.iCurrentQuantity = 0;
-                    this.iOperateQuantity = 0;
-                    //this.strTrayIndex = 0;
-                    //this.strToolCode = string.Empty;
+                    this.iCurrentQuantity = null;
+                    this.iOperateQuantity = null;
+                    this.strTrayIndex = null;
+                    this.strToolCode = null;
 
                     //this.txtTrayIndex.Text = string.Empty;
                     //this.txtToolCode.Text = string.Empty;
                     //this.txtCurrentQuantity.Text = string.Empty;
-                    this.txtOperateQuantity.Text = string.Empty;
+                    //this.txtOperateQuantity.Text = string.Empty;
                     this.txtTotalQuantity.Text = string.Empty;
                     break;
                 case '5':
