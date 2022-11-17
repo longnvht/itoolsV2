@@ -334,7 +334,7 @@ namespace itools_source.Presenters
                     MessageBox.Show("Error: Không Lấy Được Số Lượng Từ Cơ Sở Dữ Liệu!");
                     _log.Error("Quantity Error: " + _iCurrentQuantity.ToString()); // -3
                     _iCurrentQuantity = 0;
-                    _toolManagerView.iCurrentQuantity = _iCurrentQuantity;
+                    _toolManagerView.iCurrentQuantity = null;
                     _toolManagerView.strTrayIndex = string.Empty;
                     _toolManagerView.strToolCode = string.Empty;
                 }

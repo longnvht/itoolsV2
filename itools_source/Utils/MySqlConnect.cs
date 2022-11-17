@@ -100,5 +100,36 @@ namespace itools_source.Utils
                 return false;
             }
         }
+
+        public static bool CmdExecutionProcedure(string strStoredProcedure, MySqlConnection mySqlConn)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(strStoredProcedure, mySqlConn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                return (cmd.ExecuteNonQuery() != 0);
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+                return false;
+            }
+        }
+
+        public static bool CmdExecutionProcedure(string strStoredProcedure, MySqlParameter[] parameter, MySqlConnection mySqlConn)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(strStoredProcedure, mySqlConn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddRange(parameter);
+                return (cmd.ExecuteNonQuery() != 0);
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+                return false;
+            }
+        }
     }
 }
