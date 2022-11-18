@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace itools_source.Models.Interface
 {
-    public interface IJobRepository
+    public interface IGetToolRepository
     {
     }
 }

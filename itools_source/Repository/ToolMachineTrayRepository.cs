@@ -3,11 +3,13 @@ using itools_source.Models.Interface;
 using itools_source.Utils;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls.WebParts;
 
 namespace itools_source.Repository
 {
@@ -114,7 +116,7 @@ namespace itools_source.Repository
             string strSelect = @"SELECT DISTINCT *
 	                                FROM toolsmachinetray
 				                        where toolsmachinetray.TrayIndex = '" + strTrayIndex + "'" +
-                                            "AND toolsmachinetray.MachineCode = '" + strMachineCode + "'";
+                                            " AND toolsmachinetray.MachineCode = '" + strMachineCode + "'";
             _log.Info(strSelect);
             try
             {
@@ -226,31 +228,6 @@ namespace itools_source.Repository
                         return toolCodeList;
                     }
                 }
-
-                //MySqlDataReader mySqlDataReader = MySqlConnect.DataQuery(strSelect, mySqlConnection);
-
-                //if (listToolCode == null)
-                //{
-                //    listToolCode = new List<string>();
-                //}
-
-                //string strToolCode = string.Empty;
-                //while (mySqlDataReader.Read())
-                //{
-                //    if (!mySqlDataReader.IsDBNull(0))
-                //    {
-                //        strToolCode = mySqlDataReader.GetString(0);
-                //        //listToolCode.
-                //    }
-                //    else
-                //    {
-                //        _log.Info("ToolCode is NULL!: " + mySqlDataReader.FieldCount);
-                //    }
-                //}
-
-                //mySqlDataReader.Close();
-                //mySqlConnection.Close();
-                //return listToolCode;
             }
             catch (MySqlException e)
             {
@@ -461,6 +438,48 @@ namespace itools_source.Repository
                 _log.Error(e.Message);
                 return iLargestId;
             }
+        }
+
+        public Hashtable GetTrayAndToolCode(string strMachine)
+        {
+            Hashtable hashTrayToolCode = null;
+
+            string strSelect = @"SELECT TrayIndex, ToolCode
+	                                FROM toolsmachinetray
+		                                WHERE MachineCode = '" + strMachine + "'";
+            _log.Info(strSelect);
+
+            try
+            {
+                using (MySqlConnection mySqlConnection = MySqlConnect.Open())
+                {
+                    using (MySqlDataReader mySqlDataReader = MySqlConnect.DataQuery(strSelect, mySqlConnection))
+                    {
+                        while (mySqlDataReader.Read())
+                        {
+                            if (hashTrayToolCode == null)
+                            {
+                                hashTrayToolCode = new Hashtable();
+                            }
+
+                            if (!mySqlDataReader.IsDBNull(0) && !mySqlDataReader.IsDBNull(1))
+                            {
+                                hashTrayToolCode.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
+                            }
+                        }
+
+                        mySqlDataReader.Close();
+                    }
+                    mySqlConnection.Close();
+                }
+
+                return hashTrayToolCode;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return hashTrayToolCode;
         }
     }
 }

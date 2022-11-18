@@ -56,6 +56,11 @@ namespace itools_source.Models
             set { _strLastName = value; }
         }
 
+        public override string ToString()
+        {
+            return _strFirstName + " " + _strLastName;
+        }
+
         private string _strEmailAddress;
 
         public string strEmailAddress

@@ -11,6 +11,8 @@ using itools_source.Models;
 using itools_source.Repository;
 using itools_source.Utils;
 using System.Configuration;
+using System.Globalization;
+using System.Threading;
 
 //[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -27,6 +29,13 @@ namespace itools_source
         static void Main()
         {
             log4net.Config.XmlConfigurator.Configure();
+
+            CultureInfo cul = new CultureInfo("vi-VN");
+            cul.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
+            cul.DateTimeFormat.LongDatePattern = "yyyy-MM-dd";
+            cul.DateTimeFormat.ShortTimePattern = "HH:mm:ss";
+            cul.DateTimeFormat.LongTimePattern = "HH:mm:ss";
+            Thread.CurrentThread.CurrentCulture = cul;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

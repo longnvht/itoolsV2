@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace itools_source.Repository
 {
-    public class JobRepository : IJobRepository
+    public class JobRepository : IGetToolRepository
     {
     }
 }

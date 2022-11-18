@@ -1,5 +1,6 @@
 ﻿using itools_source.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,10 +29,12 @@ namespace itools_source.Views.Interface
         char cStatusForm { get; set; }
         char cStatusButton { get; set; }
         List<string> toolCodeList { get; set; }
+        Hashtable hashTrayToolCode { get; set; }
         #endregion
 
         #region Events
-        event EventHandler txtSearch_TextChanged;
+        event EventHandler ToolManagerView_Load;
+        event EventHandler txtTraySearch_TextChanged;
         event EventHandler btnSearch_Click;
         event EventHandler btnflpTrayList_Click;
         event KeyPressEventHandler txtOperateQuantity_KeyPress;
@@ -59,6 +62,7 @@ namespace itools_source.Views.Interface
         void CancelListTool();
         void SetCheckedButton(string strContinueButton);
         bool CheckedSelectTool();
+        void SearchTrayAndTool();
         #endregion
     }
 }

@@ -145,6 +145,7 @@
             this.txtPassword.IconRightOffset = new System.Drawing.Point(12, 0);
             this.txtPassword.IconRightSize = new System.Drawing.Size(24, 24);
             this.txtPassword.Location = new System.Drawing.Point(97, 143);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
@@ -172,6 +173,7 @@
             this.txtUserName.IconLeftOffset = new System.Drawing.Point(12, 0);
             this.txtUserName.IconLeftSize = new System.Drawing.Size(24, 24);
             this.txtUserName.Location = new System.Drawing.Point(101, 62);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PasswordChar = '\0';
             this.txtUserName.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));

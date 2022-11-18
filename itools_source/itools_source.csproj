@@ -123,7 +123,7 @@
     <Compile Include="Models\Assessor.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Interface\IAssessorRepository.cs" />
-    <Compile Include="Models\Interface\IJobRepository.cs" />
+    <Compile Include="Models\Interface\IGetToolRepository.cs" />
     <Compile Include="Models\Interface\IRolesRepository.cs" />
     <Compile Include="Models\Interface\IToolMachineTrayRepository.cs" />
     <Compile Include="Models\Interface\IWorkingTransactionRepository.cs" />
@@ -194,6 +194,12 @@
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\OPView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\OPView.Designer.cs">
+      <DependentUpon>OPView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ToolManagerView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\OPView.resx">
+      <DependentUpon>OPView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ToolManagerView.resx">
       <DependentUpon>ToolManagerView.cs</DependentUpon>

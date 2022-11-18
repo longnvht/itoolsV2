@@ -459,12 +459,12 @@
             this.tlpTrayDetail.Location = new System.Drawing.Point(0, 0);
             this.tlpTrayDetail.Name = "tlpTrayDetail";
             this.tlpTrayDetail.RowCount = 6;
-            this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
             this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28F));
             this.tlpTrayDetail.Size = new System.Drawing.Size(585, 344);
             this.tlpTrayDetail.TabIndex = 26;
             // 
@@ -482,7 +482,7 @@
             this.txtTrayIndex.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTrayIndex.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTrayIndex.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTrayIndex.Location = new System.Drawing.Point(236, 72);
+            this.txtTrayIndex.Location = new System.Drawing.Point(236, 45);
             this.txtTrayIndex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTrayIndex.Name = "txtTrayIndex";
             this.txtTrayIndex.PasswordChar = '\0';
@@ -506,7 +506,7 @@
             this.txtToolCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtToolCode.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtToolCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtToolCode.Location = new System.Drawing.Point(236, 123);
+            this.txtToolCode.Location = new System.Drawing.Point(236, 96);
             this.txtToolCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtToolCode.Name = "txtToolCode";
             this.txtToolCode.PasswordChar = '\0';
@@ -530,7 +530,7 @@
             this.txtCurrentQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCurrentQuantity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrentQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCurrentQuantity.Location = new System.Drawing.Point(236, 174);
+            this.txtCurrentQuantity.Location = new System.Drawing.Point(236, 147);
             this.txtCurrentQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCurrentQuantity.Name = "txtCurrentQuantity";
             this.txtCurrentQuantity.PasswordChar = '\0';
@@ -554,7 +554,7 @@
             this.txtOperateQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtOperateQuantity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOperateQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtOperateQuantity.Location = new System.Drawing.Point(236, 225);
+            this.txtOperateQuantity.Location = new System.Drawing.Point(236, 198);
             this.txtOperateQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtOperateQuantity.Name = "txtOperateQuantity";
             this.txtOperateQuantity.PasswordChar = '\0';
@@ -569,9 +569,9 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(197, 122);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(197, 95);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(33, 45);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(33, 22);
             this.guna2HtmlLabel2.TabIndex = 5;
             this.guna2HtmlLabel2.Text = "Tool";
             this.guna2HtmlLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -581,9 +581,9 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(197, 71);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(197, 44);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(33, 45);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(33, 22);
             this.guna2HtmlLabel1.TabIndex = 6;
             this.guna2HtmlLabel1.Text = "Tray";
             this.guna2HtmlLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -593,9 +593,9 @@
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(97, 173);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(97, 146);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(133, 45);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(133, 22);
             this.guna2HtmlLabel3.TabIndex = 7;
             this.guna2HtmlLabel3.Text = "Số Lượng Hiện Có";
             this.guna2HtmlLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -605,9 +605,9 @@
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(88, 224);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(88, 197);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(142, 45);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(142, 22);
             this.guna2HtmlLabel4.TabIndex = 8;
             this.guna2HtmlLabel4.Text = "Số Lượng Thao Tác";
             this.guna2HtmlLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -626,7 +626,7 @@
             this.txtTotalQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTotalQuantity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotalQuantity.Location = new System.Drawing.Point(236, 276);
+            this.txtTotalQuantity.Location = new System.Drawing.Point(236, 249);
             this.txtTotalQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTotalQuantity.Name = "txtTotalQuantity";
             this.txtTotalQuantity.PasswordChar = '\0';
@@ -641,9 +641,9 @@
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel5.Dock = System.Windows.Forms.DockStyle.Right;
             this.guna2HtmlLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(118, 275);
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(118, 248);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(112, 66);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(112, 22);
             this.guna2HtmlLabel5.TabIndex = 11;
             this.guna2HtmlLabel5.Text = "Số Lượng Tổng";
             this.guna2HtmlLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;

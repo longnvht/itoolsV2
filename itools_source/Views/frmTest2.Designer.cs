@@ -40,6 +40,7 @@
             this.pLeftContent = new System.Windows.Forms.Panel();
             this.VScrollBar_flpListTray = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.flpListTray = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.tlpRightContent = new System.Windows.Forms.TableLayoutPanel();
             this.tlpToolAddNew = new System.Windows.Forms.TableLayoutPanel();
             this.tlpToolAddNewFooter = new System.Windows.Forms.TableLayoutPanel();
@@ -60,7 +61,6 @@
             this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.tlpHeader.SuspendLayout();
             this.tlpFooter.SuspendLayout();
             this.tlpContent.SuspendLayout();
@@ -289,6 +289,26 @@
             this.flpListTray.Name = "flpListTray";
             this.flpListTray.Size = new System.Drawing.Size(303, 344);
             this.flpListTray.TabIndex = 0;
+            // 
+            // guna2GradientButton1
+            // 
+            this.guna2GradientButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2GradientButton1.Animated = true;
+            this.guna2GradientButton1.AutoRoundedCorners = true;
+            this.guna2GradientButton1.BorderRadius = 22;
+            this.guna2GradientButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientButton1.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2GradientButton1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GradientButton1.ForeColor = System.Drawing.Color.White;
+            this.guna2GradientButton1.Location = new System.Drawing.Point(156, 3);
+            this.guna2GradientButton1.Name = "guna2GradientButton1";
+            this.guna2GradientButton1.Size = new System.Drawing.Size(144, 47);
+            this.guna2GradientButton1.TabIndex = 7;
+            this.guna2GradientButton1.Text = "Lưu";
             // 
             // tlpRightContent
             // 
@@ -648,26 +668,6 @@
             this.guna2TextBox4.SelectedText = "";
             this.guna2TextBox4.Size = new System.Drawing.Size(198, 43);
             this.guna2TextBox4.TabIndex = 9;
-            // 
-            // guna2GradientButton1
-            // 
-            this.guna2GradientButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2GradientButton1.Animated = true;
-            this.guna2GradientButton1.AutoRoundedCorners = true;
-            this.guna2GradientButton1.BorderRadius = 22;
-            this.guna2GradientButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientButton1.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2GradientButton1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2GradientButton1.ForeColor = System.Drawing.Color.White;
-            this.guna2GradientButton1.Location = new System.Drawing.Point(156, 3);
-            this.guna2GradientButton1.Name = "guna2GradientButton1";
-            this.guna2GradientButton1.Size = new System.Drawing.Size(144, 47);
-            this.guna2GradientButton1.TabIndex = 7;
-            this.guna2GradientButton1.Text = "Lưu";
             // 
             // frmTest2
             // 

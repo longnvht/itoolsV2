@@ -16,5 +16,6 @@ namespace itools_source.Models.Interface
         bool IsMachineTray(string strMachineCode, string strTrayIndex);
         bool AddWorkingTransaction(WorkingTransaction workingTransaction);
         int? GetTheLargestToolMachineTray();
+        System.Collections.Hashtable GetTrayAndToolCode(string strMachine);
     }
 }

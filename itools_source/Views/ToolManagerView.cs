@@ -6,6 +6,7 @@ using itools_source.Utils;
 using itools_source.Views.Interface;
 using Org.BouncyCastle.Bcpg.OpenPgp;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,8 @@ namespace itools_source.Views
         {
             InitializeComponent();
 
-            txtTraySearch.TextChanged += delegate { txtSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
+            this.Load += delegate { ToolManagerView_Load?.Invoke(this, EventArgs.Empty); };
+            txtTraySearch.TextChanged += delegate { txtTraySearch_TextChanged?.Invoke(this, EventArgs.Empty); };
             btnSave.Click += delegate { btnSave_Click?.Invoke(this, EventArgs.Empty); };
             txtOperateQuantity.KeyPress += (s, e) => { txtOperateQuantity_KeyPress(s, e); };
             txtOperateQuantity.TextChanged += delegate { txtOperateQuantity_TextChanged?.Invoke(this, EventArgs.Empty); };
@@ -40,14 +42,8 @@ namespace itools_source.Views
             btnAddNew.Click += delegate { btnAddNew_Click?.Invoke(this, EventArgs.Empty); };
             btnSearch.Click += delegate { btnSearch_Click?.Invoke(this, EventArgs.Empty); };
 
-            CreateButtonTray();
-            this.flpTrayList.PerformLayout();
-            guna2VScrollBar_flpTrayList.Size = new System.Drawing.Size(30, flpTrayList.Height);
-            cStatusForm = '3';
-            SetStatusForm();
-            tlpTooList.Visible = false;
-            tlpTooList.Dock = DockStyle.Right;
-            tlpTooList.BringToFront();
+            //this.flpTrayList.PerformLayout();
+            //guna2VScrollBar_flpTrayList.Size = new System.Drawing.Size(30, flpTrayList.Height);
         }
 
         #region Fields
@@ -152,9 +148,33 @@ namespace itools_source.Views
         public char cStatusButton { get; set; }
         public List<string> toolCodeList { get; set; }
         public string strMachineCode { get; set; }
+        public Hashtable hashTrayToolCode { get; set; }
         #endregion
 
         #region Method
+        public void SearchTrayAndTool()
+        {
+            if (string.IsNullOrEmpty(strTraySearch))
+            {
+                flpTrayList.Controls.AddRange(lstButton.ToArray());
+                return;
+            }
+            string strSeacrhTest = txtTraySearch.Text.ToLower();
+
+            flpTrayList.Controls.Clear();
+            List<Guna2Button> lstSearch = new List<Guna2Button>();
+            int iCount = lstButton.Count;
+            for (int i = 0; i < iCount; i++)
+            {
+                string strTextButton = lstButton[i].Text.ToLower();
+                if (strTextButton.Contains(strSeacrhTest))
+                {
+                    lstSearch.Add(lstButton[i]);
+                }
+            }
+            flpTrayList.Controls.AddRange(lstSearch.ToArray());
+        }
+
         public void SetStatusForm()
         {
             this.txtOperateQuantity.Enabled = false;
@@ -193,6 +213,10 @@ namespace itools_source.Views
                     this.txtToolCode.Enabled = false;
                     this.txtCurrentQuantity.Enabled = false;
                     this.txtTotalQuantity.Enabled = false;
+
+                    this.tlpTooList.Visible = false;
+                    this.tlpTooList.Dock = DockStyle.Right;
+                    this.tlpTooList.BringToFront();
                     break;
                 case '4': // Save
                     this.txtOperateQuantity.Enabled = false;
@@ -267,20 +291,21 @@ namespace itools_source.Views
             }
         }
 
-        private void CreateButtonTray()
+        private List<Guna2Button> lstButton = new List<Guna2Button>();
+        public void CreateButtonTray(Hashtable hashtable)
         {
-            for (int i = 1; i < 61; i++)
+            SortedDictionary<string, string> map = new SortedDictionary<string, string>();
+            foreach (DictionaryEntry item in hashtable)
+            {
+                map.Add(item.Key.ToString(), item.Value.ToString());
+            }
+
+            foreach (var item in map)
             {
                 Guna2Button btn = new Guna2Button();
                 btn.Size = new Size(280, 60);
-                if (i < 10)
-                {
-                    btn.Text = "TRAY 0" + i.ToString();
-                }
-                else
-                {
-                    btn.Text = "TRAY " + i.ToString();
-                }
+                string strTrayIndex = item.Key.Replace("_", " ");
+                btn.Text = strTrayIndex + "\r\n" + item.Value;
 
                 btn.BackColor = Color.Transparent;
                 btn.BorderRadius = 15;
@@ -290,10 +315,13 @@ namespace itools_source.Views
                 btn.ForeColor = System.Drawing.Color.White;
                 btn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 btn.FillColor = Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(168)))), ((int)(((byte)(255)))));
+                btn.CheckedState.FillColor = System.Drawing.Color.DarkOrchid;
                 btn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
                 btn.Click += (s, e) => this.btnflpTrayList_Click?.Invoke(s, e);
                 this.flpTrayList.Controls.Add(btn);
+                lstButton.Add(btn);
             }
+            flpTrayList.Controls.AddRange(lstButton.ToArray());
         }
 
         public void AddNewListTool()
@@ -349,7 +377,7 @@ namespace itools_source.Views
             if (toolCodeList == null)
             {
                 MessageBox.Show("Tool Code List is Null!");
-                _log.Error("Tool Code List is Null: " + toolCodeList.Count());
+                _log.Error("Tool Code List is Null!");
                 return;
             }
 
@@ -460,7 +488,8 @@ namespace itools_source.Views
         #endregion
 
         #region Events
-        public event EventHandler txtSearch_TextChanged;
+        public event EventHandler ToolManagerView_Load;
+        public event EventHandler txtTraySearch_TextChanged;
         public event EventHandler btnSearch_Click;
         public event EventHandler btnflpTrayList_Click;
         public event KeyPressEventHandler txtOperateQuantity_KeyPress;

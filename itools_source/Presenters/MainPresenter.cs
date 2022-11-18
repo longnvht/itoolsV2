@@ -74,6 +74,9 @@ namespace itools_source.Presenters
                     //System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadProc2));
                     //t.Start();
                     //IJobView jobView = JobView
+                    //IJobView jobView = new JobView.Get;
+                    //IGetToolRepository jobRepository = new JobRepository();
+                    //new JobPresenter(jobView, jobRepository);
                 }
                 _log.Info("Login Success!");
             }

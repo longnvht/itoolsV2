@@ -9,6 +9,7 @@ using itools_source.Views;
 using itools_source.Views.Interface;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -27,7 +28,8 @@ namespace itools_source.Presenters
             _toolManagerView = pushToolView;
             _toolRepository = toolRepository;
 
-            _toolManagerView.txtSearch_TextChanged += _toolManagerView_txtSearch_TextChanged;
+            _toolManagerView.ToolManagerView_Load += _toolManagerView_ToolManagerView_Load;
+            _toolManagerView.txtTraySearch_TextChanged += _toolManagerView_txtTraySearch_TextChanged;
             _toolManagerView.btnSearch_Click += _toolManagerView_btnSearch_Click;
             _toolManagerView.btnflpTrayList_Click += _toolManagerView_btnflpTrayList_Click;
             _toolManagerView.txtOperateQuantity_KeyPress += _toolManagerView_txtOperateQuantity_KeyPress;
@@ -47,6 +49,22 @@ namespace itools_source.Presenters
         }
 
         #region Events
+        private void _toolManagerView_ToolManagerView_Load(object sender, EventArgs e)
+        {
+            _toolManagerView.strMachineCode = _strMachineCode;
+
+            // Get data TrayIndex and ToolCode
+            _toolManagerView.hashTrayToolCode = _toolRepository.GetTrayAndToolCode(_toolManagerView.strMachineCode);
+
+            if (_toolManagerView.hashTrayToolCode != null)
+            {
+                var form = (ToolManagerView)sender;
+                form.CreateButtonTray(_toolManagerView.hashTrayToolCode);
+                form.cStatusForm = '3';
+                form.SetStatusForm();
+            }
+        }
+
         private void _toolManagerView_btnSave_Click(object sender, EventArgs e)
         {
             if (_toolManagerView.iCurrentQuantity == null || _toolManagerView.iOperateQuantity == null)
@@ -72,12 +90,12 @@ namespace itools_source.Presenters
                 _toolManagerView.toolTrayCurrent.iQuantity = _toolManagerView.iTotalQuantity.Value;
                 _toolManagerView.toolTrayCurrent.dtCreateDate = null;
 
-                CultureInfo cul = new CultureInfo("vi-VN");
-                cul.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
-                cul.DateTimeFormat.LongDatePattern = "yyyy-MM-dd";
-                cul.DateTimeFormat.ShortTimePattern = "HH:mm:ss";
-                cul.DateTimeFormat.LongTimePattern = "HH:mm:ss";
-                Thread.CurrentThread.CurrentCulture = cul;
+                //CultureInfo cul = new CultureInfo("vi-VN");
+                //cul.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
+                //cul.DateTimeFormat.LongDatePattern = "yyyy-MM-dd";
+                //cul.DateTimeFormat.ShortTimePattern = "HH:mm:ss";
+                //cul.DateTimeFormat.LongTimePattern = "HH:mm:ss";
+                //Thread.CurrentThread.CurrentCulture = cul;
 
                 _toolManagerView.toolTrayCurrent.dtUpdateDate = ServerTime.GetServerTime().ToLocalTime();
                 _toolManagerView.toolTrayCurrent.isActive = 1;
@@ -288,8 +306,19 @@ namespace itools_source.Presenters
         private void _toolManagerView_btnflpTrayList_Click(object sender, EventArgs e)
         {
             Guna2Button btn = (Guna2Button)sender;
-            string strTrayIndex = btn.Text.Replace(" ", "_");
+            string strTrayIndex = btn.Text;
+            int iLength = strTrayIndex.Length;
+            int i = 0;
+            for (i = 0; i < iLength; i++)
+            {
+                if (strTrayIndex[i] == '\n')
+                {
+                    break;
+                }
+            }
+            strTrayIndex = strTrayIndex.Substring(0, i - 1).Replace(" ", "_");
             _log.Info("Tray Select: " + strTrayIndex);
+
             try
             {
                 _iCurrentQuantity = _toolRepository.GetToolQuantity(strTrayIndex);
@@ -316,7 +345,6 @@ namespace itools_source.Presenters
                         _toolManagerView.SetStatusForm();
                     }
 
-                    _strMachineCode = "VM-1";
                     _toolManagerView.toolTrayCurrent = _toolRepository.GetToolByTrayIndex(strTrayIndex, _strMachineCode);
                     if (_toolManagerView.toolTrayCurrent != null)
                     {
@@ -346,14 +374,14 @@ namespace itools_source.Presenters
             }
         }
 
-        private void _toolManagerView_txtSearch_TextChanged(object sender, EventArgs e)
+        private void _toolManagerView_txtTraySearch_TextChanged(object sender, EventArgs e)
         {
-
+            _toolManagerView.SearchTrayAndTool();
         }
 
         private void _toolManagerView_btnSearch_Click(object sender, EventArgs e)
         {
-            
+            _toolManagerView.SearchTrayAndTool();
         }
 
         private void _toolManagerView_btnAddPlugin_Click(object sender, EventArgs e)

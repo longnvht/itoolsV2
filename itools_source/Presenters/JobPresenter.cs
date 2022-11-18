@@ -12,9 +12,9 @@ namespace itools_source.Presenters
     {
         #region Fields
         private IJobView _jobView;
-        private IJobRepository _jobRepository;
+        private IGetToolRepository _jobRepository;
 
-        public JobPresenter(IJobView jobView, IJobRepository jobRepository)
+        public JobPresenter(IJobView jobView, IGetToolRepository jobRepository)
         {
             _jobView = jobView;
             _jobRepository = jobRepository;

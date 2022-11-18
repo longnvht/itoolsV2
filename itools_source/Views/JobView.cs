@@ -17,5 +17,28 @@ namespace itools_source.Views
         {
             InitializeComponent();
         }
+
+        // Singleton pattern (Open a single form instance)
+        private static JobView instance;
+
+        public static JobView GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new JobView();
+                instance.MdiParent = parentContainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
+            return instance;
+        }
     }
 }
