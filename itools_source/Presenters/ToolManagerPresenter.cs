@@ -30,7 +30,7 @@ namespace itools_source.Presenters
 
             _toolManagerView.ToolManagerView_Load += _toolManagerView_ToolManagerView_Load;
             _toolManagerView.txtTraySearch_TextChanged += _toolManagerView_txtTraySearch_TextChanged;
-            _toolManagerView.btnSearch_Click += _toolManagerView_btnSearch_Click;
+            _toolManagerView.btnTraySearch_Click += _toolManagerView_btnSearch_Click;
             _toolManagerView.btnflpTrayList_Click += _toolManagerView_btnflpTrayList_Click;
             _toolManagerView.txtOperateQuantity_KeyPress += _toolManagerView_txtOperateQuantity_KeyPress;
             _toolManagerView.txtOperateQuantity_TextChanged += _toolManagerView_txtOperateQuantity_TextChanged;

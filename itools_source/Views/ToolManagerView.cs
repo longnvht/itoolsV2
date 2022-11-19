@@ -40,7 +40,7 @@ namespace itools_source.Views
             btnTakeOut.Click += delegate { btnTakeOut_Click?.Invoke(this, EventArgs.Empty); };
             btnAddPlugin.Click += delegate { btnAddPlugin_Click?.Invoke(this, EventArgs.Empty); };
             btnAddNew.Click += delegate { btnAddNew_Click?.Invoke(this, EventArgs.Empty); };
-            btnSearch.Click += delegate { btnSearch_Click?.Invoke(this, EventArgs.Empty); };
+            btnTraySearch.Click += delegate { btnTraySearch_Click?.Invoke(this, EventArgs.Empty); };
         }
 
         #region Fields
@@ -501,7 +501,7 @@ namespace itools_source.Views
         #region Events
         public event EventHandler ToolManagerView_Load;
         public event EventHandler txtTraySearch_TextChanged;
-        public event EventHandler btnSearch_Click;
+        public event EventHandler btnTraySearch_Click;
         public event EventHandler btnflpTrayList_Click;
         public event KeyPressEventHandler txtOperateQuantity_KeyPress;
         public event EventHandler txtOperateQuantity_TextChanged;

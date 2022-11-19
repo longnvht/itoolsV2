@@ -43,7 +43,7 @@ namespace itools_source.Views.Interface
         #region Events
         event EventHandler ToolManagerView_Load;
         event EventHandler txtTraySearch_TextChanged;
-        event EventHandler btnSearch_Click;
+        event EventHandler btnTraySearch_Click;
         event EventHandler btnflpTrayList_Click;
         event KeyPressEventHandler txtOperateQuantity_KeyPress;
         event EventHandler txtOperateQuantity_TextChanged;

@@ -33,7 +33,7 @@ namespace itools_source.Views
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolManagerView));
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSearch = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnTraySearch = new Guna.UI2.WinForms.Guna2GradientButton();
             this.txtTraySearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.notifiTakeout = new Guna.UI2.WinForms.Guna2NotificationPaint(this.components);
             this.btnTakeOut = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -90,7 +90,7 @@ namespace itools_source.Views
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpHeader.Controls.Add(this.btnSearch, 2, 0);
+            this.tlpHeader.Controls.Add(this.btnTraySearch, 2, 0);
             this.tlpHeader.Controls.Add(this.txtTraySearch, 0, 0);
             this.tlpHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpHeader.Location = new System.Drawing.Point(0, 0);
@@ -100,25 +100,25 @@ namespace itools_source.Views
             this.tlpHeader.Size = new System.Drawing.Size(900, 50);
             this.tlpHeader.TabIndex = 11;
             // 
-            // btnSearch
+            // btnTraySearch
             // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Animated = true;
-            this.btnSearch.AutoRoundedCorners = true;
-            this.btnSearch.BorderRadius = 17;
-            this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSearch.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSearch.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(578, 7);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(319, 36);
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "Tìm Kiếm";
+            this.btnTraySearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTraySearch.Animated = true;
+            this.btnTraySearch.AutoRoundedCorners = true;
+            this.btnTraySearch.BorderRadius = 17;
+            this.btnTraySearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTraySearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTraySearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTraySearch.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTraySearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTraySearch.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.btnTraySearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTraySearch.ForeColor = System.Drawing.Color.White;
+            this.btnTraySearch.Location = new System.Drawing.Point(578, 7);
+            this.btnTraySearch.Name = "btnTraySearch";
+            this.btnTraySearch.Size = new System.Drawing.Size(319, 36);
+            this.btnTraySearch.TabIndex = 1;
+            this.btnTraySearch.Text = "Tìm Kiếm";
             // 
             // txtTraySearch
             // 
@@ -249,7 +249,7 @@ namespace itools_source.Views
             this.guna2VScrollBar_flpTrayList.TabIndex = 20;
             this.guna2VScrollBar_flpTrayList.ThumbSize = 100F;
             // 
-            // flpTrayList
+            // _flpTrayList
             // 
             this._flpTrayList.AutoScroll = true;
             this._flpTrayList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
@@ -573,7 +573,7 @@ namespace itools_source.Views
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.Location = new System.Drawing.Point(197, 95);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(33, 22);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(33, 45);
             this.guna2HtmlLabel2.TabIndex = 5;
             this.guna2HtmlLabel2.Text = "Tool";
             this.guna2HtmlLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -585,7 +585,7 @@ namespace itools_source.Views
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(197, 44);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(33, 22);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(33, 45);
             this.guna2HtmlLabel1.TabIndex = 6;
             this.guna2HtmlLabel1.Text = "Tray";
             this.guna2HtmlLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -597,7 +597,7 @@ namespace itools_source.Views
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(97, 146);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(133, 22);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(133, 45);
             this.guna2HtmlLabel3.TabIndex = 7;
             this.guna2HtmlLabel3.Text = "Số Lượng Hiện Có";
             this.guna2HtmlLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -609,7 +609,7 @@ namespace itools_source.Views
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel4.Location = new System.Drawing.Point(88, 197);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(142, 22);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(142, 45);
             this.guna2HtmlLabel4.TabIndex = 8;
             this.guna2HtmlLabel4.Text = "Số Lượng Thao Tác";
             this.guna2HtmlLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -645,7 +645,7 @@ namespace itools_source.Views
             this.guna2HtmlLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel5.Location = new System.Drawing.Point(118, 248);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(112, 22);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(112, 93);
             this.guna2HtmlLabel5.TabIndex = 11;
             this.guna2HtmlLabel5.Text = "Số Lượng Tổng";
             this.guna2HtmlLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -752,7 +752,7 @@ namespace itools_source.Views
         #endregion
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
         private Guna.UI2.WinForms.Guna2TextBox txtTraySearch;
-        private Guna.UI2.WinForms.Guna2GradientButton btnSearch;
+        private Guna.UI2.WinForms.Guna2GradientButton btnTraySearch;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiTakeout;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiAddPlugin;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiAddNew;
