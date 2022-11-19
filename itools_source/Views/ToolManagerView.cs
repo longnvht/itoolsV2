@@ -41,26 +41,12 @@ namespace itools_source.Views
             btnAddPlugin.Click += delegate { btnAddPlugin_Click?.Invoke(this, EventArgs.Empty); };
             btnAddNew.Click += delegate { btnAddNew_Click?.Invoke(this, EventArgs.Empty); };
             btnSearch.Click += delegate { btnSearch_Click?.Invoke(this, EventArgs.Empty); };
-
-            //this.flpTrayList.PerformLayout();
-            //guna2VScrollBar_flpTrayList.Size = new System.Drawing.Size(30, flpTrayList.Height);
         }
 
         #region Fields
         private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolManagerView).Name);
 
-        public string strToolCode
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(txtToolCode.Text))
-                {
-                    return "";
-                }
-                return txtToolCode.Text;
-            }
-            set => txtToolCode.Text = value;
-        }
+        public string strMachineCode { get; set; }
         public string strTrayIndex
         {
             get
@@ -72,6 +58,18 @@ namespace itools_source.Views
                 return txtTrayIndex.Text;
             }
             set => txtTrayIndex.Text = value;
+        }
+        public string strToolCode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(txtToolCode.Text))
+                {
+                    return "";
+                }
+                return txtToolCode.Text;
+            }
+            set => txtToolCode.Text = value;
         }
         public int? iCurrentQuantity
         {
@@ -121,55 +119,79 @@ namespace itools_source.Views
             }
             set => txtTraySearch.Text = value;
         }
-        public ToolMachineTray toolTrayCurrent { get; set; }
-        public bool btnAddNewEnable
+        public string strToolSearch
         {
-            get => btnAddNew.Enabled;
-            set => btnAddNew.Enabled = value;
+            get
+            {
+                if (string.IsNullOrEmpty(txtToolSearch.Text))
+                {
+                    return "";
+                }
+                return txtToolSearch.Text;
+            }
+            set => txtToolSearch.Text = value;
         }
-        public bool btnAddPluginEnable
-        {
-            get => btnAddPlugin.Enabled;
-            set => btnAddPlugin.Enabled = value;
-        }
-        public bool btnTakeOutEnable
-        {
-            get => btnTakeOut.Enabled;
-            set => btnTakeOut.Enabled = value;
-        }
-        public bool btnSaveEnable
-        {
-            get => btnSave.Enabled;
-            set => btnSave.Enabled = value;
-        }
+        public bool btnAddNewEnabled { get => btnAddNew.Enabled; set => btnAddNew.Enabled = value; }
+        public bool btnAddPluginEnabled { get => btnAddPlugin.Enabled; set => btnAddPlugin.Enabled = value; }
+        public bool btnTakeOutEnabled { get => btnTakeOut.Enabled; set => btnTakeOut.Enabled = value; }
+        public bool btnSaveEnabled { get => btnSave.Enabled; set => btnSave.Enabled = value; }
+        public bool tlpHeaderEnabled { get => tlpHeader.Enabled; set => tlpHeader.Enabled = value; }
+        public bool tlpFooterEnabled { get => tlpFooter.Enabled; set => tlpFooter.Enabled = value; }
+        public bool pLeftContentEnabled { get => pLeftContent.Enabled; set => pLeftContent.Enabled = value; }
+        public bool tlpTrayDetailEnabled { get => tlpTrayDetail.Enabled; set => tlpTrayDetail.Enabled = value; }
         public bool txtOperateQuantityEnable { get => txtOperateQuantity.Enabled; set => txtOperateQuantity.Enabled = value; }
         public bool txtCurrentQuantityEnbale { get => txtCurrentQuantity.Enabled; set => txtCurrentQuantity.Enabled = value; }
         public char cStatusForm { get; set; }
         public char cStatusButton { get; set; }
+        public ToolMachineTray toolTrayCurrent { get; set; }
         public List<string> toolCodeList { get; set; }
-        public string strMachineCode { get; set; }
-        public Hashtable hashTrayToolCode { get; set; }
+        public SortedDictionary<string, string> sortTrayToolCode { get; set; }
+        public List<Guna2Button> lstTrayButton { get; set; }
+        public List<Guna2GradientButton> lstToolButton { get; set; }
         #endregion
 
         #region Method
-        public void SearchTrayAndTool()
+        public void ToolSearch()
         {
-            if (string.IsNullOrEmpty(strTraySearch))
+            flpToolList.Controls.Clear();
+            if (string.IsNullOrEmpty(strToolSearch))
             {
-                flpTrayList.Controls.AddRange(lstButton.ToArray());
+                flpToolList.Controls.AddRange(lstToolButton.ToArray());
                 return;
             }
-            string strSeacrhTest = txtTraySearch.Text.ToLower();
+            string strSeacrhTest = strToolSearch.ToLower();
 
-            flpTrayList.Controls.Clear();
-            List<Guna2Button> lstSearch = new List<Guna2Button>();
-            int iCount = lstButton.Count;
+            List<Guna2GradientButton> lstSearch = new List<Guna2GradientButton>();
+            int iCount = lstToolButton.Count;
             for (int i = 0; i < iCount; i++)
             {
-                string strTextButton = lstButton[i].Text.ToLower();
+                string strTextButton = lstToolButton[i].Text.ToLower();
                 if (strTextButton.Contains(strSeacrhTest))
                 {
-                    lstSearch.Add(lstButton[i]);
+                    lstSearch.Add(lstToolButton[i]);
+                }
+            }
+            flpToolList.Controls.AddRange(lstSearch.ToArray());
+        }
+
+        public void TrayAndToolSearch()
+        {
+            flpTrayList.Controls.Clear();
+            if (string.IsNullOrEmpty(strTraySearch))
+            {
+                flpTrayList.Controls.AddRange(lstTrayButton.ToArray());
+                return;
+            }
+            string strSeacrhTest = strTraySearch.ToLower();
+
+            List<Guna2Button> lstSearch = new List<Guna2Button>();
+            int iCount = lstTrayButton.Count;
+            for (int i = 0; i < iCount; i++)
+            {
+                string strTextButton = lstTrayButton[i].Text.ToLower();
+                if (strTextButton.Contains(strSeacrhTest))
+                {
+                    lstSearch.Add(lstTrayButton[i]);
                 }
             }
             flpTrayList.Controls.AddRange(lstSearch.ToArray());
@@ -225,10 +247,10 @@ namespace itools_source.Views
                     this.btnAddNew.Enabled = false;
                     this.btnSave.Enabled = false;
 
-                    this.iCurrentQuantity = null;
-                    this.iOperateQuantity = null;
-                    this.strTrayIndex = null;
-                    this.strToolCode = null;
+                    //this.iCurrentQuantity = null;
+                    //this.iOperateQuantity = null;
+                    //this.strTrayIndex = null;
+                    //this.strToolCode = null;
 
                     //this.txtTrayIndex.Text = string.Empty;
                     //this.txtToolCode.Text = string.Empty;
@@ -258,14 +280,14 @@ namespace itools_source.Views
             }
         }
 
-        public void SetButtonState()
+        public void SetStateButton()
         {
             switch (cStatusButton)
             {
                 case '0': // AddNew
                     this.btnTakeOut.Enabled = false;
                     this.btnAddPlugin.Enabled = false;
-                    this.btnSaveEnable = true;
+                    this.btnSaveEnabled = true;
                     this.txtToolCode.Enabled = true;
                     this.notifiAddNew.FillColor = Color.LimeGreen;
                     this.notifiAddNew.Text = "On";
@@ -291,16 +313,13 @@ namespace itools_source.Views
             }
         }
 
-        private List<Guna2Button> lstButton = new List<Guna2Button>();
-        public void CreateButtonTray(Hashtable hashtable)
+        public void CreateButtonTray(SortedDictionary<string, string> sortDictionary)
         {
-            SortedDictionary<string, string> map = new SortedDictionary<string, string>();
-            foreach (DictionaryEntry item in hashtable)
+            if (lstTrayButton == null)
             {
-                map.Add(item.Key.ToString(), item.Value.ToString());
+                lstTrayButton = new List<Guna2Button>();
             }
-
-            foreach (var item in map)
+            foreach (var item in sortDictionary)
             {
                 Guna2Button btn = new Guna2Button();
                 btn.Size = new Size(280, 60);
@@ -318,26 +337,13 @@ namespace itools_source.Views
                 btn.CheckedState.FillColor = System.Drawing.Color.DarkOrchid;
                 btn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
                 btn.Click += (s, e) => this.btnflpTrayList_Click?.Invoke(s, e);
-                this.flpTrayList.Controls.Add(btn);
-                lstButton.Add(btn);
+                lstTrayButton.Add(btn);
             }
-            flpTrayList.Controls.AddRange(lstButton.ToArray());
+            flpTrayList.Controls.AddRange(lstTrayButton.ToArray());
         }
-
-        public void AddNewListTool()
+        
+        public void CreateToolButton()
         {
-            if (toolCodeList == null)
-            {
-                MessageBox.Show("Tool Code List is Null!");
-                _log.Error("Tool Code List is Null: " + toolCodeList.Count());
-                return;
-            }
-
-            tlpHeader.Enabled = false;
-            tlpFooter.Enabled = false;
-            pLeftContent.Enabled = false;
-            tlpTrayDetail.Enabled = false;
-
             if (tlpTooList.Visible == false)
             {
                 tlpTooList.Visible = true;
@@ -345,6 +351,10 @@ namespace itools_source.Views
                 tlpTooList.BringToFront();
             }
 
+            if (lstToolButton == null)
+            {
+                lstToolButton = new List<Guna2GradientButton>();
+            }
             for (int i = 0; i < 49; i++)
             {
                 //Guna2Button btn = new Guna2Button();
@@ -368,8 +378,9 @@ namespace itools_source.Views
                 btn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
                 btn.Click += (s, e) => this.btnflpToolList_Click?.Invoke(s, e);
                 btn.DoubleClick += (s, e) => this.btnflpToolList_DoubleClick?.Invoke(s, e);
-                this.flpToolList.Controls.Add(btn);
+                lstToolButton.Add(btn);
             }
+            this.flpToolList.Controls.AddRange(lstToolButton.ToArray());
         }
 
         public void CancelListTool()
@@ -411,29 +422,6 @@ namespace itools_source.Views
                     }
                 }
             }
-        }
-
-        // Singleton pattern (Open a single form instance)
-        private static ToolManagerView instance;
-
-        public static ToolManagerView GetInstance(Form parentContainer)
-        {
-            if (instance == null || instance.IsDisposed)
-            {
-                instance = new ToolManagerView();
-                instance.MdiParent = parentContainer;
-                instance.FormBorderStyle = FormBorderStyle.None;
-                instance.Dock = DockStyle.Fill;
-            }
-            else
-            {
-                if (instance.WindowState == FormWindowState.Minimized)
-                {
-                    instance.WindowState = FormWindowState.Normal;
-                }
-                instance.BringToFront();
-            }
-            return instance;
         }
 
         public void txtCurrentQuantity_Focus()
@@ -484,6 +472,29 @@ namespace itools_source.Views
                 }
             }
             return false;
+        }
+
+        // Singleton pattern (Open a single form instance)
+        private static ToolManagerView _instance;
+
+        public static ToolManagerView GetInstance(Form parentContainer)
+        {
+            if (_instance == null || _instance.IsDisposed)
+            {
+                _instance = new ToolManagerView();
+                _instance.MdiParent = parentContainer;
+                _instance.FormBorderStyle = FormBorderStyle.None;
+                _instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (_instance.WindowState == FormWindowState.Minimized)
+                {
+                    _instance.WindowState = FormWindowState.Normal;
+                }
+                _instance.BringToFront();
+            }
+            return _instance;
         }
         #endregion
 

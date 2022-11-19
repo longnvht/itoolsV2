@@ -440,9 +440,9 @@ namespace itools_source.Repository
             }
         }
 
-        public Hashtable GetTrayAndToolCode(string strMachine)
+        public SortedDictionary<string, string> GetTrayAndToolCode(string strMachine)
         {
-            Hashtable hashTrayToolCode = null;
+            SortedDictionary<string, string> sortTrayToolCode = null;
 
             string strSelect = @"SELECT TrayIndex, ToolCode
 	                                FROM toolsmachinetray
@@ -457,14 +457,14 @@ namespace itools_source.Repository
                     {
                         while (mySqlDataReader.Read())
                         {
-                            if (hashTrayToolCode == null)
+                            if (sortTrayToolCode == null)
                             {
-                                hashTrayToolCode = new Hashtable();
+                                sortTrayToolCode = new SortedDictionary<string, string>();
                             }
 
                             if (!mySqlDataReader.IsDBNull(0) && !mySqlDataReader.IsDBNull(1))
                             {
-                                hashTrayToolCode.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
+                                sortTrayToolCode.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
                             }
                         }
 
@@ -473,13 +473,13 @@ namespace itools_source.Repository
                     mySqlConnection.Close();
                 }
 
-                return hashTrayToolCode;
+                return sortTrayToolCode;
             }
             catch (MySqlException e)
             {
                 _log.Error(e.Message);
             }
-            return hashTrayToolCode;
+            return sortTrayToolCode;
         }
     }
 }
