@@ -173,13 +173,13 @@ namespace itools_source.Views
             }
             flpToolList.Controls.AddRange(lstSearch.ToArray());
         }
-
+        
         public void TrayAndToolSearch()
         {
-            flpTrayList.Controls.Clear();
+            //flpTrayList.Controls.Clear();
             if (string.IsNullOrEmpty(strTraySearch))
             {
-                flpTrayList.Controls.AddRange(lstTrayButton.ToArray());
+                _flpTrayList.Controls.AddRange(lstTrayButton.ToArray());
                 return;
             }
             string strSeacrhTest = strTraySearch.ToLower();
@@ -194,7 +194,7 @@ namespace itools_source.Views
                     lstSearch.Add(lstTrayButton[i]);
                 }
             }
-            flpTrayList.Controls.AddRange(lstSearch.ToArray());
+            _flpTrayList.Controls.AddRange(lstSearch.ToArray());
         }
 
         public void SetStatusForm()
@@ -339,7 +339,7 @@ namespace itools_source.Views
                 btn.Click += (s, e) => this.btnflpTrayList_Click?.Invoke(s, e);
                 lstTrayButton.Add(btn);
             }
-            flpTrayList.Controls.AddRange(lstTrayButton.ToArray());
+            _flpTrayList.Controls.AddRange(lstTrayButton.ToArray());
         }
         
         public void CreateToolButton()

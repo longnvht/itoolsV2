@@ -388,6 +388,8 @@ namespace itools_source.Presenters
 
         private void _toolManagerView_btnSearch_Click(object sender, EventArgs e)
         {
+            ToolManagerView frm = (ToolManagerView)sender;
+            frm.flpTrayListP.Controls.Clear();
             _toolManagerView.TrayAndToolSearch();
         }
 

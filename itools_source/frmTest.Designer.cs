@@ -720,7 +720,6 @@
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiAddPlugin;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiTakeout;
         private Guna.UI2.WinForms.Guna2GradientButton btnSearch;
-        private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
@@ -752,6 +751,7 @@
         private System.Windows.Forms.Panel pToolFooter;
         private Guna.UI2.WinForms.Guna2GradientButton btnToolCancel;
         private Guna.UI2.WinForms.Guna2GradientButton btnToolSelect;
+        private Guna.UI2.WinForms.Guna2TextBox txtSearch;
     }
 }
 
