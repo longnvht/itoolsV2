@@ -15,15 +15,20 @@ namespace itools_source.Views.Interface
         #region Properties - Fields
         string strJobNumberSearch { get; set; }
         Job JobCurrent { get; set; }
-        BindingList<Job> lstJobNumber { get; set; }
+        List<string> lstJobNumber { get; set; }
         List<Guna2GradientButton> lstJobNumberButton { get; set; }
         #endregion
         #region Events
         event EventHandler JobView_Load;
-        event EventHandler txtTraySearch_TextChanged;
-        event EventHandler btnSearch_Click;
+        event EventHandler txtJobNumberSearch_TextChanged;
+        event EventHandler btnJobNumberSearch_Click;
         event EventHandler btnflpJobNumberList_Click;
-        event EventHandler btnflpToolList_DoubleClick;
+        event EventHandler btnflpJobNumberlList_DoubleClick;
+        #endregion
+        #region Methods
+        void Show();
+        void Close();
+        Guna2GradientButton CreateJobNumberButton(string strJobNumber = "");
         #endregion
     }
 }

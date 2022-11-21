@@ -87,12 +87,17 @@ namespace itools_source.Presenter
 
                     Program.sessionLogin["LoginTime"] = Utils.ServerTime.GetServerTime().ToLocalTime().ToString();
 
+                    string strRoleName = _assessorRepository.GetRoleName(Convert.ToInt32(Program.sessionLogin["Id"]));
+                    Program.sessionLogin["Role"] = strRoleName;
+
                     System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
-                        () => {
+                        () =>
+                        {
                             IMainView _mainView = new MainView();
                             new MainPresenter(_mainView, _assessorRepository);
                             Application.Run((Form)_mainView);
                         }));
+
                     t.Start();
 
                     _loginView.Close();
@@ -164,7 +169,7 @@ namespace itools_source.Presenter
         public void ThreadProc2()
         {
             IJobView jobView = new JobView();
-            IGetToolRepository repository = new JobRepository();
+            IGetToolRepository repository = new GetToolRepository();
             new JobPresenter(jobView, repository);
             Application.Run((Form)jobView);
         }

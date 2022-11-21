@@ -28,23 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JobView));
             this._flpJobNumberList = new System.Windows.Forms.FlowLayoutPanel();
             this._tlpJobHeader = new System.Windows.Forms.TableLayoutPanel();
             this._txtJobNumberSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this._btnJobNumberSearch = new Guna.UI2.WinForms.Guna2GradientButton();
+            this._guna2VScrollBar_flpJobNumberList = new Guna.UI2.WinForms.Guna2VScrollBar();
+            this.guna2Elipse_flpJobNumberList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this._tlpJobHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // _flpJobNumberList
             // 
-            this._flpJobNumberList.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this._flpJobNumberList.AutoScroll = true;
+            this._flpJobNumberList.AutoSize = true;
+            this._flpJobNumberList.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this._flpJobNumberList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._flpJobNumberList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._flpJobNumberList.Location = new System.Drawing.Point(0, 43);
             this._flpJobNumberList.Margin = new System.Windows.Forms.Padding(2);
             this._flpJobNumberList.Name = "_flpJobNumberList";
             this._flpJobNumberList.Size = new System.Drawing.Size(800, 407);
-            this._flpJobNumberList.TabIndex = 5;
+            this._flpJobNumberList.TabIndex = 2;
             // 
             // _tlpJobHeader
             // 
@@ -82,7 +88,7 @@
             this._txtJobNumberSearch.PlaceholderText = "Tìm Kiếm";
             this._txtJobNumberSearch.SelectedText = "";
             this._txtJobNumberSearch.Size = new System.Drawing.Size(674, 35);
-            this._txtJobNumberSearch.TabIndex = 4;
+            this._txtJobNumberSearch.TabIndex = 0;
             this._txtJobNumberSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // _btnJobNumberSearch
@@ -102,22 +108,46 @@
             this._btnJobNumberSearch.Location = new System.Drawing.Point(683, 3);
             this._btnJobNumberSearch.Name = "_btnJobNumberSearch";
             this._btnJobNumberSearch.Size = new System.Drawing.Size(114, 36);
-            this._btnJobNumberSearch.TabIndex = 3;
+            this._btnJobNumberSearch.TabIndex = 1;
             this._btnJobNumberSearch.Text = "Tìm Kiếm";
+            // 
+            // _guna2VScrollBar_flpJobNumberList
+            // 
+            this._guna2VScrollBar_flpJobNumberList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._guna2VScrollBar_flpJobNumberList.AutoScroll = true;
+            this._guna2VScrollBar_flpJobNumberList.AutoSize = true;
+            this._guna2VScrollBar_flpJobNumberList.BindingContainer = this._flpJobNumberList;
+            this._guna2VScrollBar_flpJobNumberList.InUpdate = false;
+            this._guna2VScrollBar_flpJobNumberList.LargeChange = 10;
+            this._guna2VScrollBar_flpJobNumberList.Location = new System.Drawing.Point(781, 45);
+            this._guna2VScrollBar_flpJobNumberList.Name = "_guna2VScrollBar_flpJobNumberList";
+            this._guna2VScrollBar_flpJobNumberList.ScrollbarSize = 18;
+            this._guna2VScrollBar_flpJobNumberList.Size = new System.Drawing.Size(18, 407);
+            this._guna2VScrollBar_flpJobNumberList.TabIndex = 0;
+            this._guna2VScrollBar_flpJobNumberList.ThumbSize = 100F;
+            // 
+            // guna2Elipse_flpJobNumberList
+            // 
+            this.guna2Elipse_flpJobNumberList.BorderRadius = 20;
+            this.guna2Elipse_flpJobNumberList.TargetControl = this._flpJobNumberList;
             // 
             // JobView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this._guna2VScrollBar_flpJobNumberList);
             this.Controls.Add(this._flpJobNumberList);
             this.Controls.Add(this._tlpJobHeader);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "JobView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "JobView";
             this._tlpJobHeader.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -149,10 +179,21 @@
         }
 
         private Guna.UI2.WinForms.Guna2TextBox _txtJobNumberSearch;
+
         public Guna.UI2.WinForms.Guna2TextBox txtJobNumberSearch
         {
             get { return _txtJobNumberSearch; }
             set { _txtJobNumberSearch = value; }
         }
+
+        private Guna.UI2.WinForms.Guna2VScrollBar _guna2VScrollBar_flpJobNumberList;
+
+        public Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar_flpJobNumberList
+        {
+            get { return _guna2VScrollBar_flpJobNumberList; }
+            set { _guna2VScrollBar_flpJobNumberList = value; }
+        }
+
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_flpJobNumberList;
     }
 }

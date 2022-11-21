@@ -217,10 +217,6 @@ namespace itools_source.Repository
                                 strToolCode = mySqlDataReader.GetString(0);
                                 toolCodeList.Add(strToolCode);
                             }
-                            else
-                            {
-                                _log.Info("ToolCode is NULL!: " + mySqlDataReader.FieldCount);
-                            }
                         }
 
                         mySqlDataReader.Close();

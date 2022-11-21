@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace itools_source.Presenters
 {
@@ -14,50 +15,95 @@ namespace itools_source.Presenters
     {
         #region Fields
         private IJobView _jobView;
-        private IGetToolRepository _jobRepository;
+        private IGetToolRepository _getToolRepository;
+
+        private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(JobPresenter).Name);
         #endregion
 
-        public JobPresenter(IJobView jobView, IGetToolRepository jobRepository)
+        public JobPresenter(IJobView jobView, IGetToolRepository getToolRepository)
         {
             _jobView = jobView;
-            _jobRepository = jobRepository;
+            _getToolRepository = getToolRepository;
 
             _jobView.JobView_Load += _jobView_JobView_Load;
-            _jobView.txtTraySearch_TextChanged += _jobView_txtTraySearch_TextChanged;
+            _jobView.txtJobNumberSearch_TextChanged += _jobView_txtJobNumberSearch_TextChanged;
             _jobView.btnflpJobNumberList_Click += _jobView_btnflpJobNumberList_Click;
+            _jobView.btnflpJobNumberlList_DoubleClick += _jobView_btnflpJobNumberlList_DoubleClick;
+
+            _jobView.Show();
         }
+
+        private void _jobView_btnflpJobNumberlList_DoubleClick(object sender, EventArgs e)
+        {
+            
+        }
+
         private void _jobView_btnflpJobNumberList_Click(object sender, EventArgs e)
         {
             
         }
 
-        private void _jobView_txtTraySearch_TextChanged(object sender, EventArgs e)
+        private void _jobView_txtJobNumberSearch_TextChanged(object sender, EventArgs e)
         {
             JobView frmJobView = (JobView)sender;
+
             frmJobView.flpJobNumberList.Controls.Clear();
             if(string.IsNullOrEmpty(_jobView.strJobNumberSearch))
             {
-                frmJobView.Controls.AddRange(frmJobView.lstJobNumberButton.ToArray());
+                frmJobView.flpJobNumberList.Controls.AddRange(frmJobView.lstJobNumberButton.ToArray());
                 return;
             }
-            string strSeacrhTest = _jobView.strJobNumberSearch.ToLower();
 
+            _jobView.lstJobNumber = _getToolRepository.GetJobByNumber(_jobView.strJobNumberSearch).ToList();
+            _log.Info("User: " + Program.sessionLogin["UserName"] + ", Search JobNumber: " + _jobView.strJobNumberSearch);
             List<Guna2GradientButton> lstSearch = new List<Guna2GradientButton>();
-            int iCount = _jobView.lstJobNumberButton.Count;
-            for (int i = 0; i < iCount; i++)
+            if (_jobView.lstJobNumberButton != null)
             {
-                string strTextButton = _jobView.lstJobNumberButton[i].Text.ToLower();
-                if (strTextButton.Contains(strSeacrhTest))
+                if (_jobView.lstJobNumber != null)
                 {
-                    lstSearch.Add(_jobView.lstJobNumberButton[i]);
+                    int iCount = _jobView.lstJobNumber.Count;
+                    for (int i = 0; i < iCount; i++)
+                    {
+                        _jobView.lstJobNumberButton[i].Text = _jobView.lstJobNumber[i];
+                        lstSearch.Add(_jobView.lstJobNumberButton[i]);
+                    }
+                    frmJobView.flpJobNumberList.Controls.AddRange(lstSearch.ToArray());
+                    _log.Info("List Button: " + lstSearch.ToString());
                 }
             }
-            frmJobView.flpJobNumberList.Controls.AddRange(lstSearch.ToArray());
         }
 
         private void _jobView_JobView_Load(object sender, EventArgs e)
         {
-            
+            JobView frm = (JobView)sender;
+            frm.flpJobNumberList.PerformLayout();
+            frm.guna2VScrollBar_flpJobNumberList.ScrollbarSize = 30;
+            frm.guna2VScrollBar_flpJobNumberList.Size = new System.Drawing.Size(30, frm.flpJobNumberList.Height);
+
+            if (_jobView.lstJobNumberButton == null)
+            {
+                _jobView.lstJobNumberButton = new List<Guna2GradientButton>();
+            }
+            for (int i = 0; i < 50; i++)
+            {
+                _jobView.lstJobNumberButton.Add(_jobView.CreateJobNumberButton());
+            }
+
+            //_jobView.lstJobNumber = (List<string>)_getToolRepository.GetJobByNumber();
+
+            //if (_jobView.lstJobNumber != null)
+            //{
+            //    if (_jobView.lstJobNumberButton == null)
+            //    {
+            //        _jobView.lstJobNumberButton = new List<Guna2GradientButton>();
+            //    }
+            //    int iCount = _jobView.lstJobNumber.Count;
+            //    for (int i = 0; i < iCount; i++)
+            //    {
+            //        _jobView.lstJobNumberButton.Add(_jobView.CreateJobNumberButton());
+            //    }
+            //    //frm.flpJobNumberList.Controls.AddRange(_jobView.lstJobNumberButton.ToArray());
+            //}
         }
     }
 }

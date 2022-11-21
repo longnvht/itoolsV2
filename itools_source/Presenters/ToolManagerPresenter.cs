@@ -30,7 +30,7 @@ namespace itools_source.Presenters
 
             _toolManagerView.ToolManagerView_Load += _toolManagerView_ToolManagerView_Load;
             _toolManagerView.txtTraySearch_TextChanged += _toolManagerView_txtTraySearch_TextChanged;
-            _toolManagerView.btnTraySearch_Click += _toolManagerView_btnSearch_Click;
+            _toolManagerView.btnTraySearch_Click += _toolManagerView_btnTraySearch_Click;
             _toolManagerView.btnflpTrayList_Click += _toolManagerView_btnflpTrayList_Click;
             _toolManagerView.txtOperateQuantity_KeyPress += _toolManagerView_txtOperateQuantity_KeyPress;
             _toolManagerView.txtOperateQuantity_TextChanged += _toolManagerView_txtOperateQuantity_TextChanged;
@@ -386,7 +386,7 @@ namespace itools_source.Presenters
             _toolManagerView.TrayAndToolSearch();
         }
 
-        private void _toolManagerView_btnSearch_Click(object sender, EventArgs e)
+        private void _toolManagerView_btnTraySearch_Click(object sender, EventArgs e)
         {
             ToolManagerView frm = (ToolManagerView)sender;
             frm.flpTrayListP.Controls.Clear();

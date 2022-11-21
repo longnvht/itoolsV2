@@ -8,5 +8,8 @@ namespace itools_source.Models.Interface
 {
     public interface IGetToolRepository
     {
+        IEnumerable<Job> GetAllJobs();
+        Job GetJobs();
+        IEnumerable<string> GetJobByNumber(string strJobNumber);
     }
 }
