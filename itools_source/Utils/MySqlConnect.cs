@@ -4,40 +4,58 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace itools_source.Utils
 {
     public class MySqlConnect
     {
         private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(MySqlConnect).Name);
-        private static string _strHOST = "192.168.0.12";
-        private static string _strPORT = "3306";
-        private static string _strDATABASE_MAME = "tqteamne_itools";
-        private static string _strUSER_NAME = "admin";
-        private static string _strPASSWORD = "Vinam@123";
 
-        //private static string _strHOST = "127.0.0.1";
-        //private static string _strPORT = "3308";
-        //private static string _strDATABASE_MAME = "tqteamne_itools";
-        //private static string _strUSER_NAME = "root";
-        //private static string _strPASSWORD = "0306ht@1502";
+        private static string _strHOST = null;
+        private static string _strPORT = null;
+        private static string _strDATABASE_MAME = null;
+        private static string _strUSER_NAME = null;
+        private static string _strPASSWORD = null;
 
-        private static string _strConnect = "server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD;
+        public static string ConnectionString()
+        {
+            switch (Environment.MachineName)
+            {
+                case "TUANIT":
+                    _strHOST = "127.0.0.1";
+                    _strPORT = "3308";
+                    _strDATABASE_MAME = "tqteamne_itools";
+                    _strUSER_NAME = "root";
+                    _strPASSWORD = "0306ht@1502";
+                    break;
+                case "VOT1991":
+                    _strHOST = "192.168.0.12";
+                    _strPORT = "3306";
+                    _strDATABASE_MAME = "tqteamne_itools";
+                    _strUSER_NAME = "admin";
+                    _strPASSWORD = "Vinam@123";
+                    break;
+            }
+            //_strConnect = "server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD;
+            return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
+        }
 
         public static MySqlConnection Open()
         {
             try
             {
-                if (_strConnect == null)
+                if (ConnectionString() == null)
                 {
                     return null;
                 }
-                MySqlConnection conn = new MySqlConnection(_strConnect);
+                MySqlConnection conn = new MySqlConnection(ConnectionString());
                 conn.Open();
                 return conn;
             }
             catch (MySqlException e)
             {
+                MessageBox.Show(ConnectionString());
                 _log.Error(e.Message);
             }
             return null;

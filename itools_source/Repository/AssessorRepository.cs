@@ -41,7 +41,7 @@ namespace itools_source.Repository
                                     FROM assessor
                                         WHERE assessor.UserName = '" + strUserName.ToLower() + 
                                             "' AND (assessor.Password = MD5('" + strPassword +  "') OR assessor.LastPassword = MD5('" + strPassword + "'))" +
-                                            "AND assessor.IsActive = 1";
+                                            " AND assessor.IsActive = 1";
             _log.Info(strSelect);
             try
             {
