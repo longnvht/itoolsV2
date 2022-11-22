@@ -140,6 +140,7 @@
     <Compile Include="Presenters\JobPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
+    <Compile Include="Presenters\OPPresenter.cs" />
     <Compile Include="Presenters\ToolManagerPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

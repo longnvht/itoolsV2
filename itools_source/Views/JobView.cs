@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ namespace itools_source.Views
 {
     public partial class JobView : Form, IJobView
     {
+        public delegate void SetListOPNumberOPType(SortedList<string, string> lstOPNumberOpType);
         public JobView()
         {
             InitializeComponent();
@@ -39,7 +41,9 @@ namespace itools_source.Views
         }
         public Job JobCurrent { get; set; }
         public List<Guna2GradientButton> lstJobNumberButton { get; set; }
-        public List<string> lstJobNumber { get; set; }
+        public SortedList<string, string> lstJobNumberPartID { get; set; }
+        public SortedList<string, string> lstOPNumberOpType { get; set; }
+        Action<SortedList<string, string>> IJobView.SetListOPNumberOPType { get; set; }
 
         // Singleton pattern (Open a single form instance)
         private static JobView _instance;
@@ -80,13 +84,17 @@ namespace itools_source.Views
             btn.Font = new System.Drawing.Font("Segoe UI", 11F);
             btn.ForeColor = System.Drawing.Color.White;
             btn.Location = new System.Drawing.Point(3, 3);
-            btn.Name = "btnJobNumber";
             btn.Size = new System.Drawing.Size(122, 80);
             btn.Text = strJobNumber;
-            btn.Click += delegate { btnflpJobNumberList_Click?.Invoke(this, EventArgs.Empty); };
-            btn.DoubleClick += delegate { btnflpJobNumberlList_DoubleClick?.Invoke(this, EventArgs.Empty); };
+            btn.Click += (s, e) => { btnflpJobNumberList_Click?.Invoke(s, e); };
+            btn.DoubleClick += (s, e) => { btnflpJobNumberList_DoubleClick?.Invoke(s, e); };
 
             return btn;
+        }
+
+        public void flpJobNumberList_ControlsAddRange(Control[] controls)
+        {
+            this.flpJobNumberList.Controls.AddRange(controls);
         }
         #endregion
 
@@ -95,7 +103,7 @@ namespace itools_source.Views
         public event EventHandler txtJobNumberSearch_TextChanged;
         public event EventHandler btnJobNumberSearch_Click;
         public event EventHandler btnflpJobNumberList_Click;
-        public event EventHandler btnflpJobNumberlList_DoubleClick;
+        public event EventHandler btnflpJobNumberList_DoubleClick;
         #endregion
     }
 }

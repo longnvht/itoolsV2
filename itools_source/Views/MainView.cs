@@ -30,5 +30,31 @@ namespace itools_source.Views
         public event EventHandler FormLoad;
         public event EventHandler Previous;
         public event EventHandler Next;
+
+        public void CloseFormChild()
+        {
+            if (MdiChildren.Any())
+            {
+                MdiChildren[0].Close();
+            }
+            else
+            {
+                MessageBox.Show("Ahihi");
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(MdiChildren.Any().ToString());
+            if (MdiChildren.Any())
+            {
+                MdiChildren[0].Close();
+            }
+            else
+            {
+                MessageBox.Show("Ahihi");
+            }
+            //MessageBox.Show(Environment.MachineName);
+        }
     }
 }

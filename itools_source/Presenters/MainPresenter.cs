@@ -16,19 +16,15 @@ namespace itools_source.Presenters
     {
         log4net.ILog _log = log4net.LogManager.GetLogger(typeof(MainPresenter).Name);
 
+        #region Properties - Fields
         private IMainView _mainView;
         private IAssessorRepository _assessorRepository;
+        private IGetToolRepository _getToolRepository;
 
-        public MainPresenter(IMainView mainView, IAssessorRepository assessorRepository)
-        {
-            this._mainView = mainView;
-            _assessorRepository = assessorRepository;
+        private bool bStopSignal = false;
+        #endregion
 
-            this._mainView.FormLoad += FormLoad;
-            this._mainView.Previous += Previous;
-            this._mainView.Next += Next;
-        }
-
+        #region Events
         private void Next(object sender, EventArgs e)
         {
             MessageBox.Show("Next");
@@ -36,7 +32,7 @@ namespace itools_source.Presenters
 
         private void Previous(object sender, EventArgs e)
         {
-            MessageBox.Show("Previous");
+            
         }
 
         private void FormLoad(object sender, EventArgs e)
@@ -72,11 +68,35 @@ namespace itools_source.Presenters
                 else
                 {
                     IJobView jobView = JobView.GetInstance((MainView)_mainView);
-                    IGetToolRepository getToolRepository = new GetToolRepository();
-                    new JobPresenter(jobView, getToolRepository);
+                    jobView.SetListOPNumberOPType = ListOPNumberOPType;
+                    _getToolRepository = new GetToolRepository();
+                    new JobPresenter(jobView, _getToolRepository);
                 }
                 _log.Info("Login Success!");
             }
         }
+        #endregion
+
+        #region Methods
+        public MainPresenter(IMainView mainView, IAssessorRepository assessorRepository)
+        {
+            this._mainView = mainView;
+            _assessorRepository = assessorRepository;
+
+            this._mainView.FormLoad += FormLoad;
+            this._mainView.Previous += Previous;
+            this._mainView.Next += Next;
+        }
+        public void ListOPNumberOPType(SortedList<string, string> lstOPNumberOpType)
+        {
+            // 1. Data transmission
+            IOPView oPView = OPView.GetInstance((MainView)_mainView);
+            oPView.lstOPNumberOpType = lstOPNumberOpType;
+
+            // 2. Close JobView, Open OPView.
+            _mainView.CloseFormChild();
+            new OPPresenter(oPView, _getToolRepository);
+        }
+        #endregion
     }
 }

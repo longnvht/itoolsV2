@@ -10,6 +10,7 @@ namespace itools_source.Models.Interface
     {
         IEnumerable<Job> GetAllJobs();
         Job GetJobs();
-        IEnumerable<string> GetJobByNumber(string strJobNumber);
+        SortedList<string, string> GetJobByJobNumber(string strJobNumber);
+        SortedList<string, string> GetOPByJobAndPart(string strJobName, string strPartID);
     }
 }

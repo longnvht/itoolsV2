@@ -49,7 +49,7 @@
             this._flpOPList.Margin = new System.Windows.Forms.Padding(2);
             this._flpOPList.Name = "_flpOPList";
             this._flpOPList.Size = new System.Drawing.Size(800, 407);
-            this._flpOPList.TabIndex = 9;
+            this._flpOPList.TabIndex = 2;
             // 
             // _tlpJobHeader
             // 
@@ -152,6 +152,11 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel _flpOPList;
+        public System.Windows.Forms.FlowLayoutPanel flpOPList
+        {
+            get { return _flpOPList; }
+            set { _flpOPList = value; }
+        }
         private System.Windows.Forms.TableLayoutPanel _tlpJobHeader;
         private Guna.UI2.WinForms.Guna2TextBox _txtOPSearch;
         private Guna.UI2.WinForms.Guna2GradientButton _btnOPNumberSearch;

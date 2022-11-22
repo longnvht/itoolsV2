@@ -24,6 +24,7 @@ namespace itools_source.Views.Interface
         void Show();
         void Close();
         void Hide();
+        void CloseFormChild();
         #endregion
     }
 }

@@ -93,9 +93,9 @@ namespace itools_source.Presenter
                     System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
                         () =>
                         {
-                            IMainView _mainView = new MainView();
-                            new MainPresenter(_mainView, _assessorRepository);
-                            Application.Run((Form)_mainView);
+                            IMainView mainView = new MainView();
+                            new MainPresenter(mainView, _assessorRepository);
+                            Application.Run((Form)mainView);
                         }));
 
                     t.Start();
