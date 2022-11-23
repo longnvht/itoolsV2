@@ -14,7 +14,8 @@ namespace itools_source.Views.Interface
         string strOPNumber { get; set; }
         string strSearch { get; set; }
         List<Guna2GradientButton> lstButton { get; set; }
-        SortedList<string, string> lstOPNumberOpType { get; set; }
+        Dictionary<string, Dictionary<string, string>> lstOPNumberOPType { get; set; }
+        Action<string> GetToolViewAction { get; set; }
         #endregion
 
         #region Events
@@ -26,7 +27,7 @@ namespace itools_source.Views.Interface
         void Show();
         void Close();
         void Hide();
-        Guna2GradientButton CreateButton(string strButtonText = null);
+        Guna2GradientButton CreateButton(int? iIndex = null);
         //void ListOPNumberOPType(SortedList<string, string> lstOPNumberOpType);
         #endregion
     }

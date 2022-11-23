@@ -54,10 +54,10 @@ namespace itools_source.Presenters
             }
             if (strPartID != null)
             {
-                _jobView.lstOPNumberOpType = _getToolRepository.GetOPByJobAndPart(strJobNumber, strPartID);
-                if (_jobView.lstOPNumberOpType != null)
+                _jobView.lstOPNumberOPType = _getToolRepository.GetOPByJobPartOPID(strJobNumber, strPartID);
+                if (_jobView.lstOPNumberOPType != null)
                 {
-                    _jobView.SetListOPNumberOPType(_jobView.lstOPNumberOpType);
+                    _jobView.SetListOPNumberOPType(_jobView.lstOPNumberOPType);
 
                     //List<Guna2GradientButton> lstSearch = new List<Guna2GradientButton>();
                     //if (_jobView.lstJobNumberButton != null)

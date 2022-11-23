@@ -42,8 +42,8 @@ namespace itools_source.Views
         public Job JobCurrent { get; set; }
         public List<Guna2GradientButton> lstJobNumberButton { get; set; }
         public SortedList<string, string> lstJobNumberPartID { get; set; }
-        public SortedList<string, string> lstOPNumberOpType { get; set; }
-        Action<SortedList<string, string>> IJobView.SetListOPNumberOPType { get; set; }
+        public Dictionary<string, Dictionary<string, string>> lstOPNumberOPType { get; set; }
+        Action<Dictionary<string, Dictionary<string, string>>> IJobView.SetListOPNumberOPType { get; set; }
 
         // Singleton pattern (Open a single form instance)
         private static JobView _instance;

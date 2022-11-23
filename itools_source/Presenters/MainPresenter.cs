@@ -21,7 +21,6 @@ namespace itools_source.Presenters
         private IAssessorRepository _assessorRepository;
         private IGetToolRepository _getToolRepository;
 
-        private bool bStopSignal = false;
         #endregion
 
         #region Events
@@ -87,15 +86,30 @@ namespace itools_source.Presenters
             this._mainView.Previous += Previous;
             this._mainView.Next += Next;
         }
-        public void ListOPNumberOPType(SortedList<string, string> lstOPNumberOpType)
+        public void ListOPNumberOPType(Dictionary<string, Dictionary<string, string>> lstOPNumberOpType)
         {
             // 1. Data transmission
             IOPView oPView = OPView.GetInstance((MainView)_mainView);
-            oPView.lstOPNumberOpType = lstOPNumberOpType;
+            oPView.lstOPNumberOPType = lstOPNumberOpType;
+            oPView.GetToolViewAction = OpenGetToolView;
 
-            // 2. Close JobView, Open OPView.
+            // 2. Close JobView, open OPView.
             _mainView.CloseFormChild();
             new OPPresenter(oPView, _getToolRepository);
+
+            _log.Info("Form close: " + typeof(JobView).Name + ", Open: " + typeof(OPView).Name);
+        }
+        public void OpenGetToolView(string strOPId)
+        {
+            // 1. Data transmission
+            GetToolView getToolView = GetToolView.GetInstance((MainView)_mainView);
+            getToolView.strOPId = strOPId;
+
+            // 2. Close OPView, open GetToolView
+            _mainView.CloseFormChild();
+            new GetToolPresenter(getToolView, _getToolRepository);
+
+            _log.Info("Form close: " + typeof(OPView).Name + ", Open: " + typeof(GetToolView).Name);
         }
         #endregion
     }

@@ -37,7 +37,8 @@ namespace itools_source.Views
             set => _txtOPSearch.Text = value;
         }
         public List<Guna2GradientButton> lstButton { get; set; }
-        public SortedList<string, string> lstOPNumberOpType { get; set; }
+        public Dictionary<string, Dictionary<string, string>> lstOPNumberOPType { get; set; }
+        public Action<string> GetToolViewAction { get; set; }
 
         // Singleton pattern (Open a single form instance)
         private static OPView _instance;
@@ -68,7 +69,7 @@ namespace itools_source.Views
         #endregion
 
         #region Methods
-        public Guna2GradientButton CreateButton(string strButtonText = null)
+        public Guna2GradientButton CreateButton(int? iIndex = null)
         {
             Guna2GradientButton btn = new Guna2GradientButton();
             btn.Animated = true;
@@ -84,9 +85,15 @@ namespace itools_source.Views
             btn.ForeColor = System.Drawing.Color.White;
             btn.Location = new System.Drawing.Point(3, 3);
             btn.Size = new System.Drawing.Size(122, 80);
-            if (strButtonText != null)
+            if (iIndex != null)
             {
-                btn.Text = strButtonText;
+
+                //btn.Text = this.lstOPNumberOPType.Values[iIndex.Value].Keys[iIndex.Value] + "\r\n" + this.lstOPNumberOPType.Values[iIndex.Value].Values[iIndex.Value];
+                //btn.Tag = this.lstOPNumberOPType.Keys[iIndex.Value];
+
+                string strKey = this.lstOPNumberOPType.Keys.ElementAt(iIndex.Value);
+                btn.Tag = strKey;
+                btn.Text = this.lstOPNumberOPType[strKey].Keys.ElementAt(iIndex.Value) + "\r\n" + this.lstOPNumberOPType[strKey].Values.ElementAt(iIndex.Value);
             }
             btn.DoubleClick += (s, e) => { btnflpOPlList_DoubleClick?.Invoke(s, e); };
 

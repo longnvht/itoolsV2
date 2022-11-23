@@ -3,7 +3,9 @@ using itools_source.Models.Interface;
 using itools_source.Utils;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,10 +66,11 @@ namespace itools_source.Repository
             }
         }
 
-        public SortedList<string, string> GetOPByJobAndPart(string strJobName, string strPartID)
+        public Dictionary<string, Dictionary<string, string>> GetOPByJobPartOPID(string strJobName, string strPartID)
         {
-            SortedList<string, string> lstOPList = new SortedList<string, string>();
-            string strQuery = @"SELECT longnv.partop.OPNumber, longnv.partop.OPType
+            Dictionary<string, Dictionary<string, string>> lstOPList = new Dictionary<string, Dictionary<string, string>>();
+            Dictionary<string, string> lstOPNumberOPType = new Dictionary<string, string>();
+            string strQuery = @"SELECT longnv.partop.OPID, longnv.partop.OPNumber, longnv.partop.OPType
 	                                FROM longnv.partop
 		                                WHERE longnv.partop.JobNumber LIKE '" + strJobName + "' or longnv.partop.PartID = " + strPartID +
 			                                " LIMIT 50";
@@ -85,9 +88,14 @@ namespace itools_source.Repository
                         }
                         while (mySqlDataReader.Read())
                         {
+                            if (!mySqlDataReader.IsDBNull(1) && !mySqlDataReader.IsDBNull(2))
+                            {
+                                lstOPNumberOPType.Add(mySqlDataReader.GetString(1), mySqlDataReader.GetString(2));
+                            }
+
                             if (!mySqlDataReader.IsDBNull(0))
                             {
-                                lstOPList.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
+                                lstOPList.Add(mySqlDataReader.GetString(0), lstOPNumberOPType);
                             }
                         }
                         mySqlDataReader.Close();

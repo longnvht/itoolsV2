@@ -29,7 +29,7 @@ namespace itools_source.Utils
                     _strUSER_NAME = "root";
                     _strPASSWORD = "0306ht@1502";
                     break;
-                case "VOT1991":
+                case "VOT-L091":
                     _strHOST = "192.168.0.12";
                     _strPORT = "3306";
                     _strDATABASE_MAME = "tqteamne_itools";

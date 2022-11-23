@@ -45,7 +45,6 @@ namespace itools_source.Views
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(MdiChildren.Any().ToString());
             if (MdiChildren.Any())
             {
                 MdiChildren[0].Close();
@@ -54,7 +53,6 @@ namespace itools_source.Views
             {
                 MessageBox.Show("Ahihi");
             }
-            //MessageBox.Show(Environment.MachineName);
         }
     }
 }
