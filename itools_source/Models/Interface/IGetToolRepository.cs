@@ -11,6 +11,7 @@ namespace itools_source.Models.Interface
         IEnumerable<Job> GetAllJobs();
         Job GetJobs();
         SortedList<string, string> GetJobByJobNumber(string strJobNumber);
-        Dictionary<string, Dictionary<string, string>> GetOPByJobPartOPID(string strJobName, string strPartID);
+        Dictionary<string, Dictionary<string, string>> GetOPByJobPartOPID(string strJobNumber, string strPartID);
+        Task<Dictionary<int, string>> GetByToolForOP(int iOPId);
     }
 }

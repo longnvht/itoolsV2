@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,17 @@ namespace itools_source.Views.Interface
     public interface IGetToolView
     {
         #region Properties - Fields
-        string strOPId { get; set; }
+        int iOPId { get; set; }
         char cStatusForm { get; set; }
+        List<Guna2GradientButton> lstToolButton { get; set; }
+        Dictionary<int, string> lstToolForOPList { get; set; }
         #endregion
 
         #region Events
         event EventHandler GetToolView_Load;
         //event EventHandler txtTraySearch_TextChanged;
         //event EventHandler btnTraySearch_Click;
-        //event EventHandler btnflpTrayList_Click;
+        event EventHandler btnflpToolList_Click;
         //event KeyPressEventHandler txtOperateQuantity_KeyPress;
         //event EventHandler txtOperateQuantity_TextChanged;
         //event EventHandler txtToolCode_MouseClick;
@@ -38,6 +41,7 @@ namespace itools_source.Views.Interface
         void Close();
         void Hide();
         void SetStatusForm();
+        Guna2GradientButton CreateButton(int? iIndex = null);
         #endregion
     }
 }

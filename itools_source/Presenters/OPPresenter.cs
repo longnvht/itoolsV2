@@ -37,17 +37,17 @@ namespace itools_source.Presenters
         private void _opView_btnflpList_DoubleClick(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;
-            string strOPId = btn.Tag.ToString();
-            if (!string.IsNullOrEmpty(strOPId))
+            int? iOPId = Convert.ToInt32(btn.Tag);
+            if (iOPId != null)
             {
-                _opView.GetToolViewAction(strOPId);
+                _opView.GetToolViewAction(iOPId.Value);
             }
-            _log.Info("OPId: " + strOPId);
+            _log.Info("OPId: " + iOPId);
         }
 
         private void _opView_OPView_Load(object sender, EventArgs e)
         {
-            // Create list button.
+            // 1. Create list button.
             if (_opView.lstButton == null)
             {
                 _opView.lstButton = new List<Guna2GradientButton>();
@@ -59,7 +59,7 @@ namespace itools_source.Presenters
                 _opView.lstButton.Add(_opView.CreateButton(i));
             }
 
-            // Add to flowlayoutpanel.
+            // 2. Add to flowlayoutpanel.
             OPView frm = (OPView)sender;
             frm.flpOPList.Controls.AddRange(_opView.lstButton.ToArray());
             _log.Info("Create button list and add button to flowlayoutpanel.");

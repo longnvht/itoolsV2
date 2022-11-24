@@ -236,9 +236,9 @@ namespace itools_source.Views
                     this.txtCurrentQuantity.Enabled = false;
                     this.txtTotalQuantity.Enabled = false;
 
-                    this.tlpTooList.Visible = false;
-                    this.tlpTooList.Dock = DockStyle.Right;
-                    this.tlpTooList.BringToFront();
+                    this.tlpToolList.Visible = false;
+                    this.tlpToolList.Dock = DockStyle.Right;
+                    this.tlpToolList.BringToFront();
                     break;
                 case '4': // Save
                     this.txtOperateQuantity.Enabled = false;
@@ -344,11 +344,11 @@ namespace itools_source.Views
         
         public void CreateToolButton()
         {
-            if (tlpTooList.Visible == false)
+            if (tlpToolList.Visible == false)
             {
-                tlpTooList.Visible = true;
-                tlpTooList.Dock = DockStyle.Right;
-                tlpTooList.BringToFront();
+                tlpToolList.Visible = true;
+                tlpToolList.Dock = DockStyle.Right;
+                tlpToolList.BringToFront();
             }
 
             if (lstToolButton == null)
@@ -398,11 +398,11 @@ namespace itools_source.Views
             tlpTrayDetail.Enabled = true;
             this.txtToolCode.Enabled = true;
 
-            if (tlpTooList.Visible == true)
+            if (tlpToolList.Visible == true)
             {
-                tlpTooList.Visible = false;
-                tlpTooList.Dock = DockStyle.None;
-                tlpTooList.SendToBack();
+                tlpToolList.Visible = false;
+                tlpToolList.Dock = DockStyle.None;
+                tlpToolList.SendToBack();
             }
 
             // Reset button in flpToolList

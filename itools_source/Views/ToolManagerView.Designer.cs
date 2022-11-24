@@ -45,7 +45,7 @@ namespace itools_source.Views
             this._flpTrayList = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Elipse_pLeftContent = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pLeftContent = new System.Windows.Forms.Panel();
-            this.tlpTooList = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpToolList = new System.Windows.Forms.TableLayoutPanel();
             this.txtToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pToolContent = new System.Windows.Forms.Panel();
             this.guna2VScrollBar2 = new Guna.UI2.WinForms.Guna2VScrollBar();
@@ -74,7 +74,7 @@ namespace itools_source.Views
             this.guna2Elipse_pToolContent = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.tlpHeader.SuspendLayout();
             this.pLeftContent.SuspendLayout();
-            this.tlpTooList.SuspendLayout();
+            this.tlpToolList.SuspendLayout();
             this.pToolContent.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpContent.SuspendLayout();
@@ -277,23 +277,23 @@ namespace itools_source.Views
             this.pLeftContent.Size = new System.Drawing.Size(303, 344);
             this.pLeftContent.TabIndex = 0;
             // 
-            // tlpTooList
+            // tlpToolList
             // 
-            this.tlpTooList.AutoScroll = true;
-            this.tlpTooList.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.tlpTooList.ColumnCount = 1;
-            this.tlpTooList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpTooList.Controls.Add(this.txtToolSearch, 0, 0);
-            this.tlpTooList.Controls.Add(this.pToolContent, 0, 1);
-            this.tlpTooList.Controls.Add(this.tableLayoutPanel1, 0, 2);
-            this.tlpTooList.Location = new System.Drawing.Point(262, 3);
-            this.tlpTooList.Name = "tlpTooList";
-            this.tlpTooList.RowCount = 3;
-            this.tlpTooList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpTooList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tlpTooList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpTooList.Size = new System.Drawing.Size(320, 340);
-            this.tlpTooList.TabIndex = 0;
+            this.tlpToolList.AutoScroll = true;
+            this.tlpToolList.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.tlpToolList.ColumnCount = 1;
+            this.tlpToolList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpToolList.Controls.Add(this.txtToolSearch, 0, 0);
+            this.tlpToolList.Controls.Add(this.pToolContent, 0, 1);
+            this.tlpToolList.Controls.Add(this.tableLayoutPanel1, 0, 2);
+            this.tlpToolList.Location = new System.Drawing.Point(262, 3);
+            this.tlpToolList.Name = "tlpToolList";
+            this.tlpToolList.RowCount = 3;
+            this.tlpToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tlpToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tlpToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tlpToolList.Size = new System.Drawing.Size(320, 340);
+            this.tlpToolList.TabIndex = 0;
             // 
             // txtToolSearch
             // 
@@ -338,7 +338,7 @@ namespace itools_source.Views
             this.guna2VScrollBar2.BorderRadius = 8;
             this.guna2VScrollBar2.InUpdate = false;
             this.guna2VScrollBar2.LargeChange = 10;
-            this.guna2VScrollBar2.Location = new System.Drawing.Point(296, 1);
+            this.guna2VScrollBar2.Location = new System.Drawing.Point(296, 0);
             this.guna2VScrollBar2.Name = "guna2VScrollBar2";
             this.guna2VScrollBar2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.guna2VScrollBar2.ScrollbarSize = 18;
@@ -406,7 +406,7 @@ namespace itools_source.Views
             this.btnToolSelect.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnToolSelect.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnToolSelect.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.btnToolSelect.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToolSelect.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnToolSelect.ForeColor = System.Drawing.Color.White;
             this.btnToolSelect.Location = new System.Drawing.Point(3, 4);
             this.btnToolSelect.Name = "btnToolSelect";
@@ -432,7 +432,7 @@ namespace itools_source.Views
             // 
             // pRightContent
             // 
-            this.pRightContent.Controls.Add(this.tlpTooList);
+            this.pRightContent.Controls.Add(this.tlpToolList);
             this.pRightContent.Controls.Add(this.tlpTrayDetail);
             this.pRightContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pRightContent.Location = new System.Drawing.Point(312, 3);
@@ -705,7 +705,7 @@ namespace itools_source.Views
             // guna2Elipse_tlpToolList
             // 
             this.guna2Elipse_tlpToolList.BorderRadius = 20;
-            this.guna2Elipse_tlpToolList.TargetControl = this.tlpTooList;
+            this.guna2Elipse_tlpToolList.TargetControl = this.tlpToolList;
             // 
             // guna2Elipse_tlpTrayDetail
             // 
@@ -735,7 +735,7 @@ namespace itools_source.Views
             this.tlpHeader.ResumeLayout(false);
             this.pLeftContent.ResumeLayout(false);
             this.pLeftContent.PerformLayout();
-            this.tlpTooList.ResumeLayout(false);
+            this.tlpToolList.ResumeLayout(false);
             this.pToolContent.ResumeLayout(false);
             this.pToolContent.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -758,7 +758,7 @@ namespace itools_source.Views
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiAddNew;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar_flpTrayList;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_pLeftContent;
-        private System.Windows.Forms.TableLayoutPanel tlpTooList;
+        private System.Windows.Forms.TableLayoutPanel tlpToolList;
         private Guna.UI2.WinForms.Guna2TextBox txtToolSearch;
         private System.Windows.Forms.Panel pToolContent;
         private System.Windows.Forms.TableLayoutPanel tlpContent;
@@ -789,8 +789,8 @@ namespace itools_source.Views
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_pToolContent;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar2;
         private System.Windows.Forms.FlowLayoutPanel flpToolList;
+        private FlowLayoutPanel _flpTrayList;
 
-        private System.Windows.Forms.FlowLayoutPanel _flpTrayList;
         public FlowLayoutPanel flpTrayListP
         {
             get { return _flpTrayList; }

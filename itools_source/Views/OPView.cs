@@ -38,7 +38,7 @@ namespace itools_source.Views
         }
         public List<Guna2GradientButton> lstButton { get; set; }
         public Dictionary<string, Dictionary<string, string>> lstOPNumberOPType { get; set; }
-        public Action<string> GetToolViewAction { get; set; }
+        public Action<int> GetToolViewAction { get; set; }
 
         // Singleton pattern (Open a single form instance)
         private static OPView _instance;
@@ -87,10 +87,6 @@ namespace itools_source.Views
             btn.Size = new System.Drawing.Size(122, 80);
             if (iIndex != null)
             {
-
-                //btn.Text = this.lstOPNumberOPType.Values[iIndex.Value].Keys[iIndex.Value] + "\r\n" + this.lstOPNumberOPType.Values[iIndex.Value].Values[iIndex.Value];
-                //btn.Tag = this.lstOPNumberOPType.Keys[iIndex.Value];
-
                 string strKey = this.lstOPNumberOPType.Keys.ElementAt(iIndex.Value);
                 btn.Tag = strKey;
                 btn.Text = this.lstOPNumberOPType[strKey].Keys.ElementAt(iIndex.Value) + "\r\n" + this.lstOPNumberOPType[strKey].Values.ElementAt(iIndex.Value);
@@ -99,10 +95,6 @@ namespace itools_source.Views
 
             return btn;
         }
-        //public void ListOPNumberOPType(SortedList<string, string> lstOPNumberOpType)
-        //{
-        //    this.lstOPNumberOpType = lstOPNumberOpType;
-        //}
         #endregion
     }
 }

@@ -15,7 +15,7 @@ namespace itools_source.Views.Interface
         string strSearch { get; set; }
         List<Guna2GradientButton> lstButton { get; set; }
         Dictionary<string, Dictionary<string, string>> lstOPNumberOPType { get; set; }
-        Action<string> GetToolViewAction { get; set; }
+        Action<int> GetToolViewAction { get; set; }
         #endregion
 
         #region Events

@@ -86,6 +86,7 @@ namespace itools_source.Presenters
             this._mainView.Previous += Previous;
             this._mainView.Next += Next;
         }
+
         public void ListOPNumberOPType(Dictionary<string, Dictionary<string, string>> lstOPNumberOpType)
         {
             // 1. Data transmission
@@ -99,11 +100,12 @@ namespace itools_source.Presenters
 
             _log.Info("Form close: " + typeof(JobView).Name + ", Open: " + typeof(OPView).Name);
         }
-        public void OpenGetToolView(string strOPId)
+
+        public void OpenGetToolView(int iOPId)
         {
             // 1. Data transmission
             GetToolView getToolView = GetToolView.GetInstance((MainView)_mainView);
-            getToolView.strOPId = strOPId;
+            getToolView.iOPId = iOPId;
 
             // 2. Close OPView, open GetToolView
             _mainView.CloseFormChild();

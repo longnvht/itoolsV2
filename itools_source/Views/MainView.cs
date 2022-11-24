@@ -37,10 +37,6 @@ namespace itools_source.Views
             {
                 MdiChildren[0].Close();
             }
-            else
-            {
-                MessageBox.Show("Ahihi");
-            }
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
@@ -48,10 +44,6 @@ namespace itools_source.Views
             if (MdiChildren.Any())
             {
                 MdiChildren[0].Close();
-            }
-            else
-            {
-                MessageBox.Show("Ahihi");
             }
         }
     }

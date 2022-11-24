@@ -37,7 +37,6 @@ namespace itools_source.Utils
                     _strPASSWORD = "Vinam@123";
                     break;
             }
-            //_strConnect = "server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD;
             return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
         }
 
@@ -61,6 +60,25 @@ namespace itools_source.Utils
             return null;
         }
 
+        public static async Task<MySqlConnection> OpenAsync()
+        {
+            try
+            {
+                if (ConnectionString() == null)
+                {
+                    return null;
+                }
+                MySqlConnection conn = new MySqlConnection(ConnectionString());
+                await conn.OpenAsync();
+                return conn;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return null;
+        }
+
         public static MySqlDataReader DataQuery(string strQuery, MySqlConnection mySqlConn)
         {
             try
@@ -75,13 +93,75 @@ namespace itools_source.Utils
             return null;
         }
 
-        public static MySqlDataReader DataQuery(string strquery, MySqlParameter[] paramerter, MySqlConnection mySqlConn)
+        public static MySqlDataReader DataQueryProcedure(string strStoreProcedure, MySqlConnection mySqlConn)
         {
             try
             {
-                MySqlCommand cmd = new MySqlCommand(strquery, mySqlConn);
+                MySqlCommand cmd = new MySqlCommand(strStoreProcedure, mySqlConn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                return cmd.ExecuteReader();
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return null;
+        }
+
+        public static async Task<MySqlDataReader> DataQueryProcedureAsync(string strStoreProcedure, MySqlConnection mySqlConn)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(strStoreProcedure, mySqlConn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                await cmd.ExecuteReaderAsync();
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return null;
+        }
+
+        public static MySqlDataReader DataQuery(string strQuery, MySqlParameter[] paramerter, MySqlConnection mySqlConn)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(strQuery, mySqlConn);
                 cmd.Parameters.AddRange(paramerter);
                 return cmd.ExecuteReader();
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return null;
+        }
+
+        public static MySqlDataReader DataQueryProcedure(string strStoreProcedure, MySqlParameter[] paramerter, MySqlConnection mySqlConn)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(strStoreProcedure, mySqlConn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddRange(paramerter);
+                return cmd.ExecuteReader();
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return null;
+        }
+
+        public static async Task<MySqlDataReader> DataQueryProcedureAsync(string strStoreProcedure, MySqlParameter[] paramerter, MySqlConnection mySqlConn)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(strStoreProcedure, mySqlConn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddRange(paramerter);
+                return (MySqlDataReader)await cmd.ExecuteReaderAsync();
             }
             catch (MySqlException e)
             {
@@ -100,23 +180,8 @@ namespace itools_source.Utils
             catch (MySqlException e)
             {
                 _log.Error(e.Message);
-                return false;
             }
-        }
-
-        public static bool CmdExecution(string strQuery, MySqlParameter[] parameter, MySqlConnection mySqlConn)
-        {
-            try
-            {
-                MySqlCommand cmd = new MySqlCommand(strQuery, mySqlConn);
-                cmd.Parameters.AddRange(parameter);
-                return (cmd.ExecuteNonQuery() != 0);
-            }
-            catch (MySqlException e)
-            {
-                _log.Error(e.Message);
-                return false;
-            }
+            return false;
         }
 
         public static bool CmdExecutionProcedure(string strStoredProcedure, MySqlConnection mySqlConn)
@@ -130,8 +195,23 @@ namespace itools_source.Utils
             catch (MySqlException e)
             {
                 _log.Error(e.Message);
-                return false;
             }
+            return false;
+        }
+
+        public static bool CmdExecution(string strQuery, MySqlParameter[] parameter, MySqlConnection mySqlConn)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(strQuery, mySqlConn);
+                cmd.Parameters.AddRange(parameter);
+                return (cmd.ExecuteNonQuery() != 0);
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return false;
         }
 
         public static bool CmdExecutionProcedure(string strStoredProcedure, MySqlParameter[] parameter, MySqlConnection mySqlConn)
@@ -146,8 +226,8 @@ namespace itools_source.Utils
             catch (MySqlException e)
             {
                 _log.Error(e.Message);
-                return false;
             }
+            return false;
         }
     }
 }

@@ -66,39 +66,82 @@ namespace itools_source.Repository
             }
         }
 
-        public Dictionary<string, Dictionary<string, string>> GetOPByJobPartOPID(string strJobName, string strPartID)
+        public Dictionary<string, Dictionary<string, string>> GetOPByJobPartOPID(string strJobNumber, string strPartID)
         {
             Dictionary<string, Dictionary<string, string>> lstOPList = new Dictionary<string, Dictionary<string, string>>();
             Dictionary<string, string> lstOPNumberOPType = new Dictionary<string, string>();
-            string strQuery = @"SELECT longnv.partop.OPID, longnv.partop.OPNumber, longnv.partop.OPType
-	                                FROM longnv.partop
-		                                WHERE longnv.partop.JobNumber LIKE '" + strJobName + "' or longnv.partop.PartID = " + strPartID +
-			                                " LIMIT 50";
-            _log.Info(strQuery);
+            string strQueryProcedure = @"GetOPByJobPartOPID";
+
+            _log.Info("Store procedure query: " + strQueryProcedure);
             try
             {
+                List<MySqlParameter> lstPar = new List<MySqlParameter>();
+                lstPar.Add(new MySqlParameter("@p_JobNumber", strJobNumber));
+                lstPar.Add(new MySqlParameter("@p_PartID", strPartID));
+                //lstPar.Add(
+                //new MySqlParameter
+                //{
+                //    ParameterName = "@p_JobNumber",
+                //    MySqlDbType = MySqlDbType.VarChar,
+                //    Value = strJobNumber,
+                //    Direction = System.Data.ParameterDirection.Input
+                //});
+                //lstPar.Add(
+                //new MySqlParameter
+                //{
+                //    ParameterName = "@p_PartID",
+                //    MySqlDbType = MySqlDbType.Int32,
+                //    Value = strPartID,
+                //    Direction = System.Data.ParameterDirection.Input
+                //});
+
+                if (lstPar == null)
+                {
+                    return null;
+                }
+
+                if (lstPar[0].Value == DBNull.Value)
+                {
+                    return null;
+                }
+                foreach (var parCheck in lstPar)
+                {
+                    if (parCheck.Value == DBNull.Value)
+                    {
+                        parCheck.Value = DBNull.Value;
+                    }
+                }
+
                 using (MySqlConnection mySqlConnection = MySqlConnect.Open())
                 {
-                    using (MySqlDataReader mySqlDataReader = MySqlConnect.DataQuery(strQuery, mySqlConnection))
+                    using (MySqlDataReader mySqlDataReader = MySqlConnect.DataQueryProcedure(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
                     {
                         if (lstOPList == null)
                         {
-                            _log.Error("Variable lstJobNumberList is Null!");
+                            _log.Error("Variable lstOPList is Null!");
                             return null;
                         }
-                        while (mySqlDataReader.Read())
+                        if (mySqlDataReader != null)
                         {
-                            if (!mySqlDataReader.IsDBNull(1) && !mySqlDataReader.IsDBNull(2))
+                            if (lstOPNumberOPType == null)
                             {
-                                lstOPNumberOPType.Add(mySqlDataReader.GetString(1), mySqlDataReader.GetString(2));
+                                _log.Error("Variable lstOPNumberOPType is Null!");
+                                return null;
                             }
+                            while (mySqlDataReader.Read())
+                            {
+                                if (!mySqlDataReader.IsDBNull(1) && !mySqlDataReader.IsDBNull(2))
+                                {
+                                    lstOPNumberOPType.Add(mySqlDataReader.GetString(1), mySqlDataReader.GetString(2));
+                                }
 
-                            if (!mySqlDataReader.IsDBNull(0))
-                            {
-                                lstOPList.Add(mySqlDataReader.GetString(0), lstOPNumberOPType);
+                                if (!mySqlDataReader.IsDBNull(0))
+                                {
+                                    lstOPList.Add(mySqlDataReader.GetString(0), lstOPNumberOPType);
+                                }
                             }
+                            mySqlDataReader.Close();
                         }
-                        mySqlDataReader.Close();
                     }
                     mySqlConnection.Close();
                 }
@@ -107,6 +150,63 @@ namespace itools_source.Repository
             catch (MySqlException e)
             {
 
+                _log.Error(e.Message);
+                return null;
+            }
+        }
+
+        public async Task<Dictionary<int, string>> GetByToolForOP(int iOPId)
+        {
+            // 0. ToolId
+            // 1. ToolCode
+            Dictionary<int, string> lstToolCodeList = new Dictionary<int, string>();
+            string strQuery = @"GetToolCodeByOPId";
+            _log.Info(strQuery);
+            try
+            {
+                List<MySqlParameter> lstPar = new List<MySqlParameter>();
+                lstPar.Add(
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_OPId",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = iOPId,
+                        Direction = System.Data.ParameterDirection.Input
+                    });
+
+                if (lstPar[0].Value == DBNull.Value)
+                {
+                    return null;
+                }
+
+                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
+                {
+                    using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQuery, lstPar.ToArray(), mySqlConnection))
+                    {
+                        if (mySqlDataReader != null)
+                        {
+                            if (lstToolCodeList == null)
+                            {
+                                _log.Error("Variable lstToolForOPList is Null!");
+                                return null;
+                            }
+                            while (mySqlDataReader.Read())
+                            {
+                                if (!mySqlDataReader.IsDBNull(0) && !mySqlDataReader.IsDBNull(1))
+                                {
+                                    // ToolId, ToolCode
+                                    lstToolCodeList.Add(mySqlDataReader.GetInt32(0), mySqlDataReader.GetString(1));
+                                }
+                            }
+                            mySqlDataReader.Close();
+                        }
+                    }
+                    mySqlConnection.Close();
+                }
+                return lstToolCodeList;
+            }
+            catch (MySqlException e)
+            {
                 _log.Error(e.Message);
                 return null;
             }

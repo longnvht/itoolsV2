@@ -1,4 +1,5 @@
-﻿using itools_source.Views.Interface;
+﻿using Guna.UI2.WinForms;
+using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,79 +44,49 @@ namespace itools_source.Views
             }
             return _instance;
         }
-        public string strOPId { get; set; }
+        public int iOPId { get; set; }
         public char cStatusForm { get; set; }
+        public List<Guna2GradientButton> lstToolButton { get; set; }
+        public Dictionary<int, string> lstToolForOPList { get; set; }
+
         #endregion
 
         #region Methods
         public void SetStatusForm()
         {
-            this.txtOperateQuantity.Enabled = false;
-            this.txtToolCode.Enabled = false;
-            this.btnSave.Enabled = false;
-            this.notifiTakeout.Text = "Off";
-            this.notifiAddPlugin.Text = "Off";
-            this.notifiAddNew.Text = "Off";
-            this.notifiTakeout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.notifiAddPlugin.FillColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.notifiAddNew.FillColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            
+        }
 
-            switch (cStatusForm)
+        public Guna2GradientButton CreateButton(int? iIndex = null)
+        {
+            Guna2GradientButton btn = new Guna2GradientButton();
+            btn.Animated = true;
+            btn.BorderRadius = 10;
+            btn.DisabledState.BorderColor = Color.DarkGray;
+            btn.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn.DisabledState.FillColor = Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            btn.DisabledState.FillColor2 = Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            btn.DisabledState.ForeColor = Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            btn.FillColor = Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            btn.FillColor2 = Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            btn.Font = new Font("Segoe UI", 11F);
+            btn.ForeColor = Color.White;
+            btn.Location = new Point(3, 3);
+            btn.Size = new Size(280, 60);
+            if (iIndex != null)
             {
-                case '0': // AddNew
-                    this.btnAddNew.Enabled = true;
-                    this.btnAddPlugin.Enabled = true;
-                    this.btnTakeOut.Enabled = false;
-                    break;
-                case '1': // AddNew, AddPlugin 
-                    this.btnAddNew.Enabled = false;
-                    this.btnAddPlugin.Enabled = true;
-                    this.btnTakeOut.Enabled = true;
-                    break;
-                case '2': // TakeOut
-                    this.btnAddNew.Enabled = false;
-                    this.btnAddPlugin.Enabled = false;
-                    this.btnTakeOut.Enabled = true;
-                    break;
-                case '3': // Status Default
-                    this.btnAddNew.Enabled = false;
-                    this.btnAddPlugin.Enabled = false;
-                    this.btnTakeOut.Enabled = false;
-
-                    this.txtTrayIndex.Enabled = false;
-                    this.txtToolCode.Enabled = false;
-                    this.txtCurrentQuantity.Enabled = false;
-                    this.txtTotalQuantity.Enabled = false;
-
-                    this.tlpTooList.Visible = false;
-                    this.tlpTooList.Dock = DockStyle.Right;
-                    this.tlpTooList.BringToFront();
-                    break;
-                case '4': // Save
-                    this.txtOperateQuantity.Enabled = false;
-                    this.btnTakeOut.Enabled = false;
-                    this.btnAddPlugin.Enabled = false;
-                    this.btnAddNew.Enabled = false;
-                    this.btnSave.Enabled = false;
-                    this.txtTotalQuantity.Text = string.Empty;
-                    break;
-                case '5':
-                    this.txtOperateQuantity.Text = string.Empty;
-                    this.txtTotalQuantity.Text = string.Empty;
-                    break;
-                case '6': // Select Tool in List
-                    this.txtOperateQuantity.Enabled = false;
-                    this.btnTakeOut.Enabled = false;
-                    this.btnAddPlugin.Enabled = false;
-                    this.btnAddNew.Enabled = false;
-                    this.btnSave.Enabled = true;
-                    break;
+                btn.Tag = this.lstToolForOPList.Keys.ElementAt(iIndex.Value);
+                btn.Text = this.lstToolForOPList.Values.ElementAt(iIndex.Value);
             }
+            btn.Click += (s, e) => { btnflpToolList_Click?.Invoke(s, e); };
+
+            return btn;
         }
         #endregion
 
         #region Events
         public event EventHandler GetToolView_Load;
+        public event EventHandler btnflpToolList_Click;
         #endregion
     }
 }
