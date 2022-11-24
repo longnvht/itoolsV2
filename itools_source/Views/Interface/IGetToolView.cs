@@ -12,6 +12,9 @@ namespace itools_source.Views.Interface
     {
         #region Properties - Fields
         int iOPId { get; set; }
+        string strToolCode { get; set; }
+        string strToolModel { get; set; }
+        string strToolDescription { get; set; }
         char cStatusForm { get; set; }
         List<Guna2GradientButton> lstToolButton { get; set; }
         Dictionary<int, string> lstToolForOPList { get; set; }

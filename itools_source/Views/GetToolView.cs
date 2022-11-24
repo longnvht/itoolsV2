@@ -48,7 +48,42 @@ namespace itools_source.Views
         public char cStatusForm { get; set; }
         public List<Guna2GradientButton> lstToolButton { get; set; }
         public Dictionary<int, string> lstToolForOPList { get; set; }
-
+        public string strToolCode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(txtToolCode.Text))
+                {
+                    return "";
+                }
+                return txtToolCode.Text;
+            }
+            set => txtToolCode.Text = value;
+        }
+        public string strToolModel
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(txtModel.Text))
+                {
+                    return "";
+                }
+                return txtModel.Text;
+            }
+            set => txtModel.Text = value;
+        }
+        public string strToolDescription
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(txtDescription.Text))
+                {
+                    return "";
+                }
+                return txtDescription.Text;
+            }
+            set => txtDescription.Text = value;
+        }
         #endregion
 
         #region Methods

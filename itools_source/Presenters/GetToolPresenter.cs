@@ -22,7 +22,27 @@ namespace itools_source.Presenters
         private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(OPPresenter).Name);
         #endregion
 
+        #region Methods
+        public GetToolPresenter(IGetToolView getToolView, IGetToolRepository getToolRepository)
+        {
+            _getToolView = getToolView;
+            _getToolRepository = getToolRepository;
+
+            _getToolView.GetToolView_Load += _getToolView_GetToolView_Load;
+            _getToolView.btnflpToolList_Click += _getToolView_btnflpToolList_Click;
+
+            _getToolView.Show();
+        }
+        #endregion
+
         #region Evens
+        private void _getToolView_btnflpToolList_Click(object sender, EventArgs e)
+        {
+            foreach (var item in _getToolView.lstToolForOPList)
+            {
+                MessageBox.Show(item.Key.ToString(), item.Value);
+            }
+        }
         private async void _getToolView_GetToolView_Load(object sender, EventArgs e)
         {
             GetToolView frm = (GetToolView)sender;
@@ -53,18 +73,6 @@ namespace itools_source.Presenters
                 frm.flpToolList.Controls.AddRange(_getToolView.lstToolButton.ToArray());
                 _log.Info("Create button list and add button to flowlayoutpanel.");
             }
-        }
-        #endregion
-
-        #region Methods
-        public GetToolPresenter(IGetToolView getToolView, IGetToolRepository getToolRepository)
-        {
-            _getToolView = getToolView;
-            _getToolRepository = getToolRepository;
-
-            _getToolView.GetToolView_Load += _getToolView_GetToolView_Load;
-
-            _getToolView.Show();
         }
         #endregion
     }
