@@ -160,8 +160,8 @@ namespace itools_source.Repository
             // 0. ToolId
             // 1. ToolCode
             Dictionary<int, string> lstToolCodeList = new Dictionary<int, string>();
-            string strQuery = @"GetToolCodeByOPId";
-            _log.Info(strQuery);
+            string strQueryProcedure = @"GetToolCodeByOPId";
+            _log.Info("Store procedure query: " + strQueryProcedure);
             try
             {
                 List<MySqlParameter> lstPar = new List<MySqlParameter>();
@@ -181,7 +181,7 @@ namespace itools_source.Repository
 
                 using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
                 {
-                    using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQuery, lstPar.ToArray(), mySqlConnection))
+                    using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
                     {
                         if (mySqlDataReader != null)
                         {
@@ -204,6 +204,132 @@ namespace itools_source.Repository
                     mySqlConnection.Close();
                 }
                 return lstToolCodeList;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+                return null;
+            }
+        }
+
+        public async Task<Dictionary<string, string>> GetModelDescriptionByToolId(int iToolId)
+        {
+            // 0. ToolModel
+            // 1. ToolDescription
+            Dictionary<string, string> lstToolModelDes = new Dictionary<string, string>();
+            string strQueryProcedure = @"GetModelDescriptionByToolId";
+            _log.Info("Store procedure query: " + strQueryProcedure);
+            try
+            {
+                List<MySqlParameter> lstPar = new List<MySqlParameter>();
+                lstPar.Add(
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_ToolId",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = iToolId,
+                        Direction = System.Data.ParameterDirection.Input
+                    });
+
+                if (lstPar[0].Value == DBNull.Value)
+                {
+                    return null;
+                }
+
+                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
+                {
+                    using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
+                    {
+                        if (mySqlDataReader != null)
+                        {
+                            if (lstToolModelDes == null)
+                            {
+                                _log.Error("Variable lstToolModelDes is Null!");
+                                return null;
+                            }
+                            while (mySqlDataReader.Read())
+                            {
+                                if (!mySqlDataReader.IsDBNull(0) && !mySqlDataReader.IsDBNull(1))
+                                {
+                                    // ToolModel, ToolDescription
+                                    lstToolModelDes.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
+                                }
+                                else
+                                {
+                                    lstToolModelDes.Add(DBNull.Value.ToString(), DBNull.Value.ToString());
+                                }
+                            }
+                            mySqlDataReader.Close();
+                        }
+                    }
+                    mySqlConnection.Close();
+                }
+                return lstToolModelDes;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+                return null;
+            }
+        }
+
+        public async Task<Dictionary<string, string>> GetMachineTrayByToolCode(string strToolCode, string strMachineCode)
+        {
+            // 0. TrayIndex
+            // 1. Machine
+            Dictionary<string, string> lstMachineTray = new Dictionary<string, string>();
+            string strQueryProcedure = @"GetMachineTrayByToolCode";
+            _log.Info("Store procedure query: " + strQueryProcedure);
+            try
+            {
+                List<MySqlParameter> lstPar = new List<MySqlParameter>();
+                lstPar.Add(
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_ToolCode",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = strToolCode,
+                        Direction = System.Data.ParameterDirection.Input
+                    });
+                lstPar.Add(
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_MachineCode",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = strMachineCode,
+                        Direction = System.Data.ParameterDirection.Input
+                    });
+
+                if (lstPar[0].Value == DBNull.Value)
+                {
+                    return null;
+                }
+
+                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
+                {
+                    using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
+                    {
+                        if (mySqlDataReader != null)
+                        {
+                            if (lstMachineTray == null)
+                            {
+                                _log.Error("Variable lstToolModelDes is Null!");
+                                return null;
+                            }
+                            while (mySqlDataReader.Read())
+                            {
+                                if (!mySqlDataReader.IsDBNull(0) && !mySqlDataReader.IsDBNull(1))
+                                {
+                                    // TrayIndex, Machine
+                                    lstMachineTray.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
+                                }
+                            }
+                            mySqlDataReader.Close();
+                        }
+                    }
+                    mySqlConnection.Close();
+                }
+                return lstMachineTray;
             }
             catch (MySqlException e)
             {

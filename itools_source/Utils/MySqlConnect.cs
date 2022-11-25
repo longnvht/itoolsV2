@@ -54,7 +54,6 @@ namespace itools_source.Utils
             }
             catch (MySqlException e)
             {
-                MessageBox.Show(ConnectionString());
                 _log.Error(e.Message);
             }
             return null;

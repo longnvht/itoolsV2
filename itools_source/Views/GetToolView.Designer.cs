@@ -51,12 +51,12 @@
             this._txtToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pToolContent = new System.Windows.Forms.Panel();
             this.guna2VScrollBar_flpToolMachineList = new Guna.UI2.WinForms.Guna2VScrollBar();
-            this._flpToolMachineList = new System.Windows.Forms.FlowLayoutPanel();
+            this._flpTrayMachineList = new System.Windows.Forms.FlowLayoutPanel();
             this.tlpToolMachineFooter = new System.Windows.Forms.TableLayoutPanel();
             this._btnToolCancel = new Guna.UI2.WinForms.Guna2GradientButton();
             this._btnToolSelect = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2Elipse_tlpTooMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse_flpToolMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse_flpTrayMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.tlpHeader.SuspendLayout();
             this.tlpFooter.SuspendLayout();
             this.tlpContent.SuspendLayout();
@@ -100,7 +100,7 @@
             this._btnSearch.Margin = new System.Windows.Forms.Padding(5);
             this._btnSearch.Name = "_btnSearch";
             this._btnSearch.Size = new System.Drawing.Size(260, 36);
-            this._btnSearch.TabIndex = 0;
+            this._btnSearch.TabIndex = 1;
             this._btnSearch.Text = "Tìm Kiếm";
             // 
             // _txtSearch
@@ -123,7 +123,7 @@
             this._txtSearch.PlaceholderText = "Tìm Kiếm";
             this._txtSearch.SelectedText = "";
             this._txtSearch.Size = new System.Drawing.Size(305, 34);
-            this._txtSearch.TabIndex = 1;
+            this._txtSearch.TabIndex = 0;
             this._txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tlpFooter
@@ -156,14 +156,14 @@
             this._btnGetTool.Location = new System.Drawing.Point(363, 3);
             this._btnGetTool.Name = "_btnGetTool";
             this._btnGetTool.Size = new System.Drawing.Size(174, 40);
-            this._btnGetTool.TabIndex = 0;
+            this._btnGetTool.TabIndex = 3;
             this._btnGetTool.Text = "Lấy Tool";
             // 
             // tlpContent
             // 
             this.tlpContent.ColumnCount = 2;
-            this.tlpContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tlpContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
+            this.tlpContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tlpContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tlpContent.Controls.Add(this.pLeftContent, 0, 0);
             this.tlpContent.Controls.Add(this.tlpRightContent, 1, 0);
             this.tlpContent.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -181,7 +181,7 @@
             this.pLeftContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pLeftContent.Location = new System.Drawing.Point(3, 3);
             this.pLeftContent.Name = "pLeftContent";
-            this.pLeftContent.Size = new System.Drawing.Size(309, 358);
+            this.pLeftContent.Size = new System.Drawing.Size(264, 358);
             this.pLeftContent.TabIndex = 0;
             // 
             // guna2VScrollBar_flpToolList
@@ -190,10 +190,10 @@
             this.guna2VScrollBar_flpToolList.BorderRadius = 10;
             this.guna2VScrollBar_flpToolList.InUpdate = false;
             this.guna2VScrollBar_flpToolList.LargeChange = 10;
-            this.guna2VScrollBar_flpToolList.Location = new System.Drawing.Point(285, 0);
+            this.guna2VScrollBar_flpToolList.Location = new System.Drawing.Point(246, 0);
             this.guna2VScrollBar_flpToolList.Name = "guna2VScrollBar_flpToolList";
-            this.guna2VScrollBar_flpToolList.ScrollbarSize = 24;
-            this.guna2VScrollBar_flpToolList.Size = new System.Drawing.Size(24, 358);
+            this.guna2VScrollBar_flpToolList.ScrollbarSize = 18;
+            this.guna2VScrollBar_flpToolList.Size = new System.Drawing.Size(18, 358);
             this.guna2VScrollBar_flpToolList.TabIndex = 0;
             this.guna2VScrollBar_flpToolList.ThumbSize = 100F;
             // 
@@ -205,24 +205,23 @@
             this._flpToolList.Dock = System.Windows.Forms.DockStyle.Fill;
             this._flpToolList.Location = new System.Drawing.Point(0, 0);
             this._flpToolList.Name = "_flpToolList";
-            this._flpToolList.Size = new System.Drawing.Size(309, 358);
-            this._flpToolList.TabIndex = 0;
+            this._flpToolList.Size = new System.Drawing.Size(264, 358);
+            this._flpToolList.TabIndex = 2;
             // 
             // tlpRightContent
             // 
-            this.tlpRightContent.ColumnCount = 4;
-            this.tlpRightContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlpRightContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpRightContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tlpRightContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpRightContent.Controls.Add(this._txtToolCode, 2, 1);
-            this.tlpRightContent.Controls.Add(this.label1, 1, 1);
-            this.tlpRightContent.Controls.Add(this.label2, 1, 2);
-            this.tlpRightContent.Controls.Add(this.label3, 1, 3);
-            this.tlpRightContent.Controls.Add(this._txtModel, 2, 2);
-            this.tlpRightContent.Controls.Add(this._txtDescription, 2, 3);
+            this.tlpRightContent.ColumnCount = 3;
+            this.tlpRightContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14F));
+            this.tlpRightContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tlpRightContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46F));
+            this.tlpRightContent.Controls.Add(this._txtToolCode, 1, 1);
+            this.tlpRightContent.Controls.Add(this.label1, 0, 1);
+            this.tlpRightContent.Controls.Add(this.label2, 0, 2);
+            this.tlpRightContent.Controls.Add(this.label3, 0, 3);
+            this.tlpRightContent.Controls.Add(this._txtModel, 1, 2);
+            this.tlpRightContent.Controls.Add(this._txtDescription, 1, 3);
             this.tlpRightContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpRightContent.Location = new System.Drawing.Point(318, 3);
+            this.tlpRightContent.Location = new System.Drawing.Point(273, 3);
             this.tlpRightContent.Name = "tlpRightContent";
             this.tlpRightContent.RowCount = 5;
             this.tlpRightContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -230,7 +229,7 @@
             this.tlpRightContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tlpRightContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tlpRightContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpRightContent.Size = new System.Drawing.Size(579, 358);
+            this.tlpRightContent.Size = new System.Drawing.Size(624, 358);
             this.tlpRightContent.TabIndex = 1;
             // 
             // _txtToolCode
@@ -247,13 +246,13 @@
             this._txtToolCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtToolCode.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._txtToolCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtToolCode.Location = new System.Drawing.Point(204, 75);
+            this._txtToolCode.Location = new System.Drawing.Point(90, 75);
             this._txtToolCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtToolCode.Name = "_txtToolCode";
             this._txtToolCode.PasswordChar = '\0';
             this._txtToolCode.PlaceholderText = "";
             this._txtToolCode.SelectedText = "";
-            this._txtToolCode.Size = new System.Drawing.Size(254, 36);
+            this._txtToolCode.Size = new System.Drawing.Size(243, 36);
             this._txtToolCode.TabIndex = 0;
             this._txtToolCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -261,7 +260,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Location = new System.Drawing.Point(121, 71);
+            this.label1.Location = new System.Drawing.Point(7, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 71);
             this.label1.TabIndex = 1;
@@ -272,7 +271,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Location = new System.Drawing.Point(160, 142);
+            this.label2.Location = new System.Drawing.Point(46, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 71);
             this.label2.TabIndex = 2;
@@ -283,7 +282,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label3.Location = new System.Drawing.Point(139, 213);
+            this.label3.Location = new System.Drawing.Point(25, 213);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 71);
             this.label3.TabIndex = 3;
@@ -304,13 +303,13 @@
             this._txtModel.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtModel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._txtModel.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtModel.Location = new System.Drawing.Point(204, 146);
+            this._txtModel.Location = new System.Drawing.Point(90, 146);
             this._txtModel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtModel.Name = "_txtModel";
             this._txtModel.PasswordChar = '\0';
             this._txtModel.PlaceholderText = "";
             this._txtModel.SelectedText = "";
-            this._txtModel.Size = new System.Drawing.Size(254, 36);
+            this._txtModel.Size = new System.Drawing.Size(243, 36);
             this._txtModel.TabIndex = 4;
             this._txtModel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -327,13 +326,13 @@
             this._txtDescription.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this._txtDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtDescription.Location = new System.Drawing.Point(204, 217);
+            this._txtDescription.Location = new System.Drawing.Point(90, 217);
             this._txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtDescription.Name = "_txtDescription";
             this._txtDescription.PasswordChar = '\0';
             this._txtDescription.PlaceholderText = "";
             this._txtDescription.SelectedText = "";
-            this._txtDescription.Size = new System.Drawing.Size(254, 63);
+            this._txtDescription.Size = new System.Drawing.Size(243, 63);
             this._txtDescription.TabIndex = 5;
             // 
             // guna2Elipse_flpToolList
@@ -350,13 +349,13 @@
             this._tlpToolMachineList.Controls.Add(this._txtToolSearch, 0, 0);
             this._tlpToolMachineList.Controls.Add(this.pToolContent, 0, 1);
             this._tlpToolMachineList.Controls.Add(this.tlpToolMachineFooter, 0, 2);
-            this._tlpToolMachineList.Location = new System.Drawing.Point(567, 50);
+            this._tlpToolMachineList.Location = new System.Drawing.Point(594, 50);
             this._tlpToolMachineList.Name = "_tlpToolMachineList";
             this._tlpToolMachineList.RowCount = 3;
             this._tlpToolMachineList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this._tlpToolMachineList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this._tlpToolMachineList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this._tlpToolMachineList.Size = new System.Drawing.Size(330, 355);
+            this._tlpToolMachineList.Size = new System.Drawing.Size(280, 355);
             this._tlpToolMachineList.TabIndex = 3;
             // 
             // _txtToolSearch
@@ -379,18 +378,18 @@
             this._txtToolSearch.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
             this._txtToolSearch.PlaceholderText = "Tìm Kiếm";
             this._txtToolSearch.SelectedText = "";
-            this._txtToolSearch.Size = new System.Drawing.Size(324, 34);
+            this._txtToolSearch.Size = new System.Drawing.Size(274, 34);
             this._txtToolSearch.TabIndex = 28;
             this._txtToolSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pToolContent
             // 
             this.pToolContent.Controls.Add(this.guna2VScrollBar_flpToolMachineList);
-            this.pToolContent.Controls.Add(this._flpToolMachineList);
+            this.pToolContent.Controls.Add(this._flpTrayMachineList);
             this.pToolContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pToolContent.Location = new System.Drawing.Point(3, 56);
             this.pToolContent.Name = "pToolContent";
-            this.pToolContent.Size = new System.Drawing.Size(324, 242);
+            this.pToolContent.Size = new System.Drawing.Size(274, 242);
             this.pToolContent.TabIndex = 29;
             // 
             // guna2VScrollBar_flpToolMachineList
@@ -398,29 +397,29 @@
             this.guna2VScrollBar_flpToolMachineList.AutoRoundedCorners = true;
             this.guna2VScrollBar_flpToolMachineList.AutoSize = true;
             this.guna2VScrollBar_flpToolMachineList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.guna2VScrollBar_flpToolMachineList.BindingContainer = this._flpToolMachineList;
-            this.guna2VScrollBar_flpToolMachineList.BorderRadius = 10;
+            this.guna2VScrollBar_flpToolMachineList.BindingContainer = this._flpTrayMachineList;
+            this.guna2VScrollBar_flpToolMachineList.BorderRadius = 8;
             this.guna2VScrollBar_flpToolMachineList.InUpdate = false;
             this.guna2VScrollBar_flpToolMachineList.LargeChange = 10;
-            this.guna2VScrollBar_flpToolMachineList.Location = new System.Drawing.Point(301, 0);
+            this.guna2VScrollBar_flpToolMachineList.Location = new System.Drawing.Point(256, 0);
             this.guna2VScrollBar_flpToolMachineList.Name = "guna2VScrollBar_flpToolMachineList";
             this.guna2VScrollBar_flpToolMachineList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.guna2VScrollBar_flpToolMachineList.ScrollbarSize = 23;
-            this.guna2VScrollBar_flpToolMachineList.Size = new System.Drawing.Size(23, 242);
+            this.guna2VScrollBar_flpToolMachineList.ScrollbarSize = 18;
+            this.guna2VScrollBar_flpToolMachineList.Size = new System.Drawing.Size(18, 242);
             this.guna2VScrollBar_flpToolMachineList.TabIndex = 28;
             this.guna2VScrollBar_flpToolMachineList.ThumbSize = 100F;
             // 
-            // _flpToolMachineList
+            // _flpTrayMachineList
             // 
-            this._flpToolMachineList.AutoScroll = true;
-            this._flpToolMachineList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this._flpToolMachineList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._flpToolMachineList.Location = new System.Drawing.Point(0, 0);
-            this._flpToolMachineList.Margin = new System.Windows.Forms.Padding(2);
-            this._flpToolMachineList.Name = "_flpToolMachineList";
-            this._flpToolMachineList.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this._flpToolMachineList.Size = new System.Drawing.Size(324, 242);
-            this._flpToolMachineList.TabIndex = 29;
+            this._flpTrayMachineList.AutoScroll = true;
+            this._flpTrayMachineList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            this._flpTrayMachineList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._flpTrayMachineList.Location = new System.Drawing.Point(0, 0);
+            this._flpTrayMachineList.Margin = new System.Windows.Forms.Padding(2);
+            this._flpTrayMachineList.Name = "_flpTrayMachineList";
+            this._flpTrayMachineList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this._flpTrayMachineList.Size = new System.Drawing.Size(274, 242);
+            this._flpTrayMachineList.TabIndex = 29;
             // 
             // tlpToolMachineFooter
             // 
@@ -435,7 +434,7 @@
             this.tlpToolMachineFooter.RowCount = 1;
             this.tlpToolMachineFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpToolMachineFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tlpToolMachineFooter.Size = new System.Drawing.Size(324, 48);
+            this.tlpToolMachineFooter.Size = new System.Drawing.Size(274, 48);
             this.tlpToolMachineFooter.TabIndex = 30;
             // 
             // _btnToolCancel
@@ -451,9 +450,9 @@
             this._btnToolCancel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
             this._btnToolCancel.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this._btnToolCancel.ForeColor = System.Drawing.Color.White;
-            this._btnToolCancel.Location = new System.Drawing.Point(165, 6);
+            this._btnToolCancel.Location = new System.Drawing.Point(140, 6);
             this._btnToolCancel.Name = "_btnToolCancel";
-            this._btnToolCancel.Size = new System.Drawing.Size(156, 36);
+            this._btnToolCancel.Size = new System.Drawing.Size(131, 36);
             this._btnToolCancel.TabIndex = 30;
             this._btnToolCancel.Text = "Hủy";
             // 
@@ -472,7 +471,7 @@
             this._btnToolSelect.ForeColor = System.Drawing.Color.White;
             this._btnToolSelect.Location = new System.Drawing.Point(3, 6);
             this._btnToolSelect.Name = "_btnToolSelect";
-            this._btnToolSelect.Size = new System.Drawing.Size(156, 36);
+            this._btnToolSelect.Size = new System.Drawing.Size(131, 36);
             this._btnToolSelect.TabIndex = 29;
             this._btnToolSelect.Text = "Chọn";
             // 
@@ -481,10 +480,10 @@
             this.guna2Elipse_tlpTooMachineList.BorderRadius = 20;
             this.guna2Elipse_tlpTooMachineList.TargetControl = this._tlpToolMachineList;
             // 
-            // guna2Elipse_flpToolMachineList
+            // guna2Elipse_flpTrayMachineList
             // 
-            this.guna2Elipse_flpToolMachineList.BorderRadius = 20;
-            this.guna2Elipse_flpToolMachineList.TargetControl = this._flpToolMachineList;
+            this.guna2Elipse_flpTrayMachineList.BorderRadius = 20;
+            this.guna2Elipse_flpTrayMachineList.TargetControl = this._flpTrayMachineList;
             // 
             // GetToolView
             // 
@@ -528,7 +527,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_flpToolList;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_flpToolMachineList;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_flpTrayMachineList;
         private System.Windows.Forms.Panel pToolContent;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar_flpToolMachineList;
         private System.Windows.Forms.TableLayoutPanel tlpToolMachineFooter;
@@ -600,11 +599,11 @@
             set { _txtToolSearch = value; }
         }
 
-        private System.Windows.Forms.FlowLayoutPanel _flpToolMachineList;
+        private System.Windows.Forms.FlowLayoutPanel _flpTrayMachineList;
         public System.Windows.Forms.FlowLayoutPanel flpToolMachineList
         {
-            get { return _flpToolMachineList;  }
-            set { _flpToolMachineList = value; }
+            get { return _flpTrayMachineList;  }
+            set { _flpTrayMachineList = value; }
         }
 
         private Guna.UI2.WinForms.Guna2GradientButton _btnToolCancel;

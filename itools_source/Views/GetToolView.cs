@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -84,15 +85,16 @@ namespace itools_source.Views
             }
             set => txtDescription.Text = value;
         }
+
+        public int iToolId { get; set; }
+        public string strTrayIndex { get; set; }
+        public string strMachineCode { get; set; }
+        public Dictionary<string, string> lstMachineTray { get; set; }
+        public List<Guna2GradientButton> lstTrayButton { get; set; }
         #endregion
 
         #region Methods
-        public void SetStatusForm()
-        {
-            
-        }
-
-        public Guna2GradientButton CreateButton(int? iIndex = null)
+        public Guna2GradientButton CreateButton(object obTag, object strText, EventHandler eventHandler)
         {
             Guna2GradientButton btn = new Guna2GradientButton();
             btn.Animated = true;
@@ -107,21 +109,67 @@ namespace itools_source.Views
             btn.Font = new Font("Segoe UI", 11F);
             btn.ForeColor = Color.White;
             btn.Location = new Point(3, 3);
-            btn.Size = new Size(280, 60);
-            if (iIndex != null)
+            btn.Size = new Size(240, 60);
+            if (obTag != null)
             {
-                btn.Tag = this.lstToolForOPList.Keys.ElementAt(iIndex.Value);
-                btn.Text = this.lstToolForOPList.Values.ElementAt(iIndex.Value);
+                btn.Tag = obTag;
             }
-            btn.Click += (s, e) => { btnflpToolList_Click?.Invoke(s, e); };
-
+            if (strText != null)
+            {
+                btn.Text = strText.ToString();
+            }
+            btn.Click += (s, e) => { eventHandler?.Invoke(s, e); };
             return btn;
+        }
+
+        public void SetStatusForm()
+        {
+            switch (cStatusForm)
+            {
+                case '0': // Default
+                    txtToolCode.Enabled = false;
+                    txtModel.Enabled = false;
+                    txtDescription.Enabled = false;
+                    btnGetTool.Enabled = false;
+
+                    tlpToolMachineList.Visible = false;
+                    tlpToolMachineList.Dock = DockStyle.Right;
+                    tlpToolMachineList.BringToFront();
+                    break;
+                case '1': // Click tool -> On FlowLayoutPandel Select TrayIndex.
+                    if (tlpToolMachineList.Visible == false)
+                    {
+                        tlpToolMachineList.Visible = true;
+                        tlpToolMachineList.Dock = DockStyle.Right;
+                        tlpToolMachineList.BringToFront();
+                    }
+                    break;
+                case '2': // Click tool -> Off FlowLayoutPandel Select TrayIndex.
+                    if (tlpToolMachineList.Visible == true)
+                    {
+                        tlpToolMachineList.Visible = false;
+                        tlpToolMachineList.Dock = DockStyle.Right;
+                        tlpToolMachineList.BringToFront();
+                    }
+                    break;
+            }
+        }
+
+        public void flpTrayMachineList_AddRange(Control[] controls)
+        {
+            _flpTrayMachineList.Controls.AddRange(controls);
+        }
+
+        public void flpTrayMachineList_Clear()
+        {
+            _flpTrayMachineList.Controls.Clear();
         }
         #endregion
 
         #region Events
         public event EventHandler GetToolView_Load;
-        public event EventHandler btnflpToolList_Click;
+        public event EventHandler btnflpTrayMachineList_Click;
+        public event EventHandler btnflpTrayMachineList_DoubleClick;
         #endregion
     }
 }
