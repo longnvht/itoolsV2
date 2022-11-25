@@ -43,6 +43,14 @@ namespace itools_source.Presenters
                 MessageBox.Show("Nút Không Có Dữ Liệu!");
                 return;
             }
+
+            _getToolView.strTrayIndex = btn.Text;
+            _getToolView.strMachineCode = btn.Tag.ToString();
+
+            //MessageBox.Show("TrayIndex: " + _getToolView.strTrayIndex + ", MachineCode: " + _getToolView.strMachineCode);
+            string strSendSerialCom = "125," + _getToolView.strTrayIndex.Split('_').GetValue(1).ToString() + "|";
+            //MessageBox.Show(strSendSerialCom);
+            
         }
         #endregion
 
@@ -129,7 +137,7 @@ namespace itools_source.Presenters
 
                 foreach (var item in _getToolView.lstToolForOPList)
                 {
-                    _getToolView.lstToolButton.Add(_getToolView.CreateButton(item.Key, item.Value, _getToolView_btnflpToolList_Click));
+                    _getToolView.lstToolButton.Add(_getToolView.CreateButton(item.Key, item.Value, _getToolView_btnflpTrayMachineList_Click));
                 }
 
                 //int iCount = _getToolView.lstToolForOPList.Count;

@@ -57,6 +57,7 @@
             this._btnToolSelect = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2Elipse_tlpTooMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse_flpTrayMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.serialPort_GetTool = new System.IO.Ports.SerialPort(this.components);
             this.tlpHeader.SuspendLayout();
             this.tlpFooter.SuspendLayout();
             this.tlpContent.SuspendLayout();
@@ -614,6 +615,8 @@
         }
 
         private Guna.UI2.WinForms.Guna2GradientButton _btnToolSelect;
+        private System.IO.Ports.SerialPort serialPort_GetTool;
+
         public Guna.UI2.WinForms.Guna2GradientButton btnToolSelect
         {
             get { return _btnToolSelect; }

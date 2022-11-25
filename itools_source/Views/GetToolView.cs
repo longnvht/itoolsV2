@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace itools_source.Views
 {
@@ -20,6 +21,21 @@ namespace itools_source.Views
             InitializeComponent();
 
             this.Load += delegate { GetToolView_Load?.Invoke(this, EventArgs.Empty); };
+
+            //serialPort_GetTool.PortName = Serial;
+            //MessageBox.Show(SerialPort.GetPortNames().Length.ToString());
+            //foreach (var item in SerialPort.GetPortNames())
+            //{
+            //    serialPort_GetTool.PortName = item;
+            //    if (string.IsNullOrEmpty(serialPort_GetTool.PortName))
+            //    {
+            //        break;
+            //    }
+            //    //MessageBox.Show(item);
+            //}
+            MessageBox.Show(string.IsNullOrEmpty(serialPort_GetTool.PortName).ToString());
+            MessageBox.Show(serialPort_GetTool.PortName);
+            serialPort_GetTool.ReadLine();
         }
 
         #region Properties - Fields
