@@ -37,6 +37,11 @@ namespace itools_source.Utils
                     _strPASSWORD = "Vinam@123";
                     break;
             }
+            //_strHOST = "165.22.248.14";
+            //_strPORT = "3306";
+            //_strDATABASE_MAME = "itooldtb";
+            //_strUSER_NAME = "root";
+            //_strPASSWORD = "Hanhdo030687@";
             return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
         }
 

@@ -1,6 +1,7 @@
 ﻿using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace itools_source.Views.Interface
         string strTrayIndex { get; set; }
         string strMachineCode { get; set; }
         char cStatusForm { get; set; }
+        SerialPort serialPortGetTool { get; set; }
         List<Guna2GradientButton> lstToolButton { get; set; }
         List<Guna2GradientButton> lstTrayButton { get; set; }
         Dictionary<int, string> lstToolForOPList { get; set; }
@@ -40,6 +42,7 @@ namespace itools_source.Views.Interface
         //event EventHandler btnAddPlugin_Click;
         //event EventHandler btnAddNew_Click;
         //event EventHandler btnSave_Click;
+        event SerialDataReceivedEventHandler serialPort_GetTool_DataReceived;
         #endregion
 
         #region Methods

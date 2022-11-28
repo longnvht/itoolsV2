@@ -6,6 +6,7 @@ using log4net;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,8 +32,26 @@ namespace itools_source.Presenters
             _getToolView.GetToolView_Load += _getToolView_GetToolView_Load;
             _getToolView.btnflpTrayMachineList_Click += _getToolView_btnflpTrayMachineList_Click;
             _getToolView.btnflpTrayMachineList_DoubleClick += _getToolView_btnflpTrayMachineList_DoubleClick;
+            _getToolView.serialPort_GetTool_DataReceived += _getToolView_serialPort_GetTool_DataReceived;
 
             _getToolView.Show();
+        }
+        #endregion
+
+        #region Evens
+        private void _getToolView_serialPort_GetTool_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            if (_getToolView.serialPortGetTool.IsOpen)
+            {
+                string strReadLine = _getToolView.serialPortGetTool.ReadLine().Substring(0, 3);
+                MessageBox.Show(strReadLine + ", length: " + strReadLine.Length.ToString());
+                if (strReadLine == "123")
+                {
+                    MessageBox.Show("Stop");
+                    _getToolView.serialPortGetTool.Close();
+                    return;
+                }
+            }
         }
 
         private void _getToolView_btnflpTrayMachineList_DoubleClick(object sender, EventArgs e)
@@ -49,12 +68,27 @@ namespace itools_source.Presenters
 
             //MessageBox.Show("TrayIndex: " + _getToolView.strTrayIndex + ", MachineCode: " + _getToolView.strMachineCode);
             string strSendSerialCom = "125," + _getToolView.strTrayIndex.Split('_').GetValue(1).ToString() + "|";
-            //MessageBox.Show(strSendSerialCom);
-            
-        }
-        #endregion
+            MessageBox.Show(strSendSerialCom);
 
-        #region Evens
+            if (!_getToolView.serialPortGetTool.IsOpen)
+            {
+                foreach (var item in SerialPort.GetPortNames())
+                {
+                    _getToolView.serialPortGetTool.PortName = item;
+                    if (_getToolView.serialPortGetTool.PortName != "COM1")
+                    {
+                        break;
+                    }
+                }
+                _getToolView.serialPortGetTool.Open();
+            }
+
+            if (_getToolView.serialPortGetTool.IsOpen)
+            {
+                _getToolView.serialPortGetTool.Write(strSendSerialCom);
+            }
+        }
+
         private async void _getToolView_btnflpTrayMachineList_Click(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;

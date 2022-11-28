@@ -21,21 +21,7 @@ namespace itools_source.Views
             InitializeComponent();
 
             this.Load += delegate { GetToolView_Load?.Invoke(this, EventArgs.Empty); };
-
-            //serialPort_GetTool.PortName = Serial;
-            //MessageBox.Show(SerialPort.GetPortNames().Length.ToString());
-            //foreach (var item in SerialPort.GetPortNames())
-            //{
-            //    serialPort_GetTool.PortName = item;
-            //    if (string.IsNullOrEmpty(serialPort_GetTool.PortName))
-            //    {
-            //        break;
-            //    }
-            //    //MessageBox.Show(item);
-            //}
-            MessageBox.Show(string.IsNullOrEmpty(serialPort_GetTool.PortName).ToString());
-            MessageBox.Show(serialPort_GetTool.PortName);
-            serialPort_GetTool.ReadLine();
+            serialPort_GetTool.DataReceived += (s, e) => { serialPort_GetTool_DataReceived?.Invoke(s, e); };
         }
 
         #region Properties - Fields
@@ -107,6 +93,7 @@ namespace itools_source.Views
         public string strMachineCode { get; set; }
         public Dictionary<string, string> lstMachineTray { get; set; }
         public List<Guna2GradientButton> lstTrayButton { get; set; }
+        public SerialPort serialPortGetTool { get => serialPort_GetTool; set => serialPort_GetTool = value; }
         #endregion
 
         #region Methods
@@ -186,6 +173,7 @@ namespace itools_source.Views
         public event EventHandler GetToolView_Load;
         public event EventHandler btnflpTrayMachineList_Click;
         public event EventHandler btnflpTrayMachineList_DoubleClick;
+        public event SerialDataReceivedEventHandler serialPort_GetTool_DataReceived;
         #endregion
     }
 }

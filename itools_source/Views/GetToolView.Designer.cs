@@ -518,22 +518,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tlpHeader;
-        private System.Windows.Forms.TableLayoutPanel tlpFooter;
-        private System.Windows.Forms.TableLayoutPanel tlpContent;
-        private System.Windows.Forms.Panel pLeftContent;
-        private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar_flpToolList;
-        private System.Windows.Forms.TableLayoutPanel tlpRightContent;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_flpToolList;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_flpTrayMachineList;
-        private System.Windows.Forms.Panel pToolContent;
-        private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar_flpToolMachineList;
-        private System.Windows.Forms.TableLayoutPanel tlpToolMachineFooter;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_tlpTooMachineList;
-
         private Guna.UI2.WinForms.Guna2GradientButton _btnGetTool;
         public Guna.UI2.WinForms.Guna2GradientButton btnGetTool
         {
@@ -563,7 +547,7 @@
             get { return _flpToolList; }
             set { _flpToolList = value; }
         }
-        
+
         private Guna.UI2.WinForms.Guna2TextBox _txtToolCode;
         public Guna.UI2.WinForms.Guna2TextBox txtToolCode
         {
@@ -589,7 +573,7 @@
         private System.Windows.Forms.TableLayoutPanel _tlpToolMachineList;
         public System.Windows.Forms.TableLayoutPanel tlpToolMachineList
         {
-            get { return _tlpToolMachineList;}
+            get { return _tlpToolMachineList; }
             set { _tlpToolMachineList = value; }
         }
 
@@ -603,24 +587,39 @@
         private System.Windows.Forms.FlowLayoutPanel _flpTrayMachineList;
         public System.Windows.Forms.FlowLayoutPanel flpToolMachineList
         {
-            get { return _flpTrayMachineList;  }
+            get { return _flpTrayMachineList; }
             set { _flpTrayMachineList = value; }
         }
 
         private Guna.UI2.WinForms.Guna2GradientButton _btnToolCancel;
         public Guna.UI2.WinForms.Guna2GradientButton btnToolCancel
         {
-            get { return _btnToolCancel;}
+            get { return _btnToolCancel; }
             set { _btnToolCancel = value; }
         }
 
         private Guna.UI2.WinForms.Guna2GradientButton _btnToolSelect;
-        private System.IO.Ports.SerialPort serialPort_GetTool;
 
         public Guna.UI2.WinForms.Guna2GradientButton btnToolSelect
         {
             get { return _btnToolSelect; }
             set { _btnToolSelect = value; }
         }
+        private System.Windows.Forms.TableLayoutPanel tlpHeader;
+        private System.Windows.Forms.TableLayoutPanel tlpFooter;
+        private System.Windows.Forms.TableLayoutPanel tlpContent;
+        private System.Windows.Forms.Panel pLeftContent;
+        private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar_flpToolList;
+        private System.Windows.Forms.TableLayoutPanel tlpRightContent;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_flpToolList;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_flpTrayMachineList;
+        private System.Windows.Forms.Panel pToolContent;
+        private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar_flpToolMachineList;
+        private System.Windows.Forms.TableLayoutPanel tlpToolMachineFooter;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_tlpTooMachineList;
+        private System.IO.Ports.SerialPort serialPort_GetTool;
     }
 }
