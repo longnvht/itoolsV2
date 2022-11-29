@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace itools_source.Repository
+﻿namespace itools_source.Repository
 {
     public abstract class BaseRepository
     {

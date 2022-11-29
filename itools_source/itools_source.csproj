@@ -39,7 +39,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -151,7 +151,6 @@
     <Compile Include="Repository\RolesRepository.cs" />
     <Compile Include="Repository\ToolMachineTrayRepository.cs" />
     <Compile Include="Repository\WorkingTransactionRepository.cs" />
-    <Compile Include="Utils\Config.cs" />
     <Compile Include="Utils\Encryption.cs" />
     <Compile Include="Utils\MySqlConnect.cs" />
     <Compile Include="Utils\ServerTime.cs" />

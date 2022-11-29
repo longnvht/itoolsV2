@@ -2,15 +2,9 @@
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO.Ports;
+using System.Windows.Forms;
 
 namespace itools_source.Views
 {
@@ -171,8 +165,6 @@ namespace itools_source.Views
 
         #region Events
         public event EventHandler GetToolView_Load;
-        public event EventHandler btnflpTrayMachineList_Click;
-        public event EventHandler btnflpTrayMachineList_DoubleClick;
         public event SerialDataReceivedEventHandler serialPort_GetTool_DataReceived;
         #endregion
     }

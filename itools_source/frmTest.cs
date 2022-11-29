@@ -1,14 +1,6 @@
 ﻿using Guna.UI2.WinForms;
-using itools_source.Views;
-using Org.BouncyCastle.Crypto.Engines;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace itools_source
@@ -67,12 +59,12 @@ namespace itools_source
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnToolCancel_Click(object sender, EventArgs e)
@@ -90,7 +82,7 @@ namespace itools_source
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtCurrentQuantity_MouseClick(object sender, MouseEventArgs e)

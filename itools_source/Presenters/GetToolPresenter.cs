@@ -2,14 +2,10 @@
 using itools_source.Models.Interface;
 using itools_source.Views;
 using itools_source.Views.Interface;
-using log4net;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace itools_source.Presenters
@@ -30,8 +26,6 @@ namespace itools_source.Presenters
             _getToolRepository = getToolRepository;
 
             _getToolView.GetToolView_Load += _getToolView_GetToolView_Load;
-            _getToolView.btnflpTrayMachineList_Click += _getToolView_btnflpTrayMachineList_Click;
-            _getToolView.btnflpTrayMachineList_DoubleClick += _getToolView_btnflpTrayMachineList_DoubleClick;
             _getToolView.serialPort_GetTool_DataReceived += _getToolView_serialPort_GetTool_DataReceived;
 
             _getToolView.Show();
@@ -66,10 +60,13 @@ namespace itools_source.Presenters
             _getToolView.strTrayIndex = btn.Text;
             _getToolView.strMachineCode = btn.Tag.ToString();
 
-            //MessageBox.Show("TrayIndex: " + _getToolView.strTrayIndex + ", MachineCode: " + _getToolView.strMachineCode);
             string strSendSerialCom = "125," + _getToolView.strTrayIndex.Split('_').GetValue(1).ToString() + "|";
-            MessageBox.Show(strSendSerialCom);
-
+            if (SerialPort.GetPortNames().Length == 0)
+            {
+                MessageBox.Show("Không có cổng COM!");
+                _log.Info("Not connect COM!");
+                return;
+            }
             if (!_getToolView.serialPortGetTool.IsOpen)
             {
                 foreach (var item in SerialPort.GetPortNames())
@@ -173,19 +170,6 @@ namespace itools_source.Presenters
                 {
                     _getToolView.lstToolButton.Add(_getToolView.CreateButton(item.Key, item.Value, _getToolView_btnflpTrayMachineList_Click));
                 }
-
-                //int iCount = _getToolView.lstToolForOPList.Count;
-                //for (int i = 0; i < 20; i++)
-                //{
-                //    if (i < iCount)
-                //    {
-                //        _getToolView.lstToolButton.Add(_getToolView.CreateButton(i));
-                //    }
-                //    else
-                //    {
-                //        _getToolView.lstToolButton.Add(_getToolView.CreateButton());
-                //    }
-                //}
 
                 // 2. Add to flowlayoutpanel.
                 frm.flpToolList.Controls.AddRange(_getToolView.lstToolButton.ToArray());

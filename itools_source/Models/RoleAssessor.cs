@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace itools_source.Models
 {
     public class RoleAssessor
     {
         private int _iRoleAssessor;
-
         public int iRoleAssessor
         {
             get { return _iRoleAssessor; }
@@ -17,7 +12,6 @@ namespace itools_source.Models
         }
 
         private int _iRoleId;
-
         public int iRoleId
         {
             get { return _iRoleId; }
@@ -25,7 +19,6 @@ namespace itools_source.Models
         }
 
         private int _iAssessorId;
-
         public int iAssessorId
         {
             get { return _iAssessorId; }
@@ -33,7 +26,6 @@ namespace itools_source.Models
         }
 
         private DateTime _dtCreateDate;
-
         public DateTime dtCreateDate
         {
             get { return _dtCreateDate; }
@@ -41,7 +33,6 @@ namespace itools_source.Models
         }
 
         private byte _isActive;
-
         public byte isActive
         {
             get { return _isActive; }

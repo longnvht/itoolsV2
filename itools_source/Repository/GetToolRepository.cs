@@ -3,11 +3,7 @@ using itools_source.Models.Interface;
 using itools_source.Utils;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace itools_source.Repository
@@ -32,7 +28,7 @@ namespace itools_source.Repository
             string strQuery = @"SELECT longnv.job.JobNumber, longnv.job.PartID
 	                                FROM longnv.job	
 		                                WHERE longnv.job.JobNumber LIKE '%" + strJobNumber + "%'" +
-			                                " LIMIT 50";
+                                            " LIMIT 50";
             _log.Info(strQuery);
             try
             {
@@ -76,24 +72,22 @@ namespace itools_source.Repository
             try
             {
                 List<MySqlParameter> lstPar = new List<MySqlParameter>();
-                lstPar.Add(new MySqlParameter("@p_JobNumber", strJobNumber));
-                lstPar.Add(new MySqlParameter("@p_PartID", strPartID));
-                //lstPar.Add(
-                //new MySqlParameter
-                //{
-                //    ParameterName = "@p_JobNumber",
-                //    MySqlDbType = MySqlDbType.VarChar,
-                //    Value = strJobNumber,
-                //    Direction = System.Data.ParameterDirection.Input
-                //});
-                //lstPar.Add(
-                //new MySqlParameter
-                //{
-                //    ParameterName = "@p_PartID",
-                //    MySqlDbType = MySqlDbType.Int32,
-                //    Value = strPartID,
-                //    Direction = System.Data.ParameterDirection.Input
-                //});
+                lstPar.Add(
+                new MySqlParameter
+                {
+                    ParameterName = "@p_JobNumber",
+                    MySqlDbType = MySqlDbType.VarChar,
+                    Value = strJobNumber,
+                    Direction = System.Data.ParameterDirection.Input
+                });
+                lstPar.Add(
+                new MySqlParameter
+                {
+                    ParameterName = "@p_PartID",
+                    MySqlDbType = MySqlDbType.Int32,
+                    Value = strPartID,
+                    Direction = System.Data.ParameterDirection.Input
+                });
 
                 if (lstPar == null)
                 {

@@ -2,10 +2,6 @@
 using itools_source.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace itools_source.Views.Interface
@@ -23,8 +19,6 @@ namespace itools_source.Views.Interface
         #region Events
         event EventHandler JobView_Load;
         event EventHandler txtJobNumberSearch_TextChanged;
-        event EventHandler btnJobNumberSearch_Click;
-        event EventHandler btnflpJobNumberList_Click;
         event EventHandler btnflpJobNumberList_DoubleClick;
         #endregion
         #region Methods

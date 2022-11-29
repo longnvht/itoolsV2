@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace itools_source.Models
 {
-    public class Machine
-    {
+	public class Machine
+	{
 		private int _iMachineId;
 
 		public int iMachineId
-        {
+		{
 			get { return _iMachineId; }
 			set { _iMachineId = value; }
 		}
@@ -19,7 +15,7 @@ namespace itools_source.Models
 		private string _strMachineName;
 
 		public string strMachineName
-        {
+		{
 			get { return _strMachineName; }
 			set { _strMachineName = value; }
 		}
@@ -27,7 +23,7 @@ namespace itools_source.Models
 		private string _strMachineCode;
 
 		public string strMachineCode
-        {
+		{
 			get { return _strMachineCode; }
 			set { _strMachineCode = value; }
 		}
@@ -35,7 +31,7 @@ namespace itools_source.Models
 		private string _strModel;
 
 		public string strModel
-        {
+		{
 			get { return _strModel; }
 			set { _strModel = value; }
 		}
@@ -43,7 +39,7 @@ namespace itools_source.Models
 		private string _strLocation;
 
 		public string strLocation
-        {
+		{
 			get { return _strLocation; }
 			set { _strLocation = value; }
 		}
@@ -51,7 +47,7 @@ namespace itools_source.Models
 		private string _strDescription;
 
 		public string strDescription
-        {
+		{
 			get { return _strDescription; }
 			set { _strDescription = value; }
 		}
@@ -59,7 +55,7 @@ namespace itools_source.Models
 		private DateTime _dtCreateDate;
 
 		public DateTime dtCreateDate
-        {
+		{
 			get { return _dtCreateDate; }
 			set { _dtCreateDate = value; }
 		}
@@ -67,7 +63,7 @@ namespace itools_source.Models
 		private DateTime _dtUpdateDate;
 
 		public DateTime dtUpdateDate
-        {
+		{
 			get { return _dtUpdateDate; }
 			set { _dtUpdateDate = value; }
 		}
@@ -75,17 +71,17 @@ namespace itools_source.Models
 		private byte _isActive;
 
 		public byte isActive
-        {
+		{
 			get { return _isActive; }
 			set { _isActive = value; }
 		}
 
-        private int _iCompanyId;
+		private int _iCompanyId;
 
-        public int iCompanyId
-        {
-            get { return _iCompanyId; }
-            set { _iCompanyId = value; }
-        }
-    }
+		public int iCompanyId
+		{
+			get { return _iCompanyId; }
+			set { _iCompanyId = value; }
+		}
+	}
 }

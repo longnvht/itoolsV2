@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace itools_source.Utils
 {
     public class Encryption
     {
         private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(Encryption).Name);
-        //private readonly static byte[] _byKey = new byte[32];
-        //private readonly static byte[] _byIV = new byte[16];
         private readonly static byte[] _byKey = Encoding.UTF8.GetBytes("MZygpewJsCdr4a1y");
         private readonly static byte[] _byIV = Encoding.UTF8.GetBytes("MZygpewJsCpRrfOr");
 

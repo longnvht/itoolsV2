@@ -1,30 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Guna.UI2.WinForms;
-using itools_source.Models;
+﻿using Guna.UI2.WinForms;
 using itools_source.Models.Interface;
 using itools_source.Presenters;
-using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
+using System;
+using System.Windows.Forms;
 
 namespace itools_source.Presenter
 {
     public class LoginPresenter
     {
-        log4net.ILog _log = log4net.LogManager.GetLogger(typeof(LoginPresenter).Name);
-
-        #region Fields
-        private ILoginView _loginView;
-        private IAssessorRepository _assessorRepository;
-        //private IPushToolView _toolManagerView;
-        //private IJobView _jobView;
-        #endregion
-
         public LoginPresenter(ILoginView loginView, IAssessorRepository assessorRepository)
         {
             _loginView = loginView;
@@ -37,6 +22,13 @@ namespace itools_source.Presenter
 
             _loginView.Show();
         }
+
+        #region Fields
+        log4net.ILog _log = log4net.LogManager.GetLogger(typeof(LoginPresenter).Name);
+
+        private ILoginView _loginView;
+        private IAssessorRepository _assessorRepository;
+        #endregion
 
         #region Events
         private void PasswordIconRightClick(object sender, EventArgs e)
@@ -103,47 +95,6 @@ namespace itools_source.Presenter
                     _loginView.Close();
                     _log.Info("Login Success!");
                 }
-
-                //if (_loginView.assessorCurrent == null)
-                //{
-                //    _loginView.assessorCurrent = new Assessor();
-                //}
-
-                //_loginView.assessorCurrent = _assessorRepository.GetAssessor(strUserName, strPassword); // Check Role
-                //if (Program.sessionLogin == null)
-                //{
-                //    Program.sessionLogin = new Utils.Session();
-                //}
-                //Program.sessionLogin["Id"] = _loginView.assessorCurrent.iAssessorId;
-                //Program.sessionLogin["UserName"] = _loginView.assessorCurrent.strUserName;
-                //Program.sessionLogin["Password"] = _loginView.assessorCurrent.strPassword;
-
-                //if (_loginView.assessorCurrent != null)
-                //{
-                //    //MessageBox.Show("Đăng Nhập Thành Công!");
-                //    string strRoleName = _assessorRepository.GetRoleName(_loginView.assessorCurrent.iAssessorId);
-
-                //    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadProc1));
-                //    t.Start();
-
-                //    //if (strRoleName == "Admin")
-                //    //{
-                //    //    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadProc1));
-                //    //    t.Start();
-                //    //}
-                //    //else
-                //    //{
-                //    //    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadProc2));
-                //    //    t.Start();
-                //    //}
-                //    _loginView.Close();
-                //    _log.Info("Login Success!");
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Đăng Nhập Thất Bại!");
-                //    _log.Info("Login Fail!");
-                //}
             }
             catch (Exception ex)
             {
@@ -152,27 +103,8 @@ namespace itools_source.Presenter
             }
         }
         #endregion
+
         #region Method
-        public void ThreadProc1()
-        {
-            //IToolManagerView _toolManagerView = new ToolManagerView();
-            //IToolRepository repository = new ToolRepository();
-            //new ToolManagerPresenter(_toolManagerView, repository);
-            //Application.Run((Form)_toolManagerView);
-
-            IMainView mainView = new MainView();
-            IAssessorRepository repository = new AssessorRepository();
-            new MainPresenter(mainView, repository);
-            Application.Run((Form)mainView);
-        }
-
-        public void ThreadProc2()
-        {
-            IJobView jobView = new JobView();
-            IGetToolRepository repository = new GetToolRepository();
-            new JobPresenter(jobView, repository);
-            Application.Run((Form)jobView);
-        }
         #endregion
     }
 }

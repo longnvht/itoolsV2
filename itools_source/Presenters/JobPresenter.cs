@@ -1,16 +1,9 @@
 ﻿using Guna.UI2.WinForms;
 using itools_source.Models.Interface;
-using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
-using System.Windows.Forms;
 
 namespace itools_source.Presenters
 {
@@ -31,7 +24,6 @@ namespace itools_source.Presenters
 
             _jobView.JobView_Load += _jobView_JobView_Load;
             _jobView.txtJobNumberSearch_TextChanged += _jobView_txtJobNumberSearch_TextChanged;
-            _jobView.btnflpJobNumberList_Click += _jobView_btnflpJobNumberList_Click;
             _jobView.btnflpJobNumberList_DoubleClick += _jobView_btnflpJobNumberList_DoubleClick;
 
             _jobView.Show();
@@ -57,30 +49,9 @@ namespace itools_source.Presenters
                 _jobView.lstOPNumberOPType = _getToolRepository.GetOPByJobPartOPID(strJobNumber, strPartID);
                 if (_jobView.lstOPNumberOPType != null)
                 {
-                    _jobView.SetListOPNumberOPType(_jobView.lstOPNumberOPType);
-
-                    //List<Guna2GradientButton> lstSearch = new List<Guna2GradientButton>();
-                    //if (_jobView.lstJobNumberButton != null)
-                    //{
-                    //    if (_jobView.lstJobNumberPartID != null)
-                    //    {
-                    //        int iCount = _jobView.lstJobNumberPartID.Keys.Count;
-                    //        for (int i = 0; i < iCount; i++)
-                    //        {
-                    //            _jobView.lstJobNumberButton[i].Text = _jobView.lstJobNumberPartID.Keys[i];
-                    //            lstSearch.Add(_jobView.lstJobNumberButton[i]);
-                    //        }
-                    //        _jobView.flpJobNumberList_ControlsAddRange(lstSearch.ToArray());
-                    //        _log.Info("List Button: " + lstSearch.ToString());
-                    //    }
-                    //}
+                    _jobView.SetListOPNumberOPType(_jobView.lstOPNumberOPType); // Delegate to form main.
                 }
             }
-        }
-
-        private void _jobView_btnflpJobNumberList_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void _jobView_txtJobNumberSearch_TextChanged(object sender, EventArgs e)
@@ -133,22 +104,6 @@ namespace itools_source.Presenters
             {
                 _jobView.lstJobNumberButton.Add(_jobView.CreateJobNumberButton());
             }
-
-            //_jobView.lstJobNumber = (List<string>)_getToolRepository.GetJobByNumber();
-
-            //if (_jobView.lstJobNumber != null)
-            //{
-            //    if (_jobView.lstJobNumberButton == null)
-            //    {
-            //        _jobView.lstJobNumberButton = new List<Guna2GradientButton>();
-            //    }
-            //    int iCount = _jobView.lstJobNumber.Count;
-            //    for (int i = 0; i < iCount; i++)
-            //    {
-            //        _jobView.lstJobNumberButton.Add(_jobView.CreateJobNumberButton());
-            //    }
-            //    //frm.flpJobNumberList.Controls.AddRange(_jobView.lstJobNumberButton.ToArray());
-            //}
         }
         #endregion
     }

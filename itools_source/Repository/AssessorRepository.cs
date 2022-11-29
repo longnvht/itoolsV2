@@ -1,16 +1,9 @@
 ﻿using itools_source.Models;
 using itools_source.Models.Interface;
 using itools_source.Utils;
-using log4net;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Windows.Forms;
 
 namespace itools_source.Repository
 {
@@ -39,8 +32,8 @@ namespace itools_source.Repository
 
             string strSelect = @"SELECT *
                                     FROM assessor
-                                        WHERE assessor.UserName = '" + strUserName.ToLower() + 
-                                            "' AND (assessor.Password = MD5('" + strPassword +  "') OR assessor.LastPassword = MD5('" + strPassword + "'))" +
+                                        WHERE assessor.UserName = '" + strUserName.ToLower() +
+                                            "' AND (assessor.Password = MD5('" + strPassword + "') OR assessor.LastPassword = MD5('" + strPassword + "'))" +
                                             " AND assessor.IsActive = 1";
             _log.Info(strSelect);
             try

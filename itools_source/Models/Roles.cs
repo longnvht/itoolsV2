@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace itools_source.Models
 {
     public class Roles
     {
         private int _iRoleId;
-
         public int iRoleId
         {
             get { return _iRoleId; }
@@ -17,7 +12,6 @@ namespace itools_source.Models
         }
 
         private string _strRoleName;
-
         public string strRoleName
         {
             get { return _strRoleName; }
@@ -25,7 +19,6 @@ namespace itools_source.Models
         }
 
         private int _iRoleType;
-
         public int iRoleType
         {
             get { return _iRoleType; }
@@ -33,7 +26,6 @@ namespace itools_source.Models
         }
 
         private int _isRole;
-
         public int isRole
         {
             get { return _isRole; }
@@ -41,7 +33,6 @@ namespace itools_source.Models
         }
 
         private DateTime _dtUpdateDate;
-
         public DateTime dtUpdateDate
         {
             get { return _dtUpdateDate; }

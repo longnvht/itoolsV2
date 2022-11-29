@@ -4,23 +4,11 @@ using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace itools_source.Presenters
 {
     public class OPPresenter
     {
-        #region Properties - Fields
-        private IOPView _opView;
-        private IGetToolRepository _getToolRepository;
-
-        private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(OPPresenter).Name);
-        #endregion
-
-        #region Methods
         public OPPresenter(IOPView opView, IGetToolRepository getToolRepository)
         {
             _opView = opView;
@@ -31,6 +19,12 @@ namespace itools_source.Presenters
 
             _opView.Show();
         }
+
+        #region Properties - Fields
+        private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(OPPresenter).Name);
+
+        private IOPView _opView;
+        private IGetToolRepository _getToolRepository;
         #endregion
 
         #region Events
@@ -64,6 +58,9 @@ namespace itools_source.Presenters
             frm.flpOPList.Controls.AddRange(_opView.lstButton.ToArray());
             _log.Info("Create button list and add button to flowlayoutpanel.");
         }
+        #endregion
+
+        #region Methods
         #endregion
     }
 }

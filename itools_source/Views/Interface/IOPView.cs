@@ -1,9 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace itools_source.Views.Interface
 {
@@ -28,7 +25,6 @@ namespace itools_source.Views.Interface
         void Close();
         void Hide();
         Guna2GradientButton CreateButton(int? iIndex = null);
-        //void ListOPNumberOPType(SortedList<string, string> lstOPNumberOpType);
         #endregion
     }
 }

@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using itools_source.Views;
-using itools_source.Views.Interface;
+﻿using itools_source.Models.Interface;
 using itools_source.Presenter;
-using itools_source.Models.Interface;
-using itools_source.Models;
 using itools_source.Repository;
 using itools_source.Utils;
-using System.Configuration;
+using itools_source.Views;
+using itools_source.Views.Interface;
+using System;
 using System.Globalization;
 using System.Threading;
+using System.Windows.Forms;
 
 //[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -47,10 +42,6 @@ namespace itools_source
             new LoginPresenter(view, repository);
 
             Application.Run((Form)view);
-
-            //Application.Run(new frmTest());
-            //Application.Run(new FormTest());
-            //Application.Run(new frmTest2());
         }
     }
 }

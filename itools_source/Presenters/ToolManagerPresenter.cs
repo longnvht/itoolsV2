@@ -1,22 +1,11 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using Guna.UI2.WinForms;
+﻿using Guna.UI2.WinForms;
 using itools_source.Models;
 using itools_source.Models.Interface;
-using itools_source.Presenter;
-using itools_source.Repository;
 using itools_source.Utils;
 using itools_source.Views;
 using itools_source.Views.Interface;
-using MySql.Data.MySqlClient;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace itools_source.Presenters
@@ -47,6 +36,17 @@ namespace itools_source.Presenters
 
             _toolManagerView.Show();
         }
+
+        #region Properties - Fields
+        log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolManagerPresenter).Name);
+
+        private IToolManagerView _toolManagerView;
+        private IToolMachineTrayRepository _toolMachineTrayRepository;
+        private string _strMachineCode = "VM-1";
+        private string _strTrayIndexCurrent = null;
+        private string _strToolCodeCurrent = "";
+        private int _iCurrentQuantity = 0;
+        #endregion
 
         #region Events
         private void _toolManagerView_ToolManagerView_Load(object sender, EventArgs e)
@@ -91,15 +91,6 @@ namespace itools_source.Presenters
 
                 _toolManagerView.toolTrayCurrent.dtUpdateDate = ServerTime.GetServerTime().ToLocalTime();
                 _toolManagerView.toolTrayCurrent.isActive = 1;
-
-                //MessageBox.Show("ID: " + _toolManagerView.toolTrayCurrent.iToolsMachineTrayId +
-                //                "\nMachine Code: " + _toolManagerView.toolTrayCurrent.strMachineCode +
-                //                "\nTool Code: " + _toolManagerView.toolTrayCurrent.strToolCode +
-                //                "\nTray Index: " + _toolManagerView.toolTrayCurrent.strTrayIndex +
-                //                "\nQuantity: " + _toolManagerView.toolTrayCurrent.iQuantity +
-                //                "\nCreate Date: " + _toolManagerView.toolTrayCurrent.dtCreateDate +
-                //                "\nUpdate Date: " + _toolManagerView.toolTrayCurrent.dtUpdateDate +
-                //                "\nIsActive: " + _toolManagerView.toolTrayCurrent.isActive);
 
                 if (_toolManagerView.iOperateQuantity > 10)
                 {
@@ -185,8 +176,6 @@ namespace itools_source.Presenters
 
         private void _toolManagerView_btnToolCancel_Click(object sender, EventArgs e)
         {
-            //_toolManagerView.cStatusForm = '3';
-            //_toolManagerView.SetStatusForm(_toolManagerView.cStatusForm);
             _toolManagerView.CancelListTool();
         }
 
@@ -401,17 +390,6 @@ namespace itools_source.Presenters
             _toolManagerView.cStatusButton = '2';
             _toolManagerView.SetStateButton();
         }
-        #endregion
-
-        #region Properties - Fields
-        log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolManagerPresenter).Name);
-
-        private IToolManagerView _toolManagerView;
-        private IToolMachineTrayRepository _toolMachineTrayRepository;
-        private string _strMachineCode = "VM-1";
-        private string _strTrayIndexCurrent = null;
-        private string _strToolCodeCurrent = "";
-        private int _iCurrentQuantity = 0;
         #endregion
 
         #region Method

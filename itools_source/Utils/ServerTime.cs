@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace itools_source.Utils
 {
@@ -44,7 +39,6 @@ namespace itools_source.Utils
                 return DateTime.MinValue;
             }
 
-            //MessageBox.Show(strTime + ", " + strTime.Length.ToString());
             if (strTime.Length <= 38)
             {
                 return DateTime.MinValue;
