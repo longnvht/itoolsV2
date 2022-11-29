@@ -263,11 +263,14 @@ namespace itools_source.Views
                     this.txtTotalQuantity.Text = string.Empty;
                     break;
                 case '6': // Select Tool in List
-                    this.txtOperateQuantity.Enabled = false;
+                    this.txtOperateQuantity.Enabled = true;
+                    this.txtOperateQuantity.Focus();
+                    this.txtToolCode.Enabled = true;
                     this.btnTakeOut.Enabled = false;
                     this.btnAddPlugin.Enabled = false;
-                    this.btnAddNew.Enabled = false;
                     this.btnSave.Enabled = true;
+                    this.notifiAddNew.Text = "On";
+                    this.notifiAddNew.FillColor = Color.LimeGreen;
 
                     //this.iCurrentQuantity = 0;
                     //this.strTrayIndex = 0;

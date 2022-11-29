@@ -194,13 +194,7 @@ namespace itools_source.Presenters
         {
             if (_toolManagerView.CheckedSelectTool())
             {
-                _toolManagerView.strToolCode = _strToolCodeCurrent;
-                _toolManagerView.cStatusForm = '6';
-                _toolManagerView.SetStatusForm();
-                _toolManagerView.CancelListTool();
-                _toolManagerView.txtOperateQuantityEnable = true;
-                _toolManagerView.txtOperateQuantity_Focus();
-                _log.Info("Tool select: " + _strToolCodeCurrent);
+                SelectTool();
             }
             else
             {
@@ -211,13 +205,7 @@ namespace itools_source.Presenters
 
         private void _toolManagerView_btnflpToolList_DoubleClick(object sender, EventArgs e)
         {
-            _toolManagerView.strToolCode = _strToolCodeCurrent;
-            _toolManagerView.cStatusForm = '6';
-            _toolManagerView.SetStatusForm();
-            _toolManagerView.CancelListTool();
-            _toolManagerView.txtOperateQuantityEnable = true;
-            _toolManagerView.txtOperateQuantity_Focus();
-            _log.Info("Tool select: " + _strToolCodeCurrent);
+            SelectTool();
         }
 
         private void _toolManagerView_btnflpToolList_Click(object sender, EventArgs e)
@@ -430,6 +418,15 @@ namespace itools_source.Presenters
         private bool CheckInputCharacterLetter(char cInput)
         {
             return ((cInput < '0' || cInput > '9') && ((Keys)cInput != Keys.Back) && ((Keys)cInput != Keys.Enter));
+        }
+
+        private void SelectTool()
+        {
+            _toolManagerView.strToolCode = _strToolCodeCurrent;
+            _toolManagerView.CancelListTool();
+            _toolManagerView.cStatusForm = '6';
+            _toolManagerView.SetStatusForm();
+            _log.Info("Tool select: " + _strToolCodeCurrent);
         }
         #endregion
     }
