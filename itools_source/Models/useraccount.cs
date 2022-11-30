@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace itools_source.Models
+﻿namespace itools_source.Models
 {
     public class Assessor
     {

@@ -120,7 +120,9 @@
     <Compile Include="frmTest.Designer.cs">
       <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Assessor.cs" />
+    <Compile Include="Models\permission.cs" />
+    <Compile Include="Models\permissiondetail.cs" />
+    <Compile Include="Models\useraccount.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Interface\IAssessorRepository.cs" />
     <Compile Include="Models\Interface\IGetToolRepository.cs" />
@@ -130,8 +132,7 @@
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Machine.cs" />
     <Compile Include="Models\PartOP.cs" />
-    <Compile Include="Models\RoleAssessor.cs" />
-    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\usertype.cs" />
     <Compile Include="Models\Slock.cs" />
     <Compile Include="Models\Tool.cs" />
     <Compile Include="Models\ToolForOP.cs" />
