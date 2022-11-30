@@ -37,10 +37,6 @@ namespace itools_source.Views
         #endregion
 
         #region Method
-        public void ShowMessage(string strMessage)
-        {
-            MessageBox.Show(strMessage);
-        }
         #endregion
     }
 }

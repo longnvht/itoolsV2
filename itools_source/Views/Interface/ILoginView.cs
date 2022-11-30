@@ -21,7 +21,6 @@ namespace itools_source.Views.Interface
         void Show();
         void Close();
         void Hide();
-        void ShowMessage(string strMessage);
         #endregion
     }
 }

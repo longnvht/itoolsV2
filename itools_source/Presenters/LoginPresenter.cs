@@ -65,7 +65,7 @@ namespace itools_source.Presenter
                 }
                 Program.sessionLogin["Id"] = _assessorRepository.GetById(strUserName, strPassword);
 
-                // 2. Check Login
+                // 2. Check Login.
                 int iAssessorId = Convert.ToInt32(Program.sessionLogin["Id"]);
                 if (iAssessorId == -1)
                 {
