@@ -12,14 +12,6 @@ namespace itools_source.Presenters
 {
     public class GetToolPresenter
     {
-        #region Properties - Fields
-        private IGetToolView _getToolView;
-        private IGetToolRepository _getToolRepository;
-
-        private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(OPPresenter).Name);
-        #endregion
-
-        #region Methods
         public GetToolPresenter(IGetToolView getToolView, IGetToolRepository getToolRepository)
         {
             _getToolView = getToolView;
@@ -27,38 +19,64 @@ namespace itools_source.Presenters
 
             _getToolView.GetToolView_Load += _getToolView_GetToolView_Load;
             _getToolView.serialPort_GetTool_DataReceived += _getToolView_serialPort_GetTool_DataReceived;
+            _getToolView.btnGetTool_Click += _getToolView_btnGetTool_Click;
+            _getToolView.btnCancelSelectTray_Click += _getToolView_btnCancelSelectTray;
+            _getToolView.btnflpToolList_Click += _getToolView_btnflpToolList_Click;
+            _getToolView.btnflpTrayMachineList_Click += _getToolView_btnflpTrayMachineList_Click;
+            _getToolView.btnflpTrayMachineList_DoubleClick += _getToolView_btnflpTrayMachineList_DoubleClick;
+            _getToolView.btnShowAll_DoubleClick += _getToolView_btnShowAll_DoubleClick;
 
             _getToolView.Show();
         }
+
+
+
+        #region Properties - Fields
+        private IGetToolView _getToolView;
+        private IGetToolRepository _getToolRepository;
+
+        private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(OPPresenter).Name);
+        private bool bToggle = false; // On/Off => Show all machine and tray quantity.
         #endregion
 
         #region Evens
-        private void _getToolView_serialPort_GetTool_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private async void _getToolView_btnShowAll_DoubleClick(object sender, EventArgs e)
         {
-            if (_getToolView.serialPortGetTool.IsOpen)
+            GetToolView frm = (GetToolView)sender;
+            if (!bToggle)
             {
-                string strReadLine = _getToolView.serialPortGetTool.ReadLine().Substring(0, 3);
-                MessageBox.Show(strReadLine + ", length: " + strReadLine.Length.ToString());
-                if (strReadLine == "123")
+                _getToolView.lstMachineTrayQuantity = await _getToolRepository.GetMachineTrayQuantityByToolCode(_getToolView.strToolCode);
+                if (_getToolView.lstMachineTrayQuantity != null)
                 {
-                    MessageBox.Show("Stop");
-                    _getToolView.serialPortGetTool.Close();
-                    return;
+                    frm.flpTrayMachineList.Controls.Clear();
+                    _getToolView.CreateListButton(false);
+                    bToggle = true;
+                }
+            }
+            else
+            {
+                if (_getToolView.lstMachineTray != null)
+                {
+                    bToggle = false;
+                    _getToolView.CreateListButton(true);
                 }
             }
         }
 
         private void _getToolView_btnflpTrayMachineList_DoubleClick(object sender, EventArgs e)
         {
+            _getToolView.SetCheckedButton("");
+            _getToolView.cStatusForm = '4';
+            _getToolView.SetStatusForm();
             Guna2GradientButton btn = (Guna2GradientButton)sender;
-            if (string.IsNullOrEmpty(btn.Text) || btn.Tag == null)
+            if (string.IsNullOrEmpty(btn.Text))
             {
                 MessageBox.Show("Nút Không Có Dữ Liệu!");
                 return;
             }
 
             _getToolView.strTrayIndex = btn.Text;
-            _getToolView.strMachineCode = btn.Tag.ToString();
+            //_getToolView.strMachineCode = btn.Tag.ToString();
 
             string strSendSerialCom = "125," + _getToolView.strTrayIndex.Split('_').GetValue(1).ToString() + "|";
             if (SerialPort.GetPortNames().Length == 0)
@@ -74,10 +92,10 @@ namespace itools_source.Presenters
                     _getToolView.serialPortGetTool.PortName = item;
                     if (_getToolView.serialPortGetTool.PortName != "COM1")
                     {
+                        _getToolView.serialPortGetTool.Open();
                         break;
                     }
                 }
-                _getToolView.serialPortGetTool.Open();
             }
 
             if (_getToolView.serialPortGetTool.IsOpen)
@@ -86,7 +104,21 @@ namespace itools_source.Presenters
             }
         }
 
-        private async void _getToolView_btnflpTrayMachineList_Click(object sender, EventArgs e)
+        private void _getToolView_btnflpTrayMachineList_Click(object sender, EventArgs e)
+        {
+            Guna2GradientButton btn = (Guna2GradientButton)sender;
+            if (btn.Checked == true)
+            {
+                btn.Checked = false;
+            }
+            else
+            {
+                btn.Checked = true;
+            }
+            _getToolView.SetCheckedButton(btn.Text);
+        }
+
+        private async void _getToolView_btnflpToolList_Click(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;
             if (string.IsNullOrEmpty(btn.Text) || btn.Tag == null)
@@ -122,30 +154,58 @@ namespace itools_source.Presenters
                 _getToolView.lstMachineTray = await _getToolRepository.GetMachineTrayByToolCode(_getToolView.strToolCode, "VM-1");
                 if (_getToolView.lstMachineTray != null)
                 {
-                    // 1. Create list button.
-                    if (_getToolView.lstTrayButton == null)
-                    {
-                        _getToolView.lstTrayButton = new List<Guna2GradientButton>();
-                    }
+                    // 4. Create list button.
+                    _getToolView.CreateListButton(true);
 
-                    // a. Clear controls ToolTray.
-                    _getToolView.flpTrayMachineList_Clear();
-                    _getToolView.lstTrayButton.Clear();
+                    //if (_getToolView.lstTrayButton == null)
+                    //{
+                    //    _getToolView.lstTrayButton = new List<Guna2GradientButton>();
+                    //}
 
-                    // b. Add button to Tray List.
-                    foreach (var item in _getToolView.lstMachineTray)
-                    {
-                        _getToolView.lstTrayButton.Add(_getToolView.CreateButton(item.Value, item.Key, _getToolView_btnflpTrayMachineList_DoubleClick));
-                    }
+                    //// 4a. Clear controls ToolTray.
+                    //_getToolView.flpTrayMachineList_Clear();
+                    //_getToolView.lstTrayButton.Clear();
 
-                    // 2. Add button list to flowlayoutpanel.
-                    _getToolView.flpTrayMachineList_AddRange(_getToolView.lstTrayButton.ToArray());
-                    _log.Info("Create button tray list and add button tray to flowlayoutpanel.");
+                    //// 4b. Add button to Tray List.
+                    //foreach (var item in _getToolView.lstMachineTray)
+                    //{
+                    //    _getToolView.lstTrayButton.Add(_getToolView.CreateButton(item.Key, item.Value, "Tray", null));
+                    //}
+
+                    //// 5. Add button list to flowlayoutpanel.
+                    //_getToolView.flpTrayMachineList_AddRange(_getToolView.lstTrayButton.ToArray());
+                    //_log.Info("Create button tray list and add button tray to flowlayoutpanel.");
                 }
             }
             else
             {
                 _log.Error("Get data ToolModel and ToolDescription fail!");
+            }
+        }
+
+        private void _getToolView_btnCancelSelectTray(object sender, EventArgs e)
+        {
+            _getToolView.cStatusForm = '3';
+            _getToolView.SetStatusForm();
+        }
+
+        private void _getToolView_btnGetTool_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void _getToolView_serialPort_GetTool_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            if (_getToolView.serialPortGetTool.IsOpen)
+            {
+                string strReadLine = _getToolView.serialPortGetTool.ReadLine().Substring(0, 3);
+                MessageBox.Show(strReadLine + ", length: " + strReadLine.Length.ToString());
+                if (strReadLine == "123")
+                {
+                    MessageBox.Show("Stop");
+                    _getToolView.serialPortGetTool.Close();
+                    return;
+                }
             }
         }
 
@@ -168,7 +228,7 @@ namespace itools_source.Presenters
 
                 foreach (var item in _getToolView.lstToolForOPList)
                 {
-                    _getToolView.lstToolButton.Add(_getToolView.CreateButton(item.Key, item.Value, _getToolView_btnflpTrayMachineList_Click));
+                    _getToolView.lstToolButton.Add(_getToolView.CreateButton(item.Value, null, "Tool", item.Key));
                 }
 
                 // 2. Add to flowlayoutpanel.
@@ -176,6 +236,9 @@ namespace itools_source.Presenters
                 _log.Info("Create button list and add button to flowlayoutpanel.");
             }
         }
+        #endregion
+
+        #region Methods
         #endregion
     }
 }

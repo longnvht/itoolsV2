@@ -16,9 +16,14 @@ namespace itools_source.Views
 
             this.Load += delegate { GetToolView_Load?.Invoke(this, EventArgs.Empty); };
             serialPort_GetTool.DataReceived += (s, e) => { serialPort_GetTool_DataReceived?.Invoke(s, e); };
+            _btnGetTool.Click += delegate { btnGetTool_Click?.Invoke(this, EventArgs.Empty); };
+            _btnCancelSelectTray.Click += delegate { btnCancelSelectTray_Click?.Invoke(this, EventArgs.Empty); };
+            btnShowAll.DoubleClick += delegate { btnShowAll_DoubleClick?.Invoke(this, EventArgs.Empty); };
         }
 
         #region Properties - Fields
+        private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolManagerView).Name);
+
         // Singleton pattern (Open a single form instance)
         private static GetToolView _instance;
 
@@ -85,13 +90,14 @@ namespace itools_source.Views
         public int iToolId { get; set; }
         public string strTrayIndex { get; set; }
         public string strMachineCode { get; set; }
-        public Dictionary<string, string> lstMachineTray { get; set; }
+        public Dictionary<string, int> lstMachineTray { get; set; }
         public List<Guna2GradientButton> lstTrayButton { get; set; }
         public SerialPort serialPortGetTool { get => serialPort_GetTool; set => serialPort_GetTool = value; }
+        public Dictionary<int, List<object>> lstMachineTrayQuantity { get; set; }
         #endregion
 
         #region Methods
-        public Guna2GradientButton CreateButton(object obTag, object strText, EventHandler eventHandler)
+        public Guna2GradientButton CreateButton(object strText, object iQuantity, string strEventName, object obTag = null)
         {
             Guna2GradientButton btn = new Guna2GradientButton();
             btn.Animated = true;
@@ -103,6 +109,8 @@ namespace itools_source.Views
             btn.DisabledState.ForeColor = Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             btn.FillColor = Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
             btn.FillColor2 = Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            btn.CheckedState.FillColor = System.Drawing.Color.DarkOrchid;
+            btn.CheckedState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
             btn.Font = new Font("Segoe UI", 11F);
             btn.ForeColor = Color.White;
             btn.Location = new Point(3, 3);
@@ -114,8 +122,31 @@ namespace itools_source.Views
             if (strText != null)
             {
                 btn.Text = strText.ToString();
+                if (iQuantity != null)
+                {
+                    btn.Text += "\n\r" + iQuantity.ToString();
+                }
             }
-            btn.Click += (s, e) => { eventHandler?.Invoke(s, e); };
+
+            if (strEventName == "Tray")
+            {
+                btn.Click += (s, e) =>
+                {
+                    btnflpTrayMachineList_Click?.Invoke(s, e);
+                };
+                btn.DoubleClick += (s, e) =>
+                {
+                    btnflpTrayMachineList_DoubleClick?.Invoke(s, e);
+                };
+            }
+
+            if (strEventName == "Tool")
+            {
+                btn.Click += (s, e) =>
+                {
+                    btnflpToolList_Click?.Invoke(s, e);
+                };
+            }
             return btn;
         }
 
@@ -129,17 +160,12 @@ namespace itools_source.Views
                     txtDescription.Enabled = false;
                     btnGetTool.Enabled = false;
 
-                    tlpToolMachineList.Visible = false;
-                    tlpToolMachineList.Dock = DockStyle.Right;
-                    tlpToolMachineList.BringToFront();
+                    _tlpToolMachineList.Height = Height;
+                    _tlpToolMachineList.Visible = false;
                     break;
                 case '1': // Click tool -> On FlowLayoutPandel Select TrayIndex.
-                    if (tlpToolMachineList.Visible == false)
-                    {
-                        tlpToolMachineList.Visible = true;
-                        tlpToolMachineList.Dock = DockStyle.Right;
-                        tlpToolMachineList.BringToFront();
-                    }
+                    _tlpToolMachineList.Visible = true;
+                    _tlpToolMachineList.Dock = DockStyle.Right;
                     break;
                 case '2': // Click tool -> Off FlowLayoutPandel Select TrayIndex.
                     if (tlpToolMachineList.Visible == true)
@@ -149,7 +175,45 @@ namespace itools_source.Views
                         tlpToolMachineList.BringToFront();
                     }
                     break;
+                case '3': // Cancel select TrayIndex or view Machine/Tray.
+                    _tlpToolMachineList.Visible = false;
+                    break;
+                case '4': // Double select TrayIndex.
+                    btnGetTool.Enabled = false;
+                    break;
             }
+        }
+
+        public void CreateListButton(bool bCheck)
+        {
+            if (this.lstTrayButton == null)
+            {
+                this.lstTrayButton = new List<Guna2GradientButton>();
+            }
+
+            // 1. Clear controls ToolTray.
+            this.flpTrayMachineList.Controls.Clear();
+            this.lstTrayButton.Clear();
+
+            // 2. Add button to Tray List.
+            if (bCheck) // Machine tray.
+            {
+                foreach (var item in this.lstMachineTray)
+                {
+                    this.lstTrayButton.Add(CreateButton(item.Key, item.Value, "Tray", null));
+                }
+            }
+            else // Machine tray quantity.
+            {
+                foreach (var item in this.lstMachineTrayQuantity)
+                {
+                    this.lstTrayButton.Add(CreateButton(item.Value[0] + " - " + item.Value[1], item.Value[2], "Tray", null));
+                }
+            }
+
+            // 3. Add button list to flowlayoutpanel.
+            this.flpTrayMachineList.Controls.AddRange(this.lstTrayButton.ToArray());
+            _log.Info("Create button tray list and add button tray to flowlayoutpanel.");
         }
 
         public void flpTrayMachineList_AddRange(Control[] controls)
@@ -161,11 +225,45 @@ namespace itools_source.Views
         {
             _flpTrayMachineList.Controls.Clear();
         }
+
+        public void SetCheckedButton(string strContinueButton)
+        {
+            if (_flpTrayMachineList.Controls.Count > 0)
+            {
+                foreach (Control item in _flpTrayMachineList.Controls)
+                {
+                    Guna2GradientButton btn = (Guna2GradientButton)item;
+                    if (strContinueButton == btn.Text)
+                    {
+                        if (btn.Checked)
+                        {
+                            _btnGetTool.Enabled = true;
+                        }
+                        else
+                        {
+                            _btnGetTool.Enabled = false;
+                        }
+                        continue;
+                    }
+                    if (btn.Checked)
+                    {
+                        btn.Checked = false;
+                        return;
+                    }
+                }
+            }
+        }
         #endregion
 
         #region Events
         public event EventHandler GetToolView_Load;
+        public event EventHandler btnflpToolList_Click;
+        public event EventHandler btnflpTrayMachineList_Click;
+        public event EventHandler btnflpTrayMachineList_DoubleClick;
         public event SerialDataReceivedEventHandler serialPort_GetTool_DataReceived;
+        public event EventHandler btnCancelSelectTray_Click;
+        public event EventHandler btnGetTool_Click;
+        public event EventHandler btnShowAll_DoubleClick;
         #endregion
     }
 }

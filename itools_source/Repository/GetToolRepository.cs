@@ -267,11 +267,11 @@ namespace itools_source.Repository
             }
         }
 
-        public async Task<Dictionary<string, string>> GetMachineTrayByToolCode(string strToolCode, string strMachineCode)
+        public async Task<Dictionary<string, int>> GetMachineTrayByToolCode(string strToolCode, string strMachineCode)
         {
             // 0. TrayIndex
             // 1. Machine
-            Dictionary<string, string> lstMachineTray = new Dictionary<string, string>();
+            Dictionary<string, int> lstMachineTray = new Dictionary<string, int>();
             string strQueryProcedure = @"GetMachineTrayByToolCode";
             _log.Info("Store procedure query: " + strQueryProcedure);
             try
@@ -315,7 +315,7 @@ namespace itools_source.Repository
                                 if (!mySqlDataReader.IsDBNull(0) && !mySqlDataReader.IsDBNull(1))
                                 {
                                     // TrayIndex, Machine
-                                    lstMachineTray.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
+                                    lstMachineTray.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetInt32(1));
                                 }
                             }
                             mySqlDataReader.Close();
@@ -324,6 +324,88 @@ namespace itools_source.Repository
                     mySqlConnection.Close();
                 }
                 return lstMachineTray;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+                return null;
+            }
+        }
+
+        public async Task<Dictionary<int, List<object>>> GetMachineTrayQuantityByToolCode(string strToolCode)
+        {
+            /*
+             * 0. Id => int
+             * 1. MachineCode => string
+             * 2. TrayIndex => string
+             * 3. Quantity => int
+             */
+            Dictionary<int, List<object>> lst = new Dictionary<int, List<object>>();
+            string strQueryProcedure = @"GetMachineTrayQuantityByToolCode";
+            _log.Info("Store procedure query: " + strQueryProcedure);
+
+            try
+            {
+                List<MySqlParameter> lstPar = new List<MySqlParameter>();
+                lstPar.Add(
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_ToolCode",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = strToolCode,
+                        Direction = System.Data.ParameterDirection.Input
+                    });
+
+                if (lstPar[0].Value == DBNull.Value)
+                {
+                    return null;
+                }
+
+                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
+                {
+                    using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
+                    {
+                        if (mySqlDataReader != null)
+                        {
+                            if (lst == null)
+                            {
+                                _log.Error("Variable lstToolModelDes is Null!");
+                                return null;
+                            }
+
+                            while (mySqlDataReader.Read())
+                            {
+                                List<object> lstMT = new List<object>();
+
+                                if (!mySqlDataReader.IsDBNull(1))
+                                {
+                                    //strMachineCode = mySqlDataReader["MachineCode"];
+                                    lstMT.Add(mySqlDataReader["MachineCode"]);
+                                }
+
+                                if (!mySqlDataReader.IsDBNull(2))
+                                {
+                                    //strTrayIndex = mySqlDataReader.GetString(2);
+                                    lstMT.Add(mySqlDataReader["TrayIndex"]);
+                                }
+
+                                if (!mySqlDataReader.IsDBNull(3))
+                                {
+                                    lstMT.Add(mySqlDataReader["Quantity"]);
+                                }
+
+                                if (!mySqlDataReader.IsDBNull(0))
+                                {
+                                    // Id, Machine, TrayIndex, Quantity
+                                    lst.Add(mySqlDataReader.GetInt32(0), lstMT);
+                                }
+                            }
+                            mySqlDataReader.Close();
+                        }
+                    }
+                    mySqlConnection.Close();
+                }
+                return lst;
             }
             catch (MySqlException e)
             {

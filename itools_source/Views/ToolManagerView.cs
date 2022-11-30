@@ -419,7 +419,6 @@ namespace itools_source.Views
             {
                 foreach (Control item in flpToolList.Controls)
                 {
-                    Guna2GradientButton btn = (Guna2GradientButton)item;
                     if (item.GetType() != typeof(Guna2GradientButton) || strContinueButton == ((Guna2GradientButton)item).Text)
                     {
                         continue;

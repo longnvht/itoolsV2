@@ -9,14 +9,6 @@ namespace itools_source.Presenters
 {
     public class JobPresenter
     {
-        #region Fields
-        private IJobView _jobView;
-        private IGetToolRepository _getToolRepository;
-
-        private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(JobPresenter).Name);
-        #endregion
-
-        #region Methods
         public JobPresenter(IJobView jobView, IGetToolRepository getToolRepository)
         {
             _jobView = jobView;
@@ -28,6 +20,12 @@ namespace itools_source.Presenters
 
             _jobView.Show();
         }
+
+        #region Fields
+        private IJobView _jobView;
+        private IGetToolRepository _getToolRepository;
+
+        private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(JobPresenter).Name);
         #endregion
 
         #region Events
@@ -105,6 +103,9 @@ namespace itools_source.Presenters
                 _jobView.lstJobNumberButton.Add(_jobView.CreateJobNumberButton());
             }
         }
+        #endregion
+
+        #region Methods
         #endregion
     }
 }

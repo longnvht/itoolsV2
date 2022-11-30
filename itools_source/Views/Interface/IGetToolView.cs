@@ -21,12 +21,19 @@ namespace itools_source.Views.Interface
         List<Guna2GradientButton> lstToolButton { get; set; }
         List<Guna2GradientButton> lstTrayButton { get; set; }
         Dictionary<int, string> lstToolForOPList { get; set; }
-        Dictionary<string, string> lstMachineTray { get; set; }
+        Dictionary<string, int> lstMachineTray { get; set; }
+        Dictionary<int, List<object>> lstMachineTrayQuantity { get; set; }
         #endregion
 
         #region Events
         event EventHandler GetToolView_Load;
+        event EventHandler btnflpToolList_Click;
+        event EventHandler btnflpTrayMachineList_Click;
+        event EventHandler btnflpTrayMachineList_DoubleClick;
         event SerialDataReceivedEventHandler serialPort_GetTool_DataReceived;
+        event EventHandler btnCancelSelectTray_Click;
+        event EventHandler btnGetTool_Click;
+        event EventHandler btnShowAll_DoubleClick;
         #endregion
 
         #region Methods
@@ -34,9 +41,11 @@ namespace itools_source.Views.Interface
         void Close();
         void Hide();
         void SetStatusForm();
+        void CreateListButton(bool bCheck);
         void flpTrayMachineList_AddRange(Control[] controls);
         void flpTrayMachineList_Clear();
-        Guna2GradientButton CreateButton(object strText, object obTag, EventHandler eventHandler);
+        Guna2GradientButton CreateButton(object strText, object iQuantity, string strEventName, object obTag = null);
+        void SetCheckedButton(string strContinueButton);
         #endregion
     }
 }

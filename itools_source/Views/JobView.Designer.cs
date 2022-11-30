@@ -96,7 +96,7 @@
             this._btnJobNumberSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._btnJobNumberSearch.Animated = true;
             this._btnJobNumberSearch.AutoRoundedCorners = true;
-            this._btnJobNumberSearch.BorderRadius = 17;
+            this._btnJobNumberSearch.BorderRadius = 10;
             this._btnJobNumberSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this._btnJobNumberSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this._btnJobNumberSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));

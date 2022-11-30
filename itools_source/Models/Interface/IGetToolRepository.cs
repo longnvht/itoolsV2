@@ -11,6 +11,7 @@ namespace itools_source.Models.Interface
         Dictionary<string, Dictionary<string, string>> GetOPByJobPartOPID(string strJobNumber, string strPartID);
         Task<Dictionary<int, string>> GetByToolForOP(int iOPId);
         Task<Dictionary<string, string>> GetModelDescriptionByToolId(int iToolId);
-        Task<Dictionary<string, string>> GetMachineTrayByToolCode(string strToolCode, string strMachineCode);
+        Task<Dictionary<string, int>> GetMachineTrayByToolCode(string strToolCode, string strMachineCode);
+        Task<Dictionary<int, List<object>>> GetMachineTrayQuantityByToolCode(string strToolCode);
     }
 }
