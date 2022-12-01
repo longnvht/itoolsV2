@@ -1,5 +1,4 @@
-﻿using itools_source.Models;
-using System;
+﻿using System;
 
 namespace itools_source.Views.Interface
 {
@@ -8,13 +7,12 @@ namespace itools_source.Views.Interface
         #region Properties - Fields
         string strUserName { get; set; }
         string strPassword { get; set; }
-        Assessor assessorCurrent { get; set; }
         #endregion
 
         #region Events
-        event EventHandler LoginEvent;
-        event EventHandler CancelEvent;
-        event EventHandler PasswordIconRightClickEvent;
+        event EventHandler btnLogin_Click;
+        event EventHandler btnCancel_Click;
+        event EventHandler txtPassword_IconRightClick;
         #endregion
 
         #region Methods

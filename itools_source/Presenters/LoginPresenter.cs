@@ -16,9 +16,9 @@ namespace itools_source.Presenter
             _assessorRepository = assessorRepository;
 
             // Event handler methods to view events.
-            _loginView.LoginEvent += LoginAssessor;
-            _loginView.CancelEvent += CancelLogin;
-            _loginView.PasswordIconRightClickEvent += PasswordIconRightClick;
+            _loginView.btnLogin_Click += _loginView_btnLogin_Click;
+            _loginView.btnCancel_Click += _loginView_btnCancel_Click;
+            _loginView.txtPassword_IconRightClick += _loginView_txtPassword_IconRightClick;
 
             _loginView.Show();
         }
@@ -26,12 +26,12 @@ namespace itools_source.Presenter
         #region Fields
         log4net.ILog _log = log4net.LogManager.GetLogger(typeof(LoginPresenter).Name);
 
-        private ILoginView _loginView;
-        private IAssessorRepository _assessorRepository;
+        private readonly ILoginView _loginView;
+        private readonly IAssessorRepository _assessorRepository;
         #endregion
 
         #region Events
-        private void PasswordIconRightClick(object sender, EventArgs e)
+        private void _loginView_txtPassword_IconRightClick(object sender, EventArgs e)
         {
             var txtPassword = ((Guna2TextBox)sender);
             if (txtPassword.UseSystemPasswordChar)
@@ -46,12 +46,12 @@ namespace itools_source.Presenter
             }
         }
 
-        private void CancelLogin(object sender, EventArgs e)
+        private void _loginView_btnCancel_Click(object sender, EventArgs e)
         {
             _loginView.Close();
         }
 
-        private void LoginAssessor(object sender, EventArgs e)
+        private void _loginView_btnLogin_Click(object sender, EventArgs e)
         {
             string strUserName = _loginView.strUserName;
             string strPassword = _loginView.strPassword;

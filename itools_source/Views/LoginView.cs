@@ -1,5 +1,4 @@
-﻿using itools_source.Models;
-using itools_source.Views.Interface;
+﻿using itools_source.Views.Interface;
 using System;
 using System.Windows.Forms;
 
@@ -10,9 +9,9 @@ namespace itools_source.Views
         public LoginView()
         {
             InitializeComponent();
-            btnLogin.Click += delegate { LoginEvent?.Invoke(this, EventArgs.Empty); };
-            btnCancel.Click += delegate { CancelEvent?.Invoke(this, EventArgs.Empty); };
-            txtPassword.IconRightClick += delegate { PasswordIconRightClickEvent?.Invoke(txtPassword, EventArgs.Empty); };
+            btnLogin.Click += delegate { btnLogin_Click?.Invoke(this, EventArgs.Empty); };
+            btnCancel.Click += delegate { btnCancel_Click?.Invoke(this, EventArgs.Empty); };
+            txtPassword.IconRightClick += delegate { txtPassword_IconRightClick?.Invoke(txtPassword, EventArgs.Empty); };
         }
 
         #region Properties - Fields
@@ -29,11 +28,9 @@ namespace itools_source.Views
         #endregion
 
         #region Events
-        public Assessor assessorCurrent { get; set; }
-
-        public event EventHandler LoginEvent;
-        public event EventHandler CancelEvent;
-        public event EventHandler PasswordIconRightClickEvent;
+        public event EventHandler btnLogin_Click;
+        public event EventHandler btnCancel_Click;
+        public event EventHandler txtPassword_IconRightClick;
         #endregion
 
         #region Method
