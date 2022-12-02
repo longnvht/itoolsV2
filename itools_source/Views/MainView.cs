@@ -19,7 +19,7 @@ namespace itools_source.Views
 
         public string strName { get => lblName.Text; set => lblName.Text = value; }
 
-        public Assessor assessorCurrent { get; set; }
+        public UserAccount userAccountCurrent { get; set; }
 
         public event EventHandler FormLoad;
         public event EventHandler Previous;

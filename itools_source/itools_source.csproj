@@ -120,19 +120,19 @@
     <Compile Include="frmTest.Designer.cs">
       <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\permission.cs" />
-    <Compile Include="Models\permissiondetail.cs" />
-    <Compile Include="Models\useraccount.cs" />
+    <Compile Include="Models\Interface\IBaseRepository.cs" />
+    <Compile Include="Models\Permission.cs" />
+    <Compile Include="Models\PermissionDetail.cs" />
+    <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\Interface\IAssessorRepository.cs" />
+    <Compile Include="Models\Interface\IUserAccountRepository.cs" />
     <Compile Include="Models\Interface\IGetToolRepository.cs" />
-    <Compile Include="Models\Interface\IRolesRepository.cs" />
     <Compile Include="Models\Interface\IToolMachineTrayRepository.cs" />
     <Compile Include="Models\Interface\IWorkingTransactionRepository.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Machine.cs" />
     <Compile Include="Models\PartOP.cs" />
-    <Compile Include="Models\usertype.cs" />
+    <Compile Include="Models\UserType.cs" />
     <Compile Include="Models\Slock.cs" />
     <Compile Include="Models\Tool.cs" />
     <Compile Include="Models\ToolForOP.cs" />
@@ -146,10 +146,9 @@
     <Compile Include="Presenters\ToolManagerPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\AssessorRepository.cs" />
+    <Compile Include="Repository\UserAccountRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\GetToolRepository.cs" />
-    <Compile Include="Repository\RolesRepository.cs" />
     <Compile Include="Repository\ToolMachineTrayRepository.cs" />
     <Compile Include="Repository\WorkingTransactionRepository.cs" />
     <Compile Include="Utils\Encryption.cs" />

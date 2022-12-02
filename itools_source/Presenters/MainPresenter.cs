@@ -1,5 +1,4 @@
 ﻿using itools_source.Models.Interface;
-using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
@@ -10,7 +9,7 @@ namespace itools_source.Presenters
 {
     public class MainPresenter
     {
-        public MainPresenter(IMainView mainView, IAssessorRepository assessorRepository)
+        public MainPresenter(IMainView mainView, IUserAccountRepository assessorRepository)
         {
             this._mainView = mainView;
             _assessorRepository = assessorRepository;
@@ -24,7 +23,7 @@ namespace itools_source.Presenters
         log4net.ILog _log = log4net.LogManager.GetLogger(typeof(MainPresenter).Name);
 
         private IMainView _mainView;
-        private IAssessorRepository _assessorRepository;
+        private IUserAccountRepository _userAccountRepository;
         private IGetToolRepository _getToolRepository;
         #endregion
 
@@ -47,36 +46,36 @@ namespace itools_source.Presenters
                 return;
             }
 
-            if (_mainView.assessorCurrent == null)
+            if (_mainView.userAccountCurrent == null)
             {
-                _mainView.assessorCurrent = new Models.Assessor();
+                _mainView.userAccountCurrent = new Models.UserAccount();
             }
 
-            if (_assessorRepository != null)
+            if (_userAccountRepository != null)
             {
-                _mainView.assessorCurrent = _assessorRepository.GetAssessor(Program.sessionLogin["UserName"].ToString(), Program.sessionLogin["Password"].ToString());
+                //_mainView.userAccountCurrent = _assessorRepository.GetUserAccount(Program.sessionLogin["UserName"].ToString(), Program.sessionLogin["Password"].ToString());
             }
 
-            if (_mainView.assessorCurrent != null)
+            if (_mainView.userAccountCurrent != null)
             {
-                _mainView.strName = _mainView.assessorCurrent.strLastName + " " + _mainView.assessorCurrent.strFirstName;
+                _mainView.strName = _mainView.userAccountCurrent.strNameStaff;
 
                 // Check Role
-                string strRoleName = _assessorRepository.GetRoleName(_mainView.assessorCurrent.iAssessorId);
-                if (strRoleName == "Admin")
-                {
-                    IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
-                    IToolMachineTrayRepository toolRepository = new ToolMachineTrayRepository();
-                    new ToolManagerPresenter(toolManagerView, toolRepository);
-                }
-                else
-                {
-                    IJobView jobView = JobView.GetInstance((MainView)_mainView);
-                    jobView.SetListOPNumberOPType = ListOPNumberOPType;
-                    _getToolRepository = new GetToolRepository();
-                    new JobPresenter(jobView, _getToolRepository);
-                }
-                _log.Info("Login Success!");
+                //string strRoleName = _assessorRepository.GetRoleName(_mainView.userAccountCurrent.iID);
+                //if (strRoleName == "Admin")
+                //{
+                //    IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
+                //    IToolMachineTrayRepository toolRepository = new ToolMachineTrayRepository();
+                //    new ToolManagerPresenter(toolManagerView, toolRepository);
+                //}
+                //else
+                //{
+                //    IJobView jobView = JobView.GetInstance((MainView)_mainView);
+                //    jobView.SetListOPNumberOPType = ListOPNumberOPType;
+                //    _getToolRepository = new GetToolRepository();
+                //    new JobPresenter(jobView, _getToolRepository);
+                //}
+                //_log.Info("Login Success!");
             }
         }
         #endregion

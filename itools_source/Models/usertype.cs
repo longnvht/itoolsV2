@@ -1,6 +1,6 @@
 ﻿namespace itools_source.Models
 {
-    public class usertype
+    public class UserType
     {
         private int _iTypeID;
 

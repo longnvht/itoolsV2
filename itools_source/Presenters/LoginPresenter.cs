@@ -10,10 +10,10 @@ namespace itools_source.Presenter
 {
     public class LoginPresenter
     {
-        public LoginPresenter(ILoginView loginView, IAssessorRepository assessorRepository)
+        public LoginPresenter(ILoginView loginView, IUserAccountRepository userAccountRepository)
         {
             _loginView = loginView;
-            _assessorRepository = assessorRepository;
+            _userAccountRepository = userAccountRepository;
 
             // Event handler methods to view events.
             _loginView.btnLogin_Click += _loginView_btnLogin_Click;
@@ -24,10 +24,10 @@ namespace itools_source.Presenter
         }
 
         #region Fields
-        log4net.ILog _log = log4net.LogManager.GetLogger(typeof(LoginPresenter).Name);
+        private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(LoginPresenter).Name);
 
         private readonly ILoginView _loginView;
-        private readonly IAssessorRepository _assessorRepository;
+        private readonly IUserAccountRepository _userAccountRepository;
         #endregion
 
         #region Events
@@ -54,7 +54,7 @@ namespace itools_source.Presenter
         private void _loginView_btnLogin_Click(object sender, EventArgs e)
         {
             string strUserName = _loginView.strUserName;
-            string strPassword = _loginView.strPassword;
+            string strPassword = Utils.Encryption.CreateMD5(_loginView.strPassword);
             _log.Info("Login with username: " + strUserName);
             try
             {
@@ -63,11 +63,11 @@ namespace itools_source.Presenter
                 {
                     Program.sessionLogin = new Utils.Session();
                 }
-                Program.sessionLogin["Id"] = _assessorRepository.GetById(strUserName, strPassword);
+                Program.sessionLogin["Id"] = _userAccountRepository.GetById(strUserName, strPassword);
 
                 // 2. Check Login.
-                int iAssessorId = Convert.ToInt32(Program.sessionLogin["Id"]);
-                if (iAssessorId == -1)
+                int? iUserAccountID = Convert.ToInt32(Program.sessionLogin["Id"]);
+                if (iUserAccountID == null)
                 {
                     MessageBox.Show("Đăng Nhập Thất Bại!");
                     _log.Info("Login Fail!");
@@ -79,14 +79,14 @@ namespace itools_source.Presenter
 
                     Program.sessionLogin["LoginTime"] = Utils.ServerTime.GetServerTime().ToLocalTime().ToString();
 
-                    string strRoleName = _assessorRepository.GetRoleName(Convert.ToInt32(Program.sessionLogin["Id"]));
-                    Program.sessionLogin["Role"] = strRoleName;
+                    //string strRoleName = _userAccountRepository.GetRoleName(Convert.ToInt32(Program.sessionLogin["Id"]));
+                    //Program.sessionLogin["Role"] = strRoleName;
 
                     System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
                         () =>
                         {
                             IMainView mainView = new MainView();
-                            new MainPresenter(mainView, _assessorRepository);
+                            new MainPresenter(mainView, _userAccountRepository);
                             Application.Run((Form)mainView);
                         }));
 

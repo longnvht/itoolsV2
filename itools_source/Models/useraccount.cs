@@ -1,6 +1,6 @@
 ﻿namespace itools_source.Models
 {
-    public class Assessor
+    public class UserAccount
     {
         private int _iID;
 

@@ -6,7 +6,7 @@ namespace itools_source.Views.Interface
     public interface IMainView
     {
         #region Properties - Fields
-        Assessor assessorCurrent { get; set; }
+        UserAccount userAccountCurrent { get; set; }
         string strName { get; set; }
         #endregion
 

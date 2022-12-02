@@ -2,7 +2,7 @@
 
 namespace itools_source.Models
 {
-    public class permissiondetail
+    public class PermissionDetail
     {
         private string _strPermissionId;
 
