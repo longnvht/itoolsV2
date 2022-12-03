@@ -50,12 +50,12 @@
             set { _strEmail = value; }
         }
 
-        private string _strPermission;
+        private string _strPermissionId;
 
-        public string strPermission
+        public string strPermissionId
         {
-            get { return _strPermission; }
-            set { _strPermission = value; }
+            get { return _strPermissionId; }
+            set { _strPermissionId = value; }
         }
 
         private string _strUserType;

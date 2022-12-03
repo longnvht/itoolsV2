@@ -5,6 +5,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace itools_source.Repository
 {
@@ -72,15 +73,20 @@ namespace itools_source.Repository
                     {
                         if (mySqlDataReader != null)
                         {
-                            if (!mySqlDataReader.IsDBNull(0)) // ID
+                            if (await mySqlDataReader.ReadAsync())
                             {
-                                iID = mySqlDataReader.GetInt32(0);
+                                if (!await mySqlDataReader.IsDBNullAsync(0)) // ID
+                                {
+                                    iID = mySqlDataReader.GetInt32(0);
+                                    //MessageBox.Show(iID.ToString());
+                                }
                             }
-                            mySqlDataReader.Close();
                         }
+                        mySqlDataReader.Close();
                     }
                     mySqlConnection.Close();
                 }
+                //MessageBox.Show(iID.ToString());
                 return iID;
             }
             catch (MySqlException e)
@@ -140,36 +146,104 @@ namespace itools_source.Repository
                                 userAccount = new UserAccount();
                             }
 
-                            if (!mySqlDataReader.IsDBNull(0)) // ID
+                            if (await mySqlDataReader.ReadAsync())
                             {
-                                userAccount.iID = mySqlDataReader.GetInt32(0);
-                            }
+                                if (!await mySqlDataReader.IsDBNullAsync(0)) // ID
+                                {
+                                    userAccount.iID = mySqlDataReader.GetInt32(0);
+                                }
 
-                            if (!mySqlDataReader.IsDBNull(1)) // UserLogin
-                            {
-                                userAccount.strUserLogin = mySqlDataReader.GetString(1);
-                            }
+                                if (!await mySqlDataReader.IsDBNullAsync(1)) // UserLogin
+                                {
+                                    userAccount.strUserLogin = mySqlDataReader.GetString(1);
+                                }
 
-                            if (!mySqlDataReader.IsDBNull(2)) // Pass
-                            {
-                                userAccount.strPass = mySqlDataReader.GetString(2);
-                            }
+                                if (!await mySqlDataReader.IsDBNullAsync(2)) // Pass
+                                {
+                                    userAccount.strPass = mySqlDataReader.GetString(2);
+                                }
 
-                            if (!mySqlDataReader.IsDBNull(3)) // NameStaff
-                            {
-                                userAccount.strNameStaff = mySqlDataReader.GetString(3);
-                            }
+                                if (!await mySqlDataReader.IsDBNullAsync(3)) // NameStaff
+                                {
+                                    userAccount.strNameStaff = mySqlDataReader.GetString(3);
+                                }
 
-                            if (!mySqlDataReader.IsDBNull(4)) // Permission
-                            {
-                                userAccount.strPermission = mySqlDataReader.GetString(4);
+                                if (!await mySqlDataReader.IsDBNullAsync(4)) // Permission
+                                {
+                                    userAccount.strPermissionId = mySqlDataReader.GetString(4);
+                                }
                             }
-                            mySqlDataReader.Close();
                         }
+                        mySqlDataReader.Close();
                     }
                     mySqlConnection.Close();
                 }
                 return userAccount;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+                return null;
+            }
+        }
+
+        public async Task<Permission> GetPermission(string strUserName, string strPassword)
+        {
+            Permission permission = null;
+            string strQueryProcedure = @"GetUserPermission";
+            _log.Info("Store procedure query get permission a user account: " + strQueryProcedure);
+
+            try
+            {
+                List<MySqlParameter> lstPar = new List<MySqlParameter>();
+                lstPar.Add(
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_UserLogin",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = strUserName,
+                        Direction = System.Data.ParameterDirection.Input
+                    });
+
+                if (lstPar == null || (lstPar[0].Value == DBNull.Value))
+                {
+                    return null;
+                }
+
+                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
+                {
+                    using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
+                    {
+                        if (mySqlDataReader != null)
+                        {
+                            if (permission == null)
+                            {
+                                permission = new Permission();
+                            }
+
+                            if (mySqlDataReader.Read())
+                            {
+                                if (!await mySqlDataReader.IsDBNullAsync(0)) // PermissionId
+                                {
+                                    permission.strPermissionId = mySqlDataReader.GetString(0);
+                                }
+
+                                if (!await mySqlDataReader.IsDBNullAsync(1)) // PermissionName
+                                {
+                                    permission.strPermissionName = mySqlDataReader.GetString(1);
+                                }
+
+                                if (!await mySqlDataReader.IsDBNullAsync(2)) // Description
+                                {
+                                    permission.strDescription = mySqlDataReader.GetString(2);
+                                }
+                            }
+                        }
+                        mySqlDataReader.Close();
+                    }
+                    mySqlConnection.Close();
+                }
+                return permission;
             }
             catch (MySqlException e)
             {

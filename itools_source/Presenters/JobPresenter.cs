@@ -47,6 +47,9 @@ namespace itools_source.Presenters
                 _jobView.lstOPNumberOPType = _getToolRepository.GetOPByJobPartOPID(strJobNumber, strPartID);
                 if (_jobView.lstOPNumberOPType != null)
                 {
+                    // Clear data.
+                    // ???
+                    // Clear data.
                     _jobView.SetListOPNumberOPType(_jobView.lstOPNumberOPType); // Delegate to form main.
                 }
             }

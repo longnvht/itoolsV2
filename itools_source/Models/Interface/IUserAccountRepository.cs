@@ -12,5 +12,6 @@ namespace itools_source.Models.Interface
         Task<int?> GetById(string strUserName, string strPassword);
         Task<IEnumerable<UserAccount>> GetAllUserAccount();
         Task<IEnumerable<UserAccount>> GetByValue(); // Search
+        Task<Permission> GetPermission(string strUserName, string strPassword);
     }
 }

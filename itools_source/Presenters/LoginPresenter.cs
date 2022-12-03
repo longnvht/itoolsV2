@@ -1,9 +1,11 @@
 ﻿using Guna.UI2.WinForms;
+using itools_source.Models;
 using itools_source.Models.Interface;
 using itools_source.Presenters;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace itools_source.Presenter
@@ -51,7 +53,7 @@ namespace itools_source.Presenter
             _loginView.Close();
         }
 
-        private void _loginView_btnLogin_Click(object sender, EventArgs e)
+        private async void _loginView_btnLogin_Click(object sender, EventArgs e)
         {
             string strUserName = _loginView.strUserName;
             string strPassword = Utils.Encryption.CreateMD5(_loginView.strPassword);
@@ -63,38 +65,43 @@ namespace itools_source.Presenter
                 {
                     Program.sessionLogin = new Utils.Session();
                 }
-                Program.sessionLogin["Id"] = _userAccountRepository.GetById(strUserName, strPassword);
 
-                // 2. Check Login.
-                int? iUserAccountID = Convert.ToInt32(Program.sessionLogin["Id"]);
-                if (iUserAccountID == null)
+                // 2. Get user account.
+                UserAccount userAccount = await _userAccountRepository.GetUserAccount(strUserName, strPassword);
+                if (userAccount == null)
                 {
                     MessageBox.Show("Đăng Nhập Thất Bại!");
                     _log.Info("Login Fail!");
                 }
-                else
-                {
-                    Program.sessionLogin["UserName"] = strUserName;
-                    Program.sessionLogin["Password"] = strPassword;
 
-                    Program.sessionLogin["LoginTime"] = Utils.ServerTime.GetServerTime().ToLocalTime().ToString();
+                Program.sessionLogin["Id"] = userAccount.iID;
+                Program.sessionLogin["UserName"] = strUserName; // UserLogin
+                Program.sessionLogin["Password"] = strPassword;
+                Program.sessionLogin["Name"] = userAccount.strNameStaff;
+                Program.sessionLogin["Permission"] = userAccount.strPermissionId;
+                Program.sessionLogin["LoginTime"] = Utils.ServerTime.GetServerTime().ToLocalTime().ToString();
+                MessageBox.Show(strUserName.GetType().FullName);
+                MessageBox.Show(userAccount.GetType().FullName);
+                //Program.sessionLogin["Id"] = await _userAccountRepository.GetById(strUserName, strPassword);
 
-                    //string strRoleName = _userAccountRepository.GetRoleName(Convert.ToInt32(Program.sessionLogin["Id"]));
-                    //Program.sessionLogin["Role"] = strRoleName;
-
-                    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
+                System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
                         () =>
                         {
                             IMainView mainView = new MainView();
+                            MessageBox.Show("Id: " + Convert.ToInt32(Program.sessionLogin["Id"]) +
+                                            "\nUserLogin: " + Program.sessionLogin["UserName"].ToString() +
+                                            "\nPass: " + Program.sessionLogin["Password"].ToString() +
+                                            "\nName: " + Program.sessionLogin["Name"] +
+                                            "\nPermission: " + Program.sessionLogin["Permission"] +
+                                            "\nLogin time: " + Program.sessionLogin["LoginTime"].ToString());
                             new MainPresenter(mainView, _userAccountRepository);
                             Application.Run((Form)mainView);
                         }));
 
-                    t.Start();
+                t.Start();
 
-                    _loginView.Close();
-                    _log.Info("Login Success!");
-                }
+                _log.Info("Login Success!");
+                _loginView.Close();
             }
             catch (Exception ex)
             {
@@ -104,7 +111,7 @@ namespace itools_source.Presenter
         }
         #endregion
 
-        #region Method
+        #region Methods
         #endregion
     }
 }
