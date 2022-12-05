@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace itools_source.Models.Interface
 {
@@ -12,6 +13,8 @@ namespace itools_source.Models.Interface
         bool IsMachineTray(string strMachineCode, string strTrayIndex);
         bool AddWorkingTransaction(WorkingTransaction workingTransaction);
         int? GetTheLargestToolMachineTray();
-        SortedDictionary<string, string> GetTrayAndToolCode(string strMachine);
+        Task<SortedDictionary<string, string>> GetTrayAndToolCode(string strMachine);
+        Task<int?> GetToolIDByToolCode(string strToolCode);
+        Task<int?> GetQuantityByToolID(int? iToolID);
     }
 }

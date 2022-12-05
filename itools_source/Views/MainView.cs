@@ -35,10 +35,10 @@ namespace itools_source.Views
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            if (MdiChildren.Any())
-            {
-                MdiChildren[0].Close();
-            }
+            //if (MdiChildren.Any())
+            //{
+            //    MdiChildren[0].Close();
+            //}
         }
     }
 }

@@ -50,12 +50,12 @@ namespace itools_source.Presenters
         #endregion
 
         #region Events
-        private void _toolManagerView_ToolManagerView_Load(object sender, EventArgs e)
+        private async void _toolManagerView_ToolManagerView_Load(object sender, EventArgs e)
         {
             _toolManagerView.strMachineCode = _strMachineCode;
 
             // Get data TrayIndex and ToolCode
-            _toolManagerView.sortTrayToolCode = _toolMachineTrayRepository.GetTrayAndToolCode(_toolManagerView.strMachineCode);
+            _toolManagerView.sortTrayToolCode = await _toolMachineTrayRepository.GetTrayAndToolCode(_toolManagerView.strMachineCode);
 
             if (_toolManagerView.sortTrayToolCode != null)
             {
@@ -66,7 +66,7 @@ namespace itools_source.Presenters
             }
         }
 
-        private void _toolManagerView_btnSave_Click(object sender, EventArgs e)
+        private async void _toolManagerView_btnSave_Click(object sender, EventArgs e)
         {
             if (_toolManagerView.iCurrentQuantity == null || _toolManagerView.iOperateQuantity == null)
             {
@@ -111,8 +111,6 @@ namespace itools_source.Presenters
                 {
                     case '0': // AddNew
                         bResult = _toolMachineTrayRepository.AddNewToolMachineTray(_toolManagerView.toolTrayCurrent);
-
-                        //string strTrayButton = _toolManagerView.lstTrayButton[1].Text.Split('\r').GetValue(0).ToString().Replace(' ', '_');
                         string strTextButton;
                         
                         foreach (var item in _toolManagerView.lstTrayButton)
@@ -150,20 +148,42 @@ namespace itools_source.Presenters
                         workingTransaction.iQuantity = _toolManagerView.iOperateQuantity.Value;
                         workingTransaction.strTransactionStatus = "Complete";
 
+                        // Get ToolID by ToolCode in Tools.
+                        int? iToolIDByToolCode = null;
+                        if (_toolManagerView.strToolCode != null)
+                        {
+                            iToolIDByToolCode = await _toolMachineTrayRepository.GetToolIDByToolCode(_toolManagerView.strToolCode);
+                        }
+
+                        // Get quantity by ToolID in Stock.
+                        int? iOldStockQuantity = null;
+                        if (iToolIDByToolCode != null)
+                        {
+                            iOldStockQuantity = await _toolMachineTrayRepository.GetQuantityByToolID(iToolIDByToolCode);
+                        }
+
+                        int? iNewStockQuantity = null;
                         if (_toolManagerView.cStatusButton == '0')
                         {
                             workingTransaction.strTransactiomType = "Add New";
+                            iNewStockQuantity = iOldStockQuantity - _toolManagerView.iTotalQuantity;
                         }
                         else if (_toolManagerView.cStatusButton == '1')
                         {
                             workingTransaction.strTransactiomType = "Add Plugin";
+                            iNewStockQuantity = iOldStockQuantity - _toolManagerView.iTotalQuantity;
                         }
                         else
                         {
                             workingTransaction.strTransactiomType = "Take Out";
+                            iNewStockQuantity = iOldStockQuantity + _toolManagerView.iOperateQuantity;
                         }
 
                         bResultTransaction = _toolMachineTrayRepository.AddWorkingTransaction(workingTransaction);
+
+                        MessageBox.Show("ToolID: " + iToolIDByToolCode.ToString());
+                        MessageBox.Show("Old stock quantity: " + iOldStockQuantity.ToString());
+                        MessageBox.Show("New stock quantity: " + iNewStockQuantity.ToString());
                     }
 
                     if (bResultTransaction)
