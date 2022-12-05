@@ -80,20 +80,11 @@ namespace itools_source.Presenter
                 Program.sessionLogin["Name"] = userAccount.strNameStaff;
                 Program.sessionLogin["Permission"] = userAccount.strPermissionId;
                 Program.sessionLogin["LoginTime"] = Utils.ServerTime.GetServerTime().ToLocalTime().ToString();
-                MessageBox.Show(strUserName.GetType().FullName);
-                MessageBox.Show(userAccount.GetType().FullName);
-                //Program.sessionLogin["Id"] = await _userAccountRepository.GetById(strUserName, strPassword);
 
                 System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
                         () =>
                         {
                             IMainView mainView = new MainView();
-                            MessageBox.Show("Id: " + Convert.ToInt32(Program.sessionLogin["Id"]) +
-                                            "\nUserLogin: " + Program.sessionLogin["UserName"].ToString() +
-                                            "\nPass: " + Program.sessionLogin["Password"].ToString() +
-                                            "\nName: " + Program.sessionLogin["Name"] +
-                                            "\nPermission: " + Program.sessionLogin["Permission"] +
-                                            "\nLogin time: " + Program.sessionLogin["LoginTime"].ToString());
                             new MainPresenter(mainView, _userAccountRepository);
                             Application.Run((Form)mainView);
                         }));

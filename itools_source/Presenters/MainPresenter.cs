@@ -39,7 +39,7 @@ namespace itools_source.Presenters
 
         }
 
-        private void FormLoad(object sender, EventArgs e)
+        private async void FormLoad(object sender, EventArgs e)
         {
             if (Program.sessionLogin == null)
             {
@@ -47,53 +47,29 @@ namespace itools_source.Presenters
                 return;
             }
 
-            string strPermission = Program.sessionLogin["Permission"].ToString();
-            if (strPermission == "PROD")
+            List<string> lstForm = await _userAccountRepository.GetListFormByUserLogin(Program.sessionLogin["UserName"].ToString());
+            if (lstForm != null)
             {
-                IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
-                IToolMachineTrayRepository toolRepository = new ToolMachineTrayRepository();
-                new ToolManagerPresenter(toolManagerView, toolRepository);
-            }
-            if (strPermission == "PROD")
-            {
-                IJobView jobView = JobView.GetInstance((MainView)_mainView);
-                jobView.SetListOPNumberOPType = ListOPNumberOPType;
-                _getToolRepository = new GetToolRepository();
-                new JobPresenter(jobView, _getToolRepository);
+                foreach (var item in lstForm)
+                {
+                    if (item == typeof(ToolManagerView).Name)
+                    {
+                        IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
+                        IToolMachineTrayRepository toolRepository = new ToolMachineTrayRepository();
+                        new ToolManagerPresenter(toolManagerView, toolRepository);
+                        break;
+                    }
+                    if (item == typeof(JobView).Name)
+                    {
+                        IJobView jobView = JobView.GetInstance((MainView)_mainView);
+                        jobView.SetListOPNumberOPType = ListOPNumberOPType;
+                        _getToolRepository = new GetToolRepository();
+                        new JobPresenter(jobView, _getToolRepository);
+                        break;
+                    }
+                }
             }
             _log.Info("Login Success!");
-
-            //if (_mainView.userAccountCurrent == null)
-            //{
-            //    _mainView.userAccountCurrent = new Models.UserAccount();
-            //}
-
-            //if (_userAccountRepository != null)
-            //{
-            //    //_mainView.userAccountCurrent = _assessorRepository.GetUserAccount(Program.sessionLogin["UserName"].ToString(), Program.sessionLogin["Password"].ToString());
-            //}
-
-            //if (_mainView.userAccountCurrent != null)
-            //{
-            //    _mainView.strName = _mainView.userAccountCurrent.strNameStaff;
-
-            //    // Check Role
-            //    //string strRoleName = _assessorRepository.GetRoleName(_mainView.userAccountCurrent.iID);
-            //    //if (strRoleName == "Admin")
-            //    //{
-            //    //    IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
-            //    //    IToolMachineTrayRepository toolRepository = new ToolMachineTrayRepository();
-            //    //    new ToolManagerPresenter(toolManagerView, toolRepository);
-            //    //}
-            //    //else
-            //    //{
-            //    //    IJobView jobView = JobView.GetInstance((MainView)_mainView);
-            //    //    jobView.SetListOPNumberOPType = ListOPNumberOPType;
-            //    //    _getToolRepository = new GetToolRepository();
-            //    //    new JobPresenter(jobView, _getToolRepository);
-            //    //}
-            //    //_log.Info("Login Success!");
-            //}
         }
         #endregion
 

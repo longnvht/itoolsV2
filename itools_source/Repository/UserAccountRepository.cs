@@ -187,10 +187,10 @@ namespace itools_source.Repository
             }
         }
 
-        public async Task<Permission> GetPermission(string strUserName, string strPassword)
+        public async Task<List<string>> GetListFormByUserLogin(string strUserName)
         {
-            Permission permission = null;
-            string strQueryProcedure = @"GetUserPermission";
+            List<string> lstForm = null;
+            string strQueryProcedure = @"GetListFormByUserLogin";
             _log.Info("Store procedure query get permission a user account: " + strQueryProcedure);
 
             try
@@ -216,26 +216,16 @@ namespace itools_source.Repository
                     {
                         if (mySqlDataReader != null)
                         {
-                            if (permission == null)
+                            if (lstForm == null)
                             {
-                                permission = new Permission();
+                                lstForm = new List<string>();
                             }
 
-                            if (mySqlDataReader.Read())
+                            while (await mySqlDataReader.ReadAsync())
                             {
-                                if (!await mySqlDataReader.IsDBNullAsync(0)) // PermissionId
+                                if (!await mySqlDataReader.IsDBNullAsync(0)) // FormId
                                 {
-                                    permission.strPermissionId = mySqlDataReader.GetString(0);
-                                }
-
-                                if (!await mySqlDataReader.IsDBNullAsync(1)) // PermissionName
-                                {
-                                    permission.strPermissionName = mySqlDataReader.GetString(1);
-                                }
-
-                                if (!await mySqlDataReader.IsDBNullAsync(2)) // Description
-                                {
-                                    permission.strDescription = mySqlDataReader.GetString(2);
+                                    lstForm.Add(mySqlDataReader.GetString(0));
                                 }
                             }
                         }
@@ -243,7 +233,7 @@ namespace itools_source.Repository
                     }
                     mySqlConnection.Close();
                 }
-                return permission;
+                return lstForm;
             }
             catch (MySqlException e)
             {

@@ -51,7 +51,6 @@ namespace itools_source.Utils
                 }
                 MySqlConnection conn = new MySqlConnection(ConnectionString());
                 conn.Open();
-                System.Windows.Forms.MessageBox.Show(ConnectionString());
                 return conn;
             }
             catch (MySqlException e)
