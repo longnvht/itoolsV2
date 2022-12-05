@@ -55,7 +55,7 @@ namespace itools_source.Presenters
             }
         }
 
-        private void _jobView_txtJobNumberSearch_TextChanged(object sender, EventArgs e)
+        private async void _jobView_txtJobNumberSearch_TextChanged(object sender, EventArgs e)
         {
             JobView frmJobView = (JobView)sender;
 
@@ -68,7 +68,7 @@ namespace itools_source.Presenters
             }
 
             // 2. Select JobNumber and PartID.
-            _jobView.lstJobNumberPartID = _getToolRepository.GetJobByJobNumber(_jobView.strJobNumberSearch);
+            _jobView.lstJobNumberPartID = await _getToolRepository.GetJobByJobNumber(_jobView.strJobNumberSearch);
             _log.Info("User: " + Program.sessionLogin["UserName"] + ", Search JobNumber: " + _jobView.strJobNumberSearch);
 
             // 3. Rename text button.

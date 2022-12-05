@@ -6,6 +6,7 @@ using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace itools_source.Presenters
@@ -103,13 +104,28 @@ namespace itools_source.Presenters
                 {
                     MessageBox.Show("Tool is not Manchine and Tray!");
                     _log.Info("Tool is not Manchine and Tray!");
-                    return;
+                    return; 
                 }
 
                 switch (_toolManagerView.cStatusButton)
                 {
                     case '0': // AddNew
                         bResult = _toolMachineTrayRepository.AddNewToolMachineTray(_toolManagerView.toolTrayCurrent);
+
+                        //string strTrayButton = _toolManagerView.lstTrayButton[1].Text.Split('\r').GetValue(0).ToString().Replace(' ', '_');
+                        string strTextButton;
+                        
+                        foreach (var item in _toolManagerView.lstTrayButton)
+                        {
+                            strTextButton = item.Text.Split('\r').GetValue(0).ToString().Replace(' ', '_');
+                            if (_strTrayIndexCurrent == strTextButton)
+                            {
+                                StringBuilder strBuiderTray = new StringBuilder(_strTrayIndexCurrent);
+                                strBuiderTray.Append("\r\n");
+                                strBuiderTray.Append(_toolManagerView.strToolCode);
+                                item.Text = strBuiderTray.ToString();
+                            }
+                        }
                         break;
                     case '1': // AddPlugin
                     case '2': // TakeOut
@@ -126,7 +142,7 @@ namespace itools_source.Presenters
                         workingTransaction.dtTransactionDate = _toolManagerView.toolTrayCurrent.dtUpdateDate;
                         workingTransaction.strMachineCode = _strMachineCode;
                         workingTransaction.strCompanyCode = "VINAMOILTOOLS";
-                        workingTransaction.strAssessorId = Program.sessionLogin["Id"].ToString();
+                        workingTransaction.strUserLogin = Program.sessionLogin["UserName"].ToString();
                         workingTransaction.strJobNumber = null;
                         workingTransaction.strOPNumber = null;
                         workingTransaction.strToolCode = _toolManagerView.toolTrayCurrent.strToolCode;

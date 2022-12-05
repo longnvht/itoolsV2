@@ -13,14 +13,14 @@ namespace itools_source.Repository
 
         public bool AddWorkingTransaction(WorkingTransaction workingTransaction)
         {
-            string strInsert = @"INSERT INTO workingtransaction(TransactionDate, MachineCode, CompanyCode, AssessorID, JobNumber, OPNumber, ToolCode, TrayIndex, Quantity, TransactionStatus, TransactionType) VALUES (@TransactionDate, @MachineCode, @CompanyCode, @AssessorID, @JobNumber, @OPNumber, @ToolCode, @TrayIndex, @Quantity, @TransactionStatus, @TransactionType)";
+            string strInsert = @"INSERT INTO workingtransaction(TransactionDate, MachineCode, CompanyCode, UserLogin, JobNumber, OPNumber, ToolCode, TrayIndex, Quantity, TransactionStatus, TransactionType) VALUES (@TransactionDate, @MachineCode, @CompanyCode, @UserLogin, @JobNumber, @OPNumber, @ToolCode, @TrayIndex, @Quantity, @TransactionStatus, @TransactionType)";
             _log.Info(strInsert);
 
             List<MySqlParameter> lstpar = new List<MySqlParameter>();
             lstpar.Add(new MySqlParameter("@MaLoaiNV", workingTransaction.dtTransactionDate));
             lstpar.Add(new MySqlParameter("@MachineCode", workingTransaction.strMachineCode));
             lstpar.Add(new MySqlParameter("@CompanyCode", workingTransaction.strCompanyCode));
-            lstpar.Add(new MySqlParameter("@AssessorID", workingTransaction.strAssessorId));
+            lstpar.Add(new MySqlParameter("@UserLogin", workingTransaction.strUserLogin));
             lstpar.Add(new MySqlParameter("@JobNumber", workingTransaction.strJobNumber));
             lstpar.Add(new MySqlParameter("@OPNumber", workingTransaction.strOPNumber));
             lstpar.Add(new MySqlParameter("@ToolCode", workingTransaction.strToolCode));

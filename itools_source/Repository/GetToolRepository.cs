@@ -4,6 +4,7 @@ using itools_source.Utils;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 namespace itools_source.Repository
@@ -22,28 +23,41 @@ namespace itools_source.Repository
             throw new NotImplementedException();
         }
 
-        public SortedList<string, string> GetJobByJobNumber(string strJobNumber)
+        public async Task<SortedList<string, string>> GetJobByJobNumber(string strJobNumber)
         {
             SortedList<string, string> lstJobNumberList = new SortedList<string, string>();
-            string strQuery = @"SELECT longnv.job.JobNumber, longnv.job.PartID
-	                                FROM longnv.job	
-		                                WHERE longnv.job.JobNumber LIKE '%" + strJobNumber + "%'" +
-                                            " LIMIT 50";
-            _log.Info(strQuery);
+            string strQueryProcedure = @"GetJobByJobNumber";
+            _log.Info("Store procedure query get job by jobnumber: " + strQueryProcedure);
+            
             try
             {
-                using (MySqlConnection mySqlConnection = MySqlConnect.Open())
+                List<MySqlParameter> lstPar = new List<MySqlParameter>();
+                lstPar.Add(
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_JobNumber",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = strJobNumber,
+                        Direction = System.Data.ParameterDirection.Input
+                    });
+
+                if (lstPar == null || (lstPar[0].Value == DBNull.Value))
                 {
-                    using (MySqlDataReader mySqlDataReader = MySqlConnect.DataQuery(strQuery, mySqlConnection))
+                    return null;
+                }
+
+                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
+                {
+                    using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
                     {
                         if (lstJobNumberList == null)
                         {
                             _log.Error("Variable lstJobNumberList is Null!");
                             return null;
                         }
-                        while (mySqlDataReader.Read())
+                        while (await mySqlDataReader.ReadAsync())
                         {
-                            if (!mySqlDataReader.IsDBNull(0))
+                            if (!await mySqlDataReader.IsDBNullAsync(0))
                             {
                                 lstJobNumberList.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
                             }

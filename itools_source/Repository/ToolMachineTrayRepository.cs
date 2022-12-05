@@ -17,10 +17,12 @@ namespace itools_source.Repository
             _log.Info(strQuery);
             try
             {
-                List<MySqlParameter> lstPar = new List<MySqlParameter>();
-                lstPar.Add(new MySqlParameter("@ToolCode", toolMachineTray.strToolCode));
-                lstPar.Add(new MySqlParameter("@Quantity", toolMachineTray.iQuantity));
-                lstPar.Add(new MySqlParameter("@UpdatedDate", toolMachineTray.dtUpdateDate));
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
+                {
+                    new MySqlParameter("@ToolCode", toolMachineTray.strToolCode),
+                    new MySqlParameter("@Quantity", toolMachineTray.iQuantity),
+                    new MySqlParameter("@UpdatedDate", toolMachineTray.dtUpdateDate)
+                };
 
                 foreach (var parCheck in lstPar)
                 {
@@ -52,14 +54,14 @@ namespace itools_source.Repository
 
         public bool AddWorkingTransaction(WorkingTransaction workingTransaction)
         {
-            string strInsert = @"INSERT INTO workingtransaction(TransactionDate, MachineCode, CompanyCode, AssessorID, JobNumber, OPNumber, ToolCode, TrayIndex, Quantity, TransactionStatus, TransactionType) VALUES (@TransactionDate, @MachineCode, @CompanyCode, @AssessorID, @JobNumber, @OPNumber, @ToolCode, @TrayIndex, @Quantity, @TransactionStatus, @TransactionType)";
+            string strInsert = @"INSERT INTO workingtransaction(TransactionDate, MachineCode, CompanyCode, UserLogin, JobNumber, OPNumber, ToolCode, TrayIndex, Quantity, TransactionStatus, TransactionType) VALUES (@TransactionDate, @MachineCode, @CompanyCode, @UserLogin, @JobNumber, @OPNumber, @ToolCode, @TrayIndex, @Quantity, @TransactionStatus, @TransactionType)";
             _log.Info(strInsert);
 
             List<MySqlParameter> lstpar = new List<MySqlParameter>();
             lstpar.Add(new MySqlParameter("@TransactionDate", workingTransaction.dtTransactionDate));
             lstpar.Add(new MySqlParameter("@MachineCode", workingTransaction.strMachineCode));
             lstpar.Add(new MySqlParameter("@CompanyCode", workingTransaction.strCompanyCode));
-            lstpar.Add(new MySqlParameter("@AssessorID", workingTransaction.strAssessorId));
+            lstpar.Add(new MySqlParameter("@UserLogin", workingTransaction.strUserLogin));
             lstpar.Add(new MySqlParameter("@JobNumber", workingTransaction.strJobNumber));
             lstpar.Add(new MySqlParameter("@OPNumber", workingTransaction.strOPNumber));
             lstpar.Add(new MySqlParameter("@ToolCode", workingTransaction.strToolCode));

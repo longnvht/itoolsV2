@@ -100,6 +100,7 @@
     </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -133,7 +134,7 @@
     <Compile Include="Models\Machine.cs" />
     <Compile Include="Models\PartOP.cs" />
     <Compile Include="Models\UserType.cs" />
-    <Compile Include="Models\Slock.cs" />
+    <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\Tool.cs" />
     <Compile Include="Models\ToolForOP.cs" />
     <Compile Include="Models\ToolMachineTray.cs" />

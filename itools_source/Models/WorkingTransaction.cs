@@ -36,12 +36,12 @@ namespace itools_source.Models
             set { _strCompanyCode = value; }
         }
 
-        private string _strAssessorId;
+        private string _strUserLogin;
 
-        public string strAssessorId
+        public string strUserLogin
         {
-            get { return _strAssessorId; }
-            set { _strAssessorId = value; }
+            get { return _strUserLogin; }
+            set { _strUserLogin = value; }
         }
 
         private string _strJobNumber;
