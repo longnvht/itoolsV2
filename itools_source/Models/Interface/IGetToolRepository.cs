@@ -13,6 +13,5 @@ namespace itools_source.Models.Interface
         Task<Dictionary<string, string>> GetModelDescriptionByToolId(int iToolId);
         Task<Dictionary<string, string>> GetMachineTrayByToolCode(string strToolCode, string strMachineCode);
         Task<Dictionary<int, List<object>>> GetMachineTrayQuantityByToolCode(string strToolCode);
-        Task<int?> GetQuantityInStock(int? iToolID);
     }
 }

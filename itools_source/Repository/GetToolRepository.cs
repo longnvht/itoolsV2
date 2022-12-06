@@ -427,52 +427,5 @@ namespace itools_source.Repository
                 return null;
             }
         }
-
-        public async Task<int?> GetQuantityInStock(int? iToolID)
-        {
-            int? iQuantity = null;
-            string strQueryProcedure = @"GetQuantityInStock";
-            _log.Info("Store procedure query get Quantity by ToolID in table Stock: " + strQueryProcedure);
-
-            try
-            {
-                List<MySqlParameter> lstPar = new List<MySqlParameter>();
-                lstPar.Add(
-                    new MySqlParameter
-                    {
-                        ParameterName = "@p_ToolID",
-                        MySqlDbType = MySqlDbType.VarChar,
-                        Value = iToolID,
-                        Direction = System.Data.ParameterDirection.Input
-                    });
-
-                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
-                {
-                    using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
-                    {
-                        if (mySqlDataReader != null)
-                        {
-                            if (await mySqlDataReader.ReadAsync())
-                            {
-                                if (!await mySqlDataReader.IsDBNullAsync(0))
-                                {
-                                    iQuantity = mySqlDataReader.GetInt32(0);
-                                }
-                            }
-                        }
-
-                        mySqlDataReader.Close();
-                    }
-                    await mySqlConnection.CloseAsync();
-                }
-
-                return iQuantity;
-            }
-            catch (MySqlException e)
-            {
-                _log.Error(e.Message);
-            }
-            return iQuantity;
-        }
     }
 }

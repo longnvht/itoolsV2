@@ -29,8 +29,6 @@ namespace itools_source.Presenters
             _getToolView.Show();
         }
 
-
-
         #region Properties - Fields
         private IGetToolView _getToolView;
         private IGetToolRepository _getToolRepository;
@@ -75,10 +73,10 @@ namespace itools_source.Presenters
                 return;
             }
 
-            _getToolView.strTrayIndex = btn.Text;
-            //_getToolView.strMachineCode = btn.Tag.ToString();
+            _getToolView.strTrayIndex = btn.Text.Split('\n').GetValue(0).ToString();
 
             string strSendSerialCom = "125," + _getToolView.strTrayIndex.Split('_').GetValue(1).ToString() + "|";
+            MessageBox.Show(strSendSerialCom);
             if (SerialPort.GetPortNames().Length == 0)
             {
                 MessageBox.Show("Không có cổng COM!");
@@ -173,7 +171,9 @@ namespace itools_source.Presenters
         private void _getToolView_btnGetTool_Click(object sender, EventArgs e)
         {
             // 1. Checked button.
+            bool bCheck = false;
             GetToolView frm = (GetToolView)sender;
+            string strBtnText = null;
             foreach (var item in frm.flpTrayMachineList.Controls)
             {
                 if (item.GetType() != typeof(Guna2GradientButton))
@@ -184,19 +184,50 @@ namespace itools_source.Presenters
                 if (btn.Checked)
                 {
                     btn.Checked = false;
+                    bCheck = true;
+                    strBtnText = btn.Text;
                     break;
                 }
             }
 
             // 2. Send to serial.
+            if (bCheck)
+            {
+                _getToolView.strTrayIndex = strBtnText.Split('\n').GetValue(0).ToString();
+
+                string strSendSerialCom = "125," + _getToolView.strTrayIndex.Split('_').GetValue(1).ToString() + "|";
+                frm.btnGetTool.Enabled = false;
+                if (SerialPort.GetPortNames().Length == 0)
+                {
+                    MessageBox.Show("Không có cổng COM!");
+                    _log.Info("Not connect COM!");
+                    return;
+                }
+                if (!_getToolView.serialPortGetTool.IsOpen)
+                {
+                    foreach (var item in SerialPort.GetPortNames())
+                    {
+                        _getToolView.serialPortGetTool.PortName = item;
+                        if (_getToolView.serialPortGetTool.PortName != "COM1")
+                        {
+                            _getToolView.serialPortGetTool.Open();
+                            break;
+                        }
+                    }
+                }
+
+                if (_getToolView.serialPortGetTool.IsOpen)
+                {
+                    _getToolView.serialPortGetTool.Write(strSendSerialCom);
+                }
+            }
         }
 
-        private void _getToolView_serialPort_GetTool_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private async void _getToolView_serialPort_GetTool_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             if (_getToolView.serialPortGetTool.IsOpen)
             {
                 string strReadLine = _getToolView.serialPortGetTool.ReadLine().Substring(0, 3);
-                //MessageBox.Show(strReadLine + ", length: " + strReadLine.Length.ToString());
                 if (strReadLine == "123")
                 {
                     MessageBox.Show("Get tool success.");

@@ -57,7 +57,7 @@
             this.guna2Elipse_tlpTooMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse_flpTrayMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.serialPort_GetTool = new System.IO.Ports.SerialPort(this.components);
-            this.btnShowAll = new Guna.UI2.WinForms.Guna2GradientButton();
+            this._btnShowAll = new Guna.UI2.WinForms.Guna2GradientButton();
             this.tlpHeader.SuspendLayout();
             this.tlpContent.SuspendLayout();
             this.pLeftContent.SuspendLayout();
@@ -420,7 +420,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnShowAll);
+            this.panel1.Controls.Add(this._btnShowAll);
             this.panel1.Controls.Add(this._txtToolSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
@@ -462,24 +462,24 @@
             this.guna2Elipse_flpTrayMachineList.BorderRadius = 20;
             this.guna2Elipse_flpTrayMachineList.TargetControl = this._flpTrayMachineList;
             // 
-            // btnShowAll
+            // _btnShowAll
             // 
-            this.btnShowAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnShowAll.Animated = true;
-            this.btnShowAll.BorderRadius = 10;
-            this.btnShowAll.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnShowAll.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnShowAll.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnShowAll.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnShowAll.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnShowAll.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.btnShowAll.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnShowAll.ForeColor = System.Drawing.Color.White;
-            this.btnShowAll.Location = new System.Drawing.Point(195, 8);
-            this.btnShowAll.Name = "btnShowAll";
-            this.btnShowAll.Size = new System.Drawing.Size(77, 45);
-            this.btnShowAll.TabIndex = 30;
-            this.btnShowAll.Text = "1 Máy";
+            this._btnShowAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnShowAll.Animated = true;
+            this._btnShowAll.BorderRadius = 10;
+            this._btnShowAll.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this._btnShowAll.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this._btnShowAll.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this._btnShowAll.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this._btnShowAll.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this._btnShowAll.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this._btnShowAll.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this._btnShowAll.ForeColor = System.Drawing.Color.White;
+            this._btnShowAll.Location = new System.Drawing.Point(195, 8);
+            this._btnShowAll.Name = "_btnShowAll";
+            this._btnShowAll.Size = new System.Drawing.Size(77, 45);
+            this._btnShowAll.TabIndex = 30;
+            this._btnShowAll.Text = "1 Máy";
             // 
             // GetToolView
             // 
