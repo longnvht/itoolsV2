@@ -12,17 +12,46 @@ namespace itools_source.Repository
     {
         private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolMachineTrayRepository).Name);
 
-        public bool AddNewToolMachineTray(ToolMachineTray toolMachineTray)
-        {
-            string strQuery = @"UPDATE toolsmachinetray SET ToolCode = @ToolCode, Quantity = @Quantity, UpdatedDate = @UpdatedDate WHERE TrayIndex = '" + toolMachineTray.strTrayIndex + "'" + "AND MachineCode = '" + toolMachineTray.strMachineCode + "'";
-            _log.Info(strQuery);
+        public async Task<bool> AddNewToolMachineTray(ToolMachineTray toolMachineTray)
+        {  
+            string strQueryProcedure = @"UpdateTrayQuantityToolCode";
+            _log.Info("Store procedure update tool machine tray: " + strQueryProcedure);
             try
             {
                 List<MySqlParameter> lstPar = new List<MySqlParameter>
                 {
-                    new MySqlParameter("@ToolCode", toolMachineTray.strToolCode),
-                    new MySqlParameter("@Quantity", toolMachineTray.iQuantity),
-                    new MySqlParameter("@UpdatedDate", toolMachineTray.dtUpdateDate)
+                    new MySqlParameter{
+                        ParameterName = "@p_TrayIndex",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = toolMachineTray.strTrayIndex,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_MachineCode",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = toolMachineTray.strMachineCode,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_ToolCode",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = toolMachineTray.strToolCode,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter{
+                        ParameterName = "@p_Quantity",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = toolMachineTray.iQuantity,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                     new MySqlParameter{
+                        ParameterName = "@p_UpdateDate",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = toolMachineTray.dtUpdateDate,
+                        Direction = System.Data.ParameterDirection.Input
+                    }
                 };
 
                 foreach (var parCheck in lstPar)
@@ -33,10 +62,10 @@ namespace itools_source.Repository
                     }
                 }
                 bool bResult;
-                using (MySqlConnection mySqlConnection = MySqlConnect.Open())
+                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
                 {
-                    bResult = MySqlConnect.CmdExecution(strQuery, lstPar.ToArray(), mySqlConnection);
-                    mySqlConnection.Close();
+                    bResult = await MySqlConnect.CmdExecutionProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection);
+                    await mySqlConnection.CloseAsync();
 
                     if (bResult == true)
                     {
@@ -53,7 +82,7 @@ namespace itools_source.Repository
             }
         }
 
-        public bool AddWorkingTransaction(WorkingTransaction workingTransaction)
+        public async Task<bool> AddWorkingTransaction(WorkingTransaction workingTransaction)
         {
             string strInsert = @"INSERT INTO workingtransaction(TransactionDate, MachineCode, CompanyCode, UserLogin, JobNumber, OPNumber, ToolCode, TrayIndex, Quantity, TransactionStatus, TransactionType) VALUES (@TransactionDate, @MachineCode, @CompanyCode, @UserLogin, @JobNumber, @OPNumber, @ToolCode, @TrayIndex, @Quantity, @TransactionStatus, @TransactionType)";
             _log.Info(strInsert);
@@ -106,7 +135,7 @@ namespace itools_source.Repository
             }
         }
 
-        public ToolMachineTray GetToolByTrayIndex(string strTrayIndex, string strMachineCode)
+        public async Task<ToolMachineTray> GetToolByTrayIndex(string strTrayIndex, string strMachineCode)
         {
             ToolMachineTray toolsMachineTray = null;
 
@@ -188,7 +217,7 @@ namespace itools_source.Repository
             return toolsMachineTray;
         }
 
-        public IEnumerable<string> GetToolCodeList()
+        public async Task<IEnumerable<string>> GetToolCodeList()
         {
             var toolCodeList = new List<string>();
             string strSelect = "SELECT DISTINCT tools.ToolCode FROM tools";
@@ -229,7 +258,7 @@ namespace itools_source.Repository
             return null;
         }
 
-        public int GetToolQuantity(string strTrayIndex)
+        public async Task<int> GetToolQuantity(string strTrayIndex)
         {
             if (string.IsNullOrEmpty(strTrayIndex))
             {
@@ -274,7 +303,7 @@ namespace itools_source.Repository
             return -4;
         }
 
-        public bool IsMachineTray(string strMachineCode, string strTrayIndex)
+        public async Task<bool> IsMachineTray(string strMachineCode, string strTrayIndex)
         {
             string strQuery = @"select MachineCode
 	                                from toolsmachinetray
@@ -312,7 +341,7 @@ namespace itools_source.Repository
             }
         }
 
-        public bool UpdateToolMachineTray(ToolMachineTray toolMachineTray)
+        public async Task<bool> UpdateToolMachineTray(ToolMachineTray toolMachineTray)
         {
             string strQuery = @"UPDATE toolsmachinetray
 	                                SET Quantity = " + toolMachineTray.iQuantity +
@@ -343,7 +372,7 @@ namespace itools_source.Repository
             }
         }
 
-        public bool AddToolMachineTray(ToolMachineTray toolMachineTray)
+        public async Task<bool> AddToolMachineTray(ToolMachineTray toolMachineTray)
         {
             string strInsert = @"INSERT INTO toolsmachinetray VALUE(@ToolsMachineTrayID, @MachineCode, @ToolCode, @TrayIndex, @Quantity, @CreatedDate, @UpdatedDate, 1)";
             List<MySqlParameter> lstPar = new List<MySqlParameter>();
@@ -391,7 +420,7 @@ namespace itools_source.Repository
             }
         }
 
-        public int? GetTheLargestToolMachineTray()
+        public async Task<int?> GetTheLargestToolMachineTray()
         {
             string strQuery = @"SELECT MAX(ToolsMachineTrayID) FROM toolsmachinetray";
             _log.Info(strQuery);
@@ -577,6 +606,56 @@ namespace itools_source.Repository
                 _log.Error(e.Message);
             }
             return iQuantity;
+        }
+
+        public async Task<bool> UpdateQuantityStock(int? iToolID = null, int? iQuantity = null)
+        {
+            string strQueryProcedure = @"UpdateQuantityInStock";
+            _log.Info("Store procedure update Quantity by ToolID in Stock: " + strQueryProcedure);
+            try
+            {
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
+                {
+                    new MySqlParameter{
+                        ParameterName = "@p_ToolID",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = iToolID,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                     new MySqlParameter{
+                        ParameterName = "@p_Quantity",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = iQuantity,
+                        Direction = System.Data.ParameterDirection.Input
+                    }
+                };
+
+                foreach (var parCheck in lstPar)
+                {
+                    if (parCheck.Value == null)
+                    {
+                        parCheck.Value = DBNull.Value;
+                    }
+                }
+                bool bResult;
+                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
+                {
+                    bResult = await MySqlConnect.CmdExecutionProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection);
+                    await mySqlConnection.CloseAsync();
+
+                    if (bResult == true)
+                    {
+                        _log.Info("Update Quantity in stock Susccessfully!");
+                    }
+                }
+
+                return bResult;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+                return false;
+            }
         }
     }
 }

@@ -100,7 +100,7 @@ namespace itools_source.Presenters
                 }
 
                 // Check tool is Machine and Tray.
-                if (!_toolMachineTrayRepository.IsMachineTray(_strMachineCode, _toolManagerView.toolTrayCurrent.strTrayIndex))
+                if (!await _toolMachineTrayRepository.IsMachineTray(_strMachineCode, _toolManagerView.toolTrayCurrent.strTrayIndex))
                 {
                     MessageBox.Show("Tool is not Manchine and Tray!");
                     _log.Info("Tool is not Manchine and Tray!");
@@ -110,7 +110,7 @@ namespace itools_source.Presenters
                 switch (_toolManagerView.cStatusButton)
                 {
                     case '0': // AddNew
-                        bResult = _toolMachineTrayRepository.AddNewToolMachineTray(_toolManagerView.toolTrayCurrent);
+                        bResult = await _toolMachineTrayRepository.AddNewToolMachineTray(_toolManagerView.toolTrayCurrent);
                         string strTextButton;
                         
                         foreach (var item in _toolManagerView.lstTrayButton)
@@ -127,7 +127,7 @@ namespace itools_source.Presenters
                         break;
                     case '1': // AddPlugin
                     case '2': // TakeOut
-                        bResult = _toolMachineTrayRepository.UpdateToolMachineTray(_toolManagerView.toolTrayCurrent);
+                        bResult = await _toolMachineTrayRepository.UpdateToolMachineTray(_toolManagerView.toolTrayCurrent);
                         break;
                 }
 
@@ -179,11 +179,8 @@ namespace itools_source.Presenters
                             iNewStockQuantity = iOldStockQuantity + _toolManagerView.iOperateQuantity;
                         }
 
-                        bResultTransaction = _toolMachineTrayRepository.AddWorkingTransaction(workingTransaction);
-
-                        MessageBox.Show("ToolID: " + iToolIDByToolCode.ToString());
-                        MessageBox.Show("Old stock quantity: " + iOldStockQuantity.ToString());
-                        MessageBox.Show("New stock quantity: " + iNewStockQuantity.ToString());
+                        bResultTransaction = await _toolMachineTrayRepository.AddWorkingTransaction(workingTransaction);
+                        bResultTransaction = await _toolMachineTrayRepository.UpdateQuantityStock(iToolID: iToolIDByToolCode, iQuantity: iNewStockQuantity);
                     }
 
                     if (bResultTransaction)
@@ -260,7 +257,7 @@ namespace itools_source.Presenters
                 return;
             }
 
-            _toolManagerView.toolCodeList = _toolMachineTrayRepository.GetToolCodeList().ToList();
+            _toolManagerView.toolCodeList = _toolMachineTrayRepository.GetToolCodeList().Result.ToList();
             if (_toolManagerView.toolCodeList == null)
             {
                 MessageBox.Show("Tool Code List is Null!");
@@ -321,7 +318,7 @@ namespace itools_source.Presenters
             }
         }
 
-        private void _toolManagerView_btnflpTrayList_Click(object sender, EventArgs e)
+        private async void _toolManagerView_btnflpTrayList_Click(object sender, EventArgs e)
         {
             Guna2Button btn = (Guna2Button)sender;
 
@@ -341,7 +338,7 @@ namespace itools_source.Presenters
 
             try
             {
-                _iCurrentQuantity = _toolMachineTrayRepository.GetToolQuantity(_strTrayIndexCurrent);
+                _iCurrentQuantity = await _toolMachineTrayRepository.GetToolQuantity(_strTrayIndexCurrent);
                 _toolManagerView.cStatusForm = '5';
                 _toolManagerView.SetStatusForm();
 
@@ -365,7 +362,7 @@ namespace itools_source.Presenters
                         _toolManagerView.SetStatusForm();
                     }
 
-                    _toolManagerView.toolTrayCurrent = _toolMachineTrayRepository.GetToolByTrayIndex(_strTrayIndexCurrent, _strMachineCode);
+                    _toolManagerView.toolTrayCurrent = await _toolMachineTrayRepository.GetToolByTrayIndex(_strTrayIndexCurrent, _strMachineCode);
                     if (_toolManagerView.toolTrayCurrent != null)
                     {
                         _toolManagerView.strTrayIndex = btn.Text.Split(' ').GetValue(1).ToString();
