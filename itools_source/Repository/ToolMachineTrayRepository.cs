@@ -10,7 +10,7 @@ namespace itools_source.Repository
 {
     public class ToolMachineTrayRepository : IToolMachineTrayRepository
     {
-        private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolMachineTrayRepository).Name);
+        private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolMachineTrayRepository).Name);
 
         public async Task<bool> AddNewToolMachineTray(ToolMachineTray toolMachineTray)
         {  
@@ -69,7 +69,7 @@ namespace itools_source.Repository
 
                     if (bResult == true)
                     {
-                        _log.Info("Add ToolMachineTray Susccessfully!");
+                        _log.Info("Update ToolCode, Quantity, UpdateDate in ToolMachineTray Susccessfully!");
                     }
                 }
 
@@ -84,48 +84,103 @@ namespace itools_source.Repository
 
         public async Task<bool> AddWorkingTransaction(WorkingTransaction workingTransaction)
         {
-            string strInsert = @"INSERT INTO workingtransaction(TransactionDate, MachineCode, CompanyCode, UserLogin, JobNumber, OPNumber, ToolCode, TrayIndex, Quantity, TransactionStatus, TransactionType) VALUES (@TransactionDate, @MachineCode, @CompanyCode, @UserLogin, @JobNumber, @OPNumber, @ToolCode, @TrayIndex, @Quantity, @TransactionStatus, @TransactionType)";
-            _log.Info(strInsert);
-
-            List<MySqlParameter> lstpar = new List<MySqlParameter>();
-            lstpar.Add(new MySqlParameter("@TransactionDate", workingTransaction.dtTransactionDate));
-            lstpar.Add(new MySqlParameter("@MachineCode", workingTransaction.strMachineCode));
-            lstpar.Add(new MySqlParameter("@CompanyCode", workingTransaction.strCompanyCode));
-            lstpar.Add(new MySqlParameter("@UserLogin", workingTransaction.strUserLogin));
-            lstpar.Add(new MySqlParameter("@JobNumber", workingTransaction.strJobNumber));
-            lstpar.Add(new MySqlParameter("@OPNumber", workingTransaction.strOPNumber));
-            lstpar.Add(new MySqlParameter("@ToolCode", workingTransaction.strToolCode));
-            lstpar.Add(new MySqlParameter("@TrayIndex", workingTransaction.strTrayIndex));
-            lstpar.Add(new MySqlParameter("@Quantity", workingTransaction.iQuantity));
-            lstpar.Add(new MySqlParameter("@TransactionStatus", workingTransaction.strTransactionStatus));
-            lstpar.Add(new MySqlParameter("@TransactionType", workingTransaction.strTransactiomType));
-
-            if (lstpar[0].Value == null)
-            {
-                return false;
-            }
-
-            foreach (var parCheck in lstpar)
-            {
-                if (parCheck.Value == null)
-                {
-                    parCheck.Value = DBNull.Value;
-                }
-            }
-
+            string strQueryProcedure = @"AddWorkingTransaction";
+            _log.Info("Store procedure update tool machine tray: " + strQueryProcedure);
             try
             {
-                bool bResult = false;
-                using (MySqlConnection mySqlConnection = MySqlConnect.Open())
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
                 {
-                    bResult = MySqlConnect.CmdExecution(strInsert, lstpar.ToArray(), mySqlConnection);
-                    mySqlConnection.Close();
+                    new MySqlParameter{
+                        ParameterName = "@p_TransactionDate",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = workingTransaction.dtTransactionDate,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_MachineCode",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = workingTransaction.strMachineCode,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_CompanyCode",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = workingTransaction.strCompanyCode,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter{
+                        ParameterName = "@p_UserLogin",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = workingTransaction.strUserLogin,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                     new MySqlParameter{
+                        ParameterName = "@p_JobNumber",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = workingTransaction.strJobNumber,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                     new MySqlParameter{
+                        ParameterName = "@p_OPNumber",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = workingTransaction.strOPNumber,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_ToolCode",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = workingTransaction.strToolCode,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_TrayIndex",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = workingTransaction.strTrayIndex,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter{
+                        ParameterName = "@p_Quantity",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = workingTransaction.iQuantity,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter{
+                        ParameterName = "@p_TransactionStatus",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = workingTransaction.strTransactionStatus,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter{
+                        ParameterName = "@p_TransactionType",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = workingTransaction.strTransactiomType,
+                        Direction = System.Data.ParameterDirection.Input
+                    }
+                };
+
+                foreach (var parCheck in lstPar)
+                {
+                    if (parCheck.Value == null)
+                    {
+                        parCheck.Value = DBNull.Value;
+                    }
+                }
+                bool bResult;
+                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
+                {
+                    bResult = await MySqlConnect.CmdExecutionProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection);
+                    await mySqlConnection.CloseAsync();
+
+                    if (bResult == true)
+                    {
+                        _log.Info("Add WorkingTransaction Susccessfully!");
+                    }
                 }
 
-                if (bResult == true)
-                {
-                    _log.Info("Add New WorkingTransation Successfully!");
-                }
                 return bResult;
             }
             catch (MySqlException e)
@@ -133,6 +188,56 @@ namespace itools_source.Repository
                 _log.Error(e.Message);
                 return false;
             }
+
+            //string strInsert = @"INSERT INTO workingtransaction(TransactionDate, MachineCode, CompanyCode, UserLogin, JobNumber, OPNumber, ToolCode, TrayIndex, Quantity, TransactionStatus, TransactionType) VALUES (@TransactionDate, @MachineCode, @CompanyCode, @UserLogin, @JobNumber, @OPNumber, @ToolCode, @TrayIndex, @Quantity, @TransactionStatus, @TransactionType)";
+            //_log.Info(strInsert);
+
+            //List<MySqlParameter> lstpar = new List<MySqlParameter>();
+            //lstpar.Add(new MySqlParameter("@TransactionDate", workingTransaction.dtTransactionDate));
+            //lstpar.Add(new MySqlParameter("@MachineCode", workingTransaction.strMachineCode));
+            //lstpar.Add(new MySqlParameter("@CompanyCode", workingTransaction.strCompanyCode));
+            //lstpar.Add(new MySqlParameter("@UserLogin", workingTransaction.strUserLogin));
+            //lstpar.Add(new MySqlParameter("@JobNumber", workingTransaction.strJobNumber));
+            //lstpar.Add(new MySqlParameter("@OPNumber", workingTransaction.strOPNumber));
+            //lstpar.Add(new MySqlParameter("@ToolCode", workingTransaction.strToolCode));
+            //lstpar.Add(new MySqlParameter("@TrayIndex", workingTransaction.strTrayIndex));
+            //lstpar.Add(new MySqlParameter("@Quantity", workingTransaction.iQuantity));
+            //lstpar.Add(new MySqlParameter("@TransactionStatus", workingTransaction.strTransactionStatus));
+            //lstpar.Add(new MySqlParameter("@TransactionType", workingTransaction.strTransactiomType));
+
+            //if (lstpar[0].Value == null)
+            //{
+            //    return false;
+            //}
+
+            //foreach (var parCheck in lstpar)
+            //{
+            //    if (parCheck.Value == null)
+            //    {
+            //        parCheck.Value = DBNull.Value;
+            //    }
+            //}
+
+            //try
+            //{
+            //    bool bResult = false;
+            //    using (MySqlConnection mySqlConnection = MySqlConnect.Open())
+            //    {
+            //        bResult = MySqlConnect.CmdExecution(strInsert, lstpar.ToArray(), mySqlConnection);
+            //        mySqlConnection.Close();
+            //    }
+
+            //    if (bResult == true)
+            //    {
+            //        _log.Info("Add New WorkingTransation Successfully!");
+            //    }
+            //    return bResult;
+            //}
+            //catch (MySqlException e)
+            //{
+            //    _log.Error(e.Message);
+            //    return false;
+            //}
         }
 
         public async Task<ToolMachineTray> GetToolByTrayIndex(string strTrayIndex, string strMachineCode)

@@ -33,7 +33,7 @@ namespace itools_source.Presenters
         private IGetToolView _getToolView;
         private IGetToolRepository _getToolRepository;
 
-        private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(OPPresenter).Name);
+        private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(GetToolPresenter).Name);
         private bool bToggle = false; // On/Off => Show all machine and tray quantity.
         #endregion
 

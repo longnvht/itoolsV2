@@ -22,7 +22,7 @@ namespace itools_source.Views
         }
 
         #region Properties - Fields
-        private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolManagerView).Name);
+        private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(GetToolView).Name);
 
         // Singleton pattern (Open a single form instance)
         private static GetToolView _instance;
