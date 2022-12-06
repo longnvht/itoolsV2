@@ -21,7 +21,7 @@ namespace itools_source.Views.Interface
         List<Guna2GradientButton> lstToolButton { get; set; }
         List<Guna2GradientButton> lstTrayButton { get; set; }
         Dictionary<int, string> lstToolForOPList { get; set; }
-        Dictionary<string, int> lstMachineTray { get; set; }
+        Dictionary<string, string> lstMachineTray { get; set; }
         Dictionary<int, List<object>> lstMachineTrayQuantity { get; set; }
         #endregion
 

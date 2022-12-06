@@ -90,7 +90,7 @@ namespace itools_source.Views
         public int iToolId { get; set; }
         public string strTrayIndex { get; set; }
         public string strMachineCode { get; set; }
-        public Dictionary<string, int> lstMachineTray { get; set; }
+        public Dictionary<string, string> lstMachineTray { get; set; }
         public List<Guna2GradientButton> lstTrayButton { get; set; }
         public SerialPort serialPortGetTool { get => serialPort_GetTool; set => serialPort_GetTool = value; }
         public Dictionary<int, List<object>> lstMachineTrayQuantity { get; set; }

@@ -134,6 +134,7 @@ namespace itools_source.Presenters
                 if (bResult == true)
                 {
                     bool bResultTransaction = false;
+                    bool bResultStock = false;
                     if (_toolManagerView.toolTrayCurrent != null)
                     {
                         WorkingTransaction workingTransaction = new WorkingTransaction();
@@ -166,12 +167,12 @@ namespace itools_source.Presenters
                         if (_toolManagerView.cStatusButton == '0')
                         {
                             workingTransaction.strTransactiomType = "Add New";
-                            iNewStockQuantity = iOldStockQuantity - _toolManagerView.iTotalQuantity;
+                            iNewStockQuantity = iOldStockQuantity - _toolManagerView.iOperateQuantity;
                         }
                         else if (_toolManagerView.cStatusButton == '1')
                         {
                             workingTransaction.strTransactiomType = "Add Plugin";
-                            iNewStockQuantity = iOldStockQuantity - _toolManagerView.iTotalQuantity;
+                            iNewStockQuantity = iOldStockQuantity - _toolManagerView.iOperateQuantity;
                         }
                         else
                         {
@@ -179,13 +180,15 @@ namespace itools_source.Presenters
                             iNewStockQuantity = iOldStockQuantity + _toolManagerView.iOperateQuantity;
                         }
 
-                        bResultTransaction = await _toolMachineTrayRepository.AddWorkingTransaction(workingTransaction);
-                        bResultTransaction = await _toolMachineTrayRepository.UpdateQuantityStock(iToolID: iToolIDByToolCode, iQuantity: iNewStockQuantity);
+                        bResultTransaction = await _toolMachineTrayRepository.AddWorkingTransaction(workingTransaction: workingTransaction);
+                        
+                        bResultStock = await _toolMachineTrayRepository.UpdateQuantityStock(iToolID: iToolIDByToolCode, iQuantity: iNewStockQuantity);
                     }
 
                     if (bResultTransaction)
                     {
                         MessageBox.Show("Lưu Thành Công!");
+                        _log.Info("Update stock: " + bResultStock);
                     }
                     else
                     {
@@ -273,7 +276,7 @@ namespace itools_source.Presenters
             _toolManagerView.CreateToolButton();
         }
 
-        private void _toolManagerView_txtOperateQuantity_TextChanged(object sender, EventArgs e)
+        private async void _toolManagerView_txtOperateQuantity_TextChanged(object sender, EventArgs e)
         {
             int iOperateQuantity = _toolManagerView.iOperateQuantity.Value;
             int iTotalQuantity;
@@ -295,8 +298,23 @@ namespace itools_source.Presenters
             }
             else // AddNew, AddPlugin
             {
-                iTotalQuantity = _iCurrentQuantity + iOperateQuantity;
-                _toolManagerView.iTotalQuantity = iTotalQuantity;
+                // 1. Check quantity stock.
+                // a. Get quantity stock in database(dtb).
+                _toolManagerView.iToolID = await _toolMachineTrayRepository.GetToolIDByToolCode(_toolManagerView.strToolCode);
+
+                int? iQuantityStock = await _toolMachineTrayRepository.GetQuantityByToolID(iToolID: _toolManagerView.iToolID);
+
+                // b. Between quantity stock dtb and app.
+                if (iQuantityStock < _toolManagerView.iOperateQuantity)
+                {
+                    MessageBox.Show("Kho không đủ số lượng!");
+                    _toolManagerView.iOperateQuantity = null;
+                    _toolManagerView.iTotalQuantity = null;
+                    _toolManagerView.txtOperateQuantity_Focus();
+                    return;
+                }
+
+                // 2. Check quantity maximum tray.
                 if (_toolManagerView.iTotalQuantity > 10)
                 {
                     MessageBox.Show("Tray Chỉ Chứa Tối Đa 10 Công Cụ!");
@@ -304,7 +322,11 @@ namespace itools_source.Presenters
                     _toolManagerView.iOperateQuantity = null;
                     _toolManagerView.iTotalQuantity = null;
                     _toolManagerView.txtOperateQuantity_Focus();
+                    return;
                 }
+
+                iTotalQuantity = _iCurrentQuantity + iOperateQuantity;
+                _toolManagerView.iTotalQuantity = iTotalQuantity;
             }
         }
 

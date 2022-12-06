@@ -281,11 +281,11 @@ namespace itools_source.Repository
             }
         }
 
-        public async Task<Dictionary<string, int>> GetMachineTrayByToolCode(string strToolCode, string strMachineCode)
+        public async Task<Dictionary<string, string>> GetMachineTrayByToolCode(string strToolCode, string strMachineCode)
         {
             // 0. TrayIndex
             // 1. Machine
-            Dictionary<string, int> lstMachineTray = new Dictionary<string, int>();
+            Dictionary<string, string> lstMachineTray = new Dictionary<string, string>();
             string strQueryProcedure = @"GetMachineTrayByToolCode";
             _log.Info("Store procedure query: " + strQueryProcedure);
             try
@@ -329,7 +329,7 @@ namespace itools_source.Repository
                                 if (!mySqlDataReader.IsDBNull(0) && !mySqlDataReader.IsDBNull(1))
                                 {
                                     // TrayIndex, Machine
-                                    lstMachineTray.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetInt32(1));
+                                    lstMachineTray.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
                                 }
                             }
                             mySqlDataReader.Close();
@@ -426,6 +426,53 @@ namespace itools_source.Repository
                 _log.Error(e.Message);
                 return null;
             }
+        }
+
+        public async Task<int?> GetQuantityInStock(int? iToolID)
+        {
+            int? iQuantity = null;
+            string strQueryProcedure = @"GetQuantityInStock";
+            _log.Info("Store procedure query get Quantity by ToolID in table Stock: " + strQueryProcedure);
+
+            try
+            {
+                List<MySqlParameter> lstPar = new List<MySqlParameter>();
+                lstPar.Add(
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_ToolID",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = iToolID,
+                        Direction = System.Data.ParameterDirection.Input
+                    });
+
+                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
+                {
+                    using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
+                    {
+                        if (mySqlDataReader != null)
+                        {
+                            if (await mySqlDataReader.ReadAsync())
+                            {
+                                if (!await mySqlDataReader.IsDBNullAsync(0))
+                                {
+                                    iQuantity = mySqlDataReader.GetInt32(0);
+                                }
+                            }
+                        }
+
+                        mySqlDataReader.Close();
+                    }
+                    await mySqlConnection.CloseAsync();
+                }
+
+                return iQuantity;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return iQuantity;
         }
     }
 }

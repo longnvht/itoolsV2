@@ -156,25 +156,6 @@ namespace itools_source.Presenters
                 {
                     // 4. Create list button.
                     _getToolView.CreateListButton(true);
-
-                    //if (_getToolView.lstTrayButton == null)
-                    //{
-                    //    _getToolView.lstTrayButton = new List<Guna2GradientButton>();
-                    //}
-
-                    //// 4a. Clear controls ToolTray.
-                    //_getToolView.flpTrayMachineList_Clear();
-                    //_getToolView.lstTrayButton.Clear();
-
-                    //// 4b. Add button to Tray List.
-                    //foreach (var item in _getToolView.lstMachineTray)
-                    //{
-                    //    _getToolView.lstTrayButton.Add(_getToolView.CreateButton(item.Key, item.Value, "Tray", null));
-                    //}
-
-                    //// 5. Add button list to flowlayoutpanel.
-                    //_getToolView.flpTrayMachineList_AddRange(_getToolView.lstTrayButton.ToArray());
-                    //_log.Info("Create button tray list and add button tray to flowlayoutpanel.");
                 }
             }
             else
@@ -191,7 +172,23 @@ namespace itools_source.Presenters
 
         private void _getToolView_btnGetTool_Click(object sender, EventArgs e)
         {
+            // 1. Checked button.
+            GetToolView frm = (GetToolView)sender;
+            foreach (var item in frm.flpTrayMachineList.Controls)
+            {
+                if (item.GetType() != typeof(Guna2GradientButton))
+                {
+                    continue;
+                }
+                Guna2GradientButton btn = (Guna2GradientButton)item;
+                if (btn.Checked)
+                {
+                    btn.Checked = false;
+                    break;
+                }
+            }
 
+            // 2. Send to serial.
         }
 
         private void _getToolView_serialPort_GetTool_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -199,10 +196,11 @@ namespace itools_source.Presenters
             if (_getToolView.serialPortGetTool.IsOpen)
             {
                 string strReadLine = _getToolView.serialPortGetTool.ReadLine().Substring(0, 3);
-                MessageBox.Show(strReadLine + ", length: " + strReadLine.Length.ToString());
+                //MessageBox.Show(strReadLine + ", length: " + strReadLine.Length.ToString());
                 if (strReadLine == "123")
                 {
-                    MessageBox.Show("Stop");
+                    MessageBox.Show("Get tool success.");
+                    _log.Info("Get tool success.");
                     _getToolView.serialPortGetTool.Close();
                     return;
                 }

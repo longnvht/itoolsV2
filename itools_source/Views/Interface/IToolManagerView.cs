@@ -9,6 +9,7 @@ namespace itools_source.Views.Interface
     public interface IToolManagerView
     {
         #region Fields
+        int? iToolID { get; set; }
         string strMachineCode { get; set; }
         string strTrayIndex { get; set; }
         string strToolCode { get; set; }

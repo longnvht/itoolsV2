@@ -134,6 +134,7 @@ namespace itools_source.Views
         public SortedDictionary<string, string> sortTrayToolCode { get; set; }
         public List<Guna2Button> lstTrayButton { get; set; }
         public List<Guna2GradientButton> lstToolButton { get; set; }
+        public int? iToolID { get; set; }
         #endregion
 
         #region Method
