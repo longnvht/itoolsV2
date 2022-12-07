@@ -85,7 +85,7 @@
             this._txtJobNumberSearch.Name = "_txtJobNumberSearch";
             this._txtJobNumberSearch.PasswordChar = '\0';
             this._txtJobNumberSearch.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
-            this._txtJobNumberSearch.PlaceholderText = "Tìm Kiếm";
+            this._txtJobNumberSearch.PlaceholderText = "Tìm Kiếm Job Number";
             this._txtJobNumberSearch.SelectedText = "";
             this._txtJobNumberSearch.Size = new System.Drawing.Size(674, 35);
             this._txtJobNumberSearch.TabIndex = 0;
@@ -96,7 +96,7 @@
             this._btnJobNumberSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._btnJobNumberSearch.Animated = true;
             this._btnJobNumberSearch.AutoRoundedCorners = true;
-            this._btnJobNumberSearch.BorderRadius = 10;
+            this._btnJobNumberSearch.BorderRadius = 17;
             this._btnJobNumberSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this._btnJobNumberSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this._btnJobNumberSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));

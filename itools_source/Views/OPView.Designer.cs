@@ -84,7 +84,7 @@
             this._txtOPSearch.Name = "_txtOPSearch";
             this._txtOPSearch.PasswordChar = '\0';
             this._txtOPSearch.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
-            this._txtOPSearch.PlaceholderText = "Tìm Kiếm";
+            this._txtOPSearch.PlaceholderText = "Tìm Kiếm OP Number";
             this._txtOPSearch.SelectedText = "";
             this._txtOPSearch.Size = new System.Drawing.Size(674, 35);
             this._txtOPSearch.TabIndex = 0;
@@ -106,7 +106,7 @@
             this._btnOPNumberSearch.ForeColor = System.Drawing.Color.White;
             this._btnOPNumberSearch.Location = new System.Drawing.Point(683, 3);
             this._btnOPNumberSearch.Name = "_btnOPNumberSearch";
-            this._btnOPNumberSearch.Size = new System.Drawing.Size(114, 36);
+            this._btnOPNumberSearch.Size = new System.Drawing.Size(114, 37);
             this._btnOPNumberSearch.TabIndex = 1;
             this._btnOPNumberSearch.Text = "Tìm Kiếm";
             // 

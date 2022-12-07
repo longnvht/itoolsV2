@@ -112,7 +112,7 @@ namespace itools_source.Presenters
                     case '0': // AddNew
                         bResult = await _toolMachineTrayRepository.AddNewToolMachineTray(toolMachineTray: _toolManagerView.toolTrayCurrent);
                         string strTextButton;
-                        
+
                         foreach (var item in _toolManagerView.lstTrayButton)
                         {
                             strTextButton = item.Text.Split('\r').GetValue(0).ToString().Replace(' ', '_');
@@ -181,7 +181,7 @@ namespace itools_source.Presenters
                         }
 
                         bResultTransaction = await _toolMachineTrayRepository.AddWorkingTransaction(workingTransaction: workingTransaction);
-                        
+
                         bResultStock = await _toolMachineTrayRepository.UpdateQuantityStock(iToolID: iToolIDByToolCode, iQuantity: iNewStockQuantity);
                     }
 
@@ -415,14 +415,14 @@ namespace itools_source.Presenters
         private void _toolManagerView_txtTraySearch_TextChanged(object sender, EventArgs e)
         {
             ToolManagerView frm = (ToolManagerView)sender;
-            frm.flpTrayListP.Controls.Clear();
+            frm.flpTrayList.Controls.Clear();
             _toolManagerView.TrayAndToolSearch();
         }
 
         private void _toolManagerView_btnTraySearch_Click(object sender, EventArgs e)
         {
             ToolManagerView frm = (ToolManagerView)sender;
-            frm.flpTrayListP.Controls.Clear();
+            frm.flpTrayList.Controls.Clear();
             _toolManagerView.TrayAndToolSearch();
         }
 

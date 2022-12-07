@@ -301,6 +301,7 @@ namespace itools_source.Views
             {
                 lstTrayButton = new List<Guna2Button>();
             }
+
             foreach (var item in sortDictionary)
             {
                 Guna2Button btn = new Guna2Button();
