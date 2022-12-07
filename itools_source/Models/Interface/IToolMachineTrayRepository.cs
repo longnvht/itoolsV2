@@ -10,7 +10,7 @@ namespace itools_source.Models.Interface
         Task<ToolMachineTray> GetToolByTrayIndex(string strTrayIndex, string strMachineCode);
         Task<int> GetToolQuantity(string strTrayIndex);
         Task<IEnumerable<string>> GetToolCodeList();
-        Task<bool> IsMachineTray(string strMachineCode, string strTrayIndex);
+        Task<bool> IsToolInMachineTray(string strTrayIndex, string strMachineCode);
         Task<bool> AddWorkingTransaction(WorkingTransaction workingTransaction);
         Task<int?> GetTheLargestToolMachineTray();
         Task<SortedDictionary<string, string>> GetTrayAndToolCode(string strMachine);

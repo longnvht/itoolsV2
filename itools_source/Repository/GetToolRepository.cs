@@ -50,16 +50,19 @@ namespace itools_source.Repository
                 {
                     using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
                     {
-                        if (lstJobNumberList == null)
+                        if (mySqlDataReader != null)
                         {
-                            _log.Error("Variable lstJobNumberList is Null!");
-                            return null;
-                        }
-                        while (await mySqlDataReader.ReadAsync())
-                        {
-                            if (!await mySqlDataReader.IsDBNullAsync(0))
+                            if (lstJobNumberList == null)
                             {
-                                lstJobNumberList.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
+                                _log.Error("Variable lstJobNumberList is Null!");
+                                return null;
+                            }
+                            while (await mySqlDataReader.ReadAsync())
+                            {
+                                if (!await mySqlDataReader.IsDBNullAsync(0))
+                                {
+                                    lstJobNumberList.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
+                                }
                             }
                         }
                         mySqlDataReader.Close();
@@ -136,16 +139,20 @@ namespace itools_source.Repository
                                 _log.Error("Variable lstOPNumberOPType is Null!");
                                 return null;
                             }
-                            while (mySqlDataReader.Read())
-                            {
-                                if (!mySqlDataReader.IsDBNull(1) && !mySqlDataReader.IsDBNull(2))
-                                {
-                                    lstOPNumberOPType.Add(mySqlDataReader.GetString(1), mySqlDataReader.GetString(2));
-                                }
 
-                                if (!mySqlDataReader.IsDBNull(0))
+                            if (mySqlDataReader != null)
+                            {
+                                while (mySqlDataReader.Read())
                                 {
-                                    lstOPList.Add(mySqlDataReader.GetString(0), lstOPNumberOPType);
+                                    if (!mySqlDataReader.IsDBNull(1) && !mySqlDataReader.IsDBNull(2))
+                                    {
+                                        lstOPNumberOPType.Add(mySqlDataReader.GetString(1), mySqlDataReader.GetString(2));
+                                    }
+
+                                    if (!mySqlDataReader.IsDBNull(0))
+                                    {
+                                        lstOPList.Add(mySqlDataReader.GetString(0), lstOPNumberOPType);
+                                    }
                                 }
                             }
                             mySqlDataReader.Close();
@@ -255,9 +262,9 @@ namespace itools_source.Repository
                                 _log.Error("Variable lstToolModelDes is Null!");
                                 return null;
                             }
-                            while (mySqlDataReader.Read())
+                            while (await mySqlDataReader.ReadAsync())
                             {
-                                if (!mySqlDataReader.IsDBNull(0) && !mySqlDataReader.IsDBNull(1))
+                                if (!await mySqlDataReader.IsDBNullAsync(0) && !await mySqlDataReader.IsDBNullAsync(1))
                                 {
                                     // ToolModel, ToolDescription
                                     lstToolModelDes.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
@@ -270,7 +277,7 @@ namespace itools_source.Repository
                             mySqlDataReader.Close();
                         }
                     }
-                    mySqlConnection.Close();
+                    await mySqlConnection.CloseAsync();
                 }
                 return lstToolModelDes;
             }
@@ -324,9 +331,9 @@ namespace itools_source.Repository
                                 _log.Error("Variable lstToolModelDes is Null!");
                                 return null;
                             }
-                            while (mySqlDataReader.Read())
+                            while (await mySqlDataReader.ReadAsync())
                             {
-                                if (!mySqlDataReader.IsDBNull(0) && !mySqlDataReader.IsDBNull(1))
+                                if (!await mySqlDataReader.IsDBNullAsync(0) && !await mySqlDataReader.IsDBNullAsync(1))
                                 {
                                     // TrayIndex, Machine
                                     lstMachineTray.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
@@ -335,7 +342,7 @@ namespace itools_source.Repository
                             mySqlDataReader.Close();
                         }
                     }
-                    mySqlConnection.Close();
+                    await mySqlConnection.CloseAsync();
                 }
                 return lstMachineTray;
             }
@@ -387,28 +394,28 @@ namespace itools_source.Repository
                                 return null;
                             }
 
-                            while (mySqlDataReader.Read())
+                            while (await mySqlDataReader.ReadAsync())
                             {
                                 List<object> lstMT = new List<object>();
 
-                                if (!mySqlDataReader.IsDBNull(1))
+                                if (!await mySqlDataReader.IsDBNullAsync(1))
                                 {
                                     //strMachineCode = mySqlDataReader["MachineCode"];
                                     lstMT.Add(mySqlDataReader["MachineCode"]);
                                 }
 
-                                if (!mySqlDataReader.IsDBNull(2))
+                                if (!await mySqlDataReader.IsDBNullAsync(2))
                                 {
                                     //strTrayIndex = mySqlDataReader.GetString(2);
                                     lstMT.Add(mySqlDataReader["TrayIndex"]);
                                 }
 
-                                if (!mySqlDataReader.IsDBNull(3))
+                                if (!await mySqlDataReader.IsDBNullAsync(3))
                                 {
                                     lstMT.Add(mySqlDataReader["Quantity"]);
                                 }
 
-                                if (!mySqlDataReader.IsDBNull(0))
+                                if (!await mySqlDataReader.IsDBNullAsync(0))
                                 {
                                     // Id, Machine, TrayIndex, Quantity
                                     lst.Add(mySqlDataReader.GetInt32(0), lstMT);
@@ -417,7 +424,7 @@ namespace itools_source.Repository
                             mySqlDataReader.Close();
                         }
                     }
-                    mySqlConnection.Close();
+                    await mySqlConnection.CloseAsync();
                 }
                 return lst;
             }

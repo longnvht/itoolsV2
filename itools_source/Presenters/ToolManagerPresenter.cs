@@ -39,11 +39,11 @@ namespace itools_source.Presenters
         }
 
         #region Properties - Fields
-        log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolManagerPresenter).Name);
+        private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolManagerPresenter).Name);
 
-        private IToolManagerView _toolManagerView;
-        private IToolMachineTrayRepository _toolMachineTrayRepository;
-        private string _strMachineCode = "VM-1";
+        private readonly IToolManagerView _toolManagerView;
+        private readonly IToolMachineTrayRepository _toolMachineTrayRepository;
+        private readonly string _strMachineCode = "VM-1";
         private string _strTrayIndexCurrent = null;
         private string _strToolCodeCurrent = "";
         private int _iCurrentQuantity = 0;
@@ -100,17 +100,17 @@ namespace itools_source.Presenters
                 }
 
                 // Check tool is Machine and Tray.
-                if (!await _toolMachineTrayRepository.IsMachineTray(_strMachineCode, _toolManagerView.toolTrayCurrent.strTrayIndex))
+                if (!await _toolMachineTrayRepository.IsToolInMachineTray(strTrayIndex: _toolManagerView.toolTrayCurrent.strTrayIndex, strMachineCode: _strMachineCode))
                 {
-                    MessageBox.Show("Tool is not Manchine and Tray!");
-                    _log.Info("Tool is not Manchine and Tray!");
-                    return; 
+                    MessageBox.Show("Tool Không Có Trong Tray Của Máy!");
+                    _log.Info("Tool is not Machine and Tray!");
+                    return;
                 }
 
                 switch (_toolManagerView.cStatusButton)
                 {
                     case '0': // AddNew
-                        bResult = await _toolMachineTrayRepository.AddNewToolMachineTray(_toolManagerView.toolTrayCurrent);
+                        bResult = await _toolMachineTrayRepository.AddNewToolMachineTray(toolMachineTray: _toolManagerView.toolTrayCurrent);
                         string strTextButton;
                         
                         foreach (var item in _toolManagerView.lstTrayButton)
@@ -118,7 +118,7 @@ namespace itools_source.Presenters
                             strTextButton = item.Text.Split('\r').GetValue(0).ToString().Replace(' ', '_');
                             if (_strTrayIndexCurrent == strTextButton)
                             {
-                                StringBuilder strBuiderTray = new StringBuilder(_strTrayIndexCurrent);
+                                StringBuilder strBuiderTray = new StringBuilder(_strTrayIndexCurrent.Replace('_', ' '));
                                 strBuiderTray.Append("\r\n");
                                 strBuiderTray.Append(_toolManagerView.strToolCode);
                                 item.Text = strBuiderTray.ToString();
@@ -127,7 +127,7 @@ namespace itools_source.Presenters
                         break;
                     case '1': // AddPlugin
                     case '2': // TakeOut
-                        bResult = await _toolMachineTrayRepository.UpdateToolMachineTray(_toolManagerView.toolTrayCurrent);
+                        bResult = await _toolMachineTrayRepository.UpdateToolMachineTray(toolMachineTray: _toolManagerView.toolTrayCurrent);
                         break;
                 }
 
@@ -263,7 +263,7 @@ namespace itools_source.Presenters
             _toolManagerView.toolCodeList = _toolMachineTrayRepository.GetToolCodeList().Result.ToList();
             if (_toolManagerView.toolCodeList == null)
             {
-                MessageBox.Show("Tool Code List is Null!");
+                MessageBox.Show("Danh sách tool rỗng!");
                 _log.Error("Tool Code List is Null!");
                 return;
             }
@@ -315,7 +315,9 @@ namespace itools_source.Presenters
                 }
 
                 // 2. Check quantity maximum tray.
-                if (_toolManagerView.iTotalQuantity > 10)
+                iTotalQuantity = _iCurrentQuantity + iOperateQuantity;
+                _toolManagerView.iTotalQuantity = iTotalQuantity;
+                if (_toolManagerView.iOperateQuantity > 10 || iTotalQuantity > 10)
                 {
                     MessageBox.Show("Tray Chỉ Chứa Tối Đa 10 Công Cụ!");
                     _log.Info("Warehouse management adds too many tools: " + Program.sessionLogin["UserName"]);
@@ -324,9 +326,6 @@ namespace itools_source.Presenters
                     _toolManagerView.txtOperateQuantity_Focus();
                     return;
                 }
-
-                iTotalQuantity = _iCurrentQuantity + iOperateQuantity;
-                _toolManagerView.iTotalQuantity = iTotalQuantity;
             }
         }
 
@@ -415,6 +414,8 @@ namespace itools_source.Presenters
 
         private void _toolManagerView_txtTraySearch_TextChanged(object sender, EventArgs e)
         {
+            ToolManagerView frm = (ToolManagerView)sender;
+            frm.flpTrayListP.Controls.Clear();
             _toolManagerView.TrayAndToolSearch();
         }
 

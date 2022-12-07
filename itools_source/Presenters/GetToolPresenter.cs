@@ -30,10 +30,10 @@ namespace itools_source.Presenters
         }
 
         #region Properties - Fields
-        private IGetToolView _getToolView;
-        private IGetToolRepository _getToolRepository;
+        private readonly IGetToolView _getToolView;
+        private readonly IGetToolRepository _getToolRepository;
 
-        private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(GetToolPresenter).Name);
+        private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(GetToolPresenter).Name);
         private bool bToggle = false; // On/Off => Show all machine and tray quantity.
         #endregion
 
@@ -223,7 +223,7 @@ namespace itools_source.Presenters
             }
         }
 
-        private async void _getToolView_serialPort_GetTool_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private void _getToolView_serialPort_GetTool_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             if (_getToolView.serialPortGetTool.IsOpen)
             {

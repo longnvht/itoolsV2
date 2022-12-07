@@ -35,6 +35,12 @@ namespace itools_source.Repository
 
         public async Task<int?> GetById(string strUserName, string strPassword)
         {
+            if (string.IsNullOrEmpty(strUserName) || string.IsNullOrEmpty(strPassword))
+            {
+                _log.Info("UserName or Password is Null!");
+                return null;
+            }
+
             int? iID = null;
             string strQueryProcedure = @"GetByID";
             _log.Info("Store procedure query get by id: " + strQueryProcedure);
@@ -78,15 +84,13 @@ namespace itools_source.Repository
                                 if (!await mySqlDataReader.IsDBNullAsync(0)) // ID
                                 {
                                     iID = mySqlDataReader.GetInt32(0);
-                                    //MessageBox.Show(iID.ToString());
                                 }
                             }
                         }
                         mySqlDataReader.Close();
                     }
-                    mySqlConnection.Close();
+                    await mySqlConnection.OpenAsync();
                 }
-                //MessageBox.Show(iID.ToString());
                 return iID;
             }
             catch (MySqlException e)
@@ -103,6 +107,12 @@ namespace itools_source.Repository
 
         public async Task<UserAccount> GetUserAccount(string strUserName, string strPassword)
         {
+            if (string.IsNullOrEmpty(strUserName) || string.IsNullOrEmpty(strPassword))
+            {
+                _log.Info("UserName or Password is Null!");
+                return null;
+            }
+
             UserAccount userAccount = null;
             string strQueryProcedure = @"GetUserAccount";
             _log.Info("Store procedure query get user account: " + strQueryProcedure);
@@ -176,7 +186,7 @@ namespace itools_source.Repository
                         }
                         mySqlDataReader.Close();
                     }
-                    mySqlConnection.Close();
+                    await mySqlConnection.CloseAsync();
                 }
                 return userAccount;
             }
@@ -189,6 +199,12 @@ namespace itools_source.Repository
 
         public async Task<List<string>> GetListFormByUserLogin(string strUserName)
         {
+            if (string.IsNullOrEmpty(strUserName))
+            {
+                _log.Info("UserName is Null!");
+                return null;
+            }
+
             List<string> lstForm = null;
             string strQueryProcedure = @"GetListFormByUserLogin";
             _log.Info("Store procedure query get permission a user account: " + strQueryProcedure);
@@ -231,7 +247,7 @@ namespace itools_source.Repository
                         }
                         mySqlDataReader.Close();
                     }
-                    mySqlConnection.Close();
+                    await mySqlConnection.CloseAsync();
                 }
                 return lstForm;
             }
