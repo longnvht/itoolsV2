@@ -47,16 +47,19 @@ namespace itools_source.Presenters
                 _opView.lstButton = new List<Guna2GradientButton>();
             }
 
-            int iCountLstOPNumberOpType = _opView.lstOPNumberOPType.Count;
-            for (int i = 0; i < iCountLstOPNumberOpType; i++)
+            if (_opView.lstOPNumberOPType != null)
             {
-                _opView.lstButton.Add(_opView.CreateButton(i));
-            }
+                int iCountLstOPNumberOpType = _opView.lstOPNumberOPType.Count;
+                for (int i = 0; i < iCountLstOPNumberOpType; i++)
+                {
+                    _opView.lstButton.Add(_opView.CreateButton(i));
+                }
 
-            // 2. Add to flowlayoutpanel.
-            OPView frm = (OPView)sender;
-            frm.flpOPList.Controls.AddRange(_opView.lstButton.ToArray());
-            _log.Info("Create button list and add button to flowlayoutpanel.");
+                // 2. Add to flowlayoutpanel.
+                OPView frm = (OPView)sender;
+                frm.flpOPList.Controls.AddRange(_opView.lstButton.ToArray());
+                _log.Info("Create button list and add button to flowlayoutpanel.");
+            }
         }
         #endregion
 

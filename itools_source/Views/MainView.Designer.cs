@@ -57,7 +57,6 @@
             resources.ApplyResources(this.btnPrevious, "btnPrevious");
             this.btnPrevious.ForeColor = System.Drawing.Color.White;
             this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnNext
             // 

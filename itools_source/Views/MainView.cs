@@ -12,19 +12,24 @@ namespace itools_source.Views
         {
             InitializeComponent();
 
-            this.btnPrevious.Click += delegate { Previous?.Invoke(this, EventArgs.Empty); };
-            this.btnNext.Click += delegate { Next?.Invoke(this, EventArgs.Empty); };
-            this.Load += delegate { FormLoad?.Invoke(this, EventArgs.Empty); };
+            this.Load += delegate { MainView_Load?.Invoke(this, EventArgs.Empty); };
+            this.btnPrevious.Click += delegate { btnPrevious_Click?.Invoke(this, EventArgs.Empty); };
+            this.btnNext.Click += delegate { btnNext_Click?.Invoke(this, EventArgs.Empty); };
         }
 
+        #region Properties - Fields
         public string strName { get => lblName.Text; set => lblName.Text = value; }
 
         public UserAccount userAccountCurrent { get; set; }
+        #endregion
 
-        public event EventHandler FormLoad;
-        public event EventHandler Previous;
-        public event EventHandler Next;
+        #region Events
+        public event EventHandler MainView_Load;
+        public event EventHandler btnPrevious_Click;
+        public event EventHandler btnNext_Click;
+        #endregion
 
+        #region Methods
         public void CloseFormChild()
         {
             if (MdiChildren.Any())
@@ -32,13 +37,6 @@ namespace itools_source.Views
                 MdiChildren[0].Close();
             }
         }
-
-        private void btnPrevious_Click(object sender, EventArgs e)
-        {
-            //if (MdiChildren.Any())
-            //{
-            //    MdiChildren[0].Close();
-            //}
-        }
+        #endregion
     }
 }

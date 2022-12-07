@@ -11,9 +11,9 @@ namespace itools_source.Views.Interface
         #endregion
 
         #region Event
-        event EventHandler FormLoad;
-        event EventHandler Previous;
-        event EventHandler Next;
+        event EventHandler MainView_Load;
+        event EventHandler btnPrevious_Click;
+        event EventHandler btnNext_Click;
         #endregion
 
         #region Method
