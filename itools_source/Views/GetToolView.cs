@@ -46,7 +46,7 @@ namespace itools_source.Views
             }
             return _instance;
         }
-        public int iOPId { get; set; }
+        public int? iOPId { get; set; }
         public char cStatusForm { get; set; }
         public List<Guna2GradientButton> lstToolButton { get; set; }
         public Dictionary<int, string> lstToolForOPList { get; set; }

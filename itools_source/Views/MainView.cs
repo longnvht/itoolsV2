@@ -21,6 +21,7 @@ namespace itools_source.Views
         public string strName { get => lblName.Text; set => lblName.Text = value; }
 
         public UserAccount userAccountCurrent { get; set; }
+        public string strRole { get => lblRole.Text; set => lblRole.Text = value; }
         #endregion
 
         #region Events

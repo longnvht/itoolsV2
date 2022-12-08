@@ -7,17 +7,18 @@ namespace itools_source.Views.Interface
     public interface IOPView
     {
         #region Properties - Fields
-        string strPartID { get; set; }
+        int? iOPId { get; set; }
         string strOPNumber { get; set; }
         string strSearch { get; set; }
         List<Guna2GradientButton> lstButton { get; set; }
-        Dictionary<string, Dictionary<string, string>> lstOPNumberOPType { get; set; }
-        Action<int> GetToolViewAction { get; set; }
+        Dictionary<int?, Dictionary<string, string>> lstOPNumberOPType { get; set; }
+        Action<int?> GetToolViewAction { get; set; }
         #endregion
 
         #region Events
         event EventHandler OPView_Load;
         event EventHandler btnflpOPlList_DoubleClick;
+        event EventHandler btnflpOPlList_Click;
         #endregion
 
         #region Methods

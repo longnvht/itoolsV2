@@ -8,6 +8,7 @@ namespace itools_source.Views.Interface
         #region Properties - Fields
         UserAccount userAccountCurrent { get; set; }
         string strName { get; set; }
+        string strRole { get; set; }
         #endregion
 
         #region Event

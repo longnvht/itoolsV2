@@ -17,7 +17,7 @@ namespace itools_source.Views
         }
 
         #region Properties - Fields
-        public string strPartID { get; set; }
+        public int? iOPId { get; set; }
         public string strOPNumber { get; set; }
         public string strSearch
         {
@@ -32,8 +32,8 @@ namespace itools_source.Views
             set => _txtOPSearch.Text = value;
         }
         public List<Guna2GradientButton> lstButton { get; set; }
-        public Dictionary<string, Dictionary<string, string>> lstOPNumberOPType { get; set; }
-        public Action<int> GetToolViewAction { get; set; }
+        public Dictionary<int?, Dictionary<string, string>> lstOPNumberOPType { get; set; }
+        public Action<int?> GetToolViewAction { get; set; }
 
         // Singleton pattern (Open a single form instance)
         private static OPView _instance;
@@ -41,10 +41,12 @@ namespace itools_source.Views
         {
             if (_instance == null || _instance.IsDisposed)
             {
-                _instance = new OPView();
-                _instance.MdiParent = parentContainer;
-                _instance.FormBorderStyle = FormBorderStyle.None;
-                _instance.Dock = DockStyle.Fill;
+                _instance = new OPView
+                {
+                    MdiParent = parentContainer,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill
+                };
             }
             else
             {
@@ -61,6 +63,7 @@ namespace itools_source.Views
         #region Events
         public event EventHandler OPView_Load;
         public event EventHandler btnflpOPlList_DoubleClick;
+        public event EventHandler btnflpOPlList_Click;
         #endregion
 
         #region Methods
@@ -76,17 +79,19 @@ namespace itools_source.Views
             btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             btn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
             btn.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            btn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(96)))), ((int)(((byte)(122)))));
             btn.Font = new System.Drawing.Font("Segoe UI", 11F);
             btn.ForeColor = System.Drawing.Color.White;
             btn.Location = new System.Drawing.Point(3, 3);
             btn.Size = new System.Drawing.Size(122, 80);
             if (iIndex != null)
             {
-                string strKey = this.lstOPNumberOPType.Keys.ElementAt(iIndex.Value);
-                btn.Tag = strKey;
-                btn.Text = this.lstOPNumberOPType[strKey].Keys.ElementAt(iIndex.Value) + "\r\n" + this.lstOPNumberOPType[strKey].Values.ElementAt(iIndex.Value);
+                int? iKey = this.lstOPNumberOPType.Keys.ElementAt(iIndex.Value);
+                btn.Tag = iKey;
+                btn.Text = this.lstOPNumberOPType[iKey].Keys.ElementAt(iIndex.Value) + "\r\n" + this.lstOPNumberOPType[iKey].Values.ElementAt(iIndex.Value);
             }
             btn.DoubleClick += (s, e) => { btnflpOPlList_DoubleClick?.Invoke(s, e); };
+            btn.Click += (s, e) => { btnflpOPlList_Click?.Invoke(s, e); };
 
             return btn;
         }

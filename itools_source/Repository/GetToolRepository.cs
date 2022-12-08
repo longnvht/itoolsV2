@@ -79,9 +79,9 @@ namespace itools_source.Repository
             }
         }
 
-        public Dictionary<string, Dictionary<string, string>> GetOPByJobPartOPID(string strJobNumber, string strPartID)
+        public Dictionary<int?, Dictionary<string, string>> GetOPByJobPartOPID(string strJobNumber, int? iPartID)
         {
-            Dictionary<string, Dictionary<string, string>> lstOPList = new Dictionary<string, Dictionary<string, string>>();
+            Dictionary<int?, Dictionary<string, string>> lstOPList = new Dictionary<int?, Dictionary<string, string>>();
             Dictionary<string, string> lstOPNumberOPType = new Dictionary<string, string>();
             string strQueryProcedure = @"GetOPByJobPartOPID";
 
@@ -102,7 +102,7 @@ namespace itools_source.Repository
                 {
                     ParameterName = "@p_PartID",
                     MySqlDbType = MySqlDbType.Int32,
-                    Value = strPartID,
+                    Value = iPartID,
                     Direction = System.Data.ParameterDirection.Input
                 });
 
@@ -151,7 +151,7 @@ namespace itools_source.Repository
 
                                     if (!mySqlDataReader.IsDBNull(0))
                                     {
-                                        lstOPList.Add(mySqlDataReader.GetString(0), lstOPNumberOPType);
+                                        lstOPList.Add(mySqlDataReader.GetInt32(0), lstOPNumberOPType);
                                     }
                                 }
                             }
@@ -170,8 +170,13 @@ namespace itools_source.Repository
             }
         }
 
-        public async Task<Dictionary<int, string>> GetByToolForOP(int iOPId)
+        public async Task<Dictionary<int, string>> GetByToolForOP(int? iOPId)
         {
+            if (iOPId == null)
+            {
+                _log.Info("OPId is Null.");
+                return null;
+            }
             // 0. ToolId
             // 1. ToolCode
             Dictionary<int, string> lstToolCodeList = new Dictionary<int, string>();

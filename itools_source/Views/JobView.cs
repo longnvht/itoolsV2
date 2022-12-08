@@ -32,11 +32,12 @@ namespace itools_source.Views
             }
             set => txtJobNumberSearch.Text = value;
         }
-        public Job JobCurrent { get; set; }
+        public string strJobNumberCurrent { get; set; }
+        public int? iPartIDCurrent { get; set; }
         public List<Guna2GradientButton> lstJobNumberButton { get; set; }
         public SortedList<string, string> lstJobNumberPartID { get; set; }
-        public Dictionary<string, Dictionary<string, string>> lstOPNumberOPType { get; set; }
-        Action<Dictionary<string, Dictionary<string, string>>> IJobView.SetListOPNumberOPType { get; set; }
+        public Dictionary<int?, Dictionary<string, string>> lstOPNumberOPType { get; set; }
+        Action<Dictionary<int?, Dictionary<string, string>>> IJobView.SetListOPNumberOPType { get; set; }
 
         // Singleton pattern (Open a single form instance)
         private static JobView _instance;
@@ -74,6 +75,7 @@ namespace itools_source.Views
             btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             btn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
             btn.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            btn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(96)))), ((int)(((byte)(122)))));
             btn.Font = new System.Drawing.Font("Segoe UI", 11F);
             btn.ForeColor = System.Drawing.Color.White;
             btn.Location = new System.Drawing.Point(3, 3);

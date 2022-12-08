@@ -33,7 +33,8 @@
             this.btnPrevious = new Guna.UI2.WinForms.Guna2Button();
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
-            this.lblName = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblRole = new System.Windows.Forms.Label();
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             this.SuspendLayout();
@@ -74,14 +75,19 @@
             // 
             this.tlpHeader.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.tlpHeader, "tlpHeader");
+            this.tlpHeader.Controls.Add(this.lblRole, 1, 0);
             this.tlpHeader.Controls.Add(this.lblName, 0, 0);
             this.tlpHeader.Name = "tlpHeader";
             // 
             // lblName
             // 
-            this.lblName.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.lblName, "lblName");
             this.lblName.Name = "lblName";
+            // 
+            // lblRole
+            // 
+            resources.ApplyResources(this.lblRole, "lblRole");
+            this.lblRole.Name = "lblRole";
             // 
             // MainView
             // 
@@ -103,6 +109,7 @@
         private Guna.UI2.WinForms.Guna2Button btnPrevious;
         private Guna.UI2.WinForms.Guna2Button btnNext;
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblName;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblRole;
     }
 }

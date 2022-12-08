@@ -4,6 +4,7 @@ using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace itools_source.Presenters
 {
@@ -17,6 +18,7 @@ namespace itools_source.Presenters
             _jobView.JobView_Load += _jobView_JobView_Load;
             _jobView.txtJobNumberSearch_TextChanged += _jobView_txtJobNumberSearch_TextChanged;
             _jobView.btnflpJobNumberList_DoubleClick += _jobView_btnflpJobNumberList_DoubleClick;
+            _jobView.btnflpJobNumberList_Click += _jobView_btnflpJobNumberList_Click;
 
             _jobView.Show();
         }
@@ -29,28 +31,40 @@ namespace itools_source.Presenters
         #endregion
 
         #region Events
+        private void _jobView_btnflpJobNumberList_Click(object sender, EventArgs e)
+        {
+            Guna2GradientButton btn = (Guna2GradientButton)sender;
+            if (btn.Checked == true)
+            {
+                btn.Checked = false;
+            }
+            else
+            {
+                btn.Checked = true;
+                _jobView.strJobNumberCurrent = btn.Text;
+                _jobView.iPartIDCurrent = Convert.ToInt32(btn.Tag);
+                if (_jobView.iPartIDCurrent != null && !string.IsNullOrWhiteSpace(_jobView.strJobNumberCurrent))
+                {
+                    _jobView.lstOPNumberOPType = _getToolRepository.GetOPByJobPartOPID(_jobView.strJobNumberCurrent, _jobView.iPartIDCurrent);
+                }
+            }
+        }
+
         private void _jobView_btnflpJobNumberList_DoubleClick(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;
-            string strJobNumber = btn.Text;
-            string strPartID = null;
-            foreach (var item in _jobView.lstJobNumberPartID)
+            _jobView.strJobNumberCurrent = btn.Text;
+            _jobView.iPartIDCurrent = Convert.ToInt32(btn.Tag);
+
+            if (_jobView.iPartIDCurrent != null && !string.IsNullOrWhiteSpace(_jobView.strJobNumberCurrent))
             {
-                if (item.Key == strJobNumber)
-                {
-                    strPartID = item.Value;
-                    break;
-                }
-            }
-            if (strPartID != null)
-            {
-                _jobView.lstOPNumberOPType = _getToolRepository.GetOPByJobPartOPID(strJobNumber, strPartID);
+                _jobView.lstOPNumberOPType = _getToolRepository.GetOPByJobPartOPID(_jobView.strJobNumberCurrent, _jobView.iPartIDCurrent);
                 if (_jobView.lstOPNumberOPType != null)
                 {
                     // Clear data.
                     // ???
                     // Clear data.
-                    _jobView.SetListOPNumberOPType(_jobView.lstOPNumberOPType); // Delegate to form main.
+                    _jobView.SetListOPNumberOPType(_jobView.lstOPNumberOPType); // Callback to form main.
                 }
             }
         }
@@ -81,6 +95,7 @@ namespace itools_source.Presenters
                     for (int i = 0; i < iCount; i++)
                     {
                         _jobView.lstJobNumberButton[i].Text = _jobView.lstJobNumberPartID.Keys[i];
+                        _jobView.lstJobNumberButton[i].Tag = _jobView.lstJobNumberPartID.Values[i];
                         lstSearch.Add(_jobView.lstJobNumberButton[i]);
                     }
                     frmJobView.flpJobNumberList.Controls.AddRange(lstSearch.ToArray());

@@ -16,6 +16,7 @@ namespace itools_source.Presenters
 
             _opView.OPView_Load += _opView_OPView_Load;
             _opView.btnflpOPlList_DoubleClick += _opView_btnflpList_DoubleClick;
+            _opView.btnflpOPlList_Click += _opView_btnflpOPlList_Click;
 
             _opView.Show();
         }
@@ -28,15 +29,31 @@ namespace itools_source.Presenters
         #endregion
 
         #region Events
+        private void _opView_btnflpOPlList_Click(object sender, EventArgs e)
+        {
+            Guna2GradientButton btn = (Guna2GradientButton)sender;
+            
+            if (btn.Checked == true)
+            {
+                btn.Checked = false;
+            }
+            else
+            {
+                btn.Checked = true;
+                _opView.iOPId = Convert.ToInt32(btn.Tag);
+                _log.Info("Click OPId: " + _opView.iOPId);
+            }
+        }
+
         private void _opView_btnflpList_DoubleClick(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;
-            int? iOPId = Convert.ToInt32(btn.Tag);
-            if (iOPId != null)
+            _opView.iOPId = Convert.ToInt32(btn.Tag);
+            if (_opView.iOPId != null)
             {
-                _opView.GetToolViewAction(iOPId.Value);
+                _opView.GetToolViewAction(_opView.iOPId);
             }
-            _log.Info("OPId: " + iOPId);
+            _log.Info("Double click OPId: " + _opView.iOPId);
         }
 
         private void _opView_OPView_Load(object sender, EventArgs e)

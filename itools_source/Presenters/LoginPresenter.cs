@@ -78,7 +78,7 @@ namespace itools_source.Presenter
                 Program.sessionLogin["UserName"] = strUserName; // UserLogin
                 Program.sessionLogin["Password"] = strPassword;
                 Program.sessionLogin["Name"] = userAccount.strNameStaff;
-                Program.sessionLogin["Permission"] = userAccount.strPermissionId;
+                Program.sessionLogin["PermissionId"] = userAccount.strPermissionId;
                 Program.sessionLogin["LoginTime"] = Utils.ServerTime.GetServerTime().ToLocalTime().ToString();
 
                 System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
