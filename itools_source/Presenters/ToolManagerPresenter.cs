@@ -422,6 +422,10 @@ namespace itools_source.Presenters
         private void _toolManagerView_btnTraySearch_Click(object sender, EventArgs e)
         {
             ToolManagerView frm = (ToolManagerView)sender;
+            if (string.IsNullOrEmpty(_toolManagerView.strTraySearch))
+            {
+                return;
+            }
             frm.flpTrayList.Controls.Clear();
             _toolManagerView.TrayAndToolSearch();
         }

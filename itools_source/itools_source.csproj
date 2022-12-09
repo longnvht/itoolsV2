@@ -122,7 +122,9 @@
       <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Interface\IBaseRepository.cs" />
+    <Compile Include="Models\Interface\IMenuRepository.cs" />
     <Compile Include="Models\Interface\IPermissionRepository.cs" />
+    <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\PermissionDetail.cs" />
     <Compile Include="Models\UserAccount.cs" />
@@ -144,10 +146,12 @@
     <Compile Include="Presenters\JobPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
+    <Compile Include="Presenters\MenuPresenter.cs" />
     <Compile Include="Presenters\OPPresenter.cs" />
     <Compile Include="Presenters\ToolManagerPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\MenuRepository.cs" />
     <Compile Include="Repository\PermissionRepository.cs" />
     <Compile Include="Repository\UserAccountRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
@@ -174,6 +178,7 @@
     <Compile Include="Views\Interface\IJobView.cs" />
     <Compile Include="Views\Interface\ILoginView.cs" />
     <Compile Include="Views\Interface\IMainView.cs" />
+    <Compile Include="Views\Interface\IMenuView.cs" />
     <Compile Include="Views\Interface\IOPView.cs" />
     <Compile Include="Views\Interface\IToolManagerView.cs" />
     <Compile Include="Views\JobView.cs">
@@ -199,6 +204,12 @@
     </Compile>
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MenuView.Designer.cs">
+      <DependentUpon>MenuView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\OPView.cs">
       <SubType>Form</SubType>
@@ -242,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MenuView.resx">
+      <DependentUpon>MenuView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\OPView.resx">
       <DependentUpon>OPView.cs</DependentUpon>

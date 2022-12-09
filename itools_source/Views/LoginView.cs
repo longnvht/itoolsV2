@@ -33,7 +33,7 @@ namespace itools_source.Views
         public event EventHandler txtPassword_IconRightClick;
         #endregion
 
-        #region Method
+        #region Methods
         #endregion
     }
 }

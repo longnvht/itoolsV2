@@ -24,7 +24,7 @@ namespace itools_source.Presenters
             _getToolView.btnflpToolList_Click += _getToolView_btnflpToolList_Click;
             _getToolView.btnflpTrayMachineList_Click += _getToolView_btnflpTrayMachineList_Click;
             _getToolView.btnflpTrayMachineList_DoubleClick += _getToolView_btnflpTrayMachineList_DoubleClick;
-            _getToolView.btnShowAll_DoubleClick += _getToolView_btnShowAll_DoubleClick;
+            _getToolView.toggleShowAll_Click += _getToolView_btnShowAll_DoubleClick;
 
             _getToolView.Show();
         }
@@ -264,6 +264,9 @@ namespace itools_source.Presenters
                 frm.flpToolList.Controls.AddRange(_getToolView.lstToolButton.ToArray());
                 _log.Info("Create button list and add button to flowlayoutpanel.");
             }
+
+            // Not enabled click next in form main
+            _getToolView.EnabledButton(false);
         }
         #endregion
 

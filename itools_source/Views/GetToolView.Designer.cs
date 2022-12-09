@@ -53,11 +53,12 @@
             this._btnCancelSelectTray = new Guna.UI2.WinForms.Guna2GradientButton();
             this._btnGetTool = new Guna.UI2.WinForms.Guna2GradientButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this._btnShowAll = new Guna.UI2.WinForms.Guna2GradientButton();
             this._txtToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this._toggleShowAll = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.guna2Elipse_tlpTooMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse_flpTrayMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.serialPort_GetTool = new System.IO.Ports.SerialPort(this.components);
+            this.lblShowAllMachineTray = new System.Windows.Forms.Label();
             this.tlpHeader.SuspendLayout();
             this.tlpContent.SuspendLayout();
             this.pLeftContent.SuspendLayout();
@@ -120,7 +121,7 @@
             this._txtSearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this._txtSearch.Name = "_txtSearch";
             this._txtSearch.PasswordChar = '\0';
-            this._txtSearch.PlaceholderText = "Tìm Kiếm";
+            this._txtSearch.PlaceholderText = "Tìm Kiếm Tool";
             this._txtSearch.SelectedText = "";
             this._txtSearch.Size = new System.Drawing.Size(740, 44);
             this._txtSearch.TabIndex = 0;
@@ -420,32 +421,14 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this._btnShowAll);
+            this.panel1.Controls.Add(this.lblShowAllMachineTray);
             this.panel1.Controls.Add(this._txtToolSearch);
+            this.panel1.Controls.Add(this._toggleShowAll);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(276, 62);
             this.panel1.TabIndex = 31;
-            // 
-            // _btnShowAll
-            // 
-            this._btnShowAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnShowAll.Animated = true;
-            this._btnShowAll.BorderRadius = 10;
-            this._btnShowAll.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this._btnShowAll.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this._btnShowAll.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this._btnShowAll.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this._btnShowAll.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this._btnShowAll.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this._btnShowAll.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this._btnShowAll.ForeColor = System.Drawing.Color.White;
-            this._btnShowAll.Location = new System.Drawing.Point(195, 8);
-            this._btnShowAll.Name = "_btnShowAll";
-            this._btnShowAll.Size = new System.Drawing.Size(77, 45);
-            this._btnShowAll.TabIndex = 30;
-            this._btnShowAll.Text = "1 Máy";
             // 
             // _txtToolSearch
             // 
@@ -460,16 +443,31 @@
             this._txtToolSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtToolSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._txtToolSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtToolSearch.Location = new System.Drawing.Point(3, 8);
+            this._txtToolSearch.Location = new System.Drawing.Point(2, 8);
             this._txtToolSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtToolSearch.Name = "_txtToolSearch";
             this._txtToolSearch.PasswordChar = '\0';
             this._txtToolSearch.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
-            this._txtToolSearch.PlaceholderText = "Tìm Kiếm";
+            this._txtToolSearch.PlaceholderText = "Tìm Kiếm Tray và Máy";
             this._txtToolSearch.SelectedText = "";
-            this._txtToolSearch.Size = new System.Drawing.Size(186, 46);
+            this._txtToolSearch.Size = new System.Drawing.Size(182, 46);
             this._txtToolSearch.TabIndex = 29;
             this._txtToolSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // _toggleShowAll
+            // 
+            this._toggleShowAll.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._toggleShowAll.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._toggleShowAll.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this._toggleShowAll.CheckedState.InnerColor = System.Drawing.Color.White;
+            this._toggleShowAll.Location = new System.Drawing.Point(187, 20);
+            this._toggleShowAll.Name = "_toggleShowAll";
+            this._toggleShowAll.Size = new System.Drawing.Size(35, 20);
+            this._toggleShowAll.TabIndex = 6;
+            this._toggleShowAll.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this._toggleShowAll.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this._toggleShowAll.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this._toggleShowAll.UncheckedState.InnerColor = System.Drawing.Color.White;
             // 
             // guna2Elipse_tlpTooMachineList
             // 
@@ -480,6 +478,15 @@
             // 
             this.guna2Elipse_flpTrayMachineList.BorderRadius = 20;
             this.guna2Elipse_flpTrayMachineList.TargetControl = this._flpTrayMachineList;
+            // 
+            // lblShowAllMachineTray
+            // 
+            this.lblShowAllMachineTray.AutoSize = true;
+            this.lblShowAllMachineTray.Location = new System.Drawing.Point(224, 21);
+            this.lblShowAllMachineTray.Name = "lblShowAllMachineTray";
+            this.lblShowAllMachineTray.Size = new System.Drawing.Size(51, 20);
+            this.lblShowAllMachineTray.TabIndex = 30;
+            this.lblShowAllMachineTray.Text = "Tất Cả";
             // 
             // GetToolView
             // 
@@ -506,6 +513,7 @@
             this.pToolContent.PerformLayout();
             this.tlpToolMachineFooter.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -598,12 +606,11 @@
             get { return _btnGetTool; }
             set { _btnGetTool = value; }
         }
-
-        private Guna.UI2.WinForms.Guna2GradientButton _btnShowAll;
-        public Guna.UI2.WinForms.Guna2GradientButton btnShowAll
+        private Guna.UI2.WinForms.Guna2ToggleSwitch _toggleShowAll;
+        public Guna.UI2.WinForms.Guna2ToggleSwitch toggleShowAll
         {
-            get { return _btnShowAll; }
-            set { _btnShowAll = value; }
+            get { return _toggleShowAll; }
+            set { _toggleShowAll = value; }
         }
 
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
@@ -622,5 +629,6 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_tlpTooMachineList;
         private System.IO.Ports.SerialPort serialPort_GetTool;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblShowAllMachineTray;
     }
 }

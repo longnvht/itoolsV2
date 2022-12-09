@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.tlpFooter = new System.Windows.Forms.TableLayoutPanel();
-            this.btnPrevious = new Guna.UI2.WinForms.Guna2Button();
-            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
+            this._btnPrevious = new Guna.UI2.WinForms.Guna2Button();
+            this._btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
-            this.lblName = new System.Windows.Forms.Label();
             this.lblRole = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             this.SuspendLayout();
@@ -43,33 +43,33 @@
             // 
             this.tlpFooter.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.tlpFooter, "tlpFooter");
-            this.tlpFooter.Controls.Add(this.btnPrevious, 0, 0);
-            this.tlpFooter.Controls.Add(this.btnNext, 2, 0);
+            this.tlpFooter.Controls.Add(this._btnPrevious, 0, 0);
+            this.tlpFooter.Controls.Add(this._btnNext, 2, 0);
             this.tlpFooter.Name = "tlpFooter";
             // 
-            // btnPrevious
+            // _btnPrevious
             // 
-            this.btnPrevious.BackColor = System.Drawing.Color.Transparent;
-            this.btnPrevious.BorderRadius = 15;
-            this.btnPrevious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrevious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrevious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPrevious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            resources.ApplyResources(this.btnPrevious, "btnPrevious");
-            this.btnPrevious.ForeColor = System.Drawing.Color.White;
-            this.btnPrevious.Name = "btnPrevious";
+            this._btnPrevious.BackColor = System.Drawing.Color.Transparent;
+            this._btnPrevious.BorderRadius = 15;
+            this._btnPrevious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this._btnPrevious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this._btnPrevious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this._btnPrevious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            resources.ApplyResources(this._btnPrevious, "_btnPrevious");
+            this._btnPrevious.ForeColor = System.Drawing.Color.White;
+            this._btnPrevious.Name = "_btnPrevious";
             // 
-            // btnNext
+            // _btnNext
             // 
-            this.btnNext.BackColor = System.Drawing.Color.Transparent;
-            this.btnNext.BorderRadius = 15;
-            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            resources.ApplyResources(this.btnNext, "btnNext");
-            this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Name = "btnNext";
+            this._btnNext.BackColor = System.Drawing.Color.Transparent;
+            this._btnNext.BorderRadius = 15;
+            this._btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this._btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this._btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this._btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            resources.ApplyResources(this._btnNext, "_btnNext");
+            this._btnNext.ForeColor = System.Drawing.Color.White;
+            this._btnNext.Name = "_btnNext";
             // 
             // tlpHeader
             // 
@@ -79,15 +79,15 @@
             this.tlpHeader.Controls.Add(this.lblName, 0, 0);
             this.tlpHeader.Name = "tlpHeader";
             // 
-            // lblName
-            // 
-            resources.ApplyResources(this.lblName, "lblName");
-            this.lblName.Name = "lblName";
-            // 
             // lblRole
             // 
             resources.ApplyResources(this.lblRole, "lblRole");
             this.lblRole.Name = "lblRole";
+            // 
+            // lblName
+            // 
+            resources.ApplyResources(this.lblName, "lblName");
+            this.lblName.Name = "lblName";
             // 
             // MainView
             // 
@@ -106,10 +106,24 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel tlpFooter;
-        private Guna.UI2.WinForms.Guna2Button btnPrevious;
-        private Guna.UI2.WinForms.Guna2Button btnNext;
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblRole;
+
+        private Guna.UI2.WinForms.Guna2Button _btnPrevious;
+        
+        public Guna.UI2.WinForms.Guna2Button btnPrevious
+        {
+            get { return _btnPrevious; }
+            set { _btnPrevious = value; }
+        }
+
+        private Guna.UI2.WinForms.Guna2Button _btnNext;
+
+        public Guna.UI2.WinForms.Guna2Button btnNext
+        {
+            get { return _btnNext; }
+            set { _btnNext = value; }
+        }
     }
 }

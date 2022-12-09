@@ -61,6 +61,7 @@
             this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnTest = new Guna.UI2.WinForms.Guna2TileButton();
             this.tlpHeader.SuspendLayout();
             this.tlpFooter.SuspendLayout();
             this.tlpContent.SuspendLayout();
@@ -243,6 +244,7 @@
             this.tlpContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.4F));
             this.tlpContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.6F));
             this.tlpContent.Controls.Add(this.pLeftContent, 0, 0);
+            this.tlpContent.Controls.Add(this.btnTest, 1, 0);
             this.tlpContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpContent.Location = new System.Drawing.Point(0, 50);
             this.tlpContent.Name = "tlpContent";
@@ -669,6 +671,21 @@
             this.guna2TextBox4.Size = new System.Drawing.Size(198, 43);
             this.guna2TextBox4.TabIndex = 9;
             // 
+            // btnTest
+            // 
+            this.btnTest.BorderRadius = 20;
+            this.btnTest.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTest.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTest.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTest.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTest.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTest.ForeColor = System.Drawing.Color.White;
+            this.btnTest.Location = new System.Drawing.Point(312, 3);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(146, 126);
+            this.btnTest.TabIndex = 1;
+            this.btnTest.Text = "guna2TileButton1";
+            // 
             // frmTest2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -732,5 +749,6 @@
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox4;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
+        private Guna.UI2.WinForms.Guna2TileButton btnTest;
     }
 }

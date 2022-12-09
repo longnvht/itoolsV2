@@ -122,71 +122,71 @@
     <value>3</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnPrevious.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="_btnPrevious.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnPrevious.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="_btnPrevious.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 11.25pt</value>
   </data>
-  <data name="btnPrevious.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="_btnPrevious.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 4</value>
   </data>
-  <data name="btnPrevious.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="_btnPrevious.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="btnPrevious.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="_btnPrevious.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 42</value>
   </data>
-  <data name="btnPrevious.TabIndex" type="System.Int32, mscorlib">
+  <data name="_btnPrevious.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="btnPrevious.Text" xml:space="preserve">
+  <data name="_btnPrevious.Text" xml:space="preserve">
     <value>Quay Lại</value>
   </data>
-  <data name="&gt;&gt;btnPrevious.Name" xml:space="preserve">
-    <value>btnPrevious</value>
+  <data name="&gt;&gt;_btnPrevious.Name" xml:space="preserve">
+    <value>_btnPrevious</value>
   </data>
-  <data name="&gt;&gt;btnPrevious.Type" xml:space="preserve">
+  <data name="&gt;&gt;_btnPrevious.Type" xml:space="preserve">
     <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.3.5, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
   </data>
-  <data name="&gt;&gt;btnPrevious.Parent" xml:space="preserve">
+  <data name="&gt;&gt;_btnPrevious.Parent" xml:space="preserve">
     <value>tlpFooter</value>
   </data>
-  <data name="&gt;&gt;btnPrevious.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;_btnPrevious.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnNext.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="_btnNext.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="btnNext.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="_btnNext.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 11.25pt</value>
   </data>
-  <data name="btnNext.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="_btnNext.Location" type="System.Drawing.Point, System.Drawing">
     <value>758, 4</value>
   </data>
-  <data name="btnNext.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="_btnNext.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="btnNext.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="_btnNext.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 42</value>
   </data>
-  <data name="btnNext.TabIndex" type="System.Int32, mscorlib">
+  <data name="_btnNext.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="btnNext.Text" xml:space="preserve">
+  <data name="_btnNext.Text" xml:space="preserve">
     <value>Tiếp Theo</value>
   </data>
-  <data name="&gt;&gt;btnNext.Name" xml:space="preserve">
-    <value>btnNext</value>
+  <data name="&gt;&gt;_btnNext.Name" xml:space="preserve">
+    <value>_btnNext</value>
   </data>
-  <data name="&gt;&gt;btnNext.Type" xml:space="preserve">
+  <data name="&gt;&gt;_btnNext.Type" xml:space="preserve">
     <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.3.5, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
   </data>
-  <data name="&gt;&gt;btnNext.Parent" xml:space="preserve">
+  <data name="&gt;&gt;_btnNext.Parent" xml:space="preserve">
     <value>tlpFooter</value>
   </data>
-  <data name="&gt;&gt;btnNext.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;_btnNext.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="tlpFooter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -220,7 +220,7 @@
     <value>1</value>
   </data>
   <data name="tlpFooter.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnPrevious" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnNext" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,180,Percent,100,Absolute,180" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="_btnPrevious" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="_btnNext" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,180,Percent,100,Absolute,180" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tlpHeader.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>

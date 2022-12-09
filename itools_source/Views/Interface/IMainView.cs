@@ -9,15 +9,16 @@ namespace itools_source.Views.Interface
         UserAccount userAccountCurrent { get; set; }
         string strName { get; set; }
         string strRole { get; set; }
+        bool btnNextEnabled { get; set; }
         #endregion
 
-        #region Event
+        #region Events
         event EventHandler MainView_Load;
         event EventHandler btnPrevious_Click;
         event EventHandler btnNext_Click;
         #endregion
 
-        #region Method
+        #region Methods
         void Show();
         void Close();
         void Hide();

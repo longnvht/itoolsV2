@@ -18,7 +18,7 @@ namespace itools_source.Views
             serialPort_GetTool.DataReceived += (s, e) => { serialPort_GetTool_DataReceived?.Invoke(s, e); };
             _btnGetTool.Click += delegate { btnGetTool_Click?.Invoke(this, EventArgs.Empty); };
             _btnCancelSelectTray.Click += delegate { btnCancelSelectTray_Click?.Invoke(this, EventArgs.Empty); };
-            btnShowAll.DoubleClick += delegate { btnShowAll_DoubleClick?.Invoke(this, EventArgs.Empty); };
+            _toggleShowAll.Click += delegate { toggleShowAll_Click?.Invoke(this, EventArgs.Empty); };
         }
 
         #region Properties - Fields
@@ -94,6 +94,7 @@ namespace itools_source.Views
         public List<Guna2GradientButton> lstTrayButton { get; set; }
         public SerialPort serialPortGetTool { get => serialPort_GetTool; set => serialPort_GetTool = value; }
         public Dictionary<int, List<object>> lstMachineTrayQuantity { get; set; }
+        public Action<bool> EnabledButton { get; set; }
         #endregion
 
         #region Methods
@@ -263,7 +264,7 @@ namespace itools_source.Views
         public event SerialDataReceivedEventHandler serialPort_GetTool_DataReceived;
         public event EventHandler btnCancelSelectTray_Click;
         public event EventHandler btnGetTool_Click;
-        public event EventHandler btnShowAll_DoubleClick;
+        public event EventHandler toggleShowAll_Click;
         #endregion
     }
 }

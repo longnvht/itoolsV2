@@ -64,6 +64,7 @@ namespace itools_source.Presenters
                         {
                             OpenGetToolView(oPview.iOPId);
                         }
+                        frmMain.btnNext.Enabled = false;
                         break;
                     case nameof(GetToolView):
                         break;
@@ -76,6 +77,7 @@ namespace itools_source.Presenters
             MainView frmMain = (MainView)sender;
             if (frmMain.MdiChildren.Any())
             {
+                frmMain.btnNext.Enabled = true;
                 string strFormName = frmMain.MdiChildren[0].Name;
 
                 frmMain.MdiChildren[0].Close();
@@ -83,8 +85,7 @@ namespace itools_source.Presenters
                 switch (strFormName)
                 {
                     // Login -> Main, Main -> Login
-                    case nameof(ToolManagerView):
-                    case nameof(JobView):
+                    case nameof(MenuView):
                         System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
                         () =>
                         {
@@ -96,14 +97,17 @@ namespace itools_source.Presenters
 
                         t.Start();
 
-                        _log.Info("ToolManagerView is out MdiChildren to LoginView.");
+                        _log.Info("MenuView is out MdiChildren to LoginView.");
                         _mainView.Close();
+                        break;
+                    case nameof(ToolManagerView):
+                    case nameof(JobView):
+
                         break;
                     // Getdata
                     case nameof(OPView):
                         IJobView jobView = JobView.GetInstance((MainView)_mainView);
                         jobView.SetListOPNumberOPType = OpenOPView;
-                        jobView.strJobNumberSearch = "Abc";
                         _getToolRepository = new GetToolRepository();
                         new JobPresenter(jobView, _getToolRepository);
                         break;
@@ -132,24 +136,9 @@ namespace itools_source.Presenters
                 _mainView.strName = Program.sessionLogin["Name"].ToString();
                 _mainView.strRole = await _permissionRepository.GetPermissionNameById(Program.sessionLogin["PermissionId"].ToString());
 
-                foreach (var item in lstForm)
-                {
-                    if (item == typeof(ToolManagerView).Name)
-                    {
-                        IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
-                        IToolMachineTrayRepository toolRepository = new ToolMachineTrayRepository();
-                        new ToolManagerPresenter(toolManagerView, toolRepository);
-                        break;
-                    }
-                    if (item == typeof(JobView).Name)
-                    {
-                        IJobView jobView = JobView.GetInstance((MainView)_mainView);
-                        jobView.SetListOPNumberOPType = OpenOPView;
-                        _getToolRepository = new GetToolRepository();
-                        new JobPresenter(jobView, _getToolRepository);
-                        break;
-                    }
-                }
+                IMenuView menuView = MenuView.GetInstance((MainView)_mainView);
+                IMenuRepository menuRepository = new MenuRepository();
+                new MenuPresenter(menuView, menuRepository);
             }
             _log.Info("Login Success!");
         }
@@ -176,12 +165,18 @@ namespace itools_source.Presenters
             // 1. Data transmission
             GetToolView getToolView = GetToolView.GetInstance((MainView)_mainView);
             getToolView.iOPId = iOPId;
+            getToolView.EnabledButton = ToggleButton;
 
             // 2. Close OPView, open GetToolView
             _mainView.CloseFormChild();
             new GetToolPresenter(getToolView, _getToolRepository);
 
             _log.Info("Form close: " + typeof(OPView).Name + ", Open: " + typeof(GetToolView).Name);
+        }
+
+        public void ToggleButton(bool bToggle)
+        {
+            _mainView.btnNextEnabled = bToggle;
         }
         #endregion
     }

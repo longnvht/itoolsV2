@@ -13,8 +13,8 @@ namespace itools_source.Views
             InitializeComponent();
 
             this.Load += delegate { MainView_Load?.Invoke(this, EventArgs.Empty); };
-            this.btnPrevious.Click += delegate { btnPrevious_Click?.Invoke(this, EventArgs.Empty); };
-            this.btnNext.Click += delegate { btnNext_Click?.Invoke(this, EventArgs.Empty); };
+            this._btnPrevious.Click += delegate { btnPrevious_Click?.Invoke(this, EventArgs.Empty); };
+            this._btnNext.Click += delegate { btnNext_Click?.Invoke(this, EventArgs.Empty); };
         }
 
         #region Properties - Fields
@@ -22,6 +22,7 @@ namespace itools_source.Views
 
         public UserAccount userAccountCurrent { get; set; }
         public string strRole { get => lblRole.Text; set => lblRole.Text = value; }
+        public bool btnNextEnabled { get => btnNext.Enabled; set => btnNext.Enabled = value; }
         #endregion
 
         #region Events

@@ -50,7 +50,8 @@ namespace itools_source.Presenter
 
         private void _loginView_btnCancel_Click(object sender, EventArgs e)
         {
-            _loginView.Close();
+            Application.Exit();
+            //_loginView.Close();
         }
 
         private async void _loginView_btnLogin_Click(object sender, EventArgs e)

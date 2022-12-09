@@ -23,6 +23,7 @@ namespace itools_source.Views.Interface
         Dictionary<int, string> lstToolForOPList { get; set; }
         Dictionary<string, string> lstMachineTray { get; set; }
         Dictionary<int, List<object>> lstMachineTrayQuantity { get; set; }
+        Action<bool> EnabledButton { get; set; }
         #endregion
 
         #region Events
@@ -33,7 +34,7 @@ namespace itools_source.Views.Interface
         event SerialDataReceivedEventHandler serialPort_GetTool_DataReceived;
         event EventHandler btnCancelSelectTray_Click;
         event EventHandler btnGetTool_Click;
-        event EventHandler btnShowAll_DoubleClick;
+        event EventHandler toggleShowAll_Click;
         #endregion
 
         #region Methods
