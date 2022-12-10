@@ -73,27 +73,36 @@ namespace itools_source.Presenter
                 {
                     MessageBox.Show("Đăng Nhập Thất Bại!");
                     _log.Info("Login Fail!");
+                    return;
                 }
+                else
+                {
+                    if (userAccount.iID == 0)
+                    {
+                        MessageBox.Show("Đăng Nhập Thất Bại!");
+                        _log.Info("Login Fail!");
+                        return;
+                    }
+                    Program.sessionLogin["Id"] = userAccount.iID;
+                    Program.sessionLogin["UserName"] = strUserName; // UserLogin
+                    Program.sessionLogin["Password"] = strPassword;
+                    Program.sessionLogin["Name"] = userAccount.strNameStaff;
+                    Program.sessionLogin["PermissionId"] = userAccount.strPermissionId;
+                    Program.sessionLogin["LoginTime"] = Utils.ServerTime.GetServerTime().ToLocalTime().ToString();
 
-                Program.sessionLogin["Id"] = userAccount.iID;
-                Program.sessionLogin["UserName"] = strUserName; // UserLogin
-                Program.sessionLogin["Password"] = strPassword;
-                Program.sessionLogin["Name"] = userAccount.strNameStaff;
-                Program.sessionLogin["PermissionId"] = userAccount.strPermissionId;
-                Program.sessionLogin["LoginTime"] = Utils.ServerTime.GetServerTime().ToLocalTime().ToString();
+                    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
+                            () =>
+                            {
+                                IMainView mainView = new MainView();
+                                new MainPresenter(mainView, _userAccountRepository);
+                                Application.Run((Form)mainView);
+                            }));
 
-                System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
-                        () =>
-                        {
-                            IMainView mainView = new MainView();
-                            new MainPresenter(mainView, _userAccountRepository);
-                            Application.Run((Form)mainView);
-                        }));
+                    t.Start();
 
-                t.Start();
-
-                _log.Info("Login Success!");
-                _loginView.Close();
+                    _log.Info("Login Success!");
+                    _loginView.Close();
+                }
             }
             catch (Exception ex)
             {

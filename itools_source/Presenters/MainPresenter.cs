@@ -7,6 +7,7 @@ using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
@@ -29,8 +30,12 @@ namespace itools_source.Presenters
 
         private IMainView _mainView;
         private IUserAccountRepository _userAccountRepository;
+
+        private IMenuView _menuView;
+        private IJobView _jobView;
         private IGetToolRepository _getToolRepository;
         private IPermissionRepository _permissionRepository;
+        private IMenuRepository _menuRepository;
         private Dictionary<int?, Dictionary<string, string>> _lstOPNumberOpType_Main = null;
         #endregion
 
@@ -40,34 +45,85 @@ namespace itools_source.Presenters
             MainView frmMain = (MainView)sender;
             if (frmMain.MdiChildren.Any()) // Check is open form children
             {
-                string strFormName = frmMain.MdiChildren[0].Name; // Get form name.
-                switch (strFormName)
+                string strFormName = GetNameFormChlidActive(frmMain.ActiveMdiChild.Name);
+                if (strFormName != null)
                 {
-                    case nameof(JobView):
-                        IJobView jobView = (JobView)frmMain.MdiChildren[0];
-                        if (string.IsNullOrEmpty(jobView.strJobNumberCurrent) && jobView.iPartIDCurrent == null)
-                        {
-                            MessageBox.Show("Bạn Chưa Chọn JobNumber, Vui Click Nút JobNumber!");
-                        }
-                        else
-                        {
-                            OpenOPView(jobView.lstOPNumberOPType);
-                        }
-                        break;
-                    case nameof(OPView):
-                        IOPView oPview = (OPView)frmMain.MdiChildren[0];
-                        if (oPview == null)
-                        {
-                            MessageBox.Show("Bạn Chưa Chọn OPNumber, Vui Click Nút OPNumber!");
-                        }
-                        else
-                        {
-                            OpenGetToolView(oPview.iOPId);
-                        }
-                        frmMain.btnNext.Enabled = false;
-                        break;
-                    case nameof(GetToolView):
-                        break;
+                    switch (strFormName)
+                    {
+                        case nameof(MenuView):
+                            if (_menuView != null)
+                            {
+                                if (!_menuView.bCheckButton)
+                                {
+                                    MessageBox.Show("Bạn Chưa Chọn Nút!");
+                                }
+                                else
+                                {
+                                    if (_menuView.strMenuId != null)
+                                    {
+                                        if (_menuRepository == null)
+                                        {
+                                            _menuRepository = new MenuRepository();
+                                        }
+                                        List<string> lstFormId = _menuRepository.GetListFormByMenuId(strMenuId: _menuView.strMenuId).Result.ToList(); // Get list form name.
+                                        foreach (var item in lstFormId)
+                                        {
+                                            /*
+                                             * GT -> Get Tool -> JobView
+                                             * TM -> Tool Manager -> ToolManagerView
+                                             * CS - > Check Stock -> CheckStockView
+                                             * ST -> Setting -> ConfigView
+                                             */
+
+                                            if (item == nameof(JobView))
+                                            {
+                                                _jobView = JobView.GetInstance((MainView)_mainView);
+                                                _jobView.SetListOPNumberOPType = OpenOPView;
+                                                _getToolRepository = new GetToolRepository();
+                                                new JobPresenter(_jobView, _getToolRepository);
+                                                break;
+                                            }
+                                            if (item == nameof(ToolManagerView))
+                                            {
+                                                _mainView.btnNextEnabled = false;
+                                                IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
+                                                IToolMachineTrayRepository toolRepository = new ToolMachineTrayRepository();
+                                                new ToolManagerPresenter(toolManagerView, toolRepository);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("MenuId is null.");
+                                    }
+                                }
+                            }
+                            break;
+                        case nameof(JobView):
+                            IJobView jobView = (JobView)frmMain.ActiveMdiChild;
+                            if (string.IsNullOrEmpty(jobView.strJobNumberCurrent) && jobView.iPartIDCurrent == null)
+                            {
+                                MessageBox.Show("Bạn Chưa Chọn JobNumber, Vui Click Nút JobNumber!");
+                            }
+                            else
+                            {
+                                OpenOPView(jobView.lstOPNumberOPType);
+                            }
+                            break;
+                        case nameof(OPView):
+                            IOPView oPview = (OPView)frmMain.ActiveMdiChild;
+                            if (oPview.iOPId == null)
+                            {
+                                MessageBox.Show("Bạn Chưa Chọn OPNumber, Vui Click Nút OPNumber!");
+                            }
+                            else
+                            {
+                                OpenGetToolView(oPview.iOPId);
+                                frmMain.btnNext.Enabled = false;
+                            }
+                            break;
+                    }
                 }
             }
         }
@@ -77,46 +133,63 @@ namespace itools_source.Presenters
             MainView frmMain = (MainView)sender;
             if (frmMain.MdiChildren.Any())
             {
-                frmMain.btnNext.Enabled = true;
-                string strFormName = frmMain.MdiChildren[0].Name;
+                // 1. Get name active mdichild form is form name in project.
+                string strFormName = GetNameFormChlidActive(frmMain.ActiveMdiChild.Name);
 
-                frmMain.MdiChildren[0].Close();
-
-                switch (strFormName)
+                // 2. Set load child form.
+                if (strFormName != null)
                 {
-                    // Login -> Main, Main -> Login
-                    case nameof(MenuView):
-                        System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
-                        () =>
-                        {
-                            ILoginView loginView = new Views.LoginView();
-                            IUserAccountRepository userAccountRepository = new UserAccountRepository();
-                            new LoginPresenter(loginView, userAccountRepository);
-                            Application.Run((Form)loginView);
-                        }));
+                    _mainView.CloseFormChild();
+                    _mainView.btnNextEnabled = true;
+                    switch (strFormName)
+                    {
+                        // Login -> Main, Main -> Login
+                        case nameof(MenuView):
+                            System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
+                            () =>
+                            {
+                                ILoginView loginView = new Views.LoginView();
+                                if (_userAccountRepository == null)
+                                {
+                                    _userAccountRepository = new UserAccountRepository();
+                                }
+                                new LoginPresenter(loginView, _userAccountRepository);
+                                Application.Run((Form)loginView);
+                            }));
 
-                        t.Start();
+                            t.Start();
 
-                        _log.Info("MenuView is out MdiChildren to LoginView.");
-                        _mainView.Close();
-                        break;
-                    case nameof(ToolManagerView):
-                    case nameof(JobView):
-
-                        break;
-                    // Getdata
-                    case nameof(OPView):
-                        IJobView jobView = JobView.GetInstance((MainView)_mainView);
-                        jobView.SetListOPNumberOPType = OpenOPView;
-                        _getToolRepository = new GetToolRepository();
-                        new JobPresenter(jobView, _getToolRepository);
-                        break;
-                    case nameof(GetToolView):
-                        IOPView oPView = OPView.GetInstance((MainView)_mainView);
-                        oPView.lstOPNumberOPType = _lstOPNumberOpType_Main;
-                        oPView.GetToolViewAction = OpenGetToolView;
-                        new OPPresenter(oPView, _getToolRepository);
-                        break;
+                            _log.Info("MenuView is out MdiChildren to LoginView.");
+                            _mainView.Close();
+                            break;
+                        case nameof(ToolManagerView):
+                        case nameof(JobView):
+                            _menuView = MenuView.GetInstance((MainView)_mainView);
+                            _menuRepository = new MenuRepository();
+                            new MenuPresenter(_menuView, _menuRepository, _mainView);
+                            break;
+                        // Get data
+                        case nameof(OPView):
+                            _jobView = JobView.GetInstance((MainView)_mainView);
+                            _jobView.SetListOPNumberOPType = OpenOPView;
+                            _getToolRepository = new GetToolRepository();
+                            if (_getToolRepository == null)
+                            {
+                                _getToolRepository = new GetToolRepository();
+                            }
+                            new JobPresenter(_jobView, _getToolRepository);
+                            break;
+                        case nameof(GetToolView):
+                            IOPView oPView = OPView.GetInstance((MainView)_mainView);
+                            oPView.lstOPNumberOPType = _lstOPNumberOpType_Main;
+                            oPView.GetToolViewAction = OpenGetToolView;
+                            if (_getToolRepository == null)
+                            {
+                                _getToolRepository = new GetToolRepository();
+                            }
+                            new OPPresenter(oPView, _getToolRepository);
+                            break;
+                    }
                 }
             }
         }
@@ -133,12 +206,15 @@ namespace itools_source.Presenters
             if (lstForm != null)
             {
                 _permissionRepository = new PermissionRepository();
-                _mainView.strName = Program.sessionLogin["Name"].ToString();
-                _mainView.strRole = await _permissionRepository.GetPermissionNameById(Program.sessionLogin["PermissionId"].ToString());
+                if (Program.sessionLogin["Name"] != null && Program.sessionLogin["PermissionId"] != null)
+                {
+                    _mainView.strName = Program.sessionLogin["Name"].ToString();
+                    _mainView.strRole = await _permissionRepository.GetPermissionNameById(Program.sessionLogin["PermissionId"].ToString());
+                }
 
-                IMenuView menuView = MenuView.GetInstance((MainView)_mainView);
+                _menuView = MenuView.GetInstance((MainView)_mainView);
                 IMenuRepository menuRepository = new MenuRepository();
-                new MenuPresenter(menuView, menuRepository);
+                new MenuPresenter(_menuView, menuRepository, _mainView);
             }
             _log.Info("Login Success!");
         }
@@ -154,6 +230,10 @@ namespace itools_source.Presenters
             oPView.GetToolViewAction = OpenGetToolView;
 
             // 2. Close JobView, open OPView.
+            if (_getToolRepository == null)
+            {
+                _getToolRepository = new GetToolRepository();
+            }
             _mainView.CloseFormChild();
             new OPPresenter(oPView, _getToolRepository);
 
@@ -168,6 +248,10 @@ namespace itools_source.Presenters
             getToolView.EnabledButton = ToggleButton;
 
             // 2. Close OPView, open GetToolView
+            if (_getToolRepository == null)
+            {
+                _getToolRepository = new GetToolRepository();
+            }
             _mainView.CloseFormChild();
             new GetToolPresenter(getToolView, _getToolRepository);
 
@@ -177,6 +261,21 @@ namespace itools_source.Presenters
         public void ToggleButton(bool bToggle)
         {
             _mainView.btnNextEnabled = bToggle;
+        }
+
+        public string GetNameFormChlidActive(string strNameActive) // Get name form child active
+        {
+            foreach (var item in Assembly.GetExecutingAssembly().GetTypes())
+            {
+                if (typeof(Form).IsAssignableFrom(item))
+                {
+                    if (strNameActive == item.Name)
+                    {
+                        return strNameActive;
+                    }
+                }
+            }
+            return null;
         }
         #endregion
     }

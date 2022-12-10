@@ -36,7 +36,7 @@ namespace itools_source.Views
         {
             if (MdiChildren.Any())
             {
-                MdiChildren[0].Close();
+                this.ActiveMdiChild.Close();
             }
         }
         #endregion

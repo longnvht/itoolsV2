@@ -17,10 +17,11 @@ namespace itools_source.Presenters
 {
     public class MenuPresenter
     {
-        public MenuPresenter(IMenuView menuView, IMenuRepository menuRepository)
+        public MenuPresenter(IMenuView menuView, IMenuRepository menuRepository, IMainView mainView)
         {
             _menuView = menuView;
             _menuRepository = menuRepository;
+            _mainView = mainView;
 
             // Event handler methods to view events.
             _menuView.MenuView_Load += _menuView_MenuView_Load;
@@ -33,6 +34,10 @@ namespace itools_source.Presenters
 
         private readonly IMenuView _menuView;
         private readonly IMenuRepository _menuRepository;
+
+        private IMainView _mainView;
+        private IGetToolRepository _getToolRepository;
+        private Dictionary<int?, Dictionary<string, string>> _lstOPNumberOpType_Main = null;
         #endregion
 
         #region Events
@@ -57,6 +62,7 @@ namespace itools_source.Presenters
                         btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
                         btn.Text = item.strMenuDescription;
                         btn.Tag = item.strMenuId;
+                        btn.DoubleClick += btnItem_DoubleClick;
                         btn.Click += btnItem_Click;
 
                         frm.flpMenu.Controls.Add(btn);
@@ -67,65 +73,96 @@ namespace itools_source.Presenters
         #endregion
 
         #region Methods
-        private void btnItem_Click(object sender, EventArgs e)
+        private void btnItem_DoubleClick(object sender, EventArgs e)
         {
             Guna2GradientTileButton btn = (Guna2GradientTileButton)sender;
-            MessageBox.Show(btn.Tag.ToString());
-            if (btn != null && btn.Tag != null)
+            if (btn != null && btn.Tag != null) // Check button is null
             {
-                List<string> lstFormId = _menuRepository.GetListFormByMenuId(strMenuId: btn.Tag.ToString()).Result.ToList();
+                _menuView.strMenuId = btn.Tag.ToString();
+                List<string> lstFormId = _menuRepository.GetListFormByMenuId(strMenuId: _menuView.strMenuId).Result.ToList(); // Get list form name.
                 foreach (var item in lstFormId)
                 {
-                    //if (item == nameof(ToolManagerView))
-                    //{
-                    //    //((MainView)sender).btnNext.Enabled = false;
-                    //    //IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
-                    //    //IToolMachineTrayRepository toolRepository = new ToolMachineTrayRepository();
-                    //    //new ToolManagerPresenter(toolManagerView, toolRepository);
-                    //    MessageBox.Show(item);
-                    //    break;
-                    //}
+                    /*
+                     * GT -> Get Tool -> JobView
+                     * TM -> Tool Manager -> ToolManagerView
+                     * CS - > Check Stock -> CheckStockView
+                     * ST -> Setting -> ConfigView
+                     */
+                    
                     if (item == nameof(JobView))
                     {
-                        MessageBox.Show(item);
-                        //IJobView jobView = JobView.GetInstance((MainView)_mainView);
-                        //jobView.SetListOPNumberOPType = OpenOPView;
-                        //_getToolRepository = new GetToolRepository();
-                        //new JobPresenter(jobView, _getToolRepository);
+                        IJobView jobView = JobView.GetInstance((MainView)_mainView);
+                        jobView.SetListOPNumberOPType = OpenOPView;
+                        _getToolRepository = new GetToolRepository();
+                        new JobPresenter(jobView, _getToolRepository);
+                        break;
+                    }
+                    if (item == nameof(ToolManagerView))
+                    {
+                        _mainView.btnNextEnabled = false;
+                        IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
+                        IToolMachineTrayRepository toolRepository = new ToolMachineTrayRepository();
+                        new ToolManagerPresenter(toolManagerView, toolRepository);
                         break;
                     }
                 }
             }
         }
 
-        //public void OpenOPView(Dictionary<int?, Dictionary<string, string>> lstOPNumberOpType)
-        //{
-        //    // 1. Data transmission
-        //    IOPView oPView = OPView.GetInstance((MainView)_mainView);
-        //    _lstOPNumberOpType_Main = lstOPNumberOpType;
-        //    oPView.lstOPNumberOPType = lstOPNumberOpType;
-        //    oPView.GetToolViewAction = OpenGetToolView;
+        private void btnItem_Click(object sender, EventArgs e)
+        {
+            Guna2GradientTileButton btn = (Guna2GradientTileButton)sender;
+            _menuView.SetCheckedButton(btn.Text);
+            if (btn.Checked == true)
+            {
+                btn.Checked = false;
+                _menuView.bCheckButton = false;
+                _menuView.strMenuId = null;
+            }
+            else
+            {
+                btn.Checked = true;
+                _menuView.bCheckButton = true;
+                if (btn.Tag != null)
+                {
+                    _menuView.strMenuId = btn.Tag.ToString();
+                }
+            }
+        }
 
-        //    // 2. Close JobView, open OPView.
-        //    _mainView.CloseFormChild();
-        //    new OPPresenter(oPView, _getToolRepository);
+        public void OpenOPView(Dictionary<int?, Dictionary<string, string>> lstOPNumberOpType)
+        {
+            // 1. Data transmission
+            IOPView oPView = OPView.GetInstance((MainView)_mainView);
+            _lstOPNumberOpType_Main = lstOPNumberOpType;
+            oPView.lstOPNumberOPType = lstOPNumberOpType;
+            oPView.GetToolViewAction = OpenGetToolView;
 
-        //    _log.Info("Form close: " + typeof(JobView).Name + ", Open: " + typeof(OPView).Name);
-        //}
+            // 2. Close JobView, open OPView.
+            _mainView.CloseFormChild();
+            new OPPresenter(oPView, _getToolRepository);
 
-        //public void OpenGetToolView(int? iOPId)
-        //{
-        //    // 1. Data transmission
-        //    GetToolView getToolView = GetToolView.GetInstance((MainView)_mainView);
-        //    getToolView.iOPId = iOPId;
-        //    getToolView.EnabledButton = ToggleButton;
+            _log.Info("Form close: " + typeof(JobView).Name + ", Open: " + typeof(OPView).Name);
+        }
 
-        //    // 2. Close OPView, open GetToolView
-        //    _mainView.CloseFormChild();
-        //    new GetToolPresenter(getToolView, _getToolRepository);
+        public void OpenGetToolView(int? iOPId)
+        {
+            // 1. Data transmission
+            GetToolView getToolView = GetToolView.GetInstance((MainView)_mainView);
+            getToolView.iOPId = iOPId;
+            getToolView.EnabledButton = ToggleButton;
 
-        //    _log.Info("Form close: " + typeof(OPView).Name + ", Open: " + typeof(GetToolView).Name);
-        //}
+            // 2. Close OPView, open GetToolView
+            _mainView.CloseFormChild();
+            new GetToolPresenter(getToolView, _getToolRepository);
+
+            _log.Info("Form close: " + typeof(OPView).Name + ", Open: " + typeof(GetToolView).Name);
+        }
+
+        public void ToggleButton(bool bToggle)
+        {
+            _mainView.btnNextEnabled = bToggle;
+        }
         #endregion
     }
 }

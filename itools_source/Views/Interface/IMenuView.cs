@@ -13,14 +13,15 @@ namespace itools_source.Views.Interface
         string strMenuId { get; set; }
         string strMenuName { get; set; }
         List<Menu> lstMenu { get; set; }
+        bool bCheckButton { get; set; }
         #endregion
         #region Events
         event EventHandler MenuView_Load;
-        event EventHandler btnItem_Click;
         #endregion
         #region Methods
         void Show();
         void Close();
+        void SetCheckedButton(string strContinueButton);
         #endregion
     }
 }

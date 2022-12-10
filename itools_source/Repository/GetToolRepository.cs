@@ -210,9 +210,9 @@ namespace itools_source.Repository
                                 _log.Error("Variable lstToolForOPList is Null!");
                                 return null;
                             }
-                            while (mySqlDataReader.Read())
+                            while (await mySqlDataReader.ReadAsync())
                             {
-                                if (!mySqlDataReader.IsDBNull(0) && !mySqlDataReader.IsDBNull(1))
+                                if (!await mySqlDataReader.IsDBNullAsync(0) && !await mySqlDataReader.IsDBNullAsync(1))
                                 {
                                     // ToolId, ToolCode
                                     lstToolCodeList.Add(mySqlDataReader.GetInt32(0), mySqlDataReader.GetString(1));
@@ -221,7 +221,7 @@ namespace itools_source.Repository
                             mySqlDataReader.Close();
                         }
                     }
-                    mySqlConnection.Close();
+                    await mySqlConnection.CloseAsync();
                 }
                 return lstToolCodeList;
             }

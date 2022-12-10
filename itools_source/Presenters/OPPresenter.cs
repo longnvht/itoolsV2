@@ -36,12 +36,20 @@ namespace itools_source.Presenters
             if (btn.Checked == true)
             {
                 btn.Checked = false;
+                _opView.iOPId = null;
             }
             else
             {
                 btn.Checked = true;
-                _opView.iOPId = Convert.ToInt32(btn.Tag);
-                _log.Info("Click OPId: " + _opView.iOPId);
+                if (btn.Tag != null)
+                {
+                    _opView.iOPId = Convert.ToInt32(btn.Tag);
+                    _log.Info("Click OPId: " + _opView.iOPId);
+                }
+                else
+                {
+                    _log.Error("Tag in Button is null.");
+                }
             }
         }
 

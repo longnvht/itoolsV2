@@ -1,4 +1,5 @@
-﻿using itools_source.Views.Interface;
+﻿using Guna.UI2.WinForms;
+using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,12 +47,31 @@ namespace itools_source.Views
         public string strMenuId { get; set; }
         public string strMenuName { get; set; }
         public List<Models.Menu> lstMenu { get; set; }
+        public bool bCheckButton { get; set; }
         #endregion
         #region Events
         public event EventHandler MenuView_Load;
-        public event EventHandler btnItem_Click;
         #endregion
         #region Methods
+        public void SetCheckedButton(string strContinueButton)
+        {
+            if (_flpMenu.Controls.Count > 0)
+            {
+                foreach (Control item in _flpMenu.Controls)
+                {
+                    Guna2GradientTileButton btn = (Guna2GradientTileButton)item;
+                    if ((item.GetType() != typeof(Guna2GradientTileButton)) || (strContinueButton == btn.Text))
+                    {
+                        continue;
+                    }
+                    if (btn.Checked)
+                    {
+                        btn.Checked = false;
+                        return;
+                    }
+                }
+            }
+        }
         #endregion
     }
 }

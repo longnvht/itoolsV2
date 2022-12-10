@@ -241,9 +241,20 @@ namespace itools_source.Presenters
         private async void _getToolView_GetToolView_Load(object sender, EventArgs e)
         {
             GetToolView frm = (GetToolView)sender;
-
+            if (_getToolView == null || _getToolRepository == null)
+            {
+                MessageBox.Show("Lỗi Dữ Liệu!");
+                _log.Info("_getToolView or _getToolRepository is null!");
+                return;
+            }
             _getToolView.cStatusForm = '0';
             _getToolView.SetStatusForm();
+
+            if (_getToolView.iOPId == null)
+            {
+                _log.Info("OPId is Null.");
+                return;
+            }
 
             _getToolView.lstToolForOPList = await _getToolRepository.GetByToolForOP(_getToolView.iOPId);
 

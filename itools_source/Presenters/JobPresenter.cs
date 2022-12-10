@@ -34,18 +34,31 @@ namespace itools_source.Presenters
         private void _jobView_btnflpJobNumberList_Click(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;
-            if (btn.Checked == true)
+            if (btn != null)
             {
-                btn.Checked = false;
-            }
-            else
-            {
-                btn.Checked = true;
-                _jobView.strJobNumberCurrent = btn.Text;
-                _jobView.iPartIDCurrent = Convert.ToInt32(btn.Tag);
-                if (_jobView.iPartIDCurrent != null && !string.IsNullOrWhiteSpace(_jobView.strJobNumberCurrent))
+                if (btn.Checked == true)
                 {
-                    _jobView.lstOPNumberOPType = _getToolRepository.GetOPByJobPartOPID(_jobView.strJobNumberCurrent, _jobView.iPartIDCurrent);
+                    btn.Checked = false;
+                    _jobView.strJobNumberCurrent = null;
+                    _jobView.iPartIDCurrent = null;
+                }
+                else
+                {
+                    btn.Checked = true;
+                    if (!string.IsNullOrEmpty(btn.Text) && btn.Tag != null)
+                    {
+                        _jobView.strJobNumberCurrent = btn.Text;
+                        _jobView.iPartIDCurrent = Convert.ToInt32(btn.Tag);
+                        if (_jobView.iPartIDCurrent != null && !string.IsNullOrWhiteSpace(_jobView.strJobNumberCurrent))
+                        {
+                            _jobView.lstOPNumberOPType = _getToolRepository.GetOPByJobPartOPID(_jobView.strJobNumberCurrent, _jobView.iPartIDCurrent);
+                            _log.Info("Get JobNumber and PartID, list OP number op type.");
+                        }
+                    }
+                    else
+                    {
+                        _log.Error("Text and Tag in Button is null.");
+                    }
                 }
             }
         }
@@ -64,7 +77,7 @@ namespace itools_source.Presenters
                     // Clear data.
                     // ???
                     // Clear data.
-                    _jobView.SetListOPNumberOPType(_jobView.lstOPNumberOPType); // Callback to form main.
+                    _jobView.SetListOPNumberOPType(_jobView.lstOPNumberOPType); // Callback to form main or menu.
                 }
             }
         }
