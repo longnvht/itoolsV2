@@ -105,6 +105,13 @@ namespace itools_source.Presenters
                         new ToolManagerPresenter(toolManagerView, toolRepository);
                         break;
                     }
+                    if (item == nameof(StockView))
+                    {
+                        IStockView stockView = StockView.GetInstance((MainView)_mainView);
+                        IStockRepository stockRepository = new StockRepository();
+                        new StockPresenter(stockView, stockRepository);
+                        break;
+                    }
                 }
             }
         }

@@ -124,6 +124,7 @@
     <Compile Include="Models\Interface\IBaseRepository.cs" />
     <Compile Include="Models\Interface\IMenuRepository.cs" />
     <Compile Include="Models\Interface\IPermissionRepository.cs" />
+    <Compile Include="Models\Interface\IStockRepository.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\PermissionDetail.cs" />
@@ -148,11 +149,13 @@
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\MenuPresenter.cs" />
     <Compile Include="Presenters\OPPresenter.cs" />
+    <Compile Include="Presenters\StockPresenter.cs" />
     <Compile Include="Presenters\ToolManagerPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\MenuRepository.cs" />
     <Compile Include="Repository\PermissionRepository.cs" />
+    <Compile Include="Repository\StockRepository.cs" />
     <Compile Include="Repository\UserAccountRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\GetToolRepository.cs" />
@@ -180,6 +183,7 @@
     <Compile Include="Views\Interface\IMainView.cs" />
     <Compile Include="Views\Interface\IMenuView.cs" />
     <Compile Include="Views\Interface\IOPView.cs" />
+    <Compile Include="Views\Interface\IStockView.cs" />
     <Compile Include="Views\Interface\IToolManagerView.cs" />
     <Compile Include="Views\JobView.cs">
       <SubType>Form</SubType>
@@ -216,6 +220,12 @@
     </Compile>
     <Compile Include="Views\OPView.Designer.cs">
       <DependentUpon>OPView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StockView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\StockView.Designer.cs">
+      <DependentUpon>StockView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ToolManagerView.cs">
       <SubType>Form</SubType>
@@ -260,6 +270,9 @@
     <EmbeddedResource Include="Views\OPView.resx">
       <DependentUpon>OPView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\StockView.resx">
+      <DependentUpon>StockView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ToolManagerView.resx">
       <DependentUpon>ToolManagerView.cs</DependentUpon>
     </EmbeddedResource>
@@ -303,6 +316,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="tool_generator.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
