@@ -46,6 +46,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -54,6 +55,9 @@
   <PropertyGroup>
     <Win32Resource>
     </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
@@ -122,6 +126,8 @@
       <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Interface\IBaseRepository.cs" />
+    <Compile Include="Models\Interface\ICompanyRepository.cs" />
+    <Compile Include="Models\Interface\IMachineRepository.cs" />
     <Compile Include="Models\Interface\IMenuRepository.cs" />
     <Compile Include="Models\Interface\IPermissionRepository.cs" />
     <Compile Include="Models\Interface\IStockRepository.cs" />
@@ -143,6 +149,7 @@
     <Compile Include="Models\ToolForOP.cs" />
     <Compile Include="Models\ToolMachineTray.cs" />
     <Compile Include="Models\WorkingTransaction.cs" />
+    <Compile Include="Presenters\ConfigSettingPresenter.cs" />
     <Compile Include="Presenters\GetToolPresenter.cs" />
     <Compile Include="Presenters\JobPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
@@ -153,6 +160,8 @@
     <Compile Include="Presenters\ToolManagerPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CompanyRepository.cs" />
+    <Compile Include="Repository\MachineRepository.cs" />
     <Compile Include="Repository\MenuRepository.cs" />
     <Compile Include="Repository\PermissionRepository.cs" />
     <Compile Include="Repository\StockRepository.cs" />
@@ -165,6 +174,12 @@
     <Compile Include="Utils\MySqlConnect.cs" />
     <Compile Include="Utils\ServerTime.cs" />
     <Compile Include="Utils\Session.cs" />
+    <Compile Include="Views\ConfigSettingView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ConfigSettingView.Designer.cs">
+      <DependentUpon>ConfigSettingView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FormTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +192,7 @@
     <Compile Include="Views\frmTest2.Designer.cs">
       <DependentUpon>frmTest2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Interface\IConfigSettingView.cs" />
     <Compile Include="Views\Interface\IGetToolView.cs" />
     <Compile Include="Views\Interface\IJobView.cs" />
     <Compile Include="Views\Interface\ILoginView.cs" />
@@ -246,6 +262,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\ConfigSettingView.resx">
+      <DependentUpon>ConfigSettingView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FormTest.resx">
       <DependentUpon>FormTest.cs</DependentUpon>
     </EmbeddedResource>

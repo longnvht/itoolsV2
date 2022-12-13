@@ -112,6 +112,13 @@ namespace itools_source.Presenters
                         new StockPresenter(stockView, stockRepository);
                         break;
                     }
+                    if (item == nameof(ConfigSettingView))
+                    {
+                        IConfigSettingView configSettingView = ConfigSettingView.GetInstance((MainView)_mainView);
+                        ICompanyRepository companyRepository = new CompanyRepository();
+                        new ConfigSettingPresenter(configSettingView, companyRepository);
+                        break;
+                    }
                 }
             }
         }
