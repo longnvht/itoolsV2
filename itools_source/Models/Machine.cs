@@ -4,9 +4,9 @@ namespace itools_source.Models
 {
     public class Machine
     {
-        private int _iMachineId;
+        private int? _iMachineId;
 
-        public int iMachineId
+        public int? iMachineId
         {
             get { return _iMachineId; }
             set { _iMachineId = value; }

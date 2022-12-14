@@ -18,12 +18,12 @@ namespace itools_source.Repository
 
             List<MySqlParameter> lstpar = new List<MySqlParameter>();
             lstpar.Add(new MySqlParameter("@MaLoaiNV", workingTransaction.dtTransactionDate));
-            lstpar.Add(new MySqlParameter("@MachineCode", workingTransaction.strMachineCode));
-            lstpar.Add(new MySqlParameter("@CompanyCode", workingTransaction.strCompanyCode));
+            lstpar.Add(new MySqlParameter("@MachineID", workingTransaction.iMachineId));
+            lstpar.Add(new MySqlParameter("@CompanyID", workingTransaction.iCompanyId));
             lstpar.Add(new MySqlParameter("@UserLogin", workingTransaction.strUserLogin));
             lstpar.Add(new MySqlParameter("@JobNumber", workingTransaction.strJobNumber));
             lstpar.Add(new MySqlParameter("@OPNumber", workingTransaction.strOPNumber));
-            lstpar.Add(new MySqlParameter("@ToolCode", workingTransaction.strToolCode));
+            lstpar.Add(new MySqlParameter("@ToolID", workingTransaction.iToolId));
             lstpar.Add(new MySqlParameter("@TrayIndex", workingTransaction.strTrayIndex));
             lstpar.Add(new MySqlParameter("@Quantity", workingTransaction.iQuantity));
             lstpar.Add(new MySqlParameter("@TransactionStatus", workingTransaction.strTransactionStatus));

@@ -20,20 +20,20 @@ namespace itools_source.Models
             set { _dtTransactionDate = value; }
         }
 
-        private string _strMachineCode;
+        private int? _iMachineId;
 
-        public string strMachineCode
+        public int? iMachineId
         {
-            get { return _strMachineCode; }
-            set { _strMachineCode = value; }
+            get { return _iMachineId; }
+            set { _iMachineId = value; }
         }
 
-        private string _strCompanyCode;
+        private int? _iCompanyId;
 
-        public string strCompanyCode
+        public int? iCompanyId
         {
-            get { return _strCompanyCode; }
-            set { _strCompanyCode = value; }
+            get { return _iCompanyId; }
+            set { _iCompanyId = value; }
         }
 
         private string _strUserLogin;
@@ -61,12 +61,12 @@ namespace itools_source.Models
         }
 
 
-        private string _strToolCode;
+        private int? _iToolId;
 
-        public string strToolCode
+        public int? iToolId
         {
-            get { return _strToolCode; }
-            set { _strToolCode = value; }
+            get { return _iToolId; }
+            set { _iToolId = value; }
         }
 
         private string _strTrayIndex;

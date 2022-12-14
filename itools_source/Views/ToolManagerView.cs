@@ -1,9 +1,11 @@
 ﻿using Guna.UI2.WinForms;
 using itools_source.Models;
 using itools_source.Views.Interface;
+using Org.BouncyCastle.Bcpg.OpenPgp;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace itools_source.Views
@@ -15,7 +17,7 @@ namespace itools_source.Views
             InitializeComponent();
 
             this.Load += delegate { ToolManagerView_Load?.Invoke(this, EventArgs.Empty); };
-            txtTraySearch.TextChanged += delegate { txtTraySearch_TextChanged?.Invoke(this, EventArgs.Empty); };
+            txtTrayToolSearch.TextChanged += delegate { txtTraySearch_TextChanged?.Invoke(this, EventArgs.Empty); };
             btnSave.Click += delegate { btnSave_Click?.Invoke(this, EventArgs.Empty); };
             txtOperateQuantity.KeyPress += (s, e) => { txtOperateQuantity_KeyPress(s, e); };
             txtOperateQuantity.TextChanged += delegate { txtOperateQuantity_TextChanged?.Invoke(this, EventArgs.Empty); };
@@ -93,17 +95,17 @@ namespace itools_source.Views
             }
             set => txtTotalQuantity.Text = value.ToString();
         }
-        public string strTraySearch
+        public string strTrayToolSearch
         {
             get
             {
-                if (string.IsNullOrEmpty(txtTraySearch.Text))
+                if (string.IsNullOrEmpty(txtTrayToolSearch.Text))
                 {
                     return "";
                 }
-                return txtTraySearch.Text;
+                return txtTrayToolSearch.Text;
             }
-            set => txtTraySearch.Text = value;
+            set => txtTrayToolSearch.Text = value;
         }
         public string strToolSearch
         {
@@ -131,10 +133,12 @@ namespace itools_source.Views
         public char cStatusButton { get; set; }
         public ToolMachineTray toolTrayCurrent { get; set; }
         public List<string> toolCodeList { get; set; }
-        public SortedDictionary<string, string> sortTrayToolCode { get; set; }
+        public Dictionary<int, Dictionary<string, string>> lstTrayIndexToolCode { get; set; }
         public List<Guna2Button> lstTrayButton { get; set; }
         public List<Guna2GradientButton> lstToolButton { get; set; }
         public int? iToolID { get; set; }
+        public int? iMachineId { get; set; }
+        public int? iTrayID { get; set; }
         #endregion
 
         #region Method
@@ -164,12 +168,12 @@ namespace itools_source.Views
         public void TrayAndToolSearch()
         {
             //flpTrayList.Controls.Clear();
-            if (string.IsNullOrEmpty(strTraySearch))
+            if (string.IsNullOrEmpty(strTrayToolSearch))
             {
                 _flpTrayList.Controls.AddRange(lstTrayButton.ToArray());
                 return;
             }
-            string strSeacrhTest = strTraySearch.ToLower();
+            string strSeacrhTest = strTrayToolSearch.ToLower();
 
             List<Guna2Button> lstSearch = new List<Guna2Button>();
             int iCount = lstTrayButton.Count;
@@ -295,19 +299,24 @@ namespace itools_source.Views
             }
         }
 
-        public void CreateButtonTray(SortedDictionary<string, string> sortDictionary)
+        public void CreateButtonTray()
         {
             if (lstTrayButton == null)
             {
                 lstTrayButton = new List<Guna2Button>();
             }
 
-            foreach (var item in sortDictionary)
+            foreach (var item in this.lstTrayIndexToolCode)
             {
                 Guna2Button btn = new Guna2Button();
                 btn.Size = new Size(280, 60);
-                string strTrayIndex = item.Key.Replace("_", " ");
-                btn.Text = strTrayIndex + "\r\n" + item.Value;
+                //string strTrayIndex = item.Key.Replace("_", " ");
+                //btn.Text = strTrayIndex + "\r\n" + item.Value;
+
+                string strTrayIndex = item.Value.ElementAt(0).Key.Replace("_", " ");
+                string strToolCode = item.Value.ElementAt(0).Value;
+                btn.Text = strTrayIndex + "\r\n" + strToolCode;
+                btn.Tag = item.Key;
 
                 btn.BackColor = Color.Transparent;
                 btn.BorderRadius = 15;

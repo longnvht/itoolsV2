@@ -10,13 +10,15 @@ namespace itools_source.Views.Interface
     {
         #region Fields
         int? iToolID { get; set; }
+        int? iMachineId { get; set; }
+        int? iTrayID { get; set; }
         string strMachineCode { get; set; }
         string strTrayIndex { get; set; }
         string strToolCode { get; set; }
         int? iCurrentQuantity { get; set; }
         int? iOperateQuantity { get; set; }
         int? iTotalQuantity { get; set; }
-        string strTraySearch { get; set; }
+        string strTrayToolSearch { get; set; }
         string strToolSearch { get; set; }
         bool btnAddNewEnabled { get; set; }
         bool btnAddPluginEnabled { get; set; }
@@ -32,7 +34,7 @@ namespace itools_source.Views.Interface
         char cStatusButton { get; set; }
         ToolMachineTray toolTrayCurrent { get; set; }
         List<string> toolCodeList { get; set; }
-        SortedDictionary<string, string> sortTrayToolCode { get; set; }
+        Dictionary<int, Dictionary<string, string>> lstTrayIndexToolCode { get; set; }
         List<Guna2Button> lstTrayButton { get; set; }
         List<Guna2GradientButton> lstToolButton { get; set; }
         #endregion
