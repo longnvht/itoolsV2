@@ -9,8 +9,7 @@ namespace itools_source.Models.Interface
         Task<bool> UpdateQuantityToolTray(ToolMachineTray toolMachineTray);
         Task<ToolMachineTray> GetToolByTrayIndex(int? iTrayID); //
         Task<int> GetToolQuantity(int? iTrayID); //
-        Task<IEnumerable<string>> GetToolCodeList(); //
-        Task<bool> IsToolInMachineTray(string strTrayIndex, int? iMachineId, int? iToolId); //
+        Task<bool> IsToolInMachineTray(int? iTrayId, int? iToolId); //
         Task<bool> AddWorkingTransaction(WorkingTransaction workingTransaction);
         Task<int?> GetTheLargestToolMachineTray();
         Task<Dictionary<int, Dictionary<string, string>>> GetTrayIndexAndToolCode(int? iMachineId); //

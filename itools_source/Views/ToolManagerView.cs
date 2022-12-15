@@ -19,9 +19,8 @@ namespace itools_source.Views
             this.Load += delegate { ToolManagerView_Load?.Invoke(this, EventArgs.Empty); };
             txtTrayToolSearch.TextChanged += delegate { txtTraySearch_TextChanged?.Invoke(this, EventArgs.Empty); };
             btnSave.Click += delegate { btnSave_Click?.Invoke(this, EventArgs.Empty); };
-            txtOperateQuantity.KeyPress += (s, e) => { txtOperateQuantity_KeyPress(s, e); };
-            txtOperateQuantity.TextChanged += delegate { txtOperateQuantity_TextChanged?.Invoke(this, EventArgs.Empty); };
-            txtToolCode.MouseClick += delegate { txtToolCode_MouseClick?.Invoke(this, EventArgs.Empty); };
+            _txtOperateQuantity.TextChanged += delegate { txtOperateQuantity_TextChanged?.Invoke(this, EventArgs.Empty); };
+            _txtToolCode.MouseClick += delegate { txtToolCode_MouseClick?.Invoke(this, EventArgs.Empty); };
             txtToolSearch.TextChanged += delegate { txtToolSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
             btnToolSelect.Click += delegate { btnToolSelect_Click?.Invoke(this, EventArgs.Empty); };
             btnToolCancel.Click += delegate { btnToolCancel_Click?.Invoke(this, EventArgs.Empty); };
@@ -39,61 +38,61 @@ namespace itools_source.Views
         {
             get
             {
-                if (string.IsNullOrEmpty(txtTrayIndex.Text))
+                if (string.IsNullOrEmpty(_txtTrayIndex.Text))
                 {
                     return "";
                 }
-                return txtTrayIndex.Text;
+                return _txtTrayIndex.Text;
             }
-            set => txtTrayIndex.Text = value;
+            set => _txtTrayIndex.Text = value;
         }
         public string strToolCode
         {
             get
             {
-                if (string.IsNullOrEmpty(txtToolCode.Text))
+                if (string.IsNullOrEmpty(_txtToolCode.Text))
                 {
                     return "";
                 }
-                return txtToolCode.Text;
+                return _txtToolCode.Text;
             }
-            set => txtToolCode.Text = value;
+            set => _txtToolCode.Text = value;
         }
         public int? iCurrentQuantity
         {
             get
             {
-                if (string.IsNullOrEmpty(txtCurrentQuantity.Text))
+                if (string.IsNullOrEmpty(_txtCurrentQuantity.Text))
                 {
                     return 0;
                 }
-                return Convert.ToInt32(txtCurrentQuantity.Text);
+                return Convert.ToInt32(_txtCurrentQuantity.Text);
             }
-            set => txtCurrentQuantity.Text = value.ToString();
+            set => _txtCurrentQuantity.Text = value.ToString();
         }
         public int? iOperateQuantity
         {
             get
             {
-                if (string.IsNullOrEmpty(txtOperateQuantity.Text))
+                if (string.IsNullOrEmpty(_txtOperateQuantity.Text))
                 {
                     return 0;
                 }
-                return Convert.ToInt32(txtOperateQuantity.Text);
+                return Convert.ToInt32(_txtOperateQuantity.Text);
             }
-            set => txtOperateQuantity.Text = value.ToString();
+            set => _txtOperateQuantity.Text = value.ToString();
         }
         public int? iTotalQuantity
         {
             get
             {
-                if (string.IsNullOrEmpty(txtTotalQuantity.Text))
+                if (string.IsNullOrEmpty(_txtTotalQuantity.Text))
                 {
                     return 0;
                 }
-                return Convert.ToInt32(txtTotalQuantity.Text);
+                return Convert.ToInt32(_txtTotalQuantity.Text);
             }
-            set => txtTotalQuantity.Text = value.ToString();
+            set => _txtTotalQuantity.Text = value.ToString();
         }
         public string strTrayToolSearch
         {
@@ -119,26 +118,16 @@ namespace itools_source.Views
             }
             set => txtToolSearch.Text = value;
         }
-        public bool btnAddNewEnabled { get => btnAddNew.Enabled; set => btnAddNew.Enabled = value; }
-        public bool btnAddPluginEnabled { get => btnAddPlugin.Enabled; set => btnAddPlugin.Enabled = value; }
-        public bool btnTakeOutEnabled { get => btnTakeOut.Enabled; set => btnTakeOut.Enabled = value; }
-        public bool btnSaveEnabled { get => btnSave.Enabled; set => btnSave.Enabled = value; }
-        public bool tlpHeaderEnabled { get => tlpHeader.Enabled; set => tlpHeader.Enabled = value; }
-        public bool tlpFooterEnabled { get => tlpFooter.Enabled; set => tlpFooter.Enabled = value; }
-        public bool pLeftContentEnabled { get => pLeftContent.Enabled; set => pLeftContent.Enabled = value; }
-        public bool tlpTrayDetailEnabled { get => tlpTrayDetail.Enabled; set => tlpTrayDetail.Enabled = value; }
-        public bool txtOperateQuantityEnable { get => txtOperateQuantity.Enabled; set => txtOperateQuantity.Enabled = value; }
-        public bool txtCurrentQuantityEnbale { get => txtCurrentQuantity.Enabled; set => txtCurrentQuantity.Enabled = value; }
         public char cStatusForm { get; set; }
         public char cStatusButton { get; set; }
         public ToolMachineTray toolTrayCurrent { get; set; }
-        public List<string> toolCodeList { get; set; }
         public Dictionary<int, Dictionary<string, string>> lstTrayIndexToolCode { get; set; }
         public List<Guna2Button> lstTrayButton { get; set; }
         public List<Guna2GradientButton> lstToolButton { get; set; }
         public int? iToolID { get; set; }
         public int? iMachineId { get; set; }
         public int? iTrayID { get; set; }
+        public Dictionary<int, string> lstTooIDAndCode { get; set; }
         #endregion
 
         #region Method
@@ -167,7 +156,6 @@ namespace itools_source.Views
 
         public void TrayAndToolSearch()
         {
-            //flpTrayList.Controls.Clear();
             if (string.IsNullOrEmpty(strTrayToolSearch))
             {
                 _flpTrayList.Controls.AddRange(lstTrayButton.ToArray());
@@ -190,8 +178,8 @@ namespace itools_source.Views
 
         public void SetStatusForm()
         {
-            this.txtOperateQuantity.Enabled = false;
-            this.txtToolCode.Enabled = false;
+            this._txtOperateQuantity.Enabled = false;
+            this._txtToolCode.Enabled = false;
             this.btnSave.Enabled = false;
             this.notifiTakeout.Text = "Off";
             this.notifiAddPlugin.Text = "Off";
@@ -222,33 +210,33 @@ namespace itools_source.Views
                     this.btnAddPlugin.Enabled = false;
                     this.btnTakeOut.Enabled = false;
 
-                    this.txtTrayIndex.Enabled = false;
-                    this.txtToolCode.Enabled = false;
-                    this.txtCurrentQuantity.Enabled = false;
-                    this.txtTotalQuantity.Enabled = false;
+                    this._txtTrayIndex.Enabled = false;
+                    this._txtToolCode.Enabled = false;
+                    this._txtCurrentQuantity.Enabled = false;
+                    this._txtTotalQuantity.Enabled = false;
 
                     this.tlpToolList.Visible = false;
                     this.tlpToolList.Dock = DockStyle.Right;
                     this.tlpToolList.BringToFront();
                     break;
                 case '4': // Save
-                    this.txtOperateQuantity.Enabled = false;
+                    this._txtOperateQuantity.Enabled = false;
 
                     this.btnTakeOut.Enabled = false;
                     this.btnAddPlugin.Enabled = false;
                     this.btnAddNew.Enabled = false;
                     this.btnSave.Enabled = false;
 
-                    this.txtTotalQuantity.Text = string.Empty;
+                    this._txtTotalQuantity.Text = string.Empty;
                     break;
                 case '5':
-                    this.txtOperateQuantity.Text = string.Empty;
-                    this.txtTotalQuantity.Text = string.Empty;
+                    this._txtOperateQuantity.Text = string.Empty;
+                    this._txtTotalQuantity.Text = string.Empty;
                     break;
                 case '6': // Select Tool in List
-                    this.txtOperateQuantity.Enabled = true;
-                    this.txtOperateQuantity.Focus();
-                    this.txtToolCode.Enabled = true;
+                    this._txtOperateQuantity.Enabled = true;
+                    this._txtOperateQuantity.Focus();
+                    this._txtToolCode.Enabled = true;
 
                     this.btnTakeOut.Enabled = false;
                     this.btnAddPlugin.Enabled = false;
@@ -267,9 +255,9 @@ namespace itools_source.Views
                 case '0': // AddNew
                     this.btnTakeOut.Enabled = false;
                     this.btnAddPlugin.Enabled = false;
-                    this.btnSaveEnabled = true;
+                    this.btnSave.Enabled = true;
 
-                    this.txtToolCode.Enabled = true;
+                    this._txtToolCode.Enabled = true;
 
                     this.notifiAddNew.FillColor = Color.LimeGreen;
                     this.notifiAddNew.Text = "On";
@@ -279,8 +267,8 @@ namespace itools_source.Views
                     this.btnTakeOut.Enabled = false;
                     this.btnAddNew.Enabled = false;
 
-                    this.txtOperateQuantity.Enabled = true;
-                    this.txtOperateQuantity.Focus();
+                    this._txtOperateQuantity.Enabled = true;
+                    this._txtOperateQuantity.Focus();
 
                     this.notifiAddPlugin.FillColor = Color.LimeGreen;
                     this.notifiAddPlugin.Text = "On";
@@ -290,8 +278,8 @@ namespace itools_source.Views
                     this.btnAddNew.Enabled = false;
                     this.btnSave.Enabled = true;
 
-                    this.txtOperateQuantity.Enabled = true;
-                    this.txtOperateQuantity.Focus();
+                    this._txtOperateQuantity.Enabled = true;
+                    this._txtOperateQuantity.Focus();
 
                     this.notifiTakeout.FillColor = Color.LimeGreen;
                     this.notifiTakeout.Text = "On";
@@ -310,8 +298,6 @@ namespace itools_source.Views
             {
                 Guna2Button btn = new Guna2Button();
                 btn.Size = new Size(280, 60);
-                //string strTrayIndex = item.Key.Replace("_", " ");
-                //btn.Text = strTrayIndex + "\r\n" + item.Value;
 
                 string strTrayIndex = item.Value.ElementAt(0).Key.Replace("_", " ");
                 string strToolCode = item.Value.ElementAt(0).Value;
@@ -347,11 +333,15 @@ namespace itools_source.Views
             {
                 lstToolButton = new List<Guna2GradientButton>();
             }
-            for (int i = 0; i < 49; i++)
+            int iCount = lstTooIDAndCode.Count > 50 ? 49 : lstTooIDAndCode.Count;
+            for (int i = 0; i < iCount; i++)
             {
                 Guna2GradientButton btn = new Guna2GradientButton();
                 btn.Size = new Size(280, 60);
-                btn.Text = toolCodeList[i];
+
+                btn.Tag = lstTooIDAndCode.Keys.ElementAt(i);
+                btn.Text = lstTooIDAndCode.Values.ElementAt(i);
+
                 btn.BackColor = Color.Transparent;
                 btn.BorderRadius = 15;
                 btn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -376,7 +366,7 @@ namespace itools_source.Views
 
         public void CancelListTool()
         {
-            if (toolCodeList == null)
+            if (lstTooIDAndCode == null)
             {
                 MessageBox.Show("Tool Code List is Null!");
                 _log.Error("Tool Code List is Null!");
@@ -387,7 +377,7 @@ namespace itools_source.Views
             tlpFooter.Enabled = true;
             pLeftContent.Enabled = true;
             tlpTrayDetail.Enabled = true;
-            this.txtToolCode.Enabled = true;
+            this._txtToolCode.Enabled = true;
 
             if (tlpToolList.Visible == true)
             {
@@ -414,23 +404,13 @@ namespace itools_source.Views
             }
         }
 
-        public void txtCurrentQuantity_Focus()
-        {
-            txtCurrentQuantity.Focus();
-        }
-
-        public void txtOperateQuantity_Focus()
-        {
-            txtOperateQuantity.Focus();
-        }
-
-        public void SetCheckedButton(string strContinueButton)
+        public void SetCheckedButton(int? iToolID)
         {
             if (flpToolList.Controls.Count > 0)
             {
                 foreach (Control item in flpToolList.Controls)
                 {
-                    if (item.GetType() != typeof(Guna2GradientButton) || strContinueButton == ((Guna2GradientButton)item).Text)
+                    if (item.GetType() != typeof(Guna2GradientButton) || iToolID == (((Guna2GradientButton)item).Tag as int?))
                     {
                         continue;
                     }
@@ -492,7 +472,6 @@ namespace itools_source.Views
         public event EventHandler txtTraySearch_TextChanged;
         public event EventHandler btnTraySearch_Click;
         public event EventHandler btnflpTrayList_Click;
-        public event KeyPressEventHandler txtOperateQuantity_KeyPress;
         public event EventHandler txtOperateQuantity_TextChanged;
         public event EventHandler txtToolCode_MouseClick;
         public event EventHandler txtToolSearch_TextChanged;

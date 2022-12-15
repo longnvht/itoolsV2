@@ -20,14 +20,6 @@ namespace itools_source.Models
             set { _strToolCode = value; }
         }
 
-        private string _strCompanyCode;
-
-        public string strCompanyCode
-        {
-            get { return _strCompanyCode; }
-            set { _strCompanyCode = value; }
-        }
-
         private string _strModel;
 
         public string strModel

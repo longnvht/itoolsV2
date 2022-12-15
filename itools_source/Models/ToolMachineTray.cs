@@ -4,9 +4,9 @@ namespace itools_source.Models
 {
     public class ToolMachineTray
     {
-        private int _iToolsMachineTrayId;
+        private int? _iToolsMachineTrayId;
 
-        public int iToolsMachineTrayId
+        public int? iToolsMachineTrayId
         {
             get { return _iToolsMachineTrayId; }
             set { _iToolsMachineTrayId = value; }

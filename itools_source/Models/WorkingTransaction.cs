@@ -61,20 +61,12 @@ namespace itools_source.Models
         }
 
 
-        private int? _iToolId;
+        private int? _iTrayId;
 
-        public int? iToolId
+        public int? iTrayId
         {
-            get { return _iToolId; }
-            set { _iToolId = value; }
-        }
-
-        private string _strTrayIndex;
-
-        public string strTrayIndex
-        {
-            get { return _strTrayIndex; }
-            set { _strTrayIndex = value; }
+            get { return _iTrayId; }
+            set { _iTrayId = value; }
         }
 
         private int _iQuantity;

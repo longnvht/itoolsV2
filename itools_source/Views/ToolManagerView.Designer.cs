@@ -56,15 +56,15 @@ namespace itools_source.Views
             this.tlpContent = new System.Windows.Forms.TableLayoutPanel();
             this.pRightContent = new System.Windows.Forms.Panel();
             this.tlpTrayDetail = new System.Windows.Forms.TableLayoutPanel();
-            this.txtTrayIndex = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtToolCode = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtCurrentQuantity = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtOperateQuantity = new Guna.UI2.WinForms.Guna2TextBox();
+            this._txtTrayIndex = new Guna.UI2.WinForms.Guna2TextBox();
+            this._txtToolCode = new Guna.UI2.WinForms.Guna2TextBox();
+            this._txtCurrentQuantity = new Guna.UI2.WinForms.Guna2TextBox();
+            this._txtOperateQuantity = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtTotalQuantity = new Guna.UI2.WinForms.Guna2TextBox();
+            this._txtTotalQuantity = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Elipse_tlpToolList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse_tlpTrayDetail = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -446,15 +446,15 @@ namespace itools_source.Views
             this.tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpTrayDetail.Controls.Add(this.txtTrayIndex, 2, 1);
-            this.tlpTrayDetail.Controls.Add(this.txtToolCode, 2, 2);
-            this.tlpTrayDetail.Controls.Add(this.txtCurrentQuantity, 2, 3);
-            this.tlpTrayDetail.Controls.Add(this.txtOperateQuantity, 2, 4);
+            this.tlpTrayDetail.Controls.Add(this._txtTrayIndex, 2, 1);
+            this.tlpTrayDetail.Controls.Add(this._txtToolCode, 2, 2);
+            this.tlpTrayDetail.Controls.Add(this._txtCurrentQuantity, 2, 3);
+            this.tlpTrayDetail.Controls.Add(this._txtOperateQuantity, 2, 4);
             this.tlpTrayDetail.Controls.Add(this.guna2HtmlLabel2, 1, 2);
             this.tlpTrayDetail.Controls.Add(this.guna2HtmlLabel1, 1, 1);
             this.tlpTrayDetail.Controls.Add(this.guna2HtmlLabel3, 1, 3);
             this.tlpTrayDetail.Controls.Add(this.guna2HtmlLabel4, 1, 4);
-            this.tlpTrayDetail.Controls.Add(this.txtTotalQuantity, 2, 5);
+            this.tlpTrayDetail.Controls.Add(this._txtTotalQuantity, 2, 5);
             this.tlpTrayDetail.Controls.Add(this.guna2HtmlLabel5, 1, 5);
             this.tlpTrayDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpTrayDetail.Location = new System.Drawing.Point(0, 0);
@@ -469,101 +469,101 @@ namespace itools_source.Views
             this.tlpTrayDetail.Size = new System.Drawing.Size(585, 349);
             this.tlpTrayDetail.TabIndex = 26;
             // 
-            // txtTrayIndex
+            // _txtTrayIndex
             // 
-            this.txtTrayIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this._txtTrayIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTrayIndex.BorderRadius = 8;
-            this.txtTrayIndex.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTrayIndex.DefaultText = "";
-            this.txtTrayIndex.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTrayIndex.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTrayIndex.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTrayIndex.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTrayIndex.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTrayIndex.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTrayIndex.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTrayIndex.Location = new System.Drawing.Point(236, 45);
-            this.txtTrayIndex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtTrayIndex.Name = "txtTrayIndex";
-            this.txtTrayIndex.PasswordChar = '\0';
-            this.txtTrayIndex.PlaceholderText = "";
-            this.txtTrayIndex.SelectedText = "";
-            this.txtTrayIndex.Size = new System.Drawing.Size(257, 36);
-            this.txtTrayIndex.TabIndex = 10;
-            this.txtTrayIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._txtTrayIndex.BorderRadius = 8;
+            this._txtTrayIndex.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this._txtTrayIndex.DefaultText = "";
+            this._txtTrayIndex.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this._txtTrayIndex.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this._txtTrayIndex.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtTrayIndex.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtTrayIndex.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtTrayIndex.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtTrayIndex.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtTrayIndex.Location = new System.Drawing.Point(236, 45);
+            this._txtTrayIndex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._txtTrayIndex.Name = "_txtTrayIndex";
+            this._txtTrayIndex.PasswordChar = '\0';
+            this._txtTrayIndex.PlaceholderText = "";
+            this._txtTrayIndex.SelectedText = "";
+            this._txtTrayIndex.Size = new System.Drawing.Size(257, 36);
+            this._txtTrayIndex.TabIndex = 10;
+            this._txtTrayIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtToolCode
+            // _txtToolCode
             // 
-            this.txtToolCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this._txtToolCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtToolCode.BorderRadius = 8;
-            this.txtToolCode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtToolCode.DefaultText = "";
-            this.txtToolCode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtToolCode.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtToolCode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtToolCode.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtToolCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtToolCode.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtToolCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtToolCode.Location = new System.Drawing.Point(236, 97);
-            this.txtToolCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtToolCode.Name = "txtToolCode";
-            this.txtToolCode.PasswordChar = '\0';
-            this.txtToolCode.PlaceholderText = "";
-            this.txtToolCode.SelectedText = "";
-            this.txtToolCode.Size = new System.Drawing.Size(257, 36);
-            this.txtToolCode.TabIndex = 9;
-            this.txtToolCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._txtToolCode.BorderRadius = 8;
+            this._txtToolCode.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this._txtToolCode.DefaultText = "";
+            this._txtToolCode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this._txtToolCode.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this._txtToolCode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtToolCode.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtToolCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtToolCode.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtToolCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtToolCode.Location = new System.Drawing.Point(236, 97);
+            this._txtToolCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._txtToolCode.Name = "_txtToolCode";
+            this._txtToolCode.PasswordChar = '\0';
+            this._txtToolCode.PlaceholderText = "";
+            this._txtToolCode.SelectedText = "";
+            this._txtToolCode.Size = new System.Drawing.Size(257, 36);
+            this._txtToolCode.TabIndex = 9;
+            this._txtToolCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtCurrentQuantity
+            // _txtCurrentQuantity
             // 
-            this.txtCurrentQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this._txtCurrentQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCurrentQuantity.BorderRadius = 8;
-            this.txtCurrentQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCurrentQuantity.DefaultText = "";
-            this.txtCurrentQuantity.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtCurrentQuantity.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtCurrentQuantity.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCurrentQuantity.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCurrentQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCurrentQuantity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCurrentQuantity.Location = new System.Drawing.Point(236, 149);
-            this.txtCurrentQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtCurrentQuantity.Name = "txtCurrentQuantity";
-            this.txtCurrentQuantity.PasswordChar = '\0';
-            this.txtCurrentQuantity.PlaceholderText = "";
-            this.txtCurrentQuantity.SelectedText = "";
-            this.txtCurrentQuantity.Size = new System.Drawing.Size(257, 36);
-            this.txtCurrentQuantity.TabIndex = 8;
-            this.txtCurrentQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._txtCurrentQuantity.BorderRadius = 8;
+            this._txtCurrentQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this._txtCurrentQuantity.DefaultText = "";
+            this._txtCurrentQuantity.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this._txtCurrentQuantity.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this._txtCurrentQuantity.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtCurrentQuantity.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtCurrentQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtCurrentQuantity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtCurrentQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtCurrentQuantity.Location = new System.Drawing.Point(236, 149);
+            this._txtCurrentQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._txtCurrentQuantity.Name = "_txtCurrentQuantity";
+            this._txtCurrentQuantity.PasswordChar = '\0';
+            this._txtCurrentQuantity.PlaceholderText = "";
+            this._txtCurrentQuantity.SelectedText = "";
+            this._txtCurrentQuantity.Size = new System.Drawing.Size(257, 36);
+            this._txtCurrentQuantity.TabIndex = 8;
+            this._txtCurrentQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtOperateQuantity
+            // _txtOperateQuantity
             // 
-            this.txtOperateQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this._txtOperateQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOperateQuantity.BorderRadius = 8;
-            this.txtOperateQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtOperateQuantity.DefaultText = "";
-            this.txtOperateQuantity.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtOperateQuantity.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtOperateQuantity.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtOperateQuantity.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtOperateQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtOperateQuantity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOperateQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtOperateQuantity.Location = new System.Drawing.Point(236, 201);
-            this.txtOperateQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtOperateQuantity.Name = "txtOperateQuantity";
-            this.txtOperateQuantity.PasswordChar = '\0';
-            this.txtOperateQuantity.PlaceholderText = "";
-            this.txtOperateQuantity.SelectedText = "";
-            this.txtOperateQuantity.Size = new System.Drawing.Size(257, 36);
-            this.txtOperateQuantity.TabIndex = 7;
-            this.txtOperateQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._txtOperateQuantity.BorderRadius = 8;
+            this._txtOperateQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this._txtOperateQuantity.DefaultText = "";
+            this._txtOperateQuantity.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this._txtOperateQuantity.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this._txtOperateQuantity.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtOperateQuantity.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtOperateQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtOperateQuantity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtOperateQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtOperateQuantity.Location = new System.Drawing.Point(236, 201);
+            this._txtOperateQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._txtOperateQuantity.Name = "_txtOperateQuantity";
+            this._txtOperateQuantity.PasswordChar = '\0';
+            this._txtOperateQuantity.PlaceholderText = "";
+            this._txtOperateQuantity.SelectedText = "";
+            this._txtOperateQuantity.Size = new System.Drawing.Size(257, 36);
+            this._txtOperateQuantity.TabIndex = 7;
+            this._txtOperateQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // guna2HtmlLabel2
             // 
@@ -613,29 +613,29 @@ namespace itools_source.Views
             this.guna2HtmlLabel4.Text = "Số Lượng Thao Tác";
             this.guna2HtmlLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtTotalQuantity
+            // _txtTotalQuantity
             // 
-            this.txtTotalQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this._txtTotalQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalQuantity.BorderRadius = 8;
-            this.txtTotalQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTotalQuantity.DefaultText = "";
-            this.txtTotalQuantity.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTotalQuantity.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTotalQuantity.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTotalQuantity.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTotalQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotalQuantity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotalQuantity.Location = new System.Drawing.Point(236, 253);
-            this.txtTotalQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtTotalQuantity.Name = "txtTotalQuantity";
-            this.txtTotalQuantity.PasswordChar = '\0';
-            this.txtTotalQuantity.PlaceholderText = "";
-            this.txtTotalQuantity.SelectedText = "";
-            this.txtTotalQuantity.Size = new System.Drawing.Size(257, 36);
-            this.txtTotalQuantity.TabIndex = 12;
-            this.txtTotalQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._txtTotalQuantity.BorderRadius = 8;
+            this._txtTotalQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this._txtTotalQuantity.DefaultText = "";
+            this._txtTotalQuantity.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this._txtTotalQuantity.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this._txtTotalQuantity.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtTotalQuantity.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtTotalQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtTotalQuantity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtTotalQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtTotalQuantity.Location = new System.Drawing.Point(236, 253);
+            this._txtTotalQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._txtTotalQuantity.Name = "_txtTotalQuantity";
+            this._txtTotalQuantity.PasswordChar = '\0';
+            this._txtTotalQuantity.PlaceholderText = "";
+            this._txtTotalQuantity.SelectedText = "";
+            this._txtTotalQuantity.Size = new System.Drawing.Size(257, 36);
+            this._txtTotalQuantity.TabIndex = 12;
+            this._txtTotalQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // guna2HtmlLabel5
             // 
@@ -749,7 +749,70 @@ namespace itools_source.Views
         }
 
         #endregion
-        private System.Windows.Forms.TableLayoutPanel tlpHeader;
+
+        private FlowLayoutPanel _flpTrayList;
+        public FlowLayoutPanel flpTrayList
+        {
+            get { return _flpTrayList; }
+            set { _flpTrayList = value; }
+        }
+
+        private Guna.UI2.WinForms.Guna2TextBox _txtTrayIndex;
+        public Guna.UI2.WinForms.Guna2TextBox txtTrayIndex
+        {
+            get { return _txtTrayIndex; }
+            set { _txtTrayIndex = value; }
+        }
+
+        private Guna.UI2.WinForms.Guna2TextBox _txtToolCode;
+        public Guna.UI2.WinForms.Guna2TextBox txtToolCode
+        {
+            get { return _txtToolCode; }
+            set { _txtToolCode = value; }
+        }
+
+        private Guna.UI2.WinForms.Guna2TextBox _txtCurrentQuantity;
+        public Guna.UI2.WinForms.Guna2TextBox txtCurrentQuantity
+        {
+            get { return _txtCurrentQuantity; }
+            set { _txtCurrentQuantity = value; }
+        }
+
+        private Guna.UI2.WinForms.Guna2TextBox _txtOperateQuantity;
+        public Guna.UI2.WinForms.Guna2TextBox txtOperateQuantity
+        {
+            get { return _txtOperateQuantity; }
+            set { _txtOperateQuantity = value; }
+        }
+
+        private System.Windows.Forms.TableLayoutPanel _tlpHeader;
+        public System.Windows.Forms.TableLayoutPanel tlpHeader
+        {
+            get { return _tlpHeader; }
+            set { _tlpHeader = value; }
+        }
+
+        private TableLayoutPanel _tlpFooter;
+        public TableLayoutPanel tlpFooter
+        {
+            get { return _tlpFooter; }
+            set { _tlpFooter = value; }
+        }
+
+        private System.Windows.Forms.Panel _pLeftContent;
+        public System.Windows.Forms.Panel pLeftContent
+        {
+            get { return _pLeftContent; }
+            set { _pLeftContent = value; }
+        }
+
+        private System.Windows.Forms.TableLayoutPanel _tlpTrayDetail;
+        public System.Windows.Forms.TableLayoutPanel tlpTrayDetail
+        {
+            get { return _tlpTrayDetail; }
+            set { _tlpTrayDetail = value; }
+        }
+
         private Guna.UI2.WinForms.Guna2TextBox txtTrayToolSearch;
         private Guna.UI2.WinForms.Guna2GradientButton btnTraySearch;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiTakeout;
@@ -761,18 +824,12 @@ namespace itools_source.Views
         private Guna.UI2.WinForms.Guna2TextBox txtToolSearch;
         private System.Windows.Forms.Panel pToolContent;
         private System.Windows.Forms.TableLayoutPanel tlpContent;
-        private System.Windows.Forms.Panel pLeftContent;
         private System.Windows.Forms.Panel pRightContent;
-        private System.Windows.Forms.TableLayoutPanel tlpTrayDetail;
-        private Guna.UI2.WinForms.Guna2TextBox txtTrayIndex;
-        private Guna.UI2.WinForms.Guna2TextBox txtToolCode;
-        private Guna.UI2.WinForms.Guna2TextBox txtCurrentQuantity;
-        private Guna.UI2.WinForms.Guna2TextBox txtOperateQuantity;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
-        private Guna.UI2.WinForms.Guna2TextBox txtTotalQuantity;
+        private Guna.UI2.WinForms.Guna2TextBox _txtTotalQuantity;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2GradientButton btnToolCancel;
         private Guna.UI2.WinForms.Guna2GradientButton btnToolSelect;
@@ -783,18 +840,9 @@ namespace itools_source.Views
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar2;
         private System.Windows.Forms.FlowLayoutPanel flpToolList;
         private Panel pFooter;
-        private TableLayoutPanel tlpFooter;
         private Guna.UI2.WinForms.Guna2GradientButton btnSave;
         private Guna.UI2.WinForms.Guna2GradientButton btnTakeOut;
         private Guna.UI2.WinForms.Guna2GradientButton btnAddPlugin;
         private Guna.UI2.WinForms.Guna2GradientButton btnAddNew;
-
-        private FlowLayoutPanel _flpTrayList;
-
-        public FlowLayoutPanel flpTrayList
-        {
-            get { return _flpTrayList; }
-            set { _flpTrayList = value; }
-        }
     }
 }
