@@ -45,6 +45,8 @@ namespace itools_source.Presenters
         private readonly IToolMachineTrayRepository _toolMachineTrayRepository;
 
         private IToolRepository _toolRepository;
+        private IWorkingTransactionRepository _workingTransactionRepository;
+        private IStockRepository _stockRepository;
         #endregion
 
         #region Events
@@ -154,7 +156,6 @@ namespace itools_source.Presenters
             {
                 if (_toolManagerView.iOperateQuantity > _toolManagerView.iCurrentQuantity)
                 {
-                    //_toolManagerView.txtOperateQuantity_Focus();
                     frm.txtOperateQuantity.Focus();
                     MessageBox.Show("Tray không đủ số lượng để lấy.");
                     _toolManagerView.iOperateQuantity = null;
@@ -169,15 +170,26 @@ namespace itools_source.Presenters
             {
                 // 1. Check quantity stock.
                 // a. Get quantity stock in database(dtb).
-                int? iQuantityStock = await _toolMachineTrayRepository.GetQuantityByToolID(iToolID: _toolManagerView.iToolID);
+                if (_stockRepository == null)
+                {
+                    _stockRepository = new StockRepository();
+                }
+                int? iQuantityStock = await _stockRepository.GetQuantityByToolID(iToolID: _toolManagerView.iToolID);
 
                 // b. Between quantity stock dtb and app.
+                if (!iQuantityStock.HasValue) // Tool is not in table stock.
+                {
+                    MessageBox.Show("Tool không có trong kho.");
+                    return;
+                }
+
                 if (iQuantityStock < _toolManagerView.iOperateQuantity)
                 {
                     MessageBox.Show("Kho không đủ số lượng!");
                     _toolManagerView.iOperateQuantity = null;
                     _toolManagerView.iTotalQuantity = null;
                     frm.txtOperateQuantity.Focus();
+                    _log.Info("Insufficient stock.");
                     return;
                 }
 
@@ -252,7 +264,7 @@ namespace itools_source.Presenters
 
                     try
                     {
-                        _toolManagerView.iCurrentQuantity = await _toolMachineTrayRepository.GetToolQuantity(_toolManagerView.iTrayID); // Get quantity in table toolsmachinetray
+                        _toolManagerView.iCurrentQuantity = await _toolMachineTrayRepository.GetQuantityInTray(_toolManagerView.iTrayID); // Get quantity in table toolsmachinetray
                         _toolManagerView.cStatusForm = '5';
                         _toolManagerView.SetStatusForm();
 
@@ -445,7 +457,11 @@ namespace itools_source.Presenters
                         int? iStockOldQuantity = null;
                         if (_toolManagerView.iToolID != null)
                         {
-                            iStockOldQuantity = await _toolMachineTrayRepository.GetQuantityByToolID(_toolManagerView.iToolID);
+                            if (_stockRepository == null)
+                            {
+                                _stockRepository = new StockRepository();
+                            }
+                            iStockOldQuantity = await _stockRepository.GetQuantityByToolID(_toolManagerView.iToolID);
                         }
 
                         // Update working transaction type.
@@ -466,9 +482,17 @@ namespace itools_source.Presenters
                             iStockNewQuantity = iStockOldQuantity + _toolManagerView.iOperateQuantity;
                         }
 
-                        bResultTransaction = await _toolMachineTrayRepository.AddWorkingTransaction(workingTransaction: workingTransaction);
+                        if (_workingTransactionRepository == null)
+                        {
+                            _workingTransactionRepository = new WorkingTransactionRepository();
+                        }
+                        bResultTransaction = await _workingTransactionRepository.AddWorkingTransaction(workingTransaction: workingTransaction);
 
-                        bResultStock = await _toolMachineTrayRepository.UpdateQuantityStock(iToolID: _toolManagerView.iToolID, iQuantity: iStockNewQuantity);
+                        if (_stockRepository == null)
+                        {
+                            _stockRepository = new StockRepository();
+                        }
+                        bResultStock = await _stockRepository.UpdateQuantityStock(iToolID: _toolManagerView.iToolID, iQuantity: iStockNewQuantity);
                     }
 
                     if (bResultTransaction)
@@ -492,11 +516,6 @@ namespace itools_source.Presenters
         #endregion
 
         #region Method
-        private bool CheckInputCharacterLetter(char cInput)
-        {
-            return ((cInput < '0' || cInput > '9') && ((Keys)cInput != Keys.Back) && ((Keys)cInput != Keys.Enter));
-        }
-
         private void SelectTool()
         {
             //_toolManagerView.strToolCode = _strToolCodeCurrent;

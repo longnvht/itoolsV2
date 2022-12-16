@@ -23,7 +23,7 @@ namespace itools_source.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<SortedList<string, string>> GetJobByJobNumber(string strJobNumber)
+        public async Task<SortedList<string, string>> GetJobByJobNumber(string strJobNumber) // Job
         {
             SortedList<string, string> lstJobNumberList = new SortedList<string, string>();
             string strQueryProcedure = @"GetJobByJobNumber";
@@ -79,7 +79,7 @@ namespace itools_source.Repository
             }
         }
 
-        public Dictionary<int?, Dictionary<string, string>> GetOPByJobPartOPID(string strJobNumber, int? iPartID)
+        public Dictionary<int?, Dictionary<string, string>> GetOPByJobPartOPID(string strJobNumber, int? iPartID) // PartOP
         {
             Dictionary<int?, Dictionary<string, string>> lstOPList = new Dictionary<int?, Dictionary<string, string>>();
             Dictionary<string, string> lstOPNumberOPType = new Dictionary<string, string>();
@@ -170,7 +170,7 @@ namespace itools_source.Repository
             }
         }
 
-        public async Task<Dictionary<int, string>> GetByToolForOP(int? iOPId)
+        public async Task<Dictionary<int, string>> GetByToolForOP(int? iOPId) // Tool and toolforop
         {
             if (iOPId == null)
             {
@@ -232,7 +232,7 @@ namespace itools_source.Repository
             }
         }
 
-        public async Task<Dictionary<string, string>> GetModelDescriptionByToolId(int iToolId)
+        public async Task<Dictionary<string, string>> GetModelDescriptionByToolId(int iToolId) // Tool
         {
             // 0. ToolModel
             // 1. ToolDescription
@@ -293,7 +293,7 @@ namespace itools_source.Repository
             }
         }
 
-        public async Task<Dictionary<string, string>> GetMachineTrayByToolCode(string strToolCode, string strMachineCode)
+        public async Task<Dictionary<string, string>> GetMachineTrayByToolCode(string strToolCode, string strMachineCode) // ToolsMachineTray
         {
             // 0. TrayIndex
             // 1. Machine
@@ -358,7 +358,7 @@ namespace itools_source.Repository
             }
         }
 
-        public async Task<Dictionary<int, List<object>>> GetMachineTrayQuantityByToolCode(string strToolCode)
+        public async Task<Dictionary<int, List<object>>> GetMachineTrayQuantityByToolCode(string strToolCode) // ToolsMachineTray
         {
             /*
              * 0. Id => int

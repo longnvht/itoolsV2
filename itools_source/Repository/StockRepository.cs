@@ -114,5 +114,102 @@ namespace itools_source.Repository
                 throw new NotImplementedException(e.Message);
             }
         }
+
+        public async Task<int?> GetQuantityByToolID(int? iToolID)
+        {
+            int? iQuantity = null;
+            string strQueryProcedure = @"GetQuantityInStock";
+            _log.Info("Store procedure query get Quantity by ToolID in table Stock: " + strQueryProcedure);
+
+            try
+            {
+                List<MySqlParameter> lstPar = new List<MySqlParameter>();
+                lstPar.Add(
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_ToolID",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = iToolID,
+                        Direction = System.Data.ParameterDirection.Input
+                    });
+
+                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
+                {
+                    using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
+                    {
+                        if (mySqlDataReader != null)
+                        {
+                            if (await mySqlDataReader.ReadAsync())
+                            {
+                                if (!await mySqlDataReader.IsDBNullAsync(0))
+                                {
+                                    iQuantity = mySqlDataReader.GetInt32(0);
+                                }
+                            }
+                        }
+
+                        mySqlDataReader.Close();
+                    }
+                    await mySqlConnection.CloseAsync();
+                }
+
+                return iQuantity;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return iQuantity;
+        }
+
+        public async Task<bool> UpdateQuantityStock(int? iToolID = null, int? iQuantity = null)
+        {
+            string strQueryProcedure = @"UpdateQuantityInStock";
+            _log.Info("Store procedure update Quantity by ToolID in Stock: " + strQueryProcedure);
+            try
+            {
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
+                {
+                    new MySqlParameter{
+                        ParameterName = "@p_ToolID",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = iToolID,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                     new MySqlParameter{
+                        ParameterName = "@p_Quantity",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = iQuantity,
+                        Direction = System.Data.ParameterDirection.Input
+                    }
+                };
+
+                foreach (var parCheck in lstPar)
+                {
+                    if (parCheck.Value == null)
+                    {
+                        parCheck.Value = DBNull.Value;
+                    }
+                }
+                bool bResult;
+                using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
+                {
+                    bResult = await MySqlConnect.CmdExecutionProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection);
+                    await mySqlConnection.CloseAsync();
+
+                    if (bResult == true)
+                    {
+                        _log.Info("Update Quantity in stock Susccessfully!");
+                    }
+                }
+
+                return bResult;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+                return false;
+            }
+        }
     }
 }
