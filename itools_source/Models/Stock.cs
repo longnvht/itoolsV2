@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace itools_source.Models
+﻿namespace itools_source.Models
 {
     public class Stock
     {
@@ -11,7 +9,7 @@ namespace itools_source.Models
             get { return _iToolId; }
             set { _iToolId = value; }
         }
-        
+
         private short _iQuantity;
 
         public short iQuantity

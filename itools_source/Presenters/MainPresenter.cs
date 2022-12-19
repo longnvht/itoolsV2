@@ -1,5 +1,4 @@
-﻿using itools_source.Models;
-using itools_source.Models.Interface;
+﻿using itools_source.Models.Interface;
 using itools_source.Presenter;
 using itools_source.Repository;
 using itools_source.Views;
@@ -34,6 +33,7 @@ namespace itools_source.Presenters
         private IMenuView _menuView;
         private IJobView _jobView;
         private IGetToolRepository _getToolRepository;
+        private IJobRepository _jobRepository;
         private IPermissionRepository _permissionRepository;
         private IMenuRepository _menuRepository;
         private Dictionary<int?, Dictionary<string, string>> _lstOPNumberOpType_Main = null;
@@ -79,8 +79,8 @@ namespace itools_source.Presenters
                                             {
                                                 _jobView = JobView.GetInstance((MainView)_mainView);
                                                 _jobView.SetListOPNumberOPType = OpenOPView;
-                                                _getToolRepository = new GetToolRepository();
-                                                new JobPresenter(_jobView, _getToolRepository);
+                                                _jobRepository = new JobRepository();
+                                                new JobPresenter(_jobView, _jobRepository);
                                                 break;
                                             }
                                             if (item == nameof(ToolManagerView))
@@ -172,12 +172,11 @@ namespace itools_source.Presenters
                         case nameof(OPView):
                             _jobView = JobView.GetInstance((MainView)_mainView);
                             _jobView.SetListOPNumberOPType = OpenOPView;
-                            _getToolRepository = new GetToolRepository();
-                            if (_getToolRepository == null)
+                            if (_jobRepository == null)
                             {
-                                _getToolRepository = new GetToolRepository();
+                                _jobRepository = new JobRepository();
                             }
-                            new JobPresenter(_jobView, _getToolRepository);
+                            new JobPresenter(_jobView, _jobRepository);
                             break;
                         case nameof(GetToolView):
                             IOPView oPView = OPView.GetInstance((MainView)_mainView);

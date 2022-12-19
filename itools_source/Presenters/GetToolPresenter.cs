@@ -154,7 +154,7 @@ namespace itools_source.Presenters
                 {
                     _getToolView.lstTrayQuantity = await _getToolRepository.GetMachineTrayByToolId(_getToolView.iToolId, Properties.Settings.Default.MachineId);
                 }
-                
+
                 if (_getToolView.lstTrayQuantity != null)
                 {
                     // 4. Create list button.

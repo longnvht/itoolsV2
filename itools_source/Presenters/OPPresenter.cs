@@ -32,7 +32,7 @@ namespace itools_source.Presenters
         private void _opView_btnflpOPlList_Click(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;
-            
+
             if (btn.Checked == true)
             {
                 btn.Checked = false;

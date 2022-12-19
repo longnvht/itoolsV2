@@ -4,16 +4,15 @@ using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace itools_source.Presenters
 {
     public class JobPresenter
     {
-        public JobPresenter(IJobView jobView, IGetToolRepository getToolRepository)
+        public JobPresenter(IJobView jobView, IJobRepository jobRepository)
         {
             _jobView = jobView;
-            _getToolRepository = getToolRepository;
+            _jobRepository = jobRepository;
 
             _jobView.JobView_Load += _jobView_JobView_Load;
             _jobView.txtJobNumberSearch_TextChanged += _jobView_txtJobNumberSearch_TextChanged;
@@ -25,13 +24,13 @@ namespace itools_source.Presenters
 
         #region Fields
         private IJobView _jobView;
-        private IGetToolRepository _getToolRepository;
+        private IJobRepository _jobRepository;
 
         private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(JobPresenter).Name);
         #endregion
 
         #region Events
-        private void _jobView_btnflpJobNumberList_Click(object sender, EventArgs e)
+        private async void _jobView_btnflpJobNumberList_Click(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;
             if (btn != null)
@@ -51,7 +50,7 @@ namespace itools_source.Presenters
                         _jobView.iPartIDCurrent = Convert.ToInt32(btn.Tag);
                         if (_jobView.iPartIDCurrent != null && !string.IsNullOrWhiteSpace(_jobView.strJobNumberCurrent))
                         {
-                            _jobView.lstOPNumberOPType = _getToolRepository.GetOPByJobPartOPID(_jobView.strJobNumberCurrent, _jobView.iPartIDCurrent);
+                            _jobView.lstOPNumberOPType = await _jobRepository.GetOPByJobPartOPID(_jobView.strJobNumberCurrent, _jobView.iPartIDCurrent);
                             _log.Info("Get JobNumber and PartID, list OP number op type.");
                         }
                     }
@@ -63,7 +62,7 @@ namespace itools_source.Presenters
             }
         }
 
-        private void _jobView_btnflpJobNumberList_DoubleClick(object sender, EventArgs e)
+        private async void _jobView_btnflpJobNumberList_DoubleClick(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;
             _jobView.strJobNumberCurrent = btn.Text;
@@ -71,7 +70,7 @@ namespace itools_source.Presenters
 
             if (_jobView.iPartIDCurrent != null && !string.IsNullOrWhiteSpace(_jobView.strJobNumberCurrent))
             {
-                _jobView.lstOPNumberOPType = _getToolRepository.GetOPByJobPartOPID(_jobView.strJobNumberCurrent, _jobView.iPartIDCurrent);
+                _jobView.lstOPNumberOPType = await _jobRepository.GetOPByJobPartOPID(_jobView.strJobNumberCurrent, _jobView.iPartIDCurrent);
                 if (_jobView.lstOPNumberOPType != null)
                 {
                     // Clear data.
@@ -95,7 +94,7 @@ namespace itools_source.Presenters
             }
 
             // 2. Select JobNumber and PartID.
-            _jobView.lstJobNumberPartID = await _getToolRepository.GetJobByJobNumber(_jobView.strJobNumberSearch);
+            _jobView.lstJobNumberPartID = await _jobRepository.GetJobByJobNumber(_jobView.strJobNumberSearch);
             _log.Info("User: " + Program.sessionLogin["UserName"] + ", Search JobNumber: " + _jobView.strJobNumberSearch);
 
             // 3. Rename text button.

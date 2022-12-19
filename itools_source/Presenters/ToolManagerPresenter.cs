@@ -6,7 +6,6 @@ using itools_source.Utils;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -226,7 +225,7 @@ namespace itools_source.Presenters
                 {
                     // Get TrayID
                     _toolManagerView.iTrayID = Convert.ToInt32(btn.Tag);
-                    
+
                     // Get detailed tool information for ToolsMachineTray
                     /*
                      * 1. TrayID **
@@ -247,7 +246,7 @@ namespace itools_source.Presenters
                     {
                         _toolManagerView.iToolID = await _toolMachineTrayRepository.GetToolIDByTrayID(_toolManagerView.iTrayID);
                     }
-                    
+
                     // Get index endline
                     string strTextButton = btn.Text;
                     int iLength = strTextButton.Length;

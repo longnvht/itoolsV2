@@ -1,17 +1,13 @@
 ﻿using Guna.UI2.WinForms;
 using itools_source.Models.Interface;
-using itools_source.Models;
-using itools_source.Presenter;
-using itools_source.Views.Interface;
+using itools_source.Repository;
 using itools_source.Views;
+using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Drawing;
-using itools_source.Repository;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace itools_source.Presenters
 {
@@ -37,6 +33,7 @@ namespace itools_source.Presenters
 
         private IMainView _mainView;
         private IGetToolRepository _getToolRepository;
+        private IJobRepository _jobRepository;
         private Dictionary<int?, Dictionary<string, string>> _lstOPNumberOpType_Main = null;
         #endregion
 
@@ -52,16 +49,18 @@ namespace itools_source.Presenters
                 {
                     foreach (var item in _menuView.lstMenu)
                     {
-                        Guna2GradientTileButton btn = new Guna2GradientTileButton();
-                        btn.ForeColor = Color.Navy;
-                        btn.FillColor = Color.DarkSeaGreen;
-                        btn.FillColor2 = Color.DarkSeaGreen;
-                        btn.Size = new Size(150, 150);
-                        btn.Margin = new Padding(10);
-                        btn.BorderRadius = 20;
-                        btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-                        btn.Text = item.strMenuDescription;
-                        btn.Tag = item.strMenuId;
+                        Guna2GradientTileButton btn = new Guna2GradientTileButton
+                        {
+                            ForeColor = Color.Navy,
+                            FillColor = Color.DarkSeaGreen,
+                            FillColor2 = Color.DarkSeaGreen,
+                            Size = new Size(150, 150),
+                            Margin = new Padding(10),
+                            BorderRadius = 20,
+                            Font = new Font("Segoe UI", 12F, FontStyle.Bold),
+                            Text = item.strMenuDescription,
+                            Tag = item.strMenuId
+                        };
                         btn.DoubleClick += btnItem_DoubleClick;
                         btn.Click += btnItem_Click;
 
@@ -88,13 +87,13 @@ namespace itools_source.Presenters
                      * CS - > Check Stock -> CheckStockView
                      * ST -> Setting -> ConfigView
                      */
-                    
+
                     if (item == nameof(JobView))
                     {
                         IJobView jobView = JobView.GetInstance((MainView)_mainView);
                         jobView.SetListOPNumberOPType = OpenOPView;
-                        _getToolRepository = new GetToolRepository();
-                        new JobPresenter(jobView, _getToolRepository);
+                        _jobRepository = new JobRepository();
+                        new JobPresenter(jobView, _jobRepository);
                         break;
                     }
                     if (item == nameof(ToolManagerView))
@@ -154,6 +153,10 @@ namespace itools_source.Presenters
 
             // 2. Close JobView, open OPView.
             _mainView.CloseFormChild();
+            if (_getToolRepository == null)
+            {
+                _getToolRepository = new GetToolRepository();
+            }
             new OPPresenter(oPView, _getToolRepository);
 
             _log.Info("Form close: " + typeof(JobView).Name + ", Open: " + typeof(OPView).Name);
@@ -168,6 +171,10 @@ namespace itools_source.Presenters
 
             // 2. Close OPView, open GetToolView
             _mainView.CloseFormChild();
+            if (_getToolRepository == null)
+            {
+                _getToolRepository = new GetToolRepository();
+            }
             new GetToolPresenter(getToolView, _getToolRepository);
 
             _log.Info("Form close: " + typeof(OPView).Name + ", Open: " + typeof(GetToolView).Name);

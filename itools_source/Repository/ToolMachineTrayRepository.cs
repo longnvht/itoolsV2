@@ -260,7 +260,7 @@ namespace itools_source.Repository
 
                 using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
                 {
-                    using (MySqlDataReader mySqlDataReader = await  MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
+                    using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
                     {
                         if (await mySqlDataReader.ReadAsync())
                         {
