@@ -14,6 +14,7 @@ namespace itools_source.Presenters
     {
         public GetToolPresenter(IGetToolView getToolView, IGetToolRepository getToolRepository)
         {
+            //_getToolView = (getToolView == null) ? new GetToolView : getToolView;
             _getToolView = getToolView;
             _getToolRepository = getToolRepository;
 
@@ -43,7 +44,7 @@ namespace itools_source.Presenters
             GetToolView frm = (GetToolView)sender;
             if (!bToggle)
             {
-                _getToolView.lstMachineTrayQuantity = await _getToolRepository.GetMachineTrayQuantityByToolCode(_getToolView.strToolCode);
+                _getToolView.lstMachineTrayQuantity = await _getToolRepository.GetMachineTrayQuantityByToolId(_getToolView.iToolId);
                 if (_getToolView.lstMachineTrayQuantity != null)
                 {
                     frm.flpTrayMachineList.Controls.Clear();
@@ -53,7 +54,7 @@ namespace itools_source.Presenters
             }
             else
             {
-                if (_getToolView.lstMachineTray != null)
+                if (_getToolView.lstTrayQuantity != null)
                 {
                     bToggle = false;
                     _getToolView.CreateListButton(true);
@@ -76,7 +77,7 @@ namespace itools_source.Presenters
             _getToolView.strTrayIndex = btn.Text.Split('\n').GetValue(0).ToString();
 
             string strSendSerialCom = "125," + _getToolView.strTrayIndex.Split('_').GetValue(1).ToString() + "|";
-            MessageBox.Show(strSendSerialCom);
+            //MessageBox.Show(strSendSerialCom);
             if (SerialPort.GetPortNames().Length == 0)
             {
                 MessageBox.Show("Không có cổng COM!");
@@ -119,7 +120,7 @@ namespace itools_source.Presenters
         private async void _getToolView_btnflpToolList_Click(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;
-            if (string.IsNullOrEmpty(btn.Text) || btn.Tag == null)
+            if (string.IsNullOrEmpty(btn.Text) || string.IsNullOrWhiteSpace(btn.Text) || btn.Tag == null)
             {
                 _getToolView.cStatusForm = '2';
                 _getToolView.SetStatusForm();
@@ -140,17 +141,21 @@ namespace itools_source.Presenters
              */
             _getToolView.iToolId = Convert.ToInt32(btn.Tag);
             _getToolView.strToolCode = btn.Text;
-            Dictionary<string, string> lstModelDes = await _getToolRepository.GetModelDescriptionByToolId(_getToolView.iToolId);
+            Dictionary<int, Dictionary<string, string>> lstToolIDModelDes = await _getToolRepository.GetModelDescriptionByToolId(_getToolView.iToolId);
 
-            if (lstModelDes != null)
+            if (lstToolIDModelDes != null)
             {
-                _getToolView.strToolModel = lstModelDes.Keys.ElementAt(0);
-                _getToolView.strToolDescription = lstModelDes.Values.ElementAt(0);
+                _getToolView.strToolModel = lstToolIDModelDes.Values.ElementAt(0).Keys.ElementAt(0);
+                _getToolView.strToolDescription = lstToolIDModelDes.Values.ElementAt(0).Values.ElementAt(0);
                 _log.Info("Get ToolModel: " + _getToolView.strToolModel + ", ToolDescription: " + _getToolView.strToolDescription);
 
                 // 3. Get tool tray data.
-                _getToolView.lstMachineTray = await _getToolRepository.GetMachineTrayByToolCode(_getToolView.strToolCode, "VM-1");
-                if (_getToolView.lstMachineTray != null)
+                if (Properties.Settings.Default.MachineId != 0)
+                {
+                    _getToolView.lstTrayQuantity = await _getToolRepository.GetMachineTrayByToolId(_getToolView.iToolId, Properties.Settings.Default.MachineId);
+                }
+                
+                if (_getToolView.lstTrayQuantity != null)
                 {
                     // 4. Create list button.
                     _getToolView.CreateListButton(true);
@@ -241,12 +246,15 @@ namespace itools_source.Presenters
         private async void _getToolView_GetToolView_Load(object sender, EventArgs e)
         {
             GetToolView frm = (GetToolView)sender;
+
             if (_getToolView == null || _getToolRepository == null)
             {
                 MessageBox.Show("Lỗi Dữ Liệu!");
                 _log.Info("_getToolView or _getToolRepository is null!");
                 return;
             }
+
+            // Set status form.
             _getToolView.cStatusForm = '0';
             _getToolView.SetStatusForm();
 
@@ -256,7 +264,7 @@ namespace itools_source.Presenters
                 return;
             }
 
-            _getToolView.lstToolForOPList = await _getToolRepository.GetByToolForOP(_getToolView.iOPId);
+            _getToolView.lstToolForOPList = await _getToolRepository.GetByToolForOP(_getToolView.iOPId); // Get list table tool for op
 
             if (_getToolView.lstToolForOPList != null)
             {
@@ -268,7 +276,7 @@ namespace itools_source.Presenters
 
                 foreach (var item in _getToolView.lstToolForOPList)
                 {
-                    _getToolView.lstToolButton.Add(_getToolView.CreateButton(item.Value, null, "Tool", item.Key));
+                    _getToolView.lstToolButton.Add(frm.CreateButton(item.Value, null, "Tool", item.Key));
                 }
 
                 // 2. Add to flowlayoutpanel.

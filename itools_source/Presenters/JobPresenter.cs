@@ -88,9 +88,9 @@ namespace itools_source.Presenters
 
             // 1. Clear and add old list button to flowlayoutpanel
             frmJobView.flpJobNumberList.Controls.Clear();
-            if (string.IsNullOrEmpty(_jobView.strJobNumberSearch))
+            if (string.IsNullOrEmpty(_jobView.strJobNumberSearch) || string.IsNullOrWhiteSpace(_jobView.strJobNumberSearch))
             {
-                frmJobView.flpJobNumberList.Controls.AddRange(frmJobView.lstJobNumberButton.ToArray());
+                //frmJobView.flpJobNumberList.Controls.AddRange(frmJobView.lstJobNumberButton.ToArray());
                 return;
             }
 

@@ -90,7 +90,7 @@ namespace itools_source.Views
         public int iToolId { get; set; }
         public string strTrayIndex { get; set; }
         public string strMachineCode { get; set; }
-        public Dictionary<string, string> lstMachineTray { get; set; }
+        public Dictionary<int, List<object>> lstTrayQuantity { get; set; }
         public List<Guna2GradientButton> lstTrayButton { get; set; }
         public SerialPort serialPortGetTool { get => serialPort_GetTool; set => serialPort_GetTool = value; }
         public Dictionary<int, List<object>> lstMachineTrayQuantity { get; set; }
@@ -199,9 +199,9 @@ namespace itools_source.Views
             // 2. Add button to Tray List.
             if (bCheck) // Machine tray.
             {
-                foreach (var item in this.lstMachineTray)
+                foreach (var item in this.lstTrayQuantity)
                 {
-                    this.lstTrayButton.Add(CreateButton(item.Key, item.Value, "Tray", null));
+                    this.lstTrayButton.Add(CreateButton(item.Value[0], item.Value[1], "Tray", null));
                 }
             }
             else // Machine tray quantity.

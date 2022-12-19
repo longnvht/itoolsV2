@@ -44,7 +44,7 @@ namespace itools_source.Views
             this.guna2VScrollBar_flpTrayList = new Guna.UI2.WinForms.Guna2VScrollBar();
             this._flpTrayList = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Elipse_pLeftContent = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.pLeftContent = new System.Windows.Forms.Panel();
+            this._pLeftContent = new System.Windows.Forms.Panel();
             this.tlpToolList = new System.Windows.Forms.TableLayoutPanel();
             this.txtToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pToolContent = new System.Windows.Forms.Panel();
