@@ -1,4 +1,5 @@
-﻿using Guna.UI2.WinForms;
+﻿using Google.Protobuf.Reflection;
+using Guna.UI2.WinForms;
 using itools_source.Models.Interface;
 using itools_source.Views;
 using itools_source.Views.Interface;
@@ -71,12 +72,13 @@ namespace itools_source.Presenters
             if (_jobView.iPartIDCurrent != null && !string.IsNullOrWhiteSpace(_jobView.strJobNumberCurrent))
             {
                 _jobView.lstOPNumberOPType = await _jobRepository.GetOPByJobPartOPID(_jobView.strJobNumberCurrent, _jobView.iPartIDCurrent);
-                if (_jobView.lstOPNumberOPType != null)
+                if (_jobView.lstOPNumberOPType != null && _jobView.strJobNumberCurrent != null)
                 {
+                    //MessageDialog.Show(_jobView.strJobNumberCurrent, "JobNumber", MessageDialogButtons.OK, MessageDialogIcon.Information, MessageDialogStyle.Default);
                     // Clear data.
                     // ???
                     // Clear data.
-                    _jobView.SetListOPNumberOPType(_jobView.lstOPNumberOPType); // Callback to form main or menu.
+                    _jobView.SetListOPNumberOPType(_jobView.lstOPNumberOPType, _jobView.strJobNumberCurrent); // Callback to form main or menu.
                 }
             }
         }

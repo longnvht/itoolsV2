@@ -119,13 +119,91 @@
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tlpFooter.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>6</value>
+  </data>
+  <data name="lblOPIdDisplay.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblOPIdDisplay.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblOPIdDisplay.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11.25pt</value>
+  </data>
+  <data name="lblOPIdDisplay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblOPIdDisplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>469, 0</value>
+  </data>
+  <data name="lblOPIdDisplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 50</value>
+  </data>
+  <data name="lblOPIdDisplay.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="lblOPIdDisplay.Text" xml:space="preserve">
+    <value>OPId: </value>
+  </data>
+  <data name="lblOPIdDisplay.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;lblOPIdDisplay.Name" xml:space="preserve">
+    <value>lblOPIdDisplay</value>
+  </data>
+  <data name="&gt;&gt;lblOPIdDisplay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblOPIdDisplay.Parent" xml:space="preserve">
+    <value>tlpFooter</value>
+  </data>
+  <data name="&gt;&gt;lblOPIdDisplay.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblJobNumberDisplay.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblJobNumberDisplay.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="lblJobNumberDisplay.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11.25pt</value>
+  </data>
+  <data name="lblJobNumberDisplay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblJobNumberDisplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 0</value>
+  </data>
+  <data name="lblJobNumberDisplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 50</value>
+  </data>
+  <data name="lblJobNumberDisplay.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblJobNumberDisplay.Text" xml:space="preserve">
+    <value>JobNumber: </value>
+  </data>
+  <data name="lblJobNumberDisplay.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;lblJobNumberDisplay.Name" xml:space="preserve">
+    <value>lblJobNumberDisplay</value>
+  </data>
+  <data name="&gt;&gt;lblJobNumberDisplay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblJobNumberDisplay.Parent" xml:space="preserve">
+    <value>tlpFooter</value>
+  </data>
+  <data name="&gt;&gt;lblJobNumberDisplay.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="_btnPrevious.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="_btnPrevious.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 11.25pt</value>
   </data>
@@ -154,7 +232,7 @@
     <value>tlpFooter</value>
   </data>
   <data name="&gt;&gt;_btnPrevious.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="_btnNext.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -163,13 +241,13 @@
     <value>Segoe UI, 11.25pt</value>
   </data>
   <data name="_btnNext.Location" type="System.Drawing.Point, System.Drawing">
-    <value>758, 4</value>
+    <value>756, 4</value>
   </data>
   <data name="_btnNext.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
   <data name="_btnNext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 42</value>
+    <value>174, 42</value>
   </data>
   <data name="_btnNext.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -187,7 +265,76 @@
     <value>tlpFooter</value>
   </data>
   <data name="&gt;&gt;_btnNext.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
+  </data>
+  <data name="_lblOPId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="_lblOPId.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="_lblOPId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11.25pt</value>
+  </data>
+  <data name="_lblOPId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>526, 0</value>
+  </data>
+  <data name="_lblOPId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 50</value>
+  </data>
+  <data name="_lblOPId.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="_lblOPId.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;_lblOPId.Name" xml:space="preserve">
+    <value>_lblOPId</value>
+  </data>
+  <data name="&gt;&gt;_lblOPId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_lblOPId.Parent" xml:space="preserve">
+    <value>tlpFooter</value>
+  </data>
+  <data name="&gt;&gt;_lblOPId.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="_lblJobNumber.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="_lblJobNumber.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="_lblJobNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11.25pt</value>
+  </data>
+  <data name="_lblJobNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="_lblJobNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>463, 0</value>
+  </data>
+  <data name="_lblJobNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 50</value>
+  </data>
+  <data name="_lblJobNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="_lblJobNumber.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;_lblJobNumber.Name" xml:space="preserve">
+    <value>_lblJobNumber</value>
+  </data>
+  <data name="&gt;&gt;_lblJobNumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_lblJobNumber.Parent" xml:space="preserve">
+    <value>tlpFooter</value>
+  </data>
+  <data name="&gt;&gt;_lblJobNumber.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="tlpFooter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -220,7 +367,7 @@
     <value>1</value>
   </data>
   <data name="tlpFooter.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="_btnPrevious" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="_btnNext" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,180,Percent,100,Absolute,180" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblOPIdDisplay" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lblJobNumberDisplay" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="_btnPrevious" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="_btnNext" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="_lblOPId" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="_lblJobNumber" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,180,Percent,30,Percent,20,Percent,10,Percent,40,Absolute,180" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tlpHeader.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>

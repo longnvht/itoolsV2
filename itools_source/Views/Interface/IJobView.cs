@@ -14,7 +14,7 @@ namespace itools_source.Views.Interface
         List<Guna2GradientButton> lstJobNumberButton { get; set; }
         SortedList<string, string> lstJobNumberPartID { get; set; }
         Dictionary<int?, Dictionary<string, string>> lstOPNumberOPType { get; set; }
-        Action<Dictionary<int?, Dictionary<string, string>>> SetListOPNumberOPType { get; set; }
+        Action<Dictionary<int?, Dictionary<string, string>>, string> SetListOPNumberOPType { get; set; }
         #endregion
         #region Events
         event EventHandler JobView_Load;

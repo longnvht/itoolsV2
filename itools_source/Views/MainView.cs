@@ -1,6 +1,8 @@
-﻿using itools_source.Models;
+﻿using Guna.UI2.WinForms;
+using itools_source.Models;
 using itools_source.Views.Interface;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -23,6 +25,38 @@ namespace itools_source.Views
         public UserAccount userAccountCurrent { get; set; }
         public string strRole { get => lblRole.Text; set => lblRole.Text = value; }
         public bool btnNextEnabled { get => btnNext.Enabled; set => btnNext.Enabled = value; }
+        public string strJobNumber
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_lblJobNumber.Text) || string.IsNullOrWhiteSpace(_lblJobNumber.Text))
+                {
+                    _lblJobNumber.ResetText();
+                }
+                return _lblJobNumber.Text;
+            }
+            set
+            {
+                _lblJobNumber.Text = value;
+            }
+        }
+        public int? iOPId
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_lblOPId.Text) || string.IsNullOrWhiteSpace(_lblOPId.Text))
+                {
+                    _lblOPId.ResetText();
+                    return null;
+                }
+                return Convert.ToInt32(_lblOPId.Text);
+            }
+            set
+            {
+                _lblOPId.Text = value.ToString();
+            }
+        }
+        public Dictionary<int?, Dictionary<string, string>> lstOPNumberOpType_Main { get; set; }
         #endregion
 
         #region Events

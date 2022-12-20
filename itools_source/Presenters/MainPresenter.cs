@@ -1,4 +1,5 @@
-﻿using itools_source.Models.Interface;
+﻿using Guna.UI2.WinForms;
+using itools_source.Models.Interface;
 using itools_source.Presenter;
 using itools_source.Repository;
 using itools_source.Views;
@@ -36,7 +37,6 @@ namespace itools_source.Presenters
         private IJobRepository _jobRepository;
         private IPermissionRepository _permissionRepository;
         private IMenuRepository _menuRepository;
-        private Dictionary<int?, Dictionary<string, string>> _lstOPNumberOpType_Main = null;
         #endregion
 
         #region Events
@@ -108,7 +108,7 @@ namespace itools_source.Presenters
                             }
                             else
                             {
-                                OpenOPView(jobView.lstOPNumberOPType);
+                                OpenOPView(jobView.lstOPNumberOPType, jobView.strJobNumberCurrent);
                             }
                             break;
                         case nameof(OPView):
@@ -167,6 +167,7 @@ namespace itools_source.Presenters
                             _menuView = MenuView.GetInstance((MainView)_mainView);
                             _menuRepository = new MenuRepository();
                             new MenuPresenter(_menuView, _menuRepository, _mainView);
+                            _mainView.strJobNumber = null;
                             break;
                         // Get data
                         case nameof(OPView):
@@ -177,10 +178,15 @@ namespace itools_source.Presenters
                                 _jobRepository = new JobRepository();
                             }
                             new JobPresenter(_jobView, _jobRepository);
+                            _mainView.iOPId = null;
                             break;
                         case nameof(GetToolView):
                             IOPView oPView = OPView.GetInstance((MainView)_mainView);
-                            oPView.lstOPNumberOPType = _lstOPNumberOpType_Main;
+                            if (_mainView.lstOPNumberOpType_Main != null)
+                            {
+                                oPView.lstOPNumberOPType = _mainView.lstOPNumberOpType_Main;
+                            }
+                            
                             oPView.GetToolViewAction = OpenGetToolView;
                             if (_getToolRepository == null)
                             {
@@ -220,41 +226,98 @@ namespace itools_source.Presenters
         #endregion
 
         #region Methods
-        public void OpenOPView(Dictionary<int?, Dictionary<string, string>> lstOPNumberOpType)
+        public void OpenOPView(Dictionary<int?, Dictionary<string, string>> lstOPNumberOpType, string strJobNumber)
         {
             // 1. Data transmission
-            IOPView oPView = OPView.GetInstance((MainView)_mainView);
-            _lstOPNumberOpType_Main = lstOPNumberOpType;
-            oPView.lstOPNumberOPType = lstOPNumberOpType;
-            oPView.GetToolViewAction = OpenGetToolView;
-
-            // 2. Close JobView, open OPView.
-            if (_getToolRepository == null)
+            if (_mainView != null)
             {
-                _getToolRepository = new GetToolRepository();
-            }
-            _mainView.CloseFormChild();
-            new OPPresenter(oPView, _getToolRepository);
+                IOPView oPView = OPView.GetInstance((MainView)_mainView);
 
-            _log.Info("Form close: " + typeof(JobView).Name + ", Open: " + typeof(OPView).Name);
+                if (oPView != null)
+                {
+                    if (!string.IsNullOrEmpty(strJobNumber) && !string.IsNullOrWhiteSpace(strJobNumber))
+                    {
+                        _mainView.strJobNumber = strJobNumber;
+                    }
+
+                    if (lstOPNumberOpType != null)
+                    {
+                        _mainView.lstOPNumberOpType_Main = lstOPNumberOpType;
+                        oPView.lstOPNumberOPType = lstOPNumberOpType;
+                    }
+
+                    oPView.GetToolViewAction = OpenGetToolView;
+
+                    // 2. Close JobView, open OPView.
+                    if (_getToolRepository == null)
+                    {
+                        _getToolRepository = new GetToolRepository();
+                    }
+                    _mainView.CloseFormChild();
+                    new OPPresenter(oPView, _getToolRepository);
+
+                    _log.Info("Form close: " + typeof(JobView).Name + ", Open: " + typeof(OPView).Name);
+                }
+                else
+                {
+                    _log.Error("oPView is null");
+                }
+            }
+            else
+            {
+                _log.Error("_mainView is null.");
+            }
         }
 
         public void OpenGetToolView(int? iOPId)
         {
             // 1. Data transmission
-            GetToolView getToolView = GetToolView.GetInstance((MainView)_mainView);
-            getToolView.iOPId = iOPId;
-            getToolView.EnabledButton = ToggleButton;
-
-            // 2. Close OPView, open GetToolView
-            if (_getToolRepository == null)
+            if (_mainView != null)
             {
-                _getToolRepository = new GetToolRepository();
-            }
-            _mainView.CloseFormChild();
-            new GetToolPresenter(getToolView, _getToolRepository);
+                GetToolView getToolView = GetToolView.GetInstance((MainView)_mainView);
 
-            _log.Info("Form close: " + typeof(OPView).Name + ", Open: " + typeof(GetToolView).Name);
+                if (getToolView != null)
+                {
+                    if (iOPId != null)
+                    {
+                        _mainView.iOPId = iOPId;
+                        getToolView.iOPId = _mainView.iOPId;
+                    }
+                    else
+                    {
+                        _log.Error("iOPId is null.");
+                    }
+
+                    if (_mainView.strJobNumber != null)
+                    {
+                        getToolView.strJobNumber = _mainView.strJobNumber;
+                    }
+                    else
+                    {
+                        _log.Error("_mainView.strJobNumber is null.");
+                    }
+
+                    getToolView.EnabledButton = ToggleButton;
+
+                    // 2. Close OPView, open GetToolView
+                    if (_getToolRepository == null)
+                    {
+                        _getToolRepository = new GetToolRepository();
+                    }
+                    _mainView.CloseFormChild();
+                    new GetToolPresenter(getToolView, _getToolRepository);
+
+                    _log.Info("Form close: " + typeof(OPView).Name + ", Open: " + typeof(GetToolView).Name);
+                }
+                else
+                {
+                    _log.Error("getToolView is null");
+                }
+            }
+            else
+            {
+                _log.Error("_mainView is null");
+            }
         }
 
         public void ToggleButton(bool bToggle)

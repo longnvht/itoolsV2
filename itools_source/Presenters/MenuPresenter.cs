@@ -34,7 +34,6 @@ namespace itools_source.Presenters
         private IMainView _mainView;
         private IGetToolRepository _getToolRepository;
         private IJobRepository _jobRepository;
-        private Dictionary<int?, Dictionary<string, string>> _lstOPNumberOpType_Main = null;
         #endregion
 
         #region Events
@@ -143,12 +142,36 @@ namespace itools_source.Presenters
             }
         }
 
-        public void OpenOPView(Dictionary<int?, Dictionary<string, string>> lstOPNumberOpType)
+        public void OpenOPView(Dictionary<int?, Dictionary<string, string>> lstOPNumberOpType, string strJobNumber)
         {
+            if (_mainView == null)
+            {
+                _log.Error("_mainView is Null");
+                return;
+            }
+
             // 1. Data transmission
             IOPView oPView = OPView.GetInstance((MainView)_mainView);
-            _lstOPNumberOpType_Main = lstOPNumberOpType;
-            oPView.lstOPNumberOPType = lstOPNumberOpType;
+
+            if (lstOPNumberOpType != null)
+            {
+                _mainView.lstOPNumberOpType_Main = lstOPNumberOpType;
+                oPView.lstOPNumberOPType = lstOPNumberOpType;
+            }
+            else
+            {
+                _log.Error("lstOPNumberOpType is null.");
+            }
+
+            if (strJobNumber != null)
+            {
+                _mainView.strJobNumber = strJobNumber;
+            }
+            else
+            {
+                _log.Error("strJobNumber is null.");
+            }
+            
             oPView.GetToolViewAction = OpenGetToolView;
 
             // 2. Close JobView, open OPView.
@@ -165,19 +188,32 @@ namespace itools_source.Presenters
         public void OpenGetToolView(int? iOPId)
         {
             // 1. Data transmission
-            GetToolView getToolView = GetToolView.GetInstance((MainView)_mainView);
-            getToolView.iOPId = iOPId;
-            getToolView.EnabledButton = ToggleButton;
-
-            // 2. Close OPView, open GetToolView
-            _mainView.CloseFormChild();
-            if (_getToolRepository == null)
+            if (_mainView != null)
             {
-                _getToolRepository = new GetToolRepository();
-            }
-            new GetToolPresenter(getToolView, _getToolRepository);
+                GetToolView getToolView = GetToolView.GetInstance((MainView)_mainView);
+                if (iOPId != null)
+                {
+                    _mainView.iOPId = iOPId;
+                    getToolView.iOPId = _mainView.iOPId;
+                }
+                
+                getToolView.strJobNumber = _mainView.strJobNumber;
+                getToolView.EnabledButton = ToggleButton;
 
-            _log.Info("Form close: " + typeof(OPView).Name + ", Open: " + typeof(GetToolView).Name);
+                // 2. Close OPView, open GetToolView
+                _mainView.CloseFormChild();
+                if (_getToolRepository == null)
+                {
+                    _getToolRepository = new GetToolRepository();
+                }
+                new GetToolPresenter(getToolView, _getToolRepository);
+
+                _log.Info("Form close: " + typeof(OPView).Name + ", Open: " + typeof(GetToolView).Name);
+            }
+            else
+            {
+                _log.Error("_mainView is Null");
+            }
         }
 
         public void ToggleButton(bool bToggle)

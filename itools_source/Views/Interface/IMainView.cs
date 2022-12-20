@@ -1,5 +1,6 @@
 ﻿using itools_source.Models;
 using System;
+using System.Collections.Generic;
 
 namespace itools_source.Views.Interface
 {
@@ -10,6 +11,9 @@ namespace itools_source.Views.Interface
         string strName { get; set; }
         string strRole { get; set; }
         bool btnNextEnabled { get; set; }
+        string strJobNumber { get; set; }
+        int? iOPId { get; set; }
+        Dictionary<int?, Dictionary<string, string>> lstOPNumberOpType_Main { get; set; }
         #endregion
 
         #region Events

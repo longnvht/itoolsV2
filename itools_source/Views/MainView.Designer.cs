@@ -30,11 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.tlpFooter = new System.Windows.Forms.TableLayoutPanel();
+            this._lblJobNumber = new System.Windows.Forms.Label();
             this._btnPrevious = new Guna.UI2.WinForms.Guna2Button();
+            this._lblOPId = new System.Windows.Forms.Label();
             this._btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
             this.lblRole = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
+            this.lblJobNumberDisplay = new System.Windows.Forms.Label();
+            this.lblOPIdDisplay = new System.Windows.Forms.Label();
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             this.SuspendLayout();
@@ -43,9 +47,18 @@
             // 
             this.tlpFooter.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.tlpFooter, "tlpFooter");
+            this.tlpFooter.Controls.Add(this.lblOPIdDisplay, 3, 0);
+            this.tlpFooter.Controls.Add(this.lblJobNumberDisplay, 1, 0);
             this.tlpFooter.Controls.Add(this._btnPrevious, 0, 0);
-            this.tlpFooter.Controls.Add(this._btnNext, 2, 0);
+            this.tlpFooter.Controls.Add(this._btnNext, 5, 0);
+            this.tlpFooter.Controls.Add(this._lblOPId, 4, 0);
+            this.tlpFooter.Controls.Add(this._lblJobNumber, 2, 0);
             this.tlpFooter.Name = "tlpFooter";
+            // 
+            // _lblJobNumber
+            // 
+            resources.ApplyResources(this._lblJobNumber, "_lblJobNumber");
+            this._lblJobNumber.Name = "_lblJobNumber";
             // 
             // _btnPrevious
             // 
@@ -58,6 +71,11 @@
             resources.ApplyResources(this._btnPrevious, "_btnPrevious");
             this._btnPrevious.ForeColor = System.Drawing.Color.White;
             this._btnPrevious.Name = "_btnPrevious";
+            // 
+            // _lblOPId
+            // 
+            resources.ApplyResources(this._lblOPId, "_lblOPId");
+            this._lblOPId.Name = "_lblOPId";
             // 
             // _btnNext
             // 
@@ -89,6 +107,16 @@
             resources.ApplyResources(this.lblName, "lblName");
             this.lblName.Name = "lblName";
             // 
+            // lblJobNumberDisplay
+            // 
+            resources.ApplyResources(this.lblJobNumberDisplay, "lblJobNumberDisplay");
+            this.lblJobNumberDisplay.Name = "lblJobNumberDisplay";
+            // 
+            // lblOPIdDisplay
+            // 
+            resources.ApplyResources(this.lblOPIdDisplay, "lblOPIdDisplay");
+            this.lblOPIdDisplay.Name = "lblOPIdDisplay";
+            // 
             // MainView
             // 
             resources.ApplyResources(this, "$this");
@@ -98,6 +126,7 @@
             this.IsMdiContainer = true;
             this.Name = "MainView";
             this.tlpFooter.ResumeLayout(false);
+            this.tlpFooter.PerformLayout();
             this.tlpHeader.ResumeLayout(false);
             this.tlpHeader.PerformLayout();
             this.ResumeLayout(false);
@@ -105,13 +134,21 @@
         }
 
         #endregion
-        private System.Windows.Forms.TableLayoutPanel tlpFooter;
-        private System.Windows.Forms.TableLayoutPanel tlpHeader;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.Label _lblOPId;
+        public System.Windows.Forms.Label lblOPId
+        {
+            get { return _lblOPId; }
+            set { _lblOPId = value; }
+        }
+
+        private System.Windows.Forms.Label _lblJobNumber;
+        public System.Windows.Forms.Label lblJobNumber
+        {
+            get { return _lblJobNumber; }
+            set { _lblJobNumber = value; }
+        }
 
         private Guna.UI2.WinForms.Guna2Button _btnPrevious;
-        
         public Guna.UI2.WinForms.Guna2Button btnPrevious
         {
             get { return _btnPrevious; }
@@ -119,11 +156,17 @@
         }
 
         private Guna.UI2.WinForms.Guna2Button _btnNext;
-
         public Guna.UI2.WinForms.Guna2Button btnNext
         {
             get { return _btnNext; }
             set { _btnNext = value; }
         }
+
+        private System.Windows.Forms.TableLayoutPanel tlpFooter;
+        private System.Windows.Forms.TableLayoutPanel tlpHeader;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.Label lblJobNumberDisplay;
+        private System.Windows.Forms.Label lblOPIdDisplay;
     }
 }

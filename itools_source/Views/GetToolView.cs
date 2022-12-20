@@ -46,6 +46,7 @@ namespace itools_source.Views
             }
             return _instance;
         }
+        public string strJobNumber { get; set; }
         public int? iOPId { get; set; }
         public char cStatusForm { get; set; }
         public List<Guna2GradientButton> lstToolButton { get; set; }
@@ -253,6 +254,16 @@ namespace itools_source.Views
                     }
                 }
             }
+        }
+
+        public void GetJobNumberInMainView()
+        {
+            MessageDialog.Show(((MainView)MdiParent).strJobNumber);
+        }
+
+        public void GetOPIdInMainView()
+        {
+            MessageDialog.Show(((MainView)MdiParent).iOPId.ToString());
         }
         #endregion
 

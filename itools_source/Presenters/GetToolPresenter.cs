@@ -1,5 +1,7 @@
 ﻿using Guna.UI2.WinForms;
+using itools_source.Models;
 using itools_source.Models.Interface;
+using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
@@ -25,7 +27,7 @@ namespace itools_source.Presenters
             _getToolView.btnflpToolList_Click += _getToolView_btnflpToolList_Click;
             _getToolView.btnflpTrayMachineList_Click += _getToolView_btnflpTrayMachineList_Click;
             _getToolView.btnflpTrayMachineList_DoubleClick += _getToolView_btnflpTrayMachineList_DoubleClick;
-            _getToolView.toggleShowAll_Click += _getToolView_btnShowAll_DoubleClick;
+            _getToolView.toggleShowAll_Click += _getToolView_toggleShowAll_Click;
 
             _getToolView.Show();
         }
@@ -39,7 +41,7 @@ namespace itools_source.Presenters
         #endregion
 
         #region Evens
-        private async void _getToolView_btnShowAll_DoubleClick(object sender, EventArgs e)
+        private async void _getToolView_toggleShowAll_Click(object sender, EventArgs e)
         {
             GetToolView frm = (GetToolView)sender;
             if (!bToggle)
@@ -84,12 +86,12 @@ namespace itools_source.Presenters
                 _log.Info("Not connect COM!");
                 return;
             }
-            if (!_getToolView.serialPortGetTool.IsOpen)
+            if (!_getToolView.serialPortGetTool.IsOpen && !string.IsNullOrEmpty(Properties.Settings.Default.SerialPort) && !string.IsNullOrWhiteSpace(Properties.Settings.Default.SerialPort))
             {
                 foreach (var item in SerialPort.GetPortNames())
                 {
                     _getToolView.serialPortGetTool.PortName = item;
-                    if (_getToolView.serialPortGetTool.PortName != "COM1")
+                    if (_getToolView.serialPortGetTool.PortName == Properties.Settings.Default.SerialPort)
                     {
                         _getToolView.serialPortGetTool.Open();
                         break;
@@ -235,6 +237,27 @@ namespace itools_source.Presenters
                 string strReadLine = _getToolView.serialPortGetTool.ReadLine().Substring(0, 3);
                 if (strReadLine == "123")
                 {
+                    // Get information workingtransaction.
+                    //WorkingTransaction workingTransaction = new WorkingTransaction();
+                    //workingTransaction.dtTransactionDate = _toolManagerView.toolTrayCurrent.dtUpdateDate;
+                    //workingTransaction.iMachineId = _toolManagerView.iMachineId;
+                    //if (Properties.Settings.Default.CompanyId != 0)
+                    //{
+                    //    workingTransaction.iCompanyId = Properties.Settings.Default.CompanyId;
+                    //}
+                    //if (Program.sessionLogin["UserName"] != null)
+                    //{
+                    //    workingTransaction.strUserLogin = Program.sessionLogin["UserName"].ToString();
+                    //}
+                    //workingTransaction.strJobNumber = null;
+                    //workingTransaction.strOPNumber = null;
+                    //workingTransaction.iTrayId = _toolManagerView.iTrayID;
+                    //workingTransaction.iQuantity = _toolManagerView.iOperateQuantity.Value;
+                    //workingTransaction.strTransactionStatus = "Complete";
+
+                    // Add workingtransaction.
+                    IWorkingTransactionRepository workingTransactionRepository = new WorkingTransactionRepository();
+
                     MessageBox.Show("Get tool success.");
                     _log.Info("Get tool success.");
                     _getToolView.serialPortGetTool.Close();
@@ -245,6 +268,8 @@ namespace itools_source.Presenters
 
         private async void _getToolView_GetToolView_Load(object sender, EventArgs e)
         {
+            MessageDialog.Show("JobNumber: " + _getToolView.strJobNumber +
+                                "\nOPId: " + _getToolView.iOPId.ToString());
             GetToolView frm = (GetToolView)sender;
 
             if (_getToolView == null || _getToolRepository == null)

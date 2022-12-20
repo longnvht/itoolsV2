@@ -9,6 +9,7 @@ namespace itools_source.Views.Interface
     public interface IGetToolView
     {
         #region Properties - Fields
+        string strJobNumber { get; set; }
         int? iOPId { get; set; }
         int iToolId { get; set; }
         string strToolCode { get; set; }
