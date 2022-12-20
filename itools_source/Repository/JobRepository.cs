@@ -1,9 +1,12 @@
-﻿using itools_source.Models.Interface;
+﻿using Guna.UI2.WinForms;
+using itools_source.Models.Interface;
 using itools_source.Utils;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace itools_source.Repository
 {
@@ -69,8 +72,8 @@ namespace itools_source.Repository
 
         public async Task<Dictionary<int?, Dictionary<string, string>>> GetOPByJobPartOPID(string strJobNumber, int? iPartID)
         {
-            Dictionary<int?, Dictionary<string, string>> lstOPList = new Dictionary<int?, Dictionary<string, string>>();
-            Dictionary<string, string> lstOPNumberOPType = new Dictionary<string, string>();
+            Dictionary<int?, Dictionary<string, string>> lstOPList = null;
+            
             string strQueryProcedure = @"GetOPByJobPartOPID";
 
             _log.Info("Store procedure query: " + strQueryProcedure);
@@ -115,32 +118,27 @@ namespace itools_source.Repository
                 {
                     using (MySqlDataReader mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strQueryProcedure, lstPar.ToArray(), mySqlConnection))
                     {
-                        if (lstOPList == null)
-                        {
-                            _log.Error("Variable lstOPList is Null!");
-                            return null;
-                        }
                         if (mySqlDataReader != null)
                         {
-                            if (lstOPNumberOPType == null)
+                            if (lstOPList == null)
                             {
-                                _log.Error("Variable lstOPNumberOPType is Null!");
-                                return null;
+                                lstOPList = new Dictionary<int?, Dictionary<string, string>>();
                             }
 
-                            if (mySqlDataReader != null)
+                            Dictionary<string, string> lstOPNumberOPType = null;
+                            while (await mySqlDataReader.ReadAsync())
                             {
-                                while (await mySqlDataReader.ReadAsync())
+                                lstOPNumberOPType = new Dictionary<string, string>();
+                                if (!await mySqlDataReader.IsDBNullAsync(1) && !await mySqlDataReader.IsDBNullAsync(2))
                                 {
-                                    if (!await mySqlDataReader.IsDBNullAsync(1) && !await mySqlDataReader.IsDBNullAsync(2))
-                                    {
-                                        lstOPNumberOPType.Add(mySqlDataReader.GetString(1), mySqlDataReader.GetString(2));
-                                    }
+                                    lstOPNumberOPType.Add(mySqlDataReader.GetString(1), mySqlDataReader.GetString(2));
+                                    //MessageDialog.Show("OPNumber: " + lstOPNumberOPType.Keys.ElementAt(0) +
+                                    //    "\nOPType: " + lstOPNumberOPType.Values.ElementAt(0));
+                                }
 
-                                    if (!await mySqlDataReader.IsDBNullAsync(0))
-                                    {
-                                        lstOPList.Add(mySqlDataReader.GetInt32(0), lstOPNumberOPType);
-                                    }
+                                if (!await mySqlDataReader.IsDBNullAsync(0))
+                                {
+                                    lstOPList.Add(mySqlDataReader.GetInt32(0), lstOPNumberOPType);
                                 }
                             }
                             mySqlDataReader.Close();

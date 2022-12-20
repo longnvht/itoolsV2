@@ -1,5 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using itools_source.Views.Interface;
+using Org.BouncyCastle.Bcpg.OpenPgp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace itools_source.Views
         }
         public List<Guna2GradientButton> lstButton { get; set; }
         public Dictionary<int?, Dictionary<string, string>> lstOPNumberOPType { get; set; }
-        public Action<int?> GetToolViewAction { get; set; }
+        public Action<int?, string> GetToolViewAction { get; set; }
 
         // Singleton pattern (Open a single form instance)
         private static OPView _instance;
@@ -69,9 +70,11 @@ namespace itools_source.Views
         #region Methods
         public Guna2GradientButton CreateButton(int? iIndex = null)
         {
-            Guna2GradientButton btn = new Guna2GradientButton();
-            btn.Animated = true;
-            btn.BorderRadius = 10;
+            Guna2GradientButton btn = new Guna2GradientButton
+            {
+                Animated = true,
+                BorderRadius = 10
+            };
             btn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             btn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             btn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -86,9 +89,11 @@ namespace itools_source.Views
             btn.Size = new System.Drawing.Size(122, 80);
             if (iIndex != null)
             {
-                int? iKey = this.lstOPNumberOPType.Keys.ElementAt(iIndex.Value);
-                btn.Tag = iKey;
-                btn.Text = this.lstOPNumberOPType[iKey].Keys.ElementAt(iIndex.Value) + "\r\n" + this.lstOPNumberOPType[iKey].Values.ElementAt(iIndex.Value);
+                btn.Tag = this.lstOPNumberOPType.Keys.ElementAt(iIndex.Value);
+
+                string strOPNumber = this.lstOPNumberOPType.Values.ElementAt(iIndex.Value).Keys.ElementAt(0);
+                string strOPType = this.lstOPNumberOPType.Values.ElementAt(iIndex.Value).Values.ElementAt(0);
+                btn.Text = strOPNumber + "\r\n" + strOPType;
             }
             btn.DoubleClick += (s, e) => { btnflpOPlList_DoubleClick?.Invoke(s, e); };
             btn.Click += (s, e) => { btnflpOPlList_Click?.Invoke(s, e); };

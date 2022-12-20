@@ -48,6 +48,7 @@ namespace itools_source.Views
         }
         public string strJobNumber { get; set; }
         public int? iOPId { get; set; }
+        public string strOPNumber { get; set; }
         public char cStatusForm { get; set; }
         public List<Guna2GradientButton> lstToolButton { get; set; }
         public Dictionary<int, string> lstToolForOPList { get; set; }
@@ -87,7 +88,6 @@ namespace itools_source.Views
             }
             set => txtDescription.Text = value;
         }
-
         public int iToolId { get; set; }
         public string strTrayIndex { get; set; }
         public string strMachineCode { get; set; }
@@ -96,14 +96,17 @@ namespace itools_source.Views
         public SerialPort serialPortGetTool { get => serialPort_GetTool; set => serialPort_GetTool = value; }
         public Dictionary<int, List<object>> lstMachineTrayQuantity { get; set; }
         public Action<bool> EnabledButton { get; set; }
+        public int? iTrayId { get; set; }
         #endregion
 
         #region Methods
         public Guna2GradientButton CreateButton(object strText, object iQuantity, string strEventName, object obTag = null)
         {
-            Guna2GradientButton btn = new Guna2GradientButton();
-            btn.Animated = true;
-            btn.BorderRadius = 10;
+            Guna2GradientButton btn = new Guna2GradientButton
+            {
+                Animated = true,
+                BorderRadius = 10
+            };
             btn.DisabledState.BorderColor = Color.DarkGray;
             btn.DisabledState.CustomBorderColor = Color.DarkGray;
             btn.DisabledState.FillColor = Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -202,14 +205,14 @@ namespace itools_source.Views
             {
                 foreach (var item in this.lstTrayQuantity)
                 {
-                    this.lstTrayButton.Add(CreateButton(item.Value[0], item.Value[1], "Tray", null));
+                    this.lstTrayButton.Add(CreateButton(item.Value[0], item.Value[1], "Tray", item.Key));
                 }
             }
             else // Machine tray quantity.
             {
                 foreach (var item in this.lstMachineTrayQuantity)
                 {
-                    this.lstTrayButton.Add(CreateButton(item.Value[0] + " - " + item.Value[1], item.Value[2], "Tray", null));
+                    this.lstTrayButton.Add(CreateButton(item.Value[0] + " - " + item.Value[1], item.Value[2], "Tray", item.Key));
                 }
             }
 

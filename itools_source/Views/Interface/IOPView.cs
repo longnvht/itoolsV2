@@ -12,7 +12,7 @@ namespace itools_source.Views.Interface
         string strSearch { get; set; }
         List<Guna2GradientButton> lstButton { get; set; }
         Dictionary<int?, Dictionary<string, string>> lstOPNumberOPType { get; set; }
-        Action<int?> GetToolViewAction { get; set; }
+        Action<int?, string> GetToolViewAction { get; set; }
         #endregion
 
         #region Events

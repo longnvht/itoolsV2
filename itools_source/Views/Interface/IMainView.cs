@@ -12,6 +12,7 @@ namespace itools_source.Views.Interface
         string strRole { get; set; }
         bool btnNextEnabled { get; set; }
         string strJobNumber { get; set; }
+        string strOPNumber { get; set; }
         int? iOPId { get; set; }
         Dictionary<int?, Dictionary<string, string>> lstOPNumberOpType_Main { get; set; }
         #endregion

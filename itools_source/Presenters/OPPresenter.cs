@@ -4,6 +4,7 @@ using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace itools_source.Presenters
 {
@@ -57,9 +58,10 @@ namespace itools_source.Presenters
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;
             _opView.iOPId = Convert.ToInt32(btn.Tag);
+            string strOPNumber = btn.Text.Split('\r').GetValue(0).ToString();
             if (_opView.iOPId != null)
             {
-                _opView.GetToolViewAction(_opView.iOPId);
+                _opView.GetToolViewAction(_opView.iOPId, strOPNumber);
             }
             _log.Info("Double click OPId: " + _opView.iOPId);
         }

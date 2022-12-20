@@ -5,6 +5,7 @@ using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace itools_source.Presenters
 {
@@ -74,11 +75,14 @@ namespace itools_source.Presenters
                 _jobView.lstOPNumberOPType = await _jobRepository.GetOPByJobPartOPID(_jobView.strJobNumberCurrent, _jobView.iPartIDCurrent);
                 if (_jobView.lstOPNumberOPType != null && _jobView.strJobNumberCurrent != null)
                 {
-                    //MessageDialog.Show(_jobView.strJobNumberCurrent, "JobNumber", MessageDialogButtons.OK, MessageDialogIcon.Information, MessageDialogStyle.Default);
                     // Clear data.
                     // ???
                     // Clear data.
                     _jobView.SetListOPNumberOPType(_jobView.lstOPNumberOPType, _jobView.strJobNumberCurrent); // Callback to form main or menu.
+                }
+                else
+                {
+                    _log.Error("_jobView.lstOPNumberOPType and _jobView.strJobNumberCurrent is null.");
                 }
             }
         }
@@ -91,13 +95,15 @@ namespace itools_source.Presenters
             frmJobView.flpJobNumberList.Controls.Clear();
             if (string.IsNullOrEmpty(_jobView.strJobNumberSearch) || string.IsNullOrWhiteSpace(_jobView.strJobNumberSearch))
             {
-                //frmJobView.flpJobNumberList.Controls.AddRange(frmJobView.lstJobNumberButton.ToArray());
                 return;
             }
 
             // 2. Select JobNumber and PartID.
             _jobView.lstJobNumberPartID = await _jobRepository.GetJobByJobNumber(_jobView.strJobNumberSearch);
-            _log.Info("User: " + Program.sessionLogin["UserName"] + ", Search JobNumber: " + _jobView.strJobNumberSearch);
+            if (Program.sessionLogin["UserName"] != null && !string.IsNullOrEmpty(_jobView.strJobNumberSearch))
+            {
+                _log.Info("User: " + Program.sessionLogin["UserName"] + ", Search JobNumber: " + _jobView.strJobNumberSearch);
+            }
 
             // 3. Rename text button.
             List<Guna2GradientButton> lstSearch = new List<Guna2GradientButton>();

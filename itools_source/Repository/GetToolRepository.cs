@@ -76,8 +76,9 @@ namespace itools_source.Repository
 
         public async Task<Dictionary<int, Dictionary<string, string>>> GetModelDescriptionByToolId(int iToolId) // Tool
         {
-            // 0. ToolModel
-            // 1. ToolDescription
+            // 0. ToolId
+            // 1.0. ToolModel
+            // 1.1. ToolDescription
             Dictionary<int, Dictionary<string, string>> lstToolModelDes = new Dictionary<int, Dictionary<string, string>>();
             string strQueryProcedure = @"GetModelDescriptionByToolId";
             _log.Info("Store procedure query: " + strQueryProcedure);
@@ -117,12 +118,12 @@ namespace itools_source.Repository
 
                                 if (!await mySqlDataReader.IsDBNullAsync(1) && !await mySqlDataReader.IsDBNullAsync(2))
                                 {
-                                    // ToolModel, ToolDescription
-                                    lstModelDes.Add(mySqlDataReader.GetString(0), mySqlDataReader.GetString(1));
+                                    // 1.0. ToolModel, 1.1. ToolDescription
+                                    lstModelDes.Add(mySqlDataReader.GetString(1), mySqlDataReader.GetString(2));
                                 }
                                 if (!await mySqlDataReader.IsDBNullAsync(0))
                                 {
-                                    // ToolID
+                                    // 0. ToolID
                                     lstToolModelDes.Add(mySqlDataReader.GetInt32(0), lstModelDes);
                                 }
                             }

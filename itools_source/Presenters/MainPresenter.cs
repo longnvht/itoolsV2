@@ -119,7 +119,15 @@ namespace itools_source.Presenters
                             }
                             else
                             {
-                                OpenGetToolView(oPview.iOPId);
+                                if (oPview.iOPId != null)
+                                {
+                                    if (oPview.lstOPNumberOPType.ContainsKey(oPview.iOPId))
+                                    {
+                                        string strOPNumber = oPview.lstOPNumberOPType[oPview.iOPId].Keys.ElementAt(0);
+                                        OpenGetToolView(iOPId: oPview.iOPId, strOPNumber: strOPNumber);
+                                    }
+                                }
+
                                 frmMain.btnNext.Enabled = false;
                             }
                             break;
@@ -269,7 +277,7 @@ namespace itools_source.Presenters
             }
         }
 
-        public void OpenGetToolView(int? iOPId)
+        public void OpenGetToolView(int? iOPId, string strOPNumber)
         {
             // 1. Data transmission
             if (_mainView != null)
@@ -288,13 +296,22 @@ namespace itools_source.Presenters
                         _log.Error("iOPId is null.");
                     }
 
-                    if (_mainView.strJobNumber != null)
+                    if (!string.IsNullOrEmpty(_mainView.strJobNumber) && !string.IsNullOrWhiteSpace(_mainView.strJobNumber))
                     {
                         getToolView.strJobNumber = _mainView.strJobNumber;
                     }
                     else
                     {
                         _log.Error("_mainView.strJobNumber is null.");
+                    }
+
+                    if (!string.IsNullOrEmpty(strOPNumber) && !string.IsNullOrWhiteSpace(strOPNumber))
+                    {
+                        getToolView.strOPNumber = strOPNumber;
+                    }
+                    else
+                    {
+                        _log.Error("strOPNumber is null.");
                     }
 
                     getToolView.EnabledButton = ToggleButton;

@@ -185,7 +185,7 @@ namespace itools_source.Presenters
             _log.Info("Form close: " + typeof(JobView).Name + ", Open: " + typeof(OPView).Name);
         }
 
-        public void OpenGetToolView(int? iOPId)
+        public void OpenGetToolView(int? iOPId, string strOPNumber)
         {
             // 1. Data transmission
             if (_mainView != null)
@@ -195,6 +195,11 @@ namespace itools_source.Presenters
                 {
                     _mainView.iOPId = iOPId;
                     getToolView.iOPId = _mainView.iOPId;
+                }
+
+                if (!string.IsNullOrEmpty(strOPNumber) && !string.IsNullOrWhiteSpace(strOPNumber))
+                {
+                    getToolView.strOPNumber = strOPNumber;
                 }
                 
                 getToolView.strJobNumber = _mainView.strJobNumber;

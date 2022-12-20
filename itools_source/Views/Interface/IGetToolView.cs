@@ -11,6 +11,8 @@ namespace itools_source.Views.Interface
         #region Properties - Fields
         string strJobNumber { get; set; }
         int? iOPId { get; set; }
+        string strOPNumber { get; set; }
+        int? iTrayId { get; set; }
         int iToolId { get; set; }
         string strToolCode { get; set; }
         string strToolModel { get; set; }

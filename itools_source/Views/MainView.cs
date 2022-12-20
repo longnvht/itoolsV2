@@ -40,6 +40,7 @@ namespace itools_source.Views
                 _lblJobNumber.Text = value;
             }
         }
+        public string strOPNumber { get; set; }
         public int? iOPId
         {
             get

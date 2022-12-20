@@ -4,6 +4,7 @@ using itools_source.Models.Interface;
 using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
@@ -50,8 +51,9 @@ namespace itools_source.Presenters
                 if (_getToolView.lstMachineTrayQuantity != null)
                 {
                     frm.flpTrayMachineList.Controls.Clear();
-                    _getToolView.CreateListButton(false);
+                    _getToolView.CreateListButton(false); // MachineCode, ToolCode, Quantity
                     bToggle = true;
+                    frm.flpTrayMachineList.Enabled = true;
                 }
             }
             else
@@ -66,32 +68,63 @@ namespace itools_source.Presenters
 
         private void _getToolView_btnflpTrayMachineList_DoubleClick(object sender, EventArgs e)
         {
+            if (_getToolView == null)
+            {
+                _log.Error("_getToolView is null.");
+                return;
+            }
             _getToolView.SetCheckedButton("");
             _getToolView.cStatusForm = '4';
             _getToolView.SetStatusForm();
+
             Guna2GradientButton btn = (Guna2GradientButton)sender;
+            if (btn == null)
+            {
+                _log.Error("button is null.");
+                return;
+            }
+
             if (string.IsNullOrEmpty(btn.Text))
             {
                 MessageBox.Show("Nút Không Có Dữ Liệu!");
                 return;
             }
 
+            if (btn.Tag != null)
+            {
+                _getToolView.iTrayId = Convert.ToInt32(_getToolView.iTrayId);
+            }
+
             _getToolView.strTrayIndex = btn.Text.Split('\n').GetValue(0).ToString();
 
             string strSendSerialCom = "125," + _getToolView.strTrayIndex.Split('_').GetValue(1).ToString() + "|";
-            //MessageBox.Show(strSendSerialCom);
+
             if (SerialPort.GetPortNames().Length == 0)
             {
                 MessageBox.Show("Không có cổng COM!");
                 _log.Info("Not connect COM!");
                 return;
             }
-            if (!_getToolView.serialPortGetTool.IsOpen && !string.IsNullOrEmpty(Properties.Settings.Default.SerialPort) && !string.IsNullOrWhiteSpace(Properties.Settings.Default.SerialPort))
+
+            if (!_getToolView.serialPortGetTool.IsOpen)
             {
+                if (string.IsNullOrEmpty(Properties.Settings.Default.SerialPort) && string.IsNullOrWhiteSpace(Properties.Settings.Default.SerialPort))
+                {
+                    MessageDialog.Show("Máy Chưa Cấu Hình Cổng Port.",
+                                        "Thông Báo",
+                                        MessageDialogButtons.OK,
+                                        MessageDialogIcon.Information,
+                                        MessageDialogStyle.Default);
+                    _log.Error("Properties.Settings.Default.SerialPort is empty.");
+                }
+                else
+                {
+                    _getToolView.serialPortGetTool.PortName = Properties.Settings.Default.SerialPort;
+                }
+
                 foreach (var item in SerialPort.GetPortNames())
                 {
-                    _getToolView.serialPortGetTool.PortName = item;
-                    if (_getToolView.serialPortGetTool.PortName == Properties.Settings.Default.SerialPort)
+                    if (_getToolView.serialPortGetTool.PortName == item)
                     {
                         _getToolView.serialPortGetTool.Open();
                         break;
@@ -108,15 +141,23 @@ namespace itools_source.Presenters
         private void _getToolView_btnflpTrayMachineList_Click(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;
-            if (btn.Checked == true)
+            if (btn != null)
             {
-                btn.Checked = false;
+                if (btn.Checked == true)
+                {
+                    btn.Checked = false;
+                }
+                else
+                {
+                    btn.Checked = true;
+                }
+                _getToolView.SetCheckedButton(btn.Text);
+
+                if (btn.Tag != null)
+                {
+                    _getToolView.iTrayId = Convert.ToInt32(btn.Tag);
+                }
             }
-            else
-            {
-                btn.Checked = true;
-            }
-            _getToolView.SetCheckedButton(btn.Text);
         }
 
         private async void _getToolView_btnflpToolList_Click(object sender, EventArgs e)
@@ -212,10 +253,23 @@ namespace itools_source.Presenters
                 }
                 if (!_getToolView.serialPortGetTool.IsOpen)
                 {
+                    if (string.IsNullOrEmpty(Properties.Settings.Default.SerialPort) && string.IsNullOrWhiteSpace(Properties.Settings.Default.SerialPort))
+                    {
+                        MessageDialog.Show("Máy Chưa Cấu Hình Cổng Port.",
+                                            "Thông Báo",
+                                            MessageDialogButtons.OK,
+                                            MessageDialogIcon.Information,
+                                            MessageDialogStyle.Default);
+                        _log.Error("Properties.Settings.Default.SerialPort is empty.");
+                    }
+                    else
+                    {
+                        _getToolView.serialPortGetTool.PortName = Properties.Settings.Default.SerialPort;
+                    }
+                    
                     foreach (var item in SerialPort.GetPortNames())
                     {
-                        _getToolView.serialPortGetTool.PortName = item;
-                        if (_getToolView.serialPortGetTool.PortName != "COM1")
+                        if (_getToolView.serialPortGetTool.PortName == item)
                         {
                             _getToolView.serialPortGetTool.Open();
                             break;
@@ -230,37 +284,118 @@ namespace itools_source.Presenters
             }
         }
 
-        private void _getToolView_serialPort_GetTool_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private async void _getToolView_serialPort_GetTool_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             if (_getToolView.serialPortGetTool.IsOpen)
             {
                 string strReadLine = _getToolView.serialPortGetTool.ReadLine().Substring(0, 3);
+                MessageDialog.Show(strReadLine);
                 if (strReadLine == "123")
                 {
                     // Get information workingtransaction.
-                    //WorkingTransaction workingTransaction = new WorkingTransaction();
-                    //workingTransaction.dtTransactionDate = _toolManagerView.toolTrayCurrent.dtUpdateDate;
-                    //workingTransaction.iMachineId = _toolManagerView.iMachineId;
-                    //if (Properties.Settings.Default.CompanyId != 0)
-                    //{
-                    //    workingTransaction.iCompanyId = Properties.Settings.Default.CompanyId;
-                    //}
-                    //if (Program.sessionLogin["UserName"] != null)
-                    //{
-                    //    workingTransaction.strUserLogin = Program.sessionLogin["UserName"].ToString();
-                    //}
-                    //workingTransaction.strJobNumber = null;
-                    //workingTransaction.strOPNumber = null;
-                    //workingTransaction.iTrayId = _toolManagerView.iTrayID;
-                    //workingTransaction.iQuantity = _toolManagerView.iOperateQuantity.Value;
-                    //workingTransaction.strTransactionStatus = "Complete";
+                    WorkingTransaction workingTransaction = new WorkingTransaction();
+                    workingTransaction.dtTransactionDate = Utils.ServerTime.GetServerTime().ToLocalTime();
+                    if (Properties.Settings.Default.MachineId != 0)
+                    {
+                        workingTransaction.iMachineId = Properties.Settings.Default.MachineId;
+                    }
+                    else
+                    {
+                        _log.Error("Properties.Settings.Default.MachineId is null");
+                    }
+
+                    if (Properties.Settings.Default.CompanyId != 0)
+                    {
+                        workingTransaction.iCompanyId = Properties.Settings.Default.CompanyId;
+                    }
+                    else
+                    {
+                        _log.Error("Properties.Settings.Default.CompanyId is null.");
+                    }
+
+                    if (Program.sessionLogin["UserName"] != null)
+                    {
+                        workingTransaction.strUserLogin = Program.sessionLogin["UserName"].ToString();
+                    }
+                    else
+                    {
+                        _log.Error("Program.sessionLogin[\"UserName\"] is null.");
+                    }
+
+                    if (_getToolView.strJobNumber != null)
+                    {
+                        workingTransaction.strJobNumber = _getToolView.strJobNumber;
+                    }
+                    else
+                    {
+                        _log.Error("_getToolView.strJobNumber is null.");
+                    }
+
+                    if (!string.IsNullOrEmpty(_getToolView.strOPNumber) && !string.IsNullOrWhiteSpace(_getToolView.strOPNumber))
+                    {
+                        workingTransaction.strOPNumber = _getToolView.strOPNumber;
+                    }
+                    else
+                    {
+                        _log.Error("_getToolView.strOPNumber is null.");
+                    }
+                    
+                    if (_getToolView.iTrayId != null)
+                    {
+                        workingTransaction.iTrayId = _getToolView.iTrayId;
+                    }
+                    else
+                    {
+                        _log.Error("_getToolView.iTrayId is null.");
+                    }
+
+                    workingTransaction.iQuantity = 1;
+                    workingTransaction.strTransactionStatus = "Complete";
+                    workingTransaction.strTransactiomType = "Get Tool";
+
+                    MessageDialog.Show("MachineID: " + workingTransaction.iMachineId.ToString() +
+                        "\nCompanyID: " + workingTransaction.iCompanyId.ToString() +
+                        "\nUserLogin: " + workingTransaction.strUserLogin +
+                        "\nJobNumber: " + workingTransaction.strJobNumber +
+                        "\nOPNumber: " + workingTransaction.strOPNumber +
+                        "\nTrayID: " + workingTransaction.iTrayId +
+                        "\nQuantity: " + workingTransaction.iQuantity.ToString() +
+                        "\nTransactionStats: " + workingTransaction.strTransactionStatus +
+                        "\nTransactionType: " + workingTransaction.strTransactiomType +
+                        "\nTransactionDate: " + workingTransaction.dtTransactionDate.ToString(), "Lịch Sử Thao Tác", MessageDialogButtons.OK, MessageDialogIcon.Information, MessageDialogStyle.Default);
+
+                    // Update quantity to table ToolsMachineTray
+                    IToolMachineTrayRepository toolMachineTrayRepository = new ToolMachineTrayRepository();
+                    if (_getToolView.iTrayId == null)
+                    {
+                        _log.Error("TrayId is null.");
+                        return;
+                    }
+                    ToolMachineTray toolMachineTray = new ToolMachineTray();
+                    toolMachineTray.iToolsMachineTrayId = _getToolView.iTrayId;
+                    toolMachineTray.dtUpdateDate = workingTransaction.dtTransactionDate;
+                    toolMachineTray.iQuantity = 1; // Quantity(ToolsMachineTray) - 1
+
+                    bool bResultToolsMachineTray = await toolMachineTrayRepository.UpdateQuantityToolTray(toolMachineTray: toolMachineTray);
+
+                    // Update stock
+                    IStockRepository stockRepository = new StockRepository();
+                    bool bResultStock = await stockRepository.UpdateQuantityStock(iToolID: _getToolView.iToolId, iQuantity: 1); // Quantity(Stock) - 1
 
                     // Add workingtransaction.
                     IWorkingTransactionRepository workingTransactionRepository = new WorkingTransactionRepository();
+                    bool bResultTransaction = await workingTransactionRepository.AddWorkingTransaction(workingTransaction: workingTransaction);
 
-                    MessageBox.Show("Get tool success.");
-                    _log.Info("Get tool success.");
-                    _getToolView.serialPortGetTool.Close();
+                    if (bResultToolsMachineTray && bResultTransaction && bResultStock)
+                    {
+                        MessageBox.Show("Get tool success.");
+                        _log.Info("Get tool success.");
+                        _getToolView.serialPortGetTool.Close();
+                    }
+                    else
+                    {
+                        _log.Error("add workingtransaction failed.");
+                    }
                     return;
                 }
             }
@@ -269,7 +404,8 @@ namespace itools_source.Presenters
         private async void _getToolView_GetToolView_Load(object sender, EventArgs e)
         {
             MessageDialog.Show("JobNumber: " + _getToolView.strJobNumber +
-                                "\nOPId: " + _getToolView.iOPId.ToString());
+                                "\nOPId: " + _getToolView.iOPId.ToString() +
+                                "\nOPNumber: " + _getToolView.strOPNumber);
             GetToolView frm = (GetToolView)sender;
 
             if (_getToolView == null || _getToolRepository == null)
