@@ -35,14 +35,13 @@ namespace itools_source.Repository
                     {
                         if (mySqlDataReader != null)
                         {
+                            if (lstFormId == null)
+                            {
+                                lstFormId = new List<string>();
+                            }
+
                             while (await mySqlDataReader.ReadAsync())
                             {
-                                if (lstFormId == null)
-                                {
-                                    lstFormId = new List<string>();
-                                }
-
-                                Menu menu = new Menu();
                                 if (!await mySqlDataReader.IsDBNullAsync(0))
                                 {
                                     lstFormId.Add(mySqlDataReader.GetString(0));

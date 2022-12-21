@@ -46,23 +46,23 @@ namespace itools_source.Repository
 
             try
             {
-                List<MySqlParameter> lstPar = new List<MySqlParameter>();
-                lstPar.Add(
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
+                {
                     new MySqlParameter
                     {
                         ParameterName = "@p_UserLogin",
                         MySqlDbType = MySqlDbType.VarChar,
                         Value = strUserName,
                         Direction = System.Data.ParameterDirection.Input
-                    });
-                lstPar.Add(
+                    },
                     new MySqlParameter
                     {
                         ParameterName = "@p_Pass",
                         MySqlDbType = MySqlDbType.VarChar,
                         Value = strPassword,
                         Direction = System.Data.ParameterDirection.Input
-                    });
+                    }
+                };
 
                 foreach (var item in lstPar)
                 {
@@ -118,23 +118,23 @@ namespace itools_source.Repository
 
             try
             {
-                List<MySqlParameter> lstPar = new List<MySqlParameter>();
-                lstPar.Add(
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
+                {
                     new MySqlParameter
                     {
                         ParameterName = "@p_UserLogin",
                         MySqlDbType = MySqlDbType.VarChar,
                         Value = strUserName,
                         Direction = System.Data.ParameterDirection.Input
-                    });
-                lstPar.Add(
+                    },
                     new MySqlParameter
                     {
                         ParameterName = "@p_Pass",
                         MySqlDbType = MySqlDbType.VarChar,
                         Value = strPassword,
                         Direction = System.Data.ParameterDirection.Input
-                    });
+                    }
+                };
 
                 foreach (var item in lstPar)
                 {

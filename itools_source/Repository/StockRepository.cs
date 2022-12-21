@@ -119,15 +119,16 @@ namespace itools_source.Repository
 
             try
             {
-                List<MySqlParameter> lstPar = new List<MySqlParameter>();
-                lstPar.Add(
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
+                {
                     new MySqlParameter
                     {
                         ParameterName = "@p_ToolID",
                         MySqlDbType = MySqlDbType.VarChar,
                         Value = iToolID,
                         Direction = System.Data.ParameterDirection.Input
-                    });
+                    }
+                };
 
                 using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
                 {

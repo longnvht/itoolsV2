@@ -26,16 +26,16 @@ namespace itools_source.Repository
                     {
                         if (mySqlDataReader != null)
                         {
+                            if (lstCompany == null)
+                            {
+                                lstCompany = new BindingList<Company>();
+                            }
                             Company company = null;
+
                             while (await mySqlDataReader.ReadAsync())
                             {
-                                if (lstCompany == null)
-                                {
-                                    lstCompany = new BindingList<Company>();
-                                }
                                 company = new Company();
 
-                                Menu menu = new Menu();
                                 if (!await mySqlDataReader.IsDBNullAsync(0))
                                 {
                                     company.iCompanyId = mySqlDataReader.GetInt32(0);

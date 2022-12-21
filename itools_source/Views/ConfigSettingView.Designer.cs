@@ -107,6 +107,7 @@
             this._cmbCompany.BorderThickness = 0;
             this._cmbCompany.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this._cmbCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._cmbCompany.DropDownWidth = 280;
             this._cmbCompany.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._cmbCompany.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._cmbCompany.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -129,6 +130,7 @@
             this._cmbMachine.BorderThickness = 0;
             this._cmbMachine.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this._cmbMachine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._cmbMachine.DropDownWidth = 280;
             this._cmbMachine.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._cmbMachine.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._cmbMachine.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -153,6 +155,7 @@
             this._cmbSerialPort.BorderThickness = 0;
             this._cmbSerialPort.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this._cmbSerialPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._cmbSerialPort.DropDownWidth = 280;
             this._cmbSerialPort.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._cmbSerialPort.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._cmbSerialPort.Font = new System.Drawing.Font("Segoe UI", 10F);

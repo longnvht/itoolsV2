@@ -5,6 +5,7 @@ using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace itools_source.Repository
 {
@@ -37,16 +38,16 @@ namespace itools_source.Repository
                     {
                         if (mySqlDataReader != null)
                         {
+                            if (lstMachine == null)
+                            {
+                                lstMachine = new BindingList<Machine>();
+                            }
+
                             Machine machine = null;
                             while (await mySqlDataReader.ReadAsync())
                             {
-                                if (lstMachine == null)
-                                {
-                                    lstMachine = new BindingList<Machine>();
-                                }
                                 machine = new Machine();
 
-                                Menu menu = new Menu();
                                 if (!await mySqlDataReader.IsDBNullAsync(0))
                                 {
                                     machine.iMachineId = mySqlDataReader.GetInt32(0);

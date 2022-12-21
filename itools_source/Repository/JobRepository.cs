@@ -22,15 +22,16 @@ namespace itools_source.Repository
 
             try
             {
-                List<MySqlParameter> lstPar = new List<MySqlParameter>();
-                lstPar.Add(
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
+                {
                     new MySqlParameter
                     {
                         ParameterName = "@p_JobNumber",
                         MySqlDbType = MySqlDbType.VarChar,
                         Value = strJobNumber,
                         Direction = System.Data.ParameterDirection.Input
-                    });
+                    }
+                };
 
                 if (lstPar == null || (lstPar[0].Value == DBNull.Value))
                 {
@@ -79,23 +80,23 @@ namespace itools_source.Repository
             _log.Info("Store procedure query: " + strQueryProcedure);
             try
             {
-                List<MySqlParameter> lstPar = new List<MySqlParameter>();
-                lstPar.Add(
-                new MySqlParameter
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
                 {
-                    ParameterName = "@p_JobNumber",
-                    MySqlDbType = MySqlDbType.VarChar,
-                    Value = strJobNumber,
-                    Direction = System.Data.ParameterDirection.Input
-                });
-                lstPar.Add(
-                new MySqlParameter
-                {
-                    ParameterName = "@p_PartID",
-                    MySqlDbType = MySqlDbType.Int32,
-                    Value = iPartID,
-                    Direction = System.Data.ParameterDirection.Input
-                });
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_JobNumber",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = strJobNumber,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_PartID",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = iPartID,
+                        Direction = System.Data.ParameterDirection.Input
+                    }
+                };
 
                 if (lstPar == null)
                 {
@@ -124,16 +125,15 @@ namespace itools_source.Repository
                             {
                                 lstOPList = new Dictionary<int?, Dictionary<string, string>>();
                             }
-
                             Dictionary<string, string> lstOPNumberOPType = null;
+
                             while (await mySqlDataReader.ReadAsync())
                             {
                                 lstOPNumberOPType = new Dictionary<string, string>();
+
                                 if (!await mySqlDataReader.IsDBNullAsync(1) && !await mySqlDataReader.IsDBNullAsync(2))
                                 {
                                     lstOPNumberOPType.Add(mySqlDataReader.GetString(1), mySqlDataReader.GetString(2));
-                                    //MessageDialog.Show("OPNumber: " + lstOPNumberOPType.Keys.ElementAt(0) +
-                                    //    "\nOPType: " + lstOPNumberOPType.Values.ElementAt(0));
                                 }
 
                                 if (!await mySqlDataReader.IsDBNullAsync(0))

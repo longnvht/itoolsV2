@@ -1,10 +1,15 @@
-﻿using itools_source.Models;
+﻿using Guna.UI2.WinForms;
+using itools_source.Models;
 using itools_source.Models.Interface;
 using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO.Ports;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace itools_source.Presenters
 {
@@ -49,11 +54,12 @@ namespace itools_source.Presenters
                     }
                     if (companySelect != null)
                     {
-                        if (await _machineRepository.GetMachines(companySelect.iCompanyId) != null)
+                        BindingList<Machine> lstMachineByCompanyID = _machineRepository.GetMachines(companySelect.iCompanyId).Result as BindingList<Machine>;
+                        if (lstMachineByCompanyID != null)
                         {
                             frm.cmbMachine.ValueMember = "iMachineId";
                             frm.cmbMachine.DisplayMember = "strMachineName";
-                            frm.cmbMachine.DataSource = await _machineRepository.GetMachines(companySelect.iCompanyId);
+                            frm.cmbMachine.DataSource = lstMachineByCompanyID;
                         }
                     }
                 }
@@ -72,24 +78,51 @@ namespace itools_source.Presenters
                 string strSerialSelected = frm.cmbSerialPort.SelectedItem as string;
 
                 // Set company, machine, and serial port to Properties.Setting
-                if (companySelected != null)
+                if (companySelected == null)
+                {
+                    MessageDialog.Show("Bạn Chưa Chọn Công Ty.",
+                                        "Thông Báo",
+                                        MessageDialogButtons.OK,
+                                        MessageDialogIcon.Information,
+                                        MessageDialogStyle.Default);
+                    frm.cmbCompany.Focus();
+                }
+                else if (machineSelected == null)
+                {
+                    MessageDialog.Show("Bạn Chưa Chọn Máy.",
+                                        "Thông Báo",
+                                        MessageDialogButtons.OK,
+                                        MessageDialogIcon.Information,
+                                        MessageDialogStyle.Default);
+                    frm.cmbMachine.Focus();
+                }
+                else if (!string.IsNullOrEmpty(Properties.Settings.Default.SerialPort) || !string.IsNullOrWhiteSpace(Properties.Settings.Default.SerialPort))
+                {
+                    MessageDialog.Show("Bạn Chưa Chọn Cổng.",
+                                        "Thông Báo",
+                                        MessageDialogButtons.OK,
+                                        MessageDialogIcon.Information,
+                                        MessageDialogStyle.Default);
+                    frm.cmbSerialPort.Focus();
+                }
+                else
                 {
                     Properties.Settings.Default.CompanyId = companySelected.iCompanyId;
-                }
-                if (machineSelected != null)
-                {
-                    //Properties.Settings.Default.MachineId = machineSelected.iMachineId;
-                }
-                if (!string.IsNullOrEmpty(Properties.Settings.Default.SerialPort = strSerialSelected) || !string.IsNullOrWhiteSpace(Properties.Settings.Default.SerialPort = strSerialSelected))
-                {
+                    Properties.Settings.Default.MachineId = machineSelected.iMachineId.Value;
                     Properties.Settings.Default.SerialPort = strSerialSelected;
-                }
 
-                Properties.Settings.Default.Save();
+                    Properties.Settings.Default.Save();
+                    MessageDialog.Show("Lưu Thành Công.",
+                                        "Thông Báo",
+                                        MessageDialogButtons.OK,
+                                        MessageDialogIcon.Information,
+                                        MessageDialogStyle.Default);
+                    MessageDialog.Show(Properties.Settings.Default.Properties.Count.ToString());
+                }
             }
         }
 
-        private async void _configSettingView_ConfigSettingView_Load(object sender, EventArgs e)
+        private void _configSettingView_ConfigSettingView_Load(object sender, EventArgs e)
         {
             ConfigSettingView frm = sender as ConfigSettingView;
 
@@ -98,16 +131,17 @@ namespace itools_source.Presenters
             {
                 _companyRepository = new CompanyRepository();
             }
-            if (await _companyRepository.GetCompanies() != null)
+            List<Company> companies = _companyRepository.GetCompanies().Result.ToList();
+            if (companies != null)
             {
-                frm.cmbCompany.DataSource = await _companyRepository.GetCompanies();
+                frm.cmbCompany.DataSource = companies;
                 frm.cmbCompany.ValueMember = "iCompanyId";
                 frm.cmbCompany.DisplayMember = "strCompanyName";
             }
 
             // 2. Load list serial port
-            string[] lstSerialPort = null;
-            lstSerialPort = SerialPort.GetPortNames();
+            string[] lstSerialPort = SerialPort.GetPortNames();
+            //lstSerialPort = SerialPort.GetPortNames();
             if (lstSerialPort != null)
             {
                 frm.cmbSerialPort.Items.AddRange(lstSerialPort);

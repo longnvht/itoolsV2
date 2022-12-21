@@ -410,15 +410,16 @@ namespace itools_source.Repository
 
             try
             {
-                List<MySqlParameter> lstPar = new List<MySqlParameter>();
-                lstPar.Add(
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
+                {
                     new MySqlParameter
                     {
                         ParameterName = "@p_MachineID",
                         MySqlDbType = MySqlDbType.Int32,
                         Value = iMachineId,
                         Direction = System.Data.ParameterDirection.Input
-                    });
+                    }
+                };
 
                 using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
                 {
@@ -469,15 +470,16 @@ namespace itools_source.Repository
 
             try
             {
-                List<MySqlParameter> lstPar = new List<MySqlParameter>();
-                lstPar.Add(
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
+                {
                     new MySqlParameter
                     {
                         ParameterName = "@p_TrayID",
                         MySqlDbType = MySqlDbType.Int32,
                         Value = iTrayID,
                         Direction = System.Data.ParameterDirection.Input
-                    });
+                    }
+                };
 
                 using (MySqlConnection mySqlConnection = await MySqlConnect.OpenAsync())
                 {

@@ -24,15 +24,16 @@ namespace itools_source.Repository
 
             try
             {
-                List<MySqlParameter> lstPar = new List<MySqlParameter>();
-                lstPar.Add(
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
+                {
                     new MySqlParameter
                     {
                         ParameterName = "@p_PermissionId",
                         MySqlDbType = MySqlDbType.VarChar,
                         Value = strId,
                         Direction = System.Data.ParameterDirection.Input
-                    });
+                    }
+                };
 
                 if (lstPar == null || (lstPar[0].Value == DBNull.Value))
                 {
