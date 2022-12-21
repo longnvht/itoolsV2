@@ -5,7 +5,7 @@ namespace itools_source.Models.Interface
 {
     public interface IToolMachineTrayRepository
     {
-        Task<bool> UpdateTrayQuantityToolCode(ToolMachineTray toolMachineTray); // Tray
+        Task<bool> UpdateTrayQuantityToolID(ToolMachineTray toolMachineTray); // Update ToolID, Quantity, UpdateDate in table ToolsMachineTray
         Task<bool> UpdateQuantityToolTray(ToolMachineTray toolMachineTray); // Tray
         Task<ToolMachineTray> GetToolMachineTray(int? iTrayID); // Tray
         Task<int> GetQuantityInTray(int? iTrayID); // Tray

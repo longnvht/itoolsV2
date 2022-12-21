@@ -406,7 +406,7 @@ namespace itools_source.Presenters
                 switch (_toolManagerView.cStatusButton)
                 {
                     case '0': // AddNew
-                        bResult = await _toolMachineTrayRepository.UpdateTrayQuantityToolCode(toolMachineTray: _toolManagerView.toolTrayCurrent);
+                        bResult = await _toolMachineTrayRepository.UpdateTrayQuantityToolID(toolMachineTray: _toolManagerView.toolTrayCurrent);
 
                         // Load ToolID and ToolCode to TrayIndex
                         foreach (var item in _toolManagerView.lstTrayButton)

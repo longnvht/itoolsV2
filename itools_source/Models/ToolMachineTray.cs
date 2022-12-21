@@ -36,9 +36,9 @@ namespace itools_source.Models
             set { _strTrayIndex = value; }
         }
 
-        private int _iQuantity;
+        private int? _iQuantity;
 
-        public int iQuantity
+        public int? iQuantity
         {
             get { return _iQuantity; }
             set { _iQuantity = value; }

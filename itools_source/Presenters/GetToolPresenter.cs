@@ -353,17 +353,6 @@ namespace itools_source.Presenters
                     workingTransaction.strTransactionStatus = "Complete";
                     workingTransaction.strTransactiomType = "Get Tool";
 
-                    MessageDialog.Show("MachineID: " + workingTransaction.iMachineId.ToString() +
-                        "\nCompanyID: " + workingTransaction.iCompanyId.ToString() +
-                        "\nUserLogin: " + workingTransaction.strUserLogin +
-                        "\nJobNumber: " + workingTransaction.strJobNumber +
-                        "\nOPNumber: " + workingTransaction.strOPNumber +
-                        "\nTrayID: " + workingTransaction.iTrayId +
-                        "\nQuantity: " + workingTransaction.iQuantity.ToString() +
-                        "\nTransactionStats: " + workingTransaction.strTransactionStatus +
-                        "\nTransactionType: " + workingTransaction.strTransactiomType +
-                        "\nTransactionDate: " + workingTransaction.dtTransactionDate.ToString(), "Lịch Sử Thao Tác", MessageDialogButtons.OK, MessageDialogIcon.Information, MessageDialogStyle.Default);
-
                     // Update quantity to table ToolsMachineTray
                     IToolMachineTrayRepository toolMachineTrayRepository = new ToolMachineTrayRepository();
                     if (_getToolView.iTrayId == null)
@@ -374,21 +363,22 @@ namespace itools_source.Presenters
                     ToolMachineTray toolMachineTray = new ToolMachineTray();
                     toolMachineTray.iToolsMachineTrayId = _getToolView.iTrayId;
                     toolMachineTray.dtUpdateDate = workingTransaction.dtTransactionDate;
-                    toolMachineTray.iQuantity = 1; // Quantity(ToolsMachineTray) - 1
+                    int? iQuantityTray = await toolMachineTrayRepository.GetQuantityInTray(iTrayID: _getToolView.iTrayId);
+                    toolMachineTray.iQuantity = iQuantityTray - 1; // Quantity(ToolsMachineTray) - 1
 
                     bool bResultToolsMachineTray = await toolMachineTrayRepository.UpdateQuantityToolTray(toolMachineTray: toolMachineTray);
-
-                    // Update stock
-                    IStockRepository stockRepository = new StockRepository();
-                    bool bResultStock = await stockRepository.UpdateQuantityStock(iToolID: _getToolView.iToolId, iQuantity: 1); // Quantity(Stock) - 1
 
                     // Add workingtransaction.
                     IWorkingTransactionRepository workingTransactionRepository = new WorkingTransactionRepository();
                     bool bResultTransaction = await workingTransactionRepository.AddWorkingTransaction(workingTransaction: workingTransaction);
 
-                    if (bResultToolsMachineTray && bResultTransaction && bResultStock)
+                    if (bResultToolsMachineTray && bResultTransaction)
                     {
-                        MessageBox.Show("Get tool success.");
+                        MessageDialog.Show("Lấy Tool Thành Công.",
+                                        "Thông Báo",
+                                        MessageDialogButtons.OK,
+                                        MessageDialogIcon.Information,
+                                        MessageDialogStyle.Default);
                         _log.Info("Get tool success.");
                         _getToolView.serialPortGetTool.Close();
                     }
@@ -403,9 +393,6 @@ namespace itools_source.Presenters
 
         private async void _getToolView_GetToolView_Load(object sender, EventArgs e)
         {
-            MessageDialog.Show("JobNumber: " + _getToolView.strJobNumber +
-                                "\nOPId: " + _getToolView.iOPId.ToString() +
-                                "\nOPNumber: " + _getToolView.strOPNumber);
             GetToolView frm = (GetToolView)sender;
 
             if (_getToolView == null || _getToolRepository == null)

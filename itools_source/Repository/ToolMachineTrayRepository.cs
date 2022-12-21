@@ -12,7 +12,7 @@ namespace itools_source.Repository
     {
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolMachineTrayRepository).Name);
 
-        public async Task<bool> UpdateTrayQuantityToolCode(ToolMachineTray toolMachineTray)
+        public async Task<bool> UpdateTrayQuantityToolID(ToolMachineTray toolMachineTray)
         {
             if (toolMachineTray == null)
             {
@@ -20,7 +20,7 @@ namespace itools_source.Repository
                 return false;
             }
 
-            string strCmdProcedure = @"UpdateTrayQuantityToolCode";
+            string strCmdProcedure = @"UpdateTrayQuantityToolID";
             _log.Info("Store procedure update tool machine tray: " + strCmdProcedure);
             try
             {
