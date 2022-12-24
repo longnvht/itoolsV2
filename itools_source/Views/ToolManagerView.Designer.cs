@@ -32,7 +32,7 @@ namespace itools_source.Views
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolManagerView));
-            this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
+            this._tlpHeader = new System.Windows.Forms.TableLayoutPanel();
             this.btnTraySearch = new Guna.UI2.WinForms.Guna2GradientButton();
             this.txtTrayToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.notifiTakeout = new Guna.UI2.WinForms.Guna2NotificationPaint(this.components);
@@ -55,7 +55,7 @@ namespace itools_source.Views
             this.btnToolSelect = new Guna.UI2.WinForms.Guna2GradientButton();
             this.tlpContent = new System.Windows.Forms.TableLayoutPanel();
             this.pRightContent = new System.Windows.Forms.Panel();
-            this.tlpTrayDetail = new System.Windows.Forms.TableLayoutPanel();
+            this._tlpTrayDetail = new System.Windows.Forms.TableLayoutPanel();
             this._txtTrayIndex = new Guna.UI2.WinForms.Guna2TextBox();
             this._txtToolCode = new Guna.UI2.WinForms.Guna2TextBox();
             this._txtCurrentQuantity = new Guna.UI2.WinForms.Guna2TextBox();
@@ -70,34 +70,34 @@ namespace itools_source.Views
             this.guna2Elipse_tlpTrayDetail = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse_pToolContent = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pFooter = new System.Windows.Forms.Panel();
-            this.tlpFooter = new System.Windows.Forms.TableLayoutPanel();
+            this._tlpFooter = new System.Windows.Forms.TableLayoutPanel();
             this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.tlpHeader.SuspendLayout();
-            this.pLeftContent.SuspendLayout();
+            this._tlpHeader.SuspendLayout();
+            this._pLeftContent.SuspendLayout();
             this.tlpToolList.SuspendLayout();
             this.pToolContent.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpContent.SuspendLayout();
             this.pRightContent.SuspendLayout();
-            this.tlpTrayDetail.SuspendLayout();
+            this._tlpTrayDetail.SuspendLayout();
             this.pFooter.SuspendLayout();
-            this.tlpFooter.SuspendLayout();
+            this._tlpFooter.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tlpHeader
+            // _tlpHeader
             // 
-            this.tlpHeader.ColumnCount = 2;
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.76768F));
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.23232F));
-            this.tlpHeader.Controls.Add(this.btnTraySearch, 1, 0);
-            this.tlpHeader.Controls.Add(this.txtTrayToolSearch, 0, 0);
-            this.tlpHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tlpHeader.Location = new System.Drawing.Point(0, 0);
-            this.tlpHeader.Name = "tlpHeader";
-            this.tlpHeader.RowCount = 1;
-            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpHeader.Size = new System.Drawing.Size(900, 50);
-            this.tlpHeader.TabIndex = 11;
+            this._tlpHeader.ColumnCount = 2;
+            this._tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.76768F));
+            this._tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.23232F));
+            this._tlpHeader.Controls.Add(this.btnTraySearch, 1, 0);
+            this._tlpHeader.Controls.Add(this.txtTrayToolSearch, 0, 0);
+            this._tlpHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this._tlpHeader.Location = new System.Drawing.Point(0, 0);
+            this._tlpHeader.Name = "_tlpHeader";
+            this._tlpHeader.RowCount = 1;
+            this._tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tlpHeader.Size = new System.Drawing.Size(900, 50);
+            this._tlpHeader.TabIndex = 11;
             // 
             // btnTraySearch
             // 
@@ -264,17 +264,17 @@ namespace itools_source.Views
             // guna2Elipse_pLeftContent
             // 
             this.guna2Elipse_pLeftContent.BorderRadius = 20;
-            this.guna2Elipse_pLeftContent.TargetControl = this.pLeftContent;
+            this.guna2Elipse_pLeftContent.TargetControl = this._pLeftContent;
             // 
-            // pLeftContent
+            // _pLeftContent
             // 
-            this.pLeftContent.Controls.Add(this.guna2VScrollBar_flpTrayList);
-            this.pLeftContent.Controls.Add(this._flpTrayList);
-            this.pLeftContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pLeftContent.Location = new System.Drawing.Point(3, 3);
-            this.pLeftContent.Name = "pLeftContent";
-            this.pLeftContent.Size = new System.Drawing.Size(303, 349);
-            this.pLeftContent.TabIndex = 0;
+            this._pLeftContent.Controls.Add(this.guna2VScrollBar_flpTrayList);
+            this._pLeftContent.Controls.Add(this._flpTrayList);
+            this._pLeftContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._pLeftContent.Location = new System.Drawing.Point(3, 3);
+            this._pLeftContent.Name = "_pLeftContent";
+            this._pLeftContent.Size = new System.Drawing.Size(303, 349);
+            this._pLeftContent.TabIndex = 0;
             // 
             // tlpToolList
             // 
@@ -418,7 +418,7 @@ namespace itools_source.Views
             this.tlpContent.ColumnCount = 2;
             this.tlpContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.4F));
             this.tlpContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.6F));
-            this.tlpContent.Controls.Add(this.pLeftContent, 0, 0);
+            this.tlpContent.Controls.Add(this._pLeftContent, 0, 0);
             this.tlpContent.Controls.Add(this.pRightContent, 1, 0);
             this.tlpContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpContent.Location = new System.Drawing.Point(0, 50);
@@ -432,42 +432,42 @@ namespace itools_source.Views
             // pRightContent
             // 
             this.pRightContent.Controls.Add(this.tlpToolList);
-            this.pRightContent.Controls.Add(this.tlpTrayDetail);
+            this.pRightContent.Controls.Add(this._tlpTrayDetail);
             this.pRightContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pRightContent.Location = new System.Drawing.Point(312, 3);
             this.pRightContent.Name = "pRightContent";
             this.pRightContent.Size = new System.Drawing.Size(585, 349);
             this.pRightContent.TabIndex = 1;
             // 
-            // tlpTrayDetail
+            // _tlpTrayDetail
             // 
-            this.tlpTrayDetail.ColumnCount = 4;
-            this.tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpTrayDetail.Controls.Add(this._txtTrayIndex, 2, 1);
-            this.tlpTrayDetail.Controls.Add(this._txtToolCode, 2, 2);
-            this.tlpTrayDetail.Controls.Add(this._txtCurrentQuantity, 2, 3);
-            this.tlpTrayDetail.Controls.Add(this._txtOperateQuantity, 2, 4);
-            this.tlpTrayDetail.Controls.Add(this.guna2HtmlLabel2, 1, 2);
-            this.tlpTrayDetail.Controls.Add(this.guna2HtmlLabel1, 1, 1);
-            this.tlpTrayDetail.Controls.Add(this.guna2HtmlLabel3, 1, 3);
-            this.tlpTrayDetail.Controls.Add(this.guna2HtmlLabel4, 1, 4);
-            this.tlpTrayDetail.Controls.Add(this._txtTotalQuantity, 2, 5);
-            this.tlpTrayDetail.Controls.Add(this.guna2HtmlLabel5, 1, 5);
-            this.tlpTrayDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpTrayDetail.Location = new System.Drawing.Point(0, 0);
-            this.tlpTrayDetail.Name = "tlpTrayDetail";
-            this.tlpTrayDetail.RowCount = 6;
-            this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28F));
-            this.tlpTrayDetail.Size = new System.Drawing.Size(585, 349);
-            this.tlpTrayDetail.TabIndex = 26;
+            this._tlpTrayDetail.ColumnCount = 4;
+            this._tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this._tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this._tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this._tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this._tlpTrayDetail.Controls.Add(this._txtTrayIndex, 2, 1);
+            this._tlpTrayDetail.Controls.Add(this._txtToolCode, 2, 2);
+            this._tlpTrayDetail.Controls.Add(this._txtCurrentQuantity, 2, 3);
+            this._tlpTrayDetail.Controls.Add(this._txtOperateQuantity, 2, 4);
+            this._tlpTrayDetail.Controls.Add(this.guna2HtmlLabel2, 1, 2);
+            this._tlpTrayDetail.Controls.Add(this.guna2HtmlLabel1, 1, 1);
+            this._tlpTrayDetail.Controls.Add(this.guna2HtmlLabel3, 1, 3);
+            this._tlpTrayDetail.Controls.Add(this.guna2HtmlLabel4, 1, 4);
+            this._tlpTrayDetail.Controls.Add(this._txtTotalQuantity, 2, 5);
+            this._tlpTrayDetail.Controls.Add(this.guna2HtmlLabel5, 1, 5);
+            this._tlpTrayDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tlpTrayDetail.Location = new System.Drawing.Point(0, 0);
+            this._tlpTrayDetail.Name = "_tlpTrayDetail";
+            this._tlpTrayDetail.RowCount = 6;
+            this._tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
+            this._tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this._tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this._tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this._tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this._tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28F));
+            this._tlpTrayDetail.Size = new System.Drawing.Size(585, 349);
+            this._tlpTrayDetail.TabIndex = 26;
             // 
             // _txtTrayIndex
             // 
@@ -657,7 +657,7 @@ namespace itools_source.Views
             // guna2Elipse_tlpTrayDetail
             // 
             this.guna2Elipse_tlpTrayDetail.BorderRadius = 20;
-            this.guna2Elipse_tlpTrayDetail.TargetControl = this.tlpTrayDetail;
+            this.guna2Elipse_tlpTrayDetail.TargetControl = this._tlpTrayDetail;
             // 
             // guna2Elipse_pToolContent
             // 
@@ -666,7 +666,7 @@ namespace itools_source.Views
             // 
             // pFooter
             // 
-            this.pFooter.Controls.Add(this.tlpFooter);
+            this.pFooter.Controls.Add(this._tlpFooter);
             this.pFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pFooter.Location = new System.Drawing.Point(0, 405);
             this.pFooter.Margin = new System.Windows.Forms.Padding(2);
@@ -674,27 +674,27 @@ namespace itools_source.Views
             this.pFooter.Size = new System.Drawing.Size(900, 48);
             this.pFooter.TabIndex = 10;
             // 
-            // tlpFooter
+            // _tlpFooter
             // 
-            this.tlpFooter.ColumnCount = 6;
-            this.tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpFooter.Controls.Add(this.btnSave, 4, 0);
-            this.tlpFooter.Controls.Add(this.btnTakeOut, 1, 0);
-            this.tlpFooter.Controls.Add(this.btnAddPlugin, 2, 0);
-            this.tlpFooter.Controls.Add(this.btnAddNew, 3, 0);
-            this.tlpFooter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpFooter.Location = new System.Drawing.Point(0, 0);
-            this.tlpFooter.Margin = new System.Windows.Forms.Padding(2);
-            this.tlpFooter.Name = "tlpFooter";
-            this.tlpFooter.RowCount = 1;
-            this.tlpFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpFooter.Size = new System.Drawing.Size(900, 48);
-            this.tlpFooter.TabIndex = 7;
+            this._tlpFooter.ColumnCount = 6;
+            this._tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this._tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this._tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this._tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this._tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this._tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this._tlpFooter.Controls.Add(this.btnSave, 4, 0);
+            this._tlpFooter.Controls.Add(this.btnTakeOut, 1, 0);
+            this._tlpFooter.Controls.Add(this.btnAddPlugin, 2, 0);
+            this._tlpFooter.Controls.Add(this.btnAddNew, 3, 0);
+            this._tlpFooter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tlpFooter.Location = new System.Drawing.Point(0, 0);
+            this._tlpFooter.Margin = new System.Windows.Forms.Padding(2);
+            this._tlpFooter.Name = "_tlpFooter";
+            this._tlpFooter.RowCount = 1;
+            this._tlpFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tlpFooter.Size = new System.Drawing.Size(900, 48);
+            this._tlpFooter.TabIndex = 7;
             // 
             // btnSave
             // 
@@ -722,7 +722,7 @@ namespace itools_source.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 453);
             this.Controls.Add(this.tlpContent);
-            this.Controls.Add(this.tlpHeader);
+            this.Controls.Add(this._tlpHeader);
             this.Controls.Add(this.pFooter);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -731,19 +731,19 @@ namespace itools_source.Views
             this.Name = "ToolManagerView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý Công Cụ";
-            this.tlpHeader.ResumeLayout(false);
-            this.pLeftContent.ResumeLayout(false);
-            this.pLeftContent.PerformLayout();
+            this._tlpHeader.ResumeLayout(false);
+            this._pLeftContent.ResumeLayout(false);
+            this._pLeftContent.PerformLayout();
             this.tlpToolList.ResumeLayout(false);
             this.pToolContent.ResumeLayout(false);
             this.pToolContent.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tlpContent.ResumeLayout(false);
             this.pRightContent.ResumeLayout(false);
-            this.tlpTrayDetail.ResumeLayout(false);
-            this.tlpTrayDetail.PerformLayout();
+            this._tlpTrayDetail.ResumeLayout(false);
+            this._tlpTrayDetail.PerformLayout();
             this.pFooter.ResumeLayout(false);
-            this.tlpFooter.ResumeLayout(false);
+            this._tlpFooter.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
