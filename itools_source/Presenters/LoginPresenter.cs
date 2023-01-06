@@ -5,6 +5,7 @@ using itools_source.Presenters;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace itools_source.Presenter
@@ -20,6 +21,7 @@ namespace itools_source.Presenter
             _loginView.btnLogin_Click += _loginView_btnLogin_Click;
             _loginView.btnCancel_Click += _loginView_btnCancel_Click;
             _loginView.txtPassword_IconRightClick += _loginView_txtPassword_IconRightClick;
+            _loginView.txtUserName_MouseClick += _loginView_txtUserName_MouseClick;
 
             _loginView.Show();
         }
@@ -32,6 +34,20 @@ namespace itools_source.Presenter
         #endregion
 
         #region Events
+        private void _loginView_txtUserName_MouseClick(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show("Ahihi");
+            if (!Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            {
+                var frmNumericKey = new VirtualNumericKeyBoard();
+                frmNumericKey.Show();
+                MessageBox.Show("Ahihi1");
+
+                //LoginView frmLogin = (LoginView)sender;
+                //frmLogin.txtUserName.Focus();
+            }
+        }
+
         private void _loginView_txtPassword_IconRightClick(object sender, EventArgs e)
         {
             var txtPassword = ((Guna2TextBox)sender);

@@ -1,4 +1,6 @@
-﻿namespace itools_source.Views
+﻿using Guna.UI2.WinForms;
+
+namespace itools_source.Views
 {
     partial class LoginView
     {
@@ -34,7 +36,8 @@
             this.btnCancel = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnLogin = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
-            this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
+            this._txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
+            this._txtUserName = new Guna.UI2.WinForms.Guna2TextBox();
             this.SuspendLayout();
             // 
             // guna2HtmlLabel1
@@ -124,63 +127,63 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Đăng Nhập";
             // 
-            // groupBox1
+            // txtPassword
             // 
-            this.txtPassword.Animated = true;
-            this.txtPassword.AutoRoundedCorners = true;
-            this.txtPassword.BorderRadius = 24;
-            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPassword.DefaultText = "123456";
-            this.txtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPassword.IconLeft = global::itools_source.Properties.Resources.password_24px;
-            this.txtPassword.IconLeftOffset = new System.Drawing.Point(12, 0);
-            this.txtPassword.IconLeftSize = new System.Drawing.Size(24, 24);
-            this.txtPassword.IconRight = global::itools_source.Properties.Resources.pass_show_24px;
-            this.txtPassword.IconRightOffset = new System.Drawing.Point(12, 0);
-            this.txtPassword.IconRightSize = new System.Drawing.Size(24, 24);
-            this.txtPassword.Location = new System.Drawing.Point(97, 143);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '●';
-            this.txtPassword.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.txtPassword.PlaceholderText = "Mật Khẩu";
-            this.txtPassword.SelectedText = "";
-            this.txtPassword.Size = new System.Drawing.Size(385, 50);
-            this.txtPassword.TabIndex = 1;
-            this.txtPassword.UseSystemPasswordChar = true;
+            this._txtPassword.Animated = true;
+            this._txtPassword.AutoRoundedCorners = true;
+            this._txtPassword.BorderRadius = 24;
+            this._txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this._txtPassword.DefaultText = "123456";
+            this._txtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this._txtPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this._txtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtPassword.IconLeft = global::itools_source.Properties.Resources.password_24px;
+            this._txtPassword.IconLeftOffset = new System.Drawing.Point(12, 0);
+            this._txtPassword.IconLeftSize = new System.Drawing.Size(24, 24);
+            this._txtPassword.IconRight = global::itools_source.Properties.Resources.pass_show_24px;
+            this._txtPassword.IconRightOffset = new System.Drawing.Point(12, 0);
+            this._txtPassword.IconRightSize = new System.Drawing.Size(24, 24);
+            this._txtPassword.Location = new System.Drawing.Point(97, 143);
+            this._txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._txtPassword.Name = "_txtPassword";
+            this._txtPassword.PasswordChar = '●';
+            this._txtPassword.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this._txtPassword.PlaceholderText = "Mật Khẩu";
+            this._txtPassword.SelectedText = "";
+            this._txtPassword.Size = new System.Drawing.Size(385, 50);
+            this._txtPassword.TabIndex = 1;
+            this._txtPassword.UseSystemPasswordChar = true;
             // 
-            // txtUserName
+            // _txtUserName
             // 
-            this.txtUserName.Animated = true;
-            this.txtUserName.AutoRoundedCorners = true;
-            this.txtUserName.BorderRadius = 24;
-            this.txtUserName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUserName.DefaultText = "181119";
-            this.txtUserName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtUserName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtUserName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtUserName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtUserName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUserName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUserName.IconLeft = global::itools_source.Properties.Resources.user_name_24px;
-            this.txtUserName.IconLeftOffset = new System.Drawing.Point(12, 0);
-            this.txtUserName.IconLeftSize = new System.Drawing.Size(24, 24);
-            this.txtUserName.Location = new System.Drawing.Point(101, 62);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.PasswordChar = '\0';
-            this.txtUserName.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.txtUserName.PlaceholderText = "Tài Khoản";
-            this.txtUserName.SelectedText = "";
-            this.txtUserName.Size = new System.Drawing.Size(385, 50);
-            this.txtUserName.TabIndex = 0;
+            this._txtUserName.Animated = true;
+            this._txtUserName.AutoRoundedCorners = true;
+            this._txtUserName.BorderRadius = 24;
+            this._txtUserName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this._txtUserName.DefaultText = "181119";
+            this._txtUserName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this._txtUserName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this._txtUserName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtUserName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtUserName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtUserName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtUserName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtUserName.IconLeft = global::itools_source.Properties.Resources.user_name_24px;
+            this._txtUserName.IconLeftOffset = new System.Drawing.Point(12, 0);
+            this._txtUserName.IconLeftSize = new System.Drawing.Size(24, 24);
+            this._txtUserName.Location = new System.Drawing.Point(101, 62);
+            this._txtUserName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._txtUserName.Name = "_txtUserName";
+            this._txtUserName.PasswordChar = '\0';
+            this._txtUserName.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this._txtUserName.PlaceholderText = "Tài Khoản";
+            this._txtUserName.SelectedText = "";
+            this._txtUserName.Size = new System.Drawing.Size(385, 50);
+            this._txtUserName.TabIndex = 0;
             // 
             // LoginView
             // 
@@ -189,9 +192,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(586, 321);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(578, 304);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtUserName);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.guna2HtmlLabel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -205,14 +211,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTest;
-        private System.Windows.Forms.TextBox txtUserName;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Label lblLogger;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2GradientButton btnCancel;
+        private Guna.UI2.WinForms.Guna2GradientButton btnLogin;
+        private Guna.UI2.WinForms.Guna2TextBox txtUserName;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private Guna.UI2.WinForms.Guna2TextBox txtPassword;
     }
 }

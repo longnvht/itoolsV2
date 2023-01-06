@@ -1,12 +1,9 @@
-﻿using Guna.UI2.WinForms;
-using itools_source.Models.Interface;
+﻿using itools_source.Models.Interface;
 using itools_source.Utils;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace itools_source.Repository
 {
@@ -74,7 +71,7 @@ namespace itools_source.Repository
         public async Task<Dictionary<int?, Dictionary<string, string>>> GetOPByJobPartOPID(string strJobNumber, int? iPartID)
         {
             Dictionary<int?, Dictionary<string, string>> lstOPList = null;
-            
+
             string strQueryProcedure = @"GetOPByJobPartOPID";
 
             _log.Info("Store procedure query: " + strQueryProcedure);

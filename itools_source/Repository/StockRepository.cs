@@ -196,7 +196,7 @@ namespace itools_source.Repository
 
                     if (bResult == true)
                     {
-                        _log.Info("Update Quantity in stock Susccessfully!");
+                        _log.Info("Update Quantity in stock Successfully!");
                     }
                 }
 

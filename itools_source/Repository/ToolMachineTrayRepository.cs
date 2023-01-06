@@ -71,7 +71,7 @@ namespace itools_source.Repository
 
                     if (bResult == true)
                     {
-                        _log.Info("Update ToolCode, Quantity, UpdateDate in ToolMachineTray Susccessfully!");
+                        _log.Info("Update ToolCode, Quantity, UpdateDate in ToolMachineTray Successfully!");
                     }
                 }
 

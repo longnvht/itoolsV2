@@ -106,7 +106,7 @@ namespace itools_source.Repository
 
                     if (bResult == true)
                     {
-                        _log.Info("Add WorkingTransaction Susccessfully!");
+                        _log.Info("Add WorkingTransaction Successfully!");
                     }
                 }
 

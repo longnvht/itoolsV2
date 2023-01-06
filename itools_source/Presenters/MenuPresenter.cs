@@ -171,7 +171,7 @@ namespace itools_source.Presenters
             {
                 _log.Error("strJobNumber is null.");
             }
-            
+
             oPView.GetToolViewAction = OpenGetToolView;
 
             // 2. Close JobView, open OPView.
@@ -201,7 +201,7 @@ namespace itools_source.Presenters
                 {
                     getToolView.strOPNumber = strOPNumber;
                 }
-                
+
                 getToolView.strJobNumber = _mainView.strJobNumber;
                 getToolView.EnabledButton = ToggleButton;
 

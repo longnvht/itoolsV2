@@ -1,5 +1,4 @@
-﻿using Guna.UI2.WinForms;
-using itools_source.Models.Interface;
+﻿using itools_source.Models.Interface;
 using itools_source.Presenter;
 using itools_source.Repository;
 using itools_source.Views;
@@ -194,7 +193,7 @@ namespace itools_source.Presenters
                             {
                                 oPView.lstOPNumberOPType = _mainView.lstOPNumberOpType_Main;
                             }
-                            
+
                             oPView.GetToolViewAction = OpenGetToolView;
                             if (_getToolRepository == null)
                             {

@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO.Ports;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace itools_source.Presenters
 {
@@ -37,7 +36,7 @@ namespace itools_source.Presenters
         #endregion
 
         #region Events
-        private async void _configSettingView_cmbCompany_SelectedValueChanged(object sender, EventArgs e)
+        private void _configSettingView_cmbCompany_SelectedValueChanged(object sender, EventArgs e)
         {
             if (sender != null)
             {

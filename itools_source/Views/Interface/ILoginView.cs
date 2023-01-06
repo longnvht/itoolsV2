@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace itools_source.Views.Interface
 {
@@ -13,6 +14,7 @@ namespace itools_source.Views.Interface
         event EventHandler btnLogin_Click;
         event EventHandler btnCancel_Click;
         event EventHandler txtPassword_IconRightClick;
+        event MouseEventHandler txtUserName_MouseClick;
         #endregion
 
         #region Methods

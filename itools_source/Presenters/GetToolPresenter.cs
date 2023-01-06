@@ -4,7 +4,6 @@ using itools_source.Models.Interface;
 using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
-using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
@@ -41,7 +40,7 @@ namespace itools_source.Presenters
         private bool bToggle = false; // On/Off => Show all machine and tray quantity.
         #endregion
 
-        #region Evens
+        #region Events
         private async void _getToolView_toggleShowAll_Click(object sender, EventArgs e)
         {
             GetToolView frm = (GetToolView)sender;
@@ -266,7 +265,7 @@ namespace itools_source.Presenters
                     {
                         _getToolView.serialPortGetTool.PortName = Properties.Settings.Default.SerialPort;
                     }
-                    
+
                     foreach (var item in SerialPort.GetPortNames())
                     {
                         if (_getToolView.serialPortGetTool.PortName == item)
@@ -339,7 +338,7 @@ namespace itools_source.Presenters
                     {
                         _log.Error("_getToolView.strOPNumber is null.");
                     }
-                    
+
                     if (_getToolView.iTrayId != null)
                     {
                         workingTransaction.iTrayId = _getToolView.iTrayId;

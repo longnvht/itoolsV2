@@ -78,6 +78,9 @@
     <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
+    <Reference Include="Keyboard">
+      <HintPath>..\..\..\kien thuc\Touchscreen-GDI-Drawn-Keyboard\VirtualKeyboardExample\Keyboard\bin\Release\Keyboard.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
     </Reference>
@@ -91,6 +94,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
@@ -175,6 +179,18 @@
     <Compile Include="Repository\ToolMachineTrayRepository.cs" />
     <Compile Include="Repository\WorkingTransactionRepository.cs" />
     <Compile Include="Utils\Encryption.cs" />
+    <Compile Include="Utils\KeyBoard\CommandInstruction.cs" />
+    <Compile Include="Utils\KeyBoard\Helper.cs" />
+    <Compile Include="Utils\KeyBoard\KeyboardButtonEventArgs.cs" />
+    <Compile Include="Utils\KeyBoard\KeyboardColorTable.cs" />
+    <Compile Include="Utils\KeyBoard\KeyboardKeyConstants.cs" />
+    <Compile Include="Utils\KeyBoard\KeyboardLayout.cs" />
+    <Compile Include="Utils\KeyBoard\NativeConstants.cs" />
+    <Compile Include="Utils\KeyBoard\RoundedRectangle.cs" />
+    <Compile Include="Utils\KeyBoard\VirtualKbButton.cs" />
+    <Compile Include="Utils\KeyBoard\VirtualKeyboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utils\MySqlConnect.cs" />
     <Compile Include="Utils\ServerTime.cs" />
     <Compile Include="Utils\Session.cs" />
@@ -253,6 +269,18 @@
     <Compile Include="Views\ToolManagerView.Designer.cs">
       <DependentUpon>ToolManagerView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\VirtualKeyBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\VirtualKeyBoard.Designer.cs">
+      <DependentUpon>VirtualKeyBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VirtualNumericKeyBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\VirtualNumericKeyBoard.Designer.cs">
+      <DependentUpon>VirtualNumericKeyBoard.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -298,6 +326,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ToolManagerView.resx">
       <DependentUpon>ToolManagerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\VirtualKeyBoard.resx">
+      <DependentUpon>VirtualKeyBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\VirtualNumericKeyBoard.resx">
+      <DependentUpon>VirtualNumericKeyBoard.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
