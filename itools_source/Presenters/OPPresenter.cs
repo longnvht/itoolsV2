@@ -4,6 +4,9 @@ using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace itools_source.Presenters
 {
@@ -17,6 +20,7 @@ namespace itools_source.Presenters
             _opView.OPView_Load += _opView_OPView_Load;
             _opView.btnflpOPlList_DoubleClick += _opView_btnflpList_DoubleClick;
             _opView.btnflpOPlList_Click += _opView_btnflpOPlList_Click;
+            _opView.txtOPSearch_MouseDown += _opView_txtOPSearch_MouseDown;
 
             _opView.Show();
         }
@@ -26,9 +30,29 @@ namespace itools_source.Presenters
 
         private IOPView _opView;
         private IGetToolRepository _getToolRepository;
+
+        VirtualNumericKeyBoard frmNumericKey;
+        Point clientPoint;
         #endregion
 
         #region Events
+        private void _opView_txtOPSearch_MouseDown(object sender, EventArgs e)
+        {
+            if (!Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            {
+                frmNumericKey = new VirtualNumericKeyBoard();
+                frmNumericKey.Show();
+
+                OPView frm = (OPView)sender;
+                frm.txtOPSearch.Focus();
+
+                Point p = new Point();
+                clientPoint = frm.txtOPSearch.PointToScreen(p);
+                frmNumericKey.Location = new Point(clientPoint.X, clientPoint.Y + frm.txtOPSearch.Height);
+                clientPoint.Y += frm.txtOPSearch.Height;
+            }
+        }
+
         private void _opView_btnflpOPlList_Click(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;

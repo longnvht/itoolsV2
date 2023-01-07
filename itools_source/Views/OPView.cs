@@ -14,6 +14,7 @@ namespace itools_source.Views
             InitializeComponent();
 
             this.Load += delegate { OPView_Load?.Invoke(this, EventArgs.Empty); };
+            _txtOPSearch.MouseClick += delegate { txtOPSearch_MouseDown?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
         }
 
         #region Properties - Fields
@@ -64,6 +65,7 @@ namespace itools_source.Views
         public event EventHandler OPView_Load;
         public event EventHandler btnflpOPlList_DoubleClick;
         public event EventHandler btnflpOPlList_Click;
+        public event EventHandler txtOPSearch_MouseDown;
         #endregion
 
         #region Methods

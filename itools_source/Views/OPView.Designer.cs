@@ -1,4 +1,6 @@
-﻿namespace itools_source.Views
+﻿using Guna.UI2.WinForms;
+
+namespace itools_source.Views
 {
     partial class OPView
     {
@@ -157,6 +159,9 @@
             get { return _flpOPList; }
             set { _flpOPList = value; }
         }
+
+        public Guna2TextBox txtOPSearch { get => _txtOPSearch; set => _txtOPSearch = value; }
+
         private System.Windows.Forms.TableLayoutPanel _tlpJobHeader;
         private Guna.UI2.WinForms.Guna2TextBox _txtOPSearch;
         private Guna.UI2.WinForms.Guna2GradientButton _btnOPNumberSearch;

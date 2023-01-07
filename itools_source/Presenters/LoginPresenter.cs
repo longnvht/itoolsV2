@@ -28,7 +28,7 @@ namespace itools_source.Presenter
             _loginView.Show();
         }
 
-        #region Fields
+        #region Properties - Fields
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(LoginPresenter).Name);
 
         private readonly ILoginView _loginView;

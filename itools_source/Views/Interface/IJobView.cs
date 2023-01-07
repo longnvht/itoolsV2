@@ -21,6 +21,7 @@ namespace itools_source.Views.Interface
         event EventHandler txtJobNumberSearch_TextChanged;
         event EventHandler btnflpJobNumberList_DoubleClick;
         event EventHandler btnflpJobNumberList_Click;
+        event EventHandler txtJobNumberSearch_MouseClick;
         #endregion
         #region Methods
         void Show();

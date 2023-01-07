@@ -4,6 +4,9 @@ using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace itools_source.Presenters
 {
@@ -18,6 +21,7 @@ namespace itools_source.Presenters
             _jobView.txtJobNumberSearch_TextChanged += _jobView_txtJobNumberSearch_TextChanged;
             _jobView.btnflpJobNumberList_DoubleClick += _jobView_btnflpJobNumberList_DoubleClick;
             _jobView.btnflpJobNumberList_Click += _jobView_btnflpJobNumberList_Click;
+            _jobView.txtJobNumberSearch_MouseClick += _jobView_txtJobNumberSearch_MouseClick;
 
             _jobView.Show();
         }
@@ -27,9 +31,28 @@ namespace itools_source.Presenters
         private IJobRepository _jobRepository;
 
         private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(JobPresenter).Name);
+        VirtualNumericKeyBoard frmNumericKey;
+        Point clientPoint;
         #endregion
 
         #region Events
+        private void _jobView_txtJobNumberSearch_MouseClick(object sender, EventArgs e)
+        {
+            if (!Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            {
+                frmNumericKey = new VirtualNumericKeyBoard();
+                frmNumericKey.Show();
+
+                JobView frm = (JobView)sender;
+                frm.txtJobNumberSearch.Focus();
+
+                Point p = new Point();
+                clientPoint = frm.txtJobNumberSearch.PointToScreen(p);
+                frmNumericKey.Location = new Point(clientPoint.X, clientPoint.Y + frm.txtJobNumberSearch.Height);
+                clientPoint.Y += frm.txtJobNumberSearch.Height;
+            }
+        }
+
         private async void _jobView_btnflpJobNumberList_Click(object sender, EventArgs e)
         {
             Guna2GradientButton btn = (Guna2GradientButton)sender;

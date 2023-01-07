@@ -6,6 +6,7 @@ using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Windows.Forms;
@@ -28,6 +29,8 @@ namespace itools_source.Presenters
             _getToolView.btnflpTrayMachineList_Click += _getToolView_btnflpTrayMachineList_Click;
             _getToolView.btnflpTrayMachineList_DoubleClick += _getToolView_btnflpTrayMachineList_DoubleClick;
             _getToolView.toggleShowAll_Click += _getToolView_toggleShowAll_Click;
+            _getToolView.txtSearch_MouseClick += _getToolView_txtSearch_MouseClick;
+            _getToolView.txtToolSearch_MouseClick += _getToolView_txtToolSearch_MouseClick;
 
             _getToolView.Show();
         }
@@ -38,9 +41,47 @@ namespace itools_source.Presenters
 
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(GetToolPresenter).Name);
         private bool bToggle = false; // On/Off => Show all machine and tray quantity.
+        VirtualKeyBoard frmKeyBoard;
+        Point clientPoint;
         #endregion
 
         #region Events
+        private void _getToolView_txtToolSearch_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            {
+                frmKeyBoard = new VirtualKeyBoard();
+                frmKeyBoard.Show();
+
+                GetToolView frm = (GetToolView)sender;
+                frm.txtToolSearch.Focus();
+
+                Point p = new Point();
+                clientPoint = frm.txtToolSearch.PointToScreen(p);
+                int iTemp = frmKeyBoard.Width - frm.tlpToolMachineList.Width;
+                frmKeyBoard.Location = new Point(clientPoint.X - iTemp, clientPoint.Y + frm.txtToolSearch.Height);
+                clientPoint.X -= iTemp;
+                clientPoint.Y += frm.txtToolSearch.Height;
+            }
+        }
+
+        private void _getToolView_txtSearch_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            {
+                frmKeyBoard = new VirtualKeyBoard();
+                frmKeyBoard.Show();
+
+                GetToolView frm = (GetToolView)sender;
+                frm.txtSearch.Focus();
+
+                Point p = new Point();
+                clientPoint = frm.txtSearch.PointToScreen(p);
+                frmKeyBoard.Location = new Point(clientPoint.X, clientPoint.Y + frm.txtSearch.Height);
+                clientPoint.Y += frm.txtSearch.Height;
+            }
+        }
+
         private async void _getToolView_toggleShowAll_Click(object sender, EventArgs e)
         {
             GetToolView frm = (GetToolView)sender;

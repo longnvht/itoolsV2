@@ -19,6 +19,8 @@ namespace itools_source.Views
             _btnGetTool.Click += delegate { btnGetTool_Click?.Invoke(this, EventArgs.Empty); };
             _btnCancelSelectTray.Click += delegate { btnCancelSelectTray_Click?.Invoke(this, EventArgs.Empty); };
             _toggleShowAll.Click += delegate { toggleShowAll_Click?.Invoke(this, EventArgs.Empty); };
+            _txtSearch.MouseClick += delegate { txtSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            _txtToolSearch.MouseClick += delegate { txtToolSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
         }
 
         #region Properties - Fields
@@ -279,6 +281,8 @@ namespace itools_source.Views
         public event EventHandler btnCancelSelectTray_Click;
         public event EventHandler btnGetTool_Click;
         public event EventHandler toggleShowAll_Click;
+        public event MouseEventHandler txtSearch_MouseClick;
+        public event MouseEventHandler txtToolSearch_MouseClick;
         #endregion
     }
 }

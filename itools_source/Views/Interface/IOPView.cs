@@ -19,6 +19,7 @@ namespace itools_source.Views.Interface
         event EventHandler OPView_Load;
         event EventHandler btnflpOPlList_DoubleClick;
         event EventHandler btnflpOPlList_Click;
+        event EventHandler txtOPSearch_MouseDown;
         #endregion
 
         #region Methods
