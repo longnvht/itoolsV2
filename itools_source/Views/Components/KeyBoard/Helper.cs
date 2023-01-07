@@ -10,7 +10,6 @@ namespace Keyboard
         private static readonly string symbBtnNaming = "btn_Symb_{0}";
         public const string LangBtnName = "btn_LangButton";
 
-
         /// <summary>
         /// Function to get Upper/Lower string depending on a Caps/Shift state
         /// </summary>
@@ -33,8 +32,6 @@ namespace Keyboard
 
             return s;
         }
-
-
 
         public static bool IsSpecialKeyText(string text)
         {
@@ -59,17 +56,11 @@ namespace Keyboard
             return isOptionalButton;
         }
 
-
         /// <summary>
         /// Applies corresponding name for a button
         /// </summary>
         /// <returns>Button name</returns>
-        public static string GiveButtonName(
-                            VirtualKeyboard kb,
-                            int rowNumber,
-                            int columnNumber,
-                            VirtualKbButton item,
-                            bool isLangButton)
+        public static string GiveButtonName(VirtualKeyboard kb, int rowNumber, int columnNumber, VirtualKbButton item, bool isLangButton)
         {
             int beginAdvArea = 0;
 

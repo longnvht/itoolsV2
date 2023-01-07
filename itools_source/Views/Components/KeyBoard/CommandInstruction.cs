@@ -70,8 +70,6 @@ namespace Keyboard
                 _keyboard.NumLockState = !_keyboard.NumLockState;
             }
 
-
-
             return cmd;
         }
 
@@ -144,7 +142,6 @@ namespace Keyboard
                     cmd.CommandText = txtTop.ToLower();
                 }
             }
-
             else
             {
                 if (_keyboard.ShiftState)

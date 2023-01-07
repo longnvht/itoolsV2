@@ -6,10 +6,8 @@ namespace Keyboard
     public abstract class RoundedRectangle
     {
 
-        public static GraphicsPath DrawRoundedRectangle(Rectangle rect,
-                                          int radius)
+        public static GraphicsPath DrawRoundedRectangle(Rectangle rect, int radius)
         {
-
             int x = rect.X;
             int y = rect.Y;
             int width = rect.Width;
@@ -88,8 +86,7 @@ namespace Keyboard
             return p;
         }
 
-        public static GraphicsPath DrawFilledRoundedRectangle(Graphics graphics, Brush rectBrush, Rectangle rect,
-                            int radius)
+        public static GraphicsPath DrawFilledRoundedRectangle(Graphics graphics, Brush rectBrush, Rectangle rect, int radius)
         {
             GraphicsPath path = DrawRoundedRectangle(rect, radius);
             SmoothingMode mode = graphics.SmoothingMode;
@@ -99,8 +96,7 @@ namespace Keyboard
             return path;
         }
 
-        public static GraphicsPath DrawRoundedRectangle(Graphics graphics, Pen pen, Rectangle rect,
-                     int radius)
+        public static GraphicsPath DrawRoundedRectangle(Graphics graphics, Pen pen, Rectangle rect, int radius)
         {
             GraphicsPath path = DrawRoundedRectangle(rect, radius);
             SmoothingMode mode = graphics.SmoothingMode;
