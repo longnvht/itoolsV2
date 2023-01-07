@@ -37,6 +37,8 @@
             this._lblOPId = new System.Windows.Forms.Label();
             this._lblJobNumber = new System.Windows.Forms.Label();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.lblRole = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.tlpFooter.SuspendLayout();
@@ -105,9 +107,21 @@
             // 
             this.tlpHeader.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.tlpHeader, "tlpHeader");
-            this.tlpHeader.Controls.Add(this.lblRole, 1, 0);
+            this.tlpHeader.Controls.Add(this.label1, 0, 0);
             this.tlpHeader.Controls.Add(this.lblName, 0, 0);
+            this.tlpHeader.Controls.Add(this.label13, 0, 0);
+            this.tlpHeader.Controls.Add(this.lblRole, 2, 0);
             this.tlpHeader.Name = "tlpHeader";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
             // 
             // lblRole
             // 
@@ -123,6 +137,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this.Controls.Add(this.tlpHeader);
             this.Controls.Add(this.tlpFooter);
             this.IsMdiContainer = true;
@@ -166,9 +181,11 @@
 
         private System.Windows.Forms.TableLayoutPanel tlpFooter;
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblJobNumberDisplay;
         private System.Windows.Forms.Label lblOPIdDisplay;
+        private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblName;
     }
 }

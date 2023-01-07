@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Keyboard;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,6 +58,20 @@ namespace itools_source.Views
             {
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void btnNumeric_Click(object sender, EventArgs e)
+        {
+            if (!virtualKeyboard1.IsNumeric) // Character
+            {
+                btnNumeric.Text = "123";
+                virtualKeyboard1.IsNumeric = true;
+            }
+            else // Number
+            {
+                btnNumeric.Text = "ABC";
+                virtualKeyboard1.IsNumeric = false;
             }
         }
     }

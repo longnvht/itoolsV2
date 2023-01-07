@@ -31,7 +31,7 @@ namespace itools_source.Presenters
         private IJobRepository _jobRepository;
 
         private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(JobPresenter).Name);
-        VirtualNumericKeyBoard frmNumericKey;
+        VirtualKeyBoard frmKeyBoard;
         Point clientPoint;
         #endregion
 
@@ -40,15 +40,15 @@ namespace itools_source.Presenters
         {
             if (!Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
             {
-                frmNumericKey = new VirtualNumericKeyBoard();
-                frmNumericKey.Show();
+                frmKeyBoard = new VirtualKeyBoard();
+                frmKeyBoard.Show();
 
                 JobView frm = (JobView)sender;
                 frm.txtJobNumberSearch.Focus();
 
                 Point p = new Point();
                 clientPoint = frm.txtJobNumberSearch.PointToScreen(p);
-                frmNumericKey.Location = new Point(clientPoint.X, clientPoint.Y + frm.txtJobNumberSearch.Height);
+                frmKeyBoard.Location = new Point(clientPoint.X, clientPoint.Y + frm.txtJobNumberSearch.Height);
                 clientPoint.Y += frm.txtJobNumberSearch.Height;
             }
         }

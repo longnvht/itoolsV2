@@ -105,6 +105,7 @@ namespace itools_source.Presenters
                     }
                     if (item == nameof(StockView))
                     {
+                        _mainView.btnNextEnabled = false;
                         IStockView stockView = StockView.GetInstance((MainView)_mainView);
                         IStockRepository stockRepository = new StockRepository();
                         new StockPresenter(stockView, stockRepository);
@@ -112,6 +113,7 @@ namespace itools_source.Presenters
                     }
                     if (item == nameof(ConfigSettingView))
                     {
+                        _mainView.btnNextEnabled = false;
                         IConfigSettingView configSettingView = ConfigSettingView.GetInstance((MainView)_mainView);
                         ICompanyRepository companyRepository = new CompanyRepository();
                         new ConfigSettingPresenter(configSettingView, companyRepository);
