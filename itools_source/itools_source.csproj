@@ -179,16 +179,16 @@
     <Compile Include="Repository\ToolMachineTrayRepository.cs" />
     <Compile Include="Repository\WorkingTransactionRepository.cs" />
     <Compile Include="Utils\Encryption.cs" />
-    <Compile Include="Utils\KeyBoard\CommandInstruction.cs" />
-    <Compile Include="Utils\KeyBoard\Helper.cs" />
-    <Compile Include="Utils\KeyBoard\KeyboardButtonEventArgs.cs" />
-    <Compile Include="Utils\KeyBoard\KeyboardColorTable.cs" />
-    <Compile Include="Utils\KeyBoard\KeyboardKeyConstants.cs" />
-    <Compile Include="Utils\KeyBoard\KeyboardLayout.cs" />
-    <Compile Include="Utils\KeyBoard\NativeConstants.cs" />
-    <Compile Include="Utils\KeyBoard\RoundedRectangle.cs" />
-    <Compile Include="Utils\KeyBoard\VirtualKbButton.cs" />
-    <Compile Include="Utils\KeyBoard\VirtualKeyboard.cs">
+    <Compile Include="Views\Components\KeyBoard\CommandInstruction.cs" />
+    <Compile Include="Views\Components\KeyBoard\Helper.cs" />
+    <Compile Include="Views\Components\KeyBoard\KeyboardButtonEventArgs.cs" />
+    <Compile Include="Views\Components\KeyBoard\KeyboardColorTable.cs" />
+    <Compile Include="Views\Components\KeyBoard\KeyboardKeyConstants.cs" />
+    <Compile Include="Views\Components\KeyBoard\KeyboardLayout.cs" />
+    <Compile Include="Views\Components\KeyBoard\NativeConstants.cs" />
+    <Compile Include="Views\Components\KeyBoard\RoundedRectangle.cs" />
+    <Compile Include="Views\Components\KeyBoard\VirtualKbButton.cs" />
+    <Compile Include="Views\Components\KeyBoard\VirtualKeyboard.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utils\MySqlConnect.cs" />
@@ -372,6 +372,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\close_window_48.png" />
+    <None Include="Resources\maximize_window_48.png" />
+    <None Include="Resources\minimize_window_48.png" />
     <Content Include="tool_generator.ico" />
   </ItemGroup>
   <ItemGroup>

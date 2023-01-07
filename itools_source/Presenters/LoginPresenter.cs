@@ -5,6 +5,7 @@ using itools_source.Presenters;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -22,6 +23,7 @@ namespace itools_source.Presenter
             _loginView.btnCancel_Click += _loginView_btnCancel_Click;
             _loginView.txtPassword_IconRightClick += _loginView_txtPassword_IconRightClick;
             _loginView.txtUserName_MouseClick += _loginView_txtUserName_MouseClick;
+            _loginView.txtPassword_MouseClick += _loginView_txtPassword_MouseClick;
 
             _loginView.Show();
         }
@@ -31,20 +33,44 @@ namespace itools_source.Presenter
 
         private readonly ILoginView _loginView;
         private readonly IUserAccountRepository _userAccountRepository;
+
+        VirtualNumericKeyBoard frmNumericKey;
+        VirtualKeyBoard frmKeyBoard;
+        Point clientPoint;
         #endregion
 
         #region Events
+
+        private void _loginView_txtPassword_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            {
+                frmKeyBoard = new VirtualKeyBoard();
+                frmKeyBoard.Show();
+
+                LoginView frmLogin = (LoginView)sender;
+                frmLogin.txtPassword.Focus();
+
+                Point p = new Point();
+                clientPoint = frmLogin.txtPassword.PointToScreen(p);
+                frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X - 125, clientPoint.Y + frmLogin.txtPassword.Height);
+                clientPoint.Y += frmLogin.txtPassword.Height;
+            }
+        }
         private void _loginView_txtUserName_MouseClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show("Ahihi");
-            if (!Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            if (!Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualKeyBoard>().Any())
             {
-                var frmNumericKey = new VirtualNumericKeyBoard();
+                frmNumericKey = new VirtualNumericKeyBoard();
                 frmNumericKey.Show();
-                MessageBox.Show("Ahihi1");
 
-                //LoginView frmLogin = (LoginView)sender;
-                //frmLogin.txtUserName.Focus();
+                LoginView frmLogin = (LoginView)sender;
+                frmLogin.txtUserName.Focus();
+
+                Point p = new Point();
+                clientPoint = frmLogin.txtUserName.PointToScreen(p);
+                frmNumericKey.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y + frmLogin.txtUserName.Height);
+                clientPoint.Y += frmLogin.txtUserName.Height;
             }
         }
 
@@ -66,7 +92,6 @@ namespace itools_source.Presenter
         private void _loginView_btnCancel_Click(object sender, EventArgs e)
         {
             Application.Exit();
-            //_loginView.Close();
         }
 
         private async void _loginView_btnLogin_Click(object sender, EventArgs e)
@@ -86,7 +111,23 @@ namespace itools_source.Presenter
                 UserAccount userAccount = await _userAccountRepository.GetUserAccount(strUserName, strPassword);
                 if (userAccount == null)
                 {
-                    MessageBox.Show("Đăng Nhập Thất Bại!");
+                    if (Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+                    {
+                        if (frmNumericKey != null)
+                        {
+                            frmNumericKey.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y + 20);
+                        }
+                    }
+
+                    DialogResult dlgOk = MessageBox.Show("Đăng Nhập Thất Bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (dlgOk == DialogResult.OK)
+                    {
+                        if (frmNumericKey != null)
+                        {
+                            frmNumericKey.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y);
+                        }
+                    }
                     _log.Info("Login Fail!");
                     return;
                 }
@@ -94,7 +135,17 @@ namespace itools_source.Presenter
                 {
                     if (userAccount.iID == 0)
                     {
-                        MessageBox.Show("Đăng Nhập Thất Bại!");
+                        if (Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+                        {
+                            frmNumericKey.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y - 312);
+                        }
+
+                        DialogResult dlgOk = MessageBox.Show("Đăng Nhập Thất Bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        if (dlgOk == DialogResult.OK)
+                        {
+                            frmNumericKey.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y);
+                        }
                         _log.Info("Login Fail!");
                         return;
                     }

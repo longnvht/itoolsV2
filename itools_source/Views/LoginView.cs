@@ -13,6 +13,7 @@ namespace itools_source.Views
             btnCancel.Click += delegate { btnCancel_Click?.Invoke(this, EventArgs.Empty); };
             _txtPassword.IconRightClick += delegate { txtPassword_IconRightClick?.Invoke(_txtPassword, EventArgs.Empty); };
             _txtUserName.MouseClick += delegate { txtUserName_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            _txtPassword.MouseClick += delegate { txtPassword_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
         }
 
         #region Properties - Fields
@@ -33,6 +34,7 @@ namespace itools_source.Views
         public event EventHandler btnCancel_Click;
         public event EventHandler txtPassword_IconRightClick;
         public event MouseEventHandler txtUserName_MouseClick;
+        public event MouseEventHandler txtPassword_MouseClick;
         #endregion
 
         #region Methods
