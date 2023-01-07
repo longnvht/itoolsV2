@@ -47,8 +47,6 @@ namespace Keyboard
 
     }
 
-
-
     /// <summary>
     /// Button for virtual keyboard
     /// </summary>
@@ -68,7 +66,6 @@ namespace Keyboard
             get; internal set;
         }
 
-
         /// <summary>
         /// Top text of button
         /// </summary>
@@ -77,7 +74,6 @@ namespace Keyboard
             get { return topText; }
             set { topText = value; }
         }
-
 
         /// <summary>
         /// Bottom text of button
@@ -114,8 +110,6 @@ namespace Keyboard
             set { canSendCommand = value; }
         }
 
-
-
         public VirtualKbButton()
         {
 
@@ -144,7 +138,4 @@ namespace Keyboard
             BottomFont = bottomnBottomFont;
         }
     }
-
-
-
 }

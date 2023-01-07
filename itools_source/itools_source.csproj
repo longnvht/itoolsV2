@@ -123,12 +123,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTest.Designer.cs">
-      <DependentUpon>frmTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Interface\IBaseRepository.cs" />
     <Compile Include="Models\Interface\ICompanyRepository.cs" />
     <Compile Include="Models\Interface\IJobRepository.cs" />
@@ -200,18 +194,6 @@
     <Compile Include="Views\ConfigSettingView.Designer.cs">
       <DependentUpon>ConfigSettingView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FormTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\FormTest.Designer.cs">
-      <DependentUpon>FormTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\frmTest2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\frmTest2.Designer.cs">
-      <DependentUpon>frmTest2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Interface\IConfigSettingView.cs" />
     <Compile Include="Views\Interface\IGetToolView.cs" />
     <Compile Include="Views\Interface\IJobView.cs" />
@@ -281,9 +263,6 @@
     <Compile Include="Views\VirtualNumericKeyBoard.Designer.cs">
       <DependentUpon>VirtualNumericKeyBoard.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmTest.resx">
-      <DependentUpon>frmTest.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -296,12 +275,6 @@
     </Compile>
     <EmbeddedResource Include="Views\ConfigSettingView.resx">
       <DependentUpon>ConfigSettingView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\FormTest.resx">
-      <DependentUpon>FormTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmTest2.resx">
-      <DependentUpon>frmTest2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\JobView.resx">
       <DependentUpon>JobView.cs</DependentUpon>

@@ -16,6 +16,7 @@ namespace itools_source.Views.Interface
         Dictionary<int?, Dictionary<string, string>> lstOPNumberOPType { get; set; }
         Action<Dictionary<int?, Dictionary<string, string>>, string> SetListOPNumberOPType { get; set; }
         #endregion
+
         #region Events
         event EventHandler JobView_Load;
         event EventHandler txtJobNumberSearch_TextChanged;
@@ -23,6 +24,7 @@ namespace itools_source.Views.Interface
         event EventHandler btnflpJobNumberList_Click;
         event EventHandler txtJobNumberSearch_MouseClick;
         #endregion
+
         #region Methods
         void Show();
         void Close();

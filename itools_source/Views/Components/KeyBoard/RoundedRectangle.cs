@@ -105,8 +105,6 @@ namespace Keyboard
             graphics.SmoothingMode = mode;
             return path;
         }
-
-
     }
 }
 

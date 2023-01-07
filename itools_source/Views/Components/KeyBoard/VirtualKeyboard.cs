@@ -107,6 +107,7 @@ namespace Keyboard
 
         private char _decimalSeparator = '.';
 
+
         #endregion
 
         #region Fields

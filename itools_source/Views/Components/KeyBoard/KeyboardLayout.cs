@@ -112,8 +112,6 @@ namespace Keyboard
             new VirtualKbButton(KeyboardKeyConstants.F12,String.Empty)
         };
 
-
-
         /// <summary>
         /// The first buttons row only with deafult buttons
         /// </summary>
@@ -161,7 +159,6 @@ namespace Keyboard
             };
         }
 
-
         /// <summary>
         /// The third buttons row only with deafult buttons
         /// </summary>
@@ -183,7 +180,6 @@ namespace Keyboard
             };
         }
 
-
         /// <summary>
         /// The fourth buttons row only with deafult buttons
         /// </summary>
@@ -204,7 +200,6 @@ namespace Keyboard
             };
         }
 
-
         /// <summary>
         /// The fifth buttons row only with deafult buttons
         /// </summary>
@@ -219,8 +214,6 @@ namespace Keyboard
         #endregion
 
         #region Advanced area
-
-
         internal ButtonsCollection FunctionButtonsRowNum = new ButtonsCollection
         {
             new VirtualKbButton(KeyboardKeyConstants.PrtScrText, String.Empty),
@@ -271,12 +264,9 @@ namespace Keyboard
             new VirtualKbButton(".", KeyboardKeyConstants.DelText),
             new VirtualKbButton(KeyboardKeyConstants.NoneString, String.Empty)
         };
-
-
         #endregion
 
         #region Numeric keyboard
-
         internal ButtonsCollection FirstRowNum = new ButtonsCollection
         {
             new VirtualKbButton("7", String.Empty),
@@ -308,12 +298,9 @@ namespace Keyboard
             new VirtualKbButton(KeyboardKeyConstants.LeftText, String.Empty),
             new VirtualKbButton(KeyboardKeyConstants.RightText, String.Empty)
         };
-
         #endregion
 
         #region Layout functions
-
-
         /// <summary>
         /// Populates lists fof the buttons
         /// </summary>
@@ -346,7 +333,6 @@ namespace Keyboard
             }
 
         }
-
 
         /// <summary>
         /// Populates lists from custom settings
@@ -418,7 +404,6 @@ namespace Keyboard
             FifthRowButtonsCustom = new ButtonsCollection(_keyboard);
             FifthRowButtonsCustom.AddRange(FifthRowButtonsDefaultShort());
         }
-
 
         private void PopulateFifthRow()
         {
@@ -537,7 +522,6 @@ namespace Keyboard
                 }
             }
         }
-
         #endregion
     }
 
