@@ -33,6 +33,7 @@
             // 
             // _flpMenu
             // 
+            this._flpMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this._flpMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this._flpMenu.Location = new System.Drawing.Point(0, 0);
             this._flpMenu.Name = "_flpMenu";

@@ -45,6 +45,9 @@
             this._txtModel = new Guna.UI2.WinForms.Guna2TextBox();
             this._txtDescription = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Elipse_flpToolList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse_tlpTooMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse_flpTrayMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.serialPort_GetTool = new System.IO.Ports.SerialPort(this.components);
             this._tlpToolMachineList = new System.Windows.Forms.TableLayoutPanel();
             this.pToolContent = new System.Windows.Forms.Panel();
             this.guna2VScrollBar_flpToolMachineList = new Guna.UI2.WinForms.Guna2VScrollBar();
@@ -53,12 +56,10 @@
             this._btnCancelSelectTray = new Guna.UI2.WinForms.Guna2GradientButton();
             this._btnGetTool = new Guna.UI2.WinForms.Guna2GradientButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblShowAllMachineTray = new System.Windows.Forms.Label();
             this._txtToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this._toggleShowAll = new Guna.UI2.WinForms.Guna2ToggleSwitch();
-            this.guna2Elipse_tlpTooMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse_flpTrayMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.serialPort_GetTool = new System.IO.Ports.SerialPort(this.components);
-            this.lblShowAllMachineTray = new System.Windows.Forms.Label();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.tlpHeader.SuspendLayout();
             this.tlpContent.SuspendLayout();
             this.pLeftContent.SuspendLayout();
@@ -82,6 +83,7 @@
             this.tlpHeader.Name = "tlpHeader";
             this.tlpHeader.RowCount = 1;
             this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tlpHeader.Size = new System.Drawing.Size(900, 56);
             this.tlpHeader.TabIndex = 0;
             // 
@@ -94,7 +96,8 @@
             this._btnSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnSearch.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this._btnSearch.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this._btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this._btnSearch.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
             this._btnSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._btnSearch.ForeColor = System.Drawing.Color.White;
             this._btnSearch.Location = new System.Drawing.Point(755, 5);
@@ -169,7 +172,7 @@
             // 
             this._flpToolList.AutoScroll = true;
             this._flpToolList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._flpToolList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            this._flpToolList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(214)))), ((int)(((byte)(226)))));
             this._flpToolList.Dock = System.Windows.Forms.DockStyle.Left;
             this._flpToolList.Location = new System.Drawing.Point(0, 0);
             this._flpToolList.Name = "_flpToolList";
@@ -308,23 +311,31 @@
             this.guna2Elipse_flpToolList.BorderRadius = 20;
             this.guna2Elipse_flpToolList.TargetControl = this._flpToolList;
             // 
+            // guna2Elipse_tlpTooMachineList
+            // 
+            this.guna2Elipse_tlpTooMachineList.BorderRadius = 20;
+            // 
+            // guna2Elipse_flpTrayMachineList
+            // 
+            this.guna2Elipse_flpTrayMachineList.BorderRadius = 20;
+            // 
             // _tlpToolMachineList
             // 
             this._tlpToolMachineList.AutoScroll = true;
-            this._tlpToolMachineList.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this._tlpToolMachineList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(186)))), ((int)(((byte)(190)))));
             this._tlpToolMachineList.ColumnCount = 1;
             this._tlpToolMachineList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this._tlpToolMachineList.Controls.Add(this.pToolContent, 0, 1);
             this._tlpToolMachineList.Controls.Add(this.tlpToolMachineFooter, 0, 2);
             this._tlpToolMachineList.Controls.Add(this.panel1, 0, 0);
-            this._tlpToolMachineList.Location = new System.Drawing.Point(620, 0);
+            this._tlpToolMachineList.Location = new System.Drawing.Point(614, 0);
             this._tlpToolMachineList.Name = "_tlpToolMachineList";
             this._tlpToolMachineList.RowCount = 3;
             this._tlpToolMachineList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this._tlpToolMachineList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this._tlpToolMachineList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this._tlpToolMachineList.Size = new System.Drawing.Size(282, 456);
-            this._tlpToolMachineList.TabIndex = 3;
+            this._tlpToolMachineList.TabIndex = 4;
             // 
             // pToolContent
             // 
@@ -356,7 +367,7 @@
             // _flpTrayMachineList
             // 
             this._flpTrayMachineList.AutoScroll = true;
-            this._flpTrayMachineList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            this._flpTrayMachineList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(214)))), ((int)(((byte)(226)))));
             this._flpTrayMachineList.Dock = System.Windows.Forms.DockStyle.Fill;
             this._flpTrayMachineList.Location = new System.Drawing.Point(0, 0);
             this._flpTrayMachineList.Margin = new System.Windows.Forms.Padding(2);
@@ -391,7 +402,8 @@
             this._btnCancelSelectTray.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnCancelSelectTray.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnCancelSelectTray.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this._btnCancelSelectTray.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this._btnCancelSelectTray.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this._btnCancelSelectTray.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
             this._btnCancelSelectTray.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this._btnCancelSelectTray.ForeColor = System.Drawing.Color.White;
             this._btnCancelSelectTray.Location = new System.Drawing.Point(141, 9);
@@ -410,7 +422,8 @@
             this._btnGetTool.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnGetTool.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnGetTool.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this._btnGetTool.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this._btnGetTool.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this._btnGetTool.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
             this._btnGetTool.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this._btnGetTool.ForeColor = System.Drawing.Color.White;
             this._btnGetTool.Location = new System.Drawing.Point(3, 9);
@@ -429,6 +442,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(276, 62);
             this.panel1.TabIndex = 31;
+            // 
+            // lblShowAllMachineTray
+            // 
+            this.lblShowAllMachineTray.AutoSize = true;
+            this.lblShowAllMachineTray.Location = new System.Drawing.Point(224, 21);
+            this.lblShowAllMachineTray.Name = "lblShowAllMachineTray";
+            this.lblShowAllMachineTray.Size = new System.Drawing.Size(51, 20);
+            this.lblShowAllMachineTray.TabIndex = 30;
+            this.lblShowAllMachineTray.Text = "Tất Cả";
             // 
             // _txtToolSearch
             // 
@@ -469,24 +491,10 @@
             this._toggleShowAll.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
             this._toggleShowAll.UncheckedState.InnerColor = System.Drawing.Color.White;
             // 
-            // guna2Elipse_tlpTooMachineList
+            // guna2Elipse1
             // 
-            this.guna2Elipse_tlpTooMachineList.BorderRadius = 20;
-            this.guna2Elipse_tlpTooMachineList.TargetControl = this._tlpToolMachineList;
-            // 
-            // guna2Elipse_flpTrayMachineList
-            // 
-            this.guna2Elipse_flpTrayMachineList.BorderRadius = 20;
-            this.guna2Elipse_flpTrayMachineList.TargetControl = this._flpTrayMachineList;
-            // 
-            // lblShowAllMachineTray
-            // 
-            this.lblShowAllMachineTray.AutoSize = true;
-            this.lblShowAllMachineTray.Location = new System.Drawing.Point(224, 21);
-            this.lblShowAllMachineTray.Name = "lblShowAllMachineTray";
-            this.lblShowAllMachineTray.Size = new System.Drawing.Size(51, 20);
-            this.lblShowAllMachineTray.TabIndex = 30;
-            this.lblShowAllMachineTray.Text = "Tất Cả";
+            this.guna2Elipse1.BorderRadius = 10;
+            this.guna2Elipse1.TargetControl = this._tlpToolMachineList;
             // 
             // GetToolView
             // 
@@ -567,15 +575,11 @@
             set { _txtDescription = value; }
         }
 
-        private System.Windows.Forms.TableLayoutPanel _tlpToolMachineList;
-
         public System.Windows.Forms.TableLayoutPanel tlpToolMachineList
         {
             get { return _tlpToolMachineList; }
             set { _tlpToolMachineList = value; }
         }
-
-        private Guna.UI2.WinForms.Guna2TextBox _txtToolSearch;
 
         public Guna.UI2.WinForms.Guna2TextBox txtToolSearch
         {
@@ -583,15 +587,11 @@
             set { _txtToolSearch = value; }
         }
 
-        private System.Windows.Forms.FlowLayoutPanel _flpTrayMachineList;
-
         public System.Windows.Forms.FlowLayoutPanel flpTrayMachineList
         {
             get { return _flpTrayMachineList; }
             set { _flpTrayMachineList = value; }
         }
-
-        private Guna.UI2.WinForms.Guna2GradientButton _btnCancelSelectTray;
 
         public Guna.UI2.WinForms.Guna2GradientButton btnCancelSelectTray
         {
@@ -599,14 +599,11 @@
             set { _btnCancelSelectTray = value; }
         }
 
-        private Guna.UI2.WinForms.Guna2GradientButton _btnGetTool;
-
         public Guna.UI2.WinForms.Guna2GradientButton btnGetTool
         {
             get { return _btnGetTool; }
             set { _btnGetTool = value; }
         }
-        private Guna.UI2.WinForms.Guna2ToggleSwitch _toggleShowAll;
         public Guna.UI2.WinForms.Guna2ToggleSwitch toggleShowAll
         {
             get { return _toggleShowAll; }
@@ -623,12 +620,19 @@
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_flpToolList;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_flpTrayMachineList;
-        private System.Windows.Forms.Panel pToolContent;
-        private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar_flpToolMachineList;
-        private System.Windows.Forms.TableLayoutPanel tlpToolMachineFooter;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_tlpTooMachineList;
         private System.IO.Ports.SerialPort serialPort_GetTool;
+        private System.Windows.Forms.TableLayoutPanel _tlpToolMachineList;
+        private System.Windows.Forms.Panel pToolContent;
+        private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar_flpToolMachineList;
+        private System.Windows.Forms.FlowLayoutPanel _flpTrayMachineList;
+        private System.Windows.Forms.TableLayoutPanel tlpToolMachineFooter;
+        private Guna.UI2.WinForms.Guna2GradientButton _btnCancelSelectTray;
+        private Guna.UI2.WinForms.Guna2GradientButton _btnGetTool;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblShowAllMachineTray;
+        private Guna.UI2.WinForms.Guna2TextBox _txtToolSearch;
+        private Guna.UI2.WinForms.Guna2ToggleSwitch _toggleShowAll;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }
 }

@@ -136,7 +136,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblOPIdDisplay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>469, 0</value>
+    <value>468, 0</value>
   </data>
   <data name="lblOPIdDisplay.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 50</value>
@@ -175,7 +175,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblJobNumberDisplay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>256, 0</value>
+    <value>255, 0</value>
   </data>
   <data name="lblJobNumberDisplay.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 50</value>
@@ -241,13 +241,13 @@
     <value>Segoe UI, 11.25pt</value>
   </data>
   <data name="_btnNext.Location" type="System.Drawing.Point, System.Drawing">
-    <value>756, 4</value>
+    <value>754, 4</value>
   </data>
   <data name="_btnNext.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
   <data name="_btnNext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 42</value>
+    <value>176, 42</value>
   </data>
   <data name="_btnNext.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -277,7 +277,7 @@
     <value>Segoe UI, 11.25pt</value>
   </data>
   <data name="_lblOPId.Location" type="System.Drawing.Point, System.Drawing">
-    <value>526, 0</value>
+    <value>525, 0</value>
   </data>
   <data name="_lblOPId.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 50</value>
@@ -313,7 +313,7 @@
     <value>NoControl</value>
   </data>
   <data name="_lblJobNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>463, 0</value>
+    <value>462, 0</value>
   </data>
   <data name="_lblJobNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 50</value>
@@ -367,7 +367,7 @@
     <value>1</value>
   </data>
   <data name="tlpFooter.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblOPIdDisplay" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lblJobNumberDisplay" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="_btnPrevious" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="_btnNext" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="_lblOPId" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="_lblJobNumber" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,180,Percent,30,Percent,20,Percent,10,Percent,40,Absolute,180" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblOPIdDisplay" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lblJobNumberDisplay" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="_btnPrevious" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="_btnNext" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="_lblOPId" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="_lblJobNumber" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,180,Percent,30,Percent,20,Percent,10,Percent,40,Absolute,182" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tlpHeader.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>

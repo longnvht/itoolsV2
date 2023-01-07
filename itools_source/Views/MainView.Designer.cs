@@ -30,15 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.tlpFooter = new System.Windows.Forms.TableLayoutPanel();
-            this._lblJobNumber = new System.Windows.Forms.Label();
+            this.lblOPIdDisplay = new System.Windows.Forms.Label();
+            this.lblJobNumberDisplay = new System.Windows.Forms.Label();
             this._btnPrevious = new Guna.UI2.WinForms.Guna2Button();
-            this._lblOPId = new System.Windows.Forms.Label();
             this._btnNext = new Guna.UI2.WinForms.Guna2Button();
+            this._lblOPId = new System.Windows.Forms.Label();
+            this._lblJobNumber = new System.Windows.Forms.Label();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
             this.lblRole = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.lblJobNumberDisplay = new System.Windows.Forms.Label();
-            this.lblOPIdDisplay = new System.Windows.Forms.Label();
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             this.SuspendLayout();
@@ -55,39 +55,51 @@
             this.tlpFooter.Controls.Add(this._lblJobNumber, 2, 0);
             this.tlpFooter.Name = "tlpFooter";
             // 
-            // _lblJobNumber
+            // lblOPIdDisplay
             // 
-            resources.ApplyResources(this._lblJobNumber, "_lblJobNumber");
-            this._lblJobNumber.Name = "_lblJobNumber";
+            resources.ApplyResources(this.lblOPIdDisplay, "lblOPIdDisplay");
+            this.lblOPIdDisplay.Name = "lblOPIdDisplay";
+            // 
+            // lblJobNumberDisplay
+            // 
+            resources.ApplyResources(this.lblJobNumberDisplay, "lblJobNumberDisplay");
+            this.lblJobNumberDisplay.Name = "lblJobNumberDisplay";
             // 
             // _btnPrevious
             // 
             this._btnPrevious.BackColor = System.Drawing.Color.Transparent;
-            this._btnPrevious.BorderRadius = 15;
+            this._btnPrevious.BorderRadius = 10;
             this._btnPrevious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this._btnPrevious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this._btnPrevious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnPrevious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             resources.ApplyResources(this._btnPrevious, "_btnPrevious");
+            this._btnPrevious.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
             this._btnPrevious.ForeColor = System.Drawing.Color.White;
             this._btnPrevious.Name = "_btnPrevious";
+            // 
+            // _btnNext
+            // 
+            this._btnNext.BackColor = System.Drawing.Color.Transparent;
+            this._btnNext.BorderRadius = 10;
+            this._btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this._btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this._btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this._btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            resources.ApplyResources(this._btnNext, "_btnNext");
+            this._btnNext.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this._btnNext.ForeColor = System.Drawing.Color.White;
+            this._btnNext.Name = "_btnNext";
             // 
             // _lblOPId
             // 
             resources.ApplyResources(this._lblOPId, "_lblOPId");
             this._lblOPId.Name = "_lblOPId";
             // 
-            // _btnNext
+            // _lblJobNumber
             // 
-            this._btnNext.BackColor = System.Drawing.Color.Transparent;
-            this._btnNext.BorderRadius = 15;
-            this._btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this._btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this._btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this._btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            resources.ApplyResources(this._btnNext, "_btnNext");
-            this._btnNext.ForeColor = System.Drawing.Color.White;
-            this._btnNext.Name = "_btnNext";
+            resources.ApplyResources(this._lblJobNumber, "_lblJobNumber");
+            this._lblJobNumber.Name = "_lblJobNumber";
             // 
             // tlpHeader
             // 
@@ -106,16 +118,6 @@
             // 
             resources.ApplyResources(this.lblName, "lblName");
             this.lblName.Name = "lblName";
-            // 
-            // lblJobNumberDisplay
-            // 
-            resources.ApplyResources(this.lblJobNumberDisplay, "lblJobNumberDisplay");
-            this.lblJobNumberDisplay.Name = "lblJobNumberDisplay";
-            // 
-            // lblOPIdDisplay
-            // 
-            resources.ApplyResources(this.lblOPIdDisplay, "lblOPIdDisplay");
-            this.lblOPIdDisplay.Name = "lblOPIdDisplay";
             // 
             // MainView
             // 

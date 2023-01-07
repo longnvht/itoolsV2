@@ -309,11 +309,11 @@ namespace itools_source.Views
                 btn.BackColor = Color.Transparent;
                 btn.BorderRadius = 15;
                 btn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-                btn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(185)))), ((int)(((byte)(255)))));
+                btn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
                 btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
                 btn.ForeColor = System.Drawing.Color.White;
                 btn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                btn.FillColor = Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(168)))), ((int)(((byte)(255)))));
+                btn.FillColor = Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
                 btn.CheckedState.FillColor = System.Drawing.Color.DarkOrchid;
                 btn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
                 btn.Click += (s, e) => this.btnflpTrayList_Click?.Invoke(s, e);
@@ -349,8 +349,8 @@ namespace itools_source.Views
                 btn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
                 btn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
                 btn.Animated = true;
-                btn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-                btn.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+                btn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+                btn.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
                 btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
                 btn.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
                 btn.ForeColor = System.Drawing.Color.White;
