@@ -2,6 +2,7 @@
 using itools_source.Models;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace itools_source.Views.Interface
 {
@@ -44,6 +45,9 @@ namespace itools_source.Views.Interface
         event EventHandler btnAddPlugin_Click;
         event EventHandler btnAddNew_Click;
         event EventHandler btnSave_Click;
+        event MouseEventHandler txtOperateQuantity_MouseClick;
+        event MouseEventHandler txtToolSearch_MouseClick;
+        event MouseEventHandler txtTrayToolSearch_MouseClick;
         #endregion
 
         #region Methods

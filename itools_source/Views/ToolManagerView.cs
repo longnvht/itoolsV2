@@ -16,20 +16,23 @@ namespace itools_source.Views
             InitializeComponent();
 
             this.Load += delegate { ToolManagerView_Load?.Invoke(this, EventArgs.Empty); };
-            txtTrayToolSearch.TextChanged += delegate { txtTraySearch_TextChanged?.Invoke(this, EventArgs.Empty); };
+            _txtTrayToolSearch.TextChanged += delegate { txtTraySearch_TextChanged?.Invoke(this, EventArgs.Empty); };
             btnSave.Click += delegate { btnSave_Click?.Invoke(this, EventArgs.Empty); };
             _txtOperateQuantity.TextChanged += delegate { txtOperateQuantity_TextChanged?.Invoke(this, EventArgs.Empty); };
             _txtToolCode.MouseClick += delegate { txtToolCode_MouseClick?.Invoke(this, EventArgs.Empty); };
-            txtToolSearch.TextChanged += delegate { txtToolSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
+            _txtToolSearch.TextChanged += delegate { txtToolSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
             btnToolSelect.Click += delegate { btnToolSelect_Click?.Invoke(this, EventArgs.Empty); };
             btnToolCancel.Click += delegate { btnToolCancel_Click?.Invoke(this, EventArgs.Empty); };
             btnTakeOut.Click += delegate { btnTakeOut_Click?.Invoke(this, EventArgs.Empty); };
             btnAddPlugin.Click += delegate { btnAddPlugin_Click?.Invoke(this, EventArgs.Empty); };
             btnAddNew.Click += delegate { btnAddNew_Click?.Invoke(this, EventArgs.Empty); };
             btnTraySearch.Click += delegate { btnTraySearch_Click?.Invoke(this, EventArgs.Empty); };
+            _txtOperateQuantity.MouseClick += delegate { txtOperateQuantity_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            _txtToolSearch.MouseClick += delegate { txtToolSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            _txtTrayToolSearch.MouseClick += delegate { txtTrayToolSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
         }
 
-        #region Fields
+        #region Properties - Fields
         private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolManagerView).Name);
 
         public string strMachineCode { get; set; }
@@ -97,25 +100,25 @@ namespace itools_source.Views
         {
             get
             {
-                if (string.IsNullOrEmpty(txtTrayToolSearch.Text))
+                if (string.IsNullOrEmpty(_txtTrayToolSearch.Text))
                 {
                     return "";
                 }
-                return txtTrayToolSearch.Text;
+                return _txtTrayToolSearch.Text;
             }
-            set => txtTrayToolSearch.Text = value;
+            set => _txtTrayToolSearch.Text = value;
         }
         public string strToolSearch
         {
             get
             {
-                if (string.IsNullOrEmpty(txtToolSearch.Text))
+                if (string.IsNullOrEmpty(_txtToolSearch.Text))
                 {
                     return "";
                 }
-                return txtToolSearch.Text;
+                return _txtToolSearch.Text;
             }
-            set => txtToolSearch.Text = value;
+            set => _txtToolSearch.Text = value;
         }
         public char cStatusForm { get; set; }
         public char cStatusButton { get; set; }
@@ -214,9 +217,9 @@ namespace itools_source.Views
                     this._txtCurrentQuantity.Enabled = false;
                     this._txtTotalQuantity.Enabled = false;
 
-                    this.tlpToolList.Visible = false;
-                    this.tlpToolList.Dock = DockStyle.Right;
-                    this.tlpToolList.BringToFront();
+                    this._tlpToolList.Visible = false;
+                    this._tlpToolList.Dock = DockStyle.Right;
+                    this._tlpToolList.BringToFront();
                     break;
                 case '4': // Save
                     this._txtOperateQuantity.Enabled = false;
@@ -321,11 +324,11 @@ namespace itools_source.Views
 
         public void CreateToolButton()
         {
-            if (tlpToolList.Visible == false)
+            if (_tlpToolList.Visible == false)
             {
-                tlpToolList.Visible = true;
-                tlpToolList.Dock = DockStyle.Right;
-                tlpToolList.BringToFront();
+                _tlpToolList.Visible = true;
+                _tlpToolList.Dock = DockStyle.Right;
+                _tlpToolList.BringToFront();
             }
 
             if (lstToolButton == null)
@@ -378,11 +381,11 @@ namespace itools_source.Views
             tlpTrayDetail.Enabled = true;
             this._txtToolCode.Enabled = true;
 
-            if (tlpToolList.Visible == true)
+            if (_tlpToolList.Visible == true)
             {
-                tlpToolList.Visible = false;
-                tlpToolList.Dock = DockStyle.None;
-                tlpToolList.SendToBack();
+                _tlpToolList.Visible = false;
+                _tlpToolList.Dock = DockStyle.None;
+                _tlpToolList.SendToBack();
             }
 
             // Reset button in flpToolList
@@ -482,6 +485,9 @@ namespace itools_source.Views
         public event EventHandler btnAddPlugin_Click;
         public event EventHandler btnAddNew_Click;
         public event EventHandler btnSave_Click;
+        public event MouseEventHandler txtOperateQuantity_MouseClick;
+        public event MouseEventHandler txtToolSearch_MouseClick;
+        public event MouseEventHandler txtTrayToolSearch_MouseClick;
         #endregion
     }
 }

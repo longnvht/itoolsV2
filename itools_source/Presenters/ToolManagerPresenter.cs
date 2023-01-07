@@ -6,6 +6,8 @@ using itools_source.Utils;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
+using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -33,12 +35,18 @@ namespace itools_source.Presenters
             _toolManagerView.btnAddPlugin_Click += _toolManagerView_btnAddPlugin_Click;
             _toolManagerView.btnAddNew_Click += _toolManagerView_btnAddNew_Click;
             _toolManagerView.btnSave_Click += _toolManagerView_btnSave_Click;
+            _toolManagerView.txtOperateQuantity_MouseClick += _toolManagerView_txtOperateQuantity_MouseClick;
+            _toolManagerView.txtToolSearch_MouseClick += _toolManagerView_txtToolSearch_MouseClick;
+            _toolManagerView.txtTrayToolSearch_MouseClick += _toolManagerView_txtTrayToolSearch_MouseClick;
 
             _toolManagerView.Show();
         }
 
         #region Properties - Fields
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolManagerPresenter).Name);
+        private VirtualNumericKeyBoard frmNumericKey;
+        private VirtualKeyBoard frmKeyBoard;
+        private Point clientPoint;
 
         private readonly IToolManagerView _toolManagerView;
         private readonly IToolMachineTrayRepository _toolMachineTrayRepository;
@@ -49,6 +57,58 @@ namespace itools_source.Presenters
         #endregion
 
         #region Events
+        private void _toolManagerView_txtTrayToolSearch_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            {
+                frmKeyBoard = new VirtualKeyBoard();
+                frmKeyBoard.Show();
+
+                ToolManagerView frm = (ToolManagerView)sender;
+                frm.txtTrayToolSearch.Focus();
+
+                Point p = new Point();
+                clientPoint = frm.txtTrayToolSearch.PointToScreen(p);
+                frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y + frm.txtTrayToolSearch.Height);
+                clientPoint.Y += frm.txtTrayToolSearch.Height;
+            }
+        }
+
+        private void _toolManagerView_txtToolSearch_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            {
+                frmKeyBoard = new VirtualKeyBoard();
+                frmKeyBoard.Show();
+
+                ToolManagerView frm = (ToolManagerView)sender;
+                frm.txtToolSearch.Focus();
+
+                Point p = new Point();
+                clientPoint = frm.txtToolSearch.PointToScreen(p);
+                int iTemp = frmKeyBoard.Width - frm.tlpToolList.Width;
+                frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X - iTemp, clientPoint.Y + frm.txtToolSearch.Height);
+                clientPoint.Y += frm.txtToolSearch.Height;
+            }
+        }
+
+        private void _toolManagerView_txtOperateQuantity_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            {
+                frmNumericKey = new VirtualNumericKeyBoard();
+                frmNumericKey.Show();
+
+                ToolManagerView frm = (ToolManagerView)sender;
+                frm.txtOperateQuantity.Focus();
+
+                Point p = new Point();
+                clientPoint = frm.txtOperateQuantity.PointToScreen(p);
+                frmNumericKey.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y + frm.txtOperateQuantity.Height);
+                clientPoint.Y += frm.txtOperateQuantity.Height;
+            }
+        }
+
         private async void _toolManagerView_ToolManagerView_Load(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.MachineId != 0)

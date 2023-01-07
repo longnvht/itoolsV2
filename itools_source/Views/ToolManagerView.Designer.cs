@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using Guna.UI2.WinForms;
+using System.Windows.Forms;
 
 namespace itools_source.Views
 {
@@ -34,7 +35,7 @@ namespace itools_source.Views
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolManagerView));
             this._tlpHeader = new System.Windows.Forms.TableLayoutPanel();
             this.btnTraySearch = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.txtTrayToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this._txtTrayToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.notifiTakeout = new Guna.UI2.WinForms.Guna2NotificationPaint(this.components);
             this.btnTakeOut = new Guna.UI2.WinForms.Guna2GradientButton();
             this.notifiAddPlugin = new Guna.UI2.WinForms.Guna2NotificationPaint(this.components);
@@ -45,8 +46,8 @@ namespace itools_source.Views
             this._flpTrayList = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Elipse_pLeftContent = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this._pLeftContent = new System.Windows.Forms.Panel();
-            this.tlpToolList = new System.Windows.Forms.TableLayoutPanel();
-            this.txtToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this._tlpToolList = new System.Windows.Forms.TableLayoutPanel();
+            this._txtToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pToolContent = new System.Windows.Forms.Panel();
             this.guna2VScrollBar2 = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.flpToolList = new System.Windows.Forms.FlowLayoutPanel();
@@ -74,7 +75,7 @@ namespace itools_source.Views
             this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
             this._tlpHeader.SuspendLayout();
             this._pLeftContent.SuspendLayout();
-            this.tlpToolList.SuspendLayout();
+            this._tlpToolList.SuspendLayout();
             this.pToolContent.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpContent.SuspendLayout();
@@ -90,7 +91,7 @@ namespace itools_source.Views
             this._tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.76768F));
             this._tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.23232F));
             this._tlpHeader.Controls.Add(this.btnTraySearch, 1, 0);
-            this._tlpHeader.Controls.Add(this.txtTrayToolSearch, 0, 0);
+            this._tlpHeader.Controls.Add(this._txtTrayToolSearch, 0, 0);
             this._tlpHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this._tlpHeader.Location = new System.Drawing.Point(0, 0);
             this._tlpHeader.Name = "_tlpHeader";
@@ -119,29 +120,29 @@ namespace itools_source.Views
             this.btnTraySearch.TabIndex = 1;
             this.btnTraySearch.Text = "Tìm Kiếm Tray and Tool";
             // 
-            // txtTrayToolSearch
+            // _txtTrayToolSearch
             // 
-            this.txtTrayToolSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTrayToolSearch.BorderRadius = 8;
-            this.txtTrayToolSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTrayToolSearch.DefaultText = "";
-            this.txtTrayToolSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTrayToolSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTrayToolSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTrayToolSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTrayToolSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTrayToolSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTrayToolSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTrayToolSearch.Location = new System.Drawing.Point(3, 5);
-            this.txtTrayToolSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtTrayToolSearch.Name = "txtTrayToolSearch";
-            this.txtTrayToolSearch.PasswordChar = '\0';
-            this.txtTrayToolSearch.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
-            this.txtTrayToolSearch.PlaceholderText = "Tìm Kiếm Tray and Tool";
-            this.txtTrayToolSearch.SelectedText = "";
-            this.txtTrayToolSearch.Size = new System.Drawing.Size(684, 39);
-            this.txtTrayToolSearch.TabIndex = 0;
-            this.txtTrayToolSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._txtTrayToolSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtTrayToolSearch.BorderRadius = 8;
+            this._txtTrayToolSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this._txtTrayToolSearch.DefaultText = "";
+            this._txtTrayToolSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this._txtTrayToolSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this._txtTrayToolSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtTrayToolSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtTrayToolSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtTrayToolSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtTrayToolSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtTrayToolSearch.Location = new System.Drawing.Point(3, 5);
+            this._txtTrayToolSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._txtTrayToolSearch.Name = "_txtTrayToolSearch";
+            this._txtTrayToolSearch.PasswordChar = '\0';
+            this._txtTrayToolSearch.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
+            this._txtTrayToolSearch.PlaceholderText = "Tìm Kiếm Tray and Tool";
+            this._txtTrayToolSearch.SelectedText = "";
+            this._txtTrayToolSearch.Size = new System.Drawing.Size(684, 39);
+            this._txtTrayToolSearch.TabIndex = 0;
+            this._txtTrayToolSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // notifiTakeout
             // 
@@ -276,47 +277,47 @@ namespace itools_source.Views
             this._pLeftContent.Size = new System.Drawing.Size(303, 349);
             this._pLeftContent.TabIndex = 0;
             // 
-            // tlpToolList
+            // _tlpToolList
             // 
-            this.tlpToolList.AutoScroll = true;
-            this.tlpToolList.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.tlpToolList.ColumnCount = 1;
-            this.tlpToolList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpToolList.Controls.Add(this.txtToolSearch, 0, 0);
-            this.tlpToolList.Controls.Add(this.pToolContent, 0, 1);
-            this.tlpToolList.Controls.Add(this.tableLayoutPanel1, 0, 2);
-            this.tlpToolList.Location = new System.Drawing.Point(262, 3);
-            this.tlpToolList.Name = "tlpToolList";
-            this.tlpToolList.RowCount = 3;
-            this.tlpToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tlpToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpToolList.Size = new System.Drawing.Size(320, 340);
-            this.tlpToolList.TabIndex = 0;
+            this._tlpToolList.AutoScroll = true;
+            this._tlpToolList.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this._tlpToolList.ColumnCount = 1;
+            this._tlpToolList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tlpToolList.Controls.Add(this._txtToolSearch, 0, 0);
+            this._tlpToolList.Controls.Add(this.pToolContent, 0, 1);
+            this._tlpToolList.Controls.Add(this.tableLayoutPanel1, 0, 2);
+            this._tlpToolList.Location = new System.Drawing.Point(262, 3);
+            this._tlpToolList.Name = "_tlpToolList";
+            this._tlpToolList.RowCount = 3;
+            this._tlpToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this._tlpToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this._tlpToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this._tlpToolList.Size = new System.Drawing.Size(320, 340);
+            this._tlpToolList.TabIndex = 0;
             // 
-            // txtToolSearch
+            // _txtToolSearch
             // 
-            this.txtToolSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtToolSearch.BorderRadius = 8;
-            this.txtToolSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtToolSearch.DefaultText = "";
-            this.txtToolSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtToolSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtToolSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtToolSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtToolSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtToolSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtToolSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtToolSearch.Location = new System.Drawing.Point(3, 6);
-            this.txtToolSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtToolSearch.Name = "txtToolSearch";
-            this.txtToolSearch.PasswordChar = '\0';
-            this.txtToolSearch.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
-            this.txtToolSearch.PlaceholderText = "Tìm Kiếm Tool";
-            this.txtToolSearch.SelectedText = "";
-            this.txtToolSearch.Size = new System.Drawing.Size(314, 39);
-            this.txtToolSearch.TabIndex = 28;
-            this.txtToolSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._txtToolSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtToolSearch.BorderRadius = 8;
+            this._txtToolSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this._txtToolSearch.DefaultText = "";
+            this._txtToolSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this._txtToolSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this._txtToolSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtToolSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtToolSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtToolSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtToolSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtToolSearch.Location = new System.Drawing.Point(3, 6);
+            this._txtToolSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._txtToolSearch.Name = "_txtToolSearch";
+            this._txtToolSearch.PasswordChar = '\0';
+            this._txtToolSearch.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
+            this._txtToolSearch.PlaceholderText = "Tìm Kiếm Tool";
+            this._txtToolSearch.SelectedText = "";
+            this._txtToolSearch.Size = new System.Drawing.Size(314, 39);
+            this._txtToolSearch.TabIndex = 28;
+            this._txtToolSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pToolContent
             // 
@@ -431,7 +432,7 @@ namespace itools_source.Views
             // 
             // pRightContent
             // 
-            this.pRightContent.Controls.Add(this.tlpToolList);
+            this.pRightContent.Controls.Add(this._tlpToolList);
             this.pRightContent.Controls.Add(this._tlpTrayDetail);
             this.pRightContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pRightContent.Location = new System.Drawing.Point(312, 3);
@@ -471,7 +472,7 @@ namespace itools_source.Views
             // 
             // _txtTrayIndex
             // 
-            this._txtTrayIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this._txtTrayIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._txtTrayIndex.BorderRadius = 8;
             this._txtTrayIndex.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -495,7 +496,7 @@ namespace itools_source.Views
             // 
             // _txtToolCode
             // 
-            this._txtToolCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this._txtToolCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._txtToolCode.BorderRadius = 8;
             this._txtToolCode.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -519,7 +520,7 @@ namespace itools_source.Views
             // 
             // _txtCurrentQuantity
             // 
-            this._txtCurrentQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this._txtCurrentQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._txtCurrentQuantity.BorderRadius = 8;
             this._txtCurrentQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -543,7 +544,7 @@ namespace itools_source.Views
             // 
             // _txtOperateQuantity
             // 
-            this._txtOperateQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this._txtOperateQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._txtOperateQuantity.BorderRadius = 8;
             this._txtOperateQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -615,7 +616,7 @@ namespace itools_source.Views
             // 
             // _txtTotalQuantity
             // 
-            this._txtTotalQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this._txtTotalQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._txtTotalQuantity.BorderRadius = 8;
             this._txtTotalQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -652,7 +653,7 @@ namespace itools_source.Views
             // guna2Elipse_tlpToolList
             // 
             this.guna2Elipse_tlpToolList.BorderRadius = 20;
-            this.guna2Elipse_tlpToolList.TargetControl = this.tlpToolList;
+            this.guna2Elipse_tlpToolList.TargetControl = this._tlpToolList;
             // 
             // guna2Elipse_tlpTrayDetail
             // 
@@ -734,7 +735,7 @@ namespace itools_source.Views
             this._tlpHeader.ResumeLayout(false);
             this._pLeftContent.ResumeLayout(false);
             this._pLeftContent.PerformLayout();
-            this.tlpToolList.ResumeLayout(false);
+            this._tlpToolList.ResumeLayout(false);
             this.pToolContent.ResumeLayout(false);
             this.pToolContent.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -813,15 +814,19 @@ namespace itools_source.Views
             set { _tlpTrayDetail = value; }
         }
 
-        private Guna.UI2.WinForms.Guna2TextBox txtTrayToolSearch;
+        public Guna2TextBox txtToolSearch { get => _txtToolSearch; set => _txtToolSearch = value; }
+        public Guna2TextBox txtTrayToolSearch { get => _txtTrayToolSearch; set => _txtTrayToolSearch = value; }
+        public TableLayoutPanel tlpToolList { get => _tlpToolList; set => _tlpToolList = value; }
+
+        private Guna.UI2.WinForms.Guna2TextBox _txtTrayToolSearch;
         private Guna.UI2.WinForms.Guna2GradientButton btnTraySearch;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiTakeout;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiAddPlugin;
         private Guna.UI2.WinForms.Guna2NotificationPaint notifiAddNew;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar_flpTrayList;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_pLeftContent;
-        private System.Windows.Forms.TableLayoutPanel tlpToolList;
-        private Guna.UI2.WinForms.Guna2TextBox txtToolSearch;
+        private System.Windows.Forms.TableLayoutPanel _tlpToolList;
+        private Guna.UI2.WinForms.Guna2TextBox _txtToolSearch;
         private System.Windows.Forms.Panel pToolContent;
         private System.Windows.Forms.TableLayoutPanel tlpContent;
         private System.Windows.Forms.Panel pRightContent;
