@@ -95,7 +95,7 @@ namespace itools_source.Presenters
                                         MessageDialogStyle.Default);
                     frm.cmbMachine.Focus();
                 }
-                else if (!string.IsNullOrEmpty(Properties.Settings.Default.SerialPort) || !string.IsNullOrWhiteSpace(Properties.Settings.Default.SerialPort))
+                else if (string.IsNullOrEmpty(Properties.Settings.Default.SerialPort) || string.IsNullOrWhiteSpace(Properties.Settings.Default.SerialPort))
                 {
                     MessageDialog.Show("Bạn Chưa Chọn Cổng.",
                                         "Thông Báo",
@@ -116,7 +116,6 @@ namespace itools_source.Presenters
                                         MessageDialogButtons.OK,
                                         MessageDialogIcon.Information,
                                         MessageDialogStyle.Default);
-                    MessageDialog.Show(Properties.Settings.Default.Properties.Count.ToString());
                 }
             }
         }

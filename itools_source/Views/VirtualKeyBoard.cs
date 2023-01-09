@@ -40,12 +40,12 @@ namespace itools_source.Views
         }
 
         Point lastPoint;
-        private void tlpMain_MouseDown(object sender, MouseEventArgs e)
+        private void tlpHeader_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
         }
 
-        private void tlpMain_MouseMove(object sender, MouseEventArgs e)
+        private void tlpHeader_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
