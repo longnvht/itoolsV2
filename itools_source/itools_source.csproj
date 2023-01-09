@@ -281,6 +281,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\GetToolView.resx">
       <DependentUpon>GetToolView.cs</DependentUpon>

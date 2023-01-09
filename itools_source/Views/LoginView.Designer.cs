@@ -118,14 +118,14 @@ namespace itools_source.Views
             // 
             // guna2BorderlessForm1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(221, 13);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 32);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Đăng Nhập";
+            this.guna2HtmlLabel1.AutoSize = true;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(221, 13);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.guna2HtmlLabel1.Name = "label1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(157, 32);
+            this.guna2HtmlLabel1.TabIndex = 8;
+            this.guna2HtmlLabel1.Text = "Đăng Nhập";
             // 
             // txtPassword
             // 
@@ -214,8 +214,11 @@ namespace itools_source.Views
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2GradientButton btnCancel;
         private Guna.UI2.WinForms.Guna2GradientButton btnLogin;
-        private Guna.UI2.WinForms.Guna2TextBox txtUserName;
+        private Guna.UI2.WinForms.Guna2TextBox _txtUserName;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
-        private Guna.UI2.WinForms.Guna2TextBox txtPassword;
+        private Guna.UI2.WinForms.Guna2TextBox _txtPassword;
+
+        public Guna2TextBox txtPassword { get => _txtPassword; set => _txtPassword = value; }
+        public Guna2TextBox txtUserName { get => _txtUserName; set => _txtUserName = value; }
     }
 }
