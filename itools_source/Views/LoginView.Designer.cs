@@ -35,19 +35,19 @@ namespace itools_source.Views
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnCancel = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnLogin = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this._txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this._txtUserName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2Elipse_LoginView = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.SuspendLayout();
             // 
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(232, 9);
             this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(111, 27);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(125, 34);
             this.guna2HtmlLabel1.TabIndex = 8;
             this.guna2HtmlLabel1.Text = "Đăng Nhập";
             // 
@@ -55,7 +55,7 @@ namespace itools_source.Views
             // 
             this.btnCancel.Animated = true;
             this.btnCancel.AutoRoundedCorners = true;
-            this.btnCancel.BorderRadius = 20;
+            this.btnCancel.BorderRadius = 10;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -75,7 +75,7 @@ namespace itools_source.Views
             // 
             this.btnLogin.Animated = true;
             this.btnLogin.AutoRoundedCorners = true;
-            this.btnLogin.BorderRadius = 20;
+            this.btnLogin.BorderRadius = 10;
             this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -91,17 +91,11 @@ namespace itools_source.Views
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Đăng Nhập";
             // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
             // _txtPassword
             // 
             this._txtPassword.Animated = true;
             this._txtPassword.AutoRoundedCorners = true;
-            this._txtPassword.BorderRadius = 24;
+            this._txtPassword.BorderRadius = 16;
             this._txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this._txtPassword.DefaultText = "123456";
             this._txtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -132,7 +126,7 @@ namespace itools_source.Views
             // 
             this._txtUserName.Animated = true;
             this._txtUserName.AutoRoundedCorners = true;
-            this._txtUserName.BorderRadius = 24;
+            this._txtUserName.BorderRadius = 16;
             this._txtUserName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this._txtUserName.DefaultText = "181119";
             this._txtUserName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -154,6 +148,10 @@ namespace itools_source.Views
             this._txtUserName.SelectedText = "";
             this._txtUserName.Size = new System.Drawing.Size(385, 50);
             this._txtUserName.TabIndex = 0;
+            // 
+            // guna2Elipse_LoginView
+            // 
+            this.guna2Elipse_LoginView.TargetControl = this;
             // 
             // LoginView
             // 
@@ -185,8 +183,8 @@ namespace itools_source.Views
         private Guna.UI2.WinForms.Guna2GradientButton btnCancel;
         private Guna.UI2.WinForms.Guna2GradientButton btnLogin;
         private Guna.UI2.WinForms.Guna2TextBox _txtUserName;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2TextBox _txtPassword;
+        private Guna2Elipse guna2Elipse_LoginView;
 
         public Guna2TextBox txtPassword { get => _txtPassword; set => _txtPassword = value; }
         public Guna2TextBox txtUserName { get => _txtUserName; set => _txtUserName = value; }
