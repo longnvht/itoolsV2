@@ -89,6 +89,7 @@ namespace itools_source.Presenters
 
                     if (item == nameof(JobView))
                     {
+                        _menuView.ShowHideJobNumberAndOPId(true);
                         IJobView jobView = JobView.GetInstance((MainView)_mainView);
                         jobView.SetListOPNumberOPType = OpenOPView;
                         _jobRepository = new JobRepository();
@@ -97,6 +98,7 @@ namespace itools_source.Presenters
                     }
                     if (item == nameof(ToolManagerView))
                     {
+                        _menuView.ShowHideJobNumberAndOPId(false);
                         _mainView.btnNextEnabled = false;
                         IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
                         IToolMachineTrayRepository toolRepository = new ToolMachineTrayRepository();
@@ -105,6 +107,7 @@ namespace itools_source.Presenters
                     }
                     if (item == nameof(StockView))
                     {
+                        _menuView.ShowHideJobNumberAndOPId(false);
                         _mainView.btnNextEnabled = false;
                         IStockView stockView = StockView.GetInstance((MainView)_mainView);
                         IStockRepository stockRepository = new StockRepository();
@@ -113,6 +116,7 @@ namespace itools_source.Presenters
                     }
                     if (item == nameof(ConfigSettingView))
                     {
+                        _menuView.ShowHideJobNumberAndOPId(false);
                         _mainView.btnNextEnabled = false;
                         IConfigSettingView configSettingView = ConfigSettingView.GetInstance((MainView)_mainView);
                         ICompanyRepository companyRepository = new CompanyRepository();

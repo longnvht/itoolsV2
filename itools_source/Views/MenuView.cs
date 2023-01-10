@@ -43,9 +43,11 @@ namespace itools_source.Views
         public List<Models.Menu> lstMenu { get; set; }
         public bool bCheckButton { get; set; }
         #endregion
+
         #region Events
         public event EventHandler MenuView_Load;
         #endregion
+
         #region Methods
         public void SetCheckedButton(string strContinueButton)
         {
@@ -65,6 +67,11 @@ namespace itools_source.Views
                     }
                 }
             }
+        }
+
+        public void ShowHideJobNumberAndOPId(bool bStatus)
+        {
+            ((MainView)MdiParent).ShowHideJobNumberAndOPId(bStatus);
         }
         #endregion
     }

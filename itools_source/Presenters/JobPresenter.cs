@@ -18,7 +18,7 @@ namespace itools_source.Presenters
             _jobRepository = jobRepository;
 
             _jobView.JobView_Load += _jobView_JobView_Load;
-            _jobView.txtJobNumberSearch_TextChanged += _jobView_txtJobNumberSearch_TextChanged;
+            _jobView.btnJobNumberSearch_Click += _jobView_btnJobNumberSearch_Click;
             _jobView.btnflpJobNumberList_DoubleClick += _jobView_btnflpJobNumberList_DoubleClick;
             _jobView.btnflpJobNumberList_Click += _jobView_btnflpJobNumberList_Click;
             _jobView.txtJobNumberSearch_MouseClick += _jobView_txtJobNumberSearch_MouseClick;
@@ -38,7 +38,7 @@ namespace itools_source.Presenters
         #region Events
         private void _jobView_txtJobNumberSearch_MouseClick(object sender, EventArgs e)
         {
-            if (!Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any())
             {
                 frmKeyBoard = new VirtualKeyBoard();
                 frmKeyBoard.Show();
@@ -108,7 +108,7 @@ namespace itools_source.Presenters
             }
         }
 
-        private async void _jobView_txtJobNumberSearch_TextChanged(object sender, EventArgs e)
+        private async void _jobView_btnJobNumberSearch_Click(object sender, EventArgs e)
         {
             JobView frmJobView = (JobView)sender;
 

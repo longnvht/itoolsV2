@@ -21,6 +21,7 @@ namespace itools_source.Views.Interface
         void Show();
         void Close();
         void SetCheckedButton(string strContinueButton);
+        void ShowHideJobNumberAndOPId(bool bStatus);
         #endregion
     }
 }

@@ -45,17 +45,17 @@
             // 
             this.tlpMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this.tlpMain.ColumnCount = 4;
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.76923F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.07692F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 280F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.15385F));
             this.tlpMain.Controls.Add(this.lblCompany, 1, 1);
             this.tlpMain.Controls.Add(this.lblMachine, 1, 2);
             this.tlpMain.Controls.Add(this.lblCOM, 1, 3);
             this.tlpMain.Controls.Add(this._cmbCompany, 2, 1);
             this.tlpMain.Controls.Add(this._cmbMachine, 2, 2);
             this.tlpMain.Controls.Add(this._cmbSerialPort, 2, 3);
-            this.tlpMain.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 5;
@@ -64,16 +64,16 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpMain.Size = new System.Drawing.Size(800, 404);
+            this.tlpMain.Size = new System.Drawing.Size(800, 450);
             this.tlpMain.TabIndex = 0;
             // 
             // lblCompany
             // 
             this.lblCompany.AutoSize = true;
             this.lblCompany.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblCompany.Location = new System.Drawing.Point(214, 100);
+            this.lblCompany.Location = new System.Drawing.Point(214, 112);
             this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(63, 67);
+            this.lblCompany.Size = new System.Drawing.Size(63, 75);
             this.lblCompany.TabIndex = 0;
             this.lblCompany.Text = "Công ty:";
             this.lblCompany.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -82,9 +82,9 @@
             // 
             this.lblMachine.AutoSize = true;
             this.lblMachine.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblMachine.Location = new System.Drawing.Point(237, 167);
+            this.lblMachine.Location = new System.Drawing.Point(237, 187);
             this.lblMachine.Name = "lblMachine";
-            this.lblMachine.Size = new System.Drawing.Size(40, 67);
+            this.lblMachine.Size = new System.Drawing.Size(40, 75);
             this.lblMachine.TabIndex = 1;
             this.lblMachine.Text = "Máy:";
             this.lblMachine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -93,9 +93,9 @@
             // 
             this.lblCOM.AutoSize = true;
             this.lblCOM.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblCOM.Location = new System.Drawing.Point(181, 234);
+            this.lblCOM.Location = new System.Drawing.Point(181, 262);
             this.lblCOM.Name = "lblCOM";
-            this.lblCOM.Size = new System.Drawing.Size(96, 67);
+            this.lblCOM.Size = new System.Drawing.Size(96, 75);
             this.lblCOM.TabIndex = 2;
             this.lblCOM.Text = "Cổng kết nối:";
             this.lblCOM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -114,7 +114,7 @@
             this._cmbCompany.Font = new System.Drawing.Font("Segoe UI", 10F);
             this._cmbCompany.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this._cmbCompany.ItemHeight = 30;
-            this._cmbCompany.Location = new System.Drawing.Point(283, 115);
+            this._cmbCompany.Location = new System.Drawing.Point(283, 131);
             this._cmbCompany.Name = "_cmbCompany";
             this._cmbCompany.ShadowDecoration.BorderRadius = 10;
             this._cmbCompany.ShadowDecoration.Depth = 6;
@@ -137,7 +137,7 @@
             this._cmbMachine.Font = new System.Drawing.Font("Segoe UI", 10F);
             this._cmbMachine.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this._cmbMachine.ItemHeight = 30;
-            this._cmbMachine.Location = new System.Drawing.Point(283, 182);
+            this._cmbMachine.Location = new System.Drawing.Point(283, 206);
             this._cmbMachine.Name = "_cmbMachine";
             this._cmbMachine.ShadowDecoration.BorderRadius = 10;
             this._cmbMachine.ShadowDecoration.CustomizableEdges.BottomLeft = false;
@@ -162,7 +162,7 @@
             this._cmbSerialPort.Font = new System.Drawing.Font("Segoe UI", 10F);
             this._cmbSerialPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this._cmbSerialPort.ItemHeight = 30;
-            this._cmbSerialPort.Location = new System.Drawing.Point(283, 249);
+            this._cmbSerialPort.Location = new System.Drawing.Point(283, 281);
             this._cmbSerialPort.Name = "_cmbSerialPort";
             this._cmbSerialPort.ShadowDecoration.BorderRadius = 10;
             this._cmbSerialPort.ShadowDecoration.CustomizableEdges.BottomLeft = false;

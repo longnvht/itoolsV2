@@ -14,7 +14,6 @@ namespace itools_source.Views
             InitializeComponent();
 
             this.Load += delegate { JobView_Load?.Invoke(this, EventArgs.Empty); };
-            txtJobNumberSearch.TextChanged += delegate { txtJobNumberSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
             btnJobNumberSearch.Click += delegate { btnJobNumberSearch_Click?.Invoke(this, EventArgs.Empty); };
             _txtJobNumberSearch.MouseClick += delegate { txtJobNumberSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
         }
@@ -95,7 +94,6 @@ namespace itools_source.Views
 
         #region Events
         public event EventHandler JobView_Load;
-        public event EventHandler txtJobNumberSearch_TextChanged;
         public event EventHandler btnJobNumberSearch_Click;
         public event EventHandler btnflpJobNumberList_Click;
         public event EventHandler btnflpJobNumberList_DoubleClick;

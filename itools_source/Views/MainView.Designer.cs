@@ -1,4 +1,6 @@
-﻿namespace itools_source.Views
+﻿using System.Windows.Forms;
+
+namespace itools_source.Views
 {
     partial class MainView
     {
@@ -30,17 +32,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.tlpFooter = new System.Windows.Forms.TableLayoutPanel();
-            this.lblOPIdDisplay = new System.Windows.Forms.Label();
-            this.lblJobNumberDisplay = new System.Windows.Forms.Label();
+            this._lblOPIdDisplay = new System.Windows.Forms.Label();
+            this._lblJobNumberDisplay = new System.Windows.Forms.Label();
             this._btnPrevious = new Guna.UI2.WinForms.Guna2Button();
             this._btnNext = new Guna.UI2.WinForms.Guna2Button();
             this._lblOPId = new System.Windows.Forms.Label();
             this._lblJobNumber = new System.Windows.Forms.Label();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.lblRole = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             this.SuspendLayout();
@@ -49,23 +51,23 @@
             // 
             this.tlpFooter.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.tlpFooter, "tlpFooter");
-            this.tlpFooter.Controls.Add(this.lblOPIdDisplay, 3, 0);
-            this.tlpFooter.Controls.Add(this.lblJobNumberDisplay, 1, 0);
+            this.tlpFooter.Controls.Add(this._lblOPIdDisplay, 3, 0);
+            this.tlpFooter.Controls.Add(this._lblJobNumberDisplay, 1, 0);
             this.tlpFooter.Controls.Add(this._btnPrevious, 0, 0);
             this.tlpFooter.Controls.Add(this._btnNext, 5, 0);
             this.tlpFooter.Controls.Add(this._lblOPId, 4, 0);
             this.tlpFooter.Controls.Add(this._lblJobNumber, 2, 0);
             this.tlpFooter.Name = "tlpFooter";
             // 
-            // lblOPIdDisplay
+            // _lblOPIdDisplay
             // 
-            resources.ApplyResources(this.lblOPIdDisplay, "lblOPIdDisplay");
-            this.lblOPIdDisplay.Name = "lblOPIdDisplay";
+            resources.ApplyResources(this._lblOPIdDisplay, "_lblOPIdDisplay");
+            this._lblOPIdDisplay.Name = "_lblOPIdDisplay";
             // 
-            // lblJobNumberDisplay
+            // _lblJobNumberDisplay
             // 
-            resources.ApplyResources(this.lblJobNumberDisplay, "lblJobNumberDisplay");
-            this.lblJobNumberDisplay.Name = "lblJobNumberDisplay";
+            resources.ApplyResources(this._lblJobNumberDisplay, "_lblJobNumberDisplay");
+            this._lblJobNumberDisplay.Name = "_lblJobNumberDisplay";
             // 
             // _btnPrevious
             // 
@@ -118,6 +120,11 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
+            // lblName
+            // 
+            resources.ApplyResources(this.lblName, "lblName");
+            this.lblName.Name = "lblName";
+            // 
             // label13
             // 
             resources.ApplyResources(this.label13, "label13");
@@ -128,11 +135,6 @@
             resources.ApplyResources(this.lblRole, "lblRole");
             this.lblRole.Name = "lblRole";
             // 
-            // lblName
-            // 
-            resources.ApplyResources(this.lblName, "lblName");
-            this.lblName.Name = "lblName";
-            // 
             // MainView
             // 
             resources.ApplyResources(this, "$this");
@@ -142,6 +144,7 @@
             this.Controls.Add(this.tlpFooter);
             this.IsMdiContainer = true;
             this.Name = "MainView";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tlpFooter.ResumeLayout(false);
             this.tlpFooter.PerformLayout();
             this.tlpHeader.ResumeLayout(false);
@@ -179,11 +182,14 @@
             set { _btnNext = value; }
         }
 
+        public Label lblJobNumberDisplay { get => _lblJobNumberDisplay; set => _lblJobNumberDisplay = value; }
+        public Label lblOPIdDisplay { get => _lblOPIdDisplay; set => _lblOPIdDisplay = value; }
+
         private System.Windows.Forms.TableLayoutPanel tlpFooter;
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label lblJobNumberDisplay;
-        private System.Windows.Forms.Label lblOPIdDisplay;
+        private System.Windows.Forms.Label _lblJobNumberDisplay;
+        private System.Windows.Forms.Label _lblOPIdDisplay;
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblName;

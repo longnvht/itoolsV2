@@ -73,6 +73,14 @@ namespace itools_source.Views
                 this.ActiveMdiChild.Close();
             }
         }
+
+        public void ShowHideJobNumberAndOPId(bool bStatus)
+        {
+            lblJobNumber.Visible = bStatus;
+            lblOPId.Visible = bStatus;
+            lblJobNumberDisplay.Visible = bStatus;
+            lblOPIdDisplay.Visible = bStatus;
+        }
         #endregion
     }
 }

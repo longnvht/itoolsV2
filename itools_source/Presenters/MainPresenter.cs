@@ -76,6 +76,8 @@ namespace itools_source.Presenters
 
                                             if (item == nameof(JobView))
                                             {
+                                                frmMain.ShowHideJobNumberAndOPId(true);
+
                                                 _jobView = JobView.GetInstance((MainView)_mainView);
                                                 _jobView.SetListOPNumberOPType = OpenOPView;
                                                 _jobRepository = new JobRepository();
@@ -116,6 +118,7 @@ namespace itools_source.Presenters
                             }
                             break;
                         case nameof(JobView):
+                            frmMain.ShowHideJobNumberAndOPId(true);
                             IJobView jobView = (JobView)frmMain.ActiveMdiChild;
                             if (string.IsNullOrEmpty(jobView.strJobNumberCurrent) && jobView.iPartIDCurrent == null)
                             {
@@ -127,6 +130,7 @@ namespace itools_source.Presenters
                             }
                             break;
                         case nameof(OPView):
+                            frmMain.ShowHideJobNumberAndOPId(true);
                             IOPView oPview = (OPView)frmMain.ActiveMdiChild;
                             if (oPview.iOPId == null)
                             {
@@ -164,6 +168,7 @@ namespace itools_source.Presenters
                 {
                     _mainView.CloseFormChild();
                     _mainView.btnNextEnabled = true;
+                    frmMain.ShowHideJobNumberAndOPId(false);
                     switch (strFormName)
                     {
                         // Login -> Main, Main -> Login
@@ -194,6 +199,7 @@ namespace itools_source.Presenters
                             break;
                         // Get data
                         case nameof(OPView):
+                            frmMain.ShowHideJobNumberAndOPId(true);
                             _jobView = JobView.GetInstance((MainView)_mainView);
                             _jobView.SetListOPNumberOPType = OpenOPView;
                             if (_jobRepository == null)
@@ -204,6 +210,7 @@ namespace itools_source.Presenters
                             _mainView.iOPId = null;
                             break;
                         case nameof(GetToolView):
+                            frmMain.ShowHideJobNumberAndOPId(true);
                             IOPView oPView = OPView.GetInstance((MainView)_mainView);
                             if (_mainView.lstOPNumberOpType_Main != null)
                             {
@@ -244,6 +251,10 @@ namespace itools_source.Presenters
                 IMenuRepository menuRepository = new MenuRepository();
                 new MenuPresenter(_menuView, menuRepository, _mainView);
             }
+
+            MainView frmMain = (MainView)sender;
+            frmMain.ShowHideJobNumberAndOPId(false);
+
             _log.Info("Login Success!");
         }
         #endregion
