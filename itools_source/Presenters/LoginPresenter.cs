@@ -43,7 +43,12 @@ namespace itools_source.Presenter
 
         private void _loginView_txtPassword_MouseClick(object sender, MouseEventArgs e)
         {
-            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            if (Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            {
+                frmNumericKey.Close();
+            }
+
+            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any())
             {
                 frmKeyBoard = new VirtualKeyBoard();
                 frmKeyBoard.Show();
@@ -59,7 +64,12 @@ namespace itools_source.Presenter
         }
         private void _loginView_txtUserName_MouseClick(object sender, MouseEventArgs e)
         {
-            if (!Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            {
+                frmKeyBoard.Close();
+            }
+
+            if (!Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
             {
                 frmNumericKey = new VirtualNumericKeyBoard();
                 frmNumericKey.Show();

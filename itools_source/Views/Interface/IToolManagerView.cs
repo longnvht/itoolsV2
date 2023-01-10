@@ -48,6 +48,7 @@ namespace itools_source.Views.Interface
         event MouseEventHandler txtOperateQuantity_MouseClick;
         event MouseEventHandler txtToolSearch_MouseClick;
         event MouseEventHandler txtTrayToolSearch_MouseClick;
+        event FormClosingEventHandler ToolManagerView_FormClosing;
         #endregion
 
         #region Methods

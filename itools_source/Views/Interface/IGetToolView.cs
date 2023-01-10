@@ -40,6 +40,7 @@ namespace itools_source.Views.Interface
         event EventHandler toggleShowAll_Click;
         event MouseEventHandler txtSearch_MouseClick;
         event MouseEventHandler txtToolSearch_MouseClick;
+        event FormClosingEventHandler GetToolView_FormClosing;
         #endregion
 
         #region Methods

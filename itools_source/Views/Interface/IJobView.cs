@@ -23,6 +23,7 @@ namespace itools_source.Views.Interface
         event EventHandler btnflpJobNumberList_DoubleClick;
         event EventHandler btnflpJobNumberList_Click;
         event EventHandler txtJobNumberSearch_MouseClick;
+        event FormClosingEventHandler JobView_FormClosing;
         #endregion
 
         #region Methods

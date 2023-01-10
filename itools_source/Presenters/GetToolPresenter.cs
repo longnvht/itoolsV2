@@ -31,6 +31,7 @@ namespace itools_source.Presenters
             _getToolView.toggleShowAll_Click += _getToolView_toggleShowAll_Click;
             _getToolView.txtSearch_MouseClick += _getToolView_txtSearch_MouseClick;
             _getToolView.txtToolSearch_MouseClick += _getToolView_txtToolSearch_MouseClick;
+            _getToolView.GetToolView_FormClosing += _getToolView_GetToolView_FormClosing;
 
             _getToolView.Show();
         }
@@ -46,6 +47,14 @@ namespace itools_source.Presenters
         #endregion
 
         #region Events
+        private void _getToolView_GetToolView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            {
+                frmKeyBoard.Close();
+            }
+        }
+
         private void _getToolView_txtToolSearch_MouseClick(object sender, MouseEventArgs e)
         {
             if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())

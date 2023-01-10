@@ -21,6 +21,7 @@ namespace itools_source.Views
             _toggleShowAll.Click += delegate { toggleShowAll_Click?.Invoke(this, EventArgs.Empty); };
             _txtSearch.MouseClick += delegate { txtSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
             _txtToolSearch.MouseClick += delegate { txtToolSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            this.FormClosing += delegate { GetToolView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
         }
 
         #region Properties - Fields
@@ -283,6 +284,7 @@ namespace itools_source.Views
         public event EventHandler toggleShowAll_Click;
         public event MouseEventHandler txtSearch_MouseClick;
         public event MouseEventHandler txtToolSearch_MouseClick;
+        public event FormClosingEventHandler GetToolView_FormClosing;
         #endregion
     }
 }

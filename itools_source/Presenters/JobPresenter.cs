@@ -22,6 +22,7 @@ namespace itools_source.Presenters
             _jobView.btnflpJobNumberList_DoubleClick += _jobView_btnflpJobNumberList_DoubleClick;
             _jobView.btnflpJobNumberList_Click += _jobView_btnflpJobNumberList_Click;
             _jobView.txtJobNumberSearch_MouseClick += _jobView_txtJobNumberSearch_MouseClick;
+            _jobView.JobView_FormClosing += _jobView_JobView_FormClosing;
 
             _jobView.Show();
         }
@@ -36,6 +37,14 @@ namespace itools_source.Presenters
         #endregion
 
         #region Events
+        private void _jobView_JobView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            {
+                frmKeyBoard.Close();
+            }
+        }
+
         private void _jobView_txtJobNumberSearch_MouseClick(object sender, EventArgs e)
         {
             if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any())
@@ -46,10 +55,11 @@ namespace itools_source.Presenters
                 JobView frm = (JobView)sender;
                 frm.txtJobNumberSearch.Focus();
 
-                Point p = new Point();
-                clientPoint = frm.txtJobNumberSearch.PointToScreen(p);
-                frmKeyBoard.Location = new Point(clientPoint.X, clientPoint.Y + frm.txtJobNumberSearch.Height);
-                clientPoint.Y += frm.txtJobNumberSearch.Height;
+                int iTempX = (frm.Width - frmKeyBoard.Width) / 2;
+                int iTempY = frm.Height - frmKeyBoard.Height + 50;
+
+                clientPoint = new Point(iTempX, iTempY);
+                frmKeyBoard.Location = clientPoint;
             }
         }
 

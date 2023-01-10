@@ -38,6 +38,7 @@ namespace itools_source.Presenters
             _toolManagerView.txtOperateQuantity_MouseClick += _toolManagerView_txtOperateQuantity_MouseClick;
             _toolManagerView.txtToolSearch_MouseClick += _toolManagerView_txtToolSearch_MouseClick;
             _toolManagerView.txtTrayToolSearch_MouseClick += _toolManagerView_txtTrayToolSearch_MouseClick;
+            _toolManagerView.ToolManagerView_FormClosing += _toolManagerView_ToolManagerView_FormClosing;
 
             _toolManagerView.Show();
         }
@@ -57,6 +58,18 @@ namespace itools_source.Presenters
         #endregion
 
         #region Events
+        private void _toolManagerView_ToolManagerView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            {
+                frmKeyBoard.Close();
+            }
+            if (Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            {
+                frmNumericKey.Close();
+            }
+        }
+
         private void _toolManagerView_txtTrayToolSearch_MouseClick(object sender, MouseEventArgs e)
         {
             if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
@@ -67,10 +80,11 @@ namespace itools_source.Presenters
                 ToolManagerView frm = (ToolManagerView)sender;
                 frm.txtTrayToolSearch.Focus();
 
-                Point p = new Point();
-                clientPoint = frm.txtTrayToolSearch.PointToScreen(p);
-                frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y + frm.txtTrayToolSearch.Height);
-                clientPoint.Y += frm.txtTrayToolSearch.Height;
+                int iTempX = (frm.Width - frmKeyBoard.Width) / 2;
+                int iTempY = frm.Height - frmKeyBoard.Height + 50;
+
+                clientPoint = new Point(iTempX, iTempY);
+                frmKeyBoard.Location = clientPoint;
             }
         }
 
@@ -84,11 +98,11 @@ namespace itools_source.Presenters
                 ToolManagerView frm = (ToolManagerView)sender;
                 frm.txtToolSearch.Focus();
 
-                Point p = new Point();
-                clientPoint = frm.txtToolSearch.PointToScreen(p);
-                int iTemp = frmKeyBoard.Width - frm.tlpToolList.Width;
-                frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X - iTemp, clientPoint.Y + frm.txtToolSearch.Height);
-                clientPoint.Y += frm.txtToolSearch.Height;
+                int iTempX = (frm.Width - frmKeyBoard.Width) / 2;
+                int iTempY = frm.Height - frmKeyBoard.Height + 50;
+
+                clientPoint = new Point(iTempX, iTempY);
+                frmKeyBoard.Location = clientPoint;
             }
         }
 

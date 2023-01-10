@@ -30,6 +30,7 @@ namespace itools_source.Views
             _txtOperateQuantity.MouseClick += delegate { txtOperateQuantity_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
             _txtToolSearch.MouseClick += delegate { txtToolSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
             _txtTrayToolSearch.MouseClick += delegate { txtTrayToolSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            FormClosing += delegate { ToolManagerView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
         }
 
         #region Properties - Fields
@@ -488,6 +489,7 @@ namespace itools_source.Views
         public event MouseEventHandler txtOperateQuantity_MouseClick;
         public event MouseEventHandler txtToolSearch_MouseClick;
         public event MouseEventHandler txtTrayToolSearch_MouseClick;
+        public event FormClosingEventHandler ToolManagerView_FormClosing;
         #endregion
     }
 }

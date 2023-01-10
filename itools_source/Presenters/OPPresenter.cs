@@ -20,7 +20,8 @@ namespace itools_source.Presenters
             _opView.OPView_Load += _opView_OPView_Load;
             _opView.btnflpOPlList_DoubleClick += _opView_btnflpList_DoubleClick;
             _opView.btnflpOPlList_Click += _opView_btnflpOPlList_Click;
-            _opView.txtOPSearch_MouseDown += _opView_txtOPSearch_MouseDown;
+            _opView.txtOPSearch_MouseClick += _opView_txtOPSearch_MouseClick;
+            _opView.OPView_FormClosing += _opView_OPView_FormClosing;
 
             _opView.Show();
         }
@@ -31,25 +32,34 @@ namespace itools_source.Presenters
         private IOPView _opView;
         private IGetToolRepository _getToolRepository;
 
-        VirtualNumericKeyBoard frmNumericKey;
+        VirtualKeyBoard frmKeyBoard;
         Point clientPoint;
         #endregion
 
         #region Events
-        private void _opView_txtOPSearch_MouseDown(object sender, EventArgs e)
+        private void _opView_OPView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
             {
-                frmNumericKey = new VirtualNumericKeyBoard();
-                frmNumericKey.Show();
+                frmKeyBoard.Close();
+            }
+        }
+
+        private void _opView_txtOPSearch_MouseClick(object sender, EventArgs e)
+        {
+            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            {
+                frmKeyBoard = new VirtualKeyBoard();
+                frmKeyBoard.Show();
 
                 OPView frm = (OPView)sender;
                 frm.txtOPSearch.Focus();
 
-                Point p = new Point();
-                clientPoint = frm.txtOPSearch.PointToScreen(p);
-                frmNumericKey.Location = new Point(clientPoint.X, clientPoint.Y + frm.txtOPSearch.Height);
-                clientPoint.Y += frm.txtOPSearch.Height;
+                int iTempX = (frm.Width - frmKeyBoard.Width) / 2;
+                int iTempY = frm.Height - frmKeyBoard.Height + 50;
+
+                clientPoint = new Point(iTempX, iTempY);
+                frmKeyBoard.Location = clientPoint;
             }
         }
 
