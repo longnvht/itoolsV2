@@ -106,11 +106,11 @@ namespace itools_source.Presenters
                 //}
                 else
                 {
-                    Properties.Settings.Default.CompanyId = companySelected.iCompanyId;
-                    Properties.Settings.Default.MachineId = machineSelected.iMachineId.Value;
-                    Properties.Settings.Default.SerialPort = strSerialSelected;
+                    VinamiToolUser.Properties.Settings.Default.CompanyId = companySelected.iCompanyId;
+                    VinamiToolUser.Properties.Settings.Default.MachineId = machineSelected.iMachineId.Value;
+                    VinamiToolUser.Properties.Settings.Default.SerialPort = strSerialSelected;
 
-                    Properties.Settings.Default.Save();
+                    VinamiToolUser.Properties.Settings.Default.Save();
                     MessageDialog.Show("Lưu Thành Công.",
                                         "Thông Báo",
                                         MessageDialogButtons.OK,

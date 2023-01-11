@@ -157,7 +157,7 @@ namespace itools_source.Presenters
 
             if (!_getToolView.serialPortGetTool.IsOpen)
             {
-                if (string.IsNullOrEmpty(Properties.Settings.Default.SerialPort) && string.IsNullOrWhiteSpace(Properties.Settings.Default.SerialPort))
+                if (string.IsNullOrEmpty(VinamiToolUser.Properties.Settings.Default.SerialPort) && string.IsNullOrWhiteSpace(VinamiToolUser.Properties.Settings.Default.SerialPort))
                 {
                     MessageDialog.Show("Máy Chưa Cấu Hình Cổng Port.",
                                         "Thông Báo",
@@ -168,7 +168,7 @@ namespace itools_source.Presenters
                 }
                 else
                 {
-                    _getToolView.serialPortGetTool.PortName = Properties.Settings.Default.SerialPort;
+                    _getToolView.serialPortGetTool.PortName = VinamiToolUser.Properties.Settings.Default.SerialPort;
                 }
 
                 foreach (var item in SerialPort.GetPortNames())
@@ -242,9 +242,9 @@ namespace itools_source.Presenters
                 _log.Info("Get ToolModel: " + _getToolView.strToolModel + ", ToolDescription: " + _getToolView.strToolDescription);
 
                 // 3. Get tool tray data.
-                if (Properties.Settings.Default.MachineId != 0)
+                if (VinamiToolUser.Properties.Settings.Default.MachineId != 0)
                 {
-                    _getToolView.lstTrayQuantity = await _getToolRepository.GetMachineTrayByToolId(_getToolView.iToolId, Properties.Settings.Default.MachineId);
+                    _getToolView.lstTrayQuantity = await _getToolRepository.GetMachineTrayByToolId(_getToolView.iToolId, VinamiToolUser.Properties.Settings.Default.MachineId);
                 }
 
                 if (_getToolView.lstTrayQuantity != null)
@@ -302,7 +302,7 @@ namespace itools_source.Presenters
                 }
                 if (!_getToolView.serialPortGetTool.IsOpen)
                 {
-                    if (string.IsNullOrEmpty(Properties.Settings.Default.SerialPort) && string.IsNullOrWhiteSpace(Properties.Settings.Default.SerialPort))
+                    if (string.IsNullOrEmpty(VinamiToolUser.Properties.Settings.Default.SerialPort) && string.IsNullOrWhiteSpace(VinamiToolUser.Properties.Settings.Default.SerialPort))
                     {
                         MessageDialog.Show("Máy Chưa Cấu Hình Cổng Port.",
                                             "Thông Báo",
@@ -313,7 +313,7 @@ namespace itools_source.Presenters
                     }
                     else
                     {
-                        _getToolView.serialPortGetTool.PortName = Properties.Settings.Default.SerialPort;
+                        _getToolView.serialPortGetTool.PortName = VinamiToolUser.Properties.Settings.Default.SerialPort;
                     }
 
                     foreach (var item in SerialPort.GetPortNames())
@@ -344,18 +344,18 @@ namespace itools_source.Presenters
                     // Get information workingtransaction.
                     WorkingTransaction workingTransaction = new WorkingTransaction();
                     workingTransaction.dtTransactionDate = Utils.ServerTime.GetServerTime().ToLocalTime();
-                    if (Properties.Settings.Default.MachineId != 0)
+                    if (VinamiToolUser.Properties.Settings.Default.MachineId != 0)
                     {
-                        workingTransaction.iMachineId = Properties.Settings.Default.MachineId;
+                        workingTransaction.iMachineId = VinamiToolUser.Properties.Settings.Default.MachineId;
                     }
                     else
                     {
                         _log.Error("Properties.Settings.Default.MachineId is null");
                     }
 
-                    if (Properties.Settings.Default.CompanyId != 0)
+                    if (VinamiToolUser.Properties.Settings.Default.CompanyId != 0)
                     {
-                        workingTransaction.iCompanyId = Properties.Settings.Default.CompanyId;
+                        workingTransaction.iCompanyId = VinamiToolUser.Properties.Settings.Default.CompanyId;
                     }
                     else
                     {

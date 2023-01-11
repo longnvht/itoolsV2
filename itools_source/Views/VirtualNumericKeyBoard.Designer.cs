@@ -111,7 +111,7 @@
             this._btnClose.FillColor = System.Drawing.Color.Transparent;
             this._btnClose.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._btnClose.ForeColor = System.Drawing.Color.White;
-            this._btnClose.Image = global::itools_source.Properties.Resources.close_window_48;
+            this._btnClose.Image = global::VinamiToolUser.Properties.Resources.close_window_48;
             this._btnClose.ImageSize = new System.Drawing.Size(30, 30);
             this._btnClose.Location = new System.Drawing.Point(347, 3);
             this._btnClose.Name = "_btnClose";

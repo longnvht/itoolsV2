@@ -125,15 +125,17 @@ namespace itools_source.Presenters
 
         private async void _toolManagerView_ToolManagerView_Load(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.MachineId != 0)
+            if (VinamiToolUser.Properties.Settings.Default.MachineId != 0)
             {
                 var frm = (ToolManagerView)sender;
 
                 frm.cStatusForm = '3';
                 frm.SetStatusForm();
+                //_toolManagerView.cStatusForm = '3';
+                //_toolManagerView.SetStatusForm();
 
                 //_iMachineId = Properties.Settings.Default.MachineId;
-                _toolManagerView.iMachineId = Properties.Settings.Default.MachineId;
+                _toolManagerView.iMachineId = VinamiToolUser.Properties.Settings.Default.MachineId;
 
                 // Get data TrayId, TrayIndex and ToolCode
                 _toolManagerView.lstTrayIndexToolCode = await _toolMachineTrayRepository.GetTrayIndexAndToolCode(_toolManagerView.iMachineId);
@@ -523,9 +525,9 @@ namespace itools_source.Presenters
                         WorkingTransaction workingTransaction = new WorkingTransaction();
                         workingTransaction.dtTransactionDate = _toolManagerView.toolTrayCurrent.dtUpdateDate;
                         workingTransaction.iMachineId = _toolManagerView.iMachineId;
-                        if (Properties.Settings.Default.CompanyId != 0)
+                        if (VinamiToolUser.Properties.Settings.Default.CompanyId != 0)
                         {
-                            workingTransaction.iCompanyId = Properties.Settings.Default.CompanyId;
+                            workingTransaction.iCompanyId = VinamiToolUser.Properties.Settings.Default.CompanyId;
                         }
                         if (Program.sessionLogin["UserName"] != null)
                         {

@@ -90,12 +90,12 @@ namespace itools_source.Presenter
             if (txtPassword.UseSystemPasswordChar)
             {
                 txtPassword.UseSystemPasswordChar = false;
-                txtPassword.IconRight = Properties.Resources.pass_hide_24px;
+                txtPassword.IconRight = VinamiToolUser.Properties.Resources.pass_hide_24px;
             }
             else
             {
                 txtPassword.UseSystemPasswordChar = true;
-                txtPassword.IconRight = Properties.Resources.pass_show_24px;
+                txtPassword.IconRight = VinamiToolUser.Properties.Resources.pass_show_24px;
             }
         }
 

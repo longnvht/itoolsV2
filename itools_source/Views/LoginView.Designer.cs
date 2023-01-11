@@ -105,10 +105,10 @@ namespace itools_source.Views
             this._txtPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtPassword.IconLeft = global::itools_source.Properties.Resources.password_24px;
+            this._txtPassword.IconLeft = global::VinamiToolUser.Properties.Resources.password_24px;
             this._txtPassword.IconLeftOffset = new System.Drawing.Point(12, 0);
             this._txtPassword.IconLeftSize = new System.Drawing.Size(24, 24);
-            this._txtPassword.IconRight = global::itools_source.Properties.Resources.pass_show_24px;
+            this._txtPassword.IconRight = global::VinamiToolUser.Properties.Resources.pass_show_24px;
             this._txtPassword.IconRightOffset = new System.Drawing.Point(12, 0);
             this._txtPassword.IconRightSize = new System.Drawing.Size(24, 24);
             this._txtPassword.Location = new System.Drawing.Point(97, 143);
@@ -136,7 +136,7 @@ namespace itools_source.Views
             this._txtUserName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtUserName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._txtUserName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtUserName.IconLeft = global::itools_source.Properties.Resources.user_name_24px;
+            this._txtUserName.IconLeft = global::VinamiToolUser.Properties.Resources.user_name_24px;
             this._txtUserName.IconLeftOffset = new System.Drawing.Point(12, 0);
             this._txtUserName.IconLeftSize = new System.Drawing.Size(24, 24);
             this._txtUserName.Location = new System.Drawing.Point(101, 62);

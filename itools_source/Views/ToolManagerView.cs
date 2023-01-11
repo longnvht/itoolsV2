@@ -218,7 +218,7 @@ namespace itools_source.Views
                     this._txtCurrentQuantity.Enabled = false;
                     this._txtTotalQuantity.Enabled = false;
 
-                    this._tlpToolList.Visible = false;
+                    this._tlpToolList.Visible = true;
                     this._tlpToolList.Dock = DockStyle.Right;
                     this._tlpToolList.BringToFront();
                     break;
@@ -369,12 +369,12 @@ namespace itools_source.Views
 
         public void CancelListTool()
         {
-            if (lstTooIDAndCode == null)
-            {
-                MessageBox.Show("Tool Code List is Null!");
-                _log.Error("Tool Code List is Null!");
-                return;
-            }
+            //if (lstTooIDAndCode == null)
+            //{
+            //    MessageBox.Show("Tool Code List is Null!");
+            //    _log.Error("Tool Code List is Null!");
+            //    return;
+            //}
 
             tlpHeader.Enabled = true;
             tlpFooter.Enabled = true;
@@ -385,8 +385,8 @@ namespace itools_source.Views
             if (_tlpToolList.Visible == true)
             {
                 _tlpToolList.Visible = false;
-                _tlpToolList.Dock = DockStyle.None;
-                _tlpToolList.SendToBack();
+                //_tlpToolList.Dock = DockStyle.None;
+                //_tlpToolList.SendToBack();
             }
 
             // Reset button in flpToolList
