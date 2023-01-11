@@ -93,9 +93,7 @@ namespace itools_source.Views
             // 
             // _txtPassword
             // 
-            this._txtPassword.Animated = true;
-            this._txtPassword.AutoRoundedCorners = true;
-            this._txtPassword.BorderRadius = 16;
+            this._txtPassword.BorderRadius = 10;
             this._txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this._txtPassword.DefaultText = "123456";
             this._txtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -103,7 +101,7 @@ namespace itools_source.Views
             this._txtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this._txtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this._txtPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this._txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtPassword.IconLeft = global::VinamiToolUser.Properties.Resources.password_24px;
             this._txtPassword.IconLeftOffset = new System.Drawing.Point(12, 0);
@@ -111,7 +109,7 @@ namespace itools_source.Views
             this._txtPassword.IconRight = global::VinamiToolUser.Properties.Resources.pass_show_24px;
             this._txtPassword.IconRightOffset = new System.Drawing.Point(12, 0);
             this._txtPassword.IconRightSize = new System.Drawing.Size(24, 24);
-            this._txtPassword.Location = new System.Drawing.Point(97, 143);
+            this._txtPassword.Location = new System.Drawing.Point(101, 142);
             this._txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtPassword.Name = "_txtPassword";
             this._txtPassword.PasswordChar = '●';
@@ -124,9 +122,7 @@ namespace itools_source.Views
             // 
             // _txtUserName
             // 
-            this._txtUserName.Animated = true;
-            this._txtUserName.AutoRoundedCorners = true;
-            this._txtUserName.BorderRadius = 16;
+            this._txtUserName.BorderRadius = 10;
             this._txtUserName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this._txtUserName.DefaultText = "181119";
             this._txtUserName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -134,7 +130,7 @@ namespace itools_source.Views
             this._txtUserName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this._txtUserName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this._txtUserName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtUserName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtUserName.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this._txtUserName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtUserName.IconLeft = global::VinamiToolUser.Properties.Resources.user_name_24px;
             this._txtUserName.IconLeftOffset = new System.Drawing.Point(12, 0);

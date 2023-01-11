@@ -168,12 +168,8 @@ namespace itools_source.Views
                     txtDescription.Enabled = false;
                     btnGetTool.Enabled = false;
 
-                    //_tlpToolMachineList.Height = Height;
-                    //_tlpToolMachineList.Visible = false;
-
-                    tlpToolMachineList.Visible = true;
-                    tlpToolMachineList.Dock = DockStyle.Right;
-                    tlpToolMachineList.BringToFront();
+                    _tlpToolMachineList.Height = Height;
+                    _tlpToolMachineList.Visible = false;
                     break;
                 case '1': // Click tool -> On FlowLayoutPandel Select TrayIndex.
                     _tlpToolMachineList.Visible = true;

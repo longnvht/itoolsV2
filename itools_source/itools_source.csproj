@@ -235,12 +235,6 @@
     <Compile Include="Views\ConfigSettingView.Designer.cs">
       <DependentUpon>ConfigSettingView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Interface\IConfigSettingView.cs" />
     <Compile Include="Views\Interface\IGetToolView.cs" />
     <Compile Include="Views\Interface\IJobView.cs" />
@@ -322,9 +316,6 @@
     </Compile>
     <EmbeddedResource Include="Views\ConfigSettingView.resx">
       <DependentUpon>ConfigSettingView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\JobView.resx">
       <DependentUpon>JobView.cs</DependentUpon>

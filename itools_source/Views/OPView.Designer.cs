@@ -71,7 +71,7 @@ namespace itools_source.Views
             // _txtOPSearch
             // 
             this._txtOPSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this._txtOPSearch.BorderRadius = 8;
+            this._txtOPSearch.BorderRadius = 10;
             this._txtOPSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this._txtOPSearch.DefaultText = "";
             this._txtOPSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -79,7 +79,7 @@ namespace itools_source.Views
             this._txtOPSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this._txtOPSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this._txtOPSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtOPSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtOPSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this._txtOPSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtOPSearch.Location = new System.Drawing.Point(3, 4);
             this._txtOPSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -95,8 +95,6 @@ namespace itools_source.Views
             // _btnOPNumberSearch
             // 
             this._btnOPNumberSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnOPNumberSearch.Animated = true;
-            this._btnOPNumberSearch.AutoRoundedCorners = true;
             this._btnOPNumberSearch.BorderRadius = 10;
             this._btnOPNumberSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this._btnOPNumberSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;

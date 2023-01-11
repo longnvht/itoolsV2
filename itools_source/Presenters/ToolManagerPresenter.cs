@@ -131,8 +131,6 @@ namespace itools_source.Presenters
 
                 frm.cStatusForm = '3';
                 frm.SetStatusForm();
-                //_toolManagerView.cStatusForm = '3';
-                //_toolManagerView.SetStatusForm();
 
                 //_iMachineId = Properties.Settings.Default.MachineId;
                 _toolManagerView.iMachineId = VinamiToolUser.Properties.Settings.Default.MachineId;

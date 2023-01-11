@@ -71,7 +71,7 @@
             // 
             this.lblCompany.AutoSize = true;
             this.lblCompany.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblCompany.Location = new System.Drawing.Point(214, 112);
+            this.lblCompany.Location = new System.Drawing.Point(213, 112);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(63, 75);
             this.lblCompany.TabIndex = 0;
@@ -82,7 +82,7 @@
             // 
             this.lblMachine.AutoSize = true;
             this.lblMachine.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblMachine.Location = new System.Drawing.Point(237, 187);
+            this.lblMachine.Location = new System.Drawing.Point(236, 187);
             this.lblMachine.Name = "lblMachine";
             this.lblMachine.Size = new System.Drawing.Size(40, 75);
             this.lblMachine.TabIndex = 1;
@@ -93,7 +93,7 @@
             // 
             this.lblCOM.AutoSize = true;
             this.lblCOM.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblCOM.Location = new System.Drawing.Point(181, 262);
+            this.lblCOM.Location = new System.Drawing.Point(180, 262);
             this.lblCOM.Name = "lblCOM";
             this.lblCOM.Size = new System.Drawing.Size(96, 75);
             this.lblCOM.TabIndex = 2;
@@ -114,7 +114,7 @@
             this._cmbCompany.Font = new System.Drawing.Font("Segoe UI", 10F);
             this._cmbCompany.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this._cmbCompany.ItemHeight = 30;
-            this._cmbCompany.Location = new System.Drawing.Point(283, 131);
+            this._cmbCompany.Location = new System.Drawing.Point(282, 131);
             this._cmbCompany.Name = "_cmbCompany";
             this._cmbCompany.ShadowDecoration.BorderRadius = 10;
             this._cmbCompany.ShadowDecoration.Depth = 6;
@@ -137,7 +137,7 @@
             this._cmbMachine.Font = new System.Drawing.Font("Segoe UI", 10F);
             this._cmbMachine.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this._cmbMachine.ItemHeight = 30;
-            this._cmbMachine.Location = new System.Drawing.Point(283, 206);
+            this._cmbMachine.Location = new System.Drawing.Point(282, 206);
             this._cmbMachine.Name = "_cmbMachine";
             this._cmbMachine.ShadowDecoration.BorderRadius = 10;
             this._cmbMachine.ShadowDecoration.CustomizableEdges.BottomLeft = false;
@@ -162,7 +162,7 @@
             this._cmbSerialPort.Font = new System.Drawing.Font("Segoe UI", 10F);
             this._cmbSerialPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this._cmbSerialPort.ItemHeight = 30;
-            this._cmbSerialPort.Location = new System.Drawing.Point(283, 281);
+            this._cmbSerialPort.Location = new System.Drawing.Point(282, 281);
             this._cmbSerialPort.Name = "_cmbSerialPort";
             this._cmbSerialPort.ShadowDecoration.BorderRadius = 10;
             this._cmbSerialPort.ShadowDecoration.CustomizableEdges.BottomLeft = false;
@@ -197,7 +197,7 @@
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(323, 3);
             this.btnSave.Name = "btnSave";

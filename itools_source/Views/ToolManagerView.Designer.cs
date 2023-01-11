@@ -101,9 +101,7 @@ namespace itools_source.Views
             // btnTraySearch
             // 
             this.btnTraySearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTraySearch.Animated = true;
-            this.btnTraySearch.AutoRoundedCorners = true;
-            this.btnTraySearch.BorderRadius = 18;
+            this.btnTraySearch.BorderRadius = 10;
             this.btnTraySearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnTraySearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTraySearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -111,7 +109,7 @@ namespace itools_source.Views
             this.btnTraySearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTraySearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
             this.btnTraySearch.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this.btnTraySearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTraySearch.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnTraySearch.ForeColor = System.Drawing.Color.White;
             this.btnTraySearch.Location = new System.Drawing.Point(693, 5);
             this.btnTraySearch.Name = "btnTraySearch";
@@ -122,7 +120,7 @@ namespace itools_source.Views
             // _txtTrayToolSearch
             // 
             this._txtTrayToolSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this._txtTrayToolSearch.BorderRadius = 8;
+            this._txtTrayToolSearch.BorderRadius = 10;
             this._txtTrayToolSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this._txtTrayToolSearch.DefaultText = "";
             this._txtTrayToolSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -130,7 +128,7 @@ namespace itools_source.Views
             this._txtTrayToolSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this._txtTrayToolSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this._txtTrayToolSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtTrayToolSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtTrayToolSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this._txtTrayToolSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtTrayToolSearch.Location = new System.Drawing.Point(3, 5);
             this._txtTrayToolSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -154,9 +152,7 @@ namespace itools_source.Views
             // 
             // btnTakeOut
             // 
-            this.btnTakeOut.Animated = true;
-            this.btnTakeOut.AutoRoundedCorners = true;
-            this.btnTakeOut.BorderRadius = 20;
+            this.btnTakeOut.BorderRadius = 10;
             this.btnTakeOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnTakeOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTakeOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -184,9 +180,7 @@ namespace itools_source.Views
             // 
             // btnAddPlugin
             // 
-            this.btnAddPlugin.Animated = true;
-            this.btnAddPlugin.AutoRoundedCorners = true;
-            this.btnAddPlugin.BorderRadius = 20;
+            this.btnAddPlugin.BorderRadius = 10;
             this.btnAddPlugin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddPlugin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddPlugin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -214,9 +208,7 @@ namespace itools_source.Views
             // 
             // btnAddNew
             // 
-            this.btnAddNew.Animated = true;
-            this.btnAddNew.AutoRoundedCorners = true;
-            this.btnAddNew.BorderRadius = 20;
+            this.btnAddNew.BorderRadius = 10;
             this.btnAddNew.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddNew.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddNew.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -540,7 +532,7 @@ namespace itools_source.Views
             this._txtToolSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this._txtToolSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this._txtToolSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtToolSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtToolSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this._txtToolSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtToolSearch.Location = new System.Drawing.Point(3, 7);
             this._txtToolSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -611,9 +603,7 @@ namespace itools_source.Views
             // btnToolCancel
             // 
             this.btnToolCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnToolCancel.Animated = true;
-            this.btnToolCancel.AutoRoundedCorners = true;
-            this.btnToolCancel.BorderRadius = 17;
+            this.btnToolCancel.BorderRadius = 10;
             this.btnToolCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnToolCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnToolCancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -621,7 +611,7 @@ namespace itools_source.Views
             this.btnToolCancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnToolCancel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
             this.btnToolCancel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this.btnToolCancel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToolCancel.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnToolCancel.ForeColor = System.Drawing.Color.White;
             this.btnToolCancel.Location = new System.Drawing.Point(160, 6);
             this.btnToolCancel.Name = "btnToolCancel";
@@ -632,9 +622,7 @@ namespace itools_source.Views
             // btnToolSelect
             // 
             this.btnToolSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnToolSelect.Animated = true;
-            this.btnToolSelect.AutoRoundedCorners = true;
-            this.btnToolSelect.BorderRadius = 17;
+            this.btnToolSelect.BorderRadius = 10;
             this.btnToolSelect.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnToolSelect.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnToolSelect.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -694,9 +682,7 @@ namespace itools_source.Views
             // 
             // btnSave
             // 
-            this.btnSave.Animated = true;
-            this.btnSave.AutoRoundedCorners = true;
-            this.btnSave.BorderRadius = 20;
+            this.btnSave.BorderRadius = 10;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -705,7 +691,7 @@ namespace itools_source.Views
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
             this.btnSave.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(603, 3);
             this.btnSave.Name = "btnSave";

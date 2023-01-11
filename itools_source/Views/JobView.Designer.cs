@@ -70,7 +70,7 @@
             // _txtJobNumberSearch
             // 
             this._txtJobNumberSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this._txtJobNumberSearch.BorderRadius = 8;
+            this._txtJobNumberSearch.BorderRadius = 10;
             this._txtJobNumberSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this._txtJobNumberSearch.DefaultText = "";
             this._txtJobNumberSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -78,7 +78,7 @@
             this._txtJobNumberSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this._txtJobNumberSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this._txtJobNumberSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtJobNumberSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtJobNumberSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this._txtJobNumberSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtJobNumberSearch.Location = new System.Drawing.Point(3, 4);
             this._txtJobNumberSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -94,8 +94,6 @@
             // _btnJobNumberSearch
             // 
             this._btnJobNumberSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnJobNumberSearch.Animated = true;
-            this._btnJobNumberSearch.AutoRoundedCorners = true;
             this._btnJobNumberSearch.BorderRadius = 10;
             this._btnJobNumberSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this._btnJobNumberSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
