@@ -127,6 +127,11 @@ namespace itools_source.Presenters
         {
             if (Properties.Settings.Default.MachineId != 0)
             {
+                var frm = (ToolManagerView)sender;
+
+                frm.cStatusForm = '3';
+                frm.SetStatusForm();
+
                 //_iMachineId = Properties.Settings.Default.MachineId;
                 _toolManagerView.iMachineId = Properties.Settings.Default.MachineId;
 
@@ -135,11 +140,17 @@ namespace itools_source.Presenters
 
                 if (_toolManagerView.lstTrayIndexToolCode != null)
                 {
-                    var frm = (ToolManagerView)sender;
                     frm.CreateButtonTray();
-                    frm.cStatusForm = '3';
-                    frm.SetStatusForm();
+                    _log.Info("Create list button tray success.");
                 }
+                else
+                {
+                    _log.Error("Create list button tray fail.");
+                }
+            }
+            else
+            {
+                _log.Warn("Machine is zero.");
             }
         }
 

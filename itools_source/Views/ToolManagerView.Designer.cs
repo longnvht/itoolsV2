@@ -43,7 +43,6 @@ namespace itools_source.Views
             this.notifiAddNew = new Guna.UI2.WinForms.Guna2NotificationPaint(this.components);
             this.btnAddNew = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2VScrollBar_flpTrayList = new Guna.UI2.WinForms.Guna2VScrollBar();
-            this._flpTrayList = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Elipse_pLeftContent = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this._pLeftContent = new System.Windows.Forms.Panel();
             this._tlpToolList = new System.Windows.Forms.TableLayoutPanel();
@@ -73,6 +72,7 @@ namespace itools_source.Views
             this.pFooter = new System.Windows.Forms.Panel();
             this._tlpFooter = new System.Windows.Forms.TableLayoutPanel();
             this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
+            this._flpTrayList = new System.Windows.Forms.FlowLayoutPanel();
             this._tlpHeader.SuspendLayout();
             this._pLeftContent.SuspendLayout();
             this._tlpToolList.SuspendLayout();
@@ -253,19 +253,6 @@ namespace itools_source.Views
             this.guna2VScrollBar_flpTrayList.TabIndex = 20;
             this.guna2VScrollBar_flpTrayList.ThumbSize = 100F;
             // 
-            // _flpTrayList
-            // 
-            this._flpTrayList.AutoScroll = true;
-            this._flpTrayList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(214)))), ((int)(((byte)(226)))));
-            this._flpTrayList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._flpTrayList.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this._flpTrayList.Location = new System.Drawing.Point(0, 0);
-            this._flpTrayList.Margin = new System.Windows.Forms.Padding(2);
-            this._flpTrayList.Name = "_flpTrayList";
-            this._flpTrayList.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this._flpTrayList.Size = new System.Drawing.Size(303, 349);
-            this._flpTrayList.TabIndex = 33;
-            // 
             // guna2Elipse_pLeftContent
             // 
             this.guna2Elipse_pLeftContent.BorderRadius = 20;
@@ -275,7 +262,7 @@ namespace itools_source.Views
             // 
             this._pLeftContent.Controls.Add(this.guna2VScrollBar_flpTrayList);
             this._pLeftContent.Controls.Add(this._flpTrayList);
-            this._pLeftContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._pLeftContent.Dock = System.Windows.Forms.DockStyle.Left;
             this._pLeftContent.Location = new System.Drawing.Point(3, 3);
             this._pLeftContent.Name = "_pLeftContent";
             this._pLeftContent.Size = new System.Drawing.Size(303, 349);
@@ -724,6 +711,19 @@ namespace itools_source.Views
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Lưu";
             // 
+            // _flpTrayList
+            // 
+            this._flpTrayList.AutoScroll = true;
+            this._flpTrayList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(214)))), ((int)(((byte)(226)))));
+            this._flpTrayList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._flpTrayList.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this._flpTrayList.Location = new System.Drawing.Point(0, 0);
+            this._flpTrayList.Margin = new System.Windows.Forms.Padding(2);
+            this._flpTrayList.Name = "_flpTrayList";
+            this._flpTrayList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this._flpTrayList.Size = new System.Drawing.Size(303, 349);
+            this._flpTrayList.TabIndex = 33;
+            // 
             // ToolManagerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -758,8 +758,6 @@ namespace itools_source.Views
         }
 
         #endregion
-
-        private FlowLayoutPanel _flpTrayList;
         public FlowLayoutPanel flpTrayList
         {
             get { return _flpTrayList; }
@@ -857,5 +855,6 @@ namespace itools_source.Views
         private Guna.UI2.WinForms.Guna2GradientButton btnTakeOut;
         private Guna.UI2.WinForms.Guna2GradientButton btnAddPlugin;
         private Guna.UI2.WinForms.Guna2GradientButton btnAddNew;
+        private FlowLayoutPanel _flpTrayList;
     }
 }
