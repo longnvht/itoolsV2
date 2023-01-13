@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Unity;
 
 namespace itools_source.Presenters
 {
@@ -90,10 +91,16 @@ namespace itools_source.Presenters
                     if (item == nameof(JobView))
                     {
                         _menuView.ShowHideJobNumberAndOPId(true);
+
                         IJobView jobView = JobView.GetInstance((MainView)_mainView);
                         jobView.SetListOPNumberOPType = OpenOPView;
                         _jobRepository = new JobRepository();
                         new JobPresenter(jobView, _jobRepository);
+
+                        //var jobPresenter = ConfigUnity.unityContainer.Resolve<JobPresenter>();
+
+                        //jobPresenter.Run((MainView)_mainView);
+                        //MessageBox.Show("Ahihi");
                         break;
                     }
                     if (item == nameof(ToolManagerView))

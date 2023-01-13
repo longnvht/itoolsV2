@@ -8,6 +8,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Unity;
 
 namespace itools_source.Presenter
 {
@@ -24,8 +25,6 @@ namespace itools_source.Presenter
             _loginView.txtPassword_IconRightClick += _loginView_txtPassword_IconRightClick;
             _loginView.txtUserName_MouseClick += _loginView_txtUserName_MouseClick;
             _loginView.txtPassword_MouseClick += _loginView_txtPassword_MouseClick;
-
-            _loginView.Show();
         }
 
         #region Properties - Fields
@@ -169,9 +168,8 @@ namespace itools_source.Presenter
                     System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
                             () =>
                             {
-                                IMainView mainView = new MainView();
-                                new MainPresenter(mainView, _userAccountRepository);
-                                Application.Run((Form)mainView);
+                                var mainPresenter = ConfigUnity.unityContainer.Resolve<MainPresenter>();
+                                mainPresenter.Run();
                             }));
 
                     t.Start();
@@ -189,6 +187,10 @@ namespace itools_source.Presenter
         #endregion
 
         #region Methods
+        public void Run()
+        {
+            Application.Run(_loginView as LoginView);
+        }
         #endregion
     }
 }

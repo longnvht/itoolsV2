@@ -1,6 +1,7 @@
 ﻿using itools_source.Models;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace itools_source.Views.Interface
 {
@@ -9,7 +10,7 @@ namespace itools_source.Views.Interface
         #region Properties - Fields
         string strMenuId { get; set; }
         string strMenuName { get; set; }
-        List<Menu> lstMenu { get; set; }
+        List<itools_source.Models.Menu> lstMenu { get; set; }
         bool bCheckButton { get; set; }
         #endregion
 

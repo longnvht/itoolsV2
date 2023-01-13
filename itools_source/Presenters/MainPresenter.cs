@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using Unity;
 
 namespace itools_source.Presenters
 {
@@ -23,8 +24,6 @@ namespace itools_source.Presenters
             _mainView.btnPrevious_Click += _mainView_btnPrevious_Click;
             _mainView.btnNext_Click += _mainView_btnNext_Click;
             _mainView.btnHome_Click += _mainView_btnHome_Click;
-
-            _mainView.Show();
         }
 
         #region Properties - Fields
@@ -398,6 +397,11 @@ namespace itools_source.Presenters
                 }
             }
             return null;
+        }
+
+        public void Run()
+        {
+            Application.Run(_mainView as MainView);
         }
         #endregion
     }

@@ -91,6 +91,14 @@ namespace itools_source.Views
         {
             this.flpJobNumberList.Controls.AddRange(controls);
         }
+
+        public void SetMdiParent(Form mdiParent)
+        {
+            this.MdiParent = mdiParent;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.Dock = DockStyle.Fill;
+            MessageBox.Show("Ahihi");
+        }
         #endregion
 
         #region Events

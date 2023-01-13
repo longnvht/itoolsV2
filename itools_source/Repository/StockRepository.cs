@@ -208,5 +208,64 @@ namespace itools_source.Repository
                 return false;
             }
         }
+
+        public async Task<IEnumerable<Stock>> GetReportStock()
+        {
+            BindingList<Stock> lstStock = null;
+            string strQueryProcedure = @"GetReportStock";
+            _log.Info("Store procedure query get all in stock: " + strQueryProcedure);
+
+            try
+            {
+                using (var mySqlConnection = await MySqlConnect.OpenAsync())
+                {
+                    using (var mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strStoreProcedure: strQueryProcedure, mySqlConn: mySqlConnection))
+                    {
+                        if (mySqlDataReader != null)
+                        {
+                            lstStock = new BindingList<Stock>();
+                            Stock stock = null;
+                            while (await mySqlDataReader.ReadAsync())
+                            {
+                                stock = new Stock();
+                                // 1. TrayIndex
+                                if (!await mySqlDataReader.IsDBNullAsync(0))
+                                {
+                                    stock.iToolId = mySqlDataReader.GetInt32(0);
+                                }
+                                // 2. ToolCode
+                                if (!await mySqlDataReader.IsDBNullAsync(1))
+                                {
+                                    stock.iQuantity = mySqlDataReader.GetInt16(1);
+                                }
+                                // 3. Quantity
+                                if (!await mySqlDataReader.IsDBNullAsync(2))
+                                {
+                                    stock.strLocation = mySqlDataReader.GetString(2);
+                                }
+                                else
+                                {
+                                    stock.strLocation = DBNull.Value.ToString();
+                                }
+                                // 4. Date
+                                if (!await mySqlDataReader.IsDBNullAsync(3))
+                                {
+                                    //stock.
+                                }
+                                lstStock.Add(stock);
+                            }
+                        }
+                    }
+                    await mySqlConnection.CloseAsync();
+                }
+
+                return lstStock;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+                throw new NotImplementedException(e.Message);
+            }
+        }
     }
 }
