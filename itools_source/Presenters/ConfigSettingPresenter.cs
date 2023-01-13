@@ -95,15 +95,15 @@ namespace itools_source.Presenters
                                         MessageDialogStyle.Default);
                     frm.cmbMachine.Focus();
                 }
-                //else if (string.IsNullOrEmpty(Properties.Settings.Default.SerialPort) || string.IsNullOrWhiteSpace(Properties.Settings.Default.SerialPort))
-                //{
-                //    MessageDialog.Show("Bạn Chưa Chọn Cổng.",
-                //                        "Thông Báo",
-                //                        MessageDialogButtons.OK,
-                //                        MessageDialogIcon.Information,
-                //                        MessageDialogStyle.Default);
-                //    frm.cmbSerialPort.Focus();
-                //}
+                else if (string.IsNullOrEmpty(VinamiToolUser.Properties.Settings.Default.SerialPort) || string.IsNullOrWhiteSpace(VinamiToolUser.Properties.Settings.Default.SerialPort))
+                {
+                    MessageDialog.Show("Bạn Chưa Chọn Cổng.",
+                                        "Thông Báo",
+                                        MessageDialogButtons.OK,
+                                        MessageDialogIcon.Information,
+                                        MessageDialogStyle.Default);
+                    frm.cmbSerialPort.Focus();
+                }
                 else
                 {
                     VinamiToolUser.Properties.Settings.Default.CompanyId = companySelected.iCompanyId;
