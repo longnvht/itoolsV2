@@ -391,6 +391,7 @@
     <None Include="Resources\close_window_48.png" />
     <None Include="Resources\maximize_window_48.png" />
     <None Include="Resources\minimize_window_48.png" />
+    <None Include="Resources\home_48.png" />
     <Content Include="tool_generator.ico" />
   </ItemGroup>
   <ItemGroup>

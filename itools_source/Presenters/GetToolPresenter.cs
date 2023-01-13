@@ -338,7 +338,7 @@ namespace itools_source.Presenters
             if (_getToolView.serialPortGetTool.IsOpen)
             {
                 string strReadLine = _getToolView.serialPortGetTool.ReadLine().Substring(0, 3);
-                MessageDialog.Show(strReadLine);
+
                 if (strReadLine == "123")
                 {
                     // Get information workingtransaction.

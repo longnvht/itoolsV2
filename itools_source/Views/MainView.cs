@@ -16,13 +16,13 @@ namespace itools_source.Views
             this.Load += delegate { MainView_Load?.Invoke(this, EventArgs.Empty); };
             this._btnPrevious.Click += delegate { btnPrevious_Click?.Invoke(this, EventArgs.Empty); };
             this._btnNext.Click += delegate { btnNext_Click?.Invoke(this, EventArgs.Empty); };
+            this._btnHome.Click += delegate { btnHome_Click?.Invoke(this, EventArgs.Empty); };
         }
 
         #region Properties - Fields
         public string strName { get => lblName.Text; set => lblName.Text = value; }
 
         public UserAccount userAccountCurrent { get; set; }
-        public string strRole { get => lblRole.Text; set => lblRole.Text = value; }
         public bool btnNextEnabled { get => btnNext.Enabled; set => btnNext.Enabled = value; }
         public string strJobNumber
         {
@@ -63,6 +63,7 @@ namespace itools_source.Views
         public event EventHandler MainView_Load;
         public event EventHandler btnPrevious_Click;
         public event EventHandler btnNext_Click;
+        public event EventHandler btnHome_Click;
         #endregion
 
         #region Methods

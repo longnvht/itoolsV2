@@ -39,10 +39,9 @@ namespace itools_source.Views
             this._lblOPId = new System.Windows.Forms.Label();
             this._lblJobNumber = new System.Windows.Forms.Label();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.lblRole = new System.Windows.Forms.Label();
+            this._btnHome = new System.Windows.Forms.Button();
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             this.SuspendLayout();
@@ -109,16 +108,10 @@ namespace itools_source.Views
             // 
             this.tlpHeader.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.tlpHeader, "tlpHeader");
-            this.tlpHeader.Controls.Add(this.label1, 0, 0);
-            this.tlpHeader.Controls.Add(this.lblName, 0, 0);
-            this.tlpHeader.Controls.Add(this.label13, 0, 0);
-            this.tlpHeader.Controls.Add(this.lblRole, 2, 0);
+            this.tlpHeader.Controls.Add(this.lblName, 3, 0);
+            this.tlpHeader.Controls.Add(this.label13, 2, 0);
+            this.tlpHeader.Controls.Add(this._btnHome, 0, 0);
             this.tlpHeader.Name = "tlpHeader";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
             // 
             // lblName
             // 
@@ -130,10 +123,14 @@ namespace itools_source.Views
             resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
             // 
-            // lblRole
+            // _btnHome
             // 
-            resources.ApplyResources(this.lblRole, "lblRole");
-            this.lblRole.Name = "lblRole";
+            this._btnHome.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this._btnHome, "_btnHome");
+            this._btnHome.FlatAppearance.BorderSize = 0;
+            this._btnHome.Image = global::VinamiToolUser.Properties.Resources.home_48;
+            this._btnHome.Name = "_btnHome";
+            this._btnHome.UseVisualStyleBackColor = false;
             // 
             // MainView
             // 
@@ -190,8 +187,7 @@ namespace itools_source.Views
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label _lblJobNumberDisplay;
         private System.Windows.Forms.Label _lblOPIdDisplay;
-        private System.Windows.Forms.Label lblRole;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblName;
+        private Button _btnHome;
     }
 }

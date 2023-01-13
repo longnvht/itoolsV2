@@ -16,16 +16,19 @@ namespace itools_source.Presenters
     {
         public MainPresenter(IMainView mainView, IUserAccountRepository userAccountRepository)
         {
-            this._mainView = mainView;
+            _mainView = mainView;
             _userAccountRepository = userAccountRepository;
 
-            this._mainView.MainView_Load += _mainView_MainView_Load;
-            this._mainView.btnPrevious_Click += _mainView_btnPrevious_Click;
-            this._mainView.btnNext_Click += _mainView_btnNext_Click;
+            _mainView.MainView_Load += _mainView_MainView_Load;
+            _mainView.btnPrevious_Click += _mainView_btnPrevious_Click;
+            _mainView.btnNext_Click += _mainView_btnNext_Click;
+            _mainView.btnHome_Click += _mainView_btnHome_Click;
+
+            _mainView.Show();
         }
 
         #region Properties - Fields
-        log4net.ILog _log = log4net.LogManager.GetLogger(typeof(MainPresenter).Name);
+        private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(MainPresenter).Name);
 
         private IMainView _mainView;
         private IUserAccountRepository _userAccountRepository;
@@ -39,6 +42,20 @@ namespace itools_source.Presenters
         #endregion
 
         #region Events
+        private void _mainView_btnHome_Click(object sender, EventArgs e)
+        {
+            MainView frmMain = (MainView)sender;
+            if (frmMain.MdiChildren.Any())
+            {
+                _menuView = MenuView.GetInstance((MainView)_mainView);
+                _menuRepository = new MenuRepository();
+                new MenuPresenter(_menuView, _menuRepository, _mainView);
+                _mainView.strJobNumber = null;
+                _mainView.strOPNumber = null;
+                _mainView.iOPId = null;
+            }
+        }
+
         private void _mainView_btnNext_Click(object sender, EventArgs e)
         {
             MainView frmMain = (MainView)sender;
@@ -244,7 +261,7 @@ namespace itools_source.Presenters
                 if (Program.sessionLogin["Name"] != null && Program.sessionLogin["PermissionId"] != null)
                 {
                     _mainView.strName = Program.sessionLogin["Name"].ToString();
-                    _mainView.strRole = await _permissionRepository.GetPermissionNameById(Program.sessionLogin["PermissionId"].ToString());
+                    //_mainView.strRole = await _permissionRepository.GetPermissionNameById(Program.sessionLogin["PermissionId"].ToString());
                 }
 
                 _menuView = MenuView.GetInstance((MainView)_mainView);

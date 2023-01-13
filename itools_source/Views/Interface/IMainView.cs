@@ -9,7 +9,6 @@ namespace itools_source.Views.Interface
         #region Properties - Fields
         UserAccount userAccountCurrent { get; set; }
         string strName { get; set; }
-        string strRole { get; set; }
         bool btnNextEnabled { get; set; }
         string strJobNumber { get; set; }
         string strOPNumber { get; set; }
@@ -21,6 +20,7 @@ namespace itools_source.Views.Interface
         event EventHandler MainView_Load;
         event EventHandler btnPrevious_Click;
         event EventHandler btnNext_Click;
+        event EventHandler btnHome_Click;
         #endregion
 
         #region Methods
