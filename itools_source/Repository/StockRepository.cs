@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using VinamiToolUser.DTOs;
 
 namespace itools_source.Repository
 {
@@ -209,57 +210,67 @@ namespace itools_source.Repository
             }
         }
 
-        public async Task<IEnumerable<Stock>> GetReportStock()
+        public async Task<IEnumerable<ReportStock>> GetReportStockByMachineID(int? iMachineID)
         {
-            BindingList<Stock> lstStock = null;
-            string strQueryProcedure = @"GetReportStock";
+            BindingList<ReportStock> lstReportStock = null;
+            string strQueryProcedure = @"GetReportStockByMachineID";
             _log.Info("Store procedure query get all in stock: " + strQueryProcedure);
 
             try
             {
+                List<MySqlParameter> lstPar = new List<MySqlParameter>
+                {
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_MachineID",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = iMachineID,
+                        Direction = System.Data.ParameterDirection.Input
+                    }
+                };
+
                 using (var mySqlConnection = await MySqlConnect.OpenAsync())
                 {
-                    using (var mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strStoreProcedure: strQueryProcedure, mySqlConn: mySqlConnection))
+                    using (var mySqlDataReader = await MySqlConnect.DataQueryProcedureAsync(strStoreProcedure: strQueryProcedure, paramerter: lstPar.ToArray(), mySqlConn: mySqlConnection))
                     {
                         if (mySqlDataReader != null)
                         {
-                            lstStock = new BindingList<Stock>();
-                            Stock stock = null;
+                            lstReportStock = new BindingList<ReportStock>();
+                            ReportStock reportStock = null;
                             while (await mySqlDataReader.ReadAsync())
                             {
-                                stock = new Stock();
+                                reportStock = new ReportStock();
                                 // 1. TrayIndex
                                 if (!await mySqlDataReader.IsDBNullAsync(0))
                                 {
-                                    stock.iToolId = mySqlDataReader.GetInt32(0);
+                                    reportStock.strTrayIndex = mySqlDataReader.GetString(0);
                                 }
+
                                 // 2. ToolCode
                                 if (!await mySqlDataReader.IsDBNullAsync(1))
                                 {
-                                    stock.iQuantity = mySqlDataReader.GetInt16(1);
+                                    reportStock.iToolId = mySqlDataReader.GetInt32(1);
                                 }
+
                                 // 3. Quantity
                                 if (!await mySqlDataReader.IsDBNullAsync(2))
                                 {
-                                    stock.strLocation = mySqlDataReader.GetString(2);
+                                    reportStock.iQuantity = mySqlDataReader.GetInt32(2);
                                 }
-                                else
-                                {
-                                    stock.strLocation = DBNull.Value.ToString();
-                                }
+                                
                                 // 4. Date
                                 if (!await mySqlDataReader.IsDBNullAsync(3))
                                 {
-                                    //stock.
+                                    reportStock.dtUpdateDate = mySqlDataReader.GetDateTime(3);
                                 }
-                                lstStock.Add(stock);
+                                lstReportStock.Add(reportStock);
                             }
                         }
                     }
                     await mySqlConnection.CloseAsync();
                 }
 
-                return lstStock;
+                return lstReportStock;
             }
             catch (MySqlException e)
             {

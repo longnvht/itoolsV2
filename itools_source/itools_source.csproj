@@ -170,7 +170,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOs\ReportStockDTO.cs" />
+    <Compile Include="DTOs\ReportStock.cs" />
     <Compile Include="Models\Interface\IBaseRepository.cs" />
     <Compile Include="Models\Interface\ICompanyRepository.cs" />
     <Compile Include="Models\Interface\IJobRepository.cs" />

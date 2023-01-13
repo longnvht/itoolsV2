@@ -33,9 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this._dgvStock = new Guna.UI2.WinForms.Guna2DataGridView();
+            this._colTrayIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._colToolId = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._colQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._colUpdateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this._dgvStock)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,9 +60,10 @@
             this._dgvStock.ColumnHeadersHeight = 40;
             this._dgvStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this._dgvStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this._colTrayIndex,
             this._colToolId,
-            this.colQuantity,
-            this.colLocation});
+            this._colQuantity,
+            this._colUpdateDate});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -116,30 +118,40 @@
             this._dgvStock.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this._dgvStock.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // _colTrayIndex
+            // 
+            this._colTrayIndex.DataPropertyName = "strTrayIndex";
+            this._colTrayIndex.HeaderText = "TrayIndex";
+            this._colTrayIndex.Name = "_colTrayIndex";
+            this._colTrayIndex.ReadOnly = true;
+            // 
             // _colToolId
             // 
+            this._colToolId.DataPropertyName = "iToolId";
             this._colToolId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this._colToolId.FillWeight = 121.2845F;
-            this._colToolId.HeaderText = "Mã Tool";
+            this._colToolId.FillWeight = 140F;
+            this._colToolId.HeaderText = "Tool";
             this._colToolId.MaxDropDownItems = 10;
             this._colToolId.Name = "_colToolId";
             this._colToolId.ReadOnly = true;
             this._colToolId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this._colToolId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // colQuantity
+            // _colQuantity
             // 
-            this.colQuantity.FillWeight = 35.92457F;
-            this.colQuantity.HeaderText = "Số Lượng";
-            this.colQuantity.Name = "colQuantity";
-            this.colQuantity.ReadOnly = true;
+            this._colQuantity.DataPropertyName = "iQuantity";
+            this._colQuantity.FillWeight = 60F;
+            this._colQuantity.HeaderText = "Số Lượng";
+            this._colQuantity.Name = "_colQuantity";
+            this._colQuantity.ReadOnly = true;
             // 
-            // colLocation
+            // _colUpdateDate
             // 
-            this.colLocation.FillWeight = 203.0457F;
-            this.colLocation.HeaderText = "Vị Trí";
-            this.colLocation.Name = "colLocation";
-            this.colLocation.ReadOnly = true;
+            this._colUpdateDate.DataPropertyName = "dtUpdateDate";
+            this._colUpdateDate.FillWeight = 180F;
+            this._colUpdateDate.HeaderText = "Ngày";
+            this._colUpdateDate.Name = "_colUpdateDate";
+            this._colUpdateDate.ReadOnly = true;
             // 
             // StockView
             // 
@@ -162,9 +174,10 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2DataGridView _dgvStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _colTrayIndex;
         private System.Windows.Forms.DataGridViewComboBoxColumn _colToolId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _colQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _colUpdateDate;
 
         public Guna.UI2.WinForms.Guna2DataGridView dgvStock
         {
