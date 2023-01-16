@@ -1,4 +1,6 @@
-﻿namespace itools_source.Views
+﻿using Guna.UI2.WinForms;
+
+namespace itools_source.Views
 {
     partial class GetToolView
     {
@@ -44,6 +46,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this._txtModel = new Guna.UI2.WinForms.Guna2TextBox();
             this._txtDescription = new Guna.UI2.WinForms.Guna2TextBox();
+            this._tlpToolSelect = new System.Windows.Forms.TableLayoutPanel();
+            this._btnToolSelect = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2Elipse_flpToolList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse_tlpTooMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse_flpTrayMachineList = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -56,7 +60,7 @@
             this.tlpToolMachineFooter = new System.Windows.Forms.TableLayoutPanel();
             this._btnCancelSelectTray = new Guna.UI2.WinForms.Guna2GradientButton();
             this._btnGetTool = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pToolMachineHeader = new System.Windows.Forms.Panel();
             this.lblShowAllMachineTray = new System.Windows.Forms.Label();
             this._txtToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this._toggleShowAll = new Guna.UI2.WinForms.Guna2ToggleSwitch();
@@ -64,10 +68,11 @@
             this.tlpContent.SuspendLayout();
             this.pLeftContent.SuspendLayout();
             this.tlpRightContent.SuspendLayout();
+            this._tlpToolSelect.SuspendLayout();
             this._tlpToolMachineList.SuspendLayout();
             this.pToolContent.SuspendLayout();
             this.tlpToolMachineFooter.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pToolMachineHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpHeader
@@ -191,6 +196,7 @@
             this.tlpRightContent.Controls.Add(this.label3, 0, 3);
             this.tlpRightContent.Controls.Add(this._txtModel, 1, 2);
             this.tlpRightContent.Controls.Add(this._txtDescription, 1, 3);
+            this.tlpRightContent.Controls.Add(this._tlpToolSelect, 1, 4);
             this.tlpRightContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpRightContent.Location = new System.Drawing.Point(273, 3);
             this.tlpRightContent.Name = "tlpRightContent";
@@ -306,6 +312,42 @@
             this._txtDescription.Size = new System.Drawing.Size(243, 70);
             this._txtDescription.TabIndex = 5;
             // 
+            // _tlpToolSelect
+            // 
+            this._tlpToolSelect.ColumnCount = 3;
+            this._tlpToolSelect.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this._tlpToolSelect.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this._tlpToolSelect.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this._tlpToolSelect.Controls.Add(this._btnToolSelect, 1, 0);
+            this._tlpToolSelect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tlpToolSelect.Location = new System.Drawing.Point(90, 315);
+            this._tlpToolSelect.Name = "_tlpToolSelect";
+            this._tlpToolSelect.RowCount = 1;
+            this._tlpToolSelect.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tlpToolSelect.Size = new System.Drawing.Size(243, 76);
+            this._tlpToolSelect.TabIndex = 6;
+            // 
+            // _btnToolSelect
+            // 
+            this._btnToolSelect.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this._btnToolSelect.Animated = true;
+            this._btnToolSelect.BorderRadius = 10;
+            this._btnToolSelect.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this._btnToolSelect.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this._btnToolSelect.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this._btnToolSelect.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this._btnToolSelect.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this._btnToolSelect.Enabled = false;
+            this._btnToolSelect.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this._btnToolSelect.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this._btnToolSelect.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this._btnToolSelect.ForeColor = System.Drawing.Color.White;
+            this._btnToolSelect.Location = new System.Drawing.Point(34, 15);
+            this._btnToolSelect.Name = "_btnToolSelect";
+            this._btnToolSelect.Size = new System.Drawing.Size(174, 45);
+            this._btnToolSelect.TabIndex = 31;
+            this._btnToolSelect.Text = "Chọn Tool";
+            // 
             // guna2Elipse_flpToolList
             // 
             this.guna2Elipse_flpToolList.BorderRadius = 20;
@@ -332,7 +374,7 @@
             this._tlpToolMachineList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this._tlpToolMachineList.Controls.Add(this.pToolContent, 0, 1);
             this._tlpToolMachineList.Controls.Add(this.tlpToolMachineFooter, 0, 2);
-            this._tlpToolMachineList.Controls.Add(this.panel1, 0, 0);
+            this._tlpToolMachineList.Controls.Add(this.pToolMachineHeader, 0, 0);
             this._tlpToolMachineList.Location = new System.Drawing.Point(611, 0);
             this._tlpToolMachineList.Name = "_tlpToolMachineList";
             this._tlpToolMachineList.RowCount = 3;
@@ -437,16 +479,16 @@
             this._btnGetTool.TabIndex = 29;
             this._btnGetTool.Text = "Lấy Tool";
             // 
-            // panel1
+            // pToolMachineHeader
             // 
-            this.panel1.Controls.Add(this.lblShowAllMachineTray);
-            this.panel1.Controls.Add(this._txtToolSearch);
-            this.panel1.Controls.Add(this._toggleShowAll);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(276, 62);
-            this.panel1.TabIndex = 31;
+            this.pToolMachineHeader.Controls.Add(this.lblShowAllMachineTray);
+            this.pToolMachineHeader.Controls.Add(this._txtToolSearch);
+            this.pToolMachineHeader.Controls.Add(this._toggleShowAll);
+            this.pToolMachineHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pToolMachineHeader.Location = new System.Drawing.Point(3, 3);
+            this.pToolMachineHeader.Name = "pToolMachineHeader";
+            this.pToolMachineHeader.Size = new System.Drawing.Size(276, 62);
+            this.pToolMachineHeader.TabIndex = 31;
             // 
             // lblShowAllMachineTray
             // 
@@ -516,12 +558,13 @@
             this.pLeftContent.ResumeLayout(false);
             this.tlpRightContent.ResumeLayout(false);
             this.tlpRightContent.PerformLayout();
+            this._tlpToolSelect.ResumeLayout(false);
             this._tlpToolMachineList.ResumeLayout(false);
             this.pToolContent.ResumeLayout(false);
             this.pToolContent.PerformLayout();
             this.tlpToolMachineFooter.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pToolMachineHeader.ResumeLayout(false);
+            this.pToolMachineHeader.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -602,6 +645,8 @@
             set { _toggleShowAll = value; }
         }
 
+        public Guna2GradientButton btnToolSelect { get => _btnToolSelect; set => _btnToolSelect = value; }
+
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
         private System.Windows.Forms.TableLayoutPanel tlpContent;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_flpToolList;
@@ -626,9 +671,11 @@
         private System.Windows.Forms.TableLayoutPanel tlpToolMachineFooter;
         private Guna.UI2.WinForms.Guna2GradientButton _btnCancelSelectTray;
         private Guna.UI2.WinForms.Guna2GradientButton _btnGetTool;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pToolMachineHeader;
         private System.Windows.Forms.Label lblShowAllMachineTray;
         private Guna.UI2.WinForms.Guna2TextBox _txtToolSearch;
         private Guna.UI2.WinForms.Guna2ToggleSwitch _toggleShowAll;
+        private System.Windows.Forms.TableLayoutPanel _tlpToolSelect;
+        private Guna.UI2.WinForms.Guna2GradientButton _btnToolSelect;
     }
 }

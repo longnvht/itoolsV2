@@ -32,6 +32,7 @@ namespace itools_source.Presenters
             _getToolView.txtSearch_MouseClick += _getToolView_txtSearch_MouseClick;
             _getToolView.txtToolSearch_MouseClick += _getToolView_txtToolSearch_MouseClick;
             _getToolView.GetToolView_FormClosing += _getToolView_GetToolView_FormClosing;
+            _getToolView.btnToolSelect_Click += _getToolView_btnToolSelect_Click;
 
             _getToolView.Show();
         }
@@ -47,6 +48,16 @@ namespace itools_source.Presenters
         #endregion
 
         #region Events
+        private void _getToolView_btnToolSelect_Click(object sender, EventArgs e)
+        {
+            // Show view select TrayIndex.
+            if (_getToolView.iToolId != null)
+            {
+                _getToolView.cStatusForm = '1';
+                _getToolView.SetStatusForm();
+            }
+        }
+
         private void _getToolView_GetToolView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
@@ -220,8 +231,8 @@ namespace itools_source.Presenters
                 return;
             }
 
-            // 1. Show view select TrayIndex.
-            _getToolView.cStatusForm = '1';
+            // 1. Open button tool select.
+            _getToolView.cStatusForm = '5';
             _getToolView.SetStatusForm();
 
             /*

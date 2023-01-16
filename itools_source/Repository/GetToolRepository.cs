@@ -74,7 +74,7 @@ namespace itools_source.Repository
             }
         }
 
-        public async Task<Dictionary<int, Dictionary<string, string>>> GetModelDescriptionByToolId(int iToolId) // Tool
+        public async Task<Dictionary<int, Dictionary<string, string>>> GetModelDescriptionByToolId(int? iToolId) // Tool
         {
             // 0. ToolId
             // 1.0. ToolModel
@@ -141,7 +141,7 @@ namespace itools_source.Repository
             }
         }
 
-        public async Task<Dictionary<int, List<object>>> GetMachineTrayByToolId(int iToolID, int iMachineID) // ToolsMachineTray
+        public async Task<Dictionary<int, List<object>>> GetMachineTrayByToolId(int? iToolID, int iMachineID) // ToolsMachineTray
         {
             // 0. TrayID
             // 1.0. TrayIndex
@@ -223,7 +223,7 @@ namespace itools_source.Repository
             }
         }
 
-        public async Task<Dictionary<int, List<object>>> GetMachineTrayQuantityByToolId(int iToolID) // ToolsMachineTray
+        public async Task<Dictionary<int, List<object>>> GetMachineTrayQuantityByToolId(int? iToolID) // ToolsMachineTray
         {
             /*
              * 0. TrayID => int

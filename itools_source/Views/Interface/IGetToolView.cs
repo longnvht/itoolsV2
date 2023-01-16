@@ -13,7 +13,7 @@ namespace itools_source.Views.Interface
         int? iOPId { get; set; }
         string strOPNumber { get; set; }
         int? iTrayId { get; set; }
-        int iToolId { get; set; }
+        int? iToolId { get; set; }
         string strToolCode { get; set; }
         string strToolModel { get; set; }
         string strToolDescription { get; set; }
@@ -41,6 +41,7 @@ namespace itools_source.Views.Interface
         event MouseEventHandler txtSearch_MouseClick;
         event MouseEventHandler txtToolSearch_MouseClick;
         event FormClosingEventHandler GetToolView_FormClosing;
+        event EventHandler btnToolSelect_Click;
         #endregion
 
         #region Methods

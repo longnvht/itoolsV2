@@ -22,6 +22,7 @@ namespace itools_source.Views
             _txtSearch.MouseClick += delegate { txtSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
             _txtToolSearch.MouseClick += delegate { txtToolSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
             this.FormClosing += delegate { GetToolView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
+            _btnToolSelect.Click += delegate { btnToolSelect_Click?.Invoke(this, EventArgs.Empty); };
         }
 
         #region Properties - Fields
@@ -91,7 +92,7 @@ namespace itools_source.Views
             }
             set => txtDescription.Text = value;
         }
-        public int iToolId { get; set; }
+        public int? iToolId { get; set; }
         public string strTrayIndex { get; set; }
         public string strMachineCode { get; set; }
         public Dictionary<int, List<object>> lstTrayQuantity { get; set; }
@@ -189,6 +190,9 @@ namespace itools_source.Views
                 case '4': // Double select TrayIndex.
                     btnGetTool.Enabled = false;
                     break;
+                case '5':
+                    btnToolSelect.Enabled = true;
+                    break;
             }
         }
 
@@ -285,6 +289,7 @@ namespace itools_source.Views
         public event MouseEventHandler txtSearch_MouseClick;
         public event MouseEventHandler txtToolSearch_MouseClick;
         public event FormClosingEventHandler GetToolView_FormClosing;
+        public event EventHandler btnToolSelect_Click;
         #endregion
     }
 }
