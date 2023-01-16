@@ -57,8 +57,8 @@ namespace itools_source.Presenters
                 JobView frm = (JobView)sender;
                 frm.txtJobNumberSearch.Focus();
 
-                int iTempX = (frm.Width - frmKeyBoard.Width) / 2;
-                int iTempY = frm.Height - frmKeyBoard.Height + 50;
+                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
+                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
 
                 clientPoint = new Point(iTempX, iTempY);
                 frmKeyBoard.Location = clientPoint;

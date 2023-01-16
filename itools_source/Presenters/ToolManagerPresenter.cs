@@ -80,8 +80,8 @@ namespace itools_source.Presenters
                 ToolManagerView frm = (ToolManagerView)sender;
                 frm.txtTrayToolSearch.Focus();
 
-                int iTempX = (frm.Width - frmKeyBoard.Width) / 2;
-                int iTempY = frm.Height - frmKeyBoard.Height + 50;
+                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
+                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
 
                 clientPoint = new Point(iTempX, iTempY);
                 frmKeyBoard.Location = clientPoint;
@@ -98,8 +98,8 @@ namespace itools_source.Presenters
                 ToolManagerView frm = (ToolManagerView)sender;
                 frm.txtToolSearch.Focus();
 
-                int iTempX = (frm.Width - frmKeyBoard.Width) / 2;
-                int iTempY = frm.Height - frmKeyBoard.Height + 50;
+                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
+                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
 
                 clientPoint = new Point(iTempX, iTempY);
                 frmKeyBoard.Location = clientPoint;
@@ -116,10 +116,11 @@ namespace itools_source.Presenters
                 ToolManagerView frm = (ToolManagerView)sender;
                 frm.txtOperateQuantity.Focus();
 
-                Point p = new Point();
-                clientPoint = frm.txtOperateQuantity.PointToScreen(p);
-                frmNumericKey.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y + frm.txtOperateQuantity.Height);
-                clientPoint.Y += frm.txtOperateQuantity.Height;
+                int iTempX = ((frm.Width - frmNumericKey.Width) / 2) + (frm.MdiParent as MainView).Location.X;
+                int iTempY = ((frm.Height - frmNumericKey.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
+
+                clientPoint = new Point(iTempX, iTempY);
+                frmNumericKey.Location = clientPoint;
             }
         }
 

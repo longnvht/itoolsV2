@@ -75,13 +75,12 @@ namespace itools_source.Presenters
 
                 GetToolView frm = (GetToolView)sender;
                 frm.txtToolSearch.Focus();
+                
+                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
+                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
 
-                Point p = new Point();
-                clientPoint = frm.txtToolSearch.PointToScreen(p);
-                int iTemp = frmKeyBoard.Width - frm.tlpToolMachineList.Width;
-                frmKeyBoard.Location = new Point(clientPoint.X - iTemp, clientPoint.Y + frm.txtToolSearch.Height);
-                clientPoint.X -= iTemp;
-                clientPoint.Y += frm.txtToolSearch.Height;
+                clientPoint = new Point(iTempX, iTempY);
+                frmKeyBoard.Location = clientPoint;
             }
         }
 
@@ -95,10 +94,11 @@ namespace itools_source.Presenters
                 GetToolView frm = (GetToolView)sender;
                 frm.txtSearch.Focus();
 
-                Point p = new Point();
-                clientPoint = frm.txtSearch.PointToScreen(p);
-                frmKeyBoard.Location = new Point(clientPoint.X, clientPoint.Y + frm.txtSearch.Height);
-                clientPoint.Y += frm.txtSearch.Height;
+                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
+                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
+
+                clientPoint = new Point(iTempX, iTempY);
+                frmKeyBoard.Location = clientPoint;
             }
         }
 
