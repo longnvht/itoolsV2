@@ -16,28 +16,11 @@ namespace itools_source.Utils
 
         public static string ConnectionString()
         {
-            switch (Environment.MachineName)
-            {
-                case "TUANIT":
-                    _strHOST = "127.0.0.1";
-                    _strPORT = "3308";
-                    _strDATABASE_MAME = "itooldtb";
-                    _strUSER_NAME = "root";
-                    _strPASSWORD = "0306ht@1502";
-                    break;
-                case "VOT-L091":
-                    _strHOST = "192.168.0.12";
-                    _strPORT = "3306";
-                    _strDATABASE_MAME = "itooldtb";
-                    _strUSER_NAME = "admin";
-                    _strPASSWORD = "Vinam@123";
-                    break;
-            }
-            //_strHOST = "165.22.248.14";
-            //_strPORT = "3306";
-            //_strDATABASE_MAME = "itooldtb";
-            //_strUSER_NAME = "root";
-            //_strPASSWORD = "Hanhdo030687@";
+            _strHOST = "192.168.0.12";
+            _strPORT = "3306";
+            _strDATABASE_MAME = "itooldtb";
+            _strUSER_NAME = "admin";
+            _strPASSWORD = "Vinam@123";
             return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
         }
 
