@@ -15,34 +15,6 @@ namespace itools_source.Presenters
 {
     public class ToolManagerPresenter
     {
-        //public ToolManagerPresenter(IToolManagerView pushToolView, IToolMachineTrayRepository toolMachineTrayRepository)
-        //{
-        //    _toolManagerView = pushToolView;
-        //    _toolMachineTrayRepository = toolMachineTrayRepository;
-
-        //    _toolManagerView.ToolManagerView_Load += _toolManagerView_ToolManagerView_Load;
-        //    _toolManagerView.txtTraySearch_TextChanged += _toolManagerView_txtTraySearch_TextChanged;
-        //    _toolManagerView.btnTraySearch_Click += _toolManagerView_btnTraySearch_Click;
-        //    _toolManagerView.btnflpTrayList_Click += _toolManagerView_btnflpTrayList_Click;
-        //    _toolManagerView.txtOperateQuantity_TextChanged += _toolManagerView_txtOperateQuantity_TextChanged;
-        //    _toolManagerView.txtToolCode_MouseClick += _toolManagerView_txtToolCode_MouseClick;
-        //    _toolManagerView.txtToolSearch_TextChanged += _toolManagerView_txtToolSearch_TextChanged;
-        //    _toolManagerView.btnflpToolList_Click += _toolManagerView_btnflpToolList_Click;
-        //    _toolManagerView.btnflpToolList_DoubleClick += _toolManagerView_btnflpToolList_DoubleClick;
-        //    _toolManagerView.btnToolSelect_Click += _toolManagerView_btnToolSelect_Click;
-        //    _toolManagerView.btnToolCancel_Click += _toolManagerView_btnToolCancel_Click;
-        //    _toolManagerView.btnTakeOut_Click += _toolManagerView_btnTakeOut_Click;
-        //    _toolManagerView.btnAddPlugin_Click += _toolManagerView_btnAddPlugin_Click;
-        //    _toolManagerView.btnAddNew_Click += _toolManagerView_btnAddNew_Click;
-        //    _toolManagerView.btnSave_Click += _toolManagerView_btnSave_Click;
-        //    _toolManagerView.txtOperateQuantity_MouseClick += _toolManagerView_txtOperateQuantity_MouseClick;
-        //    _toolManagerView.txtToolSearch_MouseClick += _toolManagerView_txtToolSearch_MouseClick;
-        //    _toolManagerView.txtTrayToolSearch_MouseClick += _toolManagerView_txtTrayToolSearch_MouseClick;
-        //    _toolManagerView.ToolManagerView_FormClosing += _toolManagerView_ToolManagerView_FormClosing;
-
-        //    _toolManagerView.Show();
-        //}
-
         #region Properties - Fields
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ToolManagerPresenter).Name);
         private VirtualNumericKeyBoard frmNumericKey;
