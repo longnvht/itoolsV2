@@ -23,6 +23,8 @@ namespace itools_source.Views.Interface
         void Close();
         void SetCheckedButton(string strContinueButton);
         void ShowHideJobNumberAndOPId(bool bStatus);
+        Form GetMdiParent();
+        void SetMdiParent(Form mdiParent);
         #endregion
     }
 }

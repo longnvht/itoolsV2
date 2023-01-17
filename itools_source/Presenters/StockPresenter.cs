@@ -53,6 +53,18 @@ namespace itools_source.Presenters
             //frm.dgvStock.Columns["_colUpdateDate"].DataPropertyName = "dtUpdateDate";
             frm.dgvStock.DataSource = await _stockRepository.GetReportStockByMachineID(VinamiToolUser.Properties.Settings.Default.MachineId);
         }
+
+        public void Run(Form parentContainer)
+        {
+            if (_stockView != null)
+            {
+                _stockView.SetMdiParent((MainView)parentContainer);
+            }
+            else
+            {
+                _log.Error("_toolManagerView is null.");
+            }
+        }
         #endregion
     }
 }

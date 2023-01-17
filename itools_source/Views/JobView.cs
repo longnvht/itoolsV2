@@ -92,12 +92,31 @@ namespace itools_source.Views
             this.flpJobNumberList.Controls.AddRange(controls);
         }
 
+        public Form GetMdiParent()
+        {
+            return MdiParent;
+        }
+
         public void SetMdiParent(Form mdiParent)
         {
-            this.MdiParent = mdiParent;
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.Dock = DockStyle.Fill;
-            MessageBox.Show("Ahihi");
+            if (this.IsDisposed)
+            {
+                if (this.WindowState == FormWindowState.Minimized)
+                {
+                    this.WindowState = FormWindowState.Normal;
+                }
+                else
+                {
+                    this.Dock = DockStyle.Fill;
+                }
+                this.BringToFront();
+            }
+            else
+            {
+                this.MdiParent = mdiParent;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.Dock = DockStyle.Fill;
+            }
         }
         #endregion
 

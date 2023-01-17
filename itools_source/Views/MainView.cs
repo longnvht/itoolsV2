@@ -4,11 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Unity;
 
 namespace itools_source.Views
 {
     public partial class MainView : Form, IMainView
     {
+        [Dependency]
+        public IUnityContainer unityContainer { get; set; }
+
         public MainView()
         {
             InitializeComponent();
@@ -81,6 +85,11 @@ namespace itools_source.Views
             lblOPId.Visible = bStatus;
             lblJobNumberDisplay.Visible = bStatus;
             lblOPIdDisplay.Visible = bStatus;
+        }
+
+        public bool GetIsDisposed()
+        {
+            return IsDisposed;
         }
         #endregion
     }

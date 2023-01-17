@@ -54,6 +54,8 @@ namespace itools_source.Views.Interface
         void flpTrayMachineList_Clear();
         Guna2GradientButton CreateButton(object strText, object iQuantity, string strEventName, object obTag = null);
         void SetCheckedButton(string strContinueButton);
+        Form GetMdiParent();
+        void SetMdiParent(Form mdiParent);
         #endregion
     }
 }

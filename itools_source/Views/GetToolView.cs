@@ -266,14 +266,41 @@ namespace itools_source.Views
             }
         }
 
-        public void GetJobNumberInMainView()
+        //public void GetJobNumberInMainView()
+        //{
+        //    MessageDialog.Show(((MainView)MdiParent).strJobNumber);
+        //}
+
+        //public void GetOPIdInMainView()
+        //{
+        //    MessageDialog.Show(((MainView)MdiParent).iOPId.ToString());
+        //}
+
+        public Form GetMdiParent()
         {
-            MessageDialog.Show(((MainView)MdiParent).strJobNumber);
+            return MdiParent;
         }
 
-        public void GetOPIdInMainView()
+        public void SetMdiParent(Form mdiParent)
         {
-            MessageDialog.Show(((MainView)MdiParent).iOPId.ToString());
+            if (this.IsDisposed)
+            {
+                if (this.WindowState == FormWindowState.Minimized)
+                {
+                    this.WindowState = FormWindowState.Normal;
+                }
+                else
+                {
+                    this.Dock = DockStyle.Fill;
+                }
+                this.BringToFront();
+            }
+            else
+            {
+                this.MdiParent = mdiParent;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.Dock = DockStyle.Fill;
+            }
         }
         #endregion
 

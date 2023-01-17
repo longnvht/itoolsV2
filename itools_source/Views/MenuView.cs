@@ -2,6 +2,7 @@
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using System.Windows.Forms;
 
 namespace itools_source.Views
@@ -72,6 +73,33 @@ namespace itools_source.Views
         public void ShowHideJobNumberAndOPId(bool bStatus)
         {
             ((MainView)MdiParent).ShowHideJobNumberAndOPId(bStatus);
+        }
+
+        public Form GetMdiParent()
+        {
+            return MdiParent;
+        }
+
+        public void SetMdiParent(Form mdiParent)
+        {
+            if (this.IsDisposed)
+            {
+                if (this.WindowState == FormWindowState.Minimized)
+                {
+                    this.WindowState = FormWindowState.Normal;
+                }
+                else
+                {
+                    this.Dock = DockStyle.Fill;
+                }
+                this.BringToFront();
+            }
+            else
+            {
+                this.MdiParent = mdiParent;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.Dock = DockStyle.Fill;
+            }
         }
         #endregion
     }

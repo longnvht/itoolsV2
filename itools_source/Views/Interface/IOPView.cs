@@ -29,6 +29,8 @@ namespace itools_source.Views.Interface
         void Close();
         void Hide();
         Guna2GradientButton CreateButton(int? iIndex = null);
+        Form GetMdiParent();
+        void SetMdiParent(Form mdiParent);
         #endregion
     }
 }

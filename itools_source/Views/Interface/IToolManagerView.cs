@@ -58,6 +58,8 @@ namespace itools_source.Views.Interface
         void SetStateButton();
         void SetCheckedButton(int? iToolID);
         void CancelListTool();
+        Form GetMdiParent();
+        void SetMdiParent(Form mdiParent);
         #endregion
     }
 }

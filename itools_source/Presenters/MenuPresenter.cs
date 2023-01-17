@@ -61,12 +61,13 @@ namespace itools_source.Presenters
                             ForeColor = Color.FromArgb(241, 241, 242),
                             FillColor = Color.FromArgb(25, 149, 173),
                             FillColor2 = Color.FromArgb(25, 149, 173),
-                            Size = new Size(150, 150),
+                            Size = new Size(100, 100),
                             Margin = new Padding(10),
                             BorderRadius = 20,
                             Font = new Font("Segoe UI", 12F, FontStyle.Bold),
                             Text = item.strMenuDescription,
-                            Tag = item.strMenuId
+                            Tag = item.strMenuId,
+                            Dock = DockStyle.None
                         };
                         btn.DoubleClick += btnItem_DoubleClick;
                         btn.Click += btnItem_Click;
@@ -85,6 +86,7 @@ namespace itools_source.Presenters
             if (btn != null && btn.Tag != null) // Check button is null
             {
                 _menuView.strMenuId = btn.Tag.ToString();
+
                 List<string> lstFormId = _menuRepository.GetListFormByMenuId(strMenuId: _menuView.strMenuId).Result.ToList(); // Get list form name.
                 foreach (var item in lstFormId)
                 {
@@ -94,47 +96,47 @@ namespace itools_source.Presenters
                      * CS - > Check Stock -> CheckStockView
                      * ST -> Setting -> ConfigView
                      */
-
                     if (item == nameof(JobView))
                     {
                         _menuView.ShowHideJobNumberAndOPId(true);
-
-                        IJobView jobView = JobView.GetInstance((MainView)_mainView);
+                        
+                        IJobView jobView = JobView.GetInstance((MainView)_menuView.GetMdiParent());
                         jobView.SetListOPNumberOPType = OpenOPView;
                         _jobRepository = new JobRepository();
-                        new JobPresenter(jobView, _jobRepository);
 
-                        //var jobPresenter = ConfigUnity.unityContainer.Resolve<JobPresenter>();
-
-                        //jobPresenter.Run((MainView)_mainView);
-                        //MessageBox.Show("Ahihi");
+                        var jobPresenter = ConfigUnity.unityContainer.Resolve<JobPresenter>();
+                        jobPresenter.Run(jobView, _jobRepository);
+                        
                         break;
                     }
                     if (item == nameof(ToolManagerView))
                     {
                         _menuView.ShowHideJobNumberAndOPId(false);
-                        _mainView.btnNextEnabled = false;
-                        IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
-                        IToolMachineTrayRepository toolRepository = new ToolMachineTrayRepository();
-                        new ToolManagerPresenter(toolManagerView, toolRepository);
+                        (_menuView.GetMdiParent() as MainView).btnNextEnabled = false;
+
+                        IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_menuView.GetMdiParent());
+                        IToolMachineTrayRepository toolMachineTrayRepository = new ToolMachineTrayRepository();
+
+                        var toolPresenter = ConfigUnity.unityContainer.Resolve<ToolManagerPresenter>();
+                        toolPresenter.Run(toolManagerView, toolMachineTrayRepository);
                         break;
                     }
                     if (item == nameof(StockView))
                     {
                         _menuView.ShowHideJobNumberAndOPId(false);
-                        _mainView.btnNextEnabled = false;
-                        IStockView stockView = StockView.GetInstance((MainView)_mainView);
-                        IStockRepository stockRepository = new StockRepository();
-                        new StockPresenter(stockView, stockRepository);
+                        (_menuView.GetMdiParent() as MainView).btnNextEnabled = false;
+
+                        var stockPresenter = ConfigUnity.unityContainer.Resolve<StockPresenter>();
+                        stockPresenter.Run((MainView)_menuView.GetMdiParent());
                         break;
                     }
                     if (item == nameof(ConfigSettingView))
                     {
                         _menuView.ShowHideJobNumberAndOPId(false);
-                        _mainView.btnNextEnabled = false;
-                        IConfigSettingView configSettingView = ConfigSettingView.GetInstance((MainView)_mainView);
-                        ICompanyRepository companyRepository = new CompanyRepository();
-                        new ConfigSettingPresenter(configSettingView, companyRepository);
+                        (_menuView.GetMdiParent() as MainView).btnNextEnabled = false;
+
+                        var configPresenter = ConfigUnity.unityContainer.Resolve<ConfigSettingPresenter>();
+                        configPresenter.Run((MainView)_menuView.GetMdiParent());
                         break;
                     }
                 }
@@ -164,14 +166,14 @@ namespace itools_source.Presenters
 
         public void OpenOPView(Dictionary<int?, Dictionary<string, string>> lstOPNumberOpType, string strJobNumber)
         {
-            if (_mainView == null)
+            if (_menuView.GetMdiParent() == null)
             {
                 _log.Error("_mainView is Null");
                 return;
             }
 
             // 1. Data transmission
-            IOPView oPView = OPView.GetInstance((MainView)_mainView);
+            IOPView oPView = OPView.GetInstance((MainView)_menuView.GetMdiParent());
 
             if (lstOPNumberOpType != null)
             {
@@ -200,7 +202,8 @@ namespace itools_source.Presenters
             {
                 _getToolRepository = new GetToolRepository();
             }
-            new OPPresenter(oPView, _getToolRepository);
+            var opPresenter = ConfigUnity.unityContainer.Resolve<OPPresenter>();
+            opPresenter.Run(oPView, _getToolRepository);
 
             _log.Info("Form close: " + typeof(JobView).Name + ", Open: " + typeof(OPView).Name);
         }
@@ -208,9 +211,9 @@ namespace itools_source.Presenters
         public void OpenGetToolView(int? iOPId, string strOPNumber)
         {
             // 1. Data transmission
-            if (_mainView != null)
+            if (_menuView.GetMdiParent() != null)
             {
-                GetToolView getToolView = GetToolView.GetInstance((MainView)_mainView);
+                GetToolView getToolView = GetToolView.GetInstance((MainView)_menuView.GetMdiParent());
                 if (iOPId != null)
                 {
                     _mainView.iOPId = iOPId;
@@ -231,7 +234,9 @@ namespace itools_source.Presenters
                 {
                     _getToolRepository = new GetToolRepository();
                 }
-                new GetToolPresenter(getToolView, _getToolRepository);
+                
+                var getToolPresenter = ConfigUnity.unityContainer.Resolve<GetToolPresenter>();
+                getToolPresenter.Run(getToolView, _getToolRepository);
 
                 _log.Info("Form close: " + typeof(OPView).Name + ", Open: " + typeof(GetToolView).Name);
             }
@@ -243,7 +248,19 @@ namespace itools_source.Presenters
 
         public void ToggleButton(bool bToggle)
         {
-            _mainView.btnNextEnabled = bToggle;
+            (_menuView.GetMdiParent() as MainView).btnNextEnabled = bToggle;
+        }
+
+        public void Run(Form parentContainer)
+        {
+            if (_menuView != null)
+            {
+                _menuView.SetMdiParent((MainView)parentContainer);
+            }
+            else
+            {
+                _log.Error("_menuView is null.");
+            }
         }
         #endregion
     }

@@ -29,23 +29,22 @@ namespace itools_source
             unityContainer.RegisterType<IMenuView, MenuView>();
             unityContainer.RegisterType<IMenuRepository, MenuRepository>();
 
-            unityContainer.RegisterType<IJobView, JobView>();
-            unityContainer.RegisterType<IJobRepository, JobRepository>();
+            unityContainer.RegisterSingleton<IJobView, JobView>();
+            unityContainer.RegisterSingleton<IJobRepository, JobRepository>();
 
-            unityContainer.RegisterType<IToolManagerView, ToolManagerView>();
-            unityContainer.RegisterType<IToolMachineTrayRepository, ToolMachineTrayRepository>();
+            unityContainer.RegisterSingleton<IToolManagerView, ToolManagerView>();
+            unityContainer.RegisterSingleton<IToolMachineTrayRepository, ToolMachineTrayRepository>();
 
-            unityContainer.RegisterType<IConfigSettingView, ConfigSettingView>();
-            unityContainer.RegisterType<ICompanyRepository, CompanyRepository>();
+            unityContainer.RegisterSingleton<IConfigSettingView, ConfigSettingView>();
+            unityContainer.RegisterSingleton<ICompanyRepository, CompanyRepository>();
 
-            unityContainer.RegisterType<IOPView, OPView>();
-            unityContainer.RegisterType<IGetToolRepository, GetToolRepository>();
+            unityContainer.RegisterSingleton<IOPView, OPView>();
+            unityContainer.RegisterSingleton<IGetToolRepository, GetToolRepository>();
 
-            unityContainer.RegisterType<IGetToolView, GetToolView>();
-            //unityContainer.RegisterType<IMenuRepository, MenuRepository>();
+            unityContainer.RegisterSingleton<IGetToolView, GetToolView>();
 
-            unityContainer.RegisterType<IStockView, StockView>();
-            unityContainer.RegisterType<IStockRepository, StockRepository>();
+            unityContainer.RegisterSingleton<IStockView, StockView>();
+            unityContainer.RegisterSingleton<IStockRepository, StockRepository>();
         }
     }
 

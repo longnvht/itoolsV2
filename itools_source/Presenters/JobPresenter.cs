@@ -7,28 +7,15 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Web.UI.WebControls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
+using Unity;
 
 namespace itools_source.Presenters
 {
     public class JobPresenter
     {
-        public JobPresenter(IJobView jobView, IJobRepository jobRepository)
-        {
-            _jobView = jobView;
-            _jobRepository = jobRepository;
-
-            _jobView.JobView_Load += _jobView_JobView_Load;
-            _jobView.btnJobNumberSearch_Click += _jobView_btnJobNumberSearch_Click;
-            _jobView.btnflpJobNumberList_DoubleClick += _jobView_btnflpJobNumberList_DoubleClick;
-            _jobView.btnflpJobNumberList_Click += _jobView_btnflpJobNumberList_Click;
-            _jobView.txtJobNumberSearch_MouseClick += _jobView_txtJobNumberSearch_MouseClick;
-            _jobView.JobView_FormClosing += _jobView_JobView_FormClosing;
-
-            _jobView.Show();
-        }
-
         #region Fields
         private IJobView _jobView;
         private IJobRepository _jobRepository;
@@ -57,8 +44,8 @@ namespace itools_source.Presenters
                 JobView frm = (JobView)sender;
                 frm.txtJobNumberSearch.Focus();
 
-                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
-                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
+                int iTempX = (frm.Width - frmKeyBoard.Width) / 2;
+                int iTempY = frm.Height - frmKeyBoard.Height + 50;
 
                 clientPoint = new Point(iTempX, iTempY);
                 frmKeyBoard.Location = clientPoint;
@@ -177,6 +164,20 @@ namespace itools_source.Presenters
         #endregion
 
         #region Methods
+        public void Run(IJobView jobView, IJobRepository jobRepository)
+        {
+            _jobView = jobView;
+            _jobRepository = jobRepository;
+
+            _jobView.JobView_Load += _jobView_JobView_Load;
+            _jobView.btnJobNumberSearch_Click += _jobView_btnJobNumberSearch_Click;
+            _jobView.btnflpJobNumberList_DoubleClick += _jobView_btnflpJobNumberList_DoubleClick;
+            _jobView.btnflpJobNumberList_Click += _jobView_btnflpJobNumberList_Click;
+            _jobView.txtJobNumberSearch_MouseClick += _jobView_txtJobNumberSearch_MouseClick;
+            _jobView.JobView_FormClosing += _jobView_JobView_FormClosing;
+            
+            _jobView.Show();
+        }
         #endregion
     }
 }

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO.Ports;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace itools_source.Presenters
 {
@@ -148,6 +149,17 @@ namespace itools_source.Presenters
         #endregion
 
         #region Methods
+        public void Run(Form parentContainer)
+        {
+            if (_configSettingView != null)
+            {
+                _configSettingView.SetMdiParent((MainView)parentContainer);
+            }
+            else
+            {
+                _log.Error("_toolManagerView is null.");
+            }
+        }
         #endregion
     }
 }

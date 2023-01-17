@@ -31,6 +31,8 @@ namespace itools_source.Views.Interface
         void Close();
         Guna2GradientButton CreateJobNumberButton(string strJobNumber = "");
         void flpJobNumberList_ControlsAddRange(Control[] controls);
+        Form GetMdiParent();
+        void SetMdiParent(Form mdiParent);
         #endregion
     }
 }

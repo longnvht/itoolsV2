@@ -1,31 +1,20 @@
 ﻿using Guna.UI2.WinForms;
 using itools_source.Models.Interface;
+using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Web.UI.WebControls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 namespace itools_source.Presenters
 {
     public class OPPresenter
     {
-        public OPPresenter(IOPView opView, IGetToolRepository getToolRepository)
-        {
-            _opView = opView;
-            _getToolRepository = getToolRepository;
-
-            _opView.OPView_Load += _opView_OPView_Load;
-            _opView.btnflpOPlList_DoubleClick += _opView_btnflpList_DoubleClick;
-            _opView.btnflpOPlList_Click += _opView_btnflpOPlList_Click;
-            _opView.txtOPSearch_MouseClick += _opView_txtOPSearch_MouseClick;
-            _opView.OPView_FormClosing += _opView_OPView_FormClosing;
-
-            _opView.Show();
-        }
-
         #region Properties - Fields
         private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(OPPresenter).Name);
 
@@ -120,10 +109,27 @@ namespace itools_source.Presenters
                 frm.flpOPList.Controls.AddRange(_opView.lstButton.ToArray());
                 _log.Info("Create button list and add button to flowlayoutpanel.");
             }
+            else
+            {
+                _log.Error("_opView.lstOPNumberOPType is null.");
+            }
         }
         #endregion
 
         #region Methods
+        public void Run(IOPView oPView, IGetToolRepository getToolRepository)
+        {
+            _opView = oPView;
+            _getToolRepository = getToolRepository;
+
+            _opView.OPView_Load += _opView_OPView_Load;
+            _opView.btnflpOPlList_DoubleClick += _opView_btnflpList_DoubleClick;
+            _opView.btnflpOPlList_Click += _opView_btnflpOPlList_Click;
+            _opView.txtOPSearch_MouseClick += _opView_txtOPSearch_MouseClick;
+            _opView.OPView_FormClosing += _opView_OPView_FormClosing;
+
+            _opView.Show();
+        }
         #endregion
     }
 }

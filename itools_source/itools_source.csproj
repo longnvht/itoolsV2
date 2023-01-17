@@ -26,14 +26,13 @@
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://192.168.0.51/</InstallUrl>
-    <UpdateUrl>http://192.168.0.51/</UpdateUrl>
     <SupportUrl>http://192.168.0.51/</SupportUrl>
-    <ProductName>Vinam iTools</ProductName>
+    <ProductName>Vinam iToolsMES</ProductName>
     <PublisherName>Nhat Tuan</PublisherName>
     <MinimumRequiredVersion>1.0.0.8</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationRevision>12</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -51,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -97,7 +96,8 @@
     <ManifestCertificateThumbprint>0C98B9D75E0914D36EE05AF9127223B3040960EB</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>itools_source_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoUpdater.NET, Version=1.7.6.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL">
@@ -370,7 +370,6 @@
     <EmbeddedResource Include="Views\VirtualNumericKeyBoard.resx">
       <DependentUpon>VirtualNumericKeyBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="itools_source_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

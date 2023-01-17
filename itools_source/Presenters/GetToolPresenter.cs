@@ -15,31 +15,9 @@ namespace itools_source.Presenters
 {
     public class GetToolPresenter
     {
-        public GetToolPresenter(IGetToolView getToolView, IGetToolRepository getToolRepository)
-        {
-            //_getToolView = (getToolView == null) ? new GetToolView : getToolView;
-            _getToolView = getToolView;
-            _getToolRepository = getToolRepository;
-
-            _getToolView.GetToolView_Load += _getToolView_GetToolView_Load;
-            _getToolView.serialPort_GetTool_DataReceived += _getToolView_serialPort_GetTool_DataReceived;
-            _getToolView.btnGetTool_Click += _getToolView_btnGetTool_Click;
-            _getToolView.btnCancelSelectTray_Click += _getToolView_btnCancelSelectTray;
-            _getToolView.btnflpToolList_Click += _getToolView_btnflpToolList_Click;
-            _getToolView.btnflpTrayMachineList_Click += _getToolView_btnflpTrayMachineList_Click;
-            _getToolView.btnflpTrayMachineList_DoubleClick += _getToolView_btnflpTrayMachineList_DoubleClick;
-            _getToolView.toggleShowAll_Click += _getToolView_toggleShowAll_Click;
-            _getToolView.txtSearch_MouseClick += _getToolView_txtSearch_MouseClick;
-            _getToolView.txtToolSearch_MouseClick += _getToolView_txtToolSearch_MouseClick;
-            _getToolView.GetToolView_FormClosing += _getToolView_GetToolView_FormClosing;
-            _getToolView.btnToolSelect_Click += _getToolView_btnToolSelect_Click;
-
-            _getToolView.Show();
-        }
-
         #region Properties - Fields
-        private readonly IGetToolView _getToolView;
-        private readonly IGetToolRepository _getToolRepository;
+        private IGetToolView _getToolView;
+        private IGetToolRepository _getToolRepository;
 
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(GetToolPresenter).Name);
         private bool bToggle = false; // On/Off => Show all machine and tray quantity.
@@ -498,6 +476,26 @@ namespace itools_source.Presenters
         #endregion
 
         #region Methods
+        public void Run(IGetToolView getToolView, IGetToolRepository getToolRepository)
+        {
+            _getToolView = getToolView;
+            _getToolRepository = getToolRepository;
+
+            _getToolView.GetToolView_Load += _getToolView_GetToolView_Load;
+            _getToolView.serialPort_GetTool_DataReceived += _getToolView_serialPort_GetTool_DataReceived;
+            _getToolView.btnGetTool_Click += _getToolView_btnGetTool_Click;
+            _getToolView.btnCancelSelectTray_Click += _getToolView_btnCancelSelectTray;
+            _getToolView.btnflpToolList_Click += _getToolView_btnflpToolList_Click;
+            _getToolView.btnflpTrayMachineList_Click += _getToolView_btnflpTrayMachineList_Click;
+            _getToolView.btnflpTrayMachineList_DoubleClick += _getToolView_btnflpTrayMachineList_DoubleClick;
+            _getToolView.toggleShowAll_Click += _getToolView_toggleShowAll_Click;
+            _getToolView.txtSearch_MouseClick += _getToolView_txtSearch_MouseClick;
+            _getToolView.txtToolSearch_MouseClick += _getToolView_txtToolSearch_MouseClick;
+            _getToolView.GetToolView_FormClosing += _getToolView_GetToolView_FormClosing;
+            _getToolView.btnToolSelect_Click += _getToolView_btnToolSelect_Click;
+
+            _getToolView.Show();
+        }
         #endregion
     }
 }

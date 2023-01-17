@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace itools_source.Views.Interface
 {
@@ -19,6 +20,8 @@ namespace itools_source.Views.Interface
         void Show();
         void Close();
         void Hide();
+        Form GetMdiParent();
+        void SetMdiParent(Form mdiParent);
         #endregion
     }
 }
