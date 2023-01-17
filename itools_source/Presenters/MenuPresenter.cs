@@ -42,6 +42,13 @@ namespace itools_source.Presenters
         {
             if (Program.sessionLogin["UserName"] != null)
             {
+                if (_menuRepository.GetListMenuByUserLogin(Program.sessionLogin["UserName"].ToString()).Result == null)
+                {
+                    MessageBox.Show("Tài Khoản Chưa Được Phân Quyền.");
+                    _log.Error("Unauthorized Account: " + Program.sessionLogin["UserName"]);
+                    return;
+                }
+
                 MenuView frm = (MenuView)sender;
                 _menuView.lstMenu = _menuRepository.GetListMenuByUserLogin(Program.sessionLogin["UserName"].ToString()).Result.ToList();
 
