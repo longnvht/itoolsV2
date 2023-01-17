@@ -99,14 +99,14 @@ namespace itools_source.Presenters
                     if (item == nameof(JobView))
                     {
                         _menuView.ShowHideJobNumberAndOPId(true);
-                        
+
                         IJobView jobView = JobView.GetInstance((MainView)_menuView.GetMdiParent());
                         jobView.SetListOPNumberOPType = OpenOPView;
                         _jobRepository = new JobRepository();
 
                         var jobPresenter = ConfigUnity.unityContainer.Resolve<JobPresenter>();
                         jobPresenter.Run(jobView, _jobRepository);
-                        
+
                         break;
                     }
                     if (item == nameof(ToolManagerView))
@@ -234,7 +234,7 @@ namespace itools_source.Presenters
                 {
                     _getToolRepository = new GetToolRepository();
                 }
-                
+
                 var getToolPresenter = ConfigUnity.unityContainer.Resolve<GetToolPresenter>();
                 getToolPresenter.Run(getToolView, _getToolRepository);
 

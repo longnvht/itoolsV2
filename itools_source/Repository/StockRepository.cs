@@ -257,7 +257,7 @@ namespace itools_source.Repository
                                 {
                                     reportStock.iQuantity = mySqlDataReader.GetInt32(2);
                                 }
-                                
+
                                 // 4. Date
                                 if (!await mySqlDataReader.IsDBNullAsync(3))
                                 {

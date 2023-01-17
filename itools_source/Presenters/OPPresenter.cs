@@ -1,14 +1,11 @@
 ﻿using Guna.UI2.WinForms;
 using itools_source.Models.Interface;
-using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Web.UI.WebControls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 namespace itools_source.Presenters

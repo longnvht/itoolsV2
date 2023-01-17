@@ -53,7 +53,7 @@ namespace itools_source.Presenters
 
                 GetToolView frm = (GetToolView)sender;
                 frm.txtToolSearch.Focus();
-                
+
                 int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
                 int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
 

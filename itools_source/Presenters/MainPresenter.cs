@@ -72,7 +72,7 @@ namespace itools_source.Presenters
             if (frmMain.MdiChildren.Any()) // Check is open form children
             {
                 string strFormName = frmMain.ActiveMdiChild.Name;
-                
+
                 if (strFormName != null)
                 {
                     switch (strFormName)
@@ -253,7 +253,7 @@ namespace itools_source.Presenters
                             {
                                 _getToolRepository = new GetToolRepository();
                             }
-                            
+
                             var opPresenter = ConfigUnity.unityContainer.Resolve<OPPresenter>();
                             opPresenter.Run(oPView, _getToolRepository);
                             break;
@@ -319,7 +319,7 @@ namespace itools_source.Presenters
                         _getToolRepository = new GetToolRepository();
                     }
                     _mainView.CloseFormChild();
-                    
+
                     var opPresenter = ConfigUnity.unityContainer.Resolve<OPPresenter>();
                     opPresenter.Run(oPView, _getToolRepository);
 
@@ -381,7 +381,7 @@ namespace itools_source.Presenters
                         _getToolRepository = new GetToolRepository();
                     }
                     _mainView.CloseFormChild();
-                    
+
                     var getToolPresenter = ConfigUnity.unityContainer.Resolve<GetToolPresenter>();
                     getToolPresenter.Run(getToolView, _getToolRepository);
 

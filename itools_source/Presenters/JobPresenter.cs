@@ -1,16 +1,12 @@
 ﻿using Guna.UI2.WinForms;
 using itools_source.Models.Interface;
-using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Web.UI.WebControls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
-using Unity;
 
 namespace itools_source.Presenters
 {
@@ -175,7 +171,7 @@ namespace itools_source.Presenters
             _jobView.btnflpJobNumberList_Click += _jobView_btnflpJobNumberList_Click;
             _jobView.txtJobNumberSearch_MouseClick += _jobView_txtJobNumberSearch_MouseClick;
             _jobView.JobView_FormClosing += _jobView_JobView_FormClosing;
-            
+
             _jobView.Show();
         }
         #endregion

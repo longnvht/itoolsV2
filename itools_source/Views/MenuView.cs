@@ -2,7 +2,6 @@
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
-using System.Security.Permissions;
 using System.Windows.Forms;
 
 namespace itools_source.Views

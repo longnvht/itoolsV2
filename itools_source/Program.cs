@@ -1,5 +1,4 @@
-﻿using itools_source.Models;
-using itools_source.Models.Interface;
+﻿using itools_source.Models.Interface;
 using itools_source.Presenter;
 using itools_source.Repository;
 using itools_source.Utils;
@@ -10,7 +9,6 @@ using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using Unity;
-using Unity.Injection;
 
 //[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -18,7 +16,7 @@ namespace itools_source
 {
     internal static class ConfigUnity
     {
-        public static UnityContainer unityContainer { get; private set;} = new UnityContainer();
+        public static UnityContainer unityContainer { get; private set; } = new UnityContainer();
         public static void Register()
         {
             unityContainer.RegisterType<ILoginView, LoginView>();
