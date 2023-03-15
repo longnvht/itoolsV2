@@ -101,6 +101,7 @@ namespace itools_source.Presenters
                     _log.Error("_jobView.lstOPNumberOPType and _jobView.strJobNumberCurrent is null.");
                 }
             }
+
         }
 
         private async void _jobView_btnJobNumberSearch_Click(object sender, EventArgs e)

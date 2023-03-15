@@ -86,6 +86,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this._btnClose, 0, 0);
@@ -96,7 +97,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(380, 262);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(310, 260);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tableLayoutPanel1_MouseDown);
             this.tableLayoutPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tableLayoutPanel1_MouseMove);
@@ -113,9 +114,9 @@
             this._btnClose.ForeColor = System.Drawing.Color.White;
             this._btnClose.Image = global::VinamiToolUser.Properties.Resources.close_window_48;
             this._btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this._btnClose.Location = new System.Drawing.Point(347, 3);
+            this._btnClose.Location = new System.Drawing.Point(277, 3);
             this._btnClose.Name = "_btnClose";
-            this._btnClose.Size = new System.Drawing.Size(30, 28);
+            this._btnClose.Size = new System.Drawing.Size(30, 27);
             this._btnClose.TabIndex = 10;
             this._btnClose.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this._btnClose.Click += new System.EventHandler(this._btnClose_Click);
@@ -125,7 +126,7 @@
             this.virtualKeyboard.AltGrState = false;
             this.virtualKeyboard.AltState = false;
             this.virtualKeyboard.BackColor = System.Drawing.Color.Transparent;
-            this.virtualKeyboard.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(201)))), ((int)(((byte)(197)))));
+            this.virtualKeyboard.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.virtualKeyboard.BeginGradientColor = System.Drawing.Color.White;
             this.virtualKeyboard.BorderColor = System.Drawing.Color.Black;
             this.virtualKeyboard.ButtonBorderColor = System.Drawing.Color.DarkGray;
@@ -330,7 +331,7 @@
             this.virtualKeyboard.LanguageButtonBottomText = "";
             this.virtualKeyboard.LanguageButtonImage = null;
             this.virtualKeyboard.LanguageButtonTopText = "Eng";
-            this.virtualKeyboard.Location = new System.Drawing.Point(3, 37);
+            this.virtualKeyboard.Location = new System.Drawing.Point(3, 36);
             this.virtualKeyboard.Name = "virtualKeyboard";
             this.virtualKeyboard.NumLockState = false;
             virtualKbButton24.BottomFont = null;
@@ -449,7 +450,7 @@
             this.virtualKeyboard.ShowLanguageButton = false;
             this.virtualKeyboard.ShowNumericButtons = false;
             this.virtualKeyboard.ShowTab = true;
-            this.virtualKeyboard.Size = new System.Drawing.Size(374, 222);
+            this.virtualKeyboard.Size = new System.Drawing.Size(304, 221);
             this.virtualKeyboard.TabIndex = 1;
             this.virtualKeyboard.Text = "virtualKeyboard1";
             virtualKbButton37.BottomFont = null;
@@ -558,7 +559,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(126)))), ((int)(((byte)(129)))));
-            this.ClientSize = new System.Drawing.Size(380, 262);
+            this.ClientSize = new System.Drawing.Size(310, 260);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

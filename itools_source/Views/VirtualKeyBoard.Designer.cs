@@ -109,7 +109,7 @@
             this.virtualKeyboard1.AltGrState = false;
             this.virtualKeyboard1.AltState = false;
             this.virtualKeyboard1.BackColor = System.Drawing.Color.Transparent;
-            this.virtualKeyboard1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(201)))), ((int)(((byte)(197)))));
+            this.virtualKeyboard1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.virtualKeyboard1.BeginGradientColor = System.Drawing.Color.White;
             this.virtualKeyboard1.BorderColor = System.Drawing.Color.Black;
             this.virtualKeyboard1.ButtonBorderColor = System.Drawing.Color.DarkGray;
@@ -553,7 +553,7 @@
             this._btnClose.FillColor = System.Drawing.Color.Transparent;
             this._btnClose.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._btnClose.ForeColor = System.Drawing.Color.White;
-            this._btnClose.Image = global::VinamiToolUser.Properties.Resources.close_window_48;
+            this._btnClose.Image = global::VinamiToolUser.Properties.Resources.close_480px;
             this._btnClose.ImageSize = new System.Drawing.Size(30, 30);
             this._btnClose.Location = new System.Drawing.Point(608, 5);
             this._btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -596,7 +596,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(126)))), ((int)(((byte)(129)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this.ClientSize = new System.Drawing.Size(650, 260);
             this.Controls.Add(this.tlpMain);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

@@ -101,16 +101,18 @@ namespace itools_source.Views
             // btnTraySearch
             // 
             this.btnTraySearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTraySearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this.btnTraySearch.BorderRadius = 10;
+            this.btnTraySearch.BorderThickness = 1;
             this.btnTraySearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnTraySearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTraySearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnTraySearch.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnTraySearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTraySearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this.btnTraySearch.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this.btnTraySearch.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnTraySearch.FillColor2 = System.Drawing.Color.WhiteSmoke;
             this.btnTraySearch.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnTraySearch.ForeColor = System.Drawing.Color.White;
+            this.btnTraySearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnTraySearch.Location = new System.Drawing.Point(693, 5);
             this.btnTraySearch.Name = "btnTraySearch";
             this.btnTraySearch.Size = new System.Drawing.Size(204, 39);
@@ -152,17 +154,19 @@ namespace itools_source.Views
             // 
             // btnTakeOut
             // 
+            this.btnTakeOut.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this.btnTakeOut.BorderRadius = 10;
+            this.btnTakeOut.BorderThickness = 1;
             this.btnTakeOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnTakeOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTakeOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnTakeOut.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnTakeOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTakeOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTakeOut.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this.btnTakeOut.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this.btnTakeOut.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnTakeOut.FillColor2 = System.Drawing.Color.WhiteSmoke;
             this.btnTakeOut.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnTakeOut.ForeColor = System.Drawing.Color.White;
+            this.btnTakeOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnTakeOut.Location = new System.Drawing.Point(153, 3);
             this.btnTakeOut.Name = "btnTakeOut";
             this.btnTakeOut.Size = new System.Drawing.Size(144, 42);
@@ -180,17 +184,19 @@ namespace itools_source.Views
             // 
             // btnAddPlugin
             // 
+            this.btnAddPlugin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this.btnAddPlugin.BorderRadius = 10;
+            this.btnAddPlugin.BorderThickness = 1;
             this.btnAddPlugin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddPlugin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddPlugin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAddPlugin.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAddPlugin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAddPlugin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddPlugin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this.btnAddPlugin.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this.btnAddPlugin.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAddPlugin.FillColor2 = System.Drawing.Color.WhiteSmoke;
             this.btnAddPlugin.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnAddPlugin.ForeColor = System.Drawing.Color.White;
+            this.btnAddPlugin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnAddPlugin.Location = new System.Drawing.Point(303, 3);
             this.btnAddPlugin.Name = "btnAddPlugin";
             this.btnAddPlugin.Size = new System.Drawing.Size(144, 42);
@@ -208,17 +214,19 @@ namespace itools_source.Views
             // 
             // btnAddNew
             // 
+            this.btnAddNew.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this.btnAddNew.BorderRadius = 10;
+            this.btnAddNew.BorderThickness = 1;
             this.btnAddNew.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddNew.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddNew.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAddNew.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAddNew.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAddNew.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddNew.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this.btnAddNew.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this.btnAddNew.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAddNew.FillColor2 = System.Drawing.Color.WhiteSmoke;
             this.btnAddNew.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnAddNew.ForeColor = System.Drawing.Color.White;
+            this.btnAddNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnAddNew.Location = new System.Drawing.Point(453, 3);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(144, 42);
@@ -603,16 +611,18 @@ namespace itools_source.Views
             // btnToolCancel
             // 
             this.btnToolCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnToolCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this.btnToolCancel.BorderRadius = 10;
+            this.btnToolCancel.BorderThickness = 1;
             this.btnToolCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnToolCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnToolCancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnToolCancel.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnToolCancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnToolCancel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this.btnToolCancel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this.btnToolCancel.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnToolCancel.FillColor2 = System.Drawing.Color.WhiteSmoke;
             this.btnToolCancel.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnToolCancel.ForeColor = System.Drawing.Color.White;
+            this.btnToolCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnToolCancel.Location = new System.Drawing.Point(160, 6);
             this.btnToolCancel.Name = "btnToolCancel";
             this.btnToolCancel.Size = new System.Drawing.Size(151, 36);
@@ -622,16 +632,18 @@ namespace itools_source.Views
             // btnToolSelect
             // 
             this.btnToolSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnToolSelect.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this.btnToolSelect.BorderRadius = 10;
+            this.btnToolSelect.BorderThickness = 1;
             this.btnToolSelect.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnToolSelect.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnToolSelect.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnToolSelect.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnToolSelect.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnToolSelect.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this.btnToolSelect.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this.btnToolSelect.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnToolSelect.FillColor2 = System.Drawing.Color.WhiteSmoke;
             this.btnToolSelect.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnToolSelect.ForeColor = System.Drawing.Color.White;
+            this.btnToolSelect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnToolSelect.Location = new System.Drawing.Point(3, 6);
             this.btnToolSelect.Name = "btnToolSelect";
             this.btnToolSelect.Size = new System.Drawing.Size(151, 36);
@@ -682,17 +694,19 @@ namespace itools_source.Views
             // 
             // btnSave
             // 
+            this.btnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this.btnSave.BorderRadius = 10;
+            this.btnSave.BorderThickness = 1;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this.btnSave.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this.btnSave.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSave.FillColor2 = System.Drawing.Color.WhiteSmoke;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnSave.Location = new System.Drawing.Point(603, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(144, 42);

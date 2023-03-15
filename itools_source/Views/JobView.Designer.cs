@@ -43,7 +43,7 @@
             // 
             this._flpJobNumberList.AutoScroll = true;
             this._flpJobNumberList.AutoSize = true;
-            this._flpJobNumberList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(214)))), ((int)(((byte)(226)))));
+            this._flpJobNumberList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this._flpJobNumberList.Dock = System.Windows.Forms.DockStyle.Fill;
             this._flpJobNumberList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._flpJobNumberList.Location = new System.Drawing.Point(0, 43);
@@ -95,16 +95,18 @@
             // _btnJobNumberSearch
             // 
             this._btnJobNumberSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnJobNumberSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this._btnJobNumberSearch.BorderRadius = 10;
+            this._btnJobNumberSearch.BorderThickness = 1;
             this._btnJobNumberSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this._btnJobNumberSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this._btnJobNumberSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnJobNumberSearch.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnJobNumberSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this._btnJobNumberSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this._btnJobNumberSearch.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this._btnJobNumberSearch.FillColor = System.Drawing.Color.WhiteSmoke;
+            this._btnJobNumberSearch.FillColor2 = System.Drawing.Color.WhiteSmoke;
             this._btnJobNumberSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this._btnJobNumberSearch.ForeColor = System.Drawing.Color.White;
+            this._btnJobNumberSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this._btnJobNumberSearch.Location = new System.Drawing.Point(683, 3);
             this._btnJobNumberSearch.Name = "_btnJobNumberSearch";
             this._btnJobNumberSearch.Size = new System.Drawing.Size(114, 36);

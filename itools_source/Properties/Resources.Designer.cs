@@ -63,6 +63,36 @@ namespace VinamiToolUser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_480px {
+            get {
+                object obj = ResourceManager.GetObject("close_480px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close_500px {
+            get {
+                object obj = ResourceManager.GetObject("close_500px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close_500pxc {
+            get {
+                object obj = ResourceManager.GetObject("close_500pxc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_window_48 {
             get {
                 object obj = ResourceManager.GetObject("close_window_48", resourceCulture);
@@ -76,6 +106,26 @@ namespace VinamiToolUser.Properties {
         internal static System.Drawing.Bitmap home_48 {
             get {
                 object obj = ResourceManager.GetObject("home_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap home_96px {
+            get {
+                object obj = ResourceManager.GetObject("home_96px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap home_96spx {
+            get {
+                object obj = ResourceManager.GetObject("home_96spx", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

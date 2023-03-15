@@ -41,7 +41,7 @@ namespace itools_source.Views
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
             this.lblName = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this._btnHome = new System.Windows.Forms.Button();
+            this._btnHome = new Guna.UI2.WinForms.Guna2Button();
             this._btnLogOut = new Guna.UI2.WinForms.Guna2Button();
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
@@ -71,28 +71,32 @@ namespace itools_source.Views
             // 
             // _btnPrevious
             // 
+            resources.ApplyResources(this._btnPrevious, "_btnPrevious");
             this._btnPrevious.BackColor = System.Drawing.Color.Transparent;
+            this._btnPrevious.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this._btnPrevious.BorderRadius = 10;
+            this._btnPrevious.BorderThickness = 1;
             this._btnPrevious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this._btnPrevious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this._btnPrevious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnPrevious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            resources.ApplyResources(this._btnPrevious, "_btnPrevious");
-            this._btnPrevious.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this._btnPrevious.ForeColor = System.Drawing.Color.White;
+            this._btnPrevious.FillColor = System.Drawing.Color.WhiteSmoke;
+            this._btnPrevious.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this._btnPrevious.Name = "_btnPrevious";
             // 
             // _btnNext
             // 
+            resources.ApplyResources(this._btnNext, "_btnNext");
             this._btnNext.BackColor = System.Drawing.Color.Transparent;
+            this._btnNext.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this._btnNext.BorderRadius = 10;
+            this._btnNext.BorderThickness = 1;
             this._btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this._btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this._btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            resources.ApplyResources(this._btnNext, "_btnNext");
-            this._btnNext.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this._btnNext.ForeColor = System.Drawing.Color.White;
+            this._btnNext.FillColor = System.Drawing.Color.WhiteSmoke;
+            this._btnNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this._btnNext.Name = "_btnNext";
             // 
             // _lblOPId
@@ -109,9 +113,9 @@ namespace itools_source.Views
             // 
             this.tlpHeader.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.tlpHeader, "tlpHeader");
+            this.tlpHeader.Controls.Add(this._btnHome, 0, 0);
             this.tlpHeader.Controls.Add(this.lblName, 3, 0);
             this.tlpHeader.Controls.Add(this.label13, 2, 0);
-            this.tlpHeader.Controls.Add(this._btnHome, 0, 0);
             this.tlpHeader.Controls.Add(this._btnLogOut, 4, 0);
             this.tlpHeader.Name = "tlpHeader";
             // 
@@ -127,16 +131,21 @@ namespace itools_source.Views
             // 
             // _btnHome
             // 
-            this._btnHome.BackColor = System.Drawing.Color.Transparent;
+            this._btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this._btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this._btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this._btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this._btnHome.FillColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this._btnHome, "_btnHome");
-            this._btnHome.FlatAppearance.BorderSize = 0;
-            this._btnHome.Image = global::VinamiToolUser.Properties.Resources.home_48;
+            this._btnHome.ForeColor = System.Drawing.Color.White;
+            this._btnHome.HoverState.Image = global::VinamiToolUser.Properties.Resources.home_96spx;
+            this._btnHome.Image = global::VinamiToolUser.Properties.Resources.home_96px;
+            this._btnHome.ImageSize = new System.Drawing.Size(30, 30);
             this._btnHome.Name = "_btnHome";
-            this._btnHome.UseVisualStyleBackColor = false;
             // 
             // _btnLogOut
             // 
-            this._btnLogOut.BackColor = System.Drawing.Color.White;
+            this._btnLogOut.BackColor = System.Drawing.Color.Transparent;
             this._btnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this._btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this._btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -144,6 +153,9 @@ namespace itools_source.Views
             resources.ApplyResources(this._btnLogOut, "_btnLogOut");
             this._btnLogOut.FillColor = System.Drawing.Color.White;
             this._btnLogOut.ForeColor = System.Drawing.Color.Black;
+            this._btnLogOut.HoverState.Image = global::VinamiToolUser.Properties.Resources.close_500pxc;
+            this._btnLogOut.Image = global::VinamiToolUser.Properties.Resources.close_500px;
+            this._btnLogOut.ImageSize = new System.Drawing.Size(30, 30);
             this._btnLogOut.Name = "_btnLogOut";
             // 
             // MainView
@@ -203,7 +215,7 @@ namespace itools_source.Views
         private System.Windows.Forms.Label _lblJobNumberDisplay;
         private System.Windows.Forms.Label _lblOPIdDisplay;
         private System.Windows.Forms.Label lblName;
-        private Button _btnHome;
         private Guna.UI2.WinForms.Guna2Button _btnLogOut;
+        private Guna.UI2.WinForms.Guna2Button _btnHome;
     }
 }

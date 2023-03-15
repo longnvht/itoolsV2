@@ -44,7 +44,7 @@ namespace itools_source.Views
             // 
             this._flpOPList.AutoScroll = true;
             this._flpOPList.AutoSize = true;
-            this._flpOPList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(214)))), ((int)(((byte)(226)))));
+            this._flpOPList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this._flpOPList.Dock = System.Windows.Forms.DockStyle.Fill;
             this._flpOPList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._flpOPList.Location = new System.Drawing.Point(0, 43);
@@ -96,16 +96,18 @@ namespace itools_source.Views
             // _btnOPNumberSearch
             // 
             this._btnOPNumberSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnOPNumberSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this._btnOPNumberSearch.BorderRadius = 10;
+            this._btnOPNumberSearch.BorderThickness = 1;
             this._btnOPNumberSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this._btnOPNumberSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this._btnOPNumberSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnOPNumberSearch.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnOPNumberSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this._btnOPNumberSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            this._btnOPNumberSearch.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+            this._btnOPNumberSearch.FillColor = System.Drawing.Color.WhiteSmoke;
+            this._btnOPNumberSearch.FillColor2 = System.Drawing.Color.WhiteSmoke;
             this._btnOPNumberSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this._btnOPNumberSearch.ForeColor = System.Drawing.Color.White;
+            this._btnOPNumberSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this._btnOPNumberSearch.Location = new System.Drawing.Point(683, 3);
             this._btnOPNumberSearch.Name = "_btnOPNumberSearch";
             this._btnOPNumberSearch.Size = new System.Drawing.Size(114, 37);

@@ -58,9 +58,11 @@ namespace itools_source.Presenters
                     {
                         Guna2GradientTileButton btn = new Guna2GradientTileButton
                         {
-                            ForeColor = Color.FromArgb(241, 241, 242),
-                            FillColor = Color.FromArgb(25, 149, 173),
-                            FillColor2 = Color.FromArgb(25, 149, 173),
+                            BorderColor = Color.FromArgb(70,71,117),
+                            ForeColor = Color.FromArgb(0,0,64),
+                            BorderThickness = 2,
+                            FillColor = Color.WhiteSmoke,
+                            FillColor2 = Color.WhiteSmoke,
                             Size = new Size(100, 100),
                             Margin = new Padding(10),
                             BorderRadius = 20,

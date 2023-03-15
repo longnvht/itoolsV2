@@ -58,6 +58,7 @@ namespace itools_source.Views
         {
             if (!virtualKeyboard1.IsNumeric) // Character
             {
+                
                 btnNumeric.Text = "123";
                 virtualKeyboard1.IsNumeric = true;
             }

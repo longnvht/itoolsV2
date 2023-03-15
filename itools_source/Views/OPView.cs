@@ -78,16 +78,19 @@ namespace itools_source.Views
                 Animated = true,
                 BorderRadius = 10
             };
+            btn.BorderThickness = 1;
+            btn.BorderColor = System.Drawing.Color.FromArgb(70, 71, 117);
             btn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             btn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             btn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
             btn.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
             btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            btn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            btn.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-            btn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(96)))), ((int)(((byte)(122)))));
+            btn.FillColor = System.Drawing.Color.WhiteSmoke;
+            btn.FillColor2 = System.Drawing.Color.WhiteSmoke;
+            btn.CheckedState.FillColor = System.Drawing.Color.WhiteSmoke;
+            btn.CheckedState.FillColor2 = System.Drawing.Color.OrangeRed;
             btn.Font = new System.Drawing.Font("Segoe UI", 12F);
-            btn.ForeColor = System.Drawing.Color.White;
+            btn.ForeColor = System.Drawing.Color.FromArgb(0,0,64);
             btn.Margin = new System.Windows.Forms.Padding(10);
             btn.Location = new System.Drawing.Point(3, 3);
             btn.Size = new System.Drawing.Size(120, 100);
