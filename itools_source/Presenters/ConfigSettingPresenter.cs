@@ -97,6 +97,7 @@ namespace itools_source.Presenters
                     frm.cmbMachine.Focus();
                 }
                 else if (string.IsNullOrEmpty(VinamiToolUser.Properties.Settings.Default.SerialPort) || string.IsNullOrWhiteSpace(VinamiToolUser.Properties.Settings.Default.SerialPort))
+                //else if(strSerialSelected == null)
                 {
                     MessageDialog.Show("Bạn Chưa Chọn Cổng.",
                                         "Thông Báo",

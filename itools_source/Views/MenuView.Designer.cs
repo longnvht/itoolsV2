@@ -57,6 +57,7 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel _flpMenu;
+
         public System.Windows.Forms.FlowLayoutPanel flpMenu
         {
             get { return _flpMenu; }

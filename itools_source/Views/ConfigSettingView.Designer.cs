@@ -176,9 +176,9 @@
             // tlpFooter
             // 
             this.tlpFooter.ColumnCount = 3;
-            this.tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tlpFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tlpFooter.Controls.Add(this.btnSave, 1, 0);
             this.tlpFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tlpFooter.Location = new System.Drawing.Point(0, 404);
@@ -199,7 +199,7 @@
             this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(323, 3);
+            this.btnSave.Location = new System.Drawing.Point(403, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShadowDecoration.BorderRadius = 10;
             this.btnSave.ShadowDecoration.CustomizableEdges.BottomLeft = false;

@@ -21,6 +21,7 @@ namespace itools_source.Views
             this._btnPrevious.Click += delegate { btnPrevious_Click?.Invoke(this, EventArgs.Empty); };
             this._btnNext.Click += delegate { btnNext_Click?.Invoke(this, EventArgs.Empty); };
             this._btnHome.Click += delegate { btnHome_Click?.Invoke(this, EventArgs.Empty); };
+            this._btnLogOut.Click += delegate { btnLogOut_Click?.Invoke(this, EventArgs.Empty); };
         }
 
         #region Properties - Fields
@@ -68,6 +69,7 @@ namespace itools_source.Views
         public event EventHandler btnPrevious_Click;
         public event EventHandler btnNext_Click;
         public event EventHandler btnHome_Click;
+        public event EventHandler btnLogOut_Click;
         #endregion
 
         #region Methods

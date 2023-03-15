@@ -66,9 +66,16 @@ namespace itools_source.Repository
                     },
                     new MySqlParameter
                     {
-                        ParameterName = "@p_TrayID",
+                        ParameterName = "@p_ToolID",
                         MySqlDbType = MySqlDbType.Int32,
-                        Value = workingTransaction.iTrayId,
+                        Value = workingTransaction.toolID,
+                        Direction = System.Data.ParameterDirection.Input
+                    },
+                    new MySqlParameter
+                    {
+                        ParameterName = "@p_TrayIndex",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = workingTransaction.trayIndex,
                         Direction = System.Data.ParameterDirection.Input
                     },
                     new MySqlParameter{

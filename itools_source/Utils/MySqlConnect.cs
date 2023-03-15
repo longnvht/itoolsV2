@@ -15,11 +15,11 @@ namespace itools_source.Utils
 
         public static string ConnectionString()
         {
-            _strHOST = "192.168.0.12";
+            _strHOST = "192.168.0.50";
             _strPORT = "3306";
             _strDATABASE_MAME = "itooldtb";
             _strUSER_NAME = "admin";
-            _strPASSWORD = "Vinam@123";
+            _strPASSWORD = "Vinam@12345";
             return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
         }
 

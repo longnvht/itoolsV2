@@ -40,6 +40,7 @@ namespace itools_source.Views
             this.guna2VScrollBar_flpToolList = new Guna.UI2.WinForms.Guna2VScrollBar();
             this._flpToolList = new System.Windows.Forms.FlowLayoutPanel();
             this.tlpRightContent = new System.Windows.Forms.TableLayoutPanel();
+            this._txtCheckTime = new Guna.UI2.WinForms.Guna2TextBox();
             this._txtToolCode = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,6 +65,7 @@ namespace itools_source.Views
             this.lblShowAllMachineTray = new System.Windows.Forms.Label();
             this._txtToolSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this._toggleShowAll = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            this._tmGetTool = new System.Windows.Forms.Timer(this.components);
             this.tlpHeader.SuspendLayout();
             this.tlpContent.SuspendLayout();
             this.pLeftContent.SuspendLayout();
@@ -190,6 +192,7 @@ namespace itools_source.Views
             this.tlpRightContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14F));
             this.tlpRightContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tlpRightContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46F));
+            this.tlpRightContent.Controls.Add(this._txtCheckTime, 0, 4);
             this.tlpRightContent.Controls.Add(this._txtToolCode, 1, 1);
             this.tlpRightContent.Controls.Add(this.label1, 0, 1);
             this.tlpRightContent.Controls.Add(this.label2, 0, 2);
@@ -209,10 +212,32 @@ namespace itools_source.Views
             this.tlpRightContent.Size = new System.Drawing.Size(624, 394);
             this.tlpRightContent.TabIndex = 1;
             // 
+            // _txtCheckTime
+            // 
+            this._txtCheckTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtCheckTime.BorderRadius = 8;
+            this._txtCheckTime.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this._txtCheckTime.DefaultText = "";
+            this._txtCheckTime.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this._txtCheckTime.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this._txtCheckTime.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtCheckTime.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtCheckTime.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtCheckTime.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._txtCheckTime.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtCheckTime.Location = new System.Drawing.Point(3, 335);
+            this._txtCheckTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._txtCheckTime.Name = "_txtCheckTime";
+            this._txtCheckTime.PasswordChar = '\0';
+            this._txtCheckTime.PlaceholderText = "";
+            this._txtCheckTime.SelectedText = "";
+            this._txtCheckTime.Size = new System.Drawing.Size(81, 36);
+            this._txtCheckTime.TabIndex = 7;
+            this._txtCheckTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // _txtToolCode
             // 
-            this._txtToolCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtToolCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._txtToolCode.BorderRadius = 8;
             this._txtToolCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this._txtToolCode.DefaultText = "";
@@ -223,7 +248,7 @@ namespace itools_source.Views
             this._txtToolCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtToolCode.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._txtToolCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtToolCode.Location = new System.Drawing.Point(90, 82);
+            this._txtToolCode.Location = new System.Drawing.Point(90, 99);
             this._txtToolCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtToolCode.Name = "_txtToolCode";
             this._txtToolCode.PasswordChar = '\0';
@@ -242,7 +267,7 @@ namespace itools_source.Views
             this.label1.Size = new System.Drawing.Size(77, 78);
             this.label1.TabIndex = 1;
             this.label1.Text = "Tool Code";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -253,7 +278,7 @@ namespace itools_source.Views
             this.label2.Size = new System.Drawing.Size(38, 78);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mẫu";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -268,8 +293,7 @@ namespace itools_source.Views
             // 
             // _txtModel
             // 
-            this._txtModel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._txtModel.BorderRadius = 8;
             this._txtModel.Cursor = System.Windows.Forms.Cursors.IBeam;
             this._txtModel.DefaultText = "";
@@ -280,7 +304,7 @@ namespace itools_source.Views
             this._txtModel.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtModel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._txtModel.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtModel.Location = new System.Drawing.Point(90, 160);
+            this._txtModel.Location = new System.Drawing.Point(90, 177);
             this._txtModel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtModel.Name = "_txtModel";
             this._txtModel.PasswordChar = '\0';
@@ -538,6 +562,10 @@ namespace itools_source.Views
             this._toggleShowAll.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
             this._toggleShowAll.UncheckedState.InnerColor = System.Drawing.Color.White;
             // 
+            // _tmGetTool
+            // 
+            this._tmGetTool.Interval = 1000;
+            // 
             // GetToolView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -639,10 +667,23 @@ namespace itools_source.Views
             get { return _btnGetTool; }
             set { _btnGetTool = value; }
         }
+
         public Guna.UI2.WinForms.Guna2ToggleSwitch toggleShowAll
         {
             get { return _toggleShowAll; }
             set { _toggleShowAll = value; }
+        }
+
+        public System.Windows.Forms.Timer tmGetTool
+        {
+            get { return _tmGetTool; }
+            set { _tmGetTool = value; }
+        }
+
+        public Guna.UI2.WinForms.Guna2TextBox txtCheckTime
+        {
+            get { return _txtCheckTime; }
+            set { _txtCheckTime = value; }
         }
 
         public Guna2GradientButton btnToolSelect { get => _btnToolSelect; set => _btnToolSelect = value; }
@@ -677,5 +718,7 @@ namespace itools_source.Views
         private Guna.UI2.WinForms.Guna2ToggleSwitch _toggleShowAll;
         private System.Windows.Forms.TableLayoutPanel _tlpToolSelect;
         private Guna.UI2.WinForms.Guna2GradientButton _btnToolSelect;
+        private System.Windows.Forms.Timer _tmGetTool;
+        private Guna2TextBox _txtCheckTime;
     }
 }

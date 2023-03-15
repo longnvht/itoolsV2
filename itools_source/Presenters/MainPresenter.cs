@@ -24,6 +24,7 @@ namespace itools_source.Presenters
             _mainView.btnPrevious_Click += _mainView_btnPrevious_Click;
             _mainView.btnNext_Click += _mainView_btnNext_Click;
             _mainView.btnHome_Click += _mainView_btnHome_Click;
+            _mainView.btnLogOut_Click += _mainView_btnLogOut_Click;
         }
 
         #region Properties - Fields
@@ -66,7 +67,26 @@ namespace itools_source.Presenters
             }
         }
 
-        private void _mainView_btnNext_Click(object sender, EventArgs e)
+        private void _mainView_btnLogOut_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn đăng xuất?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
+                            () =>
+                            {
+                                var loginPresenter = ConfigUnity.unityContainer.Resolve<LoginPresenter>();
+                                loginPresenter.Run();
+                            }));
+
+                t.Start();
+
+                _log.Info("MenuView is out MdiChildren to LoginView.");
+                _mainView.Close();
+            }
+        }
+
+    private void _mainView_btnNext_Click(object sender, EventArgs e)
         {
             MainView frmMain = (MainView)sender;
             if (frmMain.MdiChildren.Any()) // Check is open form children

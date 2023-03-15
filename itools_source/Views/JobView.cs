@@ -76,10 +76,11 @@ namespace itools_source.Views
             btn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
             btn.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
             btn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(96)))), ((int)(((byte)(122)))));
-            btn.Font = new System.Drawing.Font("Segoe UI", 11F);
+            btn.Font = new System.Drawing.Font("Segoe UI", 12F);
             btn.ForeColor = System.Drawing.Color.White;
             btn.Location = new System.Drawing.Point(3, 3);
-            btn.Size = new System.Drawing.Size(122, 80);
+            btn.Size = new System.Drawing.Size(120, 100);
+            btn.Margin = new System.Windows.Forms.Padding(10);
             btn.Text = strJobNumber;
             btn.Click += (s, e) => { btnflpJobNumberList_Click?.Invoke(s, e); };
             btn.DoubleClick += (s, e) => { btnflpJobNumberList_DoubleClick?.Invoke(s, e); };

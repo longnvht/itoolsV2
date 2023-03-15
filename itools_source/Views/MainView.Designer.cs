@@ -42,6 +42,7 @@ namespace itools_source.Views
             this.lblName = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this._btnHome = new System.Windows.Forms.Button();
+            this._btnLogOut = new Guna.UI2.WinForms.Guna2Button();
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             this.SuspendLayout();
@@ -111,6 +112,7 @@ namespace itools_source.Views
             this.tlpHeader.Controls.Add(this.lblName, 3, 0);
             this.tlpHeader.Controls.Add(this.label13, 2, 0);
             this.tlpHeader.Controls.Add(this._btnHome, 0, 0);
+            this.tlpHeader.Controls.Add(this._btnLogOut, 4, 0);
             this.tlpHeader.Name = "tlpHeader";
             // 
             // lblName
@@ -132,6 +134,18 @@ namespace itools_source.Views
             this._btnHome.Name = "_btnHome";
             this._btnHome.UseVisualStyleBackColor = false;
             // 
+            // _btnLogOut
+            // 
+            this._btnLogOut.BackColor = System.Drawing.Color.White;
+            this._btnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this._btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this._btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this._btnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            resources.ApplyResources(this._btnLogOut, "_btnLogOut");
+            this._btnLogOut.FillColor = System.Drawing.Color.White;
+            this._btnLogOut.ForeColor = System.Drawing.Color.Black;
+            this._btnLogOut.Name = "_btnLogOut";
+            // 
             // MainView
             // 
             resources.ApplyResources(this, "$this");
@@ -139,6 +153,7 @@ namespace itools_source.Views
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this.Controls.Add(this.tlpHeader);
             this.Controls.Add(this.tlpFooter);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "MainView";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -189,5 +204,6 @@ namespace itools_source.Views
         private System.Windows.Forms.Label _lblOPIdDisplay;
         private System.Windows.Forms.Label lblName;
         private Button _btnHome;
+        private Guna.UI2.WinForms.Guna2Button _btnLogOut;
     }
 }

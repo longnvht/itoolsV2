@@ -23,6 +23,7 @@ namespace itools_source.Views
             _txtToolSearch.MouseClick += delegate { txtToolSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
             this.FormClosing += delegate { GetToolView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
             _btnToolSelect.Click += delegate { btnToolSelect_Click?.Invoke(this, EventArgs.Empty); };
+            _tmGetTool.Tick += delegate { tmGetTool_Tick?.Invoke(this, EventArgs.Empty); };
         }
 
         #region Properties - Fields
@@ -30,6 +31,7 @@ namespace itools_source.Views
 
         // Singleton pattern (Open a single form instance)
         private static GetToolView _instance;
+        public int countTimer { get; set; }
 
         public static GetToolView GetInstance(Form parentContainer)
         {
@@ -123,7 +125,7 @@ namespace itools_source.Views
             btn.Font = new Font("Segoe UI", 11F);
             btn.ForeColor = Color.White;
             btn.Location = new Point(3, 3);
-            btn.Size = new Size(240, 60);
+            btn.Size = new Size(250, 60);
             if (obTag != null)
             {
                 btn.Tag = obTag;
@@ -195,7 +197,7 @@ namespace itools_source.Views
                     break;
             }
         }
-
+        
         public void CreateListButton(bool bCheck)
         {
             if (this.lstTrayButton == null)
@@ -210,6 +212,7 @@ namespace itools_source.Views
             // 2. Add button to Tray List.
             if (bCheck) // Machine tray.
             {
+                this.lstTrayButton.Clear();
                 foreach (var item in this.lstTrayQuantity)
                 {
                     this.lstTrayButton.Add(CreateButton(item.Value[0], item.Value[1], "Tray", item.Key));
@@ -302,6 +305,18 @@ namespace itools_source.Views
                 this.Dock = DockStyle.Fill;
             }
         }
+
+        public void OnOffTimer(bool status)
+        {
+            if (status)
+            {
+               tmGetTool.Start();
+            }
+            else
+            {
+                tmGetTool.Stop();
+            }
+        }
         #endregion
 
         #region Events
@@ -317,6 +332,7 @@ namespace itools_source.Views
         public event MouseEventHandler txtToolSearch_MouseClick;
         public event FormClosingEventHandler GetToolView_FormClosing;
         public event EventHandler btnToolSelect_Click;
+        public event EventHandler tmGetTool_Tick;
         #endregion
     }
 }

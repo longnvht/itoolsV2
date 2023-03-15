@@ -42,6 +42,7 @@ namespace itools_source.Views.Interface
         event MouseEventHandler txtToolSearch_MouseClick;
         event FormClosingEventHandler GetToolView_FormClosing;
         event EventHandler btnToolSelect_Click;
+        event EventHandler tmGetTool_Tick;
         #endregion
 
         #region Methods
@@ -56,6 +57,7 @@ namespace itools_source.Views.Interface
         void SetCheckedButton(string strContinueButton);
         Form GetMdiParent();
         void SetMdiParent(Form mdiParent);
+        void OnOffTimer(bool status);
         #endregion
     }
 }

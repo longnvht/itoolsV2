@@ -506,7 +506,8 @@ namespace itools_source.Presenters
                         }
                         workingTransaction.strJobNumber = null;
                         workingTransaction.strOPNumber = null;
-                        workingTransaction.iTrayId = _toolManagerView.iTrayID;
+                        workingTransaction.toolID = _toolManagerView.iToolID;
+                        workingTransaction.trayIndex = _toolManagerView.strTrayIndex;
                         workingTransaction.iQuantity = _toolManagerView.iOperateQuantity.Value;
                         workingTransaction.strTransactionStatus = "Complete";
 

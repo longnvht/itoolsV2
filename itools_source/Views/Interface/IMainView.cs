@@ -21,6 +21,7 @@ namespace itools_source.Views.Interface
         event EventHandler btnPrevious_Click;
         event EventHandler btnNext_Click;
         event EventHandler btnHome_Click;
+        event EventHandler btnLogOut_Click;
         #endregion
 
         #region Methods

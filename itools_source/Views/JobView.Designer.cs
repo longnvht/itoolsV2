@@ -49,6 +49,7 @@
             this._flpJobNumberList.Location = new System.Drawing.Point(0, 43);
             this._flpJobNumberList.Margin = new System.Windows.Forms.Padding(2);
             this._flpJobNumberList.Name = "_flpJobNumberList";
+            this._flpJobNumberList.Padding = new System.Windows.Forms.Padding(10);
             this._flpJobNumberList.Size = new System.Drawing.Size(800, 407);
             this._flpJobNumberList.TabIndex = 2;
             // 

@@ -50,6 +50,7 @@ namespace itools_source.Views
             this._flpOPList.Location = new System.Drawing.Point(0, 43);
             this._flpOPList.Margin = new System.Windows.Forms.Padding(2);
             this._flpOPList.Name = "_flpOPList";
+            this._flpOPList.Padding = new System.Windows.Forms.Padding(10);
             this._flpOPList.Size = new System.Drawing.Size(800, 407);
             this._flpOPList.TabIndex = 2;
             // 
