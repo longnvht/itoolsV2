@@ -198,7 +198,7 @@ namespace itools_source.Presenters
             ToolManagerView frm = sender as ToolManagerView;
             frm.tlpHeader.Enabled = false;
             frm.tlpFooter.Enabled = false;
-            frm.pLeftContent.Enabled = false;
+            frm.grbLeftContent.Enabled = false;
             frm.tlpTrayDetail.Enabled = false;
 
             frm.CreateToolButton();

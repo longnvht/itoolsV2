@@ -378,7 +378,7 @@ namespace itools_source.Views
 
             tlpHeader.Enabled = true;
             tlpFooter.Enabled = true;
-            pLeftContent.Enabled = true;
+            grbLeftContent.Enabled = true;
             tlpTrayDetail.Enabled = true;
             this._txtToolCode.Enabled = true;
 

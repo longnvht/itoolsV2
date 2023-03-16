@@ -87,8 +87,8 @@ namespace itools_source.Views
             btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             btn.FillColor = System.Drawing.Color.WhiteSmoke;
             btn.FillColor2 = System.Drawing.Color.WhiteSmoke;
-            btn.CheckedState.FillColor = System.Drawing.Color.WhiteSmoke;
-            btn.CheckedState.FillColor2 = System.Drawing.Color.OrangeRed;
+            btn.CheckedState.FillColor = System.Drawing.Color.FromArgb(238, 238, 255);
+            btn.CheckedState.FillColor2 = System.Drawing.Color.FromArgb(148, 111, 207);
             btn.Font = new System.Drawing.Font("Segoe UI", 12F);
             btn.ForeColor = System.Drawing.Color.FromArgb(0,0,64);
             btn.Margin = new System.Windows.Forms.Padding(10);
