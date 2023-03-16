@@ -156,14 +156,14 @@ namespace itools_source.Repository
                     new MySqlParameter
                     {
                         ParameterName = "@p_ToolID",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        MySqlDbType = MySqlDbType.Int32,
                         Value = iToolID,
                         Direction = System.Data.ParameterDirection.Input
                     },
                     new MySqlParameter
                     {
                         ParameterName = "@p_MachineID",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        MySqlDbType = MySqlDbType.Int32,
                         Value = iMachineID,
                         Direction = System.Data.ParameterDirection.Input
                     }
