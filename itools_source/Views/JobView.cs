@@ -17,6 +17,7 @@ namespace itools_source.Views
             this.Load += delegate { JobView_Load?.Invoke(this, EventArgs.Empty); };
             btnJobNumberSearch.Click += delegate { btnJobNumberSearch_Click?.Invoke(this, EventArgs.Empty); };
             _txtJobNumberSearch.MouseClick += delegate { txtJobNumberSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            _txtJobNumberSearch.KeyDown += delegate { txtJobNumberSearch_KeyDown?.Invoke(this, EventArgs.Empty as KeyEventArgs); };
             FormClosing += delegate { JobView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
         }
 
@@ -78,8 +79,8 @@ namespace itools_source.Views
             btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             btn.FillColor = System.Drawing.Color.WhiteSmoke;
             btn.FillColor2 = System.Drawing.Color.WhiteSmoke;
-            btn.CheckedState.FillColor = System.Drawing.Color.WhiteSmoke;
-            btn.CheckedState.FillColor2 = Color.OrangeRed;
+            btn.CheckedState.FillColor = System.Drawing.Color.FromArgb(238, 238, 255);
+            btn.CheckedState.FillColor2 = Color.FromArgb(148, 111, 207);
             btn.Font = new System.Drawing.Font("Segoe UI", 12F);
             btn.ForeColor = System.Drawing.Color.FromArgb(0, 0, 64);
             btn.Location = new System.Drawing.Point(3, 3);
@@ -131,6 +132,7 @@ namespace itools_source.Views
         public event EventHandler btnflpJobNumberList_Click;
         public event EventHandler btnflpJobNumberList_DoubleClick;
         public event EventHandler txtJobNumberSearch_MouseClick;
+        public event EventHandler txtJobNumberSearch_KeyDown;
         public event FormClosingEventHandler JobView_FormClosing;
         #endregion
     }
