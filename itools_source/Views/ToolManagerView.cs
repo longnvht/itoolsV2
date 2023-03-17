@@ -218,9 +218,7 @@ namespace itools_source.Views
                     this._txtCurrentQuantity.Enabled = false;
                     this._txtTotalQuantity.Enabled = false;
 
-                    this._tlpToolList.Visible = false;
-                    this._tlpToolList.Dock = DockStyle.Right;
-                    this._tlpToolList.BringToFront();
+                    this._grbToolList.Visible = false;
                     break;
                 case '4': // Save
                     this._txtOperateQuantity.Enabled = false;
@@ -308,15 +306,17 @@ namespace itools_source.Views
                 btn.Tag = item.Key;
 
                 btn.BackColor = Color.Transparent;
-                btn.BorderRadius = 15;
+                btn.BorderRadius = 10;
+                btn.BorderThickness = 1;
+                btn.BorderColor = Color.FromArgb(44, 38, 113);
                 btn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
                 btn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
                 btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-                btn.ForeColor = System.Drawing.Color.White;
+                btn.ForeColor = System.Drawing.Color.FromArgb(42, 45, 80);
                 btn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                btn.FillColor = Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+                btn.FillColor = Color.WhiteSmoke;
                 btn.CheckedState.FillColor = System.Drawing.Color.DarkOrchid;
-                btn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+                btn.Anchor = AnchorStyles.Right | AnchorStyles.Left;
                 btn.Click += (s, e) => this.btnflpTrayList_Click?.Invoke(s, e);
                 lstTrayButton.Add(btn);
             }
@@ -325,11 +325,9 @@ namespace itools_source.Views
 
         public void CreateToolButton()
         {
-            if (_tlpToolList.Visible == false)
+            if (_grbToolList.Visible == false)
             {
-                _tlpToolList.Visible = true;
-                _tlpToolList.Dock = DockStyle.Right;
-                _tlpToolList.BringToFront();
+                _grbToolList.Visible = true;
             }
 
             if (lstToolButton == null)
@@ -347,16 +345,19 @@ namespace itools_source.Views
 
                 btn.BackColor = Color.Transparent;
                 btn.BorderRadius = 10;
+                btn.BorderThickness = 1;
+                btn.BorderColor = Color.FromArgb(44, 38, 113);
                 btn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
                 btn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
                 btn.Animated = true;
                 btn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
                 btn.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
                 btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-                btn.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
-                btn.ForeColor = System.Drawing.Color.White;
+                btn.FillColor = Color.WhiteSmoke;
+                btn.FillColor2 = System.Drawing.Color.WhiteSmoke;
+                btn.ForeColor = System.Drawing.Color.FromArgb(45, 47, 96);
                 btn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                btn.FillColor = Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(149)))), ((int)(((byte)(173)))));
+                
                 btn.CheckedState.FillColor = System.Drawing.Color.DarkOrchid;
                 btn.CheckedState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
                 btn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
@@ -382,9 +383,9 @@ namespace itools_source.Views
             tlpTrayDetail.Enabled = true;
             this._txtToolCode.Enabled = true;
 
-            if (_tlpToolList.Visible == true)
+            if (_grbToolList.Visible == true)
             {
-                _tlpToolList.Visible = false;
+                _grbToolList.Visible = false;
                 //_tlpToolList.Dock = DockStyle.None;
                 //_tlpToolList.SendToBack();
             }

@@ -83,9 +83,29 @@ namespace VinamiToolUser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_500px1 {
+            get {
+                object obj = ResourceManager.GetObject("close_500px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_500pxc {
             get {
                 object obj = ResourceManager.GetObject("close_500pxc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close_500pxr {
+            get {
+                object obj = ResourceManager.GetObject("close_500pxr", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +126,26 @@ namespace VinamiToolUser.Properties {
         internal static System.Drawing.Bitmap home_48 {
             get {
                 object obj = ResourceManager.GetObject("home_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap home_500px {
+            get {
+                object obj = ResourceManager.GetObject("home_500px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap home_512px {
+            get {
+                object obj = ResourceManager.GetObject("home_512px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -364,6 +364,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ToolManagerView.resx">
       <DependentUpon>ToolManagerView.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\VirtualKeyBoard.resx">
       <DependentUpon>VirtualKeyBoard.cs</DependentUpon>
@@ -420,6 +421,10 @@
     <None Include="Resources\close_500px.png" />
     <None Include="Resources\close_500pxc.png" />
     <None Include="Resources\close_480px.png" />
+    <None Include="Resources\close_500px1.png" />
+    <None Include="Resources\close_500pxr.png" />
+    <None Include="Resources\home_512px.png" />
+    <None Include="Resources\home_500px.png" />
     <Content Include="tool_generator.ico" />
   </ItemGroup>
   <ItemGroup>

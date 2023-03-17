@@ -240,14 +240,14 @@ namespace itools_source.Views
             this.guna2VScrollBar_flpTrayList.AutoSize = true;
             this.guna2VScrollBar_flpTrayList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.guna2VScrollBar_flpTrayList.BindingContainer = this._flpTrayList;
-            this.guna2VScrollBar_flpTrayList.BorderRadius = 8;
+            this.guna2VScrollBar_flpTrayList.BorderRadius = 12;
             this.guna2VScrollBar_flpTrayList.InUpdate = false;
             this.guna2VScrollBar_flpTrayList.LargeChange = 10;
-            this.guna2VScrollBar_flpTrayList.Location = new System.Drawing.Point(302, 20);
+            this.guna2VScrollBar_flpTrayList.Location = new System.Drawing.Point(286, 29);
             this.guna2VScrollBar_flpTrayList.Name = "guna2VScrollBar_flpTrayList";
             this.guna2VScrollBar_flpTrayList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.guna2VScrollBar_flpTrayList.ScrollbarSize = 18;
-            this.guna2VScrollBar_flpTrayList.Size = new System.Drawing.Size(18, 387);
+            this.guna2VScrollBar_flpTrayList.ScrollbarSize = 26;
+            this.guna2VScrollBar_flpTrayList.Size = new System.Drawing.Size(26, 378);
             this.guna2VScrollBar_flpTrayList.TabIndex = 20;
             this.guna2VScrollBar_flpTrayList.ThumbSize = 100F;
             // 
@@ -256,12 +256,11 @@ namespace itools_source.Views
             this._flpTrayList.AutoScroll = true;
             this._flpTrayList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this._flpTrayList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._flpTrayList.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this._flpTrayList.Location = new System.Drawing.Point(3, 20);
+            this._flpTrayList.Location = new System.Drawing.Point(3, 29);
             this._flpTrayList.Margin = new System.Windows.Forms.Padding(2);
             this._flpTrayList.Name = "_flpTrayList";
             this._flpTrayList.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this._flpTrayList.Size = new System.Drawing.Size(317, 387);
+            this._flpTrayList.Size = new System.Drawing.Size(309, 378);
             this._flpTrayList.TabIndex = 34;
             // 
             // guna2Elipse_pLeftContent
@@ -274,7 +273,6 @@ namespace itools_source.Views
             this._tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this._tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this._tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this._tlpTrayDetail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this._tlpTrayDetail.Controls.Add(this._txtTrayIndex, 1, 2);
             this._tlpTrayDetail.Controls.Add(this.guna2HtmlLabel1, 1, 1);
             this._tlpTrayDetail.Controls.Add(this._txtTotalQuantity, 1, 10);
@@ -286,7 +284,7 @@ namespace itools_source.Views
             this._tlpTrayDetail.Controls.Add(this._txtToolCode, 1, 4);
             this._tlpTrayDetail.Controls.Add(this.guna2HtmlLabel2, 1, 3);
             this._tlpTrayDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._tlpTrayDetail.Location = new System.Drawing.Point(323, 50);
+            this._tlpTrayDetail.Location = new System.Drawing.Point(315, 50);
             this._tlpTrayDetail.Name = "_tlpTrayDetail";
             this._tlpTrayDetail.RowCount = 12;
             this._tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -301,7 +299,7 @@ namespace itools_source.Views
             this._tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this._tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this._tlpTrayDetail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this._tlpTrayDetail.Size = new System.Drawing.Size(850, 410);
+            this._tlpTrayDetail.Size = new System.Drawing.Size(858, 410);
             this._tlpTrayDetail.TabIndex = 27;
             // 
             // _txtTrayIndex
@@ -317,7 +315,7 @@ namespace itools_source.Views
             this._txtTrayIndex.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtTrayIndex.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._txtTrayIndex.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtTrayIndex.Location = new System.Drawing.Point(303, 51);
+            this._txtTrayIndex.Location = new System.Drawing.Point(307, 51);
             this._txtTrayIndex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtTrayIndex.Name = "_txtTrayIndex";
             this._txtTrayIndex.PasswordChar = '\0';
@@ -331,9 +329,9 @@ namespace itools_source.Views
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(303, 20);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(307, 20);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(33, 22);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(51, 31);
             this.guna2HtmlLabel1.TabIndex = 6;
             this.guna2HtmlLabel1.Text = "Tray";
             this.guna2HtmlLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -351,7 +349,7 @@ namespace itools_source.Views
             this._txtTotalQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtTotalQuantity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._txtTotalQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtTotalQuantity.Location = new System.Drawing.Point(303, 351);
+            this._txtTotalQuantity.Location = new System.Drawing.Point(307, 351);
             this._txtTotalQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtTotalQuantity.Name = "_txtTotalQuantity";
             this._txtTotalQuantity.PasswordChar = '\0';
@@ -365,9 +363,9 @@ namespace itools_source.Views
             // 
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(303, 320);
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(307, 320);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(112, 22);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(169, 31);
             this.guna2HtmlLabel5.TabIndex = 11;
             this.guna2HtmlLabel5.Text = "Số Lượng Tổng";
             this.guna2HtmlLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -385,7 +383,7 @@ namespace itools_source.Views
             this._txtOperateQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtOperateQuantity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._txtOperateQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtOperateQuantity.Location = new System.Drawing.Point(303, 276);
+            this._txtOperateQuantity.Location = new System.Drawing.Point(307, 276);
             this._txtOperateQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtOperateQuantity.Name = "_txtOperateQuantity";
             this._txtOperateQuantity.PasswordChar = '\0';
@@ -399,9 +397,9 @@ namespace itools_source.Views
             // 
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(303, 245);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(307, 245);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(142, 22);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(215, 31);
             this.guna2HtmlLabel4.TabIndex = 8;
             this.guna2HtmlLabel4.Text = "Số Lượng Thao Tác";
             this.guna2HtmlLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -419,7 +417,7 @@ namespace itools_source.Views
             this._txtCurrentQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtCurrentQuantity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._txtCurrentQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtCurrentQuantity.Location = new System.Drawing.Point(303, 201);
+            this._txtCurrentQuantity.Location = new System.Drawing.Point(307, 201);
             this._txtCurrentQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtCurrentQuantity.Name = "_txtCurrentQuantity";
             this._txtCurrentQuantity.PasswordChar = '\0';
@@ -433,9 +431,9 @@ namespace itools_source.Views
             // 
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(303, 170);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(307, 170);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(133, 22);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(199, 31);
             this.guna2HtmlLabel3.TabIndex = 7;
             this.guna2HtmlLabel3.Text = "Số Lượng Hiện Có";
             this.guna2HtmlLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -453,7 +451,7 @@ namespace itools_source.Views
             this._txtToolCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtToolCode.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._txtToolCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtToolCode.Location = new System.Drawing.Point(303, 126);
+            this._txtToolCode.Location = new System.Drawing.Point(307, 126);
             this._txtToolCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtToolCode.Name = "_txtToolCode";
             this._txtToolCode.PasswordChar = '\0';
@@ -467,9 +465,9 @@ namespace itools_source.Views
             // 
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(303, 95);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(307, 95);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(33, 22);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(53, 31);
             this.guna2HtmlLabel2.TabIndex = 5;
             this.guna2HtmlLabel2.Text = "Tool";
             this.guna2HtmlLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -490,13 +488,13 @@ namespace itools_source.Views
             this._tlpToolList.Controls.Add(this.tlpFooterToolList, 0, 2);
             this._tlpToolList.Dock = System.Windows.Forms.DockStyle.Fill;
             this._tlpToolList.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._tlpToolList.Location = new System.Drawing.Point(3, 20);
+            this._tlpToolList.Location = new System.Drawing.Point(3, 29);
             this._tlpToolList.Name = "_tlpToolList";
             this._tlpToolList.RowCount = 3;
             this._tlpToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this._tlpToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this._tlpToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this._tlpToolList.Size = new System.Drawing.Size(355, 387);
+            this._tlpToolList.Size = new System.Drawing.Size(314, 378);
             this._tlpToolList.TabIndex = 13;
             // 
             // _txtToolSearch
@@ -512,14 +510,14 @@ namespace itools_source.Views
             this._txtToolSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this._txtToolSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this._txtToolSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtToolSearch.Location = new System.Drawing.Point(3, 9);
+            this._txtToolSearch.Location = new System.Drawing.Point(3, 8);
             this._txtToolSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtToolSearch.Name = "_txtToolSearch";
             this._txtToolSearch.PasswordChar = '\0';
             this._txtToolSearch.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
             this._txtToolSearch.PlaceholderText = "Tìm Kiếm Tool";
             this._txtToolSearch.SelectedText = "";
-            this._txtToolSearch.Size = new System.Drawing.Size(349, 39);
+            this._txtToolSearch.Size = new System.Drawing.Size(308, 39);
             this._txtToolSearch.TabIndex = 28;
             this._txtToolSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -528,9 +526,9 @@ namespace itools_source.Views
             this.pToolContent.Controls.Add(this.guna2VScrollBar2);
             this.pToolContent.Controls.Add(this.flpToolList);
             this.pToolContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pToolContent.Location = new System.Drawing.Point(3, 61);
+            this.pToolContent.Location = new System.Drawing.Point(3, 59);
             this.pToolContent.Name = "pToolContent";
-            this.pToolContent.Size = new System.Drawing.Size(349, 264);
+            this.pToolContent.Size = new System.Drawing.Size(308, 258);
             this.pToolContent.TabIndex = 29;
             // 
             // guna2VScrollBar2
@@ -539,14 +537,14 @@ namespace itools_source.Views
             this.guna2VScrollBar2.AutoSize = true;
             this.guna2VScrollBar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.guna2VScrollBar2.BindingContainer = this.flpToolList;
-            this.guna2VScrollBar2.BorderRadius = 8;
+            this.guna2VScrollBar2.BorderRadius = 12;
             this.guna2VScrollBar2.InUpdate = false;
             this.guna2VScrollBar2.LargeChange = 10;
-            this.guna2VScrollBar2.Location = new System.Drawing.Point(331, 0);
+            this.guna2VScrollBar2.Location = new System.Drawing.Point(282, 0);
             this.guna2VScrollBar2.Name = "guna2VScrollBar2";
             this.guna2VScrollBar2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.guna2VScrollBar2.ScrollbarSize = 18;
-            this.guna2VScrollBar2.Size = new System.Drawing.Size(18, 264);
+            this.guna2VScrollBar2.ScrollbarSize = 26;
+            this.guna2VScrollBar2.Size = new System.Drawing.Size(26, 258);
             this.guna2VScrollBar2.TabIndex = 28;
             this.guna2VScrollBar2.ThumbSize = 100F;
             // 
@@ -559,7 +557,7 @@ namespace itools_source.Views
             this.flpToolList.Margin = new System.Windows.Forms.Padding(2);
             this.flpToolList.Name = "flpToolList";
             this.flpToolList.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.flpToolList.Size = new System.Drawing.Size(349, 264);
+            this.flpToolList.Size = new System.Drawing.Size(308, 258);
             this.flpToolList.TabIndex = 29;
             // 
             // tlpFooterToolList
@@ -570,12 +568,12 @@ namespace itools_source.Views
             this.tlpFooterToolList.Controls.Add(this.btnToolCancel, 1, 0);
             this.tlpFooterToolList.Controls.Add(this.btnToolSelect, 0, 0);
             this.tlpFooterToolList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpFooterToolList.Location = new System.Drawing.Point(3, 331);
+            this.tlpFooterToolList.Location = new System.Drawing.Point(3, 323);
             this.tlpFooterToolList.Name = "tlpFooterToolList";
             this.tlpFooterToolList.RowCount = 1;
             this.tlpFooterToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpFooterToolList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tlpFooterToolList.Size = new System.Drawing.Size(349, 53);
+            this.tlpFooterToolList.Size = new System.Drawing.Size(308, 52);
             this.tlpFooterToolList.TabIndex = 30;
             // 
             // btnToolCancel
@@ -593,9 +591,9 @@ namespace itools_source.Views
             this.btnToolCancel.FillColor2 = System.Drawing.Color.WhiteSmoke;
             this.btnToolCancel.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnToolCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnToolCancel.Location = new System.Drawing.Point(177, 8);
+            this.btnToolCancel.Location = new System.Drawing.Point(157, 8);
             this.btnToolCancel.Name = "btnToolCancel";
-            this.btnToolCancel.Size = new System.Drawing.Size(169, 36);
+            this.btnToolCancel.Size = new System.Drawing.Size(148, 36);
             this.btnToolCancel.TabIndex = 30;
             this.btnToolCancel.Text = "Hủy";
             // 
@@ -616,7 +614,7 @@ namespace itools_source.Views
             this.btnToolSelect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnToolSelect.Location = new System.Drawing.Point(3, 8);
             this.btnToolSelect.Name = "btnToolSelect";
-            this.btnToolSelect.Size = new System.Drawing.Size(168, 36);
+            this.btnToolSelect.Size = new System.Drawing.Size(148, 36);
             this.btnToolSelect.TabIndex = 29;
             this.btnToolSelect.Text = "Chọn";
             // 
@@ -690,7 +688,7 @@ namespace itools_source.Views
             this._grbLeftContent.Dock = System.Windows.Forms.DockStyle.Left;
             this._grbLeftContent.Location = new System.Drawing.Point(0, 50);
             this._grbLeftContent.Name = "_grbLeftContent";
-            this._grbLeftContent.Size = new System.Drawing.Size(323, 410);
+            this._grbLeftContent.Size = new System.Drawing.Size(315, 410);
             this._grbLeftContent.TabIndex = 14;
             this._grbLeftContent.TabStop = false;
             this._grbLeftContent.Text = "Tool on machine";
@@ -699,16 +697,16 @@ namespace itools_source.Views
             // 
             this._grbToolList.Controls.Add(this._tlpToolList);
             this._grbToolList.Dock = System.Windows.Forms.DockStyle.Right;
-            this._grbToolList.Location = new System.Drawing.Point(812, 50);
+            this._grbToolList.Location = new System.Drawing.Point(853, 50);
             this._grbToolList.Name = "_grbToolList";
-            this._grbToolList.Size = new System.Drawing.Size(361, 410);
+            this._grbToolList.Size = new System.Drawing.Size(320, 410);
             this._grbToolList.TabIndex = 28;
             this._grbToolList.TabStop = false;
             this._grbToolList.Text = "Tool List";
             // 
             // ToolManagerView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this.ClientSize = new System.Drawing.Size(1173, 508);
