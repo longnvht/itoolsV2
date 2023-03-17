@@ -165,6 +165,14 @@ namespace itools_source.Presenters
                 _log.Error("_toolManagerView is null.");
             }
         }
+
+        public void Run(IConfigSettingView pushToolView, ICompanyRepository companyRepository)
+        {
+            _configSettingView = pushToolView;
+            _companyRepository = companyRepository;
+            _configSettingView.ConfigSettingView_Load += _configSettingView_ConfigSettingView_Load;
+            _configSettingView.Show();
+        }
         #endregion
     }
 }

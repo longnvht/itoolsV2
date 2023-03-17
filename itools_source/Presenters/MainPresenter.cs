@@ -151,17 +151,25 @@ namespace itools_source.Presenters
                                         {
                                             _mainView.btnNextEnabled = false;
 
+
+                                            IStockView stockView = StockView.GetInstance((MainView)_mainView);
+                                            IStockRepository stockViewRepositor = new StockRepository();
+
                                             var stockPresenter = ConfigUnity.unityContainer.Resolve<StockPresenter>();
-                                            stockPresenter.Run((MainView)_mainView);
+                                            stockPresenter.Run(stockView, stockViewRepositor);
                                             break;
                                         }
                                         if (item == nameof(ConfigSettingView))
                                         {
                                             _mainView.btnNextEnabled = false;
 
+                                            IConfigSettingView configSettingView = ConfigSettingView.GetInstance((MainView)_mainView);
+                                            ICompanyRepository stockRepository = new CompanyRepository();
+
                                             var configPresenter = ConfigUnity.unityContainer.Resolve<ConfigSettingPresenter>();
-                                            configPresenter.Run((MainView)_mainView);
+                                            configPresenter.Run(configSettingView, stockRepository);
                                             break;
+                                         
                                         }
                                     }
                                 }

@@ -1,5 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using itools_source.Models.Interface;
+using itools_source.Repository;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
@@ -22,8 +23,8 @@ namespace itools_source.Presenters
         #region Properties - Fields
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(StockPresenter).Name);
 
-        private readonly IStockView _stockView;
-        private readonly IStockRepository _stockRepository;
+        private  IStockView _stockView;
+        private IStockRepository _stockRepository;
         #endregion
 
         #region Events
@@ -64,6 +65,14 @@ namespace itools_source.Presenters
             {
                 _log.Error("_toolManagerView is null.");
             }
+        }
+
+        public void Run(IStockView pushToolView, IStockRepository toolMachineTrayRepository)
+        {
+            _stockView = pushToolView;
+            _stockRepository = toolMachineTrayRepository;
+            _stockView.StockView_Load += _stockView_StockView_Load;
+            _stockView.Show();
         }
         #endregion
     }

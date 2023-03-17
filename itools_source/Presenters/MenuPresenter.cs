@@ -127,9 +127,10 @@ namespace itools_source.Presenters
                     {
                         _menuView.ShowHideJobNumberAndOPId(false);
                         (_menuView.GetMdiParent() as MainView).btnNextEnabled = false;
-
+                        IStockView stockView = StockView.GetInstance((MainView)_menuView.GetMdiParent());
+                        IStockRepository stockRepository= new StockRepository();
                         var stockPresenter = ConfigUnity.unityContainer.Resolve<StockPresenter>();
-                        stockPresenter.Run((MainView)_menuView.GetMdiParent());
+                        stockPresenter.Run(stockView, stockRepository);
                         break;
                     }
                     if (item == nameof(ConfigSettingView))
@@ -137,8 +138,11 @@ namespace itools_source.Presenters
                         _menuView.ShowHideJobNumberAndOPId(false);
                         (_menuView.GetMdiParent() as MainView).btnNextEnabled = false;
 
+                        IConfigSettingView configSettingView = ConfigSettingView.GetInstance((MainView)_menuView.GetMdiParent());
+                        ICompanyRepository stockRepository = new CompanyRepository();
+
                         var configPresenter = ConfigUnity.unityContainer.Resolve<ConfigSettingPresenter>();
-                        configPresenter.Run((MainView)_menuView.GetMdiParent());
+                        configPresenter.Run(configSettingView, stockRepository);
                         break;
                     }
                 }
