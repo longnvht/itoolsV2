@@ -111,7 +111,7 @@ namespace itools_source.Views
             // 
             // tlpHeader
             // 
-            this.tlpHeader.BackColor = System.Drawing.Color.White;
+            this.tlpHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(96)))));
             resources.ApplyResources(this.tlpHeader, "tlpHeader");
             this.tlpHeader.Controls.Add(this._btnHome, 0, 0);
             this.tlpHeader.Controls.Add(this.lblName, 3, 0);
@@ -122,39 +122,41 @@ namespace itools_source.Views
             // lblName
             // 
             resources.ApplyResources(this.lblName, "lblName");
+            this.lblName.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblName.Name = "lblName";
             // 
             // label13
             // 
             resources.ApplyResources(this.label13, "label13");
+            this.label13.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label13.Name = "label13";
             // 
             // _btnHome
             // 
+            resources.ApplyResources(this._btnHome, "_btnHome");
             this._btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this._btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this._btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this._btnHome.FillColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this._btnHome, "_btnHome");
             this._btnHome.ForeColor = System.Drawing.Color.White;
-            this._btnHome.HoverState.Image = global::VinamiToolUser.Properties.Resources.home_96spx;
-            this._btnHome.Image = global::VinamiToolUser.Properties.Resources.home_96px;
+            this._btnHome.HoverState.Image = global::VinamiToolUser.Properties.Resources.home_500px;
+            this._btnHome.Image = global::VinamiToolUser.Properties.Resources.home_512px;
             this._btnHome.ImageSize = new System.Drawing.Size(30, 30);
             this._btnHome.Name = "_btnHome";
             // 
             // _btnLogOut
             // 
+            resources.ApplyResources(this._btnLogOut, "_btnLogOut");
             this._btnLogOut.BackColor = System.Drawing.Color.Transparent;
             this._btnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this._btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this._btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this._btnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            resources.ApplyResources(this._btnLogOut, "_btnLogOut");
-            this._btnLogOut.FillColor = System.Drawing.Color.White;
+            this._btnLogOut.FillColor = System.Drawing.Color.Transparent;
             this._btnLogOut.ForeColor = System.Drawing.Color.Black;
-            this._btnLogOut.HoverState.Image = global::VinamiToolUser.Properties.Resources.close_500pxc;
-            this._btnLogOut.Image = global::VinamiToolUser.Properties.Resources.close_500px;
+            this._btnLogOut.HoverState.Image = global::VinamiToolUser.Properties.Resources.close_500pxr;
+            this._btnLogOut.Image = global::VinamiToolUser.Properties.Resources.close_500px1;
             this._btnLogOut.ImageSize = new System.Drawing.Size(30, 30);
             this._btnLogOut.Name = "_btnLogOut";
             // 

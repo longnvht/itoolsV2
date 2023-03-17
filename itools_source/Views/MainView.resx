@@ -139,7 +139,7 @@
     <value>468, 0</value>
   </data>
   <data name="_lblOPIdDisplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 80</value>
+    <value>48, 70</value>
   </data>
   <data name="_lblOPIdDisplay.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -178,7 +178,7 @@
     <value>243, 0</value>
   </data>
   <data name="_lblJobNumberDisplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 80</value>
+    <value>93, 70</value>
   </data>
   <data name="_lblJobNumberDisplay.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -208,7 +208,7 @@
     <value>Segoe UI, 11.25pt</value>
   </data>
   <data name="_btnPrevious.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 15</value>
+    <value>4, 10</value>
   </data>
   <data name="_btnPrevious.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -241,7 +241,7 @@
     <value>Segoe UI, 11.25pt</value>
   </data>
   <data name="_btnNext.Location" type="System.Drawing.Point, System.Drawing">
-    <value>784, 15</value>
+    <value>784, 10</value>
   </data>
   <data name="_btnNext.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -283,7 +283,7 @@
     <value>531, 0</value>
   </data>
   <data name="_lblOPId.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 80</value>
+    <value>0, 70</value>
   </data>
   <data name="_lblOPId.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -319,7 +319,7 @@
     <value>462, 0</value>
   </data>
   <data name="_lblJobNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 80</value>
+    <value>0, 70</value>
   </data>
   <data name="_lblJobNumber.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -343,7 +343,7 @@
     <value>Bottom</value>
   </data>
   <data name="tlpFooter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 520</value>
+    <value>0, 530</value>
   </data>
   <data name="tlpFooter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -352,7 +352,7 @@
     <value>1</value>
   </data>
   <data name="tlpFooter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>934, 80</value>
+    <value>934, 70</value>
   </data>
   <data name="tlpFooter.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -370,16 +370,19 @@
     <value>1</value>
   </data>
   <data name="tlpFooter.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="_lblOPIdDisplay" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="_lblJobNumberDisplay" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="_btnPrevious" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="_btnNext" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="_lblOPId" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="_lblJobNumber" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,150,Percent,30,Percent,20,Percent,10,Percent,40,Absolute,152" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="_lblOPIdDisplay" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="_lblJobNumberDisplay" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="_btnPrevious" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="_btnNext" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="_lblOPId" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="_lblJobNumber" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,150,Percent,30,Percent,20,Percent,10,Percent,40,Absolute,154" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tlpHeader.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="_btnHome.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="_btnHome.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="_btnHome.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>6, 6</value>
   </data>
   <data name="_btnHome.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 37</value>
@@ -412,10 +415,10 @@
     <value>NoControl</value>
   </data>
   <data name="lblName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>634, 0</value>
+    <value>627, 0</value>
   </data>
   <data name="lblName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 43</value>
+    <value>35, 50</value>
   </data>
   <data name="lblName.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -451,16 +454,16 @@
     <value>NoControl</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>593, 0</value>
+    <value>541, 0</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 43</value>
+    <value>80, 50</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>Tên:</value>
+    <value>Nhân Viên:</value>
   </data>
   <data name="label13.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -477,17 +480,17 @@
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="_btnLogOut.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="_btnLogOut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="_btnLogOut.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 15pt</value>
   </data>
   <data name="_btnLogOut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>894, 3</value>
+    <value>887, 3</value>
   </data>
   <data name="_btnLogOut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 37</value>
+    <value>44, 44</value>
   </data>
   <data name="_btnLogOut.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -517,7 +520,7 @@
     <value>1</value>
   </data>
   <data name="tlpHeader.Size" type="System.Drawing.Size, System.Drawing">
-    <value>934, 43</value>
+    <value>934, 50</value>
   </data>
   <data name="tlpHeader.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -535,7 +538,7 @@
     <value>0</value>
   </data>
   <data name="tlpHeader.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="_btnHome" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lblName" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="label13" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="_btnLogOut" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,43,Percent,100,Absolute,60,Absolute,260,Absolute,43" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="_btnHome" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lblName" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="label13" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="_btnLogOut" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,50,Percent,100,Absolute,100,Absolute,260,Absolute,50" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -804,9 +807,6 @@
         wAP5/wAA///AA///AAD//+AD//8AAP//4Af//wAA///gB///AAD//+AH//8AAP//8A///wAA////////
         AAD///////8AAP///////wAA////////AAA=
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>

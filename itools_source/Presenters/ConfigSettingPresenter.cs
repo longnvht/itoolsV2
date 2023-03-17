@@ -96,8 +96,8 @@ namespace itools_source.Presenters
                                         MessageDialogStyle.Default);
                     frm.cmbMachine.Focus();
                 }
-                else if (string.IsNullOrEmpty(VinamiToolUser.Properties.Settings.Default.SerialPort) || string.IsNullOrWhiteSpace(VinamiToolUser.Properties.Settings.Default.SerialPort))
-                //else if(strSerialSelected == null)
+                //else if (string.IsNullOrEmpty(VinamiToolUser.Properties.Settings.Default.SerialPort) || string.IsNullOrWhiteSpace(VinamiToolUser.Properties.Settings.Default.SerialPort))
+                else if(strSerialSelected == null)
                 {
                     MessageDialog.Show("Bạn Chưa Chọn Cổng.",
                                         "Thông Báo",
@@ -146,6 +146,10 @@ namespace itools_source.Presenters
             {
                 frm.cmbSerialPort.Items.AddRange(lstSerialPort);
             }
+
+            frm.cmbCompany.SelectedValue = VinamiToolUser.Properties.Settings.Default.CompanyId;
+            frm.cmbMachine.SelectedValue = VinamiToolUser.Properties.Settings.Default.MachineId;
+            frm.cmbSerialPort.SelectedItem = VinamiToolUser.Properties.Settings.Default.SerialPort;
         }
         #endregion
 
