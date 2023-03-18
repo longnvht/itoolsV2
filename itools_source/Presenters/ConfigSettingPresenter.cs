@@ -154,16 +154,26 @@ namespace itools_source.Presenters
         #endregion
 
         #region Methods
-        public void Run(Form parentContainer)
+        //public void Run(Form parentContainer)
+        //{
+        //    if (_configSettingView != null)
+        //    {
+        //        _configSettingView.SetMdiParent((MainView)parentContainer);
+        //    }
+        //    else
+        //    {
+        //        _log.Error("_toolManagerView is null.");
+        //    }
+        //}
+
+        public void Run(IConfigSettingView pushToolView, ICompanyRepository companyRepository)
         {
-            if (_configSettingView != null)
-            {
-                _configSettingView.SetMdiParent((MainView)parentContainer);
-            }
-            else
-            {
-                _log.Error("_toolManagerView is null.");
-            }
+            _configSettingView = pushToolView;
+            _companyRepository = companyRepository;
+            _configSettingView.ConfigSettingView_Load += _configSettingView_ConfigSettingView_Load;
+            _configSettingView.btnSave_Click += _configSettingView_btnSave_Click;
+            _configSettingView.cmbCompany_SelectedValueChanged += _configSettingView_cmbCompany_SelectedValueChanged;
+            _configSettingView.Show();
         }
         #endregion
     }
