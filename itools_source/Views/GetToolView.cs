@@ -24,6 +24,8 @@ namespace itools_source.Views
             this.FormClosing += delegate { GetToolView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
             _btnToolSelect.Click += delegate { btnToolSelect_Click?.Invoke(this, EventArgs.Empty); };
             _tmGetTool.Tick += delegate { tmGetTool_Tick?.Invoke(this, EventArgs.Empty); };
+            _txtSearch.TextChanged += delegate { txtSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
+            _txtToolSearch.TextChanged += delegate { txtToolSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
         }
 
         #region Properties - Fields
@@ -93,6 +95,30 @@ namespace itools_source.Views
                 return txtDescription.Text;
             }
             set => txtDescription.Text = value;
+        }
+        public string strSearch
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_txtSearch.Text))
+                {
+                    return "";
+                }
+                return _txtSearch.Text;
+            }
+            set => _txtSearch.Text = value;
+        }
+        public string strToolSearch
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_txtToolSearch.Text))
+                {
+                    return "";
+                }
+                return _txtToolSearch.Text;
+            }
+            set => _txtToolSearch.Text = value;
         }
         public int? iToolId { get; set; }
         public string strTrayIndex { get; set; }
@@ -319,6 +345,48 @@ namespace itools_source.Views
                 tmGetTool.Stop();
             }
         }
+        internal void ToolSearch()
+        {
+            if (string.IsNullOrEmpty(strSearch))
+            {
+                _flpToolList.Controls.AddRange(lstToolButton.ToArray());
+                return;
+            }
+            string strSeacrhTest = strSearch.ToLower();
+            List<Guna2GradientButton> lstSearch = new List<Guna2GradientButton>();
+
+            int iCount = lstToolButton.Count;
+            for (int i = 0; i < iCount; i++)
+            {
+                string strTextButton = lstToolButton[i].Text.ToLower();
+                if (strTextButton.Contains(strSeacrhTest))
+                {
+                    lstSearch.Add(lstToolButton[i]);
+                }
+            }
+            _flpToolList.Controls.AddRange(lstSearch.ToArray());
+        }
+        internal void TraySearch()
+        {
+            if (string.IsNullOrEmpty(strToolSearch))
+            {
+                _flpTrayMachineList.Controls.AddRange(lstTrayButton.ToArray());
+                return;
+            }
+            string strSeacrhTest = strToolSearch.ToLower();
+            List<Guna2GradientButton> lstSearch = new List<Guna2GradientButton>();
+
+            int iCount = lstTrayButton.Count;
+            for (int i = 0; i < iCount; i++)
+            {
+                string strTextButton = lstTrayButton[i].Text.ToLower();
+                if (strTextButton.Contains(strSeacrhTest))
+                {
+                    lstSearch.Add(lstTrayButton[i]);
+                }
+            }
+            _flpTrayMachineList.Controls.AddRange(lstSearch.ToArray());
+        }
         #endregion
 
         #region Events
@@ -335,6 +403,8 @@ namespace itools_source.Views
         public event FormClosingEventHandler GetToolView_FormClosing;
         public event EventHandler btnToolSelect_Click;
         public event EventHandler tmGetTool_Tick;
+        public event EventHandler txtSearch_TextChanged;
+        public event EventHandler txtToolSearch_TextChanged;
         #endregion
     }
 }
