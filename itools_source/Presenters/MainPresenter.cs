@@ -248,6 +248,8 @@ namespace itools_source.Presenters
                             _mainView.Close();
                             break;
                         case nameof(ToolManagerView):
+                        case nameof(StockView):
+                        case nameof(ConfigSettingView):
                         case nameof(JobView):
                             var menuPresenter = ConfigUnity.unityContainer.Resolve<MenuPresenter>();
                             menuPresenter.Run((MainView)_mainView);

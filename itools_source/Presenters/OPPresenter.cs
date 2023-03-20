@@ -85,6 +85,13 @@ namespace itools_source.Presenters
             _log.Info("Double click OPId: " + _opView.iOPId);
         }
 
+        private void _opView_txtOPSearch_TextChanged(object sender, EventArgs e) 
+        {
+            OPView frm = (OPView)sender; 
+            frm.flpOPList.Controls.Clear();
+            frm.OpSearch(); 
+        }
+
         private void _opView_OPView_Load(object sender, EventArgs e)
         {
             // 1. Create list button.
@@ -123,6 +130,7 @@ namespace itools_source.Presenters
             _opView.btnflpOPlList_DoubleClick += _opView_btnflpList_DoubleClick;
             _opView.btnflpOPlList_Click += _opView_btnflpOPlList_Click;
             _opView.txtOPSearch_MouseClick += _opView_txtOPSearch_MouseClick;
+            _opView.txtOPSearch_TextChanged += _opView_txtOPSearch_TextChanged;
             _opView.OPView_FormClosing += _opView_OPView_FormClosing;
 
             _opView.Show();
