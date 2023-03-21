@@ -154,17 +154,6 @@ namespace itools_source.Presenters
         #endregion
 
         #region Methods
-        public void Run(Form parentContainer)
-        {
-            if (_configSettingView != null)
-            {
-                _configSettingView.SetMdiParent((MainView)parentContainer);
-            }
-            else
-            {
-                _log.Error("_toolManagerView is null.");
-            }
-        }
 
         public void Run(IConfigSettingView pushToolView, ICompanyRepository companyRepository)
         {
