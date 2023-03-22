@@ -27,7 +27,7 @@ namespace itools_source.Presenters
         {
             if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
             {
-                frmKeyBoard.Close();
+                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
             }
         }
 
@@ -83,6 +83,10 @@ namespace itools_source.Presenters
                 _opView.GetToolViewAction(_opView.iOPId, strOPNumber);
             }
             _log.Info("Double click OPId: " + _opView.iOPId);
+            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            {
+                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
+            }
         }
 
         private void _opView_txtOPSearch_TextChanged(object sender, EventArgs e) 

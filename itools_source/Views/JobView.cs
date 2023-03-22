@@ -15,10 +15,10 @@ namespace itools_source.Views
             InitializeComponent();
 
             this.Load += delegate { JobView_Load?.Invoke(this, EventArgs.Empty); };
-            btnJobNumberSearch.Click += delegate { btnJobNumberSearch_Click?.Invoke(this, EventArgs.Empty); };
-            _txtJobNumberSearch.MouseClick += delegate { txtJobNumberSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
-            _txtJobNumberSearch.KeyDown += delegate { txtJobNumberSearch_KeyDown?.Invoke(this, EventArgs.Empty as KeyEventArgs); };
-            FormClosing += delegate { JobView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
+            this.btnJobNumberSearch.Click += delegate { btnJobNumberSearch_Click?.Invoke(this, EventArgs.Empty); };
+            this._txtJobNumberSearch.MouseClick += delegate { txtJobNumberSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            this._txtJobNumberSearch.KeyDown += delegate { txtJobNumberSearch_KeyDown?.Invoke(this, EventArgs.Empty as KeyEventArgs); };
+            this.FormClosing += delegate { JobView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
         }
 
         #region Properties - Fields

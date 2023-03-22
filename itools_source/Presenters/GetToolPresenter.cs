@@ -42,7 +42,7 @@ namespace itools_source.Presenters
         {
             if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
             {
-                frmKeyBoard.Close();
+                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
             }
         }
 

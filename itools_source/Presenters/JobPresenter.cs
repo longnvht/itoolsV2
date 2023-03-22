@@ -26,7 +26,7 @@ namespace itools_source.Presenters
         {
             if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
             {
-                frmKeyBoard.Close();
+                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
             }
         }
 
@@ -101,6 +101,10 @@ namespace itools_source.Presenters
                     _log.Error("_jobView.lstOPNumberOPType and _jobView.strJobNumberCurrent is null.");
                 }
             }
+            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            {
+                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
+            }
 
         }
 
@@ -138,6 +142,10 @@ namespace itools_source.Presenters
                     frmJobView.flpJobNumberList.Controls.AddRange(lstSearch.ToArray());
                     _log.Info("List Button: " + lstSearch.ToString());
                 }
+            }
+            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            {
+                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
             }
         }
 
