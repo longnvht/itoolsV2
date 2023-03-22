@@ -17,6 +17,8 @@ namespace itools_source.Views.Interface
         string strToolCode { get; set; }
         string strToolModel { get; set; }
         string strToolDescription { get; set; }
+        string strSearch { get; set; }
+        string strToolSearch { get; set; }
         string strTrayIndex { get; set; }
         string strMachineCode { get; set; }
         char cStatusForm { get; set; }
@@ -43,6 +45,8 @@ namespace itools_source.Views.Interface
         event FormClosingEventHandler GetToolView_FormClosing;
         event EventHandler btnToolSelect_Click;
         event EventHandler tmGetTool_Tick;
+        event EventHandler txtSearch_TextChanged;
+        event EventHandler txtToolSearch_TextChanged;
         #endregion
 
         #region Methods

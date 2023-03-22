@@ -453,13 +453,13 @@ namespace itools_source.Presenters
                     return;
                 }
 
-                // Check tool is Machine and Tray.
-                if (!await _toolMachineTrayRepository.IsToolInMachineTray(iTrayId: _toolManagerView.iTrayID, _toolManagerView.iToolID))
-                {
-                    MessageBox.Show("Tool Không Có Trong Tray Của Máy!");
-                    _log.Info("Tool is not Machine and Tray!");
-                    return;
-                }
+                //// Check tool is Machine and Tray.
+                //if (!await _toolMachineTrayRepository.IsToolInMachineTray(iTrayId: _toolManagerView.iTrayID, _toolManagerView.iToolID))
+                //{
+                //    MessageBox.Show("Tool Không Có Trong Tray Của Máy!");
+                //    _log.Info("Tool is not Machine and Tray!");
+                //    return;
+                //}
 
                 switch (_toolManagerView.cStatusButton)
                 {
@@ -482,7 +482,7 @@ namespace itools_source.Presenters
                         }
                         break;
                     case '1': // AddPlugin
-                    case '2': // TakeOut
+                    case '2': // TakeOut And AddPlugin chung 1 stored
                         bResult = await _toolMachineTrayRepository.UpdateQuantityToolTray(toolMachineTray: _toolManagerView.toolTrayCurrent);
                         break;
                 }

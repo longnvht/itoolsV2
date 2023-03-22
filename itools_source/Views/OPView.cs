@@ -15,6 +15,7 @@ namespace itools_source.Views
 
             this.Load += delegate { OPView_Load?.Invoke(this, EventArgs.Empty); };
             _txtOPSearch.MouseClick += delegate { txtOPSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            _txtOPSearch.TextChanged += delegate { txtOPSearch_TextChanged?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
             this.FormClosing += delegate { OPView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
         }
 
@@ -67,6 +68,7 @@ namespace itools_source.Views
         public event EventHandler btnflpOPlList_DoubleClick;
         public event EventHandler btnflpOPlList_Click;
         public event EventHandler txtOPSearch_MouseClick;
+        public event EventHandler txtOPSearch_TextChanged;
         public event FormClosingEventHandler OPView_FormClosing;
         #endregion
 
@@ -90,7 +92,7 @@ namespace itools_source.Views
             btn.CheckedState.FillColor = System.Drawing.Color.FromArgb(238, 238, 255);
             btn.CheckedState.FillColor2 = System.Drawing.Color.FromArgb(148, 111, 207);
             btn.Font = new System.Drawing.Font("Segoe UI", 12F);
-            btn.ForeColor = System.Drawing.Color.FromArgb(0,0,64);
+            btn.ForeColor = System.Drawing.Color.FromArgb(0, 0, 64);
             btn.Margin = new System.Windows.Forms.Padding(10);
             btn.Location = new System.Drawing.Point(3, 3);
             btn.Size = new System.Drawing.Size(120, 100);
@@ -133,6 +135,26 @@ namespace itools_source.Views
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.Dock = DockStyle.Fill;
             }
+        }
+        internal void OpSearch() 
+        {
+            if (string.IsNullOrEmpty(strSearch)) 
+            { 
+                _flpOPList.Controls.AddRange(lstButton.ToArray()); 
+                return; 
+            } 
+            string strSeacrhTest = strSearch.ToLower(); 
+            List<Guna2GradientButton> lstSearch = new List<Guna2GradientButton>();
+            int iCount = lstButton.Count; 
+            for (int i = 0; i < iCount; i++) 
+            { 
+                string strTextButton = lstButton[i].Text.ToLower();
+                if (strTextButton.Contains(strSeacrhTest))
+                { 
+                    lstSearch.Add(lstButton[i]); 
+                } 
+            } 
+            _flpOPList.Controls.AddRange(lstSearch.ToArray()); 
         }
         #endregion
     }

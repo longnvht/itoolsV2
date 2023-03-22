@@ -523,7 +523,18 @@ namespace itools_source.Presenters
                 }
             }
         }
-
+        private void _getToolView_txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            GetToolView frm = (GetToolView)sender;
+            frm.flpToolList.Controls.Clear();
+            frm.ToolSearch();
+        }
+        private void _getToolView_txtToolSearch_TextChanged(object sender, EventArgs e)
+        {
+            GetToolView frm = (GetToolView)sender;
+            frm.flpTrayMachineList.Controls.Clear();
+            frm.TraySearch();
+        }
         private async void _getToolView_GetToolView_Load(object sender, EventArgs e)
         {
             GetToolView frm = (GetToolView)sender;
@@ -589,6 +600,8 @@ namespace itools_source.Presenters
             _getToolView.GetToolView_FormClosing += _getToolView_GetToolView_FormClosing;
             _getToolView.btnToolSelect_Click += _getToolView_btnToolSelect_Click;
             _getToolView.tmGetTool_Tick += _getToolView_tmGetTool_Tick;
+            _getToolView.txtSearch_TextChanged += _getToolView_txtSearch_TextChanged;
+            _getToolView.txtToolSearch_TextChanged += _getToolView_txtToolSearch_TextChanged;
 
             _getToolView.Show();
         }
