@@ -23,6 +23,7 @@ namespace itools_source.Presenters
 
         private IToolManagerView _toolManagerView;
         private IToolMachineTrayRepository _toolMachineTrayRepository;
+        private IStockTempRepository _stockTempRepository;
 
         private IToolRepository _toolRepository;
         private IWorkingTransactionRepository _workingTransactionRepository;
@@ -434,6 +435,8 @@ namespace itools_source.Presenters
             else
             {
                 bool bResult = false;
+                bool checkStockTemp = false;
+                bool checkUpdateStockTemp = false;
 
                 // Get detailed information
                 if (_toolManagerView.toolTrayCurrent == null)
@@ -460,11 +463,28 @@ namespace itools_source.Presenters
                 //    _log.Info("Tool is not Machine and Tray!");
                 //    return;
                 //}
+                StockTemp stockTemp = new StockTemp();
+                stockTemp.iToolId = _toolManagerView.iToolID;
+                stockTemp.iQuantity = _toolManagerView.iOperateQuantity.Value;
+                if (Program.sessionLogin["UserName"] != null)
+                {
+                    stockTemp.strUserLogin = Program.sessionLogin["UserName"].ToString();
+                }
+                stockTemp.dtCreateDate = null;
+                stockTemp.dtUpdateDate = ServerTime.GetServerTime().ToLocalTime();
 
                 switch (_toolManagerView.cStatusButton)
                 {
                     case '0': // AddNew
-                        bResult = await _toolMachineTrayRepository.UpdateTrayQuantityToolID(toolMachineTray: _toolManagerView.toolTrayCurrent);
+                        if (_stockTempRepository == null)
+                        {
+                            _stockTempRepository = new StockTempRepository();
+                        }
+                        checkUpdateStockTemp = await _stockTempRepository.UpdateQuantityInStockTempAdd(stockTemp: stockTemp);
+                        if(checkUpdateStockTemp)
+                        {
+                            bResult = await _toolMachineTrayRepository.UpdateTrayQuantityToolID(toolMachineTray: _toolManagerView.toolTrayCurrent);
+                        }
 
                         // Load ToolID and ToolCode to TrayIndex
                         foreach (var item in _toolManagerView.lstTrayButton)
@@ -482,8 +502,47 @@ namespace itools_source.Presenters
                         }
                         break;
                     case '1': // AddPlugin
-                    case '2': // TakeOut And AddPlugin chung 1 stored
-                        bResult = await _toolMachineTrayRepository.UpdateQuantityToolTray(toolMachineTray: _toolManagerView.toolTrayCurrent);
+                        if(_stockTempRepository == null)
+                        {
+                            _stockTempRepository = new StockTempRepository();
+                        }
+                        checkStockTemp = await _stockTempRepository.GetExsitsToolInStockTemp(stockTemp: stockTemp);
+                        if (checkStockTemp)
+                        {
+                            if (_stockTempRepository == null)
+                            {
+                                _stockTempRepository = new StockTempRepository();
+                            }
+                            bResult = await _stockTempRepository.UpdateQuantityInStockTempAdd(stockTemp: stockTemp);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Thêm Thất Bại!");
+                        }
+                        break;
+                    case '2': // TakeOut
+                        //bResult = await _toolMachineTrayRepository.UpdateQuantityToolTray(toolMachineTray: _toolManagerView.toolTrayCurrent);
+                        if (_stockTempRepository == null)
+                        {
+                            _stockTempRepository = new StockTempRepository();
+                        }
+                        checkStockTemp = await _stockTempRepository.GetExsitsToolInStockTemp(stockTemp: stockTemp);
+                        if (checkStockTemp)
+                        {
+                            if (_stockTempRepository == null)
+                            {
+                                _stockTempRepository = new StockTempRepository();
+                            }
+                            bResult = await _stockTempRepository.UpdateQuantityInStockTempTakeOut(stockTemp: stockTemp);
+                        }
+                        else
+                        {
+                            if (_stockTempRepository == null)
+                            {
+                                _stockTempRepository = new StockTempRepository();
+                            }
+                            bResult = await _stockTempRepository.AddToolAndQuantity(stockTemp: stockTemp);
+                        }
                         break;
                 }
 
@@ -512,32 +571,32 @@ namespace itools_source.Presenters
                         workingTransaction.strTransactionStatus = "Complete";
 
                         // Get quantity by ToolID in Stock.
-                        int? iStockOldQuantity = null;
-                        if (_toolManagerView.iToolID != null)
-                        {
-                            if (_stockRepository == null)
-                            {
-                                _stockRepository = new StockRepository();
-                            }
-                            iStockOldQuantity = await _stockRepository.GetQuantityByToolID(_toolManagerView.iToolID);
-                        }
+                        //int? iStockOldQuantity = null;
+                        //if (_toolManagerView.iToolID != null)
+                        //{
+                        //    if (_stockRepository == null)
+                        //    {
+                        //        _stockRepository = new StockRepository();
+                        //    }
+                        //    iStockOldQuantity = await _stockRepository.GetQuantityByToolID(_toolManagerView.iToolID);
+                        //}
 
                         // Update working transaction type.
-                        int? iStockNewQuantity = null;
+                        //int? iStockNewQuantity = null;
                         if (_toolManagerView.cStatusButton == '0') // Stock-
                         {
                             workingTransaction.strTransactiomType = "Add New";
-                            iStockNewQuantity = iStockOldQuantity - _toolManagerView.iOperateQuantity;
+                            //iStockNewQuantity = iStockOldQuantity - _toolManagerView.iOperateQuantity;
                         }
                         else if (_toolManagerView.cStatusButton == '1') // Stock-
                         {
                             workingTransaction.strTransactiomType = "Add Plugin";
-                            iStockNewQuantity = iStockOldQuantity - _toolManagerView.iOperateQuantity;
+                            //iStockNewQuantity = iStockOldQuantity - _toolManagerView.iOperateQuantity;
                         }
                         else // Stock+
                         {
                             workingTransaction.strTransactiomType = "Take Out";
-                            iStockNewQuantity = iStockOldQuantity + _toolManagerView.iOperateQuantity;
+                            //iStockNewQuantity = iStockOldQuantity + _toolManagerView.iOperateQuantity;
                         }
 
                         if (_workingTransactionRepository == null)
@@ -546,11 +605,12 @@ namespace itools_source.Presenters
                         }
                         bResultTransaction = await _workingTransactionRepository.AddWorkingTransaction(workingTransaction: workingTransaction);
 
-                        if (_stockRepository == null)
-                        {
-                            _stockRepository = new StockRepository();
-                        }
-                        bResultStock = await _stockRepository.UpdateQuantityStock(iToolID: _toolManagerView.iToolID, iQuantity: iStockNewQuantity);
+                        //if (_stockRepository == null)
+                        //{
+                        //    _stockRepository = new StockRepository();
+                        //}
+                        //bResultStock = await _stockRepository.UpdateQuantityStock(iToolID: _toolManagerView.iToolID, iQuantity: iStockNewQuantity);
+                        bResultStock = await _toolMachineTrayRepository.UpdateQuantityToolTray(toolMachineTray: _toolManagerView.toolTrayCurrent);
                     }
 
                     if (bResultTransaction)

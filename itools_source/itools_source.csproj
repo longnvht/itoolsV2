@@ -193,10 +193,12 @@
     <Compile Include="Models\Interface\IMenuRepository.cs" />
     <Compile Include="Models\Interface\IPermissionRepository.cs" />
     <Compile Include="Models\Interface\IStockRepository.cs" />
+    <Compile Include="Models\Interface\IStockTempRepository.cs" />
     <Compile Include="Models\Interface\IToolRepository.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\PermissionDetail.cs" />
+    <Compile Include="Models\StockTemp.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Interface\IUserAccountRepository.cs" />
@@ -229,6 +231,7 @@
     <Compile Include="Repository\MenuRepository.cs" />
     <Compile Include="Repository\PermissionRepository.cs" />
     <Compile Include="Repository\StockRepository.cs" />
+    <Compile Include="Repository\StockTempRepository.cs" />
     <Compile Include="Repository\ToolRepository.cs" />
     <Compile Include="Repository\UserAccountRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />

@@ -235,15 +235,26 @@ namespace itools_source.Presenters
                 _log.Info("Get ToolModel: " + _getToolView.strToolModel + ", ToolDescription: " + _getToolView.strToolDescription);
 
                 // 3. Get tool tray data.
-                if (VinamiToolUser.Properties.Settings.Default.MachineId != 0)
+                if (bToggle)
                 {
-                    _getToolView.lstTrayQuantity = await _getToolRepository.GetMachineTrayByToolId(_getToolView.iToolId, VinamiToolUser.Properties.Settings.Default.MachineId);
+                    _getToolView.lstMachineTrayQuantity = await _getToolRepository.GetMachineTrayQuantityByToolId(_getToolView.iToolId);
+                    if (_getToolView.lstMachineTrayQuantity != null)
+                    {
+                        _getToolView.CreateListButton(false); // MachineCode, ToolCode, Quantity
+                    }
                 }
-
-                if (_getToolView.lstTrayQuantity != null)
+                else
                 {
-                    // 4. Create list button.
-                    _getToolView.CreateListButton(true);
+                    if (VinamiToolUser.Properties.Settings.Default.MachineId != 0)
+                    {
+                        _getToolView.lstTrayQuantity = await _getToolRepository.GetMachineTrayByToolId(_getToolView.iToolId, VinamiToolUser.Properties.Settings.Default.MachineId);
+                    }
+
+                    if (_getToolView.lstTrayQuantity != null)
+                    {
+                        // 4. Create list button.
+                        _getToolView.CreateListButton(true);
+                    }
                 }
             }
             else

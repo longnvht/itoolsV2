@@ -272,13 +272,13 @@ namespace itools_source.Repository
                                 // 1.0. MachineCode
                                 if (!await mySqlDataReader.IsDBNullAsync(1))
                                 {
-                                    lstMT.Add(mySqlDataReader["MachineCode"]);
+                                    lstMT.Add(mySqlDataReader["WarehousessionCode"]);
                                 }
 
                                 // 1.1. TrayIndex
                                 if (!await mySqlDataReader.IsDBNullAsync(2))
                                 {
-                                    lstMT.Add(mySqlDataReader["TrayIndex"]);
+                                    lstMT.Add(mySqlDataReader["LocationCode"]);
                                 }
 
                                 // 1.2 Quantity
