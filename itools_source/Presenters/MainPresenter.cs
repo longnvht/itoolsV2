@@ -15,6 +15,7 @@ namespace itools_source.Presenters
 {
     public class MainPresenter
     {
+        VirtualKeyBoard frmKeyBoard;
         public MainPresenter(IMainView mainView, IUserAccountRepository userAccountRepository)
         {
             _mainView = mainView;
@@ -215,6 +216,10 @@ namespace itools_source.Presenters
                     }
                 }
             }
+            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            {
+                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
+            }
         }
 
         private void _mainView_btnPrevious_Click(object sender, EventArgs e)
@@ -289,6 +294,10 @@ namespace itools_source.Presenters
                             break;
                     }
                 }
+            }
+            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            {
+                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
             }
         }
 
