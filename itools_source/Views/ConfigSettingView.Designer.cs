@@ -37,6 +37,8 @@
             this._cmbSerialPort = new Guna.UI2.WinForms.Guna2ComboBox();
             this.tlpFooter = new System.Windows.Forms.TableLayoutPanel();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this._txtSerial = new Guna.UI2.WinForms.Guna2TextBox();
             this.tlpMain.SuspendLayout();
             this.tlpFooter.SuspendLayout();
             this.SuspendLayout();
@@ -45,57 +47,60 @@
             // 
             this.tlpMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this.tlpMain.ColumnCount = 4;
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.76923F));
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.07692F));
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 280F));
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.15385F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpMain.Controls.Add(this.lblCompany, 1, 1);
             this.tlpMain.Controls.Add(this.lblMachine, 1, 2);
-            this.tlpMain.Controls.Add(this.lblCOM, 1, 3);
             this.tlpMain.Controls.Add(this._cmbCompany, 2, 1);
             this.tlpMain.Controls.Add(this._cmbMachine, 2, 2);
-            this.tlpMain.Controls.Add(this._cmbSerialPort, 2, 3);
+            this.tlpMain.Controls.Add(this.lblCOM, 1, 4);
+            this.tlpMain.Controls.Add(this._cmbSerialPort, 2, 4);
+            this.tlpMain.Controls.Add(this.label1, 1, 3);
+            this.tlpMain.Controls.Add(this._txtSerial, 2, 3);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
             this.tlpMain.Name = "tlpMain";
-            this.tlpMain.RowCount = 5;
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpMain.Size = new System.Drawing.Size(800, 450);
+            this.tlpMain.RowCount = 6;
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpMain.Size = new System.Drawing.Size(800, 404);
             this.tlpMain.TabIndex = 0;
             // 
             // lblCompany
             // 
+            this.lblCompany.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblCompany.AutoSize = true;
-            this.lblCompany.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblCompany.Location = new System.Drawing.Point(213, 112);
+            this.lblCompany.Location = new System.Drawing.Point(193, 117);
             this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(63, 75);
+            this.lblCompany.Size = new System.Drawing.Size(63, 20);
             this.lblCompany.TabIndex = 0;
             this.lblCompany.Text = "Công ty:";
             this.lblCompany.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblMachine
             // 
+            this.lblMachine.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblMachine.AutoSize = true;
-            this.lblMachine.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblMachine.Location = new System.Drawing.Point(236, 187);
+            this.lblMachine.Location = new System.Drawing.Point(193, 167);
             this.lblMachine.Name = "lblMachine";
-            this.lblMachine.Size = new System.Drawing.Size(40, 75);
+            this.lblMachine.Size = new System.Drawing.Size(40, 20);
             this.lblMachine.TabIndex = 1;
             this.lblMachine.Text = "Máy:";
             this.lblMachine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblCOM
             // 
+            this.lblCOM.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblCOM.AutoSize = true;
-            this.lblCOM.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblCOM.Location = new System.Drawing.Point(180, 262);
+            this.lblCOM.Location = new System.Drawing.Point(193, 267);
             this.lblCOM.Name = "lblCOM";
-            this.lblCOM.Size = new System.Drawing.Size(96, 75);
+            this.lblCOM.Size = new System.Drawing.Size(96, 20);
             this.lblCOM.TabIndex = 2;
             this.lblCOM.Text = "Cổng kết nối:";
             this.lblCOM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -114,12 +119,12 @@
             this._cmbCompany.Font = new System.Drawing.Font("Segoe UI", 10F);
             this._cmbCompany.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this._cmbCompany.ItemHeight = 30;
-            this._cmbCompany.Location = new System.Drawing.Point(282, 131);
+            this._cmbCompany.Location = new System.Drawing.Point(313, 109);
             this._cmbCompany.Name = "_cmbCompany";
             this._cmbCompany.ShadowDecoration.BorderRadius = 10;
             this._cmbCompany.ShadowDecoration.Depth = 6;
             this._cmbCompany.ShadowDecoration.Enabled = true;
-            this._cmbCompany.Size = new System.Drawing.Size(274, 36);
+            this._cmbCompany.Size = new System.Drawing.Size(294, 36);
             this._cmbCompany.TabIndex = 3;
             this._cmbCompany.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -137,14 +142,14 @@
             this._cmbMachine.Font = new System.Drawing.Font("Segoe UI", 10F);
             this._cmbMachine.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this._cmbMachine.ItemHeight = 30;
-            this._cmbMachine.Location = new System.Drawing.Point(282, 206);
+            this._cmbMachine.Location = new System.Drawing.Point(313, 159);
             this._cmbMachine.Name = "_cmbMachine";
             this._cmbMachine.ShadowDecoration.BorderRadius = 10;
             this._cmbMachine.ShadowDecoration.CustomizableEdges.BottomLeft = false;
             this._cmbMachine.ShadowDecoration.CustomizableEdges.BottomRight = false;
             this._cmbMachine.ShadowDecoration.Depth = 6;
             this._cmbMachine.ShadowDecoration.Enabled = true;
-            this._cmbMachine.Size = new System.Drawing.Size(274, 36);
+            this._cmbMachine.Size = new System.Drawing.Size(294, 36);
             this._cmbMachine.TabIndex = 4;
             this._cmbMachine.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -162,14 +167,14 @@
             this._cmbSerialPort.Font = new System.Drawing.Font("Segoe UI", 10F);
             this._cmbSerialPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this._cmbSerialPort.ItemHeight = 30;
-            this._cmbSerialPort.Location = new System.Drawing.Point(282, 281);
+            this._cmbSerialPort.Location = new System.Drawing.Point(313, 259);
             this._cmbSerialPort.Name = "_cmbSerialPort";
             this._cmbSerialPort.ShadowDecoration.BorderRadius = 10;
             this._cmbSerialPort.ShadowDecoration.CustomizableEdges.BottomLeft = false;
             this._cmbSerialPort.ShadowDecoration.CustomizableEdges.BottomRight = false;
             this._cmbSerialPort.ShadowDecoration.Depth = 6;
             this._cmbSerialPort.ShadowDecoration.Enabled = true;
-            this._cmbSerialPort.Size = new System.Drawing.Size(274, 36);
+            this._cmbSerialPort.Size = new System.Drawing.Size(294, 36);
             this._cmbSerialPort.TabIndex = 5;
             this._cmbSerialPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -214,14 +219,47 @@
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Lưu";
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(193, 217);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Serial Machine:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // _txtSerial
+            // 
+            this._txtSerial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtSerial.BorderRadius = 10;
+            this._txtSerial.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this._txtSerial.DefaultText = "";
+            this._txtSerial.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this._txtSerial.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this._txtSerial.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtSerial.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtSerial.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtSerial.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this._txtSerial.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtSerial.Location = new System.Drawing.Point(313, 209);
+            this._txtSerial.Name = "_txtSerial";
+            this._txtSerial.PasswordChar = '\0';
+            this._txtSerial.PlaceholderText = "";
+            this._txtSerial.ReadOnly = true;
+            this._txtSerial.SelectedText = "";
+            this._txtSerial.Size = new System.Drawing.Size(294, 36);
+            this._txtSerial.TabIndex = 6;
+            // 
             // ConfigSettingView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tlpFooter);
             this.Controls.Add(this.tlpMain);
+            this.Controls.Add(this.tlpFooter);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -264,5 +302,7 @@
         private System.Windows.Forms.Label lblMachine;
         private System.Windows.Forms.Label lblCOM;
         private Guna.UI2.WinForms.Guna2Button btnSave;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2TextBox _txtSerial;
     }
 }
