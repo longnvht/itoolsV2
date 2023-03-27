@@ -7,7 +7,8 @@ namespace itools_source.Views.Interface
     {
         #region Properties - Fields
         string strCompanyId { get; set; }
-        string strMachineId { get; set; }
+        int? MachineID { get; set; }
+        string strSerialMachine { get; set; }
         #endregion
 
         #region Events
@@ -22,6 +23,7 @@ namespace itools_source.Views.Interface
         void Hide();
         Form GetMdiParent();
         void SetMdiParent(Form mdiParent);
+        string GetComputerSerialNumber();
         #endregion
     }
 }

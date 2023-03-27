@@ -31,14 +31,14 @@
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.lblCompany = new System.Windows.Forms.Label();
             this.lblMachine = new System.Windows.Forms.Label();
-            this.lblCOM = new System.Windows.Forms.Label();
             this._cmbCompany = new Guna.UI2.WinForms.Guna2ComboBox();
             this._cmbMachine = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.lblCOM = new System.Windows.Forms.Label();
             this._cmbSerialPort = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.lblSerialMachine = new System.Windows.Forms.Label();
+            this._txtSerialMachine = new Guna.UI2.WinForms.Guna2TextBox();
             this.tlpFooter = new System.Windows.Forms.TableLayoutPanel();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this._txtSerial = new Guna.UI2.WinForms.Guna2TextBox();
             this.tlpMain.SuspendLayout();
             this.tlpFooter.SuspendLayout();
             this.SuspendLayout();
@@ -57,8 +57,8 @@
             this.tlpMain.Controls.Add(this._cmbMachine, 2, 2);
             this.tlpMain.Controls.Add(this.lblCOM, 1, 4);
             this.tlpMain.Controls.Add(this._cmbSerialPort, 2, 4);
-            this.tlpMain.Controls.Add(this.label1, 1, 3);
-            this.tlpMain.Controls.Add(this._txtSerial, 2, 3);
+            this.tlpMain.Controls.Add(this.lblSerialMachine, 1, 3);
+            this.tlpMain.Controls.Add(this._txtSerialMachine, 2, 3);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
             this.tlpMain.Name = "tlpMain";
@@ -93,17 +93,6 @@
             this.lblMachine.TabIndex = 1;
             this.lblMachine.Text = "Máy:";
             this.lblMachine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblCOM
-            // 
-            this.lblCOM.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblCOM.AutoSize = true;
-            this.lblCOM.Location = new System.Drawing.Point(193, 267);
-            this.lblCOM.Name = "lblCOM";
-            this.lblCOM.Size = new System.Drawing.Size(96, 20);
-            this.lblCOM.TabIndex = 2;
-            this.lblCOM.Text = "Cổng kết nối:";
-            this.lblCOM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // _cmbCompany
             // 
@@ -153,6 +142,17 @@
             this._cmbMachine.TabIndex = 4;
             this._cmbMachine.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // lblCOM
+            // 
+            this.lblCOM.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblCOM.AutoSize = true;
+            this.lblCOM.Location = new System.Drawing.Point(193, 267);
+            this.lblCOM.Name = "lblCOM";
+            this.lblCOM.Size = new System.Drawing.Size(96, 20);
+            this.lblCOM.TabIndex = 2;
+            this.lblCOM.Text = "Cổng kết nối:";
+            this.lblCOM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // _cmbSerialPort
             // 
             this._cmbSerialPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -177,6 +177,39 @@
             this._cmbSerialPort.Size = new System.Drawing.Size(294, 36);
             this._cmbSerialPort.TabIndex = 5;
             this._cmbSerialPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblSerialMachine
+            // 
+            this.lblSerialMachine.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblSerialMachine.AutoSize = true;
+            this.lblSerialMachine.Location = new System.Drawing.Point(193, 217);
+            this.lblSerialMachine.Name = "lblSerialMachine";
+            this.lblSerialMachine.Size = new System.Drawing.Size(109, 20);
+            this.lblSerialMachine.TabIndex = 2;
+            this.lblSerialMachine.Text = "Serial Machine:";
+            this.lblSerialMachine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // _txtSerialMachine
+            // 
+            this._txtSerialMachine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtSerialMachine.BorderRadius = 10;
+            this._txtSerialMachine.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this._txtSerialMachine.DefaultText = "";
+            this._txtSerialMachine.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this._txtSerialMachine.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this._txtSerialMachine.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtSerialMachine.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this._txtSerialMachine.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtSerialMachine.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this._txtSerialMachine.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this._txtSerialMachine.Location = new System.Drawing.Point(313, 209);
+            this._txtSerialMachine.Name = "_txtSerialMachine";
+            this._txtSerialMachine.PasswordChar = '\0';
+            this._txtSerialMachine.PlaceholderText = "";
+            this._txtSerialMachine.SelectedText = "";
+            this._txtSerialMachine.Size = new System.Drawing.Size(294, 36);
+            this._txtSerialMachine.TabIndex = 6;
+            this._txtSerialMachine.Enabled = false;
             // 
             // tlpFooter
             // 
@@ -218,39 +251,6 @@
             this.btnSave.Size = new System.Drawing.Size(154, 40);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Lưu";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(193, 217);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Serial Machine:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // _txtSerial
-            // 
-            this._txtSerial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this._txtSerial.BorderRadius = 10;
-            this._txtSerial.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this._txtSerial.DefaultText = "";
-            this._txtSerial.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this._txtSerial.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this._txtSerial.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this._txtSerial.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this._txtSerial.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtSerial.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this._txtSerial.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this._txtSerial.Location = new System.Drawing.Point(313, 209);
-            this._txtSerial.Name = "_txtSerial";
-            this._txtSerial.PasswordChar = '\0';
-            this._txtSerial.PlaceholderText = "";
-            this._txtSerial.ReadOnly = true;
-            this._txtSerial.SelectedText = "";
-            this._txtSerial.Size = new System.Drawing.Size(294, 36);
-            this._txtSerial.TabIndex = 6;
             // 
             // ConfigSettingView
             // 
@@ -295,6 +295,13 @@
             get { return _cmbSerialPort; }
             set { _cmbSerialPort = value; }
         }
+        
+        private Guna.UI2.WinForms.Guna2TextBox _txtSerialMachine;
+        public Guna.UI2.WinForms.Guna2TextBox txtSerialMachine
+        {
+            get { return _txtSerialMachine; }
+            set { _txtSerialMachine = value; }
+        }
 
         private System.Windows.Forms.TableLayoutPanel tlpMain;
         private System.Windows.Forms.TableLayoutPanel tlpFooter;
@@ -302,7 +309,6 @@
         private System.Windows.Forms.Label lblMachine;
         private System.Windows.Forms.Label lblCOM;
         private Guna.UI2.WinForms.Guna2Button btnSave;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2TextBox _txtSerial;
+        private System.Windows.Forms.Label lblSerialMachine;
     }
 }

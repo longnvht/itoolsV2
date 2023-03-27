@@ -1,5 +1,6 @@
 ﻿using itools_source.Views.Interface;
 using System;
+using System.Management;
 using System.Windows.Forms;
 
 namespace itools_source.Views
@@ -16,7 +17,8 @@ namespace itools_source.Views
 
         #region Properties - Fields
         public string strCompanyId { get; set; }
-        public string strMachineId { get; set; }
+        public int? MachineID { get; set; }
+        public string strSerialMachine { get; set; }
 
         // Singleton pattern (Open a single form instance)
         private static ConfigSettingView _instance;
@@ -74,6 +76,20 @@ namespace itools_source.Views
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.Dock = DockStyle.Fill;
             }
+        }
+        public string GetComputerSerialNumber()
+        {
+            ManagementClass mc = new ManagementClass("Win32_BIOS");
+            ManagementObjectCollection moc = mc.GetInstances();
+
+            string serialNumber = "";
+
+            foreach (ManagementObject mo in moc)
+            {
+                serialNumber = mo["SerialNumber"].ToString();
+                break;
+            }
+            return serialNumber;
         }
         #endregion
     }

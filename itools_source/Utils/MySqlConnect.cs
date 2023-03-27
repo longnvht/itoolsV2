@@ -22,6 +22,15 @@ namespace itools_source.Utils
             _strPASSWORD = "Vinam@12345";
             return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
         }
+        public static string ConnectionStringTwo()
+        {
+            _strHOST = "192.168.0.50";
+            _strPORT = "3306";
+            _strDATABASE_MAME = "tqteamne_itools";
+            _strUSER_NAME = "admin";
+            _strPASSWORD = "Vinam@12345";
+            return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
+        }
 
         public static MySqlConnection Open()
         {
@@ -41,6 +50,24 @@ namespace itools_source.Utils
             }
             return null;
         }
+        public static MySqlConnection OpenTwo()
+        {
+            try
+            {
+                if (ConnectionStringTwo() == null)
+                {
+                    return null;
+                }
+                MySqlConnection conn = new MySqlConnection(ConnectionStringTwo());
+                conn.Open();
+                return conn;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return null;
+        }
 
         public static async Task<MySqlConnection> OpenAsync()
         {
@@ -51,6 +78,24 @@ namespace itools_source.Utils
                     return null;
                 }
                 MySqlConnection conn = new MySqlConnection(ConnectionString());
+                await conn.OpenAsync();
+                return conn;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return null;
+        }
+        public static async Task<MySqlConnection> OpenAsyncTwo()
+        {
+            try
+            {
+                if (ConnectionStringTwo() == null)
+                {
+                    return null;
+                }
+                MySqlConnection conn = new MySqlConnection(ConnectionStringTwo());
                 await conn.OpenAsync();
                 return conn;
             }

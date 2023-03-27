@@ -66,17 +66,17 @@ namespace itools_source.Presenters
             }
         }
 
-        private void _configSettingView_btnSave_Click(object sender, EventArgs e)
+        private async void _configSettingView_btnSave_Click(object sender, EventArgs e)
         {
             if (sender != null)
             {
                 ConfigSettingView frm = sender as ConfigSettingView;
-
+                bool bResult;
                 // Get list company, machine and get serial port.
                 Company companySelected = frm.cmbCompany.SelectedItem as Company;
                 Machine machineSelected = frm.cmbMachine.SelectedItem as Machine;
                 string strSerialSelected = frm.cmbSerialPort.SelectedItem as string;
-
+                string checkSerialMachine = await _machineRepository.GetExsitsSerialMachine(frm.txtSerialMachine.Text);
                 // Set company, machine, and serial port to Properties.Setting
                 if (companySelected == null)
                 {
@@ -106,6 +106,14 @@ namespace itools_source.Presenters
                                         MessageDialogStyle.Default);
                     frm.cmbSerialPort.Focus();
                 }
+                else if (!string.IsNullOrEmpty(checkSerialMachine))
+                {
+                    MessageDialog.Show("Mã máy đã được sử dụng.",
+                                        "Thông Báo",
+                                        MessageDialogButtons.OK,
+                                        MessageDialogIcon.Error,
+                                        MessageDialogStyle.Default);
+                }
                 else
                 {
                     VinamiToolUser.Properties.Settings.Default.CompanyId = companySelected.iCompanyId;
@@ -113,11 +121,23 @@ namespace itools_source.Presenters
                     VinamiToolUser.Properties.Settings.Default.SerialPort = strSerialSelected;
 
                     VinamiToolUser.Properties.Settings.Default.Save();
-                    MessageDialog.Show("Lưu Thành Công.",
+                    bResult = await _machineRepository.UpdateSerialMachine(machineSelected.iMachineId, frm.txtSerialMachine.Text);
+                    if (bResult)
+                    {
+                        MessageDialog.Show("Lưu Thành Công.",
                                         "Thông Báo",
                                         MessageDialogButtons.OK,
                                         MessageDialogIcon.Information,
                                         MessageDialogStyle.Default);
+                    }
+                    else
+                    {
+                        MessageDialog.Show("Lưu Thất Bại.",
+                                        "Thông Báo",
+                                        MessageDialogButtons.OK,
+                                        MessageDialogIcon.Error,
+                                        MessageDialogStyle.Default);
+                    }
                 }
             }
         }
@@ -146,7 +166,10 @@ namespace itools_source.Presenters
             {
                 frm.cmbSerialPort.Items.AddRange(lstSerialPort);
             }
+            // 3. Load serial machine
+            frm.txtSerialMachine.Text = _configSettingView.GetComputerSerialNumber();
 
+            // Default value form load
             frm.cmbCompany.SelectedValue = VinamiToolUser.Properties.Settings.Default.CompanyId;
             frm.cmbMachine.SelectedValue = VinamiToolUser.Properties.Settings.Default.MachineId;
             frm.cmbSerialPort.SelectedItem = VinamiToolUser.Properties.Settings.Default.SerialPort;
