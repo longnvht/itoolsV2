@@ -30,7 +30,7 @@ namespace itools_source.Presenters
             }
         }
 
-        private void _jobView_txtJobNumberSearch_MouseClick(object sender, EventArgs e)
+        private void _showVitualKeyBoard(object sender, EventArgs e)
         {
             if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any())
             {
@@ -108,7 +108,7 @@ namespace itools_source.Presenters
 
         }
 
-        private async void _jobView_btnJobNumberSearch_Click(object sender, EventArgs e)
+        private async void _jobSearchEvent(object sender, EventArgs e)
         {
             JobView frmJobView = (JobView)sender;
 
@@ -175,10 +175,10 @@ namespace itools_source.Presenters
             _jobRepository = jobRepository;
 
             _jobView.JobView_Load += _jobView_JobView_Load;
-            _jobView.btnJobNumberSearch_Click += _jobView_btnJobNumberSearch_Click;
+            _jobView.ShowVitualKeyBoard += _showVitualKeyBoard;
             _jobView.btnflpJobNumberList_DoubleClick += _jobView_btnflpJobNumberList_DoubleClick;
             _jobView.btnflpJobNumberList_Click += _jobView_btnflpJobNumberList_Click;
-            _jobView.txtJobNumberSearch_MouseClick += _jobView_txtJobNumberSearch_MouseClick;
+            _jobView.SearchEvent += _jobSearchEvent;
             _jobView.JobView_FormClosing += _jobView_JobView_FormClosing;
 
             _jobView.Show();

@@ -15,9 +15,13 @@ namespace itools_source.Views
             InitializeComponent();
 
             this.Load += delegate { JobView_Load?.Invoke(this, EventArgs.Empty); };
-            this.btnJobNumberSearch.Click += delegate { btnJobNumberSearch_Click?.Invoke(this, EventArgs.Empty); };
-            this._txtJobNumberSearch.MouseClick += delegate { txtJobNumberSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
-            this._txtJobNumberSearch.KeyDown += delegate { txtJobNumberSearch_KeyDown?.Invoke(this, EventArgs.Empty as KeyEventArgs); };
+            this.btnJobNumberSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
+            this._txtJobNumberSearch.MouseClick += delegate { ShowVitualKeyBoard?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            this._txtJobNumberSearch.KeyDown += (s,e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                    SearchEvent?.Invoke(this, EventArgs.Empty as KeyEventArgs); 
+            };
             this.FormClosing += delegate { JobView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
         }
 
@@ -128,11 +132,10 @@ namespace itools_source.Views
 
         #region Events
         public event EventHandler JobView_Load;
-        public event EventHandler btnJobNumberSearch_Click;
         public event EventHandler btnflpJobNumberList_Click;
         public event EventHandler btnflpJobNumberList_DoubleClick;
-        public event EventHandler txtJobNumberSearch_MouseClick;
-        public event EventHandler txtJobNumberSearch_KeyDown;
+        public event EventHandler SearchEvent;
+        public event EventHandler ShowVitualKeyBoard;
         public event FormClosingEventHandler JobView_FormClosing;
         #endregion
     }

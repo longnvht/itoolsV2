@@ -19,10 +19,10 @@ namespace itools_source.Views.Interface
 
         #region Events
         event EventHandler JobView_Load;
-        event EventHandler btnJobNumberSearch_Click;
         event EventHandler btnflpJobNumberList_DoubleClick;
         event EventHandler btnflpJobNumberList_Click;
-        event EventHandler txtJobNumberSearch_MouseClick;
+        event EventHandler SearchEvent;
+        event EventHandler ShowVitualKeyBoard;
         event FormClosingEventHandler JobView_FormClosing;
         #endregion
 
