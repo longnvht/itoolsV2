@@ -347,7 +347,8 @@ namespace itools_source.Presenters
 
                             if (_toolManagerView.iTrayID != null)
                             {
-                                _toolManagerView.strTrayIndex = strTextButton.Substring(0, i).Split(' ').GetValue(1).ToString();
+                                //_toolManagerView.strTrayIndex = strTextButton.Substring(0, i).Split(' ').GetValue(0).ToString();
+                                _toolManagerView.strTrayIndex = strTextButton.Substring(0, i).ToString();
                                 _toolManagerView.strToolCode = strTextButton.Substring(i + 1, iLength - 1 - i);
                             }
                             else

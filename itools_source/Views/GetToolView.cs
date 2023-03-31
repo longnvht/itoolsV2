@@ -205,17 +205,19 @@ namespace itools_source.Views
                 case '1': // Click tool -> On FlowLayoutPandel Select TrayIndex.
                     _tlpToolMachineList.Visible = true;
                     _tlpToolMachineList.Dock = DockStyle.Right;
+                    _flpToolList.Enabled = false;
                     break;
                 case '2': // Click tool -> Off FlowLayoutPandel Select TrayIndex.
                     if (tlpToolMachineList.Visible == true)
                     {
-                        tlpToolMachineList.Visible = false;
+                        tlpToolMachineList.Visible = false; 
                         tlpToolMachineList.Dock = DockStyle.Right;
                         tlpToolMachineList.BringToFront();
                     }
                     break;
                 case '3': // Cancel select TrayIndex or view Machine/Tray.
                     _tlpToolMachineList.Visible = false;
+                    _flpToolList.Enabled = true;
                     break;
                 case '4': // Double select TrayIndex.
                     btnGetTool.Enabled = false;

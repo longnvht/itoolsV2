@@ -221,6 +221,7 @@ namespace itools_source.Views
                     this._grbToolList.Visible = false;
                     break;
                 case '4': // Save
+                    this._txtOperateQuantity.Text = string.Empty;
                     this._txtOperateQuantity.Enabled = false;
 
                     this.btnTakeOut.Enabled = false;
