@@ -123,10 +123,10 @@
             this._guna2VScrollBar_flpJobNumberList.BorderRadius = 10;
             this._guna2VScrollBar_flpJobNumberList.InUpdate = false;
             this._guna2VScrollBar_flpJobNumberList.LargeChange = 10;
-            this._guna2VScrollBar_flpJobNumberList.Location = new System.Drawing.Point(782, 43);
+            this._guna2VScrollBar_flpJobNumberList.Location = new System.Drawing.Point(780, 43);
             this._guna2VScrollBar_flpJobNumberList.Name = "_guna2VScrollBar_flpJobNumberList";
-            this._guna2VScrollBar_flpJobNumberList.ScrollbarSize = 18;
-            this._guna2VScrollBar_flpJobNumberList.Size = new System.Drawing.Size(18, 407);
+            this._guna2VScrollBar_flpJobNumberList.ScrollbarSize = 20;
+            this._guna2VScrollBar_flpJobNumberList.Size = new System.Drawing.Size(20, 407);
             this._guna2VScrollBar_flpJobNumberList.TabIndex = 0;
             this._guna2VScrollBar_flpJobNumberList.ThumbSize = 100F;
             // 
