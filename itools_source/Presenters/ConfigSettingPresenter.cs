@@ -15,17 +15,17 @@ namespace itools_source.Presenters
 {
     public class ConfigSettingPresenter
     {
-        public ConfigSettingPresenter(IConfigSettingView configSettingView, ICompanyRepository companyRepository)
-        {
-            _configSettingView = configSettingView;
-            _companyRepository = companyRepository;
+        //public ConfigSettingPresenter(IConfigSettingView configSettingView, ICompanyRepository companyRepository)
+        //{
+        //    _configSettingView = configSettingView;
+        //    _companyRepository = companyRepository;
 
-            _configSettingView.ConfigSettingView_Load += _configSettingView_ConfigSettingView_Load;
-            _configSettingView.btnSave_Click += _configSettingView_btnSave_Click;
-            _configSettingView.cmbCompany_SelectedValueChanged += _configSettingView_cmbCompany_SelectedValueChanged;
+        //    _configSettingView.ConfigSettingView_Load += _configSettingView_ConfigSettingView_Load;
+        //    _configSettingView.btnSave_Click += _configSettingView_btnSave_Click;
+        //    _configSettingView.cmbCompany_SelectedValueChanged += _configSettingView_cmbCompany_SelectedValueChanged;
 
-            _configSettingView.Show();
-        }
+        //    _configSettingView.Show();
+        //}
 
         #region Properties - Fields
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(MenuPresenter).Name);
@@ -106,7 +106,7 @@ namespace itools_source.Presenters
                                         MessageDialogStyle.Default);
                     frm.cmbSerialPort.Focus();
                 }
-                else if (!string.IsNullOrEmpty(checkSerialMachine))
+                else if (!string.IsNullOrEmpty(checkSerialMachine) && frm.cmbSerialPort.Text == VinamiToolUser.Properties.Settings.Default.SerialPort)
                 {
                     MessageDialog.Show("Mã máy đã được sử dụng.",
                                         "Thông Báo",

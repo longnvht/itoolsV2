@@ -22,6 +22,7 @@ namespace itools_source.Views.Interface
         string strTrayIndex { get; set; }
         string strMachineCode { get; set; }
         char cStatusForm { get; set; }
+        int countTimer { get; set; }
         SerialPort serialPortGetTool { get; set; }
         List<Guna2GradientButton> lstToolButton { get; set; }
         List<Guna2GradientButton> lstTrayButton { get; set; }

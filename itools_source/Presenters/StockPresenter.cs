@@ -10,15 +10,15 @@ namespace itools_source.Presenters
 {
     public class StockPresenter
     {
-        public StockPresenter(IStockView stockView, IStockRepository stockRepository)
-        {
-            _stockView = stockView;
-            _stockRepository = stockRepository;
+        //public StockPresenter(IStockView stockView, IStockRepository stockRepository)
+        //{
+        //    _stockView = stockView;
+        //    _stockRepository = stockRepository;
 
-            _stockView.StockView_Load += _stockView_StockView_Load;
+        //    _stockView.StockView_Load += _stockView_StockView_Load;
 
-            _stockView.Show();
-        }
+        //    _stockView.Show();
+        //}
 
         #region Properties - Fields
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(StockPresenter).Name);

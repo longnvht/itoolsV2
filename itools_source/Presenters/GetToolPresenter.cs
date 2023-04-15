@@ -272,11 +272,11 @@ namespace itools_source.Presenters
         private void _getToolView_tmGetTool_Tick(object sender, EventArgs e)
         {
             GetToolView frm = (GetToolView)sender;
-            frm.countTimer += 1;
-            frm.txtCheckTime.Text = frm.countTimer.ToString();
-            if (frm.countTimer > 5)
+            _getToolView.countTimer += 1;
+            frm.txtCheckTime.Text = _getToolView.countTimer.ToString();
+            if (_getToolView.countTimer > 1)
             {
-                frm.tmGetTool.Stop();
+                _getToolView.OnOffTimer(false);
                 MessageBox.Show("Hết thời gian xử lý!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -306,89 +306,100 @@ namespace itools_source.Presenters
                         _getToolView.serialPortGetTool.Open();
                         break;
                     }
+                    else
+                    {
+                        MessageDialog.Show("Máy Chưa Cấu Hình Cổng Port.",
+                                                    "Thông Báo",
+                                                    MessageDialogButtons.OK,
+                                                    MessageDialogIcon.Information,
+                                                    MessageDialogStyle.Default);
+                        _log.Error("Properties.Settings.Default.SerialPort is empty.");
+                    }
                 }
             }
 
             if (_getToolView.serialPortGetTool.IsOpen)
             {
-                _getToolView.serialPortGetTool.Write("100\n");
-                GetToolView frm = (GetToolView)sender;
-                frm.countTimer = 0;
                 _getToolView.OnOffTimer(true);
-            }
+                _getToolView.countTimer = 0;
+                _getToolView.serialPortGetTool.Write("100\n");
 
-            while (!sendGetToolCheck)
-            {
-                while (sendCheck)
+                while (!sendGetToolCheck)
                 {
-                    // 1. Checked button.
-                    bool bCheck = false;
-                    GetToolView frm = (GetToolView)sender;
-                    string strBtnText = null;
-                    foreach (var item in frm.flpTrayMachineList.Controls)
+                    if (_getToolView.countTimer > 1)
                     {
-                        if (item.GetType() != typeof(Guna2GradientButton))
-                        {
-                            continue;
-                        }
-                        Guna2GradientButton btn = (Guna2GradientButton)item;
-                        if (btn.Checked)
-                        {
-                            btn.Checked = false;
-                            bCheck = true;
-                            strBtnText = btn.Text;
-                            break;
-                        }
+                        sendGetToolCheck = true;
+                        break;
                     }
-
-                    // 2. Send to serial.
-                    if (bCheck)
+                    while (sendCheck)
                     {
-                        _getToolView.strTrayIndex = strBtnText.Split('\n').GetValue(0).ToString();
-
-                        string strSendSerialCom = "101," + _getToolView.strTrayIndex.Split('_').GetValue(1).ToString() + "\n";
-                        frm.btnGetTool.Enabled = false;
-                        if (SerialPort.GetPortNames().Length == 0)
+                        // 1. Checked button.
+                        bool bCheck = false;
+                        GetToolView frm = (GetToolView)sender;
+                        string strBtnText = null;
+                        foreach (var item in frm.flpTrayMachineList.Controls)
                         {
-                            MessageBox.Show("Không có cổng COM!");
-                            _log.Info("Not connect COM!");
-                            return;
+                            if (item.GetType() != typeof(Guna2GradientButton))
+                            {
+                                continue;
+                            }
+                            Guna2GradientButton btn = (Guna2GradientButton)item;
+                            if (btn.Checked)
+                            {
+                                btn.Checked = false;
+                                bCheck = true;
+                                strBtnText = btn.Text;
+                                break;
+                            }
                         }
-                        if (!_getToolView.serialPortGetTool.IsOpen)
-                        {
-                            if (string.IsNullOrEmpty(VinamiToolUser.Properties.Settings.Default.SerialPort) && string.IsNullOrWhiteSpace(VinamiToolUser.Properties.Settings.Default.SerialPort))
-                            {
-                                MessageDialog.Show("Máy Chưa Cấu Hình Cổng Port.",
-                                                    "Thông Báo",
-                                                    MessageDialogButtons.OK,
-                                                    MessageDialogIcon.Information,
-                                                    MessageDialogStyle.Default);
-                                _log.Error("Properties.Settings.Default.SerialPort is empty.");
-                            }
-                            else
-                            {
-                                _getToolView.serialPortGetTool.PortName = VinamiToolUser.Properties.Settings.Default.SerialPort;
-                            }
 
-                            foreach (var item in SerialPort.GetPortNames())
+                        // 2. Send to serial.
+                        if (bCheck)
+                        {
+                            _getToolView.strTrayIndex = strBtnText.Split('\n').GetValue(0).ToString();
+
+                            string strSendSerialCom = "101," + _getToolView.strTrayIndex.Split('_').GetValue(1).ToString() + "\n";
+                            frm.btnGetTool.Enabled = false;
+                            if (SerialPort.GetPortNames().Length == 0)
                             {
-                                if (_getToolView.serialPortGetTool.PortName == item)
+                                MessageBox.Show("Không có cổng COM!");
+                                _log.Info("Not connect COM!");
+                                return;
+                            }
+                            if (!_getToolView.serialPortGetTool.IsOpen)
+                            {
+                                if (string.IsNullOrEmpty(VinamiToolUser.Properties.Settings.Default.SerialPort) && string.IsNullOrWhiteSpace(VinamiToolUser.Properties.Settings.Default.SerialPort))
                                 {
-                                    _getToolView.serialPortGetTool.Open();
-                                    break;
+                                    MessageDialog.Show("Máy Chưa Cấu Hình Cổng Port.",
+                                                        "Thông Báo",
+                                                        MessageDialogButtons.OK,
+                                                        MessageDialogIcon.Information,
+                                                        MessageDialogStyle.Default);
+                                    _log.Error("Properties.Settings.Default.SerialPort is empty.");
+                                }
+                                else
+                                {
+                                    _getToolView.serialPortGetTool.PortName = VinamiToolUser.Properties.Settings.Default.SerialPort;
+                                }
+
+                                foreach (var item in SerialPort.GetPortNames())
+                                {
+                                    if (_getToolView.serialPortGetTool.PortName == item)
+                                    {
+                                        _getToolView.serialPortGetTool.Open();
+                                        break;
+                                    }
                                 }
                             }
-                        }
 
-                        if (_getToolView.serialPortGetTool.IsOpen)
-                        {
-                            _getToolView.serialPortGetTool.Write(strSendSerialCom);
-                            //frm.countTimer = 0;
-                            //_getToolView.OnOffTimer(true);
-                            sendGetToolCheck = true;
-                            sendCheck = false;
-                            _getToolView.cStatusForm = '3';
-                            _getToolView.SetStatusForm();
+                            if (_getToolView.serialPortGetTool.IsOpen)
+                            {
+                                _getToolView.serialPortGetTool.Write(strSendSerialCom);
+                                sendGetToolCheck = true;
+                                sendCheck = false;
+                                _getToolView.cStatusForm = '3';
+                                _getToolView.SetStatusForm();
+                            }
                         }
                     }
                 }
@@ -397,11 +408,8 @@ namespace itools_source.Presenters
 
         private async void _getToolView_serialPort_GetTool_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-
-            GetToolView frm = new GetToolView();
-            if (_getToolView.serialPortGetTool.IsOpen && frm.countTimer <= 5)
+            if (_getToolView.serialPortGetTool.IsOpen)
             {
-                _getToolView.OnOffTimer(false);
                 string strReadLine = _getToolView.serialPortGetTool.ReadLine().Substring(0, 3);
 
                 if (strReadLine == "rea")
@@ -501,6 +509,7 @@ namespace itools_source.Presenters
                     if (bResultToolsMachineTray && bResultTransaction)
                     {
                         sendGetToolCheck = false;
+                        _getToolView.OnOffTimer(false);
                         DialogResult dlr = MessageDialog.Show("Lấy Tool Thành Công.",
                                         "Thông Báo",
                                         MessageDialogButtons.OK,
@@ -512,25 +521,18 @@ namespace itools_source.Presenters
                     else
                     {
                         _log.Error("add workingtransaction failed.");
+                        _getToolView.serialPortGetTool.Close();
                     }
                     return;
                 }
-                else if (strReadLine != "sus" || strReadLine != "rea")
+                else
                 {
-                    MessageDialog.Show("Lấy Tool Thất Bại.",
-                                        "Thông Báo",
-                                        MessageDialogButtons.OK,
-                                        MessageDialogIcon.Error,
+                    sendGetToolCheck = false;
+                    MessageDialog.Show("Máy Không Sẵn Sàng Hoạt Động.", "Thông Báo",
+                                        MessageDialogButtons.OK, MessageDialogIcon.Error,
                                         MessageDialogStyle.Default);
-                    _log.Error("Get tool fail.");
+                    _log.Error("Machine not readly.");
                     _getToolView.serialPortGetTool.Close();
-                }
-                else 
-                { 
-                    MessageDialog.Show("Máy Không Sẵn Sàng Hoạt Động.", "Thông Báo", 
-                                        MessageDialogButtons.OK, MessageDialogIcon.Error, 
-                                        MessageDialogStyle.Default); 
-                    _log.Error("Machine not readly."); 
                 }
             }
         }
