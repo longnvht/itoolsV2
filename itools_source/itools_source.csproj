@@ -283,6 +283,12 @@
     <Compile Include="Views\JobView.Designer.cs">
       <DependentUpon>JobView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\KeyBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\KeyBoard.Designer.cs">
+      <DependentUpon>KeyBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -352,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\JobView.resx">
       <DependentUpon>JobView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\KeyBoard.resx">
+      <DependentUpon>KeyBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>

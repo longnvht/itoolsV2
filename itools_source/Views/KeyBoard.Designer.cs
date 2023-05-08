@@ -1,6 +1,6 @@
-﻿namespace itools_source.Views
+﻿namespace VinamiToolUser.Views
 {
-    partial class VirtualKeyBoard
+    partial class KeyBoard
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             Keyboard.VirtualKbButton virtualKbButton1 = new Keyboard.VirtualKbButton();
             Keyboard.VirtualKbButton virtualKbButton2 = new Keyboard.VirtualKbButton();
             Keyboard.VirtualKbButton virtualKbButton3 = new Keyboard.VirtualKbButton();
@@ -76,93 +75,78 @@
             Keyboard.VirtualKbButton virtualKbButton45 = new Keyboard.VirtualKbButton();
             Keyboard.VirtualKbButton virtualKbButton46 = new Keyboard.VirtualKbButton();
             Keyboard.VirtualKbButton virtualKbButton47 = new Keyboard.VirtualKbButton();
-            this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
-            this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
-            this.btnNumeric = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Elipse_frmVirtualKeyBoard = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse_btnClose = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.virtualKeyboard1 = new Keyboard.VirtualKeyboard();
-            this.guna2Elipse_virtualKeyboard1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this._btnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.tlpMain.SuspendLayout();
-            this.tlpHeader.SuspendLayout();
+            this.pnTitle = new System.Windows.Forms.Panel();
+            this.btnClose = new Guna.UI2.WinForms.Guna2TileButton();
+            this.btnNum = new Guna.UI2.WinForms.Guna2Button();
+            this.vtKeyBoard = new Keyboard.VirtualKeyboard();
+            this.pnTitle.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tlpMain
+            // pnTitle
             // 
-            this.tlpMain.ColumnCount = 1;
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMain.Controls.Add(this.virtualKeyboard1, 0, 1);
-            this.tlpMain.Controls.Add(this.tlpHeader, 0, 0);
-            this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpMain.Location = new System.Drawing.Point(0, 0);
-            this.tlpMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tlpMain.Name = "tlpMain";
-            this.tlpMain.RowCount = 2;
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.tlpMain.Size = new System.Drawing.Size(1020, 420);
-            this.tlpMain.TabIndex = 0;
+            this.pnTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
+            this.pnTitle.Controls.Add(this.btnClose);
+            this.pnTitle.Controls.Add(this.btnNum);
+            this.pnTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnTitle.Location = new System.Drawing.Point(0, 0);
+            this.pnTitle.Margin = new System.Windows.Forms.Padding(2);
+            this.pnTitle.Name = "pnTitle";
+            this.pnTitle.Size = new System.Drawing.Size(900, 50);
+            this.pnTitle.TabIndex = 1;
             // 
-            // tlpHeader
+            // btnClose
             // 
-            this.tlpHeader.ColumnCount = 3;
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tlpHeader.Controls.Add(this._btnClose, 2, 0);
-            this.tlpHeader.Controls.Add(this.btnNumeric, 0, 0);
-            this.tlpHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpHeader.Location = new System.Drawing.Point(3, 3);
-            this.tlpHeader.Name = "tlpHeader";
-            this.tlpHeader.RowCount = 1;
-            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpHeader.Size = new System.Drawing.Size(1014, 57);
-            this.tlpHeader.TabIndex = 1;
-            this.tlpHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tlpHeader_MouseDown);
-            this.tlpHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tlpHeader_MouseMove);
+            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.FillColor = System.Drawing.Color.Transparent;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Image = global::VinamiToolUser.Properties.Resources.close_480px;
+            this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnClose.Location = new System.Drawing.Point(840, -2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(57, 52);
+            this.btnClose.TabIndex = 1;
             // 
-            // btnNumeric
+            // btnNum
             // 
-            this.btnNumeric.BorderRadius = 5;
-            this.btnNumeric.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNumeric.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNumeric.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNumeric.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNumeric.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.btnNumeric.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNumeric.ForeColor = System.Drawing.Color.White;
-            this.btnNumeric.Location = new System.Drawing.Point(3, 3);
-            this.btnNumeric.Name = "btnNumeric";
-            this.btnNumeric.Size = new System.Drawing.Size(74, 27);
-            this.btnNumeric.TabIndex = 14;
-            this.btnNumeric.Text = "ABC";
-            this.btnNumeric.Click += new System.EventHandler(this.btnNumeric_Click);
+            this.btnNum.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnNum.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNum.BorderRadius = 8;
+            this.btnNum.BorderThickness = 2;
+            this.btnNum.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNum.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNum.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNum.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNum.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNum.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNum.ForeColor = System.Drawing.Color.Navy;
+            this.btnNum.Location = new System.Drawing.Point(6, 8);
+            this.btnNum.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNum.Name = "btnNum";
+            this.btnNum.Size = new System.Drawing.Size(60, 35);
+            this.btnNum.TabIndex = 0;
+            this.btnNum.Text = "ABC";
             // 
-            // guna2Elipse_frmVirtualKeyBoard
+            // vtKeyBoard
             // 
-            this.guna2Elipse_frmVirtualKeyBoard.TargetControl = this;
-            // 
-            // guna2Elipse_btnClose
-            // 
-            this.guna2Elipse_btnClose.TargetControl = this._btnClose;
-            // 
-            // virtualKeyboard1
-            // 
-            this.virtualKeyboard1.AltGrState = false;
-            this.virtualKeyboard1.AltState = false;
-            this.virtualKeyboard1.BackColor = System.Drawing.Color.Transparent;
-            this.virtualKeyboard1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.virtualKeyboard1.BeginGradientColor = System.Drawing.Color.White;
-            this.virtualKeyboard1.BorderColor = System.Drawing.Color.Black;
-            this.virtualKeyboard1.ButtonBorderColor = System.Drawing.Color.DarkGray;
-            this.virtualKeyboard1.ButtonRectRadius = 6;
-            this.virtualKeyboard1.CapsLockState = false;
-            this.virtualKeyboard1.ColorPressedState = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(145)))), ((int)(((byte)(78)))));
-            this.virtualKeyboard1.CtrlState = false;
-            this.virtualKeyboard1.DecimalSeparator = '.';
-            this.virtualKeyboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.virtualKeyboard1.EndGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.vtKeyBoard.AltGrState = false;
+            this.vtKeyBoard.AltState = false;
+            this.vtKeyBoard.BackColor = System.Drawing.Color.Transparent;
+            this.vtKeyBoard.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.vtKeyBoard.BeginGradientColor = System.Drawing.Color.White;
+            this.vtKeyBoard.BorderColor = System.Drawing.Color.Black;
+            this.vtKeyBoard.ButtonBorderColor = System.Drawing.Color.DarkGray;
+            this.vtKeyBoard.ButtonRectRadius = 6;
+            this.vtKeyBoard.CapsLockState = false;
+            this.vtKeyBoard.ColorPressedState = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(145)))), ((int)(((byte)(78)))));
+            this.vtKeyBoard.CtrlState = false;
+            this.vtKeyBoard.DecimalSeparator = '.';
+            this.vtKeyBoard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vtKeyBoard.EndGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             virtualKbButton1.BottomFont = null;
             virtualKbButton1.BottomText = "`";
             virtualKbButton1.CanSendCommand = true;
@@ -267,9 +251,9 @@
             new Keyboard.ButtonsCollection().Add(virtualKbButton11);
             new Keyboard.ButtonsCollection().Add(virtualKbButton12);
             new Keyboard.ButtonsCollection().Add(virtualKbButton13);
-            this.virtualKeyboard1.FontColor = System.Drawing.Color.Black;
-            this.virtualKeyboard1.FontColorShiftDisabled = System.Drawing.Color.DimGray;
-            this.virtualKeyboard1.FontColorSpecialKey = System.Drawing.Color.DimGray;
+            this.vtKeyBoard.FontColor = System.Drawing.Color.Black;
+            this.vtKeyBoard.FontColorShiftDisabled = System.Drawing.Color.DimGray;
+            this.vtKeyBoard.FontColorSpecialKey = System.Drawing.Color.DimGray;
             virtualKbButton14.BottomFont = null;
             virtualKbButton14.BottomText = "";
             virtualKbButton14.CanSendCommand = true;
@@ -350,17 +334,17 @@
             new Keyboard.ButtonsCollection().Add(virtualKbButton21);
             new Keyboard.ButtonsCollection().Add(virtualKbButton22);
             new Keyboard.ButtonsCollection().Add(virtualKbButton23);
-            this.virtualKeyboard1.IsNumeric = false;
-            this.virtualKeyboard1.LabelFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.virtualKeyboard1.LabelFontShiftDisabled = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.virtualKeyboard1.LabelFontSpecialKey = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.virtualKeyboard1.LanguageButtonBottomText = "";
-            this.virtualKeyboard1.LanguageButtonImage = null;
-            this.virtualKeyboard1.LanguageButtonTopText = "Eng";
-            this.virtualKeyboard1.Location = new System.Drawing.Point(4, 68);
-            this.virtualKeyboard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.virtualKeyboard1.Name = "virtualKeyboard1";
-            this.virtualKeyboard1.NumLockState = false;
+            this.vtKeyBoard.IsNumeric = false;
+            this.vtKeyBoard.LabelFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.vtKeyBoard.LabelFontShiftDisabled = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.vtKeyBoard.LabelFontSpecialKey = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.vtKeyBoard.LanguageButtonBottomText = "";
+            this.vtKeyBoard.LanguageButtonImage = null;
+            this.vtKeyBoard.LanguageButtonTopText = "Eng";
+            this.vtKeyBoard.Location = new System.Drawing.Point(0, 50);
+            this.vtKeyBoard.Margin = new System.Windows.Forms.Padding(2);
+            this.vtKeyBoard.Name = "vtKeyBoard";
+            this.vtKeyBoard.NumLockState = false;
             virtualKbButton24.BottomFont = null;
             virtualKbButton24.BottomText = "";
             virtualKbButton24.CanSendCommand = true;
@@ -465,21 +449,21 @@
             new Keyboard.ButtonsCollection().Add(virtualKbButton34);
             new Keyboard.ButtonsCollection().Add(virtualKbButton35);
             new Keyboard.ButtonsCollection().Add(virtualKbButton36);
-            this.virtualKeyboard1.ShadowColor = System.Drawing.Color.LightGray;
-            this.virtualKeyboard1.ShadowShift = 0;
-            this.virtualKeyboard1.ShiftState = false;
-            this.virtualKeyboard1.ShowAlt = true;
-            this.virtualKeyboard1.ShowArrowKeys = true;
-            this.virtualKeyboard1.ShowBackground = true;
-            this.virtualKeyboard1.ShowCtrl = true;
-            this.virtualKeyboard1.ShowDeleteKey = true;
-            this.virtualKeyboard1.ShowFunctionButtons = false;
-            this.virtualKeyboard1.ShowLanguageButton = false;
-            this.virtualKeyboard1.ShowNumericButtons = false;
-            this.virtualKeyboard1.ShowTab = true;
-            this.virtualKeyboard1.Size = new System.Drawing.Size(1012, 347);
-            this.virtualKeyboard1.TabIndex = 0;
-            this.virtualKeyboard1.Text = "virtualKeyboard1";
+            this.vtKeyBoard.ShadowColor = System.Drawing.Color.LightGray;
+            this.vtKeyBoard.ShadowShift = 0;
+            this.vtKeyBoard.ShiftState = false;
+            this.vtKeyBoard.ShowAlt = true;
+            this.vtKeyBoard.ShowArrowKeys = true;
+            this.vtKeyBoard.ShowBackground = true;
+            this.vtKeyBoard.ShowCtrl = true;
+            this.vtKeyBoard.ShowDeleteKey = true;
+            this.vtKeyBoard.ShowFunctionButtons = false;
+            this.vtKeyBoard.ShowLanguageButton = false;
+            this.vtKeyBoard.ShowNumericButtons = false;
+            this.vtKeyBoard.ShowTab = true;
+            this.vtKeyBoard.Size = new System.Drawing.Size(900, 310);
+            this.vtKeyBoard.TabIndex = 2;
+            this.vtKeyBoard.Text = "virtualKeyboard1";
             virtualKbButton37.BottomFont = null;
             virtualKbButton37.BottomText = "";
             virtualKbButton37.CanSendCommand = true;
@@ -569,58 +553,26 @@
             new Keyboard.ButtonsCollection().Add(virtualKbButton46);
             new Keyboard.ButtonsCollection().Add(virtualKbButton47);
             // 
-            // guna2Elipse_virtualKeyboard1
+            // KeyBoard
             // 
-            this.guna2Elipse_virtualKeyboard1.TargetControl = this.virtualKeyboard1;
-            // 
-            // _btnClose
-            // 
-            this._btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this._btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this._btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this._btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this._btnClose.FillColor = System.Drawing.Color.Transparent;
-            this._btnClose.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._btnClose.ForeColor = System.Drawing.Color.White;
-            this._btnClose.Image = global::VinamiToolUser.Properties.Resources.close_480px;
-            this._btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this._btnClose.Location = new System.Drawing.Point(978, 5);
-            this._btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this._btnClose.Name = "_btnClose";
-            this._btnClose.Size = new System.Drawing.Size(30, 23);
-            this._btnClose.TabIndex = 13;
-            this._btnClose.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this._btnClose.Click += new System.EventHandler(this._btnClose_Click);
-            // 
-            // VirtualKeyBoard
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
-            this.ClientSize = new System.Drawing.Size(1020, 420);
-            this.Controls.Add(this.tlpMain);
-            this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClientSize = new System.Drawing.Size(900, 360);
+            this.Controls.Add(this.vtKeyBoard);
+            this.Controls.Add(this.pnTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MaximumSize = new System.Drawing.Size(680, 280);
-            this.MinimumSize = new System.Drawing.Size(650, 260);
-            this.Name = "VirtualKeyBoard";
-            this.Text = "VirtualKeyBoard";
-            this.tlpMain.ResumeLayout(false);
-            this.tlpHeader.ResumeLayout(false);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "KeyBoard";
+            this.Text = "KeyBoard";
+            this.pnTitle.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tlpMain;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_frmVirtualKeyBoard;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_virtualKeyboard1;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse_btnClose;
-        private Keyboard.VirtualKeyboard virtualKeyboard1;
-        private System.Windows.Forms.TableLayoutPanel tlpHeader;
-        private Guna.UI2.WinForms.Guna2Button _btnClose;
-        private Guna.UI2.WinForms.Guna2Button btnNumeric;
+        private System.Windows.Forms.Panel pnTitle;
+        private Guna.UI2.WinForms.Guna2Button btnNum;
+        private Keyboard.VirtualKeyboard vtKeyBoard;
+        private Guna.UI2.WinForms.Guna2TileButton btnClose;
     }
 }

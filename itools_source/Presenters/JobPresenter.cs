@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using VinamiToolUser.Views;
 
 namespace itools_source.Presenters
 {
@@ -17,24 +18,24 @@ namespace itools_source.Presenters
         private IJobRepository _jobRepository;
 
         private log4net.ILog _log = log4net.LogManager.GetLogger(typeof(JobPresenter).Name);
-        VirtualKeyBoard frmKeyBoard;
+        KeyBoard frmKeyBoard;
         Point clientPoint;
         #endregion
 
         #region Events
         private void _jobView_JobView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            if (Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
+                Application.OpenForms.OfType<KeyBoard>().First().Close();
             }
         }
 
         private void _showVitualKeyBoard(object sender, EventArgs e)
         {
-            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            if (!Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                frmKeyBoard = new VirtualKeyBoard();
+                frmKeyBoard = new KeyBoard();
                 frmKeyBoard.Show();
 
                 JobView frm = (JobView)sender;
@@ -101,9 +102,9 @@ namespace itools_source.Presenters
                     _log.Error("_jobView.lstOPNumberOPType and _jobView.strJobNumberCurrent is null.");
                 }
             }
-            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            if (Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
+                Application.OpenForms.OfType<KeyBoard>().First().Close();
             }
 
         }
@@ -143,9 +144,9 @@ namespace itools_source.Presenters
                     _log.Info("List Button: " + lstSearch.ToString());
                 }
             }
-            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            if (Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
+                Application.OpenForms.OfType<KeyBoard>().First().Close();
             }
         }
 

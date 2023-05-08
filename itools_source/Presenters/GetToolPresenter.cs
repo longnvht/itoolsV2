@@ -11,6 +11,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using VinamiToolUser.Views;
 
 namespace itools_source.Presenters
 {
@@ -26,7 +27,7 @@ namespace itools_source.Presenters
         private bool sendGetToolCheck = false;
         bool bCheck = false;
         string strBtnText = null;
-        VirtualKeyBoard frmKeyBoard;
+        KeyBoard frmKeyBoard;
         Point clientPoint;
         #endregion
 
@@ -43,17 +44,17 @@ namespace itools_source.Presenters
 
         private void _getToolView_GetToolView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            if (Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
+                Application.OpenForms.OfType<KeyBoard>().First().Close();
             }
         }
 
         private void _getToolView_txtToolSearch_MouseClick(object sender, MouseEventArgs e)
         {
-            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            if (!Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                frmKeyBoard = new VirtualKeyBoard();
+                frmKeyBoard = new KeyBoard();
                 frmKeyBoard.Show();
 
                 GetToolView frm = (GetToolView)sender;
@@ -69,9 +70,9 @@ namespace itools_source.Presenters
 
         private void _getToolView_txtSearch_MouseClick(object sender, MouseEventArgs e)
         {
-            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any() && !Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            if (!Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                frmKeyBoard = new VirtualKeyBoard();
+                frmKeyBoard = new KeyBoard();
                 frmKeyBoard.Show();
 
                 GetToolView frm = (GetToolView)sender;

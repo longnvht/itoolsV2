@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using Unity;
+using VinamiToolUser.Views;
 
 //[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -72,6 +73,7 @@ namespace itools_source
             ConfigUnity.Register();
             var loginPresenter = ConfigUnity.unityContainer.Resolve<LoginPresenter>();
             loginPresenter.Run();
+            //Application.Run(new KeyBoard());
         }
     }
 }

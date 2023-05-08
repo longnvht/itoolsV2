@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using VinamiToolUser.Views;
 
 namespace itools_source.Presenters
 {
@@ -18,24 +19,24 @@ namespace itools_source.Presenters
         private IOPView _opView;
         private IGetToolRepository _getToolRepository;
 
-        VirtualKeyBoard frmKeyBoard;
+        KeyBoard frmKeyBoard;
         Point clientPoint;
         #endregion
 
         #region Events
         private void _opView_OPView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            if (Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
+                Application.OpenForms.OfType<KeyBoard>().First().Close();
             }
         }
 
         private void _opView_txtOPSearch_MouseClick(object sender, EventArgs e)
         {
-            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            if (!Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                frmKeyBoard = new VirtualKeyBoard();
+                frmKeyBoard = new KeyBoard();
                 frmKeyBoard.Show();
 
                 OPView frm = (OPView)sender;
@@ -83,9 +84,9 @@ namespace itools_source.Presenters
                 _opView.GetToolViewAction(_opView.iOPId, strOPNumber);
             }
             _log.Info("Double click OPId: " + _opView.iOPId);
-            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            if (Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
+                Application.OpenForms.OfType<KeyBoard>().First().Close();
             }
         }
 

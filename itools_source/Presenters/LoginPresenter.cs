@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Unity;
+using VinamiToolUser.Views;
 
 namespace itools_source.Presenter
 {
@@ -33,8 +34,7 @@ namespace itools_source.Presenter
         private readonly ILoginView _loginView;
         private readonly IUserAccountRepository _userAccountRepository;
 
-        VirtualNumericKeyBoard frmNumericKey;
-        VirtualKeyBoard frmKeyBoard;
+        KeyBoard frmKeyBoard;
         Point clientPoint;
         #endregion
 
@@ -42,14 +42,14 @@ namespace itools_source.Presenter
 
         private void _loginView_txtPassword_MouseClick(object sender, MouseEventArgs e)
         {
-            if (Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            if (Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                frmNumericKey.Close();
+                frmKeyBoard.Close();
             }
 
-            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            if (!Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                frmKeyBoard = new VirtualKeyBoard();
+                frmKeyBoard = new KeyBoard();
                 frmKeyBoard.Show();
 
                 LoginView frmLogin = (LoginView)sender;
@@ -63,22 +63,23 @@ namespace itools_source.Presenter
         }
         private void _loginView_txtUserName_MouseClick(object sender, MouseEventArgs e)
         {
-            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
+            if (Application.OpenForms.OfType<KeyBoard>().Any())
             {
                 frmKeyBoard.Close();
             }
 
-            if (!Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+            if (!Application.OpenForms.OfType<KeyBoard>().Any())
             {
-                frmNumericKey = new VirtualNumericKeyBoard();
-                frmNumericKey.Show();
+                frmKeyBoard = new KeyBoard();
+                frmKeyBoard.isNumeric = false;
+                frmKeyBoard.Show();
 
                 LoginView frmLogin = (LoginView)sender;
                 frmLogin.txtUserName.Focus();
 
                 Point p = new Point();
                 clientPoint = frmLogin.txtUserName.PointToScreen(p);
-                frmNumericKey.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y + frmLogin.txtUserName.Height);
+                frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y + frmLogin.txtUserName.Height);
                 clientPoint.Y += frmLogin.txtUserName.Height;
             }
         }
@@ -120,11 +121,11 @@ namespace itools_source.Presenter
                 UserAccount userAccount = await _userAccountRepository.GetUserAccount(strUserName, strPassword);
                 if (userAccount == null)
                 {
-                    if (Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+                    if (Application.OpenForms.OfType<KeyBoard>().Any())
                     {
-                        if (frmNumericKey != null)
+                        if (frmKeyBoard != null)
                         {
-                            frmNumericKey.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y + 20);
+                            frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y + 20);
                         }
                     }
 
@@ -132,9 +133,9 @@ namespace itools_source.Presenter
 
                     if (dlgOk == DialogResult.OK)
                     {
-                        if (frmNumericKey != null)
+                        if (frmKeyBoard != null)
                         {
-                            frmNumericKey.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y);
+                            frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y);
                         }
                     }
                     _log.Info("Login Fail!");
@@ -144,16 +145,16 @@ namespace itools_source.Presenter
                 {
                     if (userAccount.iID == 0)
                     {
-                        if (Application.OpenForms.OfType<VirtualNumericKeyBoard>().Any())
+                        if (Application.OpenForms.OfType<KeyBoard>().Any())
                         {
-                            frmNumericKey.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y - 312);
+                            frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y - 312);
                         }
 
                         DialogResult dlgOk = MessageBox.Show("Đăng Nhập Thất Bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         if (dlgOk == DialogResult.OK)
                         {
-                            frmNumericKey.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y);
+                            frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y);
                         }
                         _log.Info("Login Fail!");
                         return;
