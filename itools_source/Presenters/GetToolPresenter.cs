@@ -44,46 +44,7 @@ namespace itools_source.Presenters
 
         private void _getToolView_GetToolView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                Application.OpenForms.OfType<KeyBoard>().First().Close();
-            }
-        }
-
-        private void _getToolView_txtToolSearch_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (!Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                frmKeyBoard = new KeyBoard();
-                frmKeyBoard.Show();
-
-                GetToolView frm = (GetToolView)sender;
-                frm.txtToolSearch.Focus();
-
-                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
-                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
-
-                clientPoint = new Point(iTempX, iTempY);
-                frmKeyBoard.Location = clientPoint;
-            }
-        }
-
-        private void _getToolView_txtSearch_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (!Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                frmKeyBoard = new KeyBoard();
-                frmKeyBoard.Show();
-
-                GetToolView frm = (GetToolView)sender;
-                frm.txtSearch.Focus();
-
-                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
-                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
-
-                clientPoint = new Point(iTempX, iTempY);
-                frmKeyBoard.Location = clientPoint;
-            }
+            KeyBoard.CloseKeyboard();
         }
 
         private async void _getToolView_toggleShowAll_Click(object sender, EventArgs e)
@@ -423,11 +384,11 @@ namespace itools_source.Presenters
             {
                 string strReadLine = _getToolView.serialPortGetTool.ReadLine();
 
-                if (strReadLine.Contains("readly"))
+                if (strReadLine.Contains("120"))
                 {
                     sendCheck = true;
                 }
-                else if (strReadLine.Contains("susces"))
+                else if (strReadLine.Contains("123"))
                 {
                     // Get information workingtransaction.
                     WorkingTransaction workingTransaction = new WorkingTransaction();
@@ -619,8 +580,6 @@ namespace itools_source.Presenters
             _getToolView.btnflpTrayMachineList_Click += _getToolView_btnflpTrayMachineList_Click;
             _getToolView.btnflpTrayMachineList_DoubleClick += _getToolView_btnflpTrayMachineList_DoubleClick;
             _getToolView.toggleShowAll_Click += _getToolView_toggleShowAll_Click;
-            _getToolView.txtSearch_MouseClick += _getToolView_txtSearch_MouseClick;
-            _getToolView.txtToolSearch_MouseClick += _getToolView_txtToolSearch_MouseClick;
             _getToolView.GetToolView_FormClosing += _getToolView_GetToolView_FormClosing;
             _getToolView.btnToolSelect_Click += _getToolView_btnToolSelect_Click;
             _getToolView.tmGetTool_Tick += _getToolView_tmGetTool_Tick;

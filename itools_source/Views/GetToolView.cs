@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO.Ports;
 using System.Windows.Forms;
+using VinamiToolUser.Views;
 
 namespace itools_source.Views
 {
@@ -13,19 +14,32 @@ namespace itools_source.Views
         public GetToolView()
         {
             InitializeComponent();
+            AssociateAndRaiseViewEvents();
+        }
 
+        private void AssociateAndRaiseViewEvents()
+        {
             this.Load += delegate { GetToolView_Load?.Invoke(this, EventArgs.Empty); };
             serialPort_GetTool.DataReceived += (s, e) => { serialPort_GetTool_DataReceived?.Invoke(s, e); };
             _btnGetTool.Click += delegate { btnGetTool_Click?.Invoke(this, EventArgs.Empty); };
             _btnCancelSelectTray.Click += delegate { btnCancelSelectTray_Click?.Invoke(this, EventArgs.Empty); };
             _toggleShowAll.Click += delegate { toggleShowAll_Click?.Invoke(this, EventArgs.Empty); };
-            _txtSearch.MouseClick += delegate { txtSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
-            _txtToolSearch.MouseClick += delegate { txtToolSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            _txtSearch.MouseClick += (s,e) => { ShowKeyboard(); };
+            _txtToolSearch.MouseClick += (s, e) => { ShowKeyboard(); };
             this.FormClosing += delegate { GetToolView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
             _btnToolSelect.Click += delegate { btnToolSelect_Click?.Invoke(this, EventArgs.Empty); };
             _tmGetTool.Tick += delegate { tmGetTool_Tick?.Invoke(this, EventArgs.Empty); };
             _txtSearch.TextChanged += delegate { txtSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
             _txtToolSearch.TextChanged += delegate { txtToolSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
+        }
+
+        private void ShowKeyboard()
+        {
+            var Keyboard = KeyBoard.GetInstance();
+            int x = (Screen.PrimaryScreen.Bounds.Right - Keyboard.Width) / 2;
+            int y = Screen.PrimaryScreen.Bounds.Bottom - Keyboard.Height;
+            Keyboard.Show();
+            Keyboard.Location = new Point(x, y);
         }
 
         #region Properties - Fields
@@ -400,8 +414,6 @@ namespace itools_source.Views
         public event EventHandler btnCancelSelectTray_Click;
         public event EventHandler btnGetTool_Click;
         public event EventHandler toggleShowAll_Click;
-        public event MouseEventHandler txtSearch_MouseClick;
-        public event MouseEventHandler txtToolSearch_MouseClick;
         public event FormClosingEventHandler GetToolView_FormClosing;
         public event EventHandler btnToolSelect_Click;
         public event EventHandler tmGetTool_Tick;

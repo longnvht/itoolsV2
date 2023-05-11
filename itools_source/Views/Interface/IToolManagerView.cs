@@ -35,19 +35,16 @@ namespace itools_source.Views.Interface
         event EventHandler btnTraySearch_Click;
         event EventHandler btnflpTrayList_Click;
         event EventHandler txtOperateQuantity_TextChanged;
-        event EventHandler txtToolCode_MouseClick;
         event EventHandler txtToolSearch_TextChanged;
         event EventHandler btnflpToolList_Click;
         event EventHandler btnflpToolList_DoubleClick;
         event EventHandler btnToolSelect_Click;
         event EventHandler btnToolCancel_Click;
         event EventHandler btnTakeOut_Click;
+        event EventHandler ShowToolList;
         event EventHandler btnAddPlugin_Click;
         event EventHandler btnAddNew_Click;
         event EventHandler btnSave_Click;
-        event MouseEventHandler txtOperateQuantity_MouseClick;
-        event MouseEventHandler txtToolSearch_MouseClick;
-        event MouseEventHandler txtTrayToolSearch_MouseClick;
         event FormClosingEventHandler ToolManagerView_FormClosing;
         #endregion
 

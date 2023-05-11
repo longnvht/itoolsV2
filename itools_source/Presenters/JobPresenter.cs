@@ -25,28 +25,7 @@ namespace itools_source.Presenters
         #region Events
         private void _jobView_JobView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                Application.OpenForms.OfType<KeyBoard>().First().Close();
-            }
-        }
-
-        private void _showVitualKeyBoard(object sender, EventArgs e)
-        {
-            if (!Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                frmKeyBoard = new KeyBoard();
-                frmKeyBoard.Show();
-
-                JobView frm = (JobView)sender;
-                frm.txtJobNumberSearch.Focus();
-
-                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
-                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
-
-                clientPoint = new Point(iTempX, iTempY);
-                frmKeyBoard.Location = clientPoint;
-            }
+            KeyBoard.CloseKeyboard();
         }
 
         private async void _jobView_btnflpJobNumberList_Click(object sender, EventArgs e)
@@ -102,10 +81,7 @@ namespace itools_source.Presenters
                     _log.Error("_jobView.lstOPNumberOPType and _jobView.strJobNumberCurrent is null.");
                 }
             }
-            if (Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                Application.OpenForms.OfType<KeyBoard>().First().Close();
-            }
+            KeyBoard.CloseKeyboard();   
 
         }
 
@@ -144,10 +120,7 @@ namespace itools_source.Presenters
                     _log.Info("List Button: " + lstSearch.ToString());
                 }
             }
-            if (Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                Application.OpenForms.OfType<KeyBoard>().First().Close();
-            }
+            KeyBoard.CloseKeyboard();
         }
 
         private void _jobView_JobView_Load(object sender, EventArgs e)
@@ -176,7 +149,6 @@ namespace itools_source.Presenters
             _jobRepository = jobRepository;
 
             _jobView.JobView_Load += _jobView_JobView_Load;
-            _jobView.ShowVitualKeyBoard += _showVitualKeyBoard;
             _jobView.btnflpJobNumberList_DoubleClick += _jobView_btnflpJobNumberList_DoubleClick;
             _jobView.btnflpJobNumberList_Click += _jobView_btnflpJobNumberList_Click;
             _jobView.SearchEvent += _jobSearchEvent;

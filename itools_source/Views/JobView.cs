@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using VinamiToolUser.Views;
 
 namespace itools_source.Views
 {
@@ -13,16 +14,29 @@ namespace itools_source.Views
         public JobView()
         {
             InitializeComponent();
+            AssociateAndRaiseViewEvents();
+        }
 
+        private void AssociateAndRaiseViewEvents()
+        {
             this.Load += delegate { JobView_Load?.Invoke(this, EventArgs.Empty); };
             this.btnJobNumberSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
-            this._txtJobNumberSearch.MouseClick += delegate { ShowVitualKeyBoard?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
-            this._txtJobNumberSearch.KeyDown += (s,e) =>
+            this._txtJobNumberSearch.MouseClick += (s,e) => { ShowKeyboard(); };
+            this._txtJobNumberSearch.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
-                    SearchEvent?.Invoke(this, EventArgs.Empty as KeyEventArgs); 
+                    SearchEvent?.Invoke(this, EventArgs.Empty as KeyEventArgs);
             };
             this.FormClosing += delegate { JobView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
+        }
+
+        private void ShowKeyboard()
+        {
+            var Keyboard = KeyBoard.GetInstance();
+            int x = (Screen.PrimaryScreen.Bounds.Right - Keyboard.Width) / 2;
+            int y = Screen.PrimaryScreen.Bounds.Bottom - Keyboard.Height;
+            Keyboard.Show();
+            Keyboard.Location = new Point(x, y);
         }
 
         #region Properties - Fields
@@ -135,7 +149,6 @@ namespace itools_source.Views
         public event EventHandler btnflpJobNumberList_Click;
         public event EventHandler btnflpJobNumberList_DoubleClick;
         public event EventHandler SearchEvent;
-        public event EventHandler ShowVitualKeyBoard;
         public event FormClosingEventHandler JobView_FormClosing;
         #endregion
     }

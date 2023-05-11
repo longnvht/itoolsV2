@@ -10,12 +10,12 @@ using System.Reflection;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using Unity;
+using VinamiToolUser.Views;
 
 namespace itools_source.Presenters
 {
     public class MainPresenter
     {
-        VirtualKeyBoard frmKeyBoard;
         public MainPresenter(IMainView mainView, IUserAccountRepository userAccountRepository)
         {
             _mainView = mainView;
@@ -216,10 +216,7 @@ namespace itools_source.Presenters
                     }
                 }
             }
-            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
-            {
-                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
-            }
+            KeyBoard.CloseKeyboard();
         }
 
         private void _mainView_btnPrevious_Click(object sender, EventArgs e)
@@ -295,10 +292,7 @@ namespace itools_source.Presenters
                     }
                 }
             }
-            if (Application.OpenForms.OfType<VirtualKeyBoard>().Any())
-            {
-                Application.OpenForms.OfType<VirtualKeyBoard>().First().Close();
-            }
+            KeyBoard.CloseKeyboard();
         }
 
         private async void _mainView_MainView_Load(object sender, EventArgs e)

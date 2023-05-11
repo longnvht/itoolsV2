@@ -4,18 +4,42 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace VinamiToolUser.Views
 {
     public partial class KeyBoard : Form
     {
+        private static KeyBoard instance;
         public KeyBoard()
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
+        }
+
+        public static KeyBoard GetInstance()
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new KeyBoard();
+                //int x = (Screen.PrimaryScreen.Bounds.Right - instance.Width) / 2;
+                //int y = Screen.PrimaryScreen.Bounds.Bottom - instance.Height;
+                //instance.Location = new Point(x, y);
+            }
+            else
+            {
+                instance.BringToFront();
+            }
+            return instance;
+        }
+
+        public static void CloseKeyboard()
+        {
+            if (instance != null) { instance.Close(); }
         }
 
         const int WS_EX_NOACTIVATE = 0x08000000;
@@ -43,49 +67,29 @@ namespace VinamiToolUser.Views
         public bool isNumeric
         {
             get { return vtKeyBoard.IsNumeric; }
-            set { SetStyle(value); }
-        }
-
-        Point lastPoint;
-        private void pnTitle_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastPoint = new Point(e.X, e.Y);
-        }
-
-        private void pnTiltle_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - lastPoint.X;
-                this.Top += e.Y - lastPoint.Y;
-            }
+            set { swStyle.Checked = value; }
         }
 
         private void AssociateAndRaiseViewEvents()
         {
-            btnNum.Click += (s, e) =>
+            swStyle.CheckedChanged += (s, e) =>
             {
-                SetStyle(btnNum.Checked);
-
+                SetStyle(swStyle.Checked);
             };
             btnClose.Click += (s, e) => { this.Close(); };
-            pnTitle.MouseMove += pnTiltle_MouseMove;
-            pnTitle.MouseDown += pnTitle_MouseDown;
         }
         private void SetStyle(bool style)
         {
-            if (style == false)
+            if (style == true)
             {
-                btnNum.Checked = true;
                 vtKeyBoard.IsNumeric = true;
-                btnNum.Text = "123";
+                txtStyle.Text = "123";
                 this.Width = 320;
             }
             else
             {
-                btnNum.Checked = false;
                 vtKeyBoard.IsNumeric = false;
-                btnNum.Text = "ABC";
+                txtStyle.Text = "ABC";
                 this.Width = 900;
             }
         }

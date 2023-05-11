@@ -24,8 +24,6 @@ namespace itools_source.Presenter
             _loginView.btnLogin_Click += _loginView_btnLogin_Click;
             _loginView.btnCancel_Click += _loginView_btnCancel_Click;
             _loginView.txtPassword_IconRightClick += _loginView_txtPassword_IconRightClick;
-            _loginView.txtUserName_MouseClick += _loginView_txtUserName_MouseClick;
-            _loginView.txtPassword_MouseClick += _loginView_txtPassword_MouseClick;
         }
 
         #region Properties - Fields
@@ -34,55 +32,9 @@ namespace itools_source.Presenter
         private readonly ILoginView _loginView;
         private readonly IUserAccountRepository _userAccountRepository;
 
-        KeyBoard frmKeyBoard;
-        Point clientPoint;
         #endregion
 
         #region Events
-
-        private void _loginView_txtPassword_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                frmKeyBoard.Close();
-            }
-
-            if (!Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                frmKeyBoard = new KeyBoard();
-                frmKeyBoard.Show();
-
-                LoginView frmLogin = (LoginView)sender;
-                frmLogin.txtPassword.Focus();
-
-                Point p = new Point();
-                clientPoint = frmLogin.txtPassword.PointToScreen(p);
-                frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X - 125, clientPoint.Y + frmLogin.txtPassword.Height);
-                clientPoint.Y += frmLogin.txtPassword.Height;
-            }
-        }
-        private void _loginView_txtUserName_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                frmKeyBoard.Close();
-            }
-
-            if (!Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                frmKeyBoard = new KeyBoard();
-                frmKeyBoard.isNumeric = false;
-                frmKeyBoard.Show();
-
-                LoginView frmLogin = (LoginView)sender;
-                frmLogin.txtUserName.Focus();
-
-                Point p = new Point();
-                clientPoint = frmLogin.txtUserName.PointToScreen(p);
-                frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y + frmLogin.txtUserName.Height);
-                clientPoint.Y += frmLogin.txtUserName.Height;
-            }
-        }
 
         private void _loginView_txtPassword_IconRightClick(object sender, EventArgs e)
         {
@@ -121,23 +73,8 @@ namespace itools_source.Presenter
                 UserAccount userAccount = await _userAccountRepository.GetUserAccount(strUserName, strPassword);
                 if (userAccount == null)
                 {
-                    if (Application.OpenForms.OfType<KeyBoard>().Any())
-                    {
-                        if (frmKeyBoard != null)
-                        {
-                            frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y + 20);
-                        }
-                    }
 
                     DialogResult dlgOk = MessageBox.Show("Đăng Nhập Thất Bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    if (dlgOk == DialogResult.OK)
-                    {
-                        if (frmKeyBoard != null)
-                        {
-                            frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y);
-                        }
-                    }
                     _log.Info("Login Fail!");
                     return;
                 }
@@ -145,17 +82,8 @@ namespace itools_source.Presenter
                 {
                     if (userAccount.iID == 0)
                     {
-                        if (Application.OpenForms.OfType<KeyBoard>().Any())
-                        {
-                            frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y - 312);
-                        }
 
                         DialogResult dlgOk = MessageBox.Show("Đăng Nhập Thất Bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        if (dlgOk == DialogResult.OK)
-                        {
-                            frmKeyBoard.Location = new System.Drawing.Point(clientPoint.X, clientPoint.Y);
-                        }
                         _log.Info("Login Fail!");
                         return;
                     }

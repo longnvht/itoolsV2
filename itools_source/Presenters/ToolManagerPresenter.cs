@@ -33,66 +33,9 @@ namespace itools_source.Presenters
         #region Events
         private void _toolManagerView_ToolManagerView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                frmKeyBoard.Close();
-            }
+            KeyBoard.CloseKeyboard();
         }
 
-        private void _toolManagerView_txtTrayToolSearch_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (!Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                frmKeyBoard = new KeyBoard();
-                frmKeyBoard.Show();
-
-                ToolManagerView frm = (ToolManagerView)sender;
-                frm.txtTrayToolSearch.Focus();
-
-                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
-                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
-
-                clientPoint = new Point(iTempX, iTempY);
-                frmKeyBoard.Location = clientPoint;
-            }
-        }
-
-        private void _toolManagerView_txtToolSearch_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (!Application.OpenForms.OfType<VirtualKeyBoard>().Any())
-            {
-                frmKeyBoard = new KeyBoard();
-                frmKeyBoard.Show();
-
-                ToolManagerView frm = (ToolManagerView)sender;
-                frm.txtToolSearch.Focus();
-
-                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
-                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
-
-                clientPoint = new Point(iTempX, iTempY);
-                frmKeyBoard.Location = clientPoint;
-            }
-        }
-
-        private void _toolManagerView_txtOperateQuantity_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (!Application.OpenForms.OfType<KeyBoard>().Any() && !Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                frmKeyBoard = new KeyBoard();
-                frmKeyBoard.isNumeric = false;
-                frmKeyBoard.Show();
-
-                ToolManagerView frm = (ToolManagerView)sender;
-                frm.txtOperateQuantity.Focus();
-
-                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
-                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
-
-                clientPoint = new Point(iTempX, iTempY);
-                frmKeyBoard.Location = clientPoint;
-            }
-        }
 
         private async void _toolManagerView_ToolManagerView_Load(object sender, EventArgs e)
         {
@@ -175,7 +118,7 @@ namespace itools_source.Presenters
             (sender as ToolManagerView).ToolSearch();
         }
 
-        private async void _toolManagerView_txtToolCode_MouseClick(object sender, EventArgs e)
+        private async void ShowToolList(object sender, EventArgs e)
         {
             if (_toolManagerView.cStatusButton != '0')
             {
@@ -651,7 +594,6 @@ namespace itools_source.Presenters
             _toolManagerView.btnTraySearch_Click += _toolManagerView_btnTraySearch_Click;
             _toolManagerView.btnflpTrayList_Click += _toolManagerView_btnflpTrayList_Click;
             _toolManagerView.txtOperateQuantity_TextChanged += _toolManagerView_txtOperateQuantity_TextChanged;
-            _toolManagerView.txtToolCode_MouseClick += _toolManagerView_txtToolCode_MouseClick;
             _toolManagerView.txtToolSearch_TextChanged += _toolManagerView_txtToolSearch_TextChanged;
             _toolManagerView.btnflpToolList_Click += _toolManagerView_btnflpToolList_Click;
             _toolManagerView.btnflpToolList_DoubleClick += _toolManagerView_btnflpToolList_DoubleClick;
@@ -661,11 +603,8 @@ namespace itools_source.Presenters
             _toolManagerView.btnAddPlugin_Click += _toolManagerView_btnAddPlugin_Click;
             _toolManagerView.btnAddNew_Click += _toolManagerView_btnAddNew_Click;
             _toolManagerView.btnSave_Click += _toolManagerView_btnSave_Click;
-            _toolManagerView.txtOperateQuantity_MouseClick += _toolManagerView_txtOperateQuantity_MouseClick;
-            _toolManagerView.txtToolSearch_MouseClick += _toolManagerView_txtToolSearch_MouseClick;
-            _toolManagerView.txtTrayToolSearch_MouseClick += _toolManagerView_txtTrayToolSearch_MouseClick;
             _toolManagerView.ToolManagerView_FormClosing += _toolManagerView_ToolManagerView_FormClosing;
-
+            _toolManagerView.ShowToolList += ShowToolList;
             _toolManagerView.Show();
         }
         #endregion

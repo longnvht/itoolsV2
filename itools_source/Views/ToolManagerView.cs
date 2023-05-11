@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using VinamiToolUser.Views;
 
 namespace itools_source.Views
 {
@@ -14,12 +15,14 @@ namespace itools_source.Views
         public ToolManagerView()
         {
             InitializeComponent();
-
+            AssociateAndRaiseViewEvents();
+        }
+        private void AssociateAndRaiseViewEvents()
+        {
             this.Load += delegate { ToolManagerView_Load?.Invoke(this, EventArgs.Empty); };
             _txtTrayToolSearch.TextChanged += delegate { txtTraySearch_TextChanged?.Invoke(this, EventArgs.Empty); };
             btnSave.Click += delegate { btnSave_Click?.Invoke(this, EventArgs.Empty); };
             _txtOperateQuantity.TextChanged += delegate { txtOperateQuantity_TextChanged?.Invoke(this, EventArgs.Empty); };
-            _txtToolCode.MouseClick += delegate { txtToolCode_MouseClick?.Invoke(this, EventArgs.Empty); };
             _txtToolSearch.TextChanged += delegate { txtToolSearch_TextChanged?.Invoke(this, EventArgs.Empty); };
             btnToolSelect.Click += delegate { btnToolSelect_Click?.Invoke(this, EventArgs.Empty); };
             btnToolCancel.Click += delegate { btnToolCancel_Click?.Invoke(this, EventArgs.Empty); };
@@ -27,10 +30,21 @@ namespace itools_source.Views
             btnAddPlugin.Click += delegate { btnAddPlugin_Click?.Invoke(this, EventArgs.Empty); };
             btnAddNew.Click += delegate { btnAddNew_Click?.Invoke(this, EventArgs.Empty); };
             btnTraySearch.Click += delegate { btnTraySearch_Click?.Invoke(this, EventArgs.Empty); };
-            _txtOperateQuantity.MouseClick += delegate { txtOperateQuantity_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
-            _txtToolSearch.MouseClick += delegate { txtToolSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
-            _txtTrayToolSearch.MouseClick += delegate { txtTrayToolSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            _txtOperateQuantity.MouseClick += (s, e) => { ShowKeyboard(true); };
+            _txtToolSearch.MouseClick += (s, e) => { ShowKeyboard(false); };
+            _txtTrayToolSearch.MouseClick += (s, e) => { ShowKeyboard(false); };
+            _txtToolCode.MouseClick += delegate { ShowToolList?.Invoke(this, EventArgs.Empty); };
             FormClosing += delegate { ToolManagerView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
+        }
+
+        private void ShowKeyboard(bool style)
+        {
+            var kb = KeyBoard.GetInstance();
+            kb.isNumeric = style;
+            int x = (Screen.PrimaryScreen.Bounds.Right - kb.Width) / 2;
+            int y = Screen.PrimaryScreen.Bounds.Bottom - kb.Height;
+            kb.Show();
+            kb.Location = new Point(x, y);
         }
 
         #region Properties - Fields
@@ -505,7 +519,6 @@ namespace itools_source.Views
         public event EventHandler btnTraySearch_Click;
         public event EventHandler btnflpTrayList_Click;
         public event EventHandler txtOperateQuantity_TextChanged;
-        public event EventHandler txtToolCode_MouseClick;
         public event EventHandler txtToolSearch_TextChanged;
         public event EventHandler btnflpToolList_Click;
         public event EventHandler btnflpToolList_DoubleClick;
@@ -515,10 +528,8 @@ namespace itools_source.Views
         public event EventHandler btnAddPlugin_Click;
         public event EventHandler btnAddNew_Click;
         public event EventHandler btnSave_Click;
-        public event MouseEventHandler txtOperateQuantity_MouseClick;
-        public event MouseEventHandler txtToolSearch_MouseClick;
-        public event MouseEventHandler txtTrayToolSearch_MouseClick;
         public event FormClosingEventHandler ToolManagerView_FormClosing;
+        public event EventHandler ShowToolList;
         #endregion
     }
 }

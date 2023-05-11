@@ -2,8 +2,10 @@
 using itools_source.Views.Interface;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using VinamiToolUser.Views;
 
 namespace itools_source.Views
 {
@@ -12,11 +14,25 @@ namespace itools_source.Views
         public OPView()
         {
             InitializeComponent();
+            AssociateAndRaiseViewEvents();
+        }
 
+        private void AssociateAndRaiseViewEvents()
+        {
             this.Load += delegate { OPView_Load?.Invoke(this, EventArgs.Empty); };
-            _txtOPSearch.MouseClick += delegate { txtOPSearch_MouseClick?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
+            _txtOPSearch.MouseClick += (s, e) => { ShowKeyboard(true); };
             _txtOPSearch.TextChanged += delegate { txtOPSearch_TextChanged?.Invoke(this, EventArgs.Empty as MouseEventArgs); };
             this.FormClosing += delegate { OPView_FormClosing?.Invoke(this, EventArgs.Empty as FormClosingEventArgs); };
+        }
+
+        private void ShowKeyboard(bool type)
+        {
+            var kb = KeyBoard.GetInstance();
+            kb.isNumeric = type;
+            int x = (Screen.PrimaryScreen.Bounds.Right - kb.Width) / 2;
+            int y = Screen.PrimaryScreen.Bounds.Bottom - kb.Height;
+            kb.Show();
+            kb.Location = new Point(x, y);
         }
 
         #region Properties - Fields
@@ -67,7 +83,6 @@ namespace itools_source.Views
         public event EventHandler OPView_Load;
         public event EventHandler btnflpOPlList_DoubleClick;
         public event EventHandler btnflpOPlList_Click;
-        public event EventHandler txtOPSearch_MouseClick;
         public event EventHandler txtOPSearch_TextChanged;
         public event FormClosingEventHandler OPView_FormClosing;
         #endregion

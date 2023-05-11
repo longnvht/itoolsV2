@@ -14,8 +14,6 @@ namespace itools_source.Views.Interface
         event EventHandler btnLogin_Click;
         event EventHandler btnCancel_Click;
         event EventHandler txtPassword_IconRightClick;
-        event MouseEventHandler txtUserName_MouseClick;
-        event MouseEventHandler txtPassword_MouseClick;
         #endregion
 
         #region Methods

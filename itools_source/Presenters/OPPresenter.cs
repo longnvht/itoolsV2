@@ -26,28 +26,7 @@ namespace itools_source.Presenters
         #region Events
         private void _opView_OPView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                Application.OpenForms.OfType<KeyBoard>().First().Close();
-            }
-        }
-
-        private void _opView_txtOPSearch_MouseClick(object sender, EventArgs e)
-        {
-            if (!Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                frmKeyBoard = new KeyBoard();
-                frmKeyBoard.Show();
-
-                OPView frm = (OPView)sender;
-                frm.txtOPSearch.Focus();
-
-                int iTempX = ((frm.Width - frmKeyBoard.Width) / 2) + (frm.MdiParent as MainView).Location.X;
-                int iTempY = ((frm.Height - frmKeyBoard.Height) + 69) + (frm.MdiParent as MainView).Location.Y;
-
-                clientPoint = new Point(iTempX, iTempY);
-                frmKeyBoard.Location = clientPoint;
-            }
+            KeyBoard.CloseKeyboard();
         }
 
         private void _opView_btnflpOPlList_Click(object sender, EventArgs e)
@@ -84,10 +63,7 @@ namespace itools_source.Presenters
                 _opView.GetToolViewAction(_opView.iOPId, strOPNumber);
             }
             _log.Info("Double click OPId: " + _opView.iOPId);
-            if (Application.OpenForms.OfType<KeyBoard>().Any())
-            {
-                Application.OpenForms.OfType<KeyBoard>().First().Close();
-            }
+            KeyBoard.CloseKeyboard();
         }
 
         private void _opView_txtOPSearch_TextChanged(object sender, EventArgs e) 
@@ -134,7 +110,6 @@ namespace itools_source.Presenters
             _opView.OPView_Load += _opView_OPView_Load;
             _opView.btnflpOPlList_DoubleClick += _opView_btnflpList_DoubleClick;
             _opView.btnflpOPlList_Click += _opView_btnflpOPlList_Click;
-            _opView.txtOPSearch_MouseClick += _opView_txtOPSearch_MouseClick;
             _opView.txtOPSearch_TextChanged += _opView_txtOPSearch_TextChanged;
             _opView.OPView_FormClosing += _opView_OPView_FormClosing;
 

@@ -20,7 +20,6 @@ namespace itools_source.Views.Interface
         event EventHandler OPView_Load;
         event EventHandler btnflpOPlList_DoubleClick;
         event EventHandler btnflpOPlList_Click;
-        event EventHandler txtOPSearch_MouseClick;
         event EventHandler txtOPSearch_TextChanged;
         event FormClosingEventHandler OPView_FormClosing;
         #endregion

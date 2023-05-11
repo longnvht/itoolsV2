@@ -41,8 +41,6 @@ namespace itools_source.Views.Interface
         event EventHandler btnCancelSelectTray_Click;
         event EventHandler btnGetTool_Click;
         event EventHandler toggleShowAll_Click;
-        event MouseEventHandler txtSearch_MouseClick;
-        event MouseEventHandler txtToolSearch_MouseClick;
         event FormClosingEventHandler GetToolView_FormClosing;
         event EventHandler btnToolSelect_Click;
         event EventHandler tmGetTool_Tick;
