@@ -61,7 +61,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>tool_generator.ico</ApplicationIcon>
+    <ApplicationIcon>icons8_vending_machine.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <Win32Resource>
@@ -71,7 +71,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <DelaySign>false</DelaySign>
@@ -93,11 +93,13 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>0C98B9D75E0914D36EE05AF9127223B3040960EB</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>594425EB2EC4874FB553FB088D31582C26C3F323</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>itools_source_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>itools_source_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -113,7 +115,11 @@
     <Reference Include="DevExpress.Data.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Drawing.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Google.Protobuf, Version=3.21.12.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.21.12\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -199,23 +205,29 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ButtonListBox2.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="DTOs\ReportStock.cs" />
     <Compile Include="Models\Interface\IBaseRepository.cs" />
     <Compile Include="Models\Interface\ICompanyRepository.cs" />
+    <Compile Include="Models\Interface\IGetToolRepositoryNew.cs" />
+    <Compile Include="Models\Interface\IJobRepositoryNew.cs" />
     <Compile Include="Models\Interface\IJobRepository.cs" />
     <Compile Include="Models\Interface\IMachineRepository.cs" />
+    <Compile Include="Models\Interface\IMenuRepositoryNew.cs" />
     <Compile Include="Models\Interface\IMenuRepository.cs" />
+    <Compile Include="Models\Interface\IOpRepositoryNew.cs" />
     <Compile Include="Models\Interface\IPermissionRepository.cs" />
     <Compile Include="Models\Interface\IStockRepository.cs" />
     <Compile Include="Models\Interface\IStockTempRepository.cs" />
     <Compile Include="Models\Interface\IToolRepository.cs" />
+    <Compile Include="Models\JobModelNew.cs" />
     <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\MenuModel.cs" />
+    <Compile Include="Models\OPModel.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\PermissionDetail.cs" />
     <Compile Include="Models\StockTemp.cs" />
+    <Compile Include="Models\ToolModel.cs" />
+    <Compile Include="Models\TrayModel.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Interface\IUserAccountRepository.cs" />
@@ -233,19 +245,27 @@
     <Compile Include="Models\WorkingTransaction.cs" />
     <Compile Include="Presenters\ConfigSettingPresenter.cs" />
     <Compile Include="Presenters\GetToolPresenter.cs" />
+    <Compile Include="Presenters\GetToolPresenterNew.cs" />
     <Compile Include="Presenters\JobPresenter.cs" />
+    <Compile Include="Presenters\JobPresenterNew.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\MenuPresenter.cs" />
+    <Compile Include="Presenters\MenuPresenterNew.cs" />
     <Compile Include="Presenters\OPPresenter.cs" />
+    <Compile Include="Presenters\OpPresenterNew.cs" />
     <Compile Include="Presenters\StockPresenter.cs" />
     <Compile Include="Presenters\ToolManagerPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CompanyRepository.cs" />
+    <Compile Include="Repository\GetToolRepositoryNew.cs" />
     <Compile Include="Repository\JobRepository.cs" />
+    <Compile Include="Repository\JobRepositoryNew.cs" />
     <Compile Include="Repository\MachineRepository.cs" />
     <Compile Include="Repository\MenuRepository.cs" />
+    <Compile Include="Repository\MenuRepositoryNew.cs" />
+    <Compile Include="Repository\OpRepositoryNew.cs" />
     <Compile Include="Repository\PermissionRepository.cs" />
     <Compile Include="Repository\StockRepository.cs" />
     <Compile Include="Repository\StockTempRepository.cs" />
@@ -255,6 +275,7 @@
     <Compile Include="Repository\GetToolRepository.cs" />
     <Compile Include="Repository\ToolMachineTrayRepository.cs" />
     <Compile Include="Repository\WorkingTransactionRepository.cs" />
+    <Compile Include="Utils\CommonValue.cs" />
     <Compile Include="Utils\Encryption.cs" />
     <Compile Include="Views\Components\KeyBoard\CommandInstruction.cs" />
     <Compile Include="Views\Components\KeyBoard\Helper.cs" />
@@ -271,19 +292,48 @@
     <Compile Include="Utils\MySqlConnect.cs" />
     <Compile Include="Utils\ServerTime.cs" />
     <Compile Include="Utils\Session.cs" />
+    <Compile Include="Views\Components\ListButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Components\ListButton.Designer.cs">
+      <DependentUpon>ListButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\ListImageButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Components\ListImageButton.Designer.cs">
+      <DependentUpon>ListImageButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\StockInfoTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Components\StockInfoTreeView.Designer.cs">
+      <DependentUpon>StockInfoTreeView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ConfigSettingView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\ConfigSettingView.Designer.cs">
       <DependentUpon>ConfigSettingView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\GetToolViewNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\GetToolViewNew.Designer.cs">
+      <DependentUpon>GetToolViewNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Interface\IConfigSettingView.cs" />
     <Compile Include="Views\Interface\IGetToolView.cs" />
+    <Compile Include="Views\Interface\IGetToolViewNew.cs" />
     <Compile Include="Views\Interface\IJobView.cs" />
+    <Compile Include="Views\Interface\IJobViewNew.cs" />
     <Compile Include="Views\Interface\ILoginView.cs" />
     <Compile Include="Views\Interface\IMainView.cs" />
+    <Compile Include="Views\Interface\IMainViewNew.cs" />
     <Compile Include="Views\Interface\IMenuView.cs" />
+    <Compile Include="Views\Interface\IMenuViewNew.cs" />
     <Compile Include="Views\Interface\IOPView.cs" />
+    <Compile Include="Views\Interface\IOPViewNew.cs" />
     <Compile Include="Views\Interface\IStockView.cs" />
     <Compile Include="Views\Interface\IToolManagerView.cs" />
     <Compile Include="Views\JobView.cs">
@@ -291,6 +341,12 @@
     </Compile>
     <Compile Include="Views\JobView.Designer.cs">
       <DependentUpon>JobView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JobViewNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\JobViewNew.Designer.cs">
+      <DependentUpon>JobViewNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\KeyBoard.cs">
       <SubType>Form</SubType>
@@ -316,11 +372,23 @@
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\MainViewNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainViewNew.Designer.cs">
+      <DependentUpon>MainViewNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MenuView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\MenuView.Designer.cs">
       <DependentUpon>MenuView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuViewNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MenuViewNew.Designer.cs">
+      <DependentUpon>MenuViewNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\OPView.cs">
       <SubType>Form</SubType>
@@ -328,11 +396,23 @@
     <Compile Include="Views\OPView.Designer.cs">
       <DependentUpon>OPView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\OpViewNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\OpViewNew.Designer.cs">
+      <DependentUpon>OpViewNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\StockView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\StockView.Designer.cs">
       <DependentUpon>StockView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TestView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TestView.Designer.cs">
+      <DependentUpon>TestView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ToolManagerView.cs">
       <SubType>Form</SubType>
@@ -340,6 +420,7 @@
     <Compile Include="Views\ToolManagerView.Designer.cs">
       <DependentUpon>ToolManagerView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -350,11 +431,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Components\ListButton.resx">
+      <DependentUpon>ListButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Components\ListImageButton.resx">
+      <DependentUpon>ListImageButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Components\StockInfoTreeView.resx">
+      <DependentUpon>StockInfoTreeView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ConfigSettingView.resx">
       <DependentUpon>ConfigSettingView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\GetToolViewNew.resx">
+      <DependentUpon>GetToolViewNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\JobView.resx">
       <DependentUpon>JobView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\JobViewNew.resx">
+      <DependentUpon>JobViewNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\KeyBoard.resx">
       <DependentUpon>KeyBoard.cs</DependentUpon>
@@ -370,19 +466,32 @@
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainViewNew.resx">
+      <DependentUpon>MainViewNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MenuView.resx">
       <DependentUpon>MenuView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MenuViewNew.resx">
+      <DependentUpon>MenuViewNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\OPView.resx">
       <DependentUpon>OPView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\OpViewNew.resx">
+      <DependentUpon>OpViewNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\StockView.resx">
       <DependentUpon>StockView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TestView.resx">
+      <DependentUpon>TestView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ToolManagerView.resx">
       <DependentUpon>ToolManagerView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="itools_source_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -436,6 +545,12 @@
     <None Include="Resources\close_500pxr.png" />
     <None Include="Resources\home_512px.png" />
     <None Include="Resources\home_500px.png" />
+    <Content Include="icons8_vending_machine.ico" />
+    <None Include="Resources\bar-code.png" />
+    <None Include="Resources\content.png" />
+    <None Include="Resources\search-engine.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\stock.png" />
     <Content Include="tool_generator.ico" />
   </ItemGroup>
   <ItemGroup>

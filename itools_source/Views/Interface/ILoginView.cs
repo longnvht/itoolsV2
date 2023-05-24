@@ -8,6 +8,7 @@ namespace itools_source.Views.Interface
         #region Properties - Fields
         string strUserName { get; set; }
         string strPassword { get; set; }
+        bool Fvisible { get; set; }
         #endregion
 
         #region Events

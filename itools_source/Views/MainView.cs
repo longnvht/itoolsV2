@@ -10,9 +10,10 @@ namespace itools_source.Views
 {
     public partial class MainView : Form, IMainView
     {
-        [Dependency]
-        public IUnityContainer unityContainer { get; set; }
-
+        public string JobNumber { get; set; }
+        public int PartID { get; set; }
+        public int OPID { get; set; }
+        public string ToolCode { get; set; }
         public MainView()
         {
             InitializeComponent();
@@ -75,10 +76,7 @@ namespace itools_source.Views
         #region Methods
         public void CloseFormChild()
         {
-            if (MdiChildren.Any())
-            {
-                this.ActiveMdiChild.Close();
-            }
+            if (ActiveMdiChild != null) ActiveMdiChild.Close();
         }
 
         public void ShowHideJobNumberAndOPId(bool bStatus)

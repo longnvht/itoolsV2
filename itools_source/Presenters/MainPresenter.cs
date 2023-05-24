@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using Unity;
 using VinamiToolUser.Views;
@@ -16,22 +15,10 @@ namespace itools_source.Presenters
 {
     public class MainPresenter
     {
-        public MainPresenter(IMainView mainView, IUserAccountRepository userAccountRepository)
-        {
-            _mainView = mainView;
-            _userAccountRepository = userAccountRepository;
-
-            _mainView.MainView_Load += _mainView_MainView_Load;
-            _mainView.btnPrevious_Click += _mainView_btnPrevious_Click;
-            _mainView.btnNext_Click += _mainView_btnNext_Click;
-            _mainView.btnHome_Click += _mainView_btnHome_Click;
-            _mainView.btnLogOut_Click += _mainView_btnLogOut_Click;
-        }
-
         #region Properties - Fields
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(MainPresenter).Name);
 
-        private IMainView _mainView;
+        private IMainView _view;
         private IUserAccountRepository _userAccountRepository;
 
         private IJobView _jobView;
@@ -40,6 +27,19 @@ namespace itools_source.Presenters
         private IPermissionRepository _permissionRepository;
         private IMenuRepository _menuRepository;
         #endregion
+        public MainPresenter(IMainView mainView, IUserAccountRepository userAccountRepository)
+        {
+            _view = mainView;
+            _userAccountRepository = userAccountRepository;
+
+            _view.MainView_Load += _mainView_MainView_Load;
+            _view.btnPrevious_Click += _mainView_btnPrevious_Click;
+            _view.btnNext_Click += _mainView_btnNext_Click;
+            _view.btnHome_Click += _mainView_btnHome_Click;
+            _view.btnLogOut_Click += _mainView_btnLogOut_Click;
+        }
+
+        
 
         #region Events
         private void _mainView_btnHome_Click(object sender, EventArgs e)
@@ -52,12 +52,12 @@ namespace itools_source.Presenters
                     return;
                 }
 
-                var menuPresenter = ConfigUnity.unityContainer.Resolve<MenuPresenter>();
-                menuPresenter.Run((MainView)_mainView);
+                var menuPresenter = UnityDI.container.Resolve<MenuPresenter>();
+                menuPresenter.Run((MainView)_view);
 
-                _mainView.strJobNumber = null;
-                _mainView.strOPNumber = null;
-                _mainView.iOPId = null;
+                _view.strJobNumber = null;
+                _view.strOPNumber = null;
+                _view.iOPId = null;
 
                 frmMain.lblJobNumber.Visible = false;
                 frmMain.lblJobNumberDisplay.Visible = false;
@@ -76,14 +76,14 @@ namespace itools_source.Presenters
                 System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
                             () =>
                             {
-                                var loginPresenter = ConfigUnity.unityContainer.Resolve<LoginPresenter>();
+                                var loginPresenter = UnityDI.container.Resolve<LoginPresenter>();
                                 loginPresenter.Run();
                             }));
 
                 t.Start();
 
                 _log.Info("MenuView is out MdiChildren to LoginView.");
-                _mainView.Close();
+                _view.Close();
             }
         }
 
@@ -126,48 +126,48 @@ namespace itools_source.Presenters
                                         {
                                             frmMain.ShowHideJobNumberAndOPId(true);
 
-                                            _jobView = JobView.GetInstance((MainView)_mainView);
+                                            _jobView = JobView.GetInstance((MainView)_view);
                                             _jobView.SetListOPNumberOPType = OpenOPView;
                                             if (_jobRepository == null)
                                             {
                                                 _jobRepository = new JobRepository();
                                             }
 
-                                            var jobPresenter = ConfigUnity.unityContainer.Resolve<JobPresenter>();
+                                            var jobPresenter = UnityDI.container.Resolve<JobPresenter>();
                                             jobPresenter.Run(_jobView, _jobRepository);
                                             break;
                                         }
                                         if (item == nameof(ToolManagerView))
                                         {
-                                            _mainView.btnNextEnabled = false;
+                                            _view.btnNextEnabled = false;
 
-                                            IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_mainView);
+                                            IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_view);
                                             IToolMachineTrayRepository toolMachineTrayRepository = new ToolMachineTrayRepository();
 
-                                            var toolPresenter = ConfigUnity.unityContainer.Resolve<ToolManagerPresenter>();
+                                            var toolPresenter = UnityDI.container.Resolve<ToolManagerPresenter>();
                                             toolPresenter.Run(toolManagerView, toolMachineTrayRepository);
                                             break;
                                         }
                                         if (item == nameof(StockView))
                                         {
-                                            _mainView.btnNextEnabled = false;
+                                            _view.btnNextEnabled = false;
 
 
-                                            IStockView stockView = StockView.GetInstance((MainView)_mainView);
+                                            IStockView stockView = StockView.GetInstance((MainView)_view);
                                             IStockRepository stockViewRepositor = new StockRepository();
 
-                                            var stockPresenter = ConfigUnity.unityContainer.Resolve<StockPresenter>();
+                                            var stockPresenter = UnityDI.container.Resolve<StockPresenter>();
                                             stockPresenter.Run(stockView, stockViewRepositor);
                                             break;
                                         }
                                         if (item == nameof(ConfigSettingView))
                                         {
-                                            _mainView.btnNextEnabled = false;
+                                            _view.btnNextEnabled = false;
 
-                                            IConfigSettingView configSettingView = ConfigSettingView.GetInstance((MainView)_mainView);
+                                            IConfigSettingView configSettingView = ConfigSettingView.GetInstance((MainView)_view);
                                             ICompanyRepository stockRepository = new CompanyRepository();
 
-                                            var configPresenter = ConfigUnity.unityContainer.Resolve<ConfigSettingPresenter>();
+                                            var configPresenter = UnityDI.container.Resolve<ConfigSettingPresenter>();
                                             configPresenter.Run(configSettingView, stockRepository);
                                             break;
                                          
@@ -230,8 +230,8 @@ namespace itools_source.Presenters
                 // 2. Set load child form.
                 if (strFormName != null)
                 {
-                    _mainView.CloseFormChild();
-                    _mainView.btnNextEnabled = true;
+                    _view.CloseFormChild();
+                    _view.btnNextEnabled = true;
                     frmMain.ShowHideJobNumberAndOPId(false);
                     switch (strFormName)
                     {
@@ -240,44 +240,44 @@ namespace itools_source.Presenters
                             System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
                             () =>
                             {
-                                var loginPresenter = ConfigUnity.unityContainer.Resolve<LoginPresenter>();
+                                var loginPresenter = UnityDI.container.Resolve<LoginPresenter>();
                                 loginPresenter.Run();
                             }));
 
                             t.Start();
 
                             _log.Info("MenuView is out MdiChildren to LoginView.");
-                            _mainView.Close();
+                            _view.Close();
                             break;
                         case nameof(ToolManagerView):
                         case nameof(StockView):
                         case nameof(ConfigSettingView):
                         case nameof(JobView):
-                            var menuPresenter = ConfigUnity.unityContainer.Resolve<MenuPresenter>();
-                            menuPresenter.Run((MainView)_mainView);
+                            var menuPresenter = UnityDI.container.Resolve<MenuPresenter>();
+                            menuPresenter.Run((MainView)_view);
 
-                            _mainView.strJobNumber = null;
+                            _view.strJobNumber = null;
                             break;
                         // Get data
                         case nameof(OPView):
                             frmMain.ShowHideJobNumberAndOPId(true);
-                            _jobView = JobView.GetInstance((MainView)_mainView);
+                            _jobView = JobView.GetInstance((MainView)_view);
                             _jobView.SetListOPNumberOPType = OpenOPView;
                             if (_jobRepository == null)
                             {
                                 _jobRepository = new JobRepository();
                             }
 
-                            var jobPresenter = ConfigUnity.unityContainer.Resolve<JobPresenter>();
+                            var jobPresenter = UnityDI.container.Resolve<JobPresenter>();
                             jobPresenter.Run(_jobView, _jobRepository);
-                            _mainView.iOPId = null;
+                            _view.iOPId = null;
                             break;
                         case nameof(GetToolView):
                             frmMain.ShowHideJobNumberAndOPId(true);
-                            IOPView oPView = OPView.GetInstance((MainView)_mainView);
-                            if (_mainView.lstOPNumberOpType_Main != null)
+                            IOPView oPView = OPView.GetInstance((MainView)_view);
+                            if (_view.lstOPNumberOpType_Main != null)
                             {
-                                oPView.lstOPNumberOPType = _mainView.lstOPNumberOpType_Main;
+                                oPView.lstOPNumberOPType = _view.lstOPNumberOpType_Main;
                             }
 
                             oPView.GetToolViewAction = OpenGetToolView;
@@ -286,7 +286,7 @@ namespace itools_source.Presenters
                                 _getToolRepository = new GetToolRepository();
                             }
 
-                            var opPresenter = ConfigUnity.unityContainer.Resolve<OPPresenter>();
+                            var opPresenter = UnityDI.container.Resolve<OPPresenter>();
                             opPresenter.Run(oPView, _getToolRepository);
                             break;
                     }
@@ -309,11 +309,11 @@ namespace itools_source.Presenters
                 _permissionRepository = new PermissionRepository();
                 if (Program.sessionLogin["Name"] != null && Program.sessionLogin["PermissionId"] != null)
                 {
-                    _mainView.strName = Program.sessionLogin["Name"].ToString();
+                    _view.strName = Program.sessionLogin["Name"].ToString();
                 }
 
-                var menuPresenter = ConfigUnity.unityContainer.Resolve<MenuPresenter>();
-                menuPresenter.Run((MainView)_mainView);
+                var menuPresenter = UnityDI.container.Resolve<MenuPresenter>();
+                menuPresenter.Run((MainView)_view);
             }
 
             MainView frmMain = (MainView)sender;
@@ -327,20 +327,20 @@ namespace itools_source.Presenters
         public void OpenOPView(Dictionary<int?, Dictionary<string, string>> lstOPNumberOpType, string strJobNumber)
         {
             // 1. Data transmission
-            if (_mainView != null)
+            if (_view != null)
             {
-                IOPView oPView = OPView.GetInstance((MainView)_mainView);
+                IOPView oPView = OPView.GetInstance((MainView)_view);
 
                 if (oPView != null)
                 {
                     if (!string.IsNullOrEmpty(strJobNumber) && !string.IsNullOrWhiteSpace(strJobNumber))
                     {
-                        _mainView.strJobNumber = strJobNumber;
+                        _view.strJobNumber = strJobNumber;
                     }
 
                     if (lstOPNumberOpType != null)
                     {
-                        _mainView.lstOPNumberOpType_Main = lstOPNumberOpType;
+                        _view.lstOPNumberOpType_Main = lstOPNumberOpType;
                         oPView.lstOPNumberOPType = lstOPNumberOpType;
                     }
 
@@ -351,9 +351,9 @@ namespace itools_source.Presenters
                     {
                         _getToolRepository = new GetToolRepository();
                     }
-                    _mainView.CloseFormChild();
+                    _view.CloseFormChild();
 
-                    var opPresenter = ConfigUnity.unityContainer.Resolve<OPPresenter>();
+                    var opPresenter = UnityDI.container.Resolve<OPPresenter>();
                     opPresenter.Run(oPView, _getToolRepository);
 
                     _log.Info("Form close: " + typeof(JobView).Name + ", Open: " + typeof(OPView).Name);
@@ -372,25 +372,25 @@ namespace itools_source.Presenters
         public void OpenGetToolView(int? iOPId, string strOPNumber)
         {
             // 1. Data transmission
-            if (_mainView != null)
+            if (_view != null)
             {
-                GetToolView getToolView = GetToolView.GetInstance((MainView)_mainView);
+                GetToolView getToolView = GetToolView.GetInstance((MainView)_view);
 
                 if (getToolView != null)
                 {
                     if (iOPId != null)
                     {
-                        _mainView.iOPId = iOPId;
-                        getToolView.iOPId = _mainView.iOPId;
+                        _view.iOPId = iOPId;
+                        getToolView.iOPId = _view.iOPId;
                     }
                     else
                     {
                         _log.Error("iOPId is null.");
                     }
 
-                    if (!string.IsNullOrEmpty(_mainView.strJobNumber) && !string.IsNullOrWhiteSpace(_mainView.strJobNumber))
+                    if (!string.IsNullOrEmpty(_view.strJobNumber) && !string.IsNullOrWhiteSpace(_view.strJobNumber))
                     {
-                        getToolView.strJobNumber = _mainView.strJobNumber;
+                        getToolView.strJobNumber = _view.strJobNumber;
                     }
                     else
                     {
@@ -413,9 +413,9 @@ namespace itools_source.Presenters
                     {
                         _getToolRepository = new GetToolRepository();
                     }
-                    _mainView.CloseFormChild();
+                    _view.CloseFormChild();
 
-                    var getToolPresenter = ConfigUnity.unityContainer.Resolve<GetToolPresenter>();
+                    var getToolPresenter = UnityDI.container.Resolve<GetToolPresenter>();
                     getToolPresenter.Run(getToolView, _getToolRepository);
 
                     _log.Info("Form close: " + typeof(OPView).Name + ", Open: " + typeof(GetToolView).Name);
@@ -433,7 +433,7 @@ namespace itools_source.Presenters
 
         public void ToggleButton(bool bToggle)
         {
-            _mainView.btnNextEnabled = bToggle;
+            _view.btnNextEnabled = bToggle;
         }
 
         public string GetNameFormChlidActive(string strNameActive) // Get name form child active
@@ -453,11 +453,34 @@ namespace itools_source.Presenters
 
         public void Run()
         {
-            if (!_mainView.GetIsDisposed())
+            if (!_view.GetIsDisposed())
             {
-                Application.Run(_mainView as MainView);
+                Application.Run(_view as MainView);
             }
         }
         #endregion
+
+
+        private void ShowChildView(object sender, EventArgs e)
+        {
+            _view.CloseFormChild();
+            Button btn = sender as Button;
+            string viewName = btn.Tag.ToString();
+            if (viewTypes.ContainsKey(viewName))
+            {
+                Type viewType = viewTypes[viewName];
+                MethodInfo getInstanceMethod = viewType.GetMethod("GetInstance", new Type[] { typeof(Form) });
+                object[] args = new object[] { _view };
+                Form childView = (Form)getInstanceMethod.Invoke(viewType, args);
+                childView.Show();
+            }
+        }
+
+        private Dictionary<string, Type> viewTypes = new Dictionary<string, Type>()
+        {
+            { "ToolView", typeof(GetToolView) },
+            { "JobView", typeof(JobViewNew) },
+            { "SettingView", typeof(ConfigSettingView) }
+        };
     }
 }

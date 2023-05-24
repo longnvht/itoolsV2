@@ -1,4 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
+using System.Data;
 using System.Threading.Tasks;
 
 namespace itools_source.Utils
@@ -31,6 +33,19 @@ namespace itools_source.Utils
             _strPASSWORD = "Vinam@12345";
             return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
         }
+
+        #region SqlParameter CreateInputParameterForSQL(MySqlCommand dbCmd, string prmName, MySqlDbType MySqlDbType, object value)
+        public static MySqlParameter CreateInputParameterForSQL(MySqlCommand sqlDbCmd, string prmName, MySqlDbType MySqlDbType, object value)
+        {
+            MySqlParameter sPrm = sqlDbCmd.CreateParameter();
+            sPrm.ParameterName = prmName;
+            sPrm.MySqlDbType = MySqlDbType;
+            //sPrm.IsNullable = true;
+            sPrm.Direction = ParameterDirection.Input;
+            sPrm.Value = value;
+            return sPrm;
+        }
+        #endregion
 
         public static MySqlConnection Open()
         {
@@ -134,6 +149,63 @@ namespace itools_source.Utils
             return null;
         }
 
+        #region SqlDataReader ExecuteReaderForSQL(MySqlCommand sCmd)
+        public static MySqlDataReader ExecuteReaderForSQL(MySqlCommand sCmd)
+        {
+            try
+            {
+                if (sCmd.Connection.State != ConnectionState.Closed) sCmd.Connection.Close();
+                if (sCmd.Connection.State != ConnectionState.Open)
+                {
+                    try
+                    {
+                        sCmd.Connection.Open();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                }
+                MySqlDataReader rv = sCmd.ExecuteReader(CommandBehavior.CloseConnection);
+                sCmd.Parameters.Clear();
+                return rv;
+            }
+            catch (Exception ex)
+            {
+                sCmd.Connection.Close();
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region SqlDataReader ExecuteReaderForSQL(MySqlCommand sCmd)
+        public static async Task<MySqlDataReader> ExecuteReaderForSQLAsync(MySqlCommand sCmd)
+        {
+            try
+            {
+                if (sCmd.Connection.State != ConnectionState.Closed) 
+                    await sCmd.Connection.CloseAsync();
+                if (sCmd.Connection.State != ConnectionState.Open)
+                {
+                    try
+                    {
+                        await sCmd.Connection.OpenAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                }
+                return(MySqlDataReader) await sCmd.ExecuteReaderAsync(CommandBehavior.CloseConnection);
+            }
+            catch (Exception ex)
+            {
+                await sCmd.Connection.CloseAsync();
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
         public static MySqlDataReader DataQueryProcedure(string strStoreProcedure, MySqlConnection mySqlConn)
         {
             try
@@ -163,6 +235,40 @@ namespace itools_source.Utils
             }
             return null;
         }
+
+        public static async Task<MySqlDataReader> DataQueryProcedureAsync(string strStoreProcedure, MySqlParameter[] paramerter, MySqlConnection mySqlConn)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(strStoreProcedure, mySqlConn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddRange(paramerter);
+                return (MySqlDataReader)await cmd.ExecuteReaderAsync();
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return null;
+        }
+
+        public static MySqlDataReader DataQueryProcedure(string strStoreProcedure, MySqlParameter[] paramerter, MySqlConnection mySqlConn)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(strStoreProcedure, mySqlConn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddRange(paramerter);
+                return cmd.ExecuteReader();
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return null;
+        }
+
+        
 
         public static MySqlDataReader DataQuery(string strQuery, MySqlParameter[] paramerter, MySqlConnection mySqlConn)
         {
@@ -194,37 +300,9 @@ namespace itools_source.Utils
             return null;
         }
 
-        public static MySqlDataReader DataQueryProcedure(string strStoreProcedure, MySqlParameter[] paramerter, MySqlConnection mySqlConn)
-        {
-            try
-            {
-                MySqlCommand cmd = new MySqlCommand(strStoreProcedure, mySqlConn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddRange(paramerter);
-                return cmd.ExecuteReader();
-            }
-            catch (MySqlException e)
-            {
-                _log.Error(e.Message);
-            }
-            return null;
-        }
+        
 
-        public static async Task<MySqlDataReader> DataQueryProcedureAsync(string strStoreProcedure, MySqlParameter[] paramerter, MySqlConnection mySqlConn)
-        {
-            try
-            {
-                MySqlCommand cmd = new MySqlCommand(strStoreProcedure, mySqlConn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddRange(paramerter);
-                return (MySqlDataReader)await cmd.ExecuteReaderAsync();
-            }
-            catch (MySqlException e)
-            {
-                _log.Error(e.Message);
-            }
-            return null;
-        }
+        
 
         public static bool CmdExecution(string strQuery, MySqlConnection mySqlConn)
         {

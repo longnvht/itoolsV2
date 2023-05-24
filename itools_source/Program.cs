@@ -9,41 +9,57 @@ using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using Unity;
+using VinamiToolUser.Models.Interface;
+using VinamiToolUser.Repository;
 using VinamiToolUser.Views;
+using VinamiToolUser.Views.Interface;
 
 //[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace itools_source
 {
-    internal static class ConfigUnity
+    internal static class UnityDI
     {
-        public static UnityContainer unityContainer { get; private set; } = new UnityContainer();
+        public static UnityContainer container { get; private set; } = new UnityContainer();
         public static void Register()
         {
-            unityContainer.RegisterType<ILoginView, LoginView>();
-            unityContainer.RegisterType<IUserAccountRepository, UserAccountRepository>();
+            container.RegisterType<ILoginView, LoginView>();
+            container.RegisterType<IUserAccountRepository, UserAccountRepository>();
 
-            unityContainer.RegisterType<IMainView, MainView>();
+            container.RegisterType<IMainView, MainView>();
+            container.RegisterType<IMainViewNew, MainViewNew>();
 
-            unityContainer.RegisterType<IMenuView, MenuView>();
-            unityContainer.RegisterType<IMenuRepository, MenuRepository>();
+            container.RegisterType<IMenuView, MenuView>();
+            container.RegisterType<IMenuRepository, MenuRepository>();
 
-            unityContainer.RegisterSingleton<IJobView, JobView>();
-            unityContainer.RegisterSingleton<IJobRepository, JobRepository>();
+            container.RegisterType<IMenuViewNew, MenuViewNew>();
+            container.RegisterType<IMenuRepositoryNew, MenuRepositoryNew>();
 
-            unityContainer.RegisterSingleton<IToolManagerView, ToolManagerView>();
-            unityContainer.RegisterSingleton<IToolMachineTrayRepository, ToolMachineTrayRepository>();
+            container.RegisterType<IJobView, JobView>();
+            container.RegisterType<IJobRepository, JobRepository>();
 
-            unityContainer.RegisterSingleton<IConfigSettingView, ConfigSettingView>();
-            unityContainer.RegisterSingleton<ICompanyRepository, CompanyRepository>();
+            container.RegisterType<IJobViewNew, JobViewNew>();
+            container.RegisterType<IJobRepositoryNew, JobRepositoryNew>();
 
-            unityContainer.RegisterSingleton<IOPView, OPView>();
-            unityContainer.RegisterSingleton<IGetToolRepository, GetToolRepository>();
+            container.RegisterType<IToolManagerView, ToolManagerView>();
+            container.RegisterType<IToolMachineTrayRepository, ToolMachineTrayRepository>();
 
-            unityContainer.RegisterSingleton<IGetToolView, GetToolView>();
+            container.RegisterType<IConfigSettingView, ConfigSettingView>();
+            container.RegisterType<ICompanyRepository, CompanyRepository>();
 
-            unityContainer.RegisterSingleton<IStockView, StockView>();
-            unityContainer.RegisterSingleton<IStockRepository, StockRepository>();
+            container.RegisterType<IOPView, OPView>();
+
+            container.RegisterType<IOPViewNew, OpViewNew>();
+            container.RegisterType<IOpRepositoryNew, OpRepositoryNew>();
+
+            container.RegisterType<IGetToolRepository, GetToolRepository>();
+            container.RegisterType<IGetToolRepositoryNew, GetToolRepositoryNew>();
+
+            container.RegisterType<IGetToolView, GetToolView>();
+            container.RegisterType<IGetToolViewNew, GetToolViewNew>();
+
+            container.RegisterType<IStockView, StockView>();
+            container.RegisterType<IStockRepository, StockRepository>();
         }
     }
 
@@ -70,10 +86,10 @@ namespace itools_source
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ConfigUnity.Register();
-            var loginPresenter = ConfigUnity.unityContainer.Resolve<LoginPresenter>();
+            UnityDI.Register();
+            var loginPresenter = UnityDI.container.Resolve<LoginPresenter>();
             loginPresenter.Run();
-            //Application.Run(new KeyBoard());
+            //Application.Run(new GetToolViewNew());
         }
     }
 }

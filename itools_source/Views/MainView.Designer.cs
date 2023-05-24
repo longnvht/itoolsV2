@@ -39,9 +39,9 @@ namespace itools_source.Views
             this._lblOPId = new System.Windows.Forms.Label();
             this._lblJobNumber = new System.Windows.Forms.Label();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
+            this._btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.lblName = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this._btnHome = new Guna.UI2.WinForms.Guna2Button();
             this._btnLogOut = new Guna.UI2.WinForms.Guna2Button();
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
@@ -119,18 +119,6 @@ namespace itools_source.Views
             this.tlpHeader.Controls.Add(this._btnLogOut, 4, 0);
             this.tlpHeader.Name = "tlpHeader";
             // 
-            // lblName
-            // 
-            resources.ApplyResources(this.lblName, "lblName");
-            this.lblName.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblName.Name = "lblName";
-            // 
-            // label13
-            // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label13.Name = "label13";
-            // 
             // _btnHome
             // 
             resources.ApplyResources(this._btnHome, "_btnHome");
@@ -144,6 +132,18 @@ namespace itools_source.Views
             this._btnHome.Image = global::VinamiToolUser.Properties.Resources.home_512px;
             this._btnHome.ImageSize = new System.Drawing.Size(30, 30);
             this._btnHome.Name = "_btnHome";
+            // 
+            // lblName
+            // 
+            resources.ApplyResources(this.lblName, "lblName");
+            this.lblName.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblName.Name = "lblName";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label13.Name = "label13";
             // 
             // _btnLogOut
             // 

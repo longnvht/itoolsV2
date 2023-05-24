@@ -96,17 +96,17 @@ namespace itools_source.Repository
                                 Menu menu = new Menu();
                                 if (!await mySqlDataReader.IsDBNullAsync(0))
                                 {
-                                    menu.strMenuId = mySqlDataReader.GetString(0);
+                                    menu.MenuId = mySqlDataReader.GetString(0);
                                 }
 
                                 if (!await mySqlDataReader.IsDBNullAsync(1))
                                 {
-                                    menu.strMenuName = mySqlDataReader.GetString(1);
+                                    menu.MenuName = mySqlDataReader.GetString(1);
                                 }
 
                                 if (!await mySqlDataReader.IsDBNullAsync(2))
                                 {
-                                    menu.strMenuDescription = mySqlDataReader.GetString(2);
+                                    menu.MenuDescription = mySqlDataReader.GetString(2);
                                 }
                                 lstMenuByUserLogin.Add(menu);
                             }

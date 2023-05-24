@@ -31,6 +31,10 @@ namespace itools_source.Views
             Keyboard.Show();
             Keyboard.Location = new Point(x, y);
         }
+        public bool Fvisible
+        {
+            get => this.Visible; set => this.Visible = value;
+        }
 
         #region Properties - Fields
         public string strUserName

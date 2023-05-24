@@ -9,12 +9,20 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Unity;
+using VinamiToolUser.Utils;
 using VinamiToolUser.Views;
 
 namespace itools_source.Presenter
 {
     public class LoginPresenter
     {
+        #region Properties - Fields
+        private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(LoginPresenter).Name);
+
+        private readonly ILoginView _loginView;
+        private readonly IUserAccountRepository _userAccountRepository;
+
+        #endregion
         public LoginPresenter(ILoginView loginView, IUserAccountRepository userAccountRepository)
         {
             _loginView = loginView;
@@ -25,14 +33,6 @@ namespace itools_source.Presenter
             _loginView.btnCancel_Click += _loginView_btnCancel_Click;
             _loginView.txtPassword_IconRightClick += _loginView_txtPassword_IconRightClick;
         }
-
-        #region Properties - Fields
-        private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(LoginPresenter).Name);
-
-        private readonly ILoginView _loginView;
-        private readonly IUserAccountRepository _userAccountRepository;
-
-        #endregion
 
         #region Events
 
@@ -87,6 +87,7 @@ namespace itools_source.Presenter
                         _log.Info("Login Fail!");
                         return;
                     }
+                    CommonValue.UserLogin = userAccount;
                     Program.sessionLogin["Id"] = userAccount.iID;
                     Program.sessionLogin["UserName"] = strUserName; // UserLogin
                     Program.sessionLogin["Password"] = strPassword;
@@ -94,17 +95,23 @@ namespace itools_source.Presenter
                     Program.sessionLogin["PermissionId"] = userAccount.strPermissionId;
                     Program.sessionLogin["LoginTime"] = Utils.ServerTime.GetServerTime().ToLocalTime().ToString();
 
-                    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
-                            () =>
-                            {
-                                var mainPresenter = ConfigUnity.unityContainer.Resolve<MainPresenter>();
-                                mainPresenter.Run();
-                            }));
+                    //System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
+                    //        () =>
+                    //        {
+                    //            //var mainPresenter = UnityDI.container.Resolve<MainPresenter>();
+                    //            //mainPresenter.Run();
+                    //            MainViewNew mainViewNew = MainViewNew.GetInstance();
+                    //            mainViewNew.UserLogin = userAccount;
+                    //            mainViewNew.Show();
+                    //        }));
 
-                    t.Start();
+                    //t.Start();
+
+                    MainViewNew mainViewNew = MainViewNew.GetInstance();
+                    mainViewNew.Show();
 
                     _log.Info("Login Success!");
-                    _loginView.Close();
+                    _loginView.Fvisible = false;
                 }
             }
             catch (Exception ex)

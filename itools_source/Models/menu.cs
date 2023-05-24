@@ -2,29 +2,23 @@
 {
     public class Menu
     {
-        private string _strMenuId;
-
-        public string strMenuId
+        private string _menuId;
+        private string _menuName;
+        private string _menuDescription;
+        public string MenuId
         {
-            get { return _strMenuId; }
-            set { _strMenuId = value; }
+            get { return _menuId; }
+            set { _menuId = value; }
         }
-
-        private string _strMenuName;
-
-        public string strMenuName
+        public string MenuName
         {
-            get { return _strMenuName; }
-            set { _strMenuName = value; }
+            get { return _menuName; }
+            set { _menuName = value; }
         }
-
-        private string _strMenuDescription;
-
-        public string strMenuDescription
+        public string MenuDescription
         {
-            get { return _strMenuDescription; }
-            set { _strMenuDescription = value; }
+            get { return _menuDescription; }
+            set { _menuDescription = value; }
         }
-
     }
 }

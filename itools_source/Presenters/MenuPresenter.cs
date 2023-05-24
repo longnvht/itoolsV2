@@ -67,8 +67,8 @@ namespace itools_source.Presenters
                             Margin = new Padding(10),
                             BorderRadius = 20,
                             Font = new Font("Segoe UI", 12F, FontStyle.Bold),
-                            Text = item.strMenuDescription,
-                            Tag = item.strMenuId,
+                            Text = item.MenuDescription,
+                            Tag = item.MenuId,
                             Dock = DockStyle.None
                         };
                         btn.DoubleClick += btnItem_DoubleClick;
@@ -106,7 +106,7 @@ namespace itools_source.Presenters
                         jobView.SetListOPNumberOPType = OpenOPView;
                         _jobRepository = new JobRepository();
 
-                        var jobPresenter = ConfigUnity.unityContainer.Resolve<JobPresenter>();
+                        var jobPresenter = UnityDI.container.Resolve<JobPresenter>();
                         jobPresenter.Run(jobView, _jobRepository);
 
                         break;
@@ -119,7 +119,7 @@ namespace itools_source.Presenters
                         IToolManagerView toolManagerView = ToolManagerView.GetInstance((MainView)_menuView.GetMdiParent());
                         IToolMachineTrayRepository toolMachineTrayRepository = new ToolMachineTrayRepository();
 
-                        var toolPresenter = ConfigUnity.unityContainer.Resolve<ToolManagerPresenter>();
+                        var toolPresenter = UnityDI.container.Resolve<ToolManagerPresenter>();
                         toolPresenter.Run(toolManagerView, toolMachineTrayRepository);
                         break;
                     }
@@ -129,7 +129,7 @@ namespace itools_source.Presenters
                         (_menuView.GetMdiParent() as MainView).btnNextEnabled = false;
                         IStockView stockView = StockView.GetInstance((MainView)_menuView.GetMdiParent());
                         IStockRepository stockRepository= new StockRepository();
-                        var stockPresenter = ConfigUnity.unityContainer.Resolve<StockPresenter>();
+                        var stockPresenter = UnityDI.container.Resolve<StockPresenter>();
                         stockPresenter.Run(stockView, stockRepository);
                         break;
                     }
@@ -141,7 +141,7 @@ namespace itools_source.Presenters
                         IConfigSettingView configSettingView = ConfigSettingView.GetInstance((MainView)_menuView.GetMdiParent());
                         ICompanyRepository stockRepository = new CompanyRepository();
 
-                        var configPresenter = ConfigUnity.unityContainer.Resolve<ConfigSettingPresenter>();
+                        var configPresenter = UnityDI.container.Resolve<ConfigSettingPresenter>();
                         configPresenter.Run(configSettingView, stockRepository);
                         break;
                     }
@@ -208,7 +208,7 @@ namespace itools_source.Presenters
             {
                 _getToolRepository = new GetToolRepository();
             }
-            var opPresenter = ConfigUnity.unityContainer.Resolve<OPPresenter>();
+            var opPresenter = UnityDI.container.Resolve<OPPresenter>();
             opPresenter.Run(oPView, _getToolRepository);
 
             _log.Info("Form close: " + typeof(JobView).Name + ", Open: " + typeof(OPView).Name);
@@ -241,7 +241,7 @@ namespace itools_source.Presenters
                     _getToolRepository = new GetToolRepository();
                 }
 
-                var getToolPresenter = ConfigUnity.unityContainer.Resolve<GetToolPresenter>();
+                var getToolPresenter = UnityDI.container.Resolve<GetToolPresenter>();
                 getToolPresenter.Run(getToolView, _getToolRepository);
 
                 _log.Info("Form close: " + typeof(OPView).Name + ", Open: " + typeof(GetToolView).Name);
