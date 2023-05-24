@@ -22,6 +22,7 @@ namespace VinamiToolUser.Views
 {
     public partial class GetToolViewNew : Form, IGetToolViewNew
     {
+        private string portName = "COM1";
         private ToolModel _curentTool;
         private TrayModel _currentTray;
         private MainViewNew _mainView;
@@ -109,25 +110,42 @@ namespace VinamiToolUser.Views
             string message = "Không thể thiết lập kết nối tới bo mạch điều khiển";
             bool result = false;
             _actionTime = 0;
+            _textReceive = "";
             tmGetTool.Start();
-            await Task.Run(() =>
-            {
-                serialPortGetTool.WriteLine("100\n");
-                //_actionTime = 0;
-                _textReceive = "";
-                //tmGetTool.Start();
-                while (_actionTime <= 5)
+            //await Task.Run(() =>
+            //{
+            //    serialPortGetTool.WriteLine("100\n");
+            //    while (_actionTime <= 5)
+            //    {
+            //        if (_textReceive.Contains("120"))
+            //        {
+            //            result = true;
+            //            message = "Kết nối tới bo mạch thành công";
+            //            break;
+            //        }
+            //    }
+            //    tmGetTool.Stop();
+            //});
+            Task<bool> t1 = new Task<bool>
+            (
+                () =>
                 {
-                    if (_textReceive.Contains("120"))
+                    serialPortGetTool.WriteLine("100\n");
+                    while (_actionTime < 5)
                     {
-                        result = true;
-                        message = "Kết nối tới bo mạch thành công";
-                        break;
+                        if (_textReceive.Contains("100"))
+                        {
+                            result = true;
+                            message = "Kết nối tới bo mạch thành công";
+                            break;
+                        }
                     }
+                    return result;
                 }
-                tmGetTool.Stop();
-            });
-
+            );
+            t1.Start();
+            await t1;
+            tmGetTool.Stop();
             rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, message, Color.Orange, true); }));
             return result;
         }
@@ -142,7 +160,7 @@ namespace VinamiToolUser.Views
                 {
                     try
                     {
-                        var portName = "COM5";
+                        
                         if (String.IsNullOrEmpty(portName))
                         {
                             rtbStatus.Invoke(new MethodInvoker(delegate { AppendText(rtbStatus, "Please select the serial port first!", Color.Red, true); }));
@@ -150,7 +168,7 @@ namespace VinamiToolUser.Views
                         }
                         else
                         {
-                            serialPortGetTool.PortName = portName;
+                            
                             if (serialPortGetTool.IsOpen == true)
                             {
                                 serialPortGetTool.Close();
@@ -192,6 +210,7 @@ namespace VinamiToolUser.Views
 
         private void FormGetToolLoad(object sender, EventArgs e)
         {
+            serialPortGetTool.PortName = portName;
             _mainView = MainViewNew.GetInstance();
             IGetToolRepositoryNew repository = UnityDI.container.Resolve<IGetToolRepositoryNew>();
             Presenter = new GetToolPresenterNew(this, repository);
