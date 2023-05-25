@@ -16,12 +16,16 @@ using Unity;
 using VinamiToolUser.Models.Interface;
 using VinamiToolUser.Presenters;
 using VinamiToolUser.Views.Interface;
+using VinamiToolUser.Models;
 
 namespace VinamiToolUser.Views
 {
     public partial class JobViewNew : Form, IJobViewNew
     {
-        private string _jobNumber;
+        private MainViewNew _mainView;
+        private JobModelNew _selectedJob;
+        private string _nextView;
+        private string _tempView;
         public JobViewNew()
         {
             InitializeComponent();
@@ -78,6 +82,7 @@ namespace VinamiToolUser.Views
         {
             IJobRepositoryNew repositoryNew = UnityDI.container.Resolve<IJobRepositoryNew>();
             Presenter = new JobPresenterNew(this, repositoryNew);
+            _mainView = MainViewNew.GetInstance();
         }
 
         private void ShowKeyboard()
@@ -89,9 +94,37 @@ namespace VinamiToolUser.Views
             Keyboard.Location = new Point(x, y);
         }
 
-        public string JobNumber { get => _jobNumber; set => _jobNumber = value; }
         public string SearchValue { get => txtSearch.Text; set => txtSearch.Text=value; }
         public JobPresenterNew Presenter { private get; set; }
+        public JobModelNew SelectedJob 
+        { 
+            get => _selectedJob;
+            set 
+            { 
+                _selectedJob = value; 
+                _mainView.CurrentJob = value;
+            }
+        }
+        public string NextView 
+        { 
+            get => _nextView;
+            set
+            {
+                _nextView = value;
+                _mainView.CurrentView = value;
+            }
+        }
+
+        public string TempView 
+        { 
+            get => _tempView;
+            set
+            {
+                _tempView = value;
+                _mainView.TempView = value;
+            }
+        }
+
 
         public event EventHandler SearchEvent;
         public event EventHandler SelectJobEvent;

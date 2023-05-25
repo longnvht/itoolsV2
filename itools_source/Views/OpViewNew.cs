@@ -22,6 +22,10 @@ namespace VinamiToolUser.Views
     {
         private static OpViewNew instance;
         private JobModelNew _currentJob;
+        private OPModel _selectedOP;
+        private string _nextView;
+        private string _tempView;
+        private MainViewNew _mainView;
         public OpViewNew()
         {
             InitializeComponent();
@@ -65,6 +69,7 @@ namespace VinamiToolUser.Views
 
         private void OpViewLoad(object sender, EventArgs e)
         {
+            _mainView = MainViewNew.GetInstance();
             CurrentJob = CommonValue.CurrentJob;
             IOpRepositoryNew repository = UnityDI.container.Resolve<IOpRepositoryNew>();
             Presenter = new OpPresenterNew(this, repository);
@@ -73,6 +78,33 @@ namespace VinamiToolUser.Views
         public JobModelNew  CurrentJob { get => _currentJob; set => _currentJob = value; }
         public string SearchValue { get => txtSearch.Text; set => txtSearch.Text = value; }
         public OpPresenterNew Presenter { private get; set; }
+        public OPModel SelectedOP 
+        { 
+            get => _selectedOP;
+            set 
+            { 
+                _selectedOP = value;
+                _mainView.CurrentOP = value;
+            }
+        }
+        public string NextView 
+        { 
+            get => _nextView;
+            set 
+            { 
+                _nextView = value;
+                _mainView.CurrentView = value;
+            } 
+        }
+        public string TempView 
+        { 
+            get => _tempView;
+            set 
+            { 
+                _tempView = value;
+                _mainView.TempView = value;
+            } 
+        }
 
         public event EventHandler SearchEvent;
         public event EventHandler OpSelectEvent;

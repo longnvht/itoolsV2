@@ -13,6 +13,9 @@ namespace VinamiToolUser.Views.Interface
     {
         #region Properties
         JobModelNew CurrentJob { get; set; }
+        OPModel SelectedOP { get; set; }
+        string NextView { get; set; }
+        string TempView { get; set; }
         string SearchValue { get; set; }
         OpPresenterNew Presenter { set; }
         #endregion

@@ -18,11 +18,11 @@ namespace VinamiToolUser.Presenters
         private IEnumerable<OPModel> _opList;
         private IOPViewNew _view;
         private IOpRepositoryNew _repository;
-        private MainViewNew _mainView;
+        
 
         public OpPresenterNew(IOPViewNew view, IOpRepositoryNew repository)
         {
-            _mainView = MainViewNew.GetInstance();
+            
             this._bindingSource = new BindingSource();
             this._view = view;
             this._repository = repository;
@@ -37,9 +37,8 @@ namespace VinamiToolUser.Presenters
         private void ChoseOp(object sender, EventArgs e)
         {
             var op = (OPModel)_bindingSource.Current;
-            _mainView.CurrentOP = op;
-            _mainView.TempView = "GetToolView";
-            _mainView.AssignCurentView();
+            _view.SelectedOP = op;
+            _view.NextView = "GetToolView";
         }
 
         private async void LoadOpList()
@@ -51,8 +50,8 @@ namespace VinamiToolUser.Presenters
         private void SelectOp(object sender, EventArgs e)
         {
             var op = (OPModel)_bindingSource.Current;
-            _mainView.TempView = "GetToolView";
-            _mainView.CurrentOP = op;
+            _view.TempView = "GetToolView";
+            _view.SelectedOP = op;
         }
 
         private async void SearchOp(object sender, EventArgs e)

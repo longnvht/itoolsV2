@@ -94,6 +94,9 @@ namespace VinamiToolUser.Views
             { 
                 _currentJob = value;
                 CommonValue.CurrentJob = value;
+                CurrentOP = null;
+                CurrentTool = null;
+                CurrentTray = null;
                 UpdateTitleStatus();
             } 
         }
@@ -105,6 +108,8 @@ namespace VinamiToolUser.Views
             { 
                 _currentOP = value;
                 CommonValue.CurrentOP = value;
+                CurrentTool = null;
+                CurrentTray = null;
                 UpdateTitleStatus();
             }
         }
@@ -115,6 +120,7 @@ namespace VinamiToolUser.Views
             {
                 _currentTool = value;
                 CommonValue.CurrentTool = value;
+                CurrentTray = null;
                 UpdateTitleStatus();
             }
         }
@@ -173,9 +179,9 @@ namespace VinamiToolUser.Views
         {
             string title = "";
             if (_currentJob != null) { title = "JOB: " + _currentJob.JobNumber; };
-            if (_currentOP != null) { title += "- OP: " + _currentOP.OpNumber; };
-            if (_currentTool != null) { title += "- TOOL: " + _currentTool.ToolCode; };
-            if (_currentTray != null) { title += "- TRAY: " + _currentTray.TrayName; };
+            if (_currentOP != null) { title += "/OP: " + _currentOP.OpNumber; };
+            if (_currentTool != null) { title += "/TOOL: " + _currentTool.ToolCode; };
+            if (_currentTray != null) { title += "/TRAY: " + _currentTray.TrayName; };
             txtStatus.Text = title;
         }
         private void ReturnHome()

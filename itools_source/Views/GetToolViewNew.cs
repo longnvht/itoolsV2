@@ -26,6 +26,7 @@ namespace VinamiToolUser.Views
         private ToolModel _curentTool;
         private TrayModel _currentTray;
         private MainViewNew _mainView;
+        private bool _resultGetTool;
         private int _actionTime=0;
         private string _textReceive;
         private static GetToolViewNew _instance;
@@ -34,7 +35,6 @@ namespace VinamiToolUser.Views
             InitializeComponent();
             AssociateAndRaiseViewEvents();
         }
-
 
         public static GetToolViewNew GetInstance(Form parentContainer)
         {
@@ -65,7 +65,11 @@ namespace VinamiToolUser.Views
             };
             this.Load += FormGetToolLoad;
             tvStock.TrayNodeSelect += SelectTray;
-            btnGetTool.Click += GetTool;
+            btnGetTool.Click += async (s, e) => 
+            { 
+                _resultGetTool = await GetTool();
+                UpdateToolStock?.Invoke(this, new EventArgs());
+            };
             tmGetTool.Tick += (s, e) => 
             { 
                 _actionTime++;
@@ -94,19 +98,27 @@ namespace VinamiToolUser.Views
             box.SelectionColor = box.ForeColor;
         }
 
-        private async void GetTool(object sender, EventArgs e)
+        private async Task<bool> GetTool()
         {
+            AppendText(rtbStatus, "/*******************************/", Color.Green, true);
+            AppendText(rtbStatus, "/*******************************/", Color.Green, true);
             AppendText(rtbStatus, "Start Get Tool ...", Color.Blue, true);
             bool comportStatus =  await OpenComPort();
-            if (comportStatus)
-            {
-                bool connectStatus = await CheckConnecttion();
-                if (comportStatus)
-                {
-                    await SendGetToolComman();
-                }
-            }
-            
+            if (!comportStatus) return false;
+            //if (comportStatus)
+            //{
+            //    bool connectStatus = await CheckConnecttion();
+            //    if (comportStatus)
+            //    {
+            //        await SendGetToolComman();
+            //    }
+            //}
+            bool connectStatus = await CheckConnecttion();
+            if (!connectStatus) return false;
+
+            bool getToolStatus = await SendGetToolComman();
+            if (!getToolStatus) return false;
+            return true;
         }
 
         private async Task<bool> SendGetToolComman()
@@ -125,24 +137,27 @@ namespace VinamiToolUser.Views
                 {
                     while (_actionTime < 10)
                     {
-                        if (_textReceive.Contains("121") & lastTextReceive != _textReceive)
+                        if (_textReceive.Contains("121") & lastTextReceive != _textReceive) //Ghi nhận sự kiện Motor Start
                         {
                             lastTextReceive = _textReceive;
                             rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Motor Start ...", Color.Blue, true); }));
                         }
-                        if (_textReceive.Contains("122") & lastTextReceive != _textReceive)
+
+                        if (_textReceive.Contains("122") & lastTextReceive != _textReceive) //Ghi nhận sự kiện Motor Stop
                         {
                             lastTextReceive = _textReceive;
                             rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Motor Stop ...", Color.Blue, true); }));
                         }
-                        if (_textReceive.Contains("123") & lastTextReceive != _textReceive)
+
+                        if (_textReceive.Contains("123") & lastTextReceive != _textReceive) //Ghi nhận sự kiện Lấy Tool Thành công
                         {
                             lastTextReceive = _textReceive;
                             result = true;
                             message = "Lấy dụng cụ thành công";
                             break;
                         }
-                        if (_textReceive.Contains("124") & lastTextReceive != _textReceive)
+
+                        if (_textReceive.Contains("124") & lastTextReceive != _textReceive) //Ghi nhận sự kiện Lấy Tool Thất bại
                         {
                             lastTextReceive = _textReceive;
                             break;
@@ -252,6 +267,7 @@ namespace VinamiToolUser.Views
             TrayModel tray = e.Tray;
             if(tray != null)
             {
+                SelectedTray = tray;
                 TrayName = tray.TrayName;
                 Quantity = tray.QtyStock.ToString();
             }
@@ -305,6 +321,8 @@ namespace VinamiToolUser.Views
                 else btnGetTool.Enabled = true;
             } 
         }
+
+        public bool GetToolResult { get => _resultGetTool; set => _resultGetTool = value; }
 
         public event EventHandler SelectToolEvent;
         public event EventHandler SelectTrayEvent;

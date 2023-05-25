@@ -19,11 +19,11 @@ namespace VinamiToolUser.Presenters
         private IEnumerable<JobModelNew> _jobList;
         private IJobViewNew _view;
         private IJobRepositoryNew _repository;
-        private MainViewNew _mainView;
+        
 
         public JobPresenterNew(IJobViewNew view, IJobRepositoryNew repository)
         {
-            _mainView = MainViewNew.GetInstance();
+            
             this._bindingSource = new BindingSource();
             this._view = view;
             this._repository = repository;
@@ -38,9 +38,8 @@ namespace VinamiToolUser.Presenters
         private void ChoseJob(object sender, EventArgs e)
         {
             var job = (JobModelNew)_bindingSource.Current;
-            _mainView.CurrentJob = job;
-            _mainView.TempView = "Select Op";
-            _mainView.AssignCurentView();
+            _view.SelectedJob = job;
+            _view.NextView = "Select Op";
         }
 
         private async void LoadJobList()
@@ -52,9 +51,8 @@ namespace VinamiToolUser.Presenters
         private void SelectJob(object sender, EventArgs e)
         {
             var job = (JobModelNew)_bindingSource.Current;
-            _mainView.CurrentJob = job;
-            _mainView.TempView = "Select Op";
-            _view.JobNumber = job.JobNumber;
+            _view.SelectedJob = job;
+            _view.TempView = "Select Op";
         }
 
         private async void SearchJob(object sender, EventArgs e)

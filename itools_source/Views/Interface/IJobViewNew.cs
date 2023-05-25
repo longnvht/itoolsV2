@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VinamiToolUser.Models;
 using VinamiToolUser.Presenters;
 
 namespace VinamiToolUser.Views.Interface
@@ -11,8 +12,10 @@ namespace VinamiToolUser.Views.Interface
     public interface IJobViewNew
     {
         #region Properties
-        string JobNumber { get; set; }
         string SearchValue { get; set; }
+        string NextView { get; set; }
+        string TempView { get; set; }
+        JobModelNew SelectedJob { get; set; }
         JobPresenterNew Presenter { set; }
         #endregion
 

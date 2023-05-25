@@ -69,6 +69,7 @@ namespace VinamiToolUser.Presenters
         private async void SelectTool(object sender, EventArgs e)
         {
             var tool = (ToolModel)_toolSource.Current;
+            _view.SelectedTool = tool;
             _view.ToolCode = tool.ToolCode;
             _view.ToolName = tool.ToolName;
             _view.TrayName = "";
