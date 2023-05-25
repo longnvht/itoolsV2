@@ -90,7 +90,7 @@ namespace VinamiToolUser.Views
             {
                 vtKeyBoard.IsNumeric = false;
                 txtStyle.Text = "ABC";
-                this.Width = 900;
+                this.Width = 1000;
             }
         }
     }

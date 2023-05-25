@@ -56,9 +56,7 @@ namespace VinamiToolUser.Views
             btnNext.Click += (s,e) => { AssignCurentView(); };
             btnPrev.Click += (s, e) => 
             {
-                var temp = CurrentView;
                 CurrentView = PrevView; 
-                PrevView = temp;
             };
             this.Load += MainViewLoad;
             btnClose.Click += (s, e) => { };
@@ -73,9 +71,7 @@ namespace VinamiToolUser.Views
 
         public void AssignCurentView()
         {
-            PrevView = CurrentView;
             CurrentView = TempView;
-            TempView = null;
         }
 
         public UserAccount UserLogin 
@@ -142,6 +138,7 @@ namespace VinamiToolUser.Views
             {
                 _currentView = value;
                 txtCurrentView.Text = _currentView;
+                TempView = null;
                 OpenChildView();
             }  
         }
@@ -155,7 +152,16 @@ namespace VinamiToolUser.Views
                 else btnNext.Enabled = true;
             }
         }
-        public string PrevView { get => _prevView; set => _prevView = value; }
+        public string PrevView 
+        { 
+            get => _prevView;
+            set
+            {
+                _prevView = value;
+                if(String.IsNullOrEmpty(value)) btnPrev.Enabled = false;
+                else btnPrev.Enabled = true;
+            }
+        }
         
 
         public void CloseChildView()

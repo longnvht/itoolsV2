@@ -49,7 +49,7 @@
             this.tblSearch.Name = "tblSearch";
             this.tblSearch.RowCount = 1;
             this.tblSearch.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblSearch.Size = new System.Drawing.Size(713, 40);
+            this.tblSearch.Size = new System.Drawing.Size(713, 60);
             this.tblSearch.TabIndex = 0;
             // 
             // txtSearch
@@ -66,12 +66,12 @@
             this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Location = new System.Drawing.Point(3, 3);
+            this.txtSearch.Location = new System.Drawing.Point(3, 5);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderText = "";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(607, 34);
+            this.txtSearch.Size = new System.Drawing.Size(607, 50);
             this.txtSearch.TabIndex = 0;
             // 
             // btnSearch
@@ -87,9 +87,9 @@
             this.btnSearch.FillColor = System.Drawing.Color.WhiteSmoke;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.Navy;
-            this.btnSearch.Location = new System.Drawing.Point(616, 3);
+            this.btnSearch.Location = new System.Drawing.Point(616, 5);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 34);
+            this.btnSearch.Size = new System.Drawing.Size(94, 50);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             // 
@@ -98,9 +98,9 @@
             this.grbJob.Controls.Add(this.lstJob);
             this.grbJob.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbJob.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbJob.Location = new System.Drawing.Point(0, 40);
+            this.grbJob.Location = new System.Drawing.Point(0, 60);
             this.grbJob.Name = "grbJob";
-            this.grbJob.Size = new System.Drawing.Size(713, 385);
+            this.grbJob.Size = new System.Drawing.Size(713, 365);
             this.grbJob.TabIndex = 2;
             this.grbJob.TabStop = false;
             this.grbJob.Text = "Job List";
@@ -126,7 +126,7 @@
             this.lstJob.Margin = new System.Windows.Forms.Padding(4);
             this.lstJob.MinMargin = 5;
             this.lstJob.Name = "lstJob";
-            this.lstJob.Size = new System.Drawing.Size(707, 361);
+            this.lstJob.Size = new System.Drawing.Size(707, 341);
             this.lstJob.TabIndex = 1;
             // 
             // JobViewNew

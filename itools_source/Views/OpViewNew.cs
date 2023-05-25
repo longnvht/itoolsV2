@@ -55,8 +55,16 @@ namespace VinamiToolUser.Views
         {
             this.Load += OpViewLoad;
             lstOp.ItemClick += delegate { OpSelectEvent?.Invoke(this, EventArgs.Empty); };
-            lstOp.ItemDoubleClick += delegate { ChoseOpEvent?.Invoke(this, EventArgs.Empty); };
-            btnSearch.MouseClick += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
+            lstOp.ItemDoubleClick += (s,e) => 
+            {
+                KeyBoard.CloseKeyboard();
+                ChoseOpEvent?.Invoke(this, EventArgs.Empty); 
+            };
+            btnSearch.Click += delegate 
+            {
+                KeyBoard.CloseKeyboard();
+                SearchEvent?.Invoke(this, EventArgs.Empty); 
+            };
             txtSearch.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
@@ -65,14 +73,25 @@ namespace VinamiToolUser.Views
                     SearchEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
+            txtSearch.MouseClick += (s, e) => { ShowKeyboard(); };
         }
 
         private void OpViewLoad(object sender, EventArgs e)
         {
             _mainView = MainViewNew.GetInstance();
+            _mainView.PrevView = "Select Job";
             CurrentJob = CommonValue.CurrentJob;
             IOpRepositoryNew repository = UnityDI.container.Resolve<IOpRepositoryNew>();
             Presenter = new OpPresenterNew(this, repository);
+        }
+
+        private void ShowKeyboard()
+        {
+            var Keyboard = KeyBoard.GetInstance();
+            int x = (Screen.PrimaryScreen.Bounds.Right - Keyboard.Width) / 2;
+            int y = Screen.PrimaryScreen.Bounds.Bottom - Keyboard.Height;
+            Keyboard.Show();
+            Keyboard.Location = new Point(x, y);
         }
 
         public JobModelNew  CurrentJob { get => _currentJob; set => _currentJob = value; }

@@ -82,8 +82,8 @@
             this.btnClose = new Guna.UI2.WinForms.Guna2TileButton();
             this.swStyle = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.txtStyle = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.vtKeyBoard = new Keyboard.VirtualKeyboard();
             this.drkeyboard = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.vtKeyBoard = new Keyboard.VirtualKeyboard();
             this.pnTitle.SuspendLayout();
             this.tblTitle.SuspendLayout();
             this.SuspendLayout();
@@ -94,9 +94,9 @@
             this.pnTitle.Controls.Add(this.tblTitle);
             this.pnTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnTitle.Margin = new System.Windows.Forms.Padding(2);
             this.pnTitle.Name = "pnTitle";
-            this.pnTitle.Size = new System.Drawing.Size(900, 40);
+            this.pnTitle.Size = new System.Drawing.Size(1000, 40);
             this.pnTitle.TabIndex = 1;
             // 
             // tblTitle
@@ -114,7 +114,7 @@
             this.tblTitle.Name = "tblTitle";
             this.tblTitle.RowCount = 1;
             this.tblTitle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblTitle.Size = new System.Drawing.Size(900, 40);
+            this.tblTitle.Size = new System.Drawing.Size(1000, 40);
             this.tblTitle.TabIndex = 2;
             // 
             // btnClose
@@ -129,7 +129,7 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = global::VinamiToolUser.Properties.Resources.close_480px;
             this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(863, 3);
+            this.btnClose.Location = new System.Drawing.Point(963, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(34, 34);
             this.btnClose.TabIndex = 1;
@@ -166,6 +166,12 @@
             this.txtStyle.Size = new System.Drawing.Size(28, 19);
             this.txtStyle.TabIndex = 3;
             this.txtStyle.Text = "ABC";
+            // 
+            // drkeyboard
+            // 
+            this.drkeyboard.DockIndicatorTransparencyValue = 0.6D;
+            this.drkeyboard.TargetControl = this.tblTitle;
+            this.drkeyboard.UseTransparentDrag = true;
             // 
             // vtKeyBoard
             // 
@@ -378,7 +384,7 @@
             this.vtKeyBoard.LanguageButtonImage = null;
             this.vtKeyBoard.LanguageButtonTopText = "Eng";
             this.vtKeyBoard.Location = new System.Drawing.Point(0, 40);
-            this.vtKeyBoard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.vtKeyBoard.Margin = new System.Windows.Forms.Padding(2);
             this.vtKeyBoard.Name = "vtKeyBoard";
             this.vtKeyBoard.NumLockState = false;
             virtualKbButton24.BottomFont = null;
@@ -497,7 +503,7 @@
             this.vtKeyBoard.ShowLanguageButton = false;
             this.vtKeyBoard.ShowNumericButtons = false;
             this.vtKeyBoard.ShowTab = true;
-            this.vtKeyBoard.Size = new System.Drawing.Size(900, 300);
+            this.vtKeyBoard.Size = new System.Drawing.Size(1000, 300);
             this.vtKeyBoard.TabIndex = 2;
             this.vtKeyBoard.Text = "virtualKeyboard1";
             virtualKbButton37.BottomFont = null;
@@ -589,22 +595,16 @@
             new Keyboard.ButtonsCollection().Add(virtualKbButton46);
             new Keyboard.ButtonsCollection().Add(virtualKbButton47);
             // 
-            // drkeyboard
-            // 
-            this.drkeyboard.DockIndicatorTransparencyValue = 0.6D;
-            this.drkeyboard.TargetControl = this.tblTitle;
-            this.drkeyboard.UseTransparentDrag = true;
-            // 
             // KeyBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 340);
+            this.ClientSize = new System.Drawing.Size(1000, 340);
             this.Controls.Add(this.vtKeyBoard);
             this.Controls.Add(this.pnTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "KeyBoard";
             this.Text = "KeyBoard";
             this.pnTitle.ResumeLayout(false);

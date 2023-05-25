@@ -22,7 +22,7 @@ namespace VinamiToolUser.Views
 {
     public partial class GetToolViewNew : Form, IGetToolViewNew
     {
-        private string portName = "COM6";
+        private string portName = "COM3";
         private ToolModel _curentTool;
         private TrayModel _currentTray;
         private MainViewNew _mainView;
@@ -58,10 +58,19 @@ namespace VinamiToolUser.Views
         private void AssociateAndRaiseViewEvents()
         {
             lstTool.ItemClick += delegate { SelectToolEvent?.Invoke(this, EventArgs.Empty); };
-            btnSearch.Click += delegate { SearchToolEvent?.Invoke(this, EventArgs.Empty); };
+            btnSearch.Click += delegate 
+            {
+                KeyBoard.CloseKeyboard();
+                SearchToolEvent?.Invoke(this, EventArgs.Empty); 
+            };
+            txtSearch.MouseClick += (s, e) => { ShowKeyboard(); };
             txtSearch.KeyDown += (s, e) =>
             {
-                if(e.KeyCode == Keys.Enter) { SearchToolEvent?.Invoke(this, EventArgs.Empty); }
+                if(e.KeyCode == Keys.Enter) 
+                {
+                    SearchToolEvent?.Invoke(this, EventArgs.Empty);
+                    KeyBoard.CloseKeyboard();
+                }
             };
             this.Load += FormGetToolLoad;
             tvStock.TrayNodeSelect += SelectTray;
@@ -76,6 +85,15 @@ namespace VinamiToolUser.Views
                 AppendText(rtbStatus, "* - - - *", Color.Blue, true);
             };
             serialPortGetTool.DataReceived += GetDataReceive;
+        }
+
+        private void ShowKeyboard()
+        {
+            var Keyboard = KeyBoard.GetInstance();
+            int x = (Screen.PrimaryScreen.Bounds.Right - Keyboard.Width) / 2;
+            int y = Screen.PrimaryScreen.Bounds.Bottom - Keyboard.Height;
+            Keyboard.Show();
+            Keyboard.Location = new Point(x, y);
         }
 
         private void GetDataReceive(object sender, SerialDataReceivedEventArgs e)
@@ -282,6 +300,7 @@ namespace VinamiToolUser.Views
         {
             serialPortGetTool.PortName = portName;
             _mainView = MainViewNew.GetInstance();
+            _mainView.PrevView = "Select Op";
             IGetToolRepositoryNew repository = UnityDI.container.Resolve<IGetToolRepositoryNew>();
             Presenter = new GetToolPresenterNew(this, repository);
         }

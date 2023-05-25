@@ -70,7 +70,11 @@ namespace VinamiToolUser.Views
             };
             //Job Select Event
             lstJob.ItemClick += delegate { SelectJobEvent?.Invoke(this, EventArgs.Empty); };
-            lstJob.ItemDoubleClick += delegate { ChoseJobEvent?.Invoke(this, EventArgs.Empty); };
+            lstJob.ItemDoubleClick += (s,e) => 
+            {
+                KeyBoard.CloseKeyboard();
+                ChoseJobEvent?.Invoke(this, EventArgs.Empty); 
+            };
             txtSearch.Click += (s, e) =>
             {
                 ShowKeyboard();
@@ -83,6 +87,7 @@ namespace VinamiToolUser.Views
             IJobRepositoryNew repositoryNew = UnityDI.container.Resolve<IJobRepositoryNew>();
             Presenter = new JobPresenterNew(this, repositoryNew);
             _mainView = MainViewNew.GetInstance();
+            _mainView.PrevView = "Menu";
         }
 
         private void ShowKeyboard()

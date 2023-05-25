@@ -55,12 +55,12 @@
             this.tlpFooter.Controls.Add(this.btnPrev, 0, 0);
             this.tlpFooter.Controls.Add(this.btnNext, 2, 0);
             this.tlpFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tlpFooter.Location = new System.Drawing.Point(0, 390);
+            this.tlpFooter.Location = new System.Drawing.Point(0, 380);
             this.tlpFooter.Margin = new System.Windows.Forms.Padding(4);
             this.tlpFooter.Name = "tlpFooter";
             this.tlpFooter.RowCount = 1;
             this.tlpFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpFooter.Size = new System.Drawing.Size(800, 60);
+            this.tlpFooter.Size = new System.Drawing.Size(800, 70);
             this.tlpFooter.TabIndex = 5;
             // 
             // btnPrev
@@ -80,7 +80,7 @@
             this.btnPrev.Location = new System.Drawing.Point(4, 5);
             this.btnPrev.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(142, 50);
+            this.btnPrev.Size = new System.Drawing.Size(142, 60);
             this.btnPrev.TabIndex = 0;
             this.btnPrev.Text = "Quay Lại";
             // 
@@ -101,7 +101,7 @@
             this.btnNext.Location = new System.Drawing.Point(654, 5);
             this.btnNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(142, 50);
+            this.btnNext.Size = new System.Drawing.Size(142, 60);
             this.btnNext.TabIndex = 1;
             this.btnNext.Text = "Tiếp Theo";
             // 

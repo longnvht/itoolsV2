@@ -39,6 +39,7 @@ namespace VinamiToolUser.Views
         private void MenuViewLoad(object sender, EventArgs e)
         {
             _mainView = MainViewNew.GetInstance();
+            _mainView.PrevView = "";
             IMenuRepositoryNew repository = UnityDI.container.Resolve<IMenuRepositoryNew>();
             Presenter = new MenuPresenterNew(this, repository);
         }
