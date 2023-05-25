@@ -293,6 +293,7 @@
             new Keyboard.ButtonsCollection().Add(virtualKbButton11);
             new Keyboard.ButtonsCollection().Add(virtualKbButton12);
             new Keyboard.ButtonsCollection().Add(virtualKbButton13);
+            this.vtKeyBoard.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vtKeyBoard.FontColor = System.Drawing.Color.Black;
             this.vtKeyBoard.FontColorShiftDisabled = System.Drawing.Color.DimGray;
             this.vtKeyBoard.FontColorSpecialKey = System.Drawing.Color.DimGray;
@@ -377,9 +378,9 @@
             new Keyboard.ButtonsCollection().Add(virtualKbButton22);
             new Keyboard.ButtonsCollection().Add(virtualKbButton23);
             this.vtKeyBoard.IsNumeric = false;
-            this.vtKeyBoard.LabelFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.vtKeyBoard.LabelFontShiftDisabled = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.vtKeyBoard.LabelFontSpecialKey = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.vtKeyBoard.LabelFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.vtKeyBoard.LabelFontShiftDisabled = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.vtKeyBoard.LabelFontSpecialKey = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.vtKeyBoard.LanguageButtonBottomText = "";
             this.vtKeyBoard.LanguageButtonImage = null;
             this.vtKeyBoard.LanguageButtonTopText = "Eng";
