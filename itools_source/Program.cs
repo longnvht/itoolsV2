@@ -26,40 +26,26 @@ namespace itools_source
             container.RegisterType<ILoginView, LoginView>();
             container.RegisterType<IUserAccountRepository, UserAccountRepository>();
 
-            container.RegisterType<IMainView, MainView>();
             container.RegisterType<IMainViewNew, MainViewNew>();
 
-            container.RegisterType<IMenuView, MenuView>();
-            container.RegisterType<IMenuRepository, MenuRepository>();
 
             container.RegisterType<IMenuViewNew, MenuViewNew>();
             container.RegisterType<IMenuRepositoryNew, MenuRepositoryNew>();
 
-            container.RegisterType<IJobView, JobView>();
-            container.RegisterType<IJobRepository, JobRepository>();
 
             container.RegisterType<IJobViewNew, JobViewNew>();
             container.RegisterType<IJobRepositoryNew, JobRepositoryNew>();
 
-            container.RegisterType<IToolManagerView, ToolManagerView>();
-            container.RegisterType<IToolMachineTrayRepository, ToolMachineTrayRepository>();
 
             container.RegisterType<IConfigSettingView, ConfigSettingView>();
-            container.RegisterType<ICompanyRepository, CompanyRepository>();
 
-            container.RegisterType<IOPView, OPView>();
 
             container.RegisterType<IOPViewNew, OpViewNew>();
             container.RegisterType<IOpRepositoryNew, OpRepositoryNew>();
 
-            container.RegisterType<IGetToolRepository, GetToolRepository>();
             container.RegisterType<IGetToolRepositoryNew, GetToolRepositoryNew>();
 
-            container.RegisterType<IGetToolView, GetToolView>();
             container.RegisterType<IGetToolViewNew, GetToolViewNew>();
-
-            container.RegisterType<IStockView, StockView>();
-            container.RegisterType<IStockRepository, StockRepository>();
         }
     }
 
