@@ -22,7 +22,7 @@ namespace VinamiToolUser.Views
 {
     public partial class GetToolViewNew : Form, IGetToolViewNew
     {
-        private string portName = "COM1";
+        private string portName = "COM6";
         private ToolModel _curentTool;
         private TrayModel _currentTray;
         private MainViewNew _mainView;
@@ -69,7 +69,7 @@ namespace VinamiToolUser.Views
             tmGetTool.Tick += (s, e) => 
             { 
                 _actionTime++;
-                //AppendText(rtbStatus, _actionTime.ToString(), Color.Blue, true);
+                AppendText(rtbStatus, "* - - - *", Color.Blue, true);
             };
             serialPortGetTool.DataReceived += GetDataReceive;
         }
@@ -100,10 +100,64 @@ namespace VinamiToolUser.Views
             bool comportStatus =  await OpenComPort();
             if (comportStatus)
             {
-                await CheckConnecttion();
+                bool connectStatus = await CheckConnecttion();
+                if (comportStatus)
+                {
+                    await SendGetToolComman();
+                }
             }
             
         }
+
+        private async Task<bool> SendGetToolComman()
+        {
+            rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Send Get Tool Command ...", Color.Blue, true); }));
+            string message = "Lấy dụng cụ thất bại";
+            bool result = false;
+            string lastTextReceive = "";
+            _textReceive = "";
+            _actionTime = 0;
+            serialPortGetTool.WriteLine("101,1\n");
+            tmGetTool.Start();
+            Task<bool> t1 = new Task<bool>
+            (
+                () =>
+                {
+                    while (_actionTime < 10)
+                    {
+                        if (_textReceive.Contains("121") & lastTextReceive != _textReceive)
+                        {
+                            lastTextReceive = _textReceive;
+                            rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Motor Start ...", Color.Blue, true); }));
+                        }
+                        if (_textReceive.Contains("122") & lastTextReceive != _textReceive)
+                        {
+                            lastTextReceive = _textReceive;
+                            rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Motor Stop ...", Color.Blue, true); }));
+                        }
+                        if (_textReceive.Contains("123") & lastTextReceive != _textReceive)
+                        {
+                            lastTextReceive = _textReceive;
+                            result = true;
+                            message = "Lấy dụng cụ thành công";
+                            break;
+                        }
+                        if (_textReceive.Contains("124") & lastTextReceive != _textReceive)
+                        {
+                            lastTextReceive = _textReceive;
+                            break;
+                        }
+                    }
+                    return result;
+                }
+            );
+            t1.Start();
+            await t1;
+            tmGetTool.Stop();
+            rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, message, Color.Orange, true); }));
+            return result;
+        }
+
         private async Task<bool> CheckConnecttion()
         {
             rtbStatus.BeginInvoke(new Action ( () => {AppendText(rtbStatus, "Checking Connection ...", Color.Blue, true); }));
@@ -111,6 +165,7 @@ namespace VinamiToolUser.Views
             bool result = false;
             _actionTime = 0;
             _textReceive = "";
+            serialPortGetTool.WriteLine("100\n");
             tmGetTool.Start();
             //await Task.Run(() =>
             //{
@@ -130,10 +185,9 @@ namespace VinamiToolUser.Views
             (
                 () =>
                 {
-                    serialPortGetTool.WriteLine("100\n");
                     while (_actionTime < 5)
                     {
-                        if (_textReceive.Contains("100"))
+                        if (_textReceive.Contains("120"))
                         {
                             result = true;
                             message = "Kết nối tới bo mạch thành công";
