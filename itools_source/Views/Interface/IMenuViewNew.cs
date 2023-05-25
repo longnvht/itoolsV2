@@ -11,7 +11,8 @@ namespace VinamiToolUser.Views.Interface
     public interface IMenuViewNew
     {
         #region Properties
-        string ViewName { get; set; }
+        string NextView { get ; set; }
+        string TempView { get; set; }
         string SearchValue { get; set; }
         MenuPresenterNew Presenter { set; }
         #endregion

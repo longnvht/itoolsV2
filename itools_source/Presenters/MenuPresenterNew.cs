@@ -18,12 +18,11 @@ namespace VinamiToolUser.Presenters
         private IEnumerable<MenuModel> _viewList;
         private IMenuViewNew _view;
         private IMenuRepositoryNew _repository;
-        private MainViewNew _mainView;
 
         public MenuPresenterNew(IMenuViewNew view, IMenuRepositoryNew repository)
         {
             _bindingSource = new BindingSource();
-            _mainView = MainViewNew.GetInstance();
+            
             _view = view;
             _repository = repository;
             _view.Presenter = this;
@@ -42,14 +41,13 @@ namespace VinamiToolUser.Presenters
         private void EnterView(object sender, EventArgs e)
         {
             var selectView = (MenuModel)_bindingSource.Current;
-            _mainView.TempView = selectView.ViewName;
-            _mainView.AssignCurentView();
+            _view.NextView = selectView.ViewName;
         }
 
         private void SelectView(object sender, EventArgs e)
         {
             var selectView = (MenuModel)_bindingSource.Current;
-            _mainView.TempView = selectView.ViewName;
+            _view.TempView = selectView.ViewName;
         }
     }
 }

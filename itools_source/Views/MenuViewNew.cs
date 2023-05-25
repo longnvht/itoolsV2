@@ -18,20 +18,29 @@ namespace VinamiToolUser.Views
 {
     public partial class MenuViewNew : Form, IMenuViewNew
     {
-        private string _viewName;
+        private MainViewNew _mainView;
+        private string _nextView;
+        private string _tempView;
         private static MenuViewNew instance;
         public MenuViewNew()
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
-            IMenuRepositoryNew repository = UnityDI.container.Resolve<IMenuRepositoryNew>();
-            Presenter = new MenuPresenterNew(this, repository);
+            
         }
 
         private void AssociateAndRaiseViewEvents()
         {
             lstMenu.ItemClick += delegate { SelectViewEvent?.Invoke(this, EventArgs.Empty); };
             lstMenu.ItemDoubleClick += delegate { EnterViewEvent?.Invoke(this, EventArgs.Empty); };
+            this.Load += MenuViewLoad;
+        }
+
+        private void MenuViewLoad(object sender, EventArgs e)
+        {
+            _mainView = MainViewNew.GetInstance();
+            IMenuRepositoryNew repository = UnityDI.container.Resolve<IMenuRepositoryNew>();
+            Presenter = new MenuPresenterNew(this, repository);
         }
 
         public static MenuViewNew GetInstance(Form parentContainer)
@@ -53,9 +62,26 @@ namespace VinamiToolUser.Views
             return instance;
         }
 
-        public string ViewName { get => _viewName; set => _viewName = value; }
         public string SearchValue { get => txtSearch.Text; set => txtSearch.Text = value; }
         public MenuPresenterNew Presenter { private get; set; }
+        public string NextView 
+        { 
+            get => _nextView;
+            set 
+            {
+                _nextView = value;
+                _mainView.CurrentView = value;
+            } 
+        }
+        public string TempView 
+        { 
+            get => _tempView;
+            set 
+            {
+                _tempView = value;
+                _mainView.TempView = value;
+            } 
+        }
 
         public event EventHandler SelectViewEvent;
         public event EventHandler EnterViewEvent;
