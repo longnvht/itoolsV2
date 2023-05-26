@@ -25,7 +25,7 @@ namespace VinamiToolUser.Views
         private string portName = "COM3";
         private ToolModel _curentTool;
         private TrayModel _currentTray;
-        private MainViewNew _mainView;
+        private IMainViewNew _mainView;
         private bool _resultGetTool;
         private int _actionTime=0;
         private string _textReceive;
@@ -85,6 +85,15 @@ namespace VinamiToolUser.Views
                 AppendText(rtbStatus, "* - - - *", Color.Blue, true);
             };
             serialPortGetTool.DataReceived += GetDataReceive;
+        }
+
+        private void FormGetToolLoad(object sender, EventArgs e)
+        {
+            serialPortGetTool.PortName = portName;
+            _mainView = MainViewNew.GetInstance();
+            _mainView.PrevView = "Select Op";
+            IGetToolRepositoryNew repository = UnityDI.container.Resolve<IGetToolRepositoryNew>();
+            Presenter = new GetToolPresenterNew(this, repository);
         }
 
         private void ShowKeyboard()
@@ -296,14 +305,7 @@ namespace VinamiToolUser.Views
             }
         }
 
-        private void FormGetToolLoad(object sender, EventArgs e)
-        {
-            serialPortGetTool.PortName = portName;
-            _mainView = MainViewNew.GetInstance();
-            _mainView.PrevView = "Select Op";
-            IGetToolRepositoryNew repository = UnityDI.container.Resolve<IGetToolRepositoryNew>();
-            Presenter = new GetToolPresenterNew(this, repository);
-        }
+        
 
         public ToolModel SelectedTool 
         { 

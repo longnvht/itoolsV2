@@ -22,7 +22,7 @@ namespace VinamiToolUser.Views
 {
     public partial class JobViewNew : Form, IJobViewNew
     {
-        private MainViewNew _mainView;
+        private IMainViewNew _mainView;
         private JobModelNew _selectedJob;
         private string _nextView;
         private string _tempView;

@@ -378,7 +378,7 @@
             new Keyboard.ButtonsCollection().Add(virtualKbButton22);
             new Keyboard.ButtonsCollection().Add(virtualKbButton23);
             this.vtKeyBoard.IsNumeric = false;
-            this.vtKeyBoard.LabelFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.vtKeyBoard.LabelFont = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.vtKeyBoard.LabelFontShiftDisabled = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.vtKeyBoard.LabelFontSpecialKey = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.vtKeyBoard.LanguageButtonBottomText = "";

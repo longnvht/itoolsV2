@@ -18,7 +18,7 @@ namespace VinamiToolUser.Views
 {
     public partial class MenuViewNew : Form, IMenuViewNew
     {
-        private MainViewNew _mainView;
+        private IMainViewNew _mainView;
         private string _nextView;
         private string _tempView;
         private static MenuViewNew instance;

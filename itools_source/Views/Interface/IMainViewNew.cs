@@ -26,14 +26,12 @@ namespace VinamiToolUser.Views.Interface
 
         #region Events
 
-        event EventHandler GotoNextView;
         //event EventHandler GotoPrevView;
 
         #endregion
 
         #region Method
         //void CloseChildView();
-        void AssignCurentView();
 
         #endregion
     }

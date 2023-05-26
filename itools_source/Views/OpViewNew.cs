@@ -25,7 +25,7 @@ namespace VinamiToolUser.Views
         private OPModel _selectedOP;
         private string _nextView;
         private string _tempView;
-        private MainViewNew _mainView;
+        private IMainViewNew _mainView;
         public OpViewNew()
         {
             InitializeComponent();

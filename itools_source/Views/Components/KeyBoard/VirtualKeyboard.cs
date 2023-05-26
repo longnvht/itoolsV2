@@ -1856,8 +1856,8 @@ namespace Keyboard
         /// </summary>
         private void DrawButton(Graphics graphics, VirtualKbButton btn)
         {
-            int xTextOffset = 2; // left text offset
-            int yTextTopOffset = 2; // top text offset
+            int xTextOffset = 10; // left text offset
+            int yTextTopOffset = 4; // top text offset
             int yTextBottomOffset = 4; // bottom text offset
 
             int offsetBorder = 1; // border of button offset
