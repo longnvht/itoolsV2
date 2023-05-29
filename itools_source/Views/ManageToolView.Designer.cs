@@ -34,7 +34,6 @@
             this.grbTrayInfo = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnGetTool = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTrayNumber = new Guna.UI2.WinForms.Guna2TextBox();
@@ -43,16 +42,33 @@
             this.pnLog = new System.Windows.Forms.Panel();
             this.scrLog = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.rtbStatus = new System.Windows.Forms.RichTextBox();
-            this.grbStockInfo = new System.Windows.Forms.GroupBox();
-            this.tvStock = new VinamiToolUser.Views.Components.StockInfoTreeView();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
+            this.grbToolList = new System.Windows.Forms.GroupBox();
+            this.lstTool = new VinamiToolUser.Views.Components.ListButton();
             this.grbTrayList = new System.Windows.Forms.GroupBox();
             this.lstTray = new VinamiToolUser.Views.Components.ListButton();
+            this.pnTrayAction = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnAddNew = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTakeOut = new Guna.UI2.WinForms.Guna2Button();
+            this.btnPutIn = new Guna.UI2.WinForms.Guna2Button();
+            this.pnToolAction = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnCancelSelect = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSelect = new Guna.UI2.WinForms.Guna2Button();
+            this.lblModify = new System.Windows.Forms.Label();
+            this.txtModifyQty = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblResult = new System.Windows.Forms.Label();
+            this.txtResult = new Guna.UI2.WinForms.Guna2TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.grbTrayInfo.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.pnLog.SuspendLayout();
-            this.grbStockInfo.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.grbToolList.SuspendLayout();
             this.grbTrayList.SuspendLayout();
+            this.pnTrayAction.SuspendLayout();
+            this.pnToolAction.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -67,7 +83,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 60);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(853, 60);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // btnSearch
@@ -83,7 +99,7 @@
             this.btnSearch.FillColor = System.Drawing.Color.WhiteSmoke;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
-            this.btnSearch.Location = new System.Drawing.Point(683, 5);
+            this.btnSearch.Location = new System.Drawing.Point(736, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(114, 50);
             this.btnSearch.TabIndex = 0;
@@ -109,7 +125,7 @@
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderText = "";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(672, 50);
+            this.txtSearch.Size = new System.Drawing.Size(725, 49);
             this.txtSearch.TabIndex = 1;
             // 
             // grbTrayInfo
@@ -117,9 +133,9 @@
             this.grbTrayInfo.Controls.Add(this.tableLayoutPanel2);
             this.grbTrayInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbTrayInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbTrayInfo.Location = new System.Drawing.Point(260, 60);
+            this.grbTrayInfo.Location = new System.Drawing.Point(393, 60);
             this.grbTrayInfo.Name = "grbTrayInfo";
-            this.grbTrayInfo.Size = new System.Drawing.Size(273, 390);
+            this.grbTrayInfo.Size = new System.Drawing.Size(460, 390);
             this.grbTrayInfo.TabIndex = 6;
             this.grbTrayInfo.TabStop = false;
             this.grbTrayInfo.Text = "Tray Info";
@@ -130,24 +146,29 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnGetTool, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.txtTrayNumber, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtToolCode, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtQty, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.pnLog, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.pnLog, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 6);
+            this.tableLayoutPanel2.Controls.Add(this.lblModify, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.txtModifyQty, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.lblResult, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.txtResult, 1, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 21);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowCount = 7;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(267, 366);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(454, 366);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -159,26 +180,6 @@
             this.label1.Size = new System.Drawing.Size(87, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tray Number";
-            // 
-            // btnGetTool
-            // 
-            this.btnGetTool.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnGetTool.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(144)))), ((int)(((byte)(233)))));
-            this.btnGetTool.BorderRadius = 8;
-            this.btnGetTool.BorderThickness = 1;
-            this.tableLayoutPanel2.SetColumnSpan(this.btnGetTool, 2);
-            this.btnGetTool.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnGetTool.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnGetTool.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnGetTool.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnGetTool.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.btnGetTool.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetTool.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
-            this.btnGetTool.Location = new System.Drawing.Point(73, 314);
-            this.btnGetTool.Name = "btnGetTool";
-            this.btnGetTool.Size = new System.Drawing.Size(121, 44);
-            this.btnGetTool.TabIndex = 0;
-            this.btnGetTool.Text = "Get Tool";
             // 
             // label2
             // 
@@ -220,7 +221,7 @@
             this.txtTrayNumber.PlaceholderText = "";
             this.txtTrayNumber.ReadOnly = true;
             this.txtTrayNumber.SelectedText = "";
-            this.txtTrayNumber.Size = new System.Drawing.Size(159, 35);
+            this.txtTrayNumber.Size = new System.Drawing.Size(346, 34);
             this.txtTrayNumber.TabIndex = 1;
             // 
             // txtToolCode
@@ -243,7 +244,7 @@
             this.txtToolCode.PlaceholderText = "";
             this.txtToolCode.ReadOnly = true;
             this.txtToolCode.SelectedText = "";
-            this.txtToolCode.Size = new System.Drawing.Size(159, 35);
+            this.txtToolCode.Size = new System.Drawing.Size(346, 34);
             this.txtToolCode.TabIndex = 1;
             // 
             // txtQty
@@ -266,7 +267,7 @@
             this.txtQty.PlaceholderText = "";
             this.txtQty.ReadOnly = true;
             this.txtQty.SelectedText = "";
-            this.txtQty.Size = new System.Drawing.Size(159, 35);
+            this.txtQty.Size = new System.Drawing.Size(346, 34);
             this.txtQty.TabIndex = 1;
             // 
             // pnLog
@@ -275,9 +276,9 @@
             this.pnLog.Controls.Add(this.scrLog);
             this.pnLog.Controls.Add(this.rtbStatus);
             this.pnLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnLog.Location = new System.Drawing.Point(3, 138);
+            this.pnLog.Location = new System.Drawing.Point(3, 228);
             this.pnLog.Name = "pnLog";
-            this.pnLog.Size = new System.Drawing.Size(261, 165);
+            this.pnLog.Size = new System.Drawing.Size(448, 75);
             this.pnLog.TabIndex = 3;
             // 
             // scrLog
@@ -287,10 +288,10 @@
             this.scrLog.BorderRadius = 8;
             this.scrLog.InUpdate = false;
             this.scrLog.LargeChange = 10;
-            this.scrLog.Location = new System.Drawing.Point(242, 1);
+            this.scrLog.Location = new System.Drawing.Point(429, 1);
             this.scrLog.Name = "scrLog";
             this.scrLog.ScrollbarSize = 18;
-            this.scrLog.Size = new System.Drawing.Size(18, 163);
+            this.scrLog.Size = new System.Drawing.Size(18, 73);
             this.scrLog.TabIndex = 3;
             // 
             // rtbStatus
@@ -300,34 +301,99 @@
             this.rtbStatus.Margin = new System.Windows.Forms.Padding(15, 3, 3, 3);
             this.rtbStatus.Name = "rtbStatus";
             this.rtbStatus.ReadOnly = true;
-            this.rtbStatus.Size = new System.Drawing.Size(261, 165);
+            this.rtbStatus.Size = new System.Drawing.Size(448, 75);
             this.rtbStatus.TabIndex = 2;
             this.rtbStatus.Text = "";
             // 
-            // grbStockInfo
+            // tableLayoutPanel3
             // 
-            this.grbStockInfo.Controls.Add(this.tvStock);
-            this.grbStockInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.grbStockInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbStockInfo.Location = new System.Drawing.Point(533, 60);
-            this.grbStockInfo.Name = "grbStockInfo";
-            this.grbStockInfo.Size = new System.Drawing.Size(267, 390);
-            this.grbStockInfo.TabIndex = 8;
-            this.grbStockInfo.TabStop = false;
-            this.grbStockInfo.Text = "Stock Info";
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel2.SetColumnSpan(this.tableLayoutPanel3, 2);
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.btnSave, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnCancel, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 309);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(448, 54);
+            this.tableLayoutPanel3.TabIndex = 4;
             // 
-            // tvStock
+            // btnSave
             // 
-            this.tvStock.BackColor = System.Drawing.SystemColors.Control;
-            this.tvStock.ChildNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tvStock.DataSource = null;
-            this.tvStock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvStock.Location = new System.Drawing.Point(3, 21);
-            this.tvStock.Margin = new System.Windows.Forms.Padding(4);
-            this.tvStock.Name = "tvStock";
-            this.tvStock.RootNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tvStock.Size = new System.Drawing.Size(261, 366);
-            this.tvStock.TabIndex = 0;
+            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(144)))), ((int)(((byte)(233)))));
+            this.btnSave.BorderRadius = 8;
+            this.btnSave.BorderThickness = 1;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
+            this.btnSave.Location = new System.Drawing.Point(51, 5);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(121, 44);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "Save";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(144)))), ((int)(((byte)(233)))));
+            this.btnCancel.BorderRadius = 8;
+            this.btnCancel.BorderThickness = 1;
+            this.btnCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCancel.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
+            this.btnCancel.Location = new System.Drawing.Point(275, 5);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(121, 44);
+            this.btnCancel.TabIndex = 0;
+            this.btnCancel.Text = "Cancel";
+            // 
+            // grbToolList
+            // 
+            this.grbToolList.Controls.Add(this.lstTool);
+            this.grbToolList.Dock = System.Windows.Forms.DockStyle.Left;
+            this.grbToolList.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbToolList.Location = new System.Drawing.Point(393, 60);
+            this.grbToolList.Name = "grbToolList";
+            this.grbToolList.Size = new System.Drawing.Size(267, 390);
+            this.grbToolList.TabIndex = 8;
+            this.grbToolList.TabStop = false;
+            this.grbToolList.Text = "Tool List";
+            // 
+            // lstTool
+            // 
+            this.lstTool.AutoSpacing = true;
+            this.lstTool.BackColor = System.Drawing.Color.Snow;
+            this.lstTool.DataSource = null;
+            this.lstTool.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstTool.ItemBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(144)))), ((int)(((byte)(233)))));
+            this.lstTool.ItemBorderRadius = 8;
+            this.lstTool.ItemBorderThickness = 1;
+            this.lstTool.ItemBottomDisplayMember = "TrayName";
+            this.lstTool.ItemFillColor = System.Drawing.Color.WhiteSmoke;
+            this.lstTool.ItemFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstTool.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
+            this.lstTool.ItemHeight = 45;
+            this.lstTool.ItemSpace = 8;
+            this.lstTool.ItemTopDisplayMember = "ToolCode";
+            this.lstTool.ItemWidth = 210;
+            this.lstTool.Location = new System.Drawing.Point(3, 21);
+            this.lstTool.Margin = new System.Windows.Forms.Padding(7);
+            this.lstTool.MinMargin = 5;
+            this.lstTool.Name = "lstTool";
+            this.lstTool.Size = new System.Drawing.Size(261, 366);
+            this.lstTool.TabIndex = 4;
             // 
             // grbTrayList
             // 
@@ -365,13 +431,232 @@
             this.lstTray.Size = new System.Drawing.Size(254, 366);
             this.lstTray.TabIndex = 3;
             // 
+            // pnTrayAction
+            // 
+            this.pnTrayAction.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(116)))), ((int)(((byte)(226)))));
+            this.pnTrayAction.BorderRadius = 8;
+            this.pnTrayAction.BorderThickness = 1;
+            this.pnTrayAction.Controls.Add(this.btnAddNew);
+            this.pnTrayAction.Controls.Add(this.btnTakeOut);
+            this.pnTrayAction.Controls.Add(this.btnPutIn);
+            this.pnTrayAction.CustomBorderThickness = new System.Windows.Forms.Padding(1);
+            this.pnTrayAction.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnTrayAction.Location = new System.Drawing.Point(260, 60);
+            this.pnTrayAction.Margin = new System.Windows.Forms.Padding(2);
+            this.pnTrayAction.Name = "pnTrayAction";
+            this.pnTrayAction.Padding = new System.Windows.Forms.Padding(2);
+            this.pnTrayAction.Size = new System.Drawing.Size(133, 390);
+            this.pnTrayAction.TabIndex = 9;
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddNew.BorderRadius = 8;
+            this.btnAddNew.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNew.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNew.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddNew.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddNew.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddNew.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAddNew.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAddNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(96)))));
+            this.btnAddNew.Image = global::VinamiToolUser.Properties.Resources.Add_properties_64px;
+            this.btnAddNew.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnAddNew.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnAddNew.Location = new System.Drawing.Point(2, 86);
+            this.btnAddNew.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(129, 42);
+            this.btnAddNew.TabIndex = 2;
+            this.btnAddNew.Tag = "AddNew";
+            this.btnAddNew.Text = "Add New";
+            this.btnAddNew.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // btnTakeOut
+            // 
+            this.btnTakeOut.BackColor = System.Drawing.Color.Transparent;
+            this.btnTakeOut.BorderRadius = 8;
+            this.btnTakeOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTakeOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTakeOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTakeOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTakeOut.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTakeOut.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnTakeOut.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTakeOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(96)))));
+            this.btnTakeOut.Image = global::VinamiToolUser.Properties.Resources.outdent_48px;
+            this.btnTakeOut.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnTakeOut.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnTakeOut.Location = new System.Drawing.Point(2, 44);
+            this.btnTakeOut.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTakeOut.Name = "btnTakeOut";
+            this.btnTakeOut.Size = new System.Drawing.Size(129, 42);
+            this.btnTakeOut.TabIndex = 1;
+            this.btnTakeOut.Tag = "TakeOut";
+            this.btnTakeOut.Text = "Take Out";
+            this.btnTakeOut.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // btnPutIn
+            // 
+            this.btnPutIn.BackColor = System.Drawing.Color.Transparent;
+            this.btnPutIn.BorderRadius = 8;
+            this.btnPutIn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPutIn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPutIn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPutIn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPutIn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPutIn.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPutIn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnPutIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(96)))));
+            this.btnPutIn.Image = global::VinamiToolUser.Properties.Resources.indent_48px;
+            this.btnPutIn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnPutIn.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnPutIn.Location = new System.Drawing.Point(2, 2);
+            this.btnPutIn.Name = "btnPutIn";
+            this.btnPutIn.Padding = new System.Windows.Forms.Padding(3);
+            this.btnPutIn.Size = new System.Drawing.Size(129, 42);
+            this.btnPutIn.TabIndex = 0;
+            this.btnPutIn.Tag = "PutIn";
+            this.btnPutIn.Text = "Put In";
+            this.btnPutIn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // pnToolAction
+            // 
+            this.pnToolAction.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(116)))), ((int)(((byte)(226)))));
+            this.pnToolAction.BorderRadius = 8;
+            this.pnToolAction.BorderThickness = 1;
+            this.pnToolAction.Controls.Add(this.btnCancelSelect);
+            this.pnToolAction.Controls.Add(this.btnSelect);
+            this.pnToolAction.CustomBorderThickness = new System.Windows.Forms.Padding(1);
+            this.pnToolAction.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnToolAction.Location = new System.Drawing.Point(660, 60);
+            this.pnToolAction.Margin = new System.Windows.Forms.Padding(2);
+            this.pnToolAction.Name = "pnToolAction";
+            this.pnToolAction.Padding = new System.Windows.Forms.Padding(2);
+            this.pnToolAction.Size = new System.Drawing.Size(133, 390);
+            this.pnToolAction.TabIndex = 10;
+            // 
+            // btnCancelSelect
+            // 
+            this.btnCancelSelect.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelSelect.BorderRadius = 8;
+            this.btnCancelSelect.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancelSelect.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancelSelect.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCancelSelect.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCancelSelect.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCancelSelect.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCancelSelect.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCancelSelect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(96)))));
+            this.btnCancelSelect.Image = global::VinamiToolUser.Properties.Resources.delete_list_48px;
+            this.btnCancelSelect.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCancelSelect.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnCancelSelect.Location = new System.Drawing.Point(2, 44);
+            this.btnCancelSelect.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelSelect.Name = "btnCancelSelect";
+            this.btnCancelSelect.Size = new System.Drawing.Size(129, 42);
+            this.btnCancelSelect.TabIndex = 1;
+            this.btnCancelSelect.Text = "Cancel";
+            this.btnCancelSelect.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.BackColor = System.Drawing.Color.Transparent;
+            this.btnSelect.BorderRadius = 8;
+            this.btnSelect.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSelect.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSelect.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSelect.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSelect.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSelect.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSelect.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnSelect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(96)))));
+            this.btnSelect.Image = global::VinamiToolUser.Properties.Resources.single_choice_48px;
+            this.btnSelect.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSelect.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnSelect.Location = new System.Drawing.Point(2, 2);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Padding = new System.Windows.Forms.Padding(3);
+            this.btnSelect.Size = new System.Drawing.Size(129, 42);
+            this.btnSelect.TabIndex = 0;
+            this.btnSelect.Text = "Select";
+            this.btnSelect.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // lblModify
+            // 
+            this.lblModify.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblModify.AutoSize = true;
+            this.lblModify.Location = new System.Drawing.Point(3, 149);
+            this.lblModify.Name = "lblModify";
+            this.lblModify.Size = new System.Drawing.Size(76, 17);
+            this.lblModify.TabIndex = 0;
+            this.lblModify.Text = "Modify Qty";
+            // 
+            // txtModifyQty
+            // 
+            this.txtModifyQty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtModifyQty.BorderRadius = 8;
+            this.txtModifyQty.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtModifyQty.DefaultText = "";
+            this.txtModifyQty.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtModifyQty.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtModifyQty.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtModifyQty.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtModifyQty.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtModifyQty.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtModifyQty.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtModifyQty.Location = new System.Drawing.Point(104, 140);
+            this.txtModifyQty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtModifyQty.Name = "txtModifyQty";
+            this.txtModifyQty.PasswordChar = '\0';
+            this.txtModifyQty.PlaceholderText = "";
+            this.txtModifyQty.ReadOnly = true;
+            this.txtModifyQty.SelectedText = "";
+            this.txtModifyQty.Size = new System.Drawing.Size(346, 34);
+            this.txtModifyQty.TabIndex = 1;
+            // 
+            // lblResult
+            // 
+            this.lblResult.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(3, 194);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(45, 17);
+            this.lblResult.TabIndex = 0;
+            this.lblResult.Text = "Result";
+            // 
+            // txtResult
+            // 
+            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtResult.BorderRadius = 8;
+            this.txtResult.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtResult.DefaultText = "";
+            this.txtResult.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtResult.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtResult.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtResult.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtResult.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtResult.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtResult.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtResult.Location = new System.Drawing.Point(104, 185);
+            this.txtResult.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtResult.Name = "txtResult";
+            this.txtResult.PasswordChar = '\0';
+            this.txtResult.PlaceholderText = "";
+            this.txtResult.ReadOnly = true;
+            this.txtResult.SelectedText = "";
+            this.txtResult.Size = new System.Drawing.Size(346, 34);
+            this.txtResult.TabIndex = 1;
+            // 
             // ManageToolView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(853, 450);
+            this.Controls.Add(this.pnToolAction);
+            this.Controls.Add(this.grbToolList);
             this.Controls.Add(this.grbTrayInfo);
-            this.Controls.Add(this.grbStockInfo);
+            this.Controls.Add(this.pnTrayAction);
             this.Controls.Add(this.grbTrayList);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ManageToolView";
@@ -381,8 +666,11 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.pnLog.ResumeLayout(false);
-            this.grbStockInfo.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.grbToolList.ResumeLayout(false);
             this.grbTrayList.ResumeLayout(false);
+            this.pnTrayAction.ResumeLayout(false);
+            this.pnToolAction.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -395,7 +683,7 @@
         private System.Windows.Forms.GroupBox grbTrayInfo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2Button btnGetTool;
+        private Guna.UI2.WinForms.Guna2Button btnSave;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2TextBox txtToolCode;
@@ -404,9 +692,22 @@
         private System.Windows.Forms.Panel pnLog;
         private Guna.UI2.WinForms.Guna2VScrollBar scrLog;
         private System.Windows.Forms.RichTextBox rtbStatus;
-        private System.Windows.Forms.GroupBox grbStockInfo;
-        private Components.StockInfoTreeView tvStock;
+        private System.Windows.Forms.GroupBox grbToolList;
         private System.Windows.Forms.GroupBox grbTrayList;
         private Components.ListButton lstTray;
+        private Components.ListButton lstTool;
+        private Guna.UI2.WinForms.Guna2Panel pnTrayAction;
+        private Guna.UI2.WinForms.Guna2Button btnPutIn;
+        private Guna.UI2.WinForms.Guna2Button btnAddNew;
+        private Guna.UI2.WinForms.Guna2Button btnTakeOut;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private Guna.UI2.WinForms.Guna2Button btnCancel;
+        private Guna.UI2.WinForms.Guna2Panel pnToolAction;
+        private Guna.UI2.WinForms.Guna2Button btnCancelSelect;
+        private Guna.UI2.WinForms.Guna2Button btnSelect;
+        private System.Windows.Forms.Label lblModify;
+        private Guna.UI2.WinForms.Guna2TextBox txtModifyQty;
+        private System.Windows.Forms.Label lblResult;
+        private Guna.UI2.WinForms.Guna2TextBox txtResult;
     }
 }

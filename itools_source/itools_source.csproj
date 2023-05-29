@@ -201,6 +201,7 @@
     <Compile Include="Models\Interface\ICompanyRepository.cs" />
     <Compile Include="Models\Interface\IGetToolRepositoryNew.cs" />
     <Compile Include="Models\Interface\IJobRepositoryNew.cs" />
+    <Compile Include="Models\Interface\IManageToolRepository.cs" />
     <Compile Include="Models\Interface\IMenuRepositoryNew.cs" />
     <Compile Include="Models\Interface\IOpRepositoryNew.cs" />
     <Compile Include="Models\Interface\IPermissionRepository.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="Models\PermissionDetail.cs" />
     <Compile Include="Models\ToolModel.cs" />
     <Compile Include="Models\TrayModel.cs" />
+    <Compile Include="Models\TrayModelManage.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Interface\IUserAccountRepository.cs" />
@@ -222,10 +224,12 @@
     <Compile Include="Presenters\LoginPresenter.cs" />
     <Compile Include="Presenters\MenuPresenterNew.cs" />
     <Compile Include="Presenters\OpPresenterNew.cs" />
+    <Compile Include="Presenters\ToolMangerPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GetToolRepositoryNew.cs" />
     <Compile Include="Repository\JobRepositoryNew.cs" />
+    <Compile Include="Repository\ManageToolRepository.cs" />
     <Compile Include="Repository\MenuRepositoryNew.cs" />
     <Compile Include="Repository\OpRepositoryNew.cs" />
     <Compile Include="Repository\PermissionRepository.cs" />
@@ -283,6 +287,7 @@
     <Compile Include="Views\Interface\IJobViewNew.cs" />
     <Compile Include="Views\Interface\ILoginView.cs" />
     <Compile Include="Views\Interface\IMainViewNew.cs" />
+    <Compile Include="Views\Interface\IManageToolView.cs" />
     <Compile Include="Views\Interface\IMenuViewNew.cs" />
     <Compile Include="Views\Interface\IOPViewNew.cs" />
     <Compile Include="Views\JobViewNew.cs">
@@ -444,6 +449,11 @@
     <None Include="Resources\search-engine.png" />
     <None Include="Resources\settings.png" />
     <None Include="Resources\stock.png" />
+    <None Include="Resources\outdent_48px.png" />
+    <None Include="Resources\indent_48px.png" />
+    <None Include="Resources\Add properties_64px.png" />
+    <None Include="Resources\single_choice_48px.png" />
+    <None Include="Resources\delete_list_48px.png" />
     <Content Include="tool_generator.ico" />
   </ItemGroup>
   <ItemGroup>

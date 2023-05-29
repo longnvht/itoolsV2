@@ -63,6 +63,16 @@ namespace VinamiToolUser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Add_properties_64px {
+            get {
+                object obj = ResourceManager.GetObject("Add properties_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bar_code {
             get {
                 object obj = ResourceManager.GetObject("bar_code", resourceCulture);
@@ -143,6 +153,16 @@ namespace VinamiToolUser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete_list_48px {
+            get {
+                object obj = ResourceManager.GetObject("delete_list_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap home_48 {
             get {
                 object obj = ResourceManager.GetObject("home_48", resourceCulture);
@@ -193,6 +213,16 @@ namespace VinamiToolUser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap indent_48px {
+            get {
+                object obj = ResourceManager.GetObject("indent_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap maximize_window_48 {
             get {
                 object obj = ResourceManager.GetObject("maximize_window_48", resourceCulture);
@@ -206,6 +236,16 @@ namespace VinamiToolUser.Properties {
         internal static System.Drawing.Bitmap minimize_window_48 {
             get {
                 object obj = ResourceManager.GetObject("minimize_window_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outdent_48px {
+            get {
+                object obj = ResourceManager.GetObject("outdent_48px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -256,6 +296,16 @@ namespace VinamiToolUser.Properties {
         internal static System.Drawing.Bitmap settings {
             get {
                 object obj = ResourceManager.GetObject("settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap single_choice_48px {
+            get {
+                object obj = ResourceManager.GetObject("single_choice_48px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

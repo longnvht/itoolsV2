@@ -46,6 +46,9 @@ namespace itools_source
             container.RegisterType<IGetToolRepositoryNew, GetToolRepositoryNew>();
 
             container.RegisterType<IGetToolViewNew, GetToolViewNew>();
+
+            container.RegisterType<IManageToolView, ManageToolView>();
+            container.RegisterType<IManageToolRepository, ManageToolRepository>();
         }
     }
 
@@ -73,9 +76,9 @@ namespace itools_source
             Application.SetCompatibleTextRenderingDefault(false);
 
             UnityDI.Register();
-            var loginPresenter = UnityDI.container.Resolve<LoginPresenter>();
-            loginPresenter.Run();
-            //Application.Run(new GetToolViewNew());
+            //var loginPresenter = UnityDI.container.Resolve<LoginPresenter>();
+            //loginPresenter.Run();
+            Application.Run(new ManageToolView());
         }
     }
 }
