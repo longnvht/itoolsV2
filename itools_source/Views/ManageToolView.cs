@@ -120,7 +120,7 @@ namespace VinamiToolUser.Views
 
         private void StateModifyDisplay(string state)
         {
-            txtModifyQty.Text = state + " Qty";
+            lblModify.Text = state + " Qty";
             switch (state)
             {
                 case "PutIn":
