@@ -21,6 +21,7 @@ namespace VinamiToolUser.Views
 {
     public partial class ManageToolView : Form, IManageToolView
     {
+        private static ManageToolView _instance;
         private const int maxQtyItem = 10;
         private int _crQtyStock;
         private string _modifyState;
@@ -45,8 +46,18 @@ namespace VinamiToolUser.Views
             set
             { 
                 _currentTool = value;
-                _crQtyStock = _currentTool.ToolQuantity;
-                txtStockQty.Text = _crQtyStock.ToString();
+
+                if (_currentTool != null)
+                {
+                    _crQtyStock = _currentTool.ToolQuantity;
+                    txtStockQty.Text = _crQtyStock.ToString();
+                }
+                else
+                {
+                    _crQtyStock = 0;
+                    txtStockQty.Text = "0";
+                }
+
             }
         }
         public string SearchValue { get => txtSearch.Text; set => txtSearch.Text = value; }
@@ -96,6 +107,25 @@ namespace VinamiToolUser.Views
         public event EventHandler TakeOutTool;
         public event EventHandler AddNewTool;
         public event EventHandler Search;
+
+        public static ManageToolView GetInstance(Form parentContainer)
+        {
+            if (_instance == null || _instance.IsDisposed)
+            {
+                //instance = new ToolView();
+                _instance = UnityDI.container.Resolve<IManageToolView>() as ManageToolView;
+                _instance.MdiParent = parentContainer;
+                _instance.FormBorderStyle = FormBorderStyle.None;
+                _instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (_instance.WindowState == FormWindowState.Minimized)
+                    _instance.WindowState = FormWindowState.Normal;
+                _instance.BringToFront();
+            }
+            return _instance;
+        }
 
         private void AssignEvent()
         {

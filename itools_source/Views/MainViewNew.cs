@@ -203,7 +203,8 @@ namespace VinamiToolUser.Views
             { "Select Job", typeof(JobViewNew) },
             { "Select Op", typeof(OpViewNew) },
             { "Setting", typeof(ConfigSettingView) },
-            { "GetToolView", typeof(GetToolViewNew) }
+            { "GetToolView", typeof(GetToolViewNew) },
+            { "ManagerTool", typeof(ManageToolView) }
         };
     }
 }

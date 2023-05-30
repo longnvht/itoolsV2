@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace VinamiToolUser.Repository
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"GetTempToolByUserID";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "userID", MySqlDbType.Int32, userID);
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "userID", MySqlDbType.VarChar, userID);
                 cmd.Parameters.Add(prm);
                 using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                 {
@@ -59,36 +60,39 @@ namespace VinamiToolUser.Repository
 
         public async Task<IEnumerable<TempToolModel>> GetToolListByValue(string userID, string toolCode)
         {
-            var toolList = new List<TempToolModel>();
+            List<TempToolModel> toolList = new List<TempToolModel>();
+
             using (MySqlConnection connection = await OpenAsync())
             {
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"SearchTempToolForUserID";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "userID", MySqlDbType.Int32, userID);
+
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "userID", MySqlDbType.VarChar, userID);
                 cmd.Parameters.Add(prm);
-                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "toolCode", MySqlDbType.Int32, toolCode);
+                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "toolCode", MySqlDbType.VarChar, toolCode);
                 cmd.Parameters.Add(prm2);
                 using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                 {
+                    var dt = dataReader;
                     if (dataReader != null)
                     {
-                        while (dataReader.Read())
+                        while (await dataReader.ReadAsync())
                         {
                             var toolModel = new TempToolModel();
-                            if (!dataReader.IsDBNull(0))
+                            if (!await dataReader.IsDBNullAsync(0))
                             {
                                 toolModel.ToolID = dataReader.GetInt32(0);
                             }
-                            if (!dataReader.IsDBNull(1))
+                            if (!await dataReader.IsDBNullAsync(1))
                             {
                                 toolModel.ToolCode = dataReader.GetString(1);
                             }
-                            if (!dataReader.IsDBNull(2))
+                            if (!await dataReader.IsDBNullAsync(2))
                             {
                                 toolModel.ToolName = dataReader.GetString(2);
                             }
-                            if (!dataReader.IsDBNull(3))
+                            if (!await dataReader.IsDBNullAsync(3))
                             {
                                 toolModel.ToolQuantity = dataReader.GetInt32(3);
                             }
@@ -97,7 +101,7 @@ namespace VinamiToolUser.Repository
                     }
                     dataReader.Close();
                 }
-                connection.Close();
+                await connection.CloseAsync();
             }
             return toolList;
         }

@@ -76,9 +76,9 @@ namespace itools_source
             Application.SetCompatibleTextRenderingDefault(false);
 
             UnityDI.Register();
-            //var loginPresenter = UnityDI.container.Resolve<LoginPresenter>();
-            //loginPresenter.Run();
-            Application.Run(new ManageToolView());
+            var loginPresenter = UnityDI.container.Resolve<LoginPresenter>();
+            loginPresenter.Run();
+            //Application.Run(new ManageToolView());
         }
     }
 }
