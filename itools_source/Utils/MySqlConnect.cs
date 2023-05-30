@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Data.Common;
 using System.Threading.Tasks;
 
 namespace itools_source.Utils
@@ -196,7 +197,7 @@ namespace itools_source.Utils
                         throw new Exception(ex.Message);
                     }
                 }
-                return(MySqlDataReader) await sCmd.ExecuteReaderAsync(CommandBehavior.CloseConnection);
+                return (MySqlDataReader) await sCmd.ExecuteReaderAsync(CommandBehavior.CloseConnection);
             }
             catch (Exception ex)
             {

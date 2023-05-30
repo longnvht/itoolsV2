@@ -13,9 +13,9 @@ namespace VinamiToolUser.Views.Interface
     {
         #region Properties
         TrayModelManage CurrentTray { get; set; }
-        ToolModel CurrentTool { get; set; }
+        TempToolModel CurrentTool { get; set; }
         string SearchValue { get; set; }
-        ToolMangerPresenter Presenter { set; }
+        ManagerToolPresenter Presenter { set; }
 
         #endregion
 
@@ -26,6 +26,7 @@ namespace VinamiToolUser.Views.Interface
         event EventHandler AddingTool;
         event EventHandler TakeOutTool;
         event EventHandler AddNewTool;
+        event EventHandler GetCurrentToolStock;
         #endregion
 
         #region Methods

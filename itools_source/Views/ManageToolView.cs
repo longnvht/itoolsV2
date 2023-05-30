@@ -15,16 +15,18 @@ using VinamiToolUser.Models.Interface;
 using VinamiToolUser.Presenters;
 using VinamiToolUser.Views.Components;
 using VinamiToolUser.Views.Interface;
+using static AutoMapper.Internal.ExpressionFactory;
 
 namespace VinamiToolUser.Views
 {
     public partial class ManageToolView : Form, IManageToolView
     {
         private const int maxQtyItem = 10;
+        private int _crQtyStock;
         private string _modifyState;
         private string _modifyAction;
         private TrayModelManage _currentTray;
-        private ToolModel _currentTool;
+        private TempToolModel _currentTool;
         public TrayModelManage CurrentTray 
         { 
             get => _currentTray;
@@ -37,7 +39,16 @@ namespace VinamiToolUser.Views
 
             }
         }
-        public ToolModel CurrentTool { get => _currentTool; set => _currentTool = value; }
+        public TempToolModel CurrentTool 
+        { 
+            get => _currentTool;
+            set
+            { 
+                _currentTool = value;
+                _crQtyStock = _currentTool.ToolQuantity;
+                txtStockQty.Text = _crQtyStock.ToString();
+            }
+        }
         public string SearchValue { get => txtSearch.Text; set => txtSearch.Text = value; }
         public string TrayName { get => txtTrayNumber.Text; set => txtTrayNumber.Text = value; }
         public string ToolCode { get => txtToolCode.Text; set => txtToolCode.Text = value; }
@@ -70,7 +81,7 @@ namespace VinamiToolUser.Views
             }
         }
 
-        public ToolMangerPresenter Presenter { private get; set; }
+        public ManagerToolPresenter Presenter { private get; set; }
 
         public ManageToolView()
         {
@@ -80,6 +91,7 @@ namespace VinamiToolUser.Views
 
         public event EventHandler TraySelected;
         public event EventHandler ToolSelected;
+        public event EventHandler GetCurrentToolStock;
         public event EventHandler AddingTool;
         public event EventHandler TakeOutTool;
         public event EventHandler AddNewTool;
@@ -93,11 +105,13 @@ namespace VinamiToolUser.Views
             { 
                 ModifyState = "PutIn";
                 ViewAction = "Modify";
+                GetCurrentToolStock?.Invoke(this, EventArgs.Empty);
             };
             btnTakeOut.Click += (s, e) => 
             { 
                 ModifyState = "TakeOut";
                 ViewAction = "Modify";
+                GetCurrentToolStock?.Invoke(this, EventArgs.Empty);
             };
             btnAddNew.Click += (s, e) => 
             { 
@@ -109,13 +123,82 @@ namespace VinamiToolUser.Views
             {
                 ViewAction = "Modify";
                 ModifyState = "AddNew";
+                txtToolCode.Text = CurrentTool.ToolCode;
             };
+            btnCancelSelect.Click += (s, e) =>
+            {
+                ViewAction = "SelectTray";
+            };
+            btnCancel.Click += (s, e) =>
+            {
+                ViewAction = "";
+                txtToolCode.Text = CurrentTray.ToolCode;
+            };
+            txtModifyQty.TextChanged += (s, e) =>
+            {
+                bool result = true;
+                var text = txtModifyQty.Text;
+                if (String.IsNullOrEmpty(text))
+                {
+                    erpModifyQuantity.SetError(txtModifyQty, "Giá trị không được để trống!");
+                    result = false;
+                }
+
+                else
+                {
+                    int.TryParse(text, out int value);
+                    result = CheckValueForModifyState(ModifyState, value);
+                }
+                if(result) btnSave.Enabled = true;
+                else btnSave.Enabled = false;
+            };
+        }
+
+        private bool CheckValueForModifyState(string state, int value)
+        {
+            erpModifyQuantity.Clear();
+            var result = true;
+            int.TryParse(QuantityTool, out int qty);
+            switch (state)
+            {
+                case "PutIn":
+                    {
+                        if (value > maxQtyItem - qty||value >_crQtyStock)
+                        {
+                            erpModifyQuantity.SetError(txtModifyQty, "Số tool cho vào vượt quá số lượng tồn kho\n" +
+                                                                     " hoặc vượt quá số lượng có thể chứa của Tray");
+                            result = false;
+                        }
+                    }
+                    break;
+                case "TakeOut":
+                    {
+                        if (value > qty) 
+                        {
+                            erpModifyQuantity.SetError(txtModifyQty, "Số lượng vượt quá số tool có trên tray!");
+                            result = false;
+                        }
+                        
+                    }
+                    break;
+                case "AddNew":
+                    {
+                        if (value > maxQtyItem - qty || value > _crQtyStock)
+                        {
+                            erpModifyQuantity.SetError(txtModifyQty, "Số tool cho vào vượt quá số lượng tồn kho\n" +
+                                                                     " hoặc vượt quá số lượng có thể chứa của Tray");
+                            result = false;
+                        }
+                    }
+                    break;
+            }
+            return result;
         }
 
         private void SelectToolChange(object sender, ListButton.ItemClickEventArgs e)
         {
             ViewAction = "SelectTool";
-            CurrentTool = e.Item as ToolModel;
+            CurrentTool = e.Item as TempToolModel;
         }
 
         private void StateModifyDisplay(string state)
@@ -189,6 +272,7 @@ namespace VinamiToolUser.Views
                     break;
                 default:
                     {
+                        grbTrayList.Enabled = true;
                         pnTrayAction.Visible= false;
                         grbToolList.Visible= false;
                         pnToolAction.Visible= false;
@@ -200,9 +284,9 @@ namespace VinamiToolUser.Views
         private void ShowModify(bool status)
         {
             lblModify.Visible = status;
-            lblResult.Visible = status;
+            lblStock.Visible = status;
             txtModifyQty.Visible = status;
-            txtResult.Visible = status;
+            txtStockQty.Visible = status;
         }
         private void DisplayTrayAction(string value)
         {
@@ -234,7 +318,7 @@ namespace VinamiToolUser.Views
             ViewAction = null;
             ModifyState = null;
             IManageToolRepository repository = UnityDI.container.Resolve<IManageToolRepository>();
-            Presenter = new ToolMangerPresenter(this, repository);
+            Presenter = new ManagerToolPresenter(this, repository);
         }
 
         public void SetTrayBindingSource(BindingSource trayList)

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using itools_source.Models;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,9 +14,92 @@ namespace VinamiToolUser.Repository
 {
     public class ManageToolRepository : IManageToolRepository
     {
-        public Task<IEnumerable<ToolModel>> GetAllToolList()
+        public async Task<IEnumerable<TempToolModel>> GetAllToolList(string userID)
         {
-            throw new NotImplementedException();
+            var toolList = new List<TempToolModel>();
+            using (MySqlConnection connection = await OpenAsync())
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = @"GetTempToolByUserID";
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "userID", MySqlDbType.Int32, userID);
+                cmd.Parameters.Add(prm);
+                using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
+                {
+                    if (dataReader != null)
+                    {
+                        while (dataReader.Read())
+                        {
+                            var toolModel = new TempToolModel();
+                            if (!dataReader.IsDBNull(0))
+                            {
+                                toolModel.ToolID = dataReader.GetInt32(0);
+                            }
+                            if (!dataReader.IsDBNull(1))
+                            {
+                                toolModel.ToolCode = dataReader.GetString(1);
+                            }
+                            if (!dataReader.IsDBNull(2))
+                            {
+                                toolModel.ToolName = dataReader.GetString(2);
+                            }
+                            if (!dataReader.IsDBNull(3))
+                            {
+                                toolModel.ToolQuantity = dataReader.GetInt32(3);
+                            }
+                            toolList.Add(toolModel);
+                        }
+                    }
+                    dataReader.Close();
+                }
+                connection.Close();
+            }
+            return toolList;
+        }
+
+        public async Task<IEnumerable<TempToolModel>> GetToolListByValue(string userID, string toolCode)
+        {
+            var toolList = new List<TempToolModel>();
+            using (MySqlConnection connection = await OpenAsync())
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = @"SearchTempToolForUserID";
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "userID", MySqlDbType.Int32, userID);
+                cmd.Parameters.Add(prm);
+                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "toolCode", MySqlDbType.Int32, toolCode);
+                cmd.Parameters.Add(prm2);
+                using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
+                {
+                    if (dataReader != null)
+                    {
+                        while (dataReader.Read())
+                        {
+                            var toolModel = new TempToolModel();
+                            if (!dataReader.IsDBNull(0))
+                            {
+                                toolModel.ToolID = dataReader.GetInt32(0);
+                            }
+                            if (!dataReader.IsDBNull(1))
+                            {
+                                toolModel.ToolCode = dataReader.GetString(1);
+                            }
+                            if (!dataReader.IsDBNull(2))
+                            {
+                                toolModel.ToolName = dataReader.GetString(2);
+                            }
+                            if (!dataReader.IsDBNull(3))
+                            {
+                                toolModel.ToolQuantity = dataReader.GetInt32(3);
+                            }
+                            toolList.Add(toolModel);
+                        }
+                    }
+                    dataReader.Close();
+                }
+                connection.Close();
+            }
+            return toolList;
         }
 
         public async Task<IEnumerable<TrayModelManage>> GetAllTrayList(int machineID)
@@ -69,10 +153,7 @@ namespace VinamiToolUser.Repository
             return trayList;
         }
 
-        public Task<IEnumerable<ToolModel>> GetToolListByValue(string value)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public Task<IEnumerable<TrayModelManage>> GetTrayListByValue(int machineID, string value)
         {

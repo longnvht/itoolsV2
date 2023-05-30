@@ -10,7 +10,7 @@ namespace VinamiToolUser.Models.Interface
     {
         Task<IEnumerable<TrayModelManage>> GetAllTrayList(int machineID);
         Task<IEnumerable<TrayModelManage>> GetTrayListByValue(int machineID, string value);
-        Task<IEnumerable<ToolModel>> GetAllToolList(); //Searchs
-        Task<IEnumerable<ToolModel>> GetToolListByValue(string value);
+        Task<IEnumerable<TempToolModel>> GetAllToolList(string userID); //Searchs
+        Task<IEnumerable<TempToolModel>> GetToolListByValue(string userID, string toolCode);
     }
 }
