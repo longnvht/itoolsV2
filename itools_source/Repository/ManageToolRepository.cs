@@ -212,9 +212,20 @@ namespace VinamiToolUser.Repository
             return trayList;
         }
 
-        public Task UpdateStockQuantity(int trayID, int? toolID, int newQty)
+        public async Task<bool> UpdateStockQuantity(int trayID, int? toolID, int newQty)
         {
-            throw new NotImplementedException();
+            using (MySqlConnection connection = await OpenAsync())
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = @"SearchTrayStockForMachine";
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "WHID", MySqlDbType.Int32, trayID);
+                cmd.Parameters.Add(prm);
+                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "searchValue", MySqlDbType.VarChar, toolID);
+                cmd.Parameters.Add(prm2);
+                return await CmdExecutionProcedureAsync(cmd);
+            }
+                
         }
 
         public Task UpdateTempStockQuantity(int? trayID, int? toolID, string userID, int newQty)

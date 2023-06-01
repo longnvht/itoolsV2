@@ -184,8 +184,6 @@ namespace itools_source.Utils
         {
             try
             {
-                if (sCmd.Connection.State != ConnectionState.Closed) 
-                    await sCmd.Connection.CloseAsync();
                 if (sCmd.Connection.State != ConnectionState.Open)
                 {
                     try
@@ -206,6 +204,30 @@ namespace itools_source.Utils
             }
         }
         #endregion
+
+        public static async Task<bool> CmdExecutionProcedureAsync(MySqlCommand sCmd)
+        {
+            try
+            {
+                if (sCmd.Connection.State != ConnectionState.Open)
+                {
+                    try
+                    {
+                        await sCmd.Connection.OpenAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                }
+                return await sCmd.ExecuteNonQueryAsync() != 0;
+            }
+            catch (MySqlException e)
+            {
+                _log.Error(e.Message);
+            }
+            return false;
+        }
 
         public static MySqlDataReader DataQueryProcedure(string strStoreProcedure, MySqlConnection mySqlConn)
         {
