@@ -1,6 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 
-namespace itools_source.Views
+namespace VinamiToolUser.Views
 {
     partial class LoginView
     {

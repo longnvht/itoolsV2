@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace itools_source.Views.Interface
+namespace VinamiToolUser.Views.Interface
 {
     public interface ILoginView
     {

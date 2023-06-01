@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net.Sockets;
 
-namespace itools_source.Utils
+namespace VinamiToolUser.Utils
 {
     public class ServerTime
     {

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VinamiToolUser.Models;
 using VinamiToolUser.Models.Interface;
-using static itools_source.Utils.MySqlConnect;
+using static VinamiToolUser.Utils.MySqlConnect;
 
 namespace VinamiToolUser.Repository
 {

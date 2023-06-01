@@ -1,7 +1,7 @@
 ﻿using itools_source.Models.Interface;
-using itools_source.Presenter;
+using VinamiToolUser.Presenter;
 using itools_source.Repository;
-using itools_source.Utils;
+using VinamiToolUser.Utils;
 using itools_source.Views;
 using itools_source.Views.Interface;
 using System;
@@ -16,7 +16,7 @@ using VinamiToolUser.Views.Interface;
 
 //[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
-namespace itools_source
+namespace VinamiToolUser
 {
     internal static class UnityDI
     {

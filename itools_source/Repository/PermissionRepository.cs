@@ -1,11 +1,11 @@
 ﻿using itools_source.Models.Interface;
-using itools_source.Utils;
+using VinamiToolUser.Utils;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace itools_source.Repository
+namespace VinamiToolUser.Repository
 {
     public class PermissionRepository : IPermissionRepository
     {

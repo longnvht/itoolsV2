@@ -1,4 +1,4 @@
-﻿namespace itools_source.Models
+﻿namespace VinamiToolUser.Models
 {
     public class UserAccount
     {

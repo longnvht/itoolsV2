@@ -1,4 +1,4 @@
-﻿using itools_source.Utils;
+﻿using VinamiToolUser.Utils;
 using log4net;
 using MySql.Data.MySqlClient;
 using System;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VinamiToolUser.Models;
 using VinamiToolUser.Models.Interface;
-using static itools_source.Utils.MySqlConnect;
+using static VinamiToolUser.Utils.MySqlConnect;
 
 namespace VinamiToolUser.Repository
 {

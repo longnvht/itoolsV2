@@ -73,11 +73,12 @@ namespace VinamiToolUser.Views
                 }
             };
             this.Load += FormGetToolLoad;
-            tvStock.TrayNodeSelect += SelectTray;
+            tvStock.TrayNodeSelect += (s,e) => CurrentTray = e.Tray;
             btnGetTool.Click += async (s, e) => 
             { 
                 _resultGetTool = await GetTool();
                 UpdateToolStock?.Invoke(this, new EventArgs());
+                btnGetTool.Enabled = false;
             };
             tmGetTool.Tick += (s, e) => 
             { 
@@ -277,7 +278,7 @@ namespace VinamiToolUser.Views
                     }
                     catch (Exception ex)
                     {
-                        rtbStatus.Invoke(new MethodInvoker(delegate { AppendText(rtbStatus, ex.Message, Color.Red); }));
+                        rtbStatus.Invoke(new MethodInvoker(delegate { AppendText(rtbStatus, ex.Message, Color.Red, true); }));
                         result = false; // Gán giá trị cho biến trung gian
                     }
 
@@ -289,66 +290,59 @@ namespace VinamiToolUser.Views
             return result; // Trả về giá trị biến trung gian
         }
 
-        private void SelectTray(object sender, StockInfoTreeView.TrayNodeClickEventArgs e)
-        {
-            TrayModel tray = e.Tray;
-            if(tray != null)
-            {
-                SelectedTray = tray;
-                TrayName = tray.TrayName;
-                Quantity = tray.QtyStock.ToString();
-            }
-            else
-            {
-                TrayName = "";
-                Quantity = "";
-            }
-        }
 
-        
-
-        public ToolModel SelectedTool 
+        public ToolModel CurrentTool 
         { 
             get => _curentTool;
             set
             { 
                 _curentTool = value; 
                 _mainView.CurrentTool = value;
+                txtToolCode.Text = _curentTool.ToolCode;
+                txtToolName.Text = _curentTool.ToolName;
+                txtTrayNumber.Text = "";
+                txtQty.Text = "";
             }
         }
-        public TrayModel SelectedTray
+        public TrayModel CurrentTray
         {
             get => _currentTray;
             set
             {
                 _currentTray = value;
                 _mainView.CurrentTray = value;
+                int qty = 0;
+                if(_currentTray != null)
+                {
+                    txtTrayNumber.Text = _currentTray.TrayName;
+                    qty = _currentTray.QtyStock;
+                    txtQty.Text = qty.ToString();
+                }
+                else
+                {
+                    txtTrayNumber.Text = "";
+                    txtQty.Text = "";
+                }
+                if (qty <= 0) btnGetTool.Enabled = false;
+                else btnGetTool.Enabled = true;
             } 
         }
         public string SearchToolValue { get => txtSearch.Text; set => txtSearch.Text = value; }
         //public string SearchTrayValue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public GetToolPresenterNew Presenter { private get; set; }
-        public string ToolCode { get => txtToolCode.Text; set => txtToolCode.Text = value; }
-        public string ToolName { get => txtToolName.Text; set => txtToolName.Text = value; }
-        public string TrayName { get => txtTrayNumber.Text; set => txtTrayNumber.Text = value; }
-        public string Quantity 
-        { 
-            get => txtQty.Text; 
-            set 
-            { 
-                txtQty.Text = value;
-                Int32.TryParse(value, out var quantity);
-                if (quantity<=0 & String.IsNullOrEmpty(TrayName)) btnGetTool.Enabled = false;
-                else btnGetTool.Enabled = true;
-            } 
-        }
 
         public bool GetToolResult { get => _resultGetTool; set => _resultGetTool = value; }
+        public string LogMessage { set => AppendText(rtbStatus, value, Color.Orange, true); }
 
-        public event EventHandler SelectToolEvent;
-        public event EventHandler SelectTrayEvent;
+        public UserAccount UserLogin => _mainView.UserLogin;
+
+        public string OpNumber => _mainView.CurrentOP.OpNumber;
+
+        public string JobNumber => _mainView.CurrentJob.JobNumber;
+
         public event EventHandler SearchToolEvent;
         public event EventHandler UpdateToolStock;
+        public event EventHandler SelectToolEvent;
 
         public void SetToolListBindingSource(BindingSource toolList)
         {

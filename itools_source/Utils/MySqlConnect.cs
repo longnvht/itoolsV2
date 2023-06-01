@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.Common;
 using System.Threading.Tasks;
 
-namespace itools_source.Utils
+namespace VinamiToolUser.Utils
 {
     public class MySqlConnect
     {
@@ -179,7 +179,7 @@ namespace itools_source.Utils
         }
         #endregion
 
-        #region SqlDataReader ExecuteReaderForSQL(MySqlCommand sCmd)
+        #region SqlDataReader Async ExecuteReaderForSQL(MySqlCommand sCmd)
         public static async Task<MySqlDataReader> ExecuteReaderForSQLAsync(MySqlCommand sCmd)
         {
             try
@@ -205,6 +205,7 @@ namespace itools_source.Utils
         }
         #endregion
 
+        #region Execute NonQuery Async ForSQL(MySqlCommand sCmd)
         public static async Task<bool> CmdExecutionProcedureAsync(MySqlCommand sCmd)
         {
             try
@@ -228,6 +229,7 @@ namespace itools_source.Utils
             }
             return false;
         }
+        #endregion
 
         public static MySqlDataReader DataQueryProcedure(string strStoreProcedure, MySqlConnection mySqlConn)
         {

@@ -12,20 +12,19 @@ namespace VinamiToolUser.Views.Interface
     public interface IGetToolViewNew
     {
         #region Properties
-        ToolModel SelectedTool { get; set; }
-        TrayModel SelectedTray { get; set; }
+        ToolModel CurrentTool { get; set; }
+        TrayModel CurrentTray { get; set; }
         string SearchToolValue { get; set; }
-
-        string ToolCode { get; set; }
-        string ToolName { get; set; }
-        string TrayName { get; set; }
-        string Quantity { get; set; }
+        string LogMessage { set; }
+        bool GetToolResult { get; set; }
+        UserAccount UserLogin { get; }
+        string OpNumber { get; }
+        string JobNumber { get; }
         GetToolPresenterNew Presenter { set; }
         #endregion
 
         #region Events
         event EventHandler SelectToolEvent;
-        event EventHandler SelectTrayEvent;
         event EventHandler SearchToolEvent;
         event EventHandler UpdateToolStock;
 

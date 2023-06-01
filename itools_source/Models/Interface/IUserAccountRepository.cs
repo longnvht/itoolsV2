@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace itools_source.Models.Interface
+namespace VinamiToolUser.Models.Interface
 {
     public interface IUserAccountRepository
     {

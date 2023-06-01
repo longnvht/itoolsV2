@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using Unity;
 using VinamiToolUser.Models;
@@ -28,6 +29,7 @@ namespace VinamiToolUser.Views
         private int _newStock;
         private int _crQtyStock;
         private string _searchType;
+        private string _log;
         private string _modifyState;
         private string _modifyAction;
         private IMainViewNew _mainView;
@@ -137,6 +139,19 @@ namespace VinamiToolUser.Views
             }
         }
 
+        public string Log
+        { 
+            get => _log;
+            set
+            {
+                _log = value; 
+                if (!String.IsNullOrEmpty(value)) { ShowLog(rtbLog, value, Color.Blue, true); }
+            }
+        }
+
+        public int ModifyQty { get => Int32.Parse(txtModifyQty.Text); set => txtModifyQty.Text = value.ToString(); }
+        public UserAccount UserLogin { get => _mainView.UserLogin;}
+
         #endregion
 
         #region Methods
@@ -207,7 +222,25 @@ namespace VinamiToolUser.Views
             txtModifyQty.MouseClick += (s, e) => { ShowKeyboard(true); };
             txtSearch.MouseClick += (s, e) => { ShowKeyboard(false); };
             btnSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
-            btnSave.Click += delegate { UpdateModifyEvent?.Invoke(this, EventArgs.Empty); };
+            btnSave.Click += (s,e) => 
+            {
+                Log = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "- Cập nhật thông tin giao dịch vào database!";
+                UpdateModifyEvent?.Invoke(this, EventArgs.Empty); 
+            };
+        }
+        private void ShowLog(RichTextBox box, string text, Color color, bool AddNewLine = false)
+        {
+            if (AddNewLine)
+            {
+                text += Environment.NewLine;
+            }
+
+            box.SelectionStart = box.TextLength;
+            box.SelectionLength = 0;
+
+            box.SelectionColor = color;
+            box.AppendText(text);
+            box.SelectionColor = box.ForeColor;
         }
 
         private void ShowKeyboard(bool numType)

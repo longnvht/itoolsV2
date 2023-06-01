@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace itools_source.Utils
+namespace VinamiToolUser.Utils
 {
     public class Session
     {

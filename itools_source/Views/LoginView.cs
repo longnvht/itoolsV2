@@ -1,10 +1,10 @@
-﻿using itools_source.Views.Interface;
+﻿using VinamiToolUser.Views.Interface;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
 using VinamiToolUser.Views;
 
-namespace itools_source.Views
+namespace VinamiToolUser.Views
 {
     public partial class LoginView : Form, ILoginView
     {

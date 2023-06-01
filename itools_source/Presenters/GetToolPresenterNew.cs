@@ -21,6 +21,7 @@ namespace VinamiToolUser.Presenters
         private IEnumerable<ToolModel> _toolList;
         private IEnumerable<TrayModel> _trayList;
         private IGetToolViewNew _view;
+        private string _userLogin;
         private IGetToolRepositoryNew _repository;
 
         public GetToolPresenterNew(IGetToolViewNew view, IGetToolRepositoryNew repository)
@@ -30,12 +31,47 @@ namespace VinamiToolUser.Presenters
             _view = view;
             _repository = repository;
             _view.Presenter = this;
+            _userLogin = _view.UserLogin.strUserLogin;
             _view.SelectToolEvent += SelectTool;
-            //_view.SelectTrayEvent += SelectTray;
             _view.SearchToolEvent += SearchTool;
-            //_view.SearchTrayEvent += SearchTray;
+            _view.UpdateToolStock += UpdateToolStock;
             _view.SetToolListBindingSource(_toolSource);
             _view.SetTrayListBindingSource(_traySource);
+            LoadData();
+        }
+
+        private async void SelectTool(object sender, EventArgs e)
+        {
+            var tool = (ToolModel)_toolSource.Current;
+            _view.CurrentTool = tool;
+            _trayList = await _repository.GetTrayList(tool.ToolID);
+            _traySource.DataSource = _trayList;
+        }
+
+        private async void UpdateToolStock(object sender, EventArgs e)
+        {
+            bool result = false;
+            int trayID = _view.CurrentTray.TrayId;
+            string trayIndex = _view.CurrentTray.TrayName;
+            int toolID = _view.CurrentTool.ToolID;
+            int qty = _view.CurrentTray.QtyStock - 1;
+            //Update Tray Quantity
+            if (_view.GetToolResult)
+            {
+                result = await _repository.UpdateToolStock(trayID, toolID, qty);
+                if (result) _view.LogMessage = "--- Cập nhật số lượng tool mới của Tray thành công";
+                else _view.LogMessage = "--- Cập nhật số lượng tool mới của Tray thất bại";
+                //Update Get Tool Transaction
+                result = await _repository.UpdateGetToolTransaction(4, _userLogin, _view.OpNumber, _view.JobNumber, toolID, trayIndex, 1, "Get Tool", _view.GetToolResult.ToString());
+                if (result) _view.LogMessage = "--- Cập nhật lịch sử giao dịch thành công";
+                else _view.LogMessage = "--- Cập nhật lịch sử giao dịch thất bại";
+            }
+            else
+            {
+                result = await _repository.UpdateGetToolTransaction(4, _userLogin, _view.OpNumber, _view.JobNumber, toolID, trayIndex, 0, "Get Tool", _view.GetToolResult.ToString());
+                if (result) _view.LogMessage = "--- Cập nhật lịch sử giao dịch thành công";
+                else _view.LogMessage = "--- Cập nhật lịch sử giao dịch thất bại";
+            }
             LoadData();
         }
 
@@ -45,11 +81,6 @@ namespace VinamiToolUser.Presenters
             //_trayList = await _repository.GetAllTrayList();
             _toolSource.DataSource = _toolList;
             _traySource.DataSource = _trayList;
-        }
-
-        private void SearchTray(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
         }
 
         private async void SearchTool(object sender, EventArgs e)
@@ -64,23 +95,6 @@ namespace VinamiToolUser.Presenters
                 _toolList = await _repository.GetToolListByToolCode(CommonValue.CurrentOP.OpID, _view.SearchToolValue);
             }
             _toolSource.DataSource = _toolList;
-        }
-
-        private async void SelectTool(object sender, EventArgs e)
-        {
-            var tool = (ToolModel)_toolSource.Current;
-            _view.SelectedTool = tool;
-            _view.ToolCode = tool.ToolCode;
-            _view.ToolName = tool.ToolName;
-            _view.TrayName = "";
-            _view.Quantity = "";
-            _trayList = await _repository.GetTrayList(tool.ToolID);
-            _traySource.DataSource = _trayList;
-        }
-
-        private void SelectTray(object sender, TrayNodeClickEventArgs e)
-        {
-            //throw new NotImplementedException();
         }
     }
 }

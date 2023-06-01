@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace itools_source.Utils
+namespace VinamiToolUser.Utils
 {
     public class Encryption
     {

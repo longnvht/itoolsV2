@@ -14,12 +14,15 @@ namespace VinamiToolUser.Views.Interface
         #region Properties
         TrayModelManage CurrentTray { get; set; }
         TempToolModel CurrentTool { get; set; }
+        UserAccount  UserLogin { get; }
         string SearchValue { get; set; }
         string SearchType { get; set; }
         string ViewAction { get; set; }
         string ModifyState { get; set; }
+        string Log{ get; set; }
         int NewQty { get; set; }
         int NewStock { get; set; }
+        int ModifyQty { get; set; }
         ManagerToolPresenter Presenter { set; }
 
         #endregion
