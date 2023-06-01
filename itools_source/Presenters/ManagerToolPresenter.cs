@@ -30,7 +30,49 @@ namespace VinamiToolUser.Presenters
             _view.GetCurrentToolStock += GetCurrentToolStock;
             _view.SetTrayBindingSource(_traySource);
             _view.SetToolBindingSource(_toolSource);
+            _view.SearchEvent += SearchEvent;
+            _view.UpdateModifyEvent += UpdateModifyEvent;
+            _view.GetStockToolList += GetStockToolList;
             LoadData();
+        }
+
+        private async void GetStockToolList(object sender, EventArgs e)
+        {
+            _toolList = await _repository.GetAllToolList("181119");
+            _toolSource.DataSource = _toolList;
+        }
+
+        private async void SearchEvent(object sender, EventArgs e)
+        {
+            if(_view.SearchType == "Tray")
+            {
+                _trayList = await _repository.GetTrayListByValue(4, _view.SearchValue);
+                _traySource.DataSource = _trayList;
+                _view.ViewAction = "";
+            }
+            if (_view.SearchType == "Tool")
+            {
+                _toolList = await _repository.GetToolListByValue("181119", _view.SearchValue);
+                _toolSource.DataSource = _toolList;
+                _view.ViewAction = "ShowTool";
+            }
+        }
+
+        private async void UpdateModifyEvent(object sender, EventArgs e)
+        {
+            if (_view.ModifyState == "PutIn")
+            {
+                await _repository.UpdateStockQuantity(_view.CurrentTray.TrayId, _view.NewQty);
+                await _repository.UpdateTempStockQuantity(_view.CurrentTool.StockID, _view.NewStock);
+            }
+            if (_view.ModifyState == "TakeOut")
+            {
+
+            }
+            if (_view.ModifyState == "AddNew")
+            {
+
+            }
         }
 
         private async void GetCurrentToolStock(object sender, EventArgs e)

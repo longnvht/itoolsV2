@@ -16,8 +16,16 @@ namespace itools_source.Views
 
         private void AssociateAndRaiseViewEvents()
         {
-            btnLogin.Click += delegate { btnLogin_Click?.Invoke(this, EventArgs.Empty); };
-            btnCancel.Click += delegate { btnCancel_Click?.Invoke(this, EventArgs.Empty); };
+            btnLogin.Click += (s,e) => 
+            { 
+                KeyBoard.CloseKeyboard();
+                btnLogin_Click?.Invoke(this, EventArgs.Empty); 
+            };
+            btnCancel.Click += (s,e) => 
+            {
+                KeyBoard.CloseKeyboard();
+                btnCancel_Click?.Invoke(this, EventArgs.Empty); 
+            };
             _txtPassword.IconRightClick += delegate { txtPassword_IconRightClick?.Invoke(_txtPassword, EventArgs.Empty); };
             txtPassword.MouseClick += (s, e) => { ShowKeyboard(); };
             txtUserName.MouseClick += (s, e) => { ShowKeyboard(); };

@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageToolView));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
@@ -41,11 +39,16 @@
             this.txtTrayNumber = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtToolCode = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtQty = new Guna.UI2.WinForms.Guna2TextBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tblCompleteAction = new System.Windows.Forms.TableLayoutPanel();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.lblModify = new System.Windows.Forms.Label();
+            this.lblStock = new System.Windows.Forms.Label();
+            this.txtStockQty = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtModifyQty = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblNewQty = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblNewStock = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblErrorProvider = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.grbToolList = new System.Windows.Forms.GroupBox();
             this.lstTool = new VinamiToolUser.Views.Components.ListButton();
             this.grbTrayList = new System.Windows.Forms.GroupBox();
@@ -57,18 +60,14 @@
             this.pnToolAction = new Guna.UI2.WinForms.Guna2Panel();
             this.btnCancelSelect = new Guna.UI2.WinForms.Guna2Button();
             this.btnSelect = new Guna.UI2.WinForms.Guna2Button();
-            this.erpModifyQuantity = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblStock = new System.Windows.Forms.Label();
-            this.txtStockQty = new Guna.UI2.WinForms.Guna2TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.grbTrayInfo.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
+            this.tblCompleteAction.SuspendLayout();
             this.grbToolList.SuspendLayout();
             this.grbTrayList.SuspendLayout();
             this.pnTrayAction.SuspendLayout();
             this.pnToolAction.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.erpModifyQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -83,7 +82,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(883, 60);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(853, 60);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // btnSearch
@@ -99,7 +98,7 @@
             this.btnSearch.FillColor = System.Drawing.Color.WhiteSmoke;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
-            this.btnSearch.Location = new System.Drawing.Point(766, 5);
+            this.btnSearch.Location = new System.Drawing.Point(736, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(114, 50);
             this.btnSearch.TabIndex = 0;
@@ -125,7 +124,7 @@
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderText = "";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(755, 49);
+            this.txtSearch.Size = new System.Drawing.Size(725, 49);
             this.txtSearch.TabIndex = 1;
             // 
             // grbTrayInfo
@@ -135,15 +134,16 @@
             this.grbTrayInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbTrayInfo.Location = new System.Drawing.Point(393, 60);
             this.grbTrayInfo.Name = "grbTrayInfo";
-            this.grbTrayInfo.Size = new System.Drawing.Size(490, 390);
+            this.grbTrayInfo.Size = new System.Drawing.Size(460, 390);
             this.grbTrayInfo.TabIndex = 6;
             this.grbTrayInfo.TabStop = false;
             this.grbTrayInfo.Text = "Tray Info";
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
@@ -151,11 +151,14 @@
             this.tableLayoutPanel2.Controls.Add(this.txtTrayNumber, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtToolCode, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtQty, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 6);
+            this.tableLayoutPanel2.Controls.Add(this.tblCompleteAction, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.lblModify, 0, 4);
-            this.tableLayoutPanel2.Controls.Add(this.txtModifyQty, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.lblStock, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.txtStockQty, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.txtModifyQty, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.lblNewQty, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.lblNewStock, 2, 3);
+            this.tableLayoutPanel2.Controls.Add(this.lblErrorProvider, 2, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 21);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -167,8 +170,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(484, 366);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(454, 366);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -205,6 +207,7 @@
             // 
             this.txtTrayNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTrayNumber.BorderRadius = 8;
+            this.tableLayoutPanel2.SetColumnSpan(this.txtTrayNumber, 2);
             this.txtTrayNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTrayNumber.DefaultText = "";
             this.txtTrayNumber.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -221,13 +224,14 @@
             this.txtTrayNumber.PlaceholderText = "";
             this.txtTrayNumber.ReadOnly = true;
             this.txtTrayNumber.SelectedText = "";
-            this.txtTrayNumber.Size = new System.Drawing.Size(376, 34);
+            this.txtTrayNumber.Size = new System.Drawing.Size(346, 34);
             this.txtTrayNumber.TabIndex = 1;
             // 
             // txtToolCode
             // 
             this.txtToolCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtToolCode.BorderRadius = 8;
+            this.tableLayoutPanel2.SetColumnSpan(this.txtToolCode, 2);
             this.txtToolCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtToolCode.DefaultText = "";
             this.txtToolCode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -244,7 +248,7 @@
             this.txtToolCode.PlaceholderText = "";
             this.txtToolCode.ReadOnly = true;
             this.txtToolCode.SelectedText = "";
-            this.txtToolCode.Size = new System.Drawing.Size(376, 34);
+            this.txtToolCode.Size = new System.Drawing.Size(346, 34);
             this.txtToolCode.TabIndex = 1;
             // 
             // txtQty
@@ -267,26 +271,26 @@
             this.txtQty.PlaceholderText = "";
             this.txtQty.ReadOnly = true;
             this.txtQty.SelectedText = "";
-            this.txtQty.Size = new System.Drawing.Size(376, 34);
+            this.txtQty.Size = new System.Drawing.Size(142, 34);
             this.txtQty.TabIndex = 1;
             // 
-            // tableLayoutPanel3
+            // tblCompleteAction
             // 
-            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel2.SetColumnSpan(this.tableLayoutPanel3, 2);
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.btnSave, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnCancel, 2, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 309);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(478, 54);
-            this.tableLayoutPanel3.TabIndex = 4;
+            this.tblCompleteAction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tblCompleteAction.ColumnCount = 4;
+            this.tableLayoutPanel2.SetColumnSpan(this.tblCompleteAction, 3);
+            this.tblCompleteAction.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblCompleteAction.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tblCompleteAction.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tblCompleteAction.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblCompleteAction.Controls.Add(this.btnSave, 1, 0);
+            this.tblCompleteAction.Controls.Add(this.btnCancel, 2, 0);
+            this.tblCompleteAction.Location = new System.Drawing.Point(3, 309);
+            this.tblCompleteAction.Name = "tblCompleteAction";
+            this.tblCompleteAction.RowCount = 1;
+            this.tblCompleteAction.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblCompleteAction.Size = new System.Drawing.Size(448, 54);
+            this.tblCompleteAction.TabIndex = 4;
             // 
             // btnSave
             // 
@@ -301,7 +305,7 @@
             this.btnSave.FillColor = System.Drawing.Color.WhiteSmoke;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
-            this.btnSave.Location = new System.Drawing.Point(107, 5);
+            this.btnSave.Location = new System.Drawing.Point(92, 5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(114, 44);
             this.btnSave.TabIndex = 0;
@@ -320,7 +324,7 @@
             this.btnCancel.FillColor = System.Drawing.Color.WhiteSmoke;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
-            this.btnCancel.Location = new System.Drawing.Point(257, 5);
+            this.btnCancel.Location = new System.Drawing.Point(242, 5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(114, 44);
             this.btnCancel.TabIndex = 0;
@@ -336,9 +340,41 @@
             this.lblModify.TabIndex = 0;
             this.lblModify.Text = "Modify Qty";
             // 
+            // lblStock
+            // 
+            this.lblStock.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblStock.AutoSize = true;
+            this.lblStock.Location = new System.Drawing.Point(3, 149);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(67, 17);
+            this.lblStock.TabIndex = 0;
+            this.lblStock.Text = "Stock Qty";
+            // 
+            // txtStockQty
+            // 
+            this.txtStockQty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStockQty.BorderRadius = 8;
+            this.txtStockQty.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtStockQty.DefaultText = "";
+            this.txtStockQty.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtStockQty.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtStockQty.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtStockQty.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtStockQty.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtStockQty.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtStockQty.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtStockQty.Location = new System.Drawing.Point(104, 140);
+            this.txtStockQty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtStockQty.Name = "txtStockQty";
+            this.txtStockQty.PasswordChar = '\0';
+            this.txtStockQty.PlaceholderText = "";
+            this.txtStockQty.SelectedText = "";
+            this.txtStockQty.Size = new System.Drawing.Size(142, 34);
+            this.txtStockQty.TabIndex = 1;
+            // 
             // txtModifyQty
             // 
-            this.txtModifyQty.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtModifyQty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtModifyQty.BorderRadius = 8;
             this.txtModifyQty.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtModifyQty.DefaultText = "";
@@ -355,8 +391,42 @@
             this.txtModifyQty.PasswordChar = '\0';
             this.txtModifyQty.PlaceholderText = "";
             this.txtModifyQty.SelectedText = "";
-            this.txtModifyQty.Size = new System.Drawing.Size(120, 34);
+            this.txtModifyQty.Size = new System.Drawing.Size(142, 34);
             this.txtModifyQty.TabIndex = 1;
+            // 
+            // lblNewQty
+            // 
+            this.lblNewQty.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblNewQty.BackColor = System.Drawing.Color.Transparent;
+            this.lblNewQty.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewQty.Location = new System.Drawing.Point(253, 104);
+            this.lblNewQty.Name = "lblNewQty";
+            this.lblNewQty.Size = new System.Drawing.Size(12, 17);
+            this.lblNewQty.TabIndex = 5;
+            this.lblNewQty.Text = "...";
+            // 
+            // lblNewStock
+            // 
+            this.lblNewStock.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblNewStock.BackColor = System.Drawing.Color.Transparent;
+            this.lblNewStock.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewStock.Location = new System.Drawing.Point(253, 149);
+            this.lblNewStock.Name = "lblNewStock";
+            this.lblNewStock.Size = new System.Drawing.Size(12, 17);
+            this.lblNewStock.TabIndex = 5;
+            this.lblNewStock.Text = "...";
+            // 
+            // lblErrorProvider
+            // 
+            this.lblErrorProvider.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblErrorProvider.BackColor = System.Drawing.Color.Transparent;
+            this.lblErrorProvider.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorProvider.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorProvider.Location = new System.Drawing.Point(253, 194);
+            this.lblErrorProvider.Name = "lblErrorProvider";
+            this.lblErrorProvider.Size = new System.Drawing.Size(12, 17);
+            this.lblErrorProvider.TabIndex = 5;
+            this.lblErrorProvider.Text = "...";
             // 
             // grbToolList
             // 
@@ -582,48 +652,11 @@
             this.btnSelect.Text = "Select";
             this.btnSelect.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // erpModifyQuantity
-            // 
-            this.erpModifyQuantity.ContainerControl = this.txtModifyQty;
-            this.erpModifyQuantity.Icon = ((System.Drawing.Icon)(resources.GetObject("erpModifyQuantity.Icon")));
-            // 
-            // lblStock
-            // 
-            this.lblStock.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblStock.AutoSize = true;
-            this.lblStock.Location = new System.Drawing.Point(3, 149);
-            this.lblStock.Name = "lblStock";
-            this.lblStock.Size = new System.Drawing.Size(67, 17);
-            this.lblStock.TabIndex = 0;
-            this.lblStock.Text = "Stock Qty";
-            // 
-            // txtStockQty
-            // 
-            this.txtStockQty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStockQty.BorderRadius = 8;
-            this.txtStockQty.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtStockQty.DefaultText = "";
-            this.txtStockQty.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtStockQty.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtStockQty.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtStockQty.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtStockQty.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtStockQty.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtStockQty.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtStockQty.Location = new System.Drawing.Point(104, 140);
-            this.txtStockQty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtStockQty.Name = "txtStockQty";
-            this.txtStockQty.PasswordChar = '\0';
-            this.txtStockQty.PlaceholderText = "";
-            this.txtStockQty.SelectedText = "";
-            this.txtStockQty.Size = new System.Drawing.Size(376, 34);
-            this.txtStockQty.TabIndex = 1;
-            // 
             // ManageToolView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 450);
+            this.ClientSize = new System.Drawing.Size(853, 450);
             this.Controls.Add(this.pnToolAction);
             this.Controls.Add(this.grbToolList);
             this.Controls.Add(this.grbTrayInfo);
@@ -636,12 +669,11 @@
             this.grbTrayInfo.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tblCompleteAction.ResumeLayout(false);
             this.grbToolList.ResumeLayout(false);
             this.grbTrayList.ResumeLayout(false);
             this.pnTrayAction.ResumeLayout(false);
             this.pnToolAction.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.erpModifyQuantity)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -668,15 +700,17 @@
         private Guna.UI2.WinForms.Guna2Button btnPutIn;
         private Guna.UI2.WinForms.Guna2Button btnAddNew;
         private Guna.UI2.WinForms.Guna2Button btnTakeOut;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tblCompleteAction;
         private Guna.UI2.WinForms.Guna2Button btnCancel;
         private Guna.UI2.WinForms.Guna2Panel pnToolAction;
         private Guna.UI2.WinForms.Guna2Button btnCancelSelect;
         private Guna.UI2.WinForms.Guna2Button btnSelect;
         private System.Windows.Forms.Label lblModify;
         private Guna.UI2.WinForms.Guna2TextBox txtModifyQty;
-        private System.Windows.Forms.ErrorProvider erpModifyQuantity;
         private System.Windows.Forms.Label lblStock;
         private Guna.UI2.WinForms.Guna2TextBox txtStockQty;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblNewQty;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblNewStock;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblErrorProvider;
     }
 }

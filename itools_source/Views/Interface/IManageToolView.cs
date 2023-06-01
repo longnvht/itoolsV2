@@ -15,17 +15,20 @@ namespace VinamiToolUser.Views.Interface
         TrayModelManage CurrentTray { get; set; }
         TempToolModel CurrentTool { get; set; }
         string SearchValue { get; set; }
+        string SearchType { get; set; }
+        string ViewAction { get; set; }
+        string ModifyState { get; set; }
+        int NewQty { get; set; }
+        int NewStock { get; set; }
         ManagerToolPresenter Presenter { set; }
 
         #endregion
 
         #region Events
         event EventHandler TraySelected;
-        event EventHandler ToolSelected;
-        event EventHandler Search;
-        event EventHandler AddingTool;
-        event EventHandler TakeOutTool;
-        event EventHandler AddNewTool;
+        event EventHandler GetStockToolList;
+        event EventHandler SearchEvent;
+        event EventHandler UpdateModifyEvent;
         event EventHandler GetCurrentToolStock;
         #endregion
 

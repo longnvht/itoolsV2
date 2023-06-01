@@ -34,19 +34,23 @@ namespace VinamiToolUser.Repository
                             var toolModel = new TempToolModel();
                             if (!dataReader.IsDBNull(0))
                             {
-                                toolModel.ToolID = dataReader.GetInt32(0);
+                                toolModel.StockID = dataReader.GetInt32(0);
                             }
                             if (!dataReader.IsDBNull(1))
                             {
-                                toolModel.ToolCode = dataReader.GetString(1);
+                                toolModel.ToolID = dataReader.GetInt32(1);
                             }
                             if (!dataReader.IsDBNull(2))
                             {
-                                toolModel.ToolName = dataReader.GetString(2);
+                                toolModel.ToolCode = dataReader.GetString(2);
                             }
                             if (!dataReader.IsDBNull(3))
                             {
-                                toolModel.ToolQuantity = dataReader.GetInt32(3);
+                                toolModel.ToolName = dataReader.GetString(3);
+                            }
+                            if (!dataReader.IsDBNull(4))
+                            {
+                                toolModel.ToolQuantity = dataReader.GetInt32(4);
                             }
                             toolList.Add(toolModel);
                         }
@@ -82,19 +86,23 @@ namespace VinamiToolUser.Repository
                             var toolModel = new TempToolModel();
                             if (!await dataReader.IsDBNullAsync(0))
                             {
-                                toolModel.ToolID = dataReader.GetInt32(0);
+                                toolModel.StockID = dataReader.GetInt32(0);
                             }
                             if (!await dataReader.IsDBNullAsync(1))
                             {
-                                toolModel.ToolCode = dataReader.GetString(1);
+                                toolModel.ToolID = dataReader.GetInt32(1);
                             }
                             if (!await dataReader.IsDBNullAsync(2))
                             {
-                                toolModel.ToolName = dataReader.GetString(2);
+                                toolModel.ToolCode = dataReader.GetString(2);
                             }
                             if (!await dataReader.IsDBNullAsync(3))
                             {
-                                toolModel.ToolQuantity = dataReader.GetInt32(3);
+                                toolModel.ToolName = dataReader.GetString(3);
+                            }
+                            if (!await dataReader.IsDBNullAsync(4))
+                            {
+                                toolModel.ToolQuantity = dataReader.GetInt32(4);
                             }
                             toolList.Add(toolModel);
                         }
@@ -129,23 +137,19 @@ namespace VinamiToolUser.Repository
                             }
                             if (!dataReader.IsDBNull(1))
                             {
-                                trayModel.MachineName = dataReader.GetString(1);
+                                trayModel.TrayName = dataReader.GetString(1);
                             }
                             if (!dataReader.IsDBNull(2))
                             {
-                                trayModel.TrayName = dataReader.GetString(2);
+                                trayModel.ToolID = dataReader.GetInt32(2);
                             }
                             if (!dataReader.IsDBNull(3))
                             {
-                                trayModel.ToolID = dataReader.GetInt32(3);
+                                trayModel.ToolCode = dataReader.GetString(3);
                             }
                             if (!dataReader.IsDBNull(4))
                             {
-                                trayModel.ToolCode = dataReader.GetString(4);
-                            }
-                            if (!dataReader.IsDBNull(5))
-                            {
-                                trayModel.QtyStock = dataReader.GetInt32(5);
+                                trayModel.QtyStock = dataReader.GetInt32(4);
                             }
                                 trayList.Add(trayModel);
                         }
@@ -159,7 +163,66 @@ namespace VinamiToolUser.Repository
 
         
 
-        public Task<IEnumerable<TrayModelManage>> GetTrayListByValue(int machineID, string value)
+        public async Task<IEnumerable<TrayModelManage>> GetTrayListByValue(int machineID, string searchValue)
+        {
+            var trayList = new List<TrayModelManage>();
+            using (MySqlConnection connection = await OpenAsync())
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = @"SearchTrayStockForMachine";
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "WHID", MySqlDbType.Int32, machineID);
+                cmd.Parameters.Add(prm);
+                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "searchValue", MySqlDbType.VarChar, searchValue);
+                cmd.Parameters.Add(prm2);
+                using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
+                {
+                    if (dataReader != null)
+                    {
+                        while (dataReader.Read())
+                        {
+                            var trayModel = new TrayModelManage();
+                            if (!dataReader.IsDBNull(0))
+                            {
+                                trayModel.TrayId = dataReader.GetInt32(0);
+                            }
+                            if (!dataReader.IsDBNull(1))
+                            {
+                                trayModel.TrayName = dataReader.GetString(1);
+                            }
+                            if (!dataReader.IsDBNull(2))
+                            {
+                                trayModel.ToolID = dataReader.GetInt32(2);
+                            }
+                            if (!dataReader.IsDBNull(3))
+                            {
+                                trayModel.ToolCode = dataReader.GetString(3);
+                            }
+                            if (!dataReader.IsDBNull(4))
+                            {
+                                trayModel.QtyStock = dataReader.GetInt32(4);
+                            }
+                            trayList.Add(trayModel);
+                        }
+                    }
+                    dataReader.Close();
+                }
+                connection.Close();
+            }
+            return trayList;
+        }
+
+        public Task UpdateStockQuantity(int trayID, int? toolID, int newQty)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateTempStockQuantity(int? trayID, int? toolID, string userID, int newQty)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateTransaction(int machineID, int userID, string typeTransaction, int qty)
         {
             throw new NotImplementedException();
         }
