@@ -25,28 +25,17 @@ namespace VinamiToolUser
         {
             container.RegisterType<ILoginView, LoginView>();
             container.RegisterType<IUserAccountRepository, UserAccountRepository>();
-
-            container.RegisterType<IMainViewNew, MainViewNew>();
-
-
-            container.RegisterType<IMenuViewNew, MenuViewNew>();
-            container.RegisterType<IMenuRepositoryNew, MenuRepositoryNew>();
-
-
-            container.RegisterType<IJobViewNew, JobViewNew>();
-            container.RegisterType<IJobRepositoryNew, JobRepositoryNew>();
-
-
-            container.RegisterType<IConfigSettingView, ConfigSettingView>();
-
-
-            container.RegisterType<IOPViewNew, OpViewNew>();
-            container.RegisterType<IOpRepositoryNew, OpRepositoryNew>();
-
-            container.RegisterType<IGetToolRepositoryNew, GetToolRepositoryNew>();
-
-            container.RegisterType<IGetToolViewNew, GetToolViewNew>();
-
+            container.RegisterType<IMainView, MainView>();
+            container.RegisterType<IMenuView, MenuView>();
+            container.RegisterType<IMenuRepository, MenuRepository>();
+            container.RegisterType<IJobView, JobView>();
+            container.RegisterType<IJobRepository, JobRepository>();
+            container.RegisterType<ISettingView, SettingView>();
+            container.RegisterType<ISettingRepository, SettingRepository>();
+            container.RegisterType<IOPViewNew, OpView>();
+            container.RegisterType<IOpRepository, OpRepository>();
+            container.RegisterType<IGetToolRepositoryNew, GetToolRepository>();
+            container.RegisterType<IGetToolView, GetToolView>();
             container.RegisterType<IManageToolView, ManageToolView>();
             container.RegisterType<IManageToolRepository, ManageToolRepository>();
         }

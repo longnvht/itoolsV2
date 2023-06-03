@@ -16,7 +16,6 @@ using VinamiToolUser.Models.Interface;
 using VinamiToolUser.Presenters;
 using VinamiToolUser.Views.Components;
 using VinamiToolUser.Views.Interface;
-using static AutoMapper.Internal.ExpressionFactory;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace VinamiToolUser.Views
@@ -32,7 +31,7 @@ namespace VinamiToolUser.Views
         private string _log;
         private string _modifyState;
         private string _modifyAction;
-        private IMainViewNew _mainView;
+        private IMainView _mainView;
         private TrayModelManage _currentTray;
         private TempToolModel _currentTool;
 
@@ -247,7 +246,8 @@ namespace VinamiToolUser.Views
         {
             var Keyboard = KeyBoard.GetInstance();
             Keyboard.isNumeric = numType;
-            int x = (Screen.PrimaryScreen.Bounds.Right - Keyboard.Width) / 2;
+            int x = 0;
+            //int x = (Screen.PrimaryScreen.Bounds.Right - Keyboard.Width) / 2;
             int y = Screen.PrimaryScreen.Bounds.Bottom - Keyboard.Height;
             Keyboard.Show();
             Keyboard.Location = new Point(x, y);
@@ -461,7 +461,7 @@ namespace VinamiToolUser.Views
 
         private void ManagerToolViewLoad(object sender, EventArgs e)
         {
-            _mainView = MainViewNew.GetInstance();
+            _mainView = MainView.GetInstance();
             _mainView.PrevView = "Menu";
             ViewAction = null;
             ModifyState = null;

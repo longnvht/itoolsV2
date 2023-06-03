@@ -9,27 +9,26 @@ using VinamiToolUser.Presenters;
 
 namespace VinamiToolUser.Views.Interface
 {
-    public interface IOPViewNew
+    public interface IJobView
     {
         #region Properties
-        JobModel CurrentJob { get; set; }
-        OPModel SelectedOP { get; set; }
+        string SearchValue { get; set; }
         string NextView { get; set; }
         string TempView { get; set; }
-        string SearchValue { get; set; }
-        OpPresenter Presenter { set; }
+        JobModel SelectedJob { get; set; }
+        JobPresenter Presenter { set; }
         #endregion
 
         #region Events
         event EventHandler SearchEvent;
-        event EventHandler OpSelectEvent;
-        event EventHandler ChoseOpEvent;
+        event EventHandler SelectJobEvent;
+        event EventHandler ChoseJobEvent;
 
 
         #endregion
 
         #region Method
-        void SetOpListBindingSource(BindingSource opList);
+        void SetJobListBindingSource(BindingSource jobList);
         #endregion
     }
 }

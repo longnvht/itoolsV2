@@ -77,7 +77,9 @@ namespace VinamiToolUser.Presenters
                 stockID = currenttool.StockID;
             }
             int trayID = currentTray.TrayId;
-            _view.Log = "-- Giao Dịch - " + _view.ModifyState;
+            _view.Log = "--- Giao Dịch:  " + _view.ModifyState;
+            _view.Log = "--- Tray Name:  " + currentTray.TrayName;
+            _view.Log = "--- Số lượng thao tác:  " + _view.ModifyQty;
             //Update Tray Quantity
             result = await _repository.UpdateStockQuantity(trayID, toolID, _view.NewQty);
             if (result) _view.Log = "--- Cập nhật số lượng tool mới của Tray thành công";

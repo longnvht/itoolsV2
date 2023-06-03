@@ -102,17 +102,25 @@
     <AssemblyOriginatorKeyFile>itools_source_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="AutoUpdater.NET, Version=1.7.7.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autoupdater.NET.Official.1.7.7\lib\net45\AutoUpdater.NET.dll</HintPath>
+    <Reference Include="AutoUpdater.NET, Version=1.8.1.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autoupdater.NET.Official.1.8.2\lib\net45\AutoUpdater.NET.dll</HintPath>
     </Reference>
     <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Protobuf, Version=3.21.12.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Protobuf.3.21.12\lib\net45\Google.Protobuf.dll</HintPath>
+    <Reference Include="ConfigParser, Version=0.3.8.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Salaros.ConfigParser.0.3.8\lib\net45\ConfigParser.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.Desktop.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Drawing.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Google.Protobuf, Version=3.23.2.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.23.2\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.4, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.4\lib\net48\Guna.UI2.dll</HintPath>
@@ -129,17 +137,17 @@
     <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.1661.34, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.1661.34\lib\net45\Microsoft.Web.WebView2.Core.dll</HintPath>
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.1774.30, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.1774.30\lib\net45\Microsoft.Web.WebView2.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.1661.34, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.1661.34\lib\net45\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.1774.30, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.1774.30\lib\net45\Microsoft.Web.WebView2.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.1661.34, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.1661.34\lib\net45\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.1774.30, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.1774.30\lib\net45\Microsoft.Web.WebView2.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=8.0.32.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.8.0.32.1\lib\net48\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=8.0.33.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.33\lib\net48\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -154,8 +162,8 @@
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
-    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+    <Reference Include="System.IO.Pipelines, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.7.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
     </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -187,25 +195,26 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationClient" />
-    <Reference Include="Unity.Abstractions, Version=5.11.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.11.9\lib\net48\Unity.Abstractions.dll</HintPath>
+    <Reference Include="Unity.Abstractions, Version=5.11.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net48\Unity.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Container, Version=5.11.10.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.11.9\lib\net48\Unity.Container.dll</HintPath>
+    <Reference Include="Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net48\Unity.Container.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\ReportStock.cs" />
     <Compile Include="Models\Interface\IBaseRepository.cs" />
-    <Compile Include="Models\Interface\ICompanyRepository.cs" />
     <Compile Include="Models\Interface\IGetToolRepositoryNew.cs" />
-    <Compile Include="Models\Interface\IJobRepositoryNew.cs" />
+    <Compile Include="Models\Interface\IJobRepository.cs" />
     <Compile Include="Models\Interface\IManageToolRepository.cs" />
-    <Compile Include="Models\Interface\IMenuRepositoryNew.cs" />
-    <Compile Include="Models\Interface\IOpRepositoryNew.cs" />
+    <Compile Include="Models\Interface\IMenuRepository.cs" />
+    <Compile Include="Models\Interface\IOpRepository.cs" />
     <Compile Include="Models\Interface\IPermissionRepository.cs" />
-    <Compile Include="Models\JobModelNew.cs" />
+    <Compile Include="Models\Interface\ISettingRepository.cs" />
+    <Compile Include="Models\JobModel.cs" />
+    <Compile Include="Models\MachineConfigModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\OPModel.cs" />
     <Compile Include="Models\Permission.cs" />
@@ -215,25 +224,27 @@
     <Compile Include="Models\TrayModel.cs" />
     <Compile Include="Models\TrayModelManage.cs" />
     <Compile Include="Models\UserAccount.cs" />
-    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\Interface\IUserAccountRepository.cs" />
-    <Compile Include="Models\Machine.cs" />
+    <Compile Include="Models\MachineModel.cs" />
     <Compile Include="Models\UserType.cs" />
     <Compile Include="Models\WorkingTransaction.cs" />
-    <Compile Include="Presenters\GetToolPresenterNew.cs" />
-    <Compile Include="Presenters\JobPresenterNew.cs" />
+    <Compile Include="Presenters\GetToolPresenter.cs" />
+    <Compile Include="Presenters\JobPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
-    <Compile Include="Presenters\MenuPresenterNew.cs" />
-    <Compile Include="Presenters\OpPresenterNew.cs" />
+    <Compile Include="Presenters\MenuPresenter.cs" />
+    <Compile Include="Presenters\OpPresenter.cs" />
     <Compile Include="Presenters\ManagerToolPresenter.cs" />
+    <Compile Include="Presenters\SettingPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\GetToolRepositoryNew.cs" />
-    <Compile Include="Repository\JobRepositoryNew.cs" />
+    <Compile Include="Repository\GetToolRepository.cs" />
+    <Compile Include="Repository\JobRepository.cs" />
     <Compile Include="Repository\ManageToolRepository.cs" />
-    <Compile Include="Repository\MenuRepositoryNew.cs" />
-    <Compile Include="Repository\OpRepositoryNew.cs" />
+    <Compile Include="Repository\MenuRepository.cs" />
+    <Compile Include="Repository\OpRepository.cs" />
     <Compile Include="Repository\PermissionRepository.cs" />
+    <Compile Include="Repository\SettingRepository.cs" />
     <Compile Include="Repository\UserAccountRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Utils\CommonValue.cs" />
@@ -271,31 +282,31 @@
     <Compile Include="Views\Components\StockInfoTreeView.Designer.cs">
       <DependentUpon>StockInfoTreeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ConfigSettingView.cs">
+    <Compile Include="Views\SettingView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ConfigSettingView.Designer.cs">
-      <DependentUpon>ConfigSettingView.cs</DependentUpon>
+    <Compile Include="Views\SettingView.Designer.cs">
+      <DependentUpon>SettingView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\GetToolViewNew.cs">
+    <Compile Include="Views\GetToolView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\GetToolViewNew.Designer.cs">
-      <DependentUpon>GetToolViewNew.cs</DependentUpon>
+    <Compile Include="Views\GetToolView.Designer.cs">
+      <DependentUpon>GetToolView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Interface\IConfigSettingView.cs" />
-    <Compile Include="Views\Interface\IGetToolViewNew.cs" />
-    <Compile Include="Views\Interface\IJobViewNew.cs" />
+    <Compile Include="Views\Interface\ISettingView.cs" />
+    <Compile Include="Views\Interface\IGetToolView.cs" />
+    <Compile Include="Views\Interface\IJobView.cs" />
     <Compile Include="Views\Interface\ILoginView.cs" />
-    <Compile Include="Views\Interface\IMainViewNew.cs" />
+    <Compile Include="Views\Interface\IMainView.cs" />
     <Compile Include="Views\Interface\IManageToolView.cs" />
-    <Compile Include="Views\Interface\IMenuViewNew.cs" />
+    <Compile Include="Views\Interface\IMenuView.cs" />
     <Compile Include="Views\Interface\IOPViewNew.cs" />
-    <Compile Include="Views\JobViewNew.cs">
+    <Compile Include="Views\JobView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\JobViewNew.Designer.cs">
-      <DependentUpon>JobViewNew.cs</DependentUpon>
+    <Compile Include="Views\JobView.Designer.cs">
+      <DependentUpon>JobView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\KeyBoard.cs">
       <SubType>Form</SubType>
@@ -309,11 +320,11 @@
     <Compile Include="Views\LoginView.Designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainViewNew.cs">
+    <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MainViewNew.Designer.cs">
-      <DependentUpon>MainViewNew.cs</DependentUpon>
+    <Compile Include="Views\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ManageToolView.cs">
       <SubType>Form</SubType>
@@ -321,17 +332,17 @@
     <Compile Include="Views\ManageToolView.Designer.cs">
       <DependentUpon>ManageToolView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenuViewNew.cs">
+    <Compile Include="Views\MenuView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MenuViewNew.Designer.cs">
-      <DependentUpon>MenuViewNew.cs</DependentUpon>
+    <Compile Include="Views\MenuView.Designer.cs">
+      <DependentUpon>MenuView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\OpViewNew.cs">
+    <Compile Include="Views\OpView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\OpViewNew.Designer.cs">
-      <DependentUpon>OpViewNew.cs</DependentUpon>
+    <Compile Include="Views\OpView.Designer.cs">
+      <DependentUpon>OpView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TestView.cs">
       <SubType>Form</SubType>
@@ -359,14 +370,14 @@
     <EmbeddedResource Include="Views\Components\StockInfoTreeView.resx">
       <DependentUpon>StockInfoTreeView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ConfigSettingView.resx">
-      <DependentUpon>ConfigSettingView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\SettingView.resx">
+      <DependentUpon>SettingView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\GetToolViewNew.resx">
-      <DependentUpon>GetToolViewNew.cs</DependentUpon>
+    <EmbeddedResource Include="Views\GetToolView.resx">
+      <DependentUpon>GetToolView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\JobViewNew.resx">
-      <DependentUpon>JobViewNew.cs</DependentUpon>
+    <EmbeddedResource Include="Views\JobView.resx">
+      <DependentUpon>JobView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\KeyBoard.resx">
       <DependentUpon>KeyBoard.cs</DependentUpon>
@@ -375,17 +386,17 @@
       <DependentUpon>LoginView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainViewNew.resx">
-      <DependentUpon>MainViewNew.cs</DependentUpon>
+    <EmbeddedResource Include="Views\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ManageToolView.resx">
       <DependentUpon>ManageToolView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MenuViewNew.resx">
-      <DependentUpon>MenuViewNew.cs</DependentUpon>
+    <EmbeddedResource Include="Views\MenuView.resx">
+      <DependentUpon>MenuView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\OpViewNew.resx">
-      <DependentUpon>OpViewNew.cs</DependentUpon>
+    <EmbeddedResource Include="Views\OpView.resx">
+      <DependentUpon>OpView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TestView.resx">
       <DependentUpon>TestView.cs</DependentUpon>
@@ -455,17 +466,18 @@
     <None Include="Resources\Add properties_64px.png" />
     <None Include="Resources\single_choice_48px.png" />
     <None Include="Resources\delete_list_48px.png" />
+    <None Include="Resources\edit_property_48px.png" />
     <Content Include="tool_generator.ico" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1661.34\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1661.34\build\Microsoft.Web.WebView2.targets')" />
+  <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1774.30\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1774.30\build\Microsoft.Web.WebView2.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.1661.34\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.1661.34\build\Microsoft.Web.WebView2.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.1774.30\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.1774.30\build\Microsoft.Web.WebView2.targets'))" />
   </Target>
 </Project>

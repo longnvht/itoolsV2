@@ -163,6 +163,16 @@ namespace VinamiToolUser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap edit_property_48px {
+            get {
+                object obj = ResourceManager.GetObject("edit_property_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap home_48 {
             get {
                 object obj = ResourceManager.GetObject("home_48", resourceCulture);

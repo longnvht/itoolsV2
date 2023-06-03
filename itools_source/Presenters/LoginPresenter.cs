@@ -105,7 +105,7 @@ namespace VinamiToolUser.Presenter
 
                     //t.Start();
 
-                    MainViewNew mainViewNew = MainViewNew.GetInstance();
+                    MainView mainViewNew = MainView.GetInstance();
                     mainViewNew.Show();
 
                     _log.Info("Login Success!");
