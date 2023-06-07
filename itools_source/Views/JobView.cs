@@ -88,7 +88,6 @@ namespace VinamiToolUser.Views
             Presenter = new JobPresenter(this, repositoryNew);
             _mainView = MainView.GetInstance();
             _mainView.PrevView = "Menu";
-            listBox1.DisplayMember = "JobNumber";
         }
 
         private void ShowKeyboard()
@@ -131,7 +130,6 @@ namespace VinamiToolUser.Views
             }
         }
 
-
         public event EventHandler SearchEvent;
         public event EventHandler SelectJobEvent;
         public event EventHandler ChoseJobEvent;
@@ -139,7 +137,6 @@ namespace VinamiToolUser.Views
         public void SetJobListBindingSource(BindingSource jobList)
         {
             lstJob.DataSource = jobList;
-            listBox1.DataSource = jobList;
         }
     }
 }

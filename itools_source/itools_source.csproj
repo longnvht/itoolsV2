@@ -208,10 +208,10 @@
     <Compile Include="Models\Interface\IBaseRepository.cs" />
     <Compile Include="Models\Interface\IGetToolRepositoryNew.cs" />
     <Compile Include="Models\Interface\IJobRepository.cs" />
+    <Compile Include="Models\Interface\IMainRepository.cs" />
     <Compile Include="Models\Interface\IManageToolRepository.cs" />
     <Compile Include="Models\Interface\IMenuRepository.cs" />
     <Compile Include="Models\Interface\IOpRepository.cs" />
-    <Compile Include="Models\Interface\IPermissionRepository.cs" />
     <Compile Include="Models\Interface\ISettingRepository.cs" />
     <Compile Include="Models\JobModel.cs" />
     <Compile Include="Models\MachineConfigModel.cs" />
@@ -225,13 +225,14 @@
     <Compile Include="Models\TrayModelManage.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\CompanyModel.cs" />
-    <Compile Include="Models\Interface\IUserAccountRepository.cs" />
+    <Compile Include="Models\Interface\ILoginRepository.cs" />
     <Compile Include="Models\MachineModel.cs" />
     <Compile Include="Models\UserType.cs" />
     <Compile Include="Models\WorkingTransaction.cs" />
     <Compile Include="Presenters\GetToolPresenter.cs" />
     <Compile Include="Presenters\JobPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
+    <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\MenuPresenter.cs" />
     <Compile Include="Presenters\OpPresenter.cs" />
     <Compile Include="Presenters\ManagerToolPresenter.cs" />
@@ -240,12 +241,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GetToolRepository.cs" />
     <Compile Include="Repository\JobRepository.cs" />
+    <Compile Include="Repository\MainRepository.cs" />
     <Compile Include="Repository\ManageToolRepository.cs" />
     <Compile Include="Repository\MenuRepository.cs" />
     <Compile Include="Repository\OpRepository.cs" />
-    <Compile Include="Repository\PermissionRepository.cs" />
     <Compile Include="Repository\SettingRepository.cs" />
-    <Compile Include="Repository\UserAccountRepository.cs" />
+    <Compile Include="Repository\LoginRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Utils\CommonValue.cs" />
     <Compile Include="Utils\Encryption.cs" />
@@ -467,6 +468,11 @@
     <None Include="Resources\single_choice_48px.png" />
     <None Include="Resources\delete_list_48px.png" />
     <None Include="Resources\edit_property_48px.png" />
+    <None Include="Resources\barcode_approve_48px.png" />
+    <None Include="Resources\Logout Rounded_48px.png" />
+    <None Include="Resources\Logout Rounded_48pxr.png" />
+    <None Include="Resources\Cancel Order_60px.png" />
+    <None Include="Resources\new_copy_60px.png" />
     <Content Include="tool_generator.ico" />
   </ItemGroup>
   <ItemGroup>

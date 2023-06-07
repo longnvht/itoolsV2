@@ -18,20 +18,23 @@ namespace VinamiToolUser.Views.Interface
         string CurrentView { get; set; }
         string TempView { get; set; } 
         string PrevView { get; set; }
+        string HddSerial { get; set; }
+        MachineConfigModel MachineConfig { get; set; }
         OPModel CurrentOP { get; set; }
         ToolModel CurrentTool { get; set; }
         TrayModel CurrentTray { get; set; }
-        //MainPresenterNew Presenter { set; }
+        MainPresenter Presenter { set; }
+        MachineModel CurrentMachine { get; set; }
         #endregion
 
         #region Events
 
-        //event EventHandler GotoPrevView;
+        event EventHandler ConfigChange;
 
         #endregion
 
         #region Method
-        //void CloseChildView();
+        bool CheckConfig();
 
         #endregion
     }

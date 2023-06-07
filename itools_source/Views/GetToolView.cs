@@ -22,7 +22,6 @@ namespace VinamiToolUser.Views
 {
     public partial class GetToolView : Form, IGetToolView
     {
-        private string portName = "COM3";
         private ToolModel _curentTool;
         private TrayModel _currentTray;
         private IMainView _mainView;
@@ -57,10 +56,15 @@ namespace VinamiToolUser.Views
 
         private void AssociateAndRaiseViewEvents()
         {
-            lstTool.ItemClick += delegate { SelectToolEvent?.Invoke(this, EventArgs.Empty); };
+            lstTool.ItemClick += (s,e) => 
+            {
+                CurrentTray = null;
+                SelectToolEvent?.Invoke(this, EventArgs.Empty); 
+            };
             btnSearch.Click += delegate 
             {
                 KeyBoard.CloseKeyboard();
+                CurrentTray = null;
                 SearchToolEvent?.Invoke(this, EventArgs.Empty); 
             };
             txtSearch.MouseClick += (s, e) => { ShowKeyboard(); };
@@ -90,9 +94,10 @@ namespace VinamiToolUser.Views
 
         private void FormGetToolLoad(object sender, EventArgs e)
         {
-            serialPortGetTool.PortName = portName;
+            serialPortGetTool.PortName = _mainView.MachineConfig.ComPort;
             _mainView = MainView.GetInstance();
             _mainView.PrevView = "Select Op";
+            CurrentTray = null;
             IGetToolRepositoryNew repository = UnityDI.container.Resolve<IGetToolRepositoryNew>();
             Presenter = new GetToolPresenter(this, repository);
         }
@@ -133,17 +138,8 @@ namespace VinamiToolUser.Views
             AppendText(rtbStatus, "Start Get Tool ...", Color.Blue, true);
             bool comportStatus =  await OpenComPort();
             if (!comportStatus) return false;
-            //if (comportStatus)
-            //{
-            //    bool connectStatus = await CheckConnecttion();
-            //    if (comportStatus)
-            //    {
-            //        await SendGetToolComman();
-            //    }
-            //}
             bool connectStatus = await CheckConnecttion();
             if (!connectStatus) return false;
-
             bool getToolStatus = await SendGetToolComman();
             if (!getToolStatus) return false;
             return true;
@@ -210,20 +206,6 @@ namespace VinamiToolUser.Views
             _textReceive = "";
             serialPortGetTool.WriteLine("100\n");
             tmGetTool.Start();
-            //await Task.Run(() =>
-            //{
-            //    serialPortGetTool.WriteLine("100\n");
-            //    while (_actionTime <= 5)
-            //    {
-            //        if (_textReceive.Contains("120"))
-            //        {
-            //            result = true;
-            //            message = "Kết nối tới bo mạch thành công";
-            //            break;
-            //        }
-            //    }
-            //    tmGetTool.Stop();
-            //});
             Task<bool> t1 = new Task<bool>
             (
                 () =>
@@ -250,14 +232,13 @@ namespace VinamiToolUser.Views
         private async Task<bool> OpenComPort()
         {
             bool result = false; // Biến trung gian để lưu giá trị trả về
-
+            string portName = _mainView.MachineConfig.ComPort;
             Task<bool> t1 = new Task<bool>
             (
                 () =>
                 {
                     try
                     {
-                        
                         if (String.IsNullOrEmpty(portName))
                         {
                             rtbStatus.Invoke(new MethodInvoker(delegate { AppendText(rtbStatus, "Please select the serial port first!", Color.Red, true); }));
@@ -265,12 +246,10 @@ namespace VinamiToolUser.Views
                         }
                         else
                         {
-                            
                             if (serialPortGetTool.IsOpen == true)
                             {
                                 serialPortGetTool.Close();
                             }
-
                             serialPortGetTool.Open();
                             rtbStatus.Invoke(new MethodInvoker(delegate { AppendText(rtbStatus, "Serial port opened successfully!", Color.Green, true); }));
                             result = true; // Gán giá trị cho biến trung gian
@@ -281,7 +260,6 @@ namespace VinamiToolUser.Views
                         rtbStatus.Invoke(new MethodInvoker(delegate { AppendText(rtbStatus, ex.Message, Color.Red, true); }));
                         result = false; // Gán giá trị cho biến trung gian
                     }
-
                     return result; // Trả về giá trị biến trung gian
                 }
             );

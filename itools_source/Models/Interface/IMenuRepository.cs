@@ -9,6 +9,6 @@ namespace VinamiToolUser.Models.Interface
     public interface IMenuRepository
     {
         Task<IEnumerable<MenuModel>> GetAll();
-        Task<IEnumerable<MenuModel>> GetByValue(string value);//Searchs
+        Task<IEnumerable<MenuModel>> GetByPermission(string value);//Searchs
     }
 }

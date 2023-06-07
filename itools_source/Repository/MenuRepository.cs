@@ -56,16 +56,16 @@ namespace VinamiToolUser.Repository
             return viewList;
         }
 
-        public async Task<IEnumerable<MenuModel>> GetByValue(string value)
+        public async Task<IEnumerable<MenuModel>> GetByPermission(string permissionID)
         {
             var viewList = new List<MenuModel>();
             using (MySqlConnection connection = await OpenAsync())
             {
                 MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                string viewName = value;
-                cmd.CommandText = @"Select * from menu where App = 'ITOOLS' AND Menuname like CONCAT('%', @viewName,'%')";
-                cmd.Parameters.AddWithValue("@viewName", viewName);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = @"GetMenuList";
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@permissionID", MySqlDbType.VarChar, permissionID);
+                cmd.Parameters.Add(prm);
                 using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                 {
                     if (dataReader != null)
@@ -73,22 +73,23 @@ namespace VinamiToolUser.Repository
                         while (dataReader.Read())
                         {
                             var menuModel = new MenuModel();
+                            if (!dataReader.IsDBNull(0))
+                            {
+                                menuModel.MenuName = dataReader.GetString(0);
+                            }
                             if (!dataReader.IsDBNull(1))
                             {
-                                menuModel.MenuName = dataReader.GetString(1);
+                                menuModel.ViewName = dataReader.GetString(1);
                             }
                             if (!dataReader.IsDBNull(2))
                             {
-                                menuModel.ViewName = dataReader.GetString(2);
+                                menuModel.Icon = dataReader.GetString(2);
                             }
-                            if (!dataReader.IsDBNull(4))
+                            if (!dataReader.IsDBNull(3))
                             {
-                                menuModel.MenuDescription = dataReader.GetString(4);
+                                menuModel.MenuDescription = dataReader.GetString(3);
                             }
-                            if (!dataReader.IsDBNull(5))
-                            {
-                                menuModel.Icon = dataReader.GetString(5);
-                            }
+                            
                             viewList.Add(menuModel);
                         }
                     }

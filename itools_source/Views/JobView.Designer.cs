@@ -33,7 +33,6 @@
             this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
             this.grbJob = new System.Windows.Forms.GroupBox();
             this.lstJob = new VinamiToolUser.Views.Components.ListButton();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tblSearch.SuspendLayout();
             this.grbJob.SuspendLayout();
             this.SuspendLayout();
@@ -42,16 +41,15 @@
             // 
             this.tblSearch.ColumnCount = 2;
             this.tblSearch.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblSearch.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tblSearch.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tblSearch.Controls.Add(this.txtSearch, 0, 0);
             this.tblSearch.Controls.Add(this.btnSearch, 1, 0);
             this.tblSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.tblSearch.Location = new System.Drawing.Point(0, 0);
-            this.tblSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tblSearch.Name = "tblSearch";
             this.tblSearch.RowCount = 1;
             this.tblSearch.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblSearch.Size = new System.Drawing.Size(1070, 92);
+            this.tblSearch.Size = new System.Drawing.Size(713, 60);
             this.tblSearch.TabIndex = 0;
             // 
             // txtSearch
@@ -68,13 +66,12 @@
             this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Location = new System.Drawing.Point(4, 7);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSearch.Location = new System.Drawing.Point(3, 5);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderText = "";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(912, 77);
+            this.txtSearch.Size = new System.Drawing.Size(607, 50);
             this.txtSearch.TabIndex = 0;
             // 
             // btnSearch
@@ -90,23 +87,20 @@
             this.btnSearch.FillColor = System.Drawing.Color.WhiteSmoke;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.Navy;
-            this.btnSearch.Location = new System.Drawing.Point(924, 7);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSearch.Location = new System.Drawing.Point(616, 5);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(142, 77);
+            this.btnSearch.Size = new System.Drawing.Size(94, 50);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             // 
             // grbJob
             // 
             this.grbJob.Controls.Add(this.lstJob);
-            this.grbJob.Dock = System.Windows.Forms.DockStyle.Left;
+            this.grbJob.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbJob.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbJob.Location = new System.Drawing.Point(0, 92);
-            this.grbJob.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grbJob.Location = new System.Drawing.Point(0, 60);
             this.grbJob.Name = "grbJob";
-            this.grbJob.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grbJob.Size = new System.Drawing.Size(791, 562);
+            this.grbJob.Size = new System.Drawing.Size(713, 365);
             this.grbJob.TabIndex = 2;
             this.grbJob.TabStop = false;
             this.grbJob.Text = "Job List";
@@ -125,33 +119,24 @@
             this.lstJob.ItemFont = new System.Drawing.Font("Segoe UI", 10F);
             this.lstJob.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
             this.lstJob.ItemHeight = 100;
-            this.lstJob.ItemSpace = 12;
+            this.lstJob.ItemSpace = 6;
             this.lstJob.ItemTopDisplayMember = "JobNumber";
             this.lstJob.ItemWidth = 100;
-            this.lstJob.Location = new System.Drawing.Point(4, 23);
-            this.lstJob.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lstJob.Location = new System.Drawing.Point(3, 21);
+            this.lstJob.Margin = new System.Windows.Forms.Padding(4);
             this.lstJob.MinMargin = 5;
             this.lstJob.Name = "lstJob";
-            this.lstJob.Size = new System.Drawing.Size(783, 534);
+            this.lstJob.Size = new System.Drawing.Size(707, 341);
             this.lstJob.TabIndex = 1;
-            // 
-            // listBox1
-            // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(791, 92);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(279, 562);
-            this.listBox1.TabIndex = 3;
             // 
             // JobView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1070, 654);
-            this.Controls.Add(this.listBox1);
+            this.ClientSize = new System.Drawing.Size(713, 425);
             this.Controls.Add(this.grbJob);
             this.Controls.Add(this.tblSearch);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "JobView";
             this.Text = "JobViewNew";
             this.tblSearch.ResumeLayout(false);
@@ -167,6 +152,5 @@
         private Guna.UI2.WinForms.Guna2Button btnSearch;
         private VinamiToolUser.Views.Components.ListButton lstJob;
         private System.Windows.Forms.GroupBox grbJob;
-        private System.Windows.Forms.ListBox listBox1;
     }
 }

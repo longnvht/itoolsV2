@@ -31,7 +31,7 @@ namespace VinamiToolUser.Presenters
             _view = view;
             _repository = repository;
             _view.Presenter = this;
-            _userLogin = _view.UserLogin.strUserLogin;
+            _userLogin = _view.UserLogin.UserName;
             _view.SelectToolEvent += SelectTool;
             _view.SearchToolEvent += SearchTool;
             _view.UpdateToolStock += UpdateToolStock;

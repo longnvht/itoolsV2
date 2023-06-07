@@ -34,7 +34,7 @@ namespace VinamiToolUser.Presenters
 
         private async void LoadViewList()
         {
-            _viewList = await _repository.GetAll();
+            _viewList = await _repository.GetByPermission(_view.UserLogin.PermisionID);
             _bindingSource.DataSource = _viewList;
         }
 

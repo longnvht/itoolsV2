@@ -33,13 +33,16 @@
             this.btnPrev = new Guna.UI2.WinForms.Guna2Button();
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
-            this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.txtUserName = new System.Windows.Forms.Label();
-            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.txtStatus = new System.Windows.Forms.Label();
             this.txtCurrentView = new System.Windows.Forms.Label();
+            this.tsInfo = new System.Windows.Forms.ToolStrip();
+            this.tslMessage = new System.Windows.Forms.ToolStripLabel();
+            this.btnHome = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLogOut = new Guna.UI2.WinForms.Guna2Button();
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
+            this.tsInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpFooter
@@ -116,7 +119,7 @@
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tlpHeader.Controls.Add(this.btnHome, 0, 0);
             this.tlpHeader.Controls.Add(this.txtUserName, 3, 0);
-            this.tlpHeader.Controls.Add(this.btnClose, 4, 0);
+            this.tlpHeader.Controls.Add(this.btnLogOut, 4, 0);
             this.tlpHeader.Controls.Add(this.txtStatus, 2, 0);
             this.tlpHeader.Controls.Add(this.txtCurrentView, 1, 0);
             this.tlpHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -127,24 +130,6 @@
             this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpHeader.Size = new System.Drawing.Size(800, 50);
             this.tlpHeader.TabIndex = 6;
-            // 
-            // btnHome
-            // 
-            this.btnHome.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnHome.FillColor = System.Drawing.Color.Transparent;
-            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnHome.ForeColor = System.Drawing.Color.White;
-            this.btnHome.HoverState.Image = global::VinamiToolUser.Properties.Resources.home_500px;
-            this.btnHome.Image = global::VinamiToolUser.Properties.Resources.home_512px;
-            this.btnHome.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnHome.Location = new System.Drawing.Point(6, 6);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(37, 37);
-            this.btnHome.TabIndex = 0;
             // 
             // txtUserName
             // 
@@ -159,25 +144,6 @@
             this.txtUserName.TabIndex = 9;
             this.txtUserName.Text = "Name";
             this.txtUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnClose.FillColor = System.Drawing.Color.Transparent;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.HoverState.Image = global::VinamiToolUser.Properties.Resources.close_500pxr;
-            this.btnClose.Image = global::VinamiToolUser.Properties.Resources.close_500px1;
-            this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(753, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(44, 44);
-            this.btnClose.TabIndex = 6;
             // 
             // txtStatus
             // 
@@ -203,23 +169,80 @@
             this.txtCurrentView.TabIndex = 11;
             this.txtCurrentView.Text = "...";
             // 
-            // MainViewNew
+            // tsInfo
+            // 
+            this.tsInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslMessage});
+            this.tsInfo.Location = new System.Drawing.Point(0, 50);
+            this.tsInfo.Name = "tsInfo";
+            this.tsInfo.Size = new System.Drawing.Size(800, 25);
+            this.tsInfo.TabIndex = 8;
+            this.tsInfo.Text = "toolStrip1";
+            // 
+            // tslMessage
+            // 
+            this.tslMessage.Name = "tslMessage";
+            this.tslMessage.Size = new System.Drawing.Size(65, 22);
+            this.tslMessage.Text = "tslMessage";
+            // 
+            // btnHome
+            // 
+            this.btnHome.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnHome.FillColor = System.Drawing.Color.Transparent;
+            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.HoverState.Image = global::VinamiToolUser.Properties.Resources.home_500px;
+            this.btnHome.Image = global::VinamiToolUser.Properties.Resources.home_512px;
+            this.btnHome.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnHome.Location = new System.Drawing.Point(6, 6);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(37, 37);
+            this.btnHome.TabIndex = 0;
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLogOut.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogOut.FillColor = System.Drawing.Color.Transparent;
+            this.btnLogOut.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnLogOut.ForeColor = System.Drawing.Color.Black;
+            this.btnLogOut.HoverState.Image = global::VinamiToolUser.Properties.Resources.Logout_Rounded_48pxr;
+            this.btnLogOut.Image = global::VinamiToolUser.Properties.Resources.Logout_Rounded_48px;
+            this.btnLogOut.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnLogOut.Location = new System.Drawing.Point(753, 3);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(44, 44);
+            this.btnLogOut.TabIndex = 6;
+            // 
+            // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tsInfo);
             this.Controls.Add(this.tlpFooter);
             this.Controls.Add(this.tlpHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Name = "MainViewNew";
+            this.Name = "MainView";
             this.Text = "MainViewNew";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tlpFooter.ResumeLayout(false);
             this.tlpHeader.ResumeLayout(false);
             this.tlpHeader.PerformLayout();
+            this.tsInfo.ResumeLayout(false);
+            this.tsInfo.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -231,8 +254,10 @@
         private Guna.UI2.WinForms.Guna2Button btnNext;
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
         private System.Windows.Forms.Label txtUserName;
-        private Guna.UI2.WinForms.Guna2Button btnClose;
+        private Guna.UI2.WinForms.Guna2Button btnLogOut;
         private System.Windows.Forms.Label txtStatus;
         private System.Windows.Forms.Label txtCurrentView;
+        private System.Windows.Forms.ToolStrip tsInfo;
+        private System.Windows.Forms.ToolStripLabel tslMessage;
     }
 }

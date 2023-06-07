@@ -9,7 +9,9 @@ namespace VinamiToolUser.Models.Interface
 {
     public interface ISettingRepository
     {
-        Task<IEnumerable<MachineModel>> GetMachineList();
+        Task<IEnumerable<MachineModel>> GetAllMachineList();
+        Task<IEnumerable<MachineModel>> GetCurentMachine(string serialMachine);
         Task<IEnumerable<CompanyModel>> GetCompanyList();//Searchs
+        Task<IEnumerable<MachineModel>> GetMachineListForCompany(int companyID);
     }
 }

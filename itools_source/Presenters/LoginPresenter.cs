@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Unity;
 using VinamiToolUser.Utils;
+using System.Collections.Generic;
 
 namespace VinamiToolUser.Presenter
 {
@@ -16,100 +17,40 @@ namespace VinamiToolUser.Presenter
     {
         #region Properties - Fields
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(LoginPresenter).Name);
-
-        private readonly ILoginView _loginView;
-        private readonly IUserAccountRepository _userAccountRepository;
+        private IEnumerable<UserAccount> _userList;
+        private readonly ILoginView _view;
+        private readonly ILoginRepository _repository;
 
         #endregion
-        public LoginPresenter(ILoginView loginView, IUserAccountRepository userAccountRepository)
+        public LoginPresenter(ILoginView view, ILoginRepository repository)
         {
-            _loginView = loginView;
-            _userAccountRepository = userAccountRepository;
-
+            _view = view;
+            _repository = repository;
+            _view.Presenter = this;
             // Event handler methods to view events.
-            _loginView.btnLogin_Click += _loginView_btnLogin_Click;
-            _loginView.btnCancel_Click += _loginView_btnCancel_Click;
-            _loginView.txtPassword_IconRightClick += _loginView_txtPassword_IconRightClick;
+            _view.LoginEvent += LoginEvent;
         }
 
         #region Events
 
-        private void _loginView_txtPassword_IconRightClick(object sender, EventArgs e)
+        private async void LoginEvent(object sender, EventArgs e)
         {
-            var txtPassword = ((Guna2TextBox)sender);
-            if (txtPassword.UseSystemPasswordChar)
-            {
-                txtPassword.UseSystemPasswordChar = false;
-                txtPassword.IconRight = VinamiToolUser.Properties.Resources.pass_hide_24px;
-            }
-            else
-            {
-                txtPassword.UseSystemPasswordChar = true;
-                txtPassword.IconRight = VinamiToolUser.Properties.Resources.pass_show_24px;
-            }
-        }
-
-        private void _loginView_btnCancel_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private async void _loginView_btnLogin_Click(object sender, EventArgs e)
-        {
-            string strUserName = _loginView.strUserName;
-            string strPassword = Utils.Encryption.CreateMD5(_loginView.strPassword);
+            string strUserName = _view.UserName;
+            string strPassword = Utils.Encryption.CreateMD5(_view.Password);
             _log.Info("Login with username: " + strUserName);
             try
             {
-                // 1. Get ID, Add Session.
-                if (Program.sessionLogin == null)
-                {
-                    Program.sessionLogin = new Utils.Session();
-                }
+                _userList = await _repository.GetUserAccount(strUserName, strPassword);
 
-                // 2. Get user account.
-                UserAccount userAccount = await _userAccountRepository.GetUserAccount(strUserName, strPassword);
-                if (userAccount == null)
+                if (_userList.Count() <= 0)
                 {
-
-                    DialogResult dlgOk = MessageBox.Show("Đăng Nhập Thất Bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    _log.Info("Login Fail!");
+                    _view.Message = "Sai tên đăng nhập hoặc mật khẩu!!!";
                     return;
                 }
                 else
                 {
-                    if (userAccount.iID == 0)
-                    {
-
-                        DialogResult dlgOk = MessageBox.Show("Đăng Nhập Thất Bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        _log.Info("Login Fail!");
-                        return;
-                    }
-                    CommonValue.UserLogin = userAccount;
-                    Program.sessionLogin["Id"] = userAccount.iID;
-                    Program.sessionLogin["UserName"] = strUserName; // UserLogin
-                    Program.sessionLogin["Password"] = strPassword;
-                    Program.sessionLogin["Name"] = userAccount.strNameStaff;
-                    Program.sessionLogin["PermissionId"] = userAccount.strPermissionId;
-                    Program.sessionLogin["LoginTime"] = Utils.ServerTime.GetServerTime().ToLocalTime().ToString();
-
-                    //System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(
-                    //        () =>
-                    //        {
-                    //            //var mainPresenter = UnityDI.container.Resolve<MainPresenter>();
-                    //            //mainPresenter.Run();
-                    //            MainViewNew mainViewNew = MainViewNew.GetInstance();
-                    //            mainViewNew.UserLogin = userAccount;
-                    //            mainViewNew.Show();
-                    //        }));
-
-                    //t.Start();
-
-                    MainView mainViewNew = MainView.GetInstance();
-                    mainViewNew.Show();
-
+                    _view.UserLogin = _userList.FirstOrDefault();
                     _log.Info("Login Success!");
-                    _loginView.Fvisible = false;
                 }
             }
             catch (Exception ex)
@@ -121,10 +62,6 @@ namespace VinamiToolUser.Presenter
         #endregion
 
         #region Methods
-        public void Run()
-        {
-            Application.Run(_loginView as LoginView);
-        }
         #endregion
     }
 }

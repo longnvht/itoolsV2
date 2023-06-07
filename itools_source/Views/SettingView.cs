@@ -15,114 +15,60 @@ using VinamiToolUser.Models;
 using Salaros.Configuration;
 using MySql.Data.MySqlClient;
 using itools_source.Models;
+using VinamiToolUser.Utils;
+using Guna.UI2.WinForms;
 
 namespace itools_source.Views
 {
     public partial class SettingView : Form, ISettingView
     {
-        private string appConfig = @"C:\ProgramData\VinamItools\VinamItoolsConfig.dat";
-        private string _hddSerial;
-        private MainView _mainView;
+        private CompanyModel _company;
+        private MachineModel _machine;
+        private static SettingView instance;
 
-        private MachineConfigModel configModel;
         public SettingView()
         {
             InitializeComponent();
             AsignEvent();
         }
 
-        private void AsignEvent()
-        {
-            this.Load += SettingViewLoad;
-            btnSave.Click += (s, e) => { SaveConfig(); };
-            btnEdit.Click += (s, e) =>
-            {
-                lblCompany.Text = cbxCompany.DisplayMember;
-                lblMachine.Text = cbxMachine.DisplayMember;
-                cbxCompany.DisplayMember = "CompanyName";
-                cbxMachine.DisplayMember = "MachineName";
-            };
-            
-        }
-
-        private void SettingViewLoad(object sender, EventArgs e)
-        {
-            cbxCompany.DisplayMember = "CompanyName";
-            cbxMachine.DisplayMember = "MachineName";
-            ISettingRepository repository = UnityDI.container.Resolve<ISettingRepository>();
-            Presenter = new SettingPresenter(this, repository);
-            _mainView = MainView.GetInstance();
-            _mainView.PrevView = "Menu";
-            GetSerialPortList();
-            _hddSerial = GetHardDiskSerial();
-            txtHardDiskSerial.Text = _hddSerial;
-            configModel = new MachineConfigModel();
-            cbxCompany.DisplayMember = "CompanyName";
-            cbxMachine.DisplayMember = "MachineName";
-        }
-
-        private void LoadConfig()
-        {
-            try
-            {
-                // load config .dat
-
-                // check dictionary to link null -> create link
-                var cfg = new ConfigParser(appConfig);
-                int machineID;
-                if(Int32.TryParse(cfg.GetValue("CONFIG", "MachineID"), out machineID))
-                {
-                    configModel.MachineID = machineID;
-                }
-                if (configModel.MachineID >= 0)
-                {
-                    configModel.MachineID = machineID;
-                    configModel.ComPort = cfg.GetValue("CONFIG", "ComPort");
-                    configModel.HardDiskSerial = cfg.GetValue("CONFIG", "HardDiskSerial");
-                }
-
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
-        void SaveConfig()
-        {
-            string machineID = (cbxMachine.SelectedItem as MachineModel).MachineID.ToString();
-            string comPort = cbxComPort.SelectedText;
-            string hardDiskSerial = txtHardDiskSerial.Text;
-            var cfg = new ConfigParser(appConfig);
-
-            //
-
-            cfg.SetValue("CONFIG", "MachineID", machineID);
-            cfg.SetValue("CONFIG", "ComPort", comPort);
-            cfg.SetValue("CONFIG", "HardDiskSerial", hardDiskSerial);
-            cfg.Save();
-        }
-
-        private void GetSerialPortList()
-        {
-            string[] ports = SerialPort.GetPortNames();
-
-            // Add all port names to the combo box:
-            foreach (string port in ports)
-            {
-                cbxComPort.Items.Add(port);
-            }
-        }
-
         #region Properties - Fields
-        public string strCompanyId { get; set; }
-        public int? MachineID { get; set; }
-        public string strSerialMachine { get; set; }
         public SettingPresenter Presenter { private get; set; }
+        public CompanyModel Company 
+        { 
+            get => _company;
+            set
+            {
+                _company = value;
+                if (_company != null) txtCompany.Text = _company.CompanyName;
+                else txtCompany.Text = "";
 
-        // Singleton pattern (Open a single form instance)
-        private static SettingView instance;
+            }
+        }
+        public MachineModel Machine 
+        { 
+            get => _machine;
+            set 
+            { 
+                _machine = value;
+                if(_machine != null) txtMachine.Text = _machine.MachineName;
+                else { txtMachine.Text = ""; };
+            }
+        }
 
+        public string HddSerial { get => txtHardDiskSerial.Text; set => txtHardDiskSerial.Text = value; }
+        public string ComPort
+        {
+            get => cbxComPort.Text;
+            set
+            { 
+                cbxComPort.SelectedItem = value;
+            }
+        }
+
+        #endregion
+
+        #region Methods
         public static SettingView GetInstance(Form parentContainer)
         {
             if (instance == null || instance.IsDisposed)
@@ -142,39 +88,133 @@ namespace itools_source.Views
             }
             return instance;
         }
-        #endregion
 
-        #region Events
-
-        #endregion
-
-        #region Methods
-        private string GetHardDiskSerial()
+        private void AsignEvent()
         {
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMedia");
-            foreach (ManagementObject wmiObject in searcher.Get())
+            this.Load += SettingViewLoad;
+            txtCompany.Click += (s, e) => 
             {
-                if (wmiObject["SerialNumber"] != null)
-                {
-                    return wmiObject["SerialNumber"].ToString().Trim();
-                }
-            }
-            return string.Empty;
+                grbSetting.Enabled = false;
+                grbCompanyList.Visible = true; 
+            };
+            txtMachine.Click += (s, e) => 
+            {
+                grbSetting.Enabled = false;
+                grbMachineList.Visible = true; 
+            };
+            btnCompanyCancel.Click += (s, e) =>
+            {
+                grbSetting.Enabled = true;
+                grbCompanyList.Visible = false;
+            };
+            btnMachineCancel.Click += (s, e) =>
+            {
+                grbSetting.Enabled = true;
+                grbMachineList.Visible = false;
+            };
+            btnCompanySelect.Click += (s, e) =>
+            {
+                grbSetting.Enabled = true;
+                grbCompanyList.Visible = false;
+                CompanySelectEvent?.Invoke(this, EventArgs.Empty);
+                CheckSaveCondition();
+            };
+            btnMachineSelect.Click += (s, e) =>
+            {
+                grbSetting.Enabled = true;
+                grbMachineList.Visible = false;
+                MachineSelectEvent?.Invoke(this, EventArgs.Empty);
+                CheckSaveCondition();
+            };
 
+            btnSave.Click += (s, e) =>
+            {
+                SaveConfig?.Invoke(this, EventArgs.Empty);
+                SetDisplayMode(0);
+            };
+            btnEdit.Click += (s, e) =>
+            {
+                SetDisplayMode(1);
+            };
+            btnCancel.Click += (s, e) => { SetDisplayMode(0); };
         }
-        public void SetCompanyBindingSource(BindingSource companyList)
+
+        private void SettingViewLoad(object sender, EventArgs e)
         {
-            cbxCompany.DataSource = companyList;
+            ISettingRepository repository = UnityDI.container.Resolve<ISettingRepository>();
+            Presenter = new SettingPresenter(this, repository);
+            grbCompanyList.Visible = false;
+            grbMachineList.Visible = false;
+            SetDisplayMode(0);
         }
 
         public void SetMachineBindingSource(BindingSource machineList)
         {
-            cbxMachine.DataSource = machineList;
+            lstMachine.DataSource = machineList;
         }
-        
+        public void SetCompanyBindingSource(BindingSource companyList)
+        {
+            lstCompany.DataSource = companyList;
+        }
+
+        public void SetPortBindingSource(BindingSource portList)
+        {
+            cbxComPort.DataSource = portList;
+        }
+
+        /// <summary>
+        /// Đặt chế độ hiển thị cho Setting Form
+        /// </summary>
+        /// <param name="mode">Chế độ hiển thị, 0: View Mode, 1: Edit Mode. </param>
+        private void SetDisplayMode(int mode)
+        {
+            switch (mode)
+            {
+                case 0:
+                    {
+                        btnEdit.Enabled = true;
+                        txtCompany.Enabled = false;
+                        txtMachine.Enabled = false;
+                        cbxComPort.Enabled = false;
+                        btnCancel.Enabled = false;
+                        btnSave.Enabled = false;
+                    }
+                    break;
+                case 1:
+                    {
+                        btnEdit.Enabled = false;
+                        if(Company == null) txtCompany.Enabled = true;
+                        if(Machine == null) txtMachine.Enabled = true;
+                        cbxComPort.Enabled = true;
+                        btnCancel.Enabled = true;
+                        btnSave.Enabled = false;
+                    }
+                    break;
+            }
+        }
+        public void CheckSaveCondition()
+        {
+            bool result = true;
+            var machine = txtMachine.Text;
+            if (String.IsNullOrEmpty(machine)) result = false;
+            var company = txtCompany.Text;
+            if (String.IsNullOrEmpty(company)) result = false;
+            var comport = cbxComPort.Text;
+            if (String.IsNullOrEmpty(comport)) result = false;
+            if(result) btnSave.Enabled = true;
+            else btnSave.Enabled = false;
+        }
+
         #endregion
 
+        #region Events
 
+        public event EventHandler CompanySelectEvent;
+        public event EventHandler MachineSelectEvent;
+        public event EventHandler SaveConfig;
+        public event EventHandler ComPortSelectedEvent;
+
+        #endregion
 
     }
 }

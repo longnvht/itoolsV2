@@ -24,8 +24,9 @@ namespace VinamiToolUser
         public static void Register()
         {
             container.RegisterType<ILoginView, LoginView>();
-            container.RegisterType<IUserAccountRepository, UserAccountRepository>();
+            container.RegisterType<ILoginRepository, LoginRepository>();
             container.RegisterType<IMainView, MainView>();
+            container.RegisterType<IMainRepository, MainRepository>();
             container.RegisterType<IMenuView, MenuView>();
             container.RegisterType<IMenuRepository, MenuRepository>();
             container.RegisterType<IJobView, JobView>();
@@ -65,9 +66,9 @@ namespace VinamiToolUser
             Application.SetCompatibleTextRenderingDefault(false);
 
             UnityDI.Register();
-            var loginPresenter = UnityDI.container.Resolve<LoginPresenter>();
-            loginPresenter.Run();
-            //Application.Run(new ManageToolView());
+            MainView mainView = MainView.GetInstance();
+            //mainViewNew.Show();
+            Application.Run(mainView);
         }
     }
 }

@@ -1,12 +1,14 @@
 ﻿using itools_source;
 using itools_source.Models;
 using itools_source.Views;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Management;
 using System.Management.Instrumentation;
 using System.Reflection;
 using System.Text;
@@ -15,6 +17,8 @@ using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using Unity;
 using VinamiToolUser.Models;
+using VinamiToolUser.Models.Interface;
+using VinamiToolUser.Presenters;
 using VinamiToolUser.Utils;
 using VinamiToolUser.Views.Interface;
 
@@ -22,22 +26,25 @@ namespace VinamiToolUser.Views
 {
     public partial class MainView : Form, IMainView
     {
+        private MachineModel _currentMachine;
         private UserAccount _userLogin;
         private JobModel _currentJob;
         private OPModel _currentOP;
         private ToolModel _currentTool;
         private TrayModel _currentTray;
+        private MachineConfigModel _machineConfig;
         private string _currentView;
         private string _tempView;
         private string _prevView;
+        private string _hddSerial;
         private static MainView instance;
 
-        public event EventHandler GotoNextView;
+        public event EventHandler ConfigChange;
 
         public MainView()
         {
             InitializeComponent();
-            AssociateAndRaiseViewEvents();
+            AssignEvents();
         }
 
         public static MainView GetInstance()
@@ -50,7 +57,7 @@ namespace VinamiToolUser.Views
             return instance;
         }
 
-        private void AssociateAndRaiseViewEvents()
+        private void AssignEvents()
         {
             btnHome.Click += (s, e) => { ReturnHome(); };
             btnNext.Click += (s,e) => { AssignCurentView(); };
@@ -59,14 +66,66 @@ namespace VinamiToolUser.Views
                 CurrentView = PrevView; 
             };
             this.Load += MainViewLoad;
-            btnClose.Click += (s, e) => { };
-            btnClose.Click += (s, e) => { Application.Exit(); };
+            btnLogOut.Click += (s, e) => 
+            {
+                UserLogin = null;
+                CurrentView = "Login";
+            };
         }
 
         private void MainViewLoad(object sender, EventArgs e)
         {
-            UserLogin = CommonValue.UserLogin;
-            ReturnHome();
+            _machineConfig = CommonValue.LoadConfig();
+            _hddSerial = GetHardDiskSerial();
+            IMainRepository repository = UnityDI.container.Resolve<IMainRepository>();
+            Presenter = new MainPresenter(this, repository);
+            tsInfo.Visible = false;
+        }
+
+        public bool CheckConfig()
+        {
+            //check data base info
+            //Check config Null
+            //Check machine serial
+            bool result = true;
+            tsInfo.Visible = false;
+            if (CurrentMachine == null)
+            {
+                tsInfo.Visible = true;
+                result = false;
+                tslMessage.Text = "Thiết bị chưa được cấu hình, vui lòng thiết lập các thông số cho thiết bị";
+                return result;
+            }
+
+            if (MachineConfig == null)
+            {
+                tsInfo.Visible = true;
+                result = false;
+                tslMessage.Text = "Thiết bị chưa được cấu hình, vui lòng thiết lập các thông số cho thiết bị";
+                return result;
+            }
+
+            if (MachineConfig.HardDiskSerial != CurrentMachine.MachineSerial || MachineConfig.MachineID != CurrentMachine.MachineID)
+            {
+                tsInfo.Visible = true;
+                result = false;
+                tslMessage.Text = "Cấu hình thiết bị không phù hợp, vui lòng thiết lập lại các thông số cho thiết bị";
+                return result;
+            }
+            return result;
+        }
+
+        private string GetHardDiskSerial()
+        {
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMedia");
+            foreach (ManagementObject wmiObject in searcher.Get())
+            {
+                if (wmiObject["SerialNumber"] != null)
+                {
+                    return wmiObject["SerialNumber"].ToString().Trim();
+                }
+            }
+            return string.Empty;
         }
 
         public void AssignCurentView()
@@ -80,7 +139,11 @@ namespace VinamiToolUser.Views
             set
             {
                 _userLogin = value;
-                txtUserName.Text = _userLogin.strNameStaff;
+                if (_userLogin != null)
+                {
+                    ReturnHome();
+                    txtUserName.Text = _userLogin.FullName;
+                }
             } 
         }
         public JobModel CurrentJob 
@@ -137,7 +200,17 @@ namespace VinamiToolUser.Views
             set
             {
                 _currentView = value;
-                txtCurrentView.Text = _currentView;
+                if(value == "Login") 
+                {
+                    tlpHeader.Visible =false;
+                    tlpFooter.Visible =false;
+                }
+                else
+                {
+                    tlpHeader.Visible = true;
+                    tlpFooter.Visible = true;
+                    txtCurrentView.Text = _currentView;
+                }
                 TempView = null;
                 OpenChildView();
             }  
@@ -162,7 +235,21 @@ namespace VinamiToolUser.Views
                 else btnPrev.Enabled = true;
             }
         }
-        
+
+        public MachineConfigModel MachineConfig
+        { 
+            get => _machineConfig;
+            set
+            {
+                _machineConfig = value;
+                CommonValue.ConfigModel = value;
+                ConfigChange?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        public MachineModel CurrentMachine { get => _currentMachine; set => _currentMachine = value; }
+        public MainPresenter Presenter { private get; set; }
+        public string HddSerial { get => _hddSerial; set => _hddSerial = value; }
 
         public void CloseChildView()
         {
@@ -196,8 +283,10 @@ namespace VinamiToolUser.Views
             TempView = null;
         }
 
+
         private Dictionary<string, Type> viewTypes = new Dictionary<string, Type>()
         {
+            { "Login", typeof(LoginView) },
             { "Test", typeof(TestView) },
             { "Menu", typeof(MenuView) },
             { "Select Job", typeof(JobView) },

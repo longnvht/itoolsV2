@@ -83,6 +83,7 @@ namespace VinamiToolUser.Views
             CurrentJob = CommonValue.CurrentJob;
             IOpRepository repository = UnityDI.container.Resolve<IOpRepository>();
             Presenter = new OpPresenter(this, repository);
+
         }
 
         private void ShowKeyboard()

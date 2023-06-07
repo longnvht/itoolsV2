@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VinamiToolUser.Models;
 using VinamiToolUser.Presenters;
 
 namespace VinamiToolUser.Views.Interface
@@ -14,6 +15,7 @@ namespace VinamiToolUser.Views.Interface
         string NextView { get ; set; }
         string TempView { get; set; }
         string SearchValue { get; set; }
+        UserAccount UserLogin { get; }
         MenuPresenter Presenter { set; }
         #endregion
 

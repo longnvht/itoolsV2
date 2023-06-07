@@ -2,132 +2,16 @@
 {
     public class UserAccount
     {
-        private int _iID;
+        private int _userID;
+        private string _userName;
+        private string _fullName;
+        private string _userType;
+        private string _permisionID;
 
-        public int iID
-        {
-            get { return _iID; }
-            set { _iID = value; }
-        }
-
-        private string _strUserLogin;
-
-        public string strUserLogin
-        {
-            get { return _strUserLogin; }
-            set { _strUserLogin = value; }
-        }
-
-        private string _strPass;
-
-        public string strPass
-        {
-            get { return _strPass; }
-            set { _strPass = value; }
-        }
-
-        private string _strNameStaff;
-
-        public string strNameStaff
-        {
-            get { return _strNameStaff; }
-            set { _strNameStaff = value; }
-        }
-
-        private string _strSex;
-
-        public string strSex
-        {
-            get { return _strSex; }
-            set { _strSex = value; }
-        }
-
-        private string _strEmail;
-
-        public string strEmail
-        {
-            get { return _strEmail; }
-            set { _strEmail = value; }
-        }
-
-        private string _strPermissionId;
-
-        public string strPermissionId
-        {
-            get { return _strPermissionId; }
-            set { _strPermissionId = value; }
-        }
-
-        private string _strUserType;
-
-        public string strUserType
-        {
-            get { return _strUserType; }
-            set { _strUserType = value; }
-        }
-
-        private byte _bFirstLogin;
-
-        public byte bFirstLogin
-        {
-            get { return _bFirstLogin; }
-            set { _bFirstLogin = value; }
-        }
-
-        private string _strCodeForgetPass;
-
-        public string strCodeForgetPass
-        {
-            get { return _strCodeForgetPass; }
-            set { _strCodeForgetPass = value; }
-        }
-
-        private string _strPositionCode;
-
-        public string strPositionCode
-        {
-            get { return _strPositionCode; }
-            set { _strPositionCode = value; }
-        }
-
-        private int _iWorkStatusID;
-
-        public int iWorkStatusID
-        {
-            get { return _iWorkStatusID; }
-            set { _iWorkStatusID = value; }
-        }
-
-        private int _iRoleID;
-
-        public int iRoleID
-        {
-            get { return _iRoleID; }
-            set { _iRoleID = value; }
-        }
-
-        private int _iFanucRoleID;
-
-        public int iFanucRoleID
-        {
-            get { return _iFanucRoleID; }
-            set { _iFanucRoleID = value; }
-        }
-
-        private int _iTypeID;
-
-        public int iTypeID
-        {
-            get { return _iTypeID; }
-            set { _iTypeID = value; }
-        }
-
-        private int _iPositionID;
-
-        public int iPositionID
-        {
-            get { return _iPositionID; }
-            set { _iPositionID = value; }
-        }
+        public int UserID { get => _userID; set => _userID = value; }
+        public string UserName { get => _userName; set => _userName = value; }
+        public string FullName { get => _fullName; set => _fullName = value; }
+        public string UserType { get => _userType; set => _userType = value; }
+        public string PermisionID { get => _permisionID; set => _permisionID = value; }
     }
 }

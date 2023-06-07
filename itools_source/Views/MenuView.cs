@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
+using VinamiToolUser.Models;
 using VinamiToolUser.Models.Interface;
 using VinamiToolUser.Presenters;
 using VinamiToolUser.Views.Interface;
@@ -83,6 +84,8 @@ namespace VinamiToolUser.Views
                 _mainView.TempView = value;
             } 
         }
+
+        public UserAccount UserLogin => _mainView.UserLogin;
 
         public event EventHandler SelectViewEvent;
         public event EventHandler EnterViewEvent;
