@@ -36,6 +36,7 @@ namespace VinamiToolUser.Presenters
             _portSource = new BindingSource();
             _view = view;
             _repository = repository;
+            _mainView = MainView.GetInstance();
             _view.Presenter = this;
             _view.SetCompanyBindingSource(_companySource);
             _view.SetMachineBindingSource(_machineSource);
