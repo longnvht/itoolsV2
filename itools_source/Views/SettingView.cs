@@ -22,6 +22,7 @@ namespace itools_source.Views
 {
     public partial class SettingView : Form, ISettingView
     {
+        private UserAccount _userLogin;
         private CompanyModel _company;
         private MachineModel _machine;
         private static SettingView instance;
@@ -63,6 +64,7 @@ namespace itools_source.Views
         }
 
         public string Message { get => lblSaveMessage.Text; set => lblSaveMessage.Text = value; }
+        public UserAccount UserLogin { get => _userLogin; set => _userLogin = value; }
 
         #endregion
 
@@ -124,6 +126,10 @@ namespace itools_source.Views
                 MachineSelectEvent?.Invoke(this, EventArgs.Empty);
                 CheckSaveCondition();
             };
+            cbxComPort.SelectedIndexChanged += (s, e) =>
+            {
+                CheckSaveCondition();
+            };
 
             btnSave.Click += (s, e) =>
             {
@@ -139,6 +145,7 @@ namespace itools_source.Views
                 CancelEvent?.Invoke(this, EventArgs.Empty);
                 SetDisplayMode(0); 
             };
+            btnExit.Click += (s, e) => { Application.Exit(); };
         }
 
         private void SettingViewLoad(object sender, EventArgs e)
@@ -148,6 +155,7 @@ namespace itools_source.Views
             grbCompanyList.Visible = false;
             grbMachineList.Visible = false;
             SetDisplayMode(0);
+            CheckSaveCondition();
         }
 
         public void SetMachineBindingSource(BindingSource machineList)
@@ -174,6 +182,9 @@ namespace itools_source.Views
             {
                 case 0:
                     {
+                        if (UserLogin == null) btnExit.Visible = true;
+                        grbCompanyList.Visible = false;
+                        grbMachineList.Visible = false;
                         btnEdit.Enabled = true;
                         txtCompany.Enabled = false;
                         txtMachine.Enabled = false;
@@ -184,6 +195,7 @@ namespace itools_source.Views
                     break;
                 case 1:
                     {
+                        btnExit.Visible = false;
                         btnEdit.Enabled = false;
                         if(Company == null) txtCompany.Enabled = true;
                         if(Machine == null) txtMachine.Enabled = true;

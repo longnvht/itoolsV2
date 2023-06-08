@@ -19,6 +19,7 @@ namespace VinamiToolUser.Views.Interface
         string TempView { get; set; } 
         string PrevView { get; set; }
         string HddSerial { get; set; }
+        string Message { get; set; }
         MachineConfigModel MachineConfig { get; set; }
         OPModel CurrentOP { get; set; }
         ToolModel CurrentTool { get; set; }
@@ -34,7 +35,6 @@ namespace VinamiToolUser.Views.Interface
         #endregion
 
         #region Method
-        bool CheckConfig();
 
         #endregion
     }

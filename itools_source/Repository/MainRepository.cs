@@ -14,14 +14,14 @@ namespace VinamiToolUser.Repository
 {
     public class MainRepository : IMainRepository
     {
-        public async Task<IEnumerable<MachineModel>> GetCurrentMachineInfo(string hddSerial, int machineID)
+        public async Task<IEnumerable<MachineModel>> GetCurrentMachineInfo(string hddSerial)
         {
             var machineList = new List<MachineModel>();
             using (MySqlConnection connection = await OpenAsync())
             {
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = String.Format("Select * from warehouse where warehousetype = 'machine' and warehouseID = {0} and serial = '{1}'", machineID, hddSerial);
+                cmd.CommandText = String.Format("Select * from warehouse where warehousetype = 'machine' and serial = '{0}'", hddSerial);
                 using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                 {
                     if (dataReader != null)

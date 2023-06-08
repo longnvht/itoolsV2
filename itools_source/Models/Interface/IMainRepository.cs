@@ -9,6 +9,6 @@ namespace VinamiToolUser.Models.Interface
 {
     public interface IMainRepository
     {
-        Task<IEnumerable<MachineModel>> GetCurrentMachineInfo(string hddSerial, int machineID);
+        Task<IEnumerable<MachineModel>> GetCurrentMachineInfo(string hddSerial);
     }
 }

@@ -12,6 +12,7 @@ namespace itools_source.Views.Interface
         string HddSerial { get; set; }
         string ComPort { get; }
         string Message { get; set; }
+        UserAccount UserLogin { get; set; } 
         SettingPresenter Presenter { set; }
         CompanyModel Company { get; set; }
         MachineModel Machine { get; set; }

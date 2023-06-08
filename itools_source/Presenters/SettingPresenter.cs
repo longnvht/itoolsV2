@@ -38,6 +38,7 @@ namespace VinamiToolUser.Presenters
             _repository = repository;
             _mainView = MainView.GetInstance();
             _view.Presenter = this;
+            _view.UserLogin = _mainView.UserLogin;
             _view.SetCompanyBindingSource(_companySource);
             _view.SetMachineBindingSource(_machineSource);
             _view.SetPortBindingSource(_portSource);
@@ -80,7 +81,6 @@ namespace VinamiToolUser.Presenters
         {
             _machineList = await _repository.GetCurentMachine(_view.HddSerial);
             _curentMachine = _machineList.FirstOrDefault();
-            _view.Machine = _curentMachine;
             if (_curentMachine != null)
             {
                 _currentCompany = _companyList.Where(x => x.CompanyID == _curentMachine.CompanyID).FirstOrDefault();
@@ -91,6 +91,7 @@ namespace VinamiToolUser.Presenters
                 _currentCompany = null;
                 _view.Company = _currentCompany;
             }
+            _view.Machine = _curentMachine;
         }
         private async void LoadMachineData()
         {
@@ -129,7 +130,11 @@ namespace VinamiToolUser.Presenters
             //Save Config Value
             
             bool result = await _repository.UpdateMachineSerial(_machineConfig.MachineID, _machineConfig.HardDiskSerial);
-            if (result) { _mainView.MachineConfig = _machineConfig; }
+            if (result) 
+            {
+                _mainView.MachineConfig = _machineConfig;
+                _mainView.Message = "";
+            }
             else _view.Message = "Lưu cấu hình thất bại!!!";
         }
     }

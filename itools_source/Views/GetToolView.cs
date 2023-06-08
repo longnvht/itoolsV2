@@ -94,8 +94,8 @@ namespace VinamiToolUser.Views
 
         private void FormGetToolLoad(object sender, EventArgs e)
         {
-            serialPortGetTool.PortName = _mainView.MachineConfig.ComPort;
             _mainView = MainView.GetInstance();
+            serialPortGetTool.PortName = _mainView.MachineConfig.ComPort;
             _mainView.PrevView = "Select Op";
             CurrentTray = null;
             IGetToolRepositoryNew repository = UnityDI.container.Resolve<IGetToolRepositoryNew>();

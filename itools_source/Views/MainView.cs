@@ -76,56 +76,9 @@ namespace VinamiToolUser.Views
         private void MainViewLoad(object sender, EventArgs e)
         {
             _machineConfig = CommonValue.LoadConfig();
-            _hddSerial = GetHardDiskSerial();
             IMainRepository repository = UnityDI.container.Resolve<IMainRepository>();
             Presenter = new MainPresenter(this, repository);
             tsInfo.Visible = false;
-        }
-
-        public bool CheckConfig()
-        {
-            //check data base info
-            //Check config Null
-            //Check machine serial
-            bool result = true;
-            tsInfo.Visible = false;
-            if (CurrentMachine == null)
-            {
-                tsInfo.Visible = true;
-                result = false;
-                tslMessage.Text = "Thiết bị chưa được cấu hình, vui lòng thiết lập các thông số cho thiết bị";
-                return result;
-            }
-
-            if (MachineConfig == null)
-            {
-                tsInfo.Visible = true;
-                result = false;
-                tslMessage.Text = "Thiết bị chưa được cấu hình, vui lòng thiết lập các thông số cho thiết bị";
-                return result;
-            }
-
-            if (MachineConfig.HardDiskSerial != CurrentMachine.MachineSerial || MachineConfig.MachineID != CurrentMachine.MachineID)
-            {
-                tsInfo.Visible = true;
-                result = false;
-                tslMessage.Text = "Cấu hình thiết bị không phù hợp, vui lòng thiết lập lại các thông số cho thiết bị";
-                return result;
-            }
-            return result;
-        }
-
-        private string GetHardDiskSerial()
-        {
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMedia");
-            foreach (ManagementObject wmiObject in searcher.Get())
-            {
-                if (wmiObject["SerialNumber"] != null)
-                {
-                    return wmiObject["SerialNumber"].ToString().Trim();
-                }
-            }
-            return string.Empty;
         }
 
         public void AssignCurentView()
@@ -200,8 +153,6 @@ namespace VinamiToolUser.Views
             set
             {
                 _currentView = value;
-                if(value == "Login") 
-                
                 TempView = null;
                 OpenChildView();
             }  
@@ -241,6 +192,16 @@ namespace VinamiToolUser.Views
         public MachineModel CurrentMachine { get => _currentMachine; set => _currentMachine = value; }
         public MainPresenter Presenter { private get; set; }
         public string HddSerial { get => _hddSerial; set => _hddSerial = value; }
+        public string Message 
+        { 
+            get => tslMessage.Text;
+            set 
+            { 
+                tslMessage.Text = value; 
+                if(value != null) { tsInfo.Visible = true; }
+                else tsInfo.Visible = false;
+            }
+        }
 
         public void CloseChildView()
         {
@@ -285,7 +246,6 @@ namespace VinamiToolUser.Views
             CurrentView = "Menu";
             TempView = null;
         }
-
 
         private Dictionary<string, Type> viewTypes = new Dictionary<string, Type>()
         {

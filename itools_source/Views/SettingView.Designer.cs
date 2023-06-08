@@ -29,6 +29,7 @@
         {
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.lblMachine = new System.Windows.Forms.Label();
+            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.lblSaveMessage = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblSerialMachine = new System.Windows.Forms.Label();
             this.cbxComPort = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -43,15 +44,15 @@
             this.grbSetting = new System.Windows.Forms.GroupBox();
             this.grbMachineList = new System.Windows.Forms.GroupBox();
             this.tlpMachineSelect = new System.Windows.Forms.TableLayoutPanel();
-            this.lstMachine = new VinamiToolUser.Views.Components.ListButton();
+            this.btnMachineCancel = new Guna.UI2.WinForms.Guna2Button();
+            this.btnMachineSelect = new Guna.UI2.WinForms.Guna2Button();
             this.grbCompanyList = new System.Windows.Forms.GroupBox();
             this.tlpCompanySelect = new System.Windows.Forms.TableLayoutPanel();
-            this.lstCompany = new VinamiToolUser.Views.Components.ListButton();
             this.btnCompanyCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnCompanySelect = new Guna.UI2.WinForms.Guna2Button();
-            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
-            this.btnMachineSelect = new Guna.UI2.WinForms.Guna2Button();
-            this.btnMachineCancel = new Guna.UI2.WinForms.Guna2Button();
+            this.btnExit = new Guna.UI2.WinForms.Guna2TileButton();
+            this.lstCompany = new VinamiToolUser.Views.Components.ListButton();
+            this.lstMachine = new VinamiToolUser.Views.Components.ListButton();
             this.tlpMain.SuspendLayout();
             this.tlpFooter.SuspendLayout();
             this.grbSetting.SuspendLayout();
@@ -101,6 +102,28 @@
             this.lblMachine.TabIndex = 1;
             this.lblMachine.Text = "Machine";
             this.lblMachine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(116)))), ((int)(((byte)(226)))));
+            this.btnEdit.BorderRadius = 6;
+            this.btnEdit.BorderThickness = 1;
+            this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEdit.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnEdit.ForeColor = System.Drawing.Color.Navy;
+            this.btnEdit.Image = global::VinamiToolUser.Properties.Resources.edit_property_48px;
+            this.btnEdit.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnEdit.Location = new System.Drawing.Point(362, 243);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(85, 34);
+            this.btnEdit.TabIndex = 7;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // lblSaveMessage
             // 
@@ -349,29 +372,43 @@
             this.tlpMachineSelect.Size = new System.Drawing.Size(244, 50);
             this.tlpMachineSelect.TabIndex = 2;
             // 
-            // lstMachine
+            // btnMachineCancel
             // 
-            this.lstMachine.AutoSpacing = true;
-            this.lstMachine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(245)))));
-            this.lstMachine.DataSource = null;
-            this.lstMachine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstMachine.ItemBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lstMachine.ItemBorderRadius = 8;
-            this.lstMachine.ItemBorderThickness = 1;
-            this.lstMachine.ItemBottomDisplayMember = "MachineName";
-            this.lstMachine.ItemFillColor = System.Drawing.Color.WhiteSmoke;
-            this.lstMachine.ItemFont = new System.Drawing.Font("Segoe UI", 10F);
-            this.lstMachine.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
-            this.lstMachine.ItemHeight = 50;
-            this.lstMachine.ItemSpace = 7;
-            this.lstMachine.ItemTopDisplayMember = "MachineCode";
-            this.lstMachine.ItemWidth = 200;
-            this.lstMachine.Location = new System.Drawing.Point(3, 23);
-            this.lstMachine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.lstMachine.MinMargin = 5;
-            this.lstMachine.Name = "lstMachine";
-            this.lstMachine.Size = new System.Drawing.Size(244, 328);
-            this.lstMachine.TabIndex = 0;
+            this.btnMachineCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMachineCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMachineCancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMachineCancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMachineCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMachineCancel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(207)))), ((int)(((byte)(242)))));
+            this.btnMachineCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMachineCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
+            this.btnMachineCancel.Image = global::VinamiToolUser.Properties.Resources.Cancel_Order_60px;
+            this.btnMachineCancel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnMachineCancel.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnMachineCancel.Location = new System.Drawing.Point(3, 3);
+            this.btnMachineCancel.Name = "btnMachineCancel";
+            this.btnMachineCancel.Size = new System.Drawing.Size(116, 44);
+            this.btnMachineCancel.TabIndex = 0;
+            this.btnMachineCancel.Text = "Cancel";
+            this.btnMachineCancel.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // btnMachineSelect
+            // 
+            this.btnMachineSelect.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMachineSelect.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMachineSelect.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMachineSelect.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMachineSelect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMachineSelect.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(207)))), ((int)(((byte)(242)))));
+            this.btnMachineSelect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMachineSelect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
+            this.btnMachineSelect.Image = global::VinamiToolUser.Properties.Resources.new_copy_60px;
+            this.btnMachineSelect.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnMachineSelect.Location = new System.Drawing.Point(125, 3);
+            this.btnMachineSelect.Name = "btnMachineSelect";
+            this.btnMachineSelect.Size = new System.Drawing.Size(116, 44);
+            this.btnMachineSelect.TabIndex = 0;
+            this.btnMachineSelect.Text = "Select";
             // 
             // grbCompanyList
             // 
@@ -399,30 +436,6 @@
             this.tlpCompanySelect.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpCompanySelect.Size = new System.Drawing.Size(244, 50);
             this.tlpCompanySelect.TabIndex = 1;
-            // 
-            // lstCompany
-            // 
-            this.lstCompany.AutoSpacing = true;
-            this.lstCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(245)))));
-            this.lstCompany.DataSource = null;
-            this.lstCompany.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstCompany.ItemBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lstCompany.ItemBorderRadius = 8;
-            this.lstCompany.ItemBorderThickness = 1;
-            this.lstCompany.ItemBottomDisplayMember = "CompanyName";
-            this.lstCompany.ItemFillColor = System.Drawing.Color.WhiteSmoke;
-            this.lstCompany.ItemFont = new System.Drawing.Font("Segoe UI", 10F);
-            this.lstCompany.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
-            this.lstCompany.ItemHeight = 50;
-            this.lstCompany.ItemSpace = 7;
-            this.lstCompany.ItemTopDisplayMember = "CompanyCode";
-            this.lstCompany.ItemWidth = 200;
-            this.lstCompany.Location = new System.Drawing.Point(3, 23);
-            this.lstCompany.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.lstCompany.MinMargin = 5;
-            this.lstCompany.Name = "lstCompany";
-            this.lstCompany.Size = new System.Drawing.Size(244, 328);
-            this.lstCompany.TabIndex = 0;
             // 
             // btnCompanyCancel
             // 
@@ -462,65 +475,70 @@
             this.btnCompanySelect.TabIndex = 0;
             this.btnCompanySelect.Text = "Select";
             // 
-            // btnEdit
+            // btnExit
             // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(116)))), ((int)(((byte)(226)))));
-            this.btnEdit.BorderRadius = 6;
-            this.btnEdit.BorderThickness = 1;
-            this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnEdit.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnEdit.ForeColor = System.Drawing.Color.Navy;
-            this.btnEdit.Image = global::VinamiToolUser.Properties.Resources.edit_property_48px;
-            this.btnEdit.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnEdit.Location = new System.Drawing.Point(362, 243);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(85, 34);
-            this.btnEdit.TabIndex = 7;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnExit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnExit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnExit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnExit.FillColor = System.Drawing.Color.Transparent;
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Image = global::VinamiToolUser.Properties.Resources.close_480px;
+            this.btnExit.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnExit.Location = new System.Drawing.Point(753, 25);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(40, 40);
+            this.btnExit.TabIndex = 4;
             // 
-            // btnMachineSelect
+            // lstCompany
             // 
-            this.btnMachineSelect.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMachineSelect.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMachineSelect.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMachineSelect.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMachineSelect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnMachineSelect.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(207)))), ((int)(((byte)(242)))));
-            this.btnMachineSelect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMachineSelect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
-            this.btnMachineSelect.Image = global::VinamiToolUser.Properties.Resources.new_copy_60px;
-            this.btnMachineSelect.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnMachineSelect.Location = new System.Drawing.Point(125, 3);
-            this.btnMachineSelect.Name = "btnMachineSelect";
-            this.btnMachineSelect.Size = new System.Drawing.Size(116, 44);
-            this.btnMachineSelect.TabIndex = 0;
-            this.btnMachineSelect.Text = "Select";
+            this.lstCompany.AutoSpacing = true;
+            this.lstCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(245)))));
+            this.lstCompany.DataSource = null;
+            this.lstCompany.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstCompany.ItemBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lstCompany.ItemBorderRadius = 8;
+            this.lstCompany.ItemBorderThickness = 1;
+            this.lstCompany.ItemBottomDisplayMember = "CompanyName";
+            this.lstCompany.ItemFillColor = System.Drawing.Color.WhiteSmoke;
+            this.lstCompany.ItemFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.lstCompany.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
+            this.lstCompany.ItemHeight = 50;
+            this.lstCompany.ItemSpace = 5;
+            this.lstCompany.ItemTopDisplayMember = "CompanyCode";
+            this.lstCompany.ItemWidth = 200;
+            this.lstCompany.Location = new System.Drawing.Point(3, 23);
+            this.lstCompany.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.lstCompany.MinMargin = 5;
+            this.lstCompany.Name = "lstCompany";
+            this.lstCompany.Size = new System.Drawing.Size(244, 328);
+            this.lstCompany.TabIndex = 0;
             // 
-            // btnMachineCancel
+            // lstMachine
             // 
-            this.btnMachineCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMachineCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMachineCancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMachineCancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMachineCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnMachineCancel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(207)))), ((int)(((byte)(242)))));
-            this.btnMachineCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMachineCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
-            this.btnMachineCancel.Image = global::VinamiToolUser.Properties.Resources.Cancel_Order_60px;
-            this.btnMachineCancel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnMachineCancel.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnMachineCancel.Location = new System.Drawing.Point(3, 3);
-            this.btnMachineCancel.Name = "btnMachineCancel";
-            this.btnMachineCancel.Size = new System.Drawing.Size(116, 44);
-            this.btnMachineCancel.TabIndex = 0;
-            this.btnMachineCancel.Text = "Cancel";
-            this.btnMachineCancel.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.lstMachine.AutoSpacing = true;
+            this.lstMachine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(245)))));
+            this.lstMachine.DataSource = null;
+            this.lstMachine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstMachine.ItemBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lstMachine.ItemBorderRadius = 8;
+            this.lstMachine.ItemBorderThickness = 1;
+            this.lstMachine.ItemBottomDisplayMember = "MachineName";
+            this.lstMachine.ItemFillColor = System.Drawing.Color.WhiteSmoke;
+            this.lstMachine.ItemFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.lstMachine.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
+            this.lstMachine.ItemHeight = 50;
+            this.lstMachine.ItemSpace = 5;
+            this.lstMachine.ItemTopDisplayMember = "MachineCode";
+            this.lstMachine.ItemWidth = 200;
+            this.lstMachine.Location = new System.Drawing.Point(3, 23);
+            this.lstMachine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lstMachine.MinMargin = 5;
+            this.lstMachine.Name = "lstMachine";
+            this.lstMachine.Size = new System.Drawing.Size(244, 328);
+            this.lstMachine.TabIndex = 0;
             // 
             // SettingView
             // 
@@ -528,6 +546,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.grbCompanyList);
             this.Controls.Add(this.grbMachineList);
             this.Controls.Add(this.grbSetting);
@@ -576,5 +595,6 @@
         private Guna.UI2.WinForms.Guna2Button btnCompanySelect;
         private Guna.UI2.WinForms.Guna2Button btnMachineCancel;
         private Guna.UI2.WinForms.Guna2Button btnMachineSelect;
+        private Guna.UI2.WinForms.Guna2TileButton btnExit;
     }
 }
