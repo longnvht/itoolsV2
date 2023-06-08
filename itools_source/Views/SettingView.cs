@@ -40,9 +40,9 @@ namespace itools_source.Views
             set
             {
                 _company = value;
+                txtMachine.Text = "";
                 if (_company != null) txtCompany.Text = _company.CompanyName;
                 else txtCompany.Text = "";
-
             }
         }
         public MachineModel Machine 
@@ -60,11 +60,9 @@ namespace itools_source.Views
         public string ComPort
         {
             get => cbxComPort.Text;
-            set
-            { 
-                cbxComPort.SelectedItem = value;
-            }
         }
+
+        public string Message { get => lblSaveMessage.Text; set => lblSaveMessage.Text = value; }
 
         #endregion
 
@@ -136,7 +134,11 @@ namespace itools_source.Views
             {
                 SetDisplayMode(1);
             };
-            btnCancel.Click += (s, e) => { SetDisplayMode(0); };
+            btnCancel.Click += (s, e) => 
+            { 
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+                SetDisplayMode(0); 
+            };
         }
 
         private void SettingViewLoad(object sender, EventArgs e)
@@ -213,6 +215,7 @@ namespace itools_source.Views
         public event EventHandler MachineSelectEvent;
         public event EventHandler SaveConfig;
         public event EventHandler ComPortSelectedEvent;
+        public event EventHandler CancelEvent;
 
         #endregion
 

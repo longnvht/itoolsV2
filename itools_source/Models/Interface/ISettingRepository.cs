@@ -12,6 +12,7 @@ namespace VinamiToolUser.Models.Interface
         Task<IEnumerable<MachineModel>> GetAllMachineList();
         Task<IEnumerable<MachineModel>> GetCurentMachine(string serialMachine);
         Task<IEnumerable<CompanyModel>> GetCompanyList();//Searchs
-        Task<IEnumerable<MachineModel>> GetMachineListForCompany(int companyID);
+        Task<IEnumerable<MachineModel>> GetValidMachine(int companyID);
+        Task<bool> UpdateMachineSerial(int machineID,  string serial);
     }
 }

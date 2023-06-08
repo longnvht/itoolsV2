@@ -22,6 +22,12 @@ namespace VinamiToolUser.Presenters
             this._view = view;
             this._repository = repository;
             _view.Presenter = this;
+            _view.ConfigChange += ConfigChange;
+            GetCurrentMachineAndCheckConfig();
+        }
+
+        private void ConfigChange(object sender, EventArgs e)
+        {
             GetCurrentMachineAndCheckConfig();
         }
 

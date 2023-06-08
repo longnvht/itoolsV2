@@ -201,16 +201,7 @@ namespace VinamiToolUser.Views
             {
                 _currentView = value;
                 if(value == "Login") 
-                {
-                    tlpHeader.Visible =false;
-                    tlpFooter.Visible =false;
-                }
-                else
-                {
-                    tlpHeader.Visible = true;
-                    tlpFooter.Visible = true;
-                    txtCurrentView.Text = _currentView;
-                }
+                
                 TempView = null;
                 OpenChildView();
             }  
@@ -259,6 +250,18 @@ namespace VinamiToolUser.Views
         public void OpenChildView()
         {
             CloseChildView();
+            if(UserLogin == null)
+            {
+                tlpHeader.Visible = false;
+                tlpFooter.Visible = false;
+            }
+            else
+            {
+                tlpHeader.Visible = true;
+                tlpFooter.Visible = true;
+                txtCurrentView.Text = _currentView;
+            }
+
             if (viewTypes.ContainsKey(_currentView))
             {
                 Type viewType = viewTypes[_currentView];

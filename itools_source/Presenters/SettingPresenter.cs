@@ -43,11 +43,17 @@ namespace VinamiToolUser.Presenters
             _view.SetPortBindingSource(_portSource);
             _view.CompanySelectEvent += CompanySelectedEvent;
             _view.MachineSelectEvent += MachineSelectedEvent;
-            view.SaveConfig += SaveConfig;
+            _view.SaveConfig += SaveConfig;
+            _view.CancelEvent += CancelEvent;
             _view.HddSerial = GetHardDiskSerial();
 
             GetSerialPortList();
             LoadDataAndSetDisplayMember();
+        }
+
+        private void CancelEvent(object sender, EventArgs e)
+        {
+            LoadCurrentMachine();
         }
 
         private async void LoadDataAndSetDisplayMember()
@@ -73,18 +79,23 @@ namespace VinamiToolUser.Presenters
         private async void LoadCurrentMachine()
         {
             _machineList = await _repository.GetCurentMachine(_view.HddSerial);
-            if(_machineList.Count() > 0) 
-            {
-                _curentMachine = _machineList.FirstOrDefault();
-            }
-            else _machineList = await _repository.GetAllMachineList();
-            _machineSource.DataSource = _machineList;
+            _curentMachine = _machineList.FirstOrDefault();
             _view.Machine = _curentMachine;
+            if (_curentMachine != null)
+            {
+                _currentCompany = _companyList.Where(x => x.CompanyID == _curentMachine.CompanyID).FirstOrDefault();
+                _view.Company = _currentCompany;
+            }
+            else 
+            {
+                _currentCompany = null;
+                _view.Company = _currentCompany;
+            }
         }
         private async void LoadMachineData()
         {
             if (_currentCompany == null) _machineList = await _repository.GetAllMachineList();
-            else _machineList = await _repository.GetMachineListForCompany(_currentCompany.CompanyID);
+            else _machineList = await _repository.GetValidMachine(_currentCompany.CompanyID);
             _machineSource.DataSource = _machineList;
         }
 
@@ -107,7 +118,7 @@ namespace VinamiToolUser.Presenters
             _portSource.DataSource = ports;
         }
 
-        private void SaveConfig(object sender, EventArgs e)
+        private async void SaveConfig(object sender, EventArgs e)
         {
             _machineConfig = new MachineConfigModel();
             //Assign Config Value
@@ -116,7 +127,10 @@ namespace VinamiToolUser.Presenters
             _machineConfig.ComPort = _view.ComPort;
             _machineConfig.HardDiskSerial = _view.HddSerial;
             //Save Config Value
-            _mainView.MachineConfig = _machineConfig;
+            
+            bool result = await _repository.UpdateMachineSerial(_machineConfig.MachineID, _machineConfig.HardDiskSerial);
+            if (result) { _mainView.MachineConfig = _machineConfig; }
+            else _view.Message = "Lưu cấu hình thất bại!!!";
         }
     }
 }

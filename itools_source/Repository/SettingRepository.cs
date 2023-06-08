@@ -151,14 +151,14 @@ namespace VinamiToolUser.Repository
             return machineList;
         }
 
-        public async Task<IEnumerable<MachineModel>> GetMachineListForCompany(int companyID)
+        public async Task<IEnumerable<MachineModel>> GetValidMachine(int companyID)
         {
             var machineList = new List<MachineModel>();
             using (MySqlConnection connection = await OpenAsync())
             {
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = String.Format("Select * from warehouse where warehousetype = 'machine' and companyID = {0} Limit 100", companyID );
+                cmd.CommandText = String.Format("Select * from warehouse where warehousetype = 'machine' and companyID = {0} and (serial is null or serial = '')", companyID );
                 using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                 {
                     if (dataReader != null)
@@ -194,6 +194,24 @@ namespace VinamiToolUser.Repository
                 connection.Close();
             }
             return machineList;
+        }
+
+        public async Task<bool> UpdateMachineSerial(int machineID, string serial)
+        {
+            bool result = false;
+            using (MySqlConnection connection = await OpenAsync())
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = @"UpdateMachineSerial";
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "machineID", MySqlDbType.Int32, machineID);
+                cmd.Parameters.Add(prm);
+                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "pSerial", MySqlDbType.String, serial);
+                cmd.Parameters.Add(prm2);
+                result = await CmdExecutionProcedureAsync(cmd);
+                await connection.CloseAsync();
+            }
+            return result;
         }
     }
 }

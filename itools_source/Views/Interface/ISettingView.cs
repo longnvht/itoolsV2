@@ -10,7 +10,8 @@ namespace itools_source.Views.Interface
     {
         #region Properties - Fields
         string HddSerial { get; set; }
-        string ComPort { get; set; }
+        string ComPort { get; }
+        string Message { get; set; }
         SettingPresenter Presenter { set; }
         CompanyModel Company { get; set; }
         MachineModel Machine { get; set; }
@@ -21,6 +22,7 @@ namespace itools_source.Views.Interface
         event EventHandler MachineSelectEvent;
         event EventHandler ComPortSelectedEvent;
         event EventHandler SaveConfig;
+        event EventHandler CancelEvent;
 
         #endregion
 
