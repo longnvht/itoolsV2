@@ -22,9 +22,8 @@ namespace itools_source.Views
 {
     public partial class SettingView : Form, ISettingView
     {
+        private MainView _mainView;
         private UserAccount _userLogin;
-        private CompanyModel _company;
-        private MachineModel _machine;
         private static SettingView instance;
 
         public SettingView()
@@ -35,25 +34,21 @@ namespace itools_source.Views
 
         #region Properties - Fields
         public SettingPresenter Presenter { private get; set; }
-        public CompanyModel Company 
+
+        public MachineModel CurrentMachine 
         { 
-            get => _company;
-            set
-            {
-                _company = value;
-                txtMachine.Text = "";
-                if (_company != null) txtCompany.Text = _company.CompanyName;
-                else txtCompany.Text = "";
-            }
-        }
-        public MachineModel Machine 
-        { 
-            get => _machine;
+            get => _mainView.CurrentMachine;
             set 
             { 
-                _machine = value;
-                if(_machine != null) txtMachine.Text = _machine.MachineName;
-                else { txtMachine.Text = ""; };
+                _mainView.CurrentMachine = value;
+            }
+        }
+        public MachineConfigModel CurrentConfig
+        {
+            get => _mainView.MachineConfig;
+            set
+            {
+                _mainView.MachineConfig = value;
             }
         }
 
@@ -61,10 +56,13 @@ namespace itools_source.Views
         public string ComPort
         {
             get => cbxComPort.Text;
+            set => cbxComPort.Text = value;
         }
 
-        public string Message { get => lblSaveMessage.Text; set => lblSaveMessage.Text = value; }
+        public string SettingMessage { set => _mainView.Message = value; }
         public UserAccount UserLogin { get => _userLogin; set => _userLogin = value; }
+        public string MachineName { get => txtMachine.Text; set => txtMachine.Text = value; }
+        public string CompanyNameSelect { get => txtCompany.Text; set => txtCompany.Text = value; }
 
         #endregion
 
@@ -150,10 +148,12 @@ namespace itools_source.Views
 
         private void SettingViewLoad(object sender, EventArgs e)
         {
+            _mainView = MainView.GetInstance();
             ISettingRepository repository = UnityDI.container.Resolve<ISettingRepository>();
             Presenter = new SettingPresenter(this, repository);
             grbCompanyList.Visible = false;
             grbMachineList.Visible = false;
+            if (_mainView.UserLogin != null) _mainView.PrevView = "Menu";
             SetDisplayMode(0);
             CheckSaveCondition();
         }
@@ -182,7 +182,8 @@ namespace itools_source.Views
             {
                 case 0:
                     {
-                        if (UserLogin == null) btnExit.Visible = true;
+                        if (_mainView.UserLogin == null) btnExit.Visible = true;
+                        else btnExit.Visible = false;
                         grbCompanyList.Visible = false;
                         grbMachineList.Visible = false;
                         btnEdit.Enabled = true;
@@ -197,8 +198,8 @@ namespace itools_source.Views
                     {
                         btnExit.Visible = false;
                         btnEdit.Enabled = false;
-                        if(Company == null) txtCompany.Enabled = true;
-                        if(Machine == null) txtMachine.Enabled = true;
+                        if(CompanyName == null) txtCompany.Enabled = true;
+                        if(MachineName == null) txtMachine.Enabled = true;
                         cbxComPort.Enabled = true;
                         btnCancel.Enabled = true;
                         btnSave.Enabled = false;

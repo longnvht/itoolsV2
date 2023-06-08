@@ -12,14 +12,13 @@ using itools_source.Models;
 using System.Management;
 using VinamiToolUser.Views;
 using System.IO.Ports;
+using VinamiToolUser.Utils;
 
 namespace VinamiToolUser.Presenters
 {
     public class SettingPresenter
     {
-        private MainView _mainView;
-        private MachineConfigModel _machineConfig;
-        private MachineModel _curentMachine;
+        private MachineModel _currentMachine;
         private CompanyModel _currentCompany;
         private BindingSource _companySource;
         private BindingSource _portSource;
@@ -36,9 +35,7 @@ namespace VinamiToolUser.Presenters
             _portSource = new BindingSource();
             _view = view;
             _repository = repository;
-            _mainView = MainView.GetInstance();
             _view.Presenter = this;
-            _view.UserLogin = _mainView.UserLogin;
             _view.SetCompanyBindingSource(_companySource);
             _view.SetMachineBindingSource(_machineSource);
             _view.SetPortBindingSource(_portSource);
@@ -47,56 +44,53 @@ namespace VinamiToolUser.Presenters
             _view.SaveConfig += SaveConfig;
             _view.CancelEvent += CancelEvent;
             _view.HddSerial = GetHardDiskSerial();
-
             GetSerialPortList();
-            LoadDataAndSetDisplayMember();
+            LoadData();
+        }
+
+        private void LoadCurrentConfig()
+        {
+            if(_view.CurrentMachine != null)
+            {
+                _currentCompany = _companyList.Where(x => x.CompanyID == _view.CurrentMachine.CompanyID).FirstOrDefault();
+                _currentMachine = _machineList.Where(x => x.MachineID == _view.CurrentMachine.MachineID).FirstOrDefault();
+                _view.CompanyNameSelect = _currentCompany.CompanyName;
+                _view.MachineName = _currentMachine.MachineName;
+                if(_view.CurrentConfig != null) { _view.ComPort = _view.CurrentConfig.ComPort; }
+            }
+
         }
 
         private void CancelEvent(object sender, EventArgs e)
         {
-            LoadCurrentMachine();
+            LoadCurrentConfig();
         }
 
-        private async void LoadDataAndSetDisplayMember()
+        private async void LoadData()
         {
             _companyList = await _repository.GetCompanyList();
             _companySource.DataSource = _companyList;
-            LoadCurrentMachine();
+            _machineList = await _repository.GetAllMachineList();
+            _machineSource.DataSource = _machineList;
+            LoadCurrentConfig();
         }
 
         private void MachineSelectedEvent(object sender, EventArgs e)
         {
-            _curentMachine = _machineSource.Current as MachineModel;
-            _view.Machine = _curentMachine;
+            _currentMachine = _machineSource.Current as MachineModel;
+            _view.MachineName = _currentMachine.MachineName;
         }
 
         private void CompanySelectedEvent(object sender, EventArgs e)
         {
             _currentCompany = _companySource.Current as CompanyModel;
-            _view.Company = _currentCompany;
+            _view.CompanyNameSelect = _currentCompany.CompanyName;
             LoadMachineData();
         }
 
-        private async void LoadCurrentMachine()
-        {
-            _machineList = await _repository.GetCurentMachine(_view.HddSerial);
-            _curentMachine = _machineList.FirstOrDefault();
-            if (_curentMachine != null)
-            {
-                _currentCompany = _companyList.Where(x => x.CompanyID == _curentMachine.CompanyID).FirstOrDefault();
-                _view.Company = _currentCompany;
-            }
-            else 
-            {
-                _currentCompany = null;
-                _view.Company = _currentCompany;
-            }
-            _view.Machine = _curentMachine;
-        }
         private async void LoadMachineData()
         {
-            if (_currentCompany == null) _machineList = await _repository.GetAllMachineList();
-            else _machineList = await _repository.GetValidMachine(_currentCompany.CompanyID);
+            _machineList = await _repository.GetValidMachine(_currentCompany.CompanyID);
             _machineSource.DataSource = _machineList;
         }
 
@@ -121,21 +115,22 @@ namespace VinamiToolUser.Presenters
 
         private async void SaveConfig(object sender, EventArgs e)
         {
-            _machineConfig = new MachineConfigModel();
+            MachineConfigModel machineConfig = new MachineConfigModel();
             //Assign Config Value
-            _machineConfig.CompanyID = _currentCompany.CompanyID;
-            _machineConfig.MachineID = _curentMachine.MachineID;
-            _machineConfig.ComPort = _view.ComPort;
-            _machineConfig.HardDiskSerial = _view.HddSerial;
+            machineConfig.CompanyID = _currentCompany.CompanyID;
+            machineConfig.MachineID = _currentMachine.MachineID;
+            machineConfig.ComPort = _view.ComPort;
+            machineConfig.HardDiskSerial = _view.HddSerial;
             //Save Config Value
             
-            bool result = await _repository.UpdateMachineSerial(_machineConfig.MachineID, _machineConfig.HardDiskSerial);
+            bool result = await _repository.UpdateMachineSerial(machineConfig.MachineID, machineConfig.HardDiskSerial);
             if (result) 
             {
-                _mainView.MachineConfig = _machineConfig;
-                _mainView.Message = "";
+                CommonValue.ConfigModel = machineConfig;
+                _view.CurrentConfig = machineConfig;
+                _view.SettingMessage = "";
             }
-            else _view.Message = "Lưu cấu hình thất bại!!!";
+            else _view.SettingMessage = "Lưu cấu hình thất bại!!!";
         }
     }
 }

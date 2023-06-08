@@ -75,10 +75,12 @@ namespace VinamiToolUser.Views
 
         private void MainViewLoad(object sender, EventArgs e)
         {
-            _machineConfig = CommonValue.LoadConfig();
+            tsInfo.Visible = false;
+            tlpHeader.Visible = false;
+            tlpFooter.Visible = false;
             IMainRepository repository = UnityDI.container.Resolve<IMainRepository>();
             Presenter = new MainPresenter(this, repository);
-            tsInfo.Visible = false;
+            
         }
 
         public void AssignCurentView()
@@ -184,7 +186,6 @@ namespace VinamiToolUser.Views
             set
             {
                 _machineConfig = value;
-                CommonValue.ConfigModel = value;
                 ConfigChange?.Invoke(this, EventArgs.Empty);
             }
         }
@@ -198,8 +199,8 @@ namespace VinamiToolUser.Views
             set 
             { 
                 tslMessage.Text = value; 
-                if(value != null) { tsInfo.Visible = true; }
-                else tsInfo.Visible = false;
+                if(String.IsNullOrEmpty(value)) { tsInfo.Visible = false; }
+                else tsInfo.Visible = true;
             }
         }
 

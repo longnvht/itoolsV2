@@ -10,12 +10,14 @@ namespace itools_source.Views.Interface
     {
         #region Properties - Fields
         string HddSerial { get; set; }
-        string ComPort { get; }
-        string Message { get; set; }
+        string ComPort { get; set; }
+        string SettingMessage { set; }
         UserAccount UserLogin { get; set; } 
         SettingPresenter Presenter { set; }
-        CompanyModel Company { get; set; }
-        MachineModel Machine { get; set; }
+        string CompanyNameSelect { get; set; }
+        string MachineName { get; set; }
+        MachineModel CurrentMachine { get; set; }
+        MachineConfigModel CurrentConfig { get; set; }
         #endregion
 
         #region Events

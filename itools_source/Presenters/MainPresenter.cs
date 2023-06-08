@@ -10,12 +10,15 @@ using VinamiToolUser.Views.Interface;
 using itools_source.Models;
 using System.Management;
 using VinamiToolUser.Utils;
+using MySqlX.XDevAPI.Common;
 
 namespace VinamiToolUser.Presenters
 {
     public class MainPresenter
     {
+        private string _hddSerial;
         private MachineModel _currentMachine;
+
         private IEnumerable<MachineModel> _machineList;
         private IMainView _view;
         private IMainRepository _repository;
@@ -26,41 +29,50 @@ namespace VinamiToolUser.Presenters
             this._repository = repository;
             _view.Presenter = this;
             _view.ConfigChange += ConfigChange;
-            GetCurrentMachineAndCheckConfig();
+            _hddSerial = GetHardDiskSerial();
+            LoadData();
         }
 
         private void ConfigChange(object sender, EventArgs e)
         {
-            GetCurrentMachineAndCheckConfig();
+            MenuNavigator();
         }
 
-        private async void GetCurrentMachineAndCheckConfig()
+        private async void MenuNavigator()
         {
-            string serial = GetHardDiskSerial();
-            _machineList = await _repository.GetCurrentMachineInfo(serial);
+            _machineList = await _repository.GetCurrentMachineInfo(_hddSerial);
             _currentMachine = _machineList.FirstOrDefault();
-            bool result = CheckConfig();
+            var result = CheckConfig();
             if (result)
             {
-                if(_view.UserLogin != null)  _view.CurrentView = "Home";
+                if (_view.UserLogin != null) _view.CurrentView = "Menu";
                 else _view.CurrentView = "Login";
             }
             else _view.CurrentView = "Setting";
         }
 
-        private bool CheckConfig()
+        private async void LoadData()
+        {
+            _machineList = await _repository.GetCurrentMachineInfo(_hddSerial);
+            _currentMachine = _machineList.FirstOrDefault();
+            _view.CurrentMachine = _currentMachine;
+            _view.MachineConfig = CommonValue.LoadConfig();
+            MenuNavigator();
+        }
+
+        private bool  CheckConfig()
         {
             //check data base info
             //Check config Null
             //Check machine serial
             bool result = true;
+
             if (_currentMachine == null)
             {
                 result = false;
                 _view.Message = "Thiết bị chưa được cấu hình, vui lòng thiết lập các thông số cho thiết bị";
                 return result;
             }
-
             if (_view.MachineConfig == null)
             {
                 result = false;

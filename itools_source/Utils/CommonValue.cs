@@ -65,12 +65,15 @@ namespace VinamiToolUser.Utils
 
         private static void SaveConfig(MachineConfigModel configModel)
         {
-            var cfg = new ConfigParser(appConfig);
-            cfg.SetValue("CONFIG", "CompanyID", configModel.CompanyID);
-            cfg.SetValue("CONFIG", "MachineID", configModel.MachineID);
-            cfg.SetValue("CONFIG", "ComPort", configModel.ComPort);
-            cfg.SetValue("CONFIG", "HardDiskSerial", configModel.HardDiskSerial);
-            cfg.Save();
+            if(configModel != null)
+            {
+                var cfg = new ConfigParser(appConfig);
+                cfg.SetValue("CONFIG", "CompanyID", configModel.CompanyID);
+                cfg.SetValue("CONFIG", "MachineID", configModel.MachineID);
+                cfg.SetValue("CONFIG", "ComPort", configModel.ComPort);
+                cfg.SetValue("CONFIG", "HardDiskSerial", configModel.HardDiskSerial);
+                cfg.Save();
+            }
         }
     }
 }
