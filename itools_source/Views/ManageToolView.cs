@@ -220,6 +220,14 @@ namespace VinamiToolUser.Views
             txtModifyQty.TextChanged += CheckInpuValue;
             txtModifyQty.MouseClick += (s, e) => { ShowKeyboard(true); };
             txtSearch.MouseClick += (s, e) => { ShowKeyboard(false); };
+            txtSearch.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    KeyBoard.CloseKeyboard();
+                    SearchEvent?.Invoke(this, EventArgs.Empty);
+                }
+            };
             btnSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
             btnSave.Click += (s,e) => 
             {
