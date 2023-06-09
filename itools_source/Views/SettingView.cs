@@ -48,7 +48,15 @@ namespace itools_source.Views
         public string SettingMessage { set => _mainView.Message = value; }
         public UserAccount UserLogin { get => _userLogin; set => _userLogin = value; }
         public string MachineName { get => txtMachine.Text; set => txtMachine.Text = value; }
-        public string CompanyNameSelect { get => txtCompany.Text; set => txtCompany.Text = value; }
+        public string CompanyNameSelect 
+        { 
+            get => txtCompany.Text;
+            set
+            {
+                txtCompany.Text = value;
+                txtMachine.Text = "";
+            }
+        }
 
         #endregion
 
