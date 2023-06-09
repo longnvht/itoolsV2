@@ -58,7 +58,6 @@ namespace VinamiToolUser.Presenters
                 _view.MachineName = _currentMachine.MachineName;
                 if(_view.CurrentConfig != null) { _view.ComPort = _view.CurrentConfig.ComPort; }
             }
-
         }
 
         private void CancelEvent(object sender, EventArgs e)
@@ -127,8 +126,8 @@ namespace VinamiToolUser.Presenters
             if (result) 
             {
                 CommonValue.ConfigModel = machineConfig;
-                _view.CurrentConfig = machineConfig;
                 _view.SettingMessage = "";
+                _view.ReloadConfig();
             }
             else _view.SettingMessage = "Lưu cấu hình thất bại!!!";
         }

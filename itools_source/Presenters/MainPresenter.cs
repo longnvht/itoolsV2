@@ -18,8 +18,6 @@ namespace VinamiToolUser.Presenters
     {
         private string _hddSerial;
         private MachineModel _currentMachine;
-
-        private IEnumerable<MachineModel> _machineList;
         private IMainView _view;
         private IMainRepository _repository;
 
@@ -30,7 +28,6 @@ namespace VinamiToolUser.Presenters
             _view.Presenter = this;
             _view.ConfigChange += ConfigChange;
             _hddSerial = GetHardDiskSerial();
-            LoadData();
         }
 
         private void ConfigChange(object sender, EventArgs e)
@@ -40,9 +37,7 @@ namespace VinamiToolUser.Presenters
 
         private async void MenuNavigator()
         {
-            _machineList = await _repository.GetCurrentMachineInfo(_hddSerial);
-            _currentMachine = _machineList.FirstOrDefault();
-            var result = CheckConfig();
+            var result = await CheckConfig();
             if (result)
             {
                 if (_view.UserLogin != null) _view.CurrentView = "Menu";
@@ -51,20 +46,20 @@ namespace VinamiToolUser.Presenters
             else _view.CurrentView = "Setting";
         }
 
-        private async void LoadData()
+
+        private async Task<MachineModel> GetCurrentMachine()
         {
-            _machineList = await _repository.GetCurrentMachineInfo(_hddSerial);
-            _currentMachine = _machineList.FirstOrDefault();
-            _view.CurrentMachine = _currentMachine;
-            _view.MachineConfig = CommonValue.LoadConfig();
-            MenuNavigator();
+            var result = await _repository.GetCurrentMachineInfo(_hddSerial);
+            return result.FirstOrDefault();
         }
 
-        private bool  CheckConfig()
+        private async Task<bool>  CheckConfig()
         {
             //check data base info
             //Check config Null
             //Check machine serial
+            _currentMachine = await GetCurrentMachine();
+            _view.CurrentMachine = _currentMachine;
             bool result = true;
 
             if (_currentMachine == null)

@@ -160,7 +160,7 @@ namespace VinamiToolUser.Views
             else { return false; }
             rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Send Get Tool Command ...", Color.Blue, true); }));
             rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "ToolCode: " + CurrentTool.ToolCode , Color.Blue, true); }));
-            rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Tray Number: Tray" + trayNumber, Color.Blue, true); }));
+            rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Tray Number: Tray_" + trayNumber, Color.Blue, true); }));
             string lastTextReceive = "";
             _textReceive = "";
             _actionTime = 0;

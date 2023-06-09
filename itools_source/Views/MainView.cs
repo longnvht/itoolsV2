@@ -80,7 +80,7 @@ namespace VinamiToolUser.Views
             tlpFooter.Visible = false;
             IMainRepository repository = UnityDI.container.Resolve<IMainRepository>();
             Presenter = new MainPresenter(this, repository);
-            
+            LoadConfig();
         }
 
         public void AssignCurentView()
@@ -180,14 +180,12 @@ namespace VinamiToolUser.Views
             }
         }
 
-        public MachineConfigModel MachineConfig
-        { 
-            get => _machineConfig;
-            set
-            {
-                _machineConfig = value;
-                ConfigChange?.Invoke(this, EventArgs.Empty);
-            }
+        public MachineConfigModel MachineConfig { get => _machineConfig; set => _machineConfig = value; }
+
+        public void LoadConfig()
+        {
+            MachineConfig = CommonValue.LoadConfig();
+            ConfigChange?.Invoke(this, EventArgs.Empty);
         }
 
         public MachineModel CurrentMachine { get => _currentMachine; set => _currentMachine = value; }
@@ -247,6 +245,8 @@ namespace VinamiToolUser.Views
             CurrentView = "Menu";
             TempView = null;
         }
+
+        
 
         private Dictionary<string, Type> viewTypes = new Dictionary<string, Type>()
         {

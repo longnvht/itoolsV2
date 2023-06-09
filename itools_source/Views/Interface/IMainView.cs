@@ -35,7 +35,7 @@ namespace VinamiToolUser.Views.Interface
         #endregion
 
         #region Method
-
+        void LoadConfig();
         #endregion
     }
 }

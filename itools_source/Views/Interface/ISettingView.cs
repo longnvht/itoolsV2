@@ -16,8 +16,8 @@ namespace itools_source.Views.Interface
         SettingPresenter Presenter { set; }
         string CompanyNameSelect { get; set; }
         string MachineName { get; set; }
-        MachineModel CurrentMachine { get; set; }
-        MachineConfigModel CurrentConfig { get; set; }
+        MachineModel CurrentMachine { get;}
+        MachineConfigModel CurrentConfig { get;}
         #endregion
 
         #region Events
@@ -34,6 +34,7 @@ namespace itools_source.Views.Interface
         void SetCompanyBindingSource(BindingSource companyList);
         void SetPortBindingSource(BindingSource portList);
         void CheckSaveCondition();
+        void ReloadConfig();
         #endregion
     }
 }

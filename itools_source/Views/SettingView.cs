@@ -35,22 +35,8 @@ namespace itools_source.Views
         #region Properties - Fields
         public SettingPresenter Presenter { private get; set; }
 
-        public MachineModel CurrentMachine 
-        { 
-            get => _mainView.CurrentMachine;
-            set 
-            { 
-                _mainView.CurrentMachine = value;
-            }
-        }
-        public MachineConfigModel CurrentConfig
-        {
-            get => _mainView.MachineConfig;
-            set
-            {
-                _mainView.MachineConfig = value;
-            }
-        }
+        public MachineModel CurrentMachine { get => _mainView.CurrentMachine; }
+        public MachineConfigModel CurrentConfig { get => _mainView.MachineConfig; }
 
         public string HddSerial { get => txtHardDiskSerial.Text; set => txtHardDiskSerial.Text = value; }
         public string ComPort
@@ -198,8 +184,8 @@ namespace itools_source.Views
                     {
                         btnExit.Visible = false;
                         btnEdit.Enabled = false;
-                        if(CompanyName == null) txtCompany.Enabled = true;
-                        if(MachineName == null) txtMachine.Enabled = true;
+                        if(String.IsNullOrEmpty(CompanyNameSelect)) txtCompany.Enabled = true;
+                        if(String.IsNullOrEmpty(MachineName)) txtMachine.Enabled = true;
                         cbxComPort.Enabled = true;
                         btnCancel.Enabled = true;
                         btnSave.Enabled = false;
@@ -218,6 +204,11 @@ namespace itools_source.Views
             if (String.IsNullOrEmpty(comport)) result = false;
             if(result) btnSave.Enabled = true;
             else btnSave.Enabled = false;
+        }
+
+        public void ReloadConfig()
+        {
+            _mainView.LoadConfig();
         }
 
         #endregion

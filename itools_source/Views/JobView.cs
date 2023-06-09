@@ -84,10 +84,10 @@ namespace VinamiToolUser.Views
 
         private void JobViewLoad(object sender, EventArgs e)
         {
-            IJobRepository repositoryNew = UnityDI.container.Resolve<IJobRepository>();
-            Presenter = new JobPresenter(this, repositoryNew);
             _mainView = MainView.GetInstance();
             _mainView.PrevView = "Menu";
+            IJobRepository repositoryNew = UnityDI.container.Resolve<IJobRepository>();
+            Presenter = new JobPresenter(this, repositoryNew);
         }
 
         private void ShowKeyboard()
