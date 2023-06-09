@@ -20,6 +20,7 @@ namespace VinamiToolUser.Views.Interface
         UserAccount UserLogin { get; }
         string OpNumber { get; }
         string JobNumber { get; }
+        MachineConfigModel CurrentMachine { get; }
         GetToolPresenter Presenter { set; }
         #endregion
 
@@ -32,7 +33,8 @@ namespace VinamiToolUser.Views.Interface
 
         #region Method
         void SetToolListBindingSource(BindingSource toolList);
-        void SetTrayListBindingSource(BindingSource trayList);
+        void SetCurrentTrayListBindingSource(BindingSource trayList);
+        void SetOtherTrayListBindingSource(BindingSource trayList);
 
         #endregion
     }

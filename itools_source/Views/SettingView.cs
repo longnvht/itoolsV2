@@ -110,7 +110,7 @@ namespace itools_source.Views
                 MachineSelectEvent?.Invoke(this, EventArgs.Empty);
                 CheckSaveCondition();
             };
-            cbxComPort.SelectedIndexChanged += (s, e) =>
+            cbxComPort.Click += (s, e) =>
             {
                 CheckSaveCondition();
             };

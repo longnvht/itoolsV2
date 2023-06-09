@@ -26,6 +26,7 @@ namespace VinamiToolUser.Views
         private ToolModel _curentTool;
         private TrayModel _currentTray;
         private IMainView _mainView;
+        private MachineConfigModel _currentMachine;
         private bool _resultGetTool;
         private int _actionTime=0;
         private string _textReceive;
@@ -329,6 +330,7 @@ namespace VinamiToolUser.Views
 
         public string JobNumber => _mainView.CurrentJob.JobNumber;
 
+        public MachineConfigModel CurrentMachine { get => _mainView.MachineConfig; }
         public event EventHandler SearchToolEvent;
         public event EventHandler UpdateToolStock;
         public event EventHandler SelectToolEvent;
@@ -338,9 +340,13 @@ namespace VinamiToolUser.Views
             lstTool.DataSource = toolList;
         }
 
-        public void SetTrayListBindingSource(BindingSource trayList)
+        public void SetCurrentTrayListBindingSource(BindingSource trayList)
         {
             tvStock.DataSource = trayList;
+        }
+        public void SetOtherTrayListBindingSource(BindingSource trayList)
+        {
+            tvOtherStock.DataSource = trayList;
         }
     }
 }

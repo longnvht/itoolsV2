@@ -18,8 +18,11 @@ namespace VinamiToolUser.Presenters
     {
         private BindingSource _toolSource;
         private BindingSource _traySource;
+        private BindingSource _otherTraySource;
+
         private IEnumerable<ToolModel> _toolList;
         private IEnumerable<TrayModel> _trayList;
+        private IEnumerable<TrayModel> _otherTrayList;
         private IGetToolView _view;
         private string _userLogin;
         private IGetToolRepositoryNew _repository;
@@ -28,6 +31,7 @@ namespace VinamiToolUser.Presenters
         {
             _toolSource= new BindingSource();
             _traySource = new BindingSource();
+            _otherTraySource = new BindingSource();
             _view = view;
             _repository = repository;
             _view.Presenter = this;
@@ -36,7 +40,8 @@ namespace VinamiToolUser.Presenters
             _view.SearchToolEvent += SearchTool;
             _view.UpdateToolStock += UpdateToolStock;
             _view.SetToolListBindingSource(_toolSource);
-            _view.SetTrayListBindingSource(_traySource);
+            _view.SetCurrentTrayListBindingSource(_traySource);
+            _view.SetOtherTrayListBindingSource(_otherTraySource);
             LoadData();
         }
 
@@ -44,8 +49,10 @@ namespace VinamiToolUser.Presenters
         {
             var tool = (ToolModel)_toolSource.Current;
             _view.CurrentTool = tool;
-            _trayList = await _repository.GetTrayList(tool.ToolID);
+            _trayList = await _repository.GetCurrentTrayList(tool.ToolID, _view.CurrentMachine.MachineID);
             _traySource.DataSource = _trayList;
+            _otherTrayList = await _repository.GetOtherTrayList(tool.ToolID, _view.CurrentMachine.MachineID);
+            _otherTraySource.DataSource = _otherTrayList;
         }
 
         private async void UpdateToolStock(object sender, EventArgs e)

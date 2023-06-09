@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.grbToolList = new System.Windows.Forms.GroupBox();
+            this.lstTool = new VinamiToolUser.Views.Components.ListButton();
             this.grbToolInfo = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,25 +42,31 @@
             this.txtToolName = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtTrayNumber = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtQty = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pnLog = new System.Windows.Forms.Panel();
+            this.scrLog = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.rtbStatus = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnDesktop = new System.Windows.Forms.Panel();
             this.grbStockInfo = new System.Windows.Forms.GroupBox();
+            this.tvStock = new VinamiToolUser.Views.Components.StockInfoTreeView();
             this.serialPortGetTool = new System.IO.Ports.SerialPort(this.components);
             this.tmGetTool = new System.Windows.Forms.Timer(this.components);
-            this.pnLog = new System.Windows.Forms.Panel();
-            this.scrLog = new Guna.UI2.WinForms.Guna2VScrollBar();
-            this.tvStock = new VinamiToolUser.Views.Components.StockInfoTreeView();
-            this.lstTool = new VinamiToolUser.Views.Components.ListButton();
+            this.tclStock = new Guna.UI2.WinForms.Guna2TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tvOtherStock = new VinamiToolUser.Views.Components.StockInfoTreeView();
             this.grbToolList.SuspendLayout();
             this.grbToolInfo.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.pnLog.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnDesktop.SuspendLayout();
             this.grbStockInfo.SuspendLayout();
-            this.pnLog.SuspendLayout();
+            this.tclStock.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbToolList
@@ -74,14 +81,38 @@
             this.grbToolList.TabStop = false;
             this.grbToolList.Text = "ToolList";
             // 
+            // lstTool
+            // 
+            this.lstTool.AutoSpacing = true;
+            this.lstTool.BackColor = System.Drawing.Color.Snow;
+            this.lstTool.DataSource = null;
+            this.lstTool.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstTool.ItemBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(144)))), ((int)(((byte)(233)))));
+            this.lstTool.ItemBorderRadius = 8;
+            this.lstTool.ItemBorderThickness = 1;
+            this.lstTool.ItemBottomDisplayMember = "ToolName";
+            this.lstTool.ItemFillColor = System.Drawing.Color.WhiteSmoke;
+            this.lstTool.ItemFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstTool.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
+            this.lstTool.ItemHeight = 45;
+            this.lstTool.ItemSpace = 5;
+            this.lstTool.ItemTopDisplayMember = "ToolCode";
+            this.lstTool.ItemWidth = 210;
+            this.lstTool.Location = new System.Drawing.Point(3, 21);
+            this.lstTool.Margin = new System.Windows.Forms.Padding(5);
+            this.lstTool.MinMargin = 5;
+            this.lstTool.Name = "lstTool";
+            this.lstTool.Size = new System.Drawing.Size(254, 366);
+            this.lstTool.TabIndex = 3;
+            // 
             // grbToolInfo
             // 
             this.grbToolInfo.Controls.Add(this.tableLayoutPanel2);
             this.grbToolInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbToolInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbToolInfo.Location = new System.Drawing.Point(558, 0);
+            this.grbToolInfo.Location = new System.Drawing.Point(556, 0);
             this.grbToolInfo.Name = "grbToolInfo";
-            this.grbToolInfo.Size = new System.Drawing.Size(314, 390);
+            this.grbToolInfo.Size = new System.Drawing.Size(316, 390);
             this.grbToolInfo.TabIndex = 1;
             this.grbToolInfo.TabStop = false;
             this.grbToolInfo.Text = "Tool Info";
@@ -111,7 +142,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(308, 366);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(310, 366);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -138,7 +169,7 @@
             this.btnGetTool.FillColor = System.Drawing.Color.WhiteSmoke;
             this.btnGetTool.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGetTool.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
-            this.btnGetTool.Location = new System.Drawing.Point(93, 314);
+            this.btnGetTool.Location = new System.Drawing.Point(94, 314);
             this.btnGetTool.Name = "btnGetTool";
             this.btnGetTool.Size = new System.Drawing.Size(121, 44);
             this.btnGetTool.TabIndex = 0;
@@ -194,7 +225,7 @@
             this.txtToolCode.PlaceholderText = "";
             this.txtToolCode.ReadOnly = true;
             this.txtToolCode.SelectedText = "";
-            this.txtToolCode.Size = new System.Drawing.Size(200, 35);
+            this.txtToolCode.Size = new System.Drawing.Size(202, 35);
             this.txtToolCode.TabIndex = 1;
             // 
             // txtToolName
@@ -217,7 +248,7 @@
             this.txtToolName.PlaceholderText = "";
             this.txtToolName.ReadOnly = true;
             this.txtToolName.SelectedText = "";
-            this.txtToolName.Size = new System.Drawing.Size(200, 35);
+            this.txtToolName.Size = new System.Drawing.Size(202, 35);
             this.txtToolName.TabIndex = 1;
             // 
             // txtTrayNumber
@@ -240,7 +271,7 @@
             this.txtTrayNumber.PlaceholderText = "";
             this.txtTrayNumber.ReadOnly = true;
             this.txtTrayNumber.SelectedText = "";
-            this.txtTrayNumber.Size = new System.Drawing.Size(200, 35);
+            this.txtTrayNumber.Size = new System.Drawing.Size(202, 35);
             this.txtTrayNumber.TabIndex = 1;
             // 
             // txtQty
@@ -263,8 +294,32 @@
             this.txtQty.PlaceholderText = "";
             this.txtQty.ReadOnly = true;
             this.txtQty.SelectedText = "";
-            this.txtQty.Size = new System.Drawing.Size(200, 35);
+            this.txtQty.Size = new System.Drawing.Size(202, 35);
             this.txtQty.TabIndex = 1;
+            // 
+            // pnLog
+            // 
+            this.tableLayoutPanel2.SetColumnSpan(this.pnLog, 2);
+            this.pnLog.Controls.Add(this.scrLog);
+            this.pnLog.Controls.Add(this.rtbStatus);
+            this.pnLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnLog.Location = new System.Drawing.Point(3, 183);
+            this.pnLog.Name = "pnLog";
+            this.pnLog.Size = new System.Drawing.Size(304, 120);
+            this.pnLog.TabIndex = 3;
+            // 
+            // scrLog
+            // 
+            this.scrLog.AutoRoundedCorners = true;
+            this.scrLog.BindingContainer = this.rtbStatus;
+            this.scrLog.BorderRadius = 8;
+            this.scrLog.InUpdate = false;
+            this.scrLog.LargeChange = 10;
+            this.scrLog.Location = new System.Drawing.Point(285, 1);
+            this.scrLog.Name = "scrLog";
+            this.scrLog.ScrollbarSize = 18;
+            this.scrLog.Size = new System.Drawing.Size(18, 118);
+            this.scrLog.TabIndex = 3;
             // 
             // rtbStatus
             // 
@@ -273,7 +328,7 @@
             this.rtbStatus.Margin = new System.Windows.Forms.Padding(15, 3, 3, 3);
             this.rtbStatus.Name = "rtbStatus";
             this.rtbStatus.ReadOnly = true;
-            this.rtbStatus.Size = new System.Drawing.Size(302, 120);
+            this.rtbStatus.Size = new System.Drawing.Size(304, 120);
             this.rtbStatus.TabIndex = 2;
             this.rtbStatus.Text = "";
             // 
@@ -347,43 +402,15 @@
             // 
             // grbStockInfo
             // 
-            this.grbStockInfo.Controls.Add(this.tvStock);
+            this.grbStockInfo.Controls.Add(this.tclStock);
             this.grbStockInfo.Dock = System.Windows.Forms.DockStyle.Left;
             this.grbStockInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbStockInfo.Location = new System.Drawing.Point(260, 0);
             this.grbStockInfo.Name = "grbStockInfo";
-            this.grbStockInfo.Size = new System.Drawing.Size(298, 390);
+            this.grbStockInfo.Size = new System.Drawing.Size(296, 390);
             this.grbStockInfo.TabIndex = 4;
             this.grbStockInfo.TabStop = false;
             this.grbStockInfo.Text = "Stock Info";
-            // 
-            // tmGetTool
-            // 
-            this.tmGetTool.Interval = 500;
-            // 
-            // pnLog
-            // 
-            this.tableLayoutPanel2.SetColumnSpan(this.pnLog, 2);
-            this.pnLog.Controls.Add(this.scrLog);
-            this.pnLog.Controls.Add(this.rtbStatus);
-            this.pnLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnLog.Location = new System.Drawing.Point(3, 183);
-            this.pnLog.Name = "pnLog";
-            this.pnLog.Size = new System.Drawing.Size(302, 120);
-            this.pnLog.TabIndex = 3;
-            // 
-            // scrLog
-            // 
-            this.scrLog.AutoRoundedCorners = true;
-            this.scrLog.BindingContainer = this.rtbStatus;
-            this.scrLog.BorderRadius = 8;
-            this.scrLog.InUpdate = false;
-            this.scrLog.LargeChange = 10;
-            this.scrLog.Location = new System.Drawing.Point(283, 1);
-            this.scrLog.Name = "scrLog";
-            this.scrLog.ScrollbarSize = 18;
-            this.scrLog.Size = new System.Drawing.Size(18, 118);
-            this.scrLog.TabIndex = 3;
             // 
             // tvStock
             // 
@@ -391,54 +418,102 @@
             this.tvStock.ChildNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tvStock.DataSource = null;
             this.tvStock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvStock.Location = new System.Drawing.Point(3, 21);
-            this.tvStock.Margin = new System.Windows.Forms.Padding(4);
+            this.tvStock.Location = new System.Drawing.Point(3, 3);
+            this.tvStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tvStock.Name = "tvStock";
             this.tvStock.RootNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tvStock.Size = new System.Drawing.Size(292, 366);
+            this.tvStock.Size = new System.Drawing.Size(276, 312);
             this.tvStock.TabIndex = 0;
             // 
-            // lstTool
+            // tmGetTool
             // 
-            this.lstTool.AutoSpacing = true;
-            this.lstTool.BackColor = System.Drawing.Color.Snow;
-            this.lstTool.DataSource = null;
-            this.lstTool.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstTool.ItemBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(144)))), ((int)(((byte)(233)))));
-            this.lstTool.ItemBorderRadius = 8;
-            this.lstTool.ItemBorderThickness = 1;
-            this.lstTool.ItemBottomDisplayMember = "ToolName";
-            this.lstTool.ItemFillColor = System.Drawing.Color.WhiteSmoke;
-            this.lstTool.ItemFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstTool.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
-            this.lstTool.ItemHeight = 45;
-            this.lstTool.ItemSpace = 10;
-            this.lstTool.ItemTopDisplayMember = "ToolCode";
-            this.lstTool.ItemWidth = 210;
-            this.lstTool.Location = new System.Drawing.Point(3, 21);
-            this.lstTool.Margin = new System.Windows.Forms.Padding(5);
-            this.lstTool.MinMargin = 5;
-            this.lstTool.Name = "lstTool";
-            this.lstTool.Size = new System.Drawing.Size(254, 366);
-            this.lstTool.TabIndex = 3;
+            this.tmGetTool.Interval = 500;
             // 
-            // GetToolViewNew
+            // tclStock
+            // 
+            this.tclStock.Controls.Add(this.tabPage1);
+            this.tclStock.Controls.Add(this.tabPage2);
+            this.tclStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tclStock.ItemSize = new System.Drawing.Size(142, 40);
+            this.tclStock.Location = new System.Drawing.Point(3, 21);
+            this.tclStock.Name = "tclStock";
+            this.tclStock.SelectedIndex = 0;
+            this.tclStock.Size = new System.Drawing.Size(290, 366);
+            this.tclStock.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
+            this.tclStock.TabButtonHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
+            this.tclStock.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.tclStock.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
+            this.tclStock.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
+            this.tclStock.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
+            this.tclStock.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(208)))), ((int)(((byte)(242)))));
+            this.tclStock.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.tclStock.TabButtonIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(160)))), ((int)(((byte)(167)))));
+            this.tclStock.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.tclStock.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
+            this.tclStock.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(150)))), ((int)(((byte)(225)))));
+            this.tclStock.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.tclStock.TabButtonSelectedState.ForeColor = System.Drawing.Color.Navy;
+            this.tclStock.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
+            this.tclStock.TabButtonSize = new System.Drawing.Size(142, 40);
+            this.tclStock.TabIndex = 1;
+            this.tclStock.TabMenuBackColor = System.Drawing.Color.Transparent;
+            this.tclStock.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.tvStock);
+            this.tabPage1.Location = new System.Drawing.Point(4, 44);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(282, 318);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Current Machine";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.tvOtherStock);
+            this.tabPage2.Location = new System.Drawing.Point(4, 44);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(282, 318);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Other Machine";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tvOtherStock
+            // 
+            this.tvOtherStock.BackColor = System.Drawing.SystemColors.Control;
+            this.tvOtherStock.ChildNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tvOtherStock.DataSource = null;
+            this.tvOtherStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvOtherStock.Location = new System.Drawing.Point(3, 3);
+            this.tvOtherStock.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tvOtherStock.Name = "tvOtherStock";
+            this.tvOtherStock.RootNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tvOtherStock.Size = new System.Drawing.Size(276, 312);
+            this.tvOtherStock.TabIndex = 1;
+            // 
+            // GetToolView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 450);
             this.Controls.Add(this.pnDesktop);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "GetToolViewNew";
+            this.Name = "GetToolView";
             this.Text = "GetToolViewNew";
             this.grbToolList.ResumeLayout(false);
             this.grbToolInfo.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.pnLog.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.pnDesktop.ResumeLayout(false);
             this.grbStockInfo.ResumeLayout(false);
-            this.pnLog.ResumeLayout(false);
+            this.tclStock.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -469,5 +544,9 @@
         private System.Windows.Forms.RichTextBox rtbStatus;
         private System.Windows.Forms.Panel pnLog;
         private Guna.UI2.WinForms.Guna2VScrollBar scrLog;
+        private Guna.UI2.WinForms.Guna2TabControl tclStock;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private Components.StockInfoTreeView tvOtherStock;
     }
 }

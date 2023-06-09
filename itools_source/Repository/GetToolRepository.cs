@@ -61,7 +61,7 @@ namespace VinamiToolUser.Repository
             return toolList;
         }
 
-        public async Task<IEnumerable<TrayModel>> GetTrayList(int toolID)
+        public async Task<IEnumerable<TrayModel>> GetCurrentTrayList(int toolID, int machineID)
         {
             var trayList = new List<TrayModel>();
             using (MySqlConnection connection = await OpenAsync())
@@ -69,8 +69,55 @@ namespace VinamiToolUser.Repository
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"GetTrayStockForTool";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@toolID", MySqlDbType.String, toolID);
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@toolID", MySqlDbType.Int32, toolID);
                 cmd.Parameters.Add(prm);
+                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "@machineID", MySqlDbType.Int32, machineID);
+                cmd.Parameters.Add(prm2);
+                using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
+                {
+                    if (dataReader != null)
+                    {
+                        while (dataReader.Read())
+                        {
+                            var trayModel = new TrayModel();
+                            if (!dataReader.IsDBNull(0))
+                            {
+                                trayModel.TrayId = dataReader.GetInt32(0);
+                            }
+                            if (!dataReader.IsDBNull(1))
+                            {
+                                trayModel.TrayName = dataReader.GetString(1);
+                            }
+                            if (!dataReader.IsDBNull(2))
+                            {
+                                trayModel.QtyStock = dataReader.GetInt32(2);
+                            }
+                            if (!dataReader.IsDBNull(3))
+                            {
+                                trayModel.MachineName = dataReader.GetString(3);
+                            }
+                            trayList.Add(trayModel);
+                        }
+                    }
+                    dataReader.Close();
+                }
+                connection.Close();
+            }
+            return trayList;
+        }
+
+        public async Task<IEnumerable<TrayModel>> GetOtherTrayList(int toolID, int machineID)
+        {
+            var trayList = new List<TrayModel>();
+            using (MySqlConnection connection = await OpenAsync())
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = @"GetOtherTrayStockForTool";
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@toolID", MySqlDbType.Int32, toolID);
+                cmd.Parameters.Add(prm);
+                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "@machineID", MySqlDbType.Int32, machineID);
+                cmd.Parameters.Add(prm2);
                 using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                 {
                     if (dataReader != null)
