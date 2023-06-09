@@ -125,9 +125,9 @@ namespace itools_source.Views
                 SetDisplayMode(1);
             };
             btnCancel.Click += (s, e) => 
-            { 
+            {
+                SetDisplayMode(0);
                 CancelEvent?.Invoke(this, EventArgs.Empty);
-                SetDisplayMode(0); 
             };
             btnExit.Click += (s, e) => { Application.Exit(); };
         }
@@ -170,6 +170,8 @@ namespace itools_source.Views
                     {
                         if (_mainView.UserLogin == null) btnExit.Visible = true;
                         else btnExit.Visible = false;
+
+                        grbSetting.Enabled = true;
                         grbCompanyList.Visible = false;
                         grbMachineList.Visible = false;
                         btnEdit.Enabled = true;

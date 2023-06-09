@@ -53,7 +53,7 @@ namespace VinamiToolUser.Presenters
             if(_view.CurrentMachine != null)
             {
                 _currentCompany = _companyList.Where(x => x.CompanyID == _view.CurrentMachine.CompanyID).FirstOrDefault();
-                _currentMachine = _machineList.Where(x => x.MachineID == _view.CurrentMachine.MachineID).FirstOrDefault();
+                _currentMachine = _view.CurrentMachine;
                 _view.CompanyNameSelect = _currentCompany.CompanyName;
                 _view.MachineName = _currentMachine.MachineName;
                 if(_view.CurrentConfig != null) { _view.ComPort = _view.CurrentConfig.ComPort; }
@@ -69,7 +69,6 @@ namespace VinamiToolUser.Presenters
         {
             _companyList = await _repository.GetCompanyList();
             _companySource.DataSource = _companyList;
-            _machineList = await _repository.GetAllMachineList();
             _machineSource.DataSource = _machineList;
             LoadCurrentConfig();
         }
