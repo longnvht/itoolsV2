@@ -61,6 +61,7 @@ namespace VinamiToolUser.Presenters
             else
             {
                 _view.CompanyNameSelect = "";
+                _machineSource.DataSource = null;
             }
         }
 
