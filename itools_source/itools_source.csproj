@@ -206,12 +206,14 @@
     <Compile Include="Models\Interface\IMenuRepository.cs" />
     <Compile Include="Models\Interface\IOpRepository.cs" />
     <Compile Include="Models\Interface\ISettingRepository.cs" />
+    <Compile Include="Models\Interface\IStockRepository.cs" />
     <Compile Include="Models\JobModel.cs" />
     <Compile Include="Models\MachineConfigModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\OPModel.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\PermissionDetail.cs" />
+    <Compile Include="Models\StockModel.cs" />
     <Compile Include="Models\TempToolModel.cs" />
     <Compile Include="Models\ToolModel.cs" />
     <Compile Include="Models\TrayModel.cs" />
@@ -230,6 +232,7 @@
     <Compile Include="Presenters\OpPresenter.cs" />
     <Compile Include="Presenters\ManagerToolPresenter.cs" />
     <Compile Include="Presenters\SettingPresenter.cs" />
+    <Compile Include="Presenters\StockPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GetToolRepository.cs" />
@@ -241,6 +244,7 @@
     <Compile Include="Repository\SettingRepository.cs" />
     <Compile Include="Repository\LoginRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\StockRepository.cs" />
     <Compile Include="Utils\CommonValue.cs" />
     <Compile Include="Utils\Encryption.cs" />
     <Compile Include="Views\Components\KeyBoard\CommandInstruction.cs" />
@@ -276,6 +280,7 @@
     <Compile Include="Views\Components\StockInfoTreeView.Designer.cs">
       <DependentUpon>StockInfoTreeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Interface\IStockView.cs" />
     <Compile Include="Views\SettingView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -338,6 +343,12 @@
     <Compile Include="Views\OpView.Designer.cs">
       <DependentUpon>OpView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\StockView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\StockView.Designer.cs">
+      <DependentUpon>StockView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\TestView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -390,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\OpView.resx">
       <DependentUpon>OpView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\StockView.resx">
+      <DependentUpon>StockView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TestView.resx">
       <DependentUpon>TestView.cs</DependentUpon>

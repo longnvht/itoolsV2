@@ -91,6 +91,7 @@ namespace VinamiToolUser.Views
                 _actionTime++;
                 AppendText(rtbStatus, "* - - - *", Color.Blue, true);
             };
+            tclStock.TabIndexChanged += (s, e) => { btnGetTool.Enabled = false; };
             serialPortGetTool.DataReceived += GetDataReceive;
         }
 
