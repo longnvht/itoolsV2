@@ -50,13 +50,13 @@
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnDesktop = new System.Windows.Forms.Panel();
             this.grbStockInfo = new System.Windows.Forms.GroupBox();
-            this.tvStock = new VinamiToolUser.Views.Components.StockInfoTreeView();
-            this.serialPortGetTool = new System.IO.Ports.SerialPort(this.components);
-            this.tmGetTool = new System.Windows.Forms.Timer(this.components);
             this.tclStock = new Guna.UI2.WinForms.Guna2TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tvStock = new VinamiToolUser.Views.Components.StockInfoTreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tvOtherStock = new VinamiToolUser.Views.Components.StockInfoTreeView();
+            this.serialPortGetTool = new System.IO.Ports.SerialPort(this.components);
+            this.tmGetTool = new System.Windows.Forms.Timer(this.components);
             this.grbToolList.SuspendLayout();
             this.grbToolInfo.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -378,7 +378,7 @@
             this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.Location = new System.Drawing.Point(4, 5);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -411,23 +411,6 @@
             this.grbStockInfo.TabIndex = 4;
             this.grbStockInfo.TabStop = false;
             this.grbStockInfo.Text = "Stock Info";
-            // 
-            // tvStock
-            // 
-            this.tvStock.BackColor = System.Drawing.SystemColors.Control;
-            this.tvStock.ChildNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tvStock.DataSource = null;
-            this.tvStock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvStock.Location = new System.Drawing.Point(3, 3);
-            this.tvStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tvStock.Name = "tvStock";
-            this.tvStock.RootNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tvStock.Size = new System.Drawing.Size(276, 312);
-            this.tvStock.TabIndex = 0;
-            // 
-            // tmGetTool
-            // 
-            this.tmGetTool.Interval = 500;
             // 
             // tclStock
             // 
@@ -470,6 +453,19 @@
             this.tabPage1.Text = "Current Machine";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tvStock
+            // 
+            this.tvStock.BackColor = System.Drawing.SystemColors.Control;
+            this.tvStock.ChildNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tvStock.DataSource = null;
+            this.tvStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvStock.Location = new System.Drawing.Point(3, 3);
+            this.tvStock.Margin = new System.Windows.Forms.Padding(4);
+            this.tvStock.Name = "tvStock";
+            this.tvStock.RootNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tvStock.Size = new System.Drawing.Size(276, 312);
+            this.tvStock.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tvOtherStock);
@@ -488,11 +484,15 @@
             this.tvOtherStock.DataSource = null;
             this.tvOtherStock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvOtherStock.Location = new System.Drawing.Point(3, 3);
-            this.tvOtherStock.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tvOtherStock.Margin = new System.Windows.Forms.Padding(5);
             this.tvOtherStock.Name = "tvOtherStock";
             this.tvOtherStock.RootNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tvOtherStock.Size = new System.Drawing.Size(276, 312);
             this.tvOtherStock.TabIndex = 1;
+            // 
+            // tmGetTool
+            // 
+            this.tmGetTool.Interval = 500;
             // 
             // GetToolView
             // 

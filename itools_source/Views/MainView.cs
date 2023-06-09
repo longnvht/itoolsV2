@@ -251,7 +251,6 @@ namespace VinamiToolUser.Views
         private Dictionary<string, Type> viewTypes = new Dictionary<string, Type>()
         {
             { "Login", typeof(LoginView) },
-            { "Test", typeof(TestView) },
             { "Menu", typeof(MenuView) },
             { "Select Job", typeof(JobView) },
             { "Select Op", typeof(OpView) },
