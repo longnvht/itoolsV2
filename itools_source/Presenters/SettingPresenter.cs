@@ -58,6 +58,11 @@ namespace VinamiToolUser.Presenters
                 _view.MachineName = _currentMachine.MachineName;
                 if(_view.CurrentConfig != null) { _view.ComPort = _view.CurrentConfig.ComPort; }
             }
+            else
+            {
+                _view.CompanyNameSelect = "";
+                _view.MachineName = "";
+            }
         }
 
         private void CancelEvent(object sender, EventArgs e)

@@ -126,8 +126,8 @@ namespace itools_source.Views
             };
             btnCancel.Click += (s, e) => 
             {
-                SetDisplayMode(0);
                 CancelEvent?.Invoke(this, EventArgs.Empty);
+                SetDisplayMode(0);
             };
             btnExit.Click += (s, e) => { Application.Exit(); };
         }

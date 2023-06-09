@@ -42,16 +42,16 @@
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.grbSetting = new System.Windows.Forms.GroupBox();
             this.grbMachineList = new System.Windows.Forms.GroupBox();
-            this.lstMachine = new VinamiToolUser.Views.Components.ListButton();
             this.tlpMachineSelect = new System.Windows.Forms.TableLayoutPanel();
             this.btnMachineCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnMachineSelect = new Guna.UI2.WinForms.Guna2Button();
             this.grbCompanyList = new System.Windows.Forms.GroupBox();
-            this.lstCompany = new VinamiToolUser.Views.Components.ListButton();
             this.tlpCompanySelect = new System.Windows.Forms.TableLayoutPanel();
             this.btnCompanyCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnCompanySelect = new Guna.UI2.WinForms.Guna2Button();
             this.btnExit = new Guna.UI2.WinForms.Guna2TileButton();
+            this.lstCompany = new VinamiToolUser.Views.Components.ListButton();
+            this.lstMachine = new VinamiToolUser.Views.Components.ListButton();
             this.tlpMain.SuspendLayout();
             this.tlpFooter.SuspendLayout();
             this.grbSetting.SuspendLayout();
@@ -78,7 +78,7 @@
             this.tlpMain.Controls.Add(this.txtMachine, 1, 1);
             this.tlpMain.Controls.Add(this.txtCompany, 1, 0);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpMain.Location = new System.Drawing.Point(3, 33);
+            this.tlpMain.Location = new System.Drawing.Point(3, 23);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 6;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -87,16 +87,16 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMain.Size = new System.Drawing.Size(794, 368);
+            this.tlpMain.Size = new System.Drawing.Size(794, 378);
             this.tlpMain.TabIndex = 0;
             // 
             // lblMachine
             // 
             this.lblMachine.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblMachine.AutoSize = true;
-            this.lblMachine.Location = new System.Drawing.Point(3, 59);
+            this.lblMachine.Location = new System.Drawing.Point(3, 65);
             this.lblMachine.Name = "lblMachine";
-            this.lblMachine.Size = new System.Drawing.Size(102, 31);
+            this.lblMachine.Size = new System.Drawing.Size(68, 20);
             this.lblMachine.TabIndex = 1;
             this.lblMachine.Text = "Machine";
             this.lblMachine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -127,9 +127,9 @@
             // 
             this.lblSerialMachine.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblSerialMachine.AutoSize = true;
-            this.lblSerialMachine.Location = new System.Drawing.Point(3, 159);
+            this.lblSerialMachine.Location = new System.Drawing.Point(3, 165);
             this.lblSerialMachine.Name = "lblSerialMachine";
-            this.lblSerialMachine.Size = new System.Drawing.Size(122, 31);
+            this.lblSerialMachine.Size = new System.Drawing.Size(79, 20);
             this.lblSerialMachine.TabIndex = 2;
             this.lblSerialMachine.Text = "Serial Port";
             this.lblSerialMachine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -164,9 +164,9 @@
             // 
             this.lblSerial.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblSerial.AutoSize = true;
-            this.lblSerial.Location = new System.Drawing.Point(3, 100);
+            this.lblSerial.Location = new System.Drawing.Point(3, 115);
             this.lblSerial.Name = "lblSerial";
-            this.lblSerial.Size = new System.Drawing.Size(117, 50);
+            this.lblSerial.Size = new System.Drawing.Size(118, 20);
             this.lblSerial.TabIndex = 2;
             this.lblSerial.Text = "Hard Disk Serial";
             this.lblSerial.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -189,6 +189,7 @@
             this.txtHardDiskSerial.Name = "txtHardDiskSerial";
             this.txtHardDiskSerial.PasswordChar = '\0';
             this.txtHardDiskSerial.PlaceholderText = "";
+            this.txtHardDiskSerial.ReadOnly = true;
             this.txtHardDiskSerial.SelectedText = "";
             this.txtHardDiskSerial.Size = new System.Drawing.Size(292, 36);
             this.txtHardDiskSerial.TabIndex = 8;
@@ -197,9 +198,9 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Location = new System.Drawing.Point(3, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 31);
+            this.label1.Size = new System.Drawing.Size(74, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Company";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -343,30 +344,6 @@
             this.grbMachineList.TabStop = false;
             this.grbMachineList.Text = "Machine List";
             // 
-            // lstMachine
-            // 
-            this.lstMachine.AutoSpacing = true;
-            this.lstMachine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(245)))));
-            this.lstMachine.DataSource = null;
-            this.lstMachine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstMachine.ItemBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lstMachine.ItemBorderRadius = 8;
-            this.lstMachine.ItemBorderThickness = 1;
-            this.lstMachine.ItemBottomDisplayMember = "MachineName";
-            this.lstMachine.ItemFillColor = System.Drawing.Color.WhiteSmoke;
-            this.lstMachine.ItemFont = new System.Drawing.Font("Segoe UI", 10F);
-            this.lstMachine.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
-            this.lstMachine.ItemHeight = 50;
-            this.lstMachine.ItemSpace = 50;
-            this.lstMachine.ItemTopDisplayMember = "MachineCode";
-            this.lstMachine.ItemWidth = 200;
-            this.lstMachine.Location = new System.Drawing.Point(3, 33);
-            this.lstMachine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.lstMachine.MinMargin = 5;
-            this.lstMachine.Name = "lstMachine";
-            this.lstMachine.Size = new System.Drawing.Size(244, 318);
-            this.lstMachine.TabIndex = 0;
-            // 
             // tlpMachineSelect
             // 
             this.tlpMachineSelect.ColumnCount = 2;
@@ -431,30 +408,6 @@
             this.grbCompanyList.TabIndex = 3;
             this.grbCompanyList.TabStop = false;
             this.grbCompanyList.Text = "CompanyList";
-            // 
-            // lstCompany
-            // 
-            this.lstCompany.AutoSpacing = true;
-            this.lstCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(245)))));
-            this.lstCompany.DataSource = null;
-            this.lstCompany.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstCompany.ItemBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lstCompany.ItemBorderRadius = 8;
-            this.lstCompany.ItemBorderThickness = 1;
-            this.lstCompany.ItemBottomDisplayMember = "CompanyName";
-            this.lstCompany.ItemFillColor = System.Drawing.Color.WhiteSmoke;
-            this.lstCompany.ItemFont = new System.Drawing.Font("Segoe UI", 10F);
-            this.lstCompany.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
-            this.lstCompany.ItemHeight = 50;
-            this.lstCompany.ItemSpace = 50;
-            this.lstCompany.ItemTopDisplayMember = "CompanyCode";
-            this.lstCompany.ItemWidth = 200;
-            this.lstCompany.Location = new System.Drawing.Point(3, 33);
-            this.lstCompany.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.lstCompany.MinMargin = 5;
-            this.lstCompany.Name = "lstCompany";
-            this.lstCompany.Size = new System.Drawing.Size(244, 318);
-            this.lstCompany.TabIndex = 0;
             // 
             // tlpCompanySelect
             // 
@@ -526,9 +479,57 @@
             this.btnExit.Size = new System.Drawing.Size(40, 40);
             this.btnExit.TabIndex = 4;
             // 
+            // lstCompany
+            // 
+            this.lstCompany.AutoSpacing = true;
+            this.lstCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(245)))));
+            this.lstCompany.DataSource = null;
+            this.lstCompany.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstCompany.ItemBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lstCompany.ItemBorderRadius = 8;
+            this.lstCompany.ItemBorderThickness = 1;
+            this.lstCompany.ItemBottomDisplayMember = "CompanyName";
+            this.lstCompany.ItemFillColor = System.Drawing.Color.WhiteSmoke;
+            this.lstCompany.ItemFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.lstCompany.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
+            this.lstCompany.ItemHeight = 50;
+            this.lstCompany.ItemSpace = 5;
+            this.lstCompany.ItemTopDisplayMember = "CompanyCode";
+            this.lstCompany.ItemWidth = 200;
+            this.lstCompany.Location = new System.Drawing.Point(3, 23);
+            this.lstCompany.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.lstCompany.MinMargin = 5;
+            this.lstCompany.Name = "lstCompany";
+            this.lstCompany.Size = new System.Drawing.Size(244, 328);
+            this.lstCompany.TabIndex = 0;
+            // 
+            // lstMachine
+            // 
+            this.lstMachine.AutoSpacing = true;
+            this.lstMachine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(245)))));
+            this.lstMachine.DataSource = null;
+            this.lstMachine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstMachine.ItemBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lstMachine.ItemBorderRadius = 8;
+            this.lstMachine.ItemBorderThickness = 1;
+            this.lstMachine.ItemBottomDisplayMember = "MachineName";
+            this.lstMachine.ItemFillColor = System.Drawing.Color.WhiteSmoke;
+            this.lstMachine.ItemFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.lstMachine.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
+            this.lstMachine.ItemHeight = 50;
+            this.lstMachine.ItemSpace = 5;
+            this.lstMachine.ItemTopDisplayMember = "MachineCode";
+            this.lstMachine.ItemWidth = 200;
+            this.lstMachine.Location = new System.Drawing.Point(3, 23);
+            this.lstMachine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lstMachine.MinMargin = 5;
+            this.lstMachine.Name = "lstMachine";
+            this.lstMachine.Size = new System.Drawing.Size(244, 328);
+            this.lstMachine.TabIndex = 0;
+            // 
             // SettingView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
