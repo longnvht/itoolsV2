@@ -17,6 +17,7 @@ namespace VinamiToolUser.Views
         private static LoginView instance;
         private MainView _mainView;
         UserAccount _userLogin;
+        private bool _passwordHide;
         public LoginView()
         {
             InitializeComponent();
@@ -57,10 +58,23 @@ namespace VinamiToolUser.Views
             };
             txtPassword.IconRightClick += (s,e) =>  
             {
-
+                ShowHidePass();
             };
             txtPassword.MouseClick += (s, e) => { ShowKeyboard(); };
             txtUserName.MouseClick += (s, e) => { ShowKeyboard(); };
+        }
+
+        private void ShowHidePass()
+        {
+            if (_passwordHide)
+            {
+                txtPassword.PasswordChar = '\0';
+            }
+            else 
+            { 
+                txtPassword.PasswordChar = '●';
+            }
+            _passwordHide = !_passwordHide;
         }
 
         private void LoginViewLoad(object sender, EventArgs e)
@@ -70,6 +84,7 @@ namespace VinamiToolUser.Views
             ILoginRepository repository = UnityDI.container.Resolve<ILoginRepository>();
             Presenter = new LoginPresenter(this, repository);
             _mainView = MainView.GetInstance();
+            _passwordHide = true;
 
         }
 

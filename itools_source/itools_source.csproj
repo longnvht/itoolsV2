@@ -222,7 +222,6 @@
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\Interface\ILoginRepository.cs" />
     <Compile Include="Models\MachineModel.cs" />
-    <Compile Include="Models\UserType.cs" />
     <Compile Include="Models\WorkingTransaction.cs" />
     <Compile Include="Presenters\GetToolPresenter.cs" />
     <Compile Include="Presenters\JobPresenter.cs" />

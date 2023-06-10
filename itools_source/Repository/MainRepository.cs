@@ -1,4 +1,5 @@
-﻿using itools_source.Models;
+﻿using Google.Protobuf.WellKnownTypes;
+using itools_source.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,8 +21,10 @@ namespace VinamiToolUser.Repository
             using (MySqlConnection connection = await OpenAsync())
             {
                 MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = String.Format("Select * from warehouse where warehousetype = 'machine' and serial = '{0}'", hddSerial);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = @"GetCurrentMachine";
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@hddSerial", MySqlDbType.VarChar, hddSerial);
+                cmd.Parameters.Add(prm);
                 using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                 {
                     if (dataReader != null)
@@ -35,19 +38,19 @@ namespace VinamiToolUser.Repository
                             }
                             if (!dataReader.IsDBNull(1))
                             {
-                                machineModel.MachineCode = dataReader.GetString(1);
+                                machineModel.MachineName = dataReader.GetString(1);
                             }
                             if (!dataReader.IsDBNull(2))
                             {
-                                machineModel.MachineName = dataReader.GetString(2);
+                                machineModel.MachineCode = dataReader.GetString(2);
                             }
-                            if (!dataReader.IsDBNull(7))
+                            if (!dataReader.IsDBNull(3))
                             {
-                                machineModel.MachineSerial = dataReader.GetString(7);
+                                machineModel.MachineSerial = dataReader.GetString(3);
                             }
-                            if (!dataReader.IsDBNull(11))
+                            if (!dataReader.IsDBNull(4))
                             {
-                                machineModel.CompanyID = dataReader.GetInt32(11);
+                                machineModel.CompanyID = dataReader.GetInt32(4);
                             }
                             machineList.Add(machineModel);
                         }

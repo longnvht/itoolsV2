@@ -36,7 +36,7 @@ namespace VinamiToolUser.Presenter
         private async void LoginEvent(object sender, EventArgs e)
         {
             string strUserName = _view.UserName;
-            string strPassword = Utils.Encryption.CreateMD5(_view.Password);
+            string strPassword = Utils.Encryption.ToMD5(_view.Password);
             _log.Info("Login with username: " + strUserName);
             try
             {

@@ -157,8 +157,10 @@ namespace VinamiToolUser.Repository
             using (MySqlConnection connection = await OpenAsync())
             {
                 MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = String.Format("Select * from warehouse where warehousetype = 'machine' and companyID = {0} and (serial is null or serial = '')", companyID );
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = @"GetValidMachine";
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "companyID", MySqlDbType.Int32, companyID);
+                cmd.Parameters.Add(prm);
                 using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                 {
                     if (dataReader != null)
@@ -172,19 +174,19 @@ namespace VinamiToolUser.Repository
                             }
                             if (!dataReader.IsDBNull(1))
                             {
-                                machineModel.MachineCode = dataReader.GetString(1);
+                                machineModel.MachineName = dataReader.GetString(1);
                             }
                             if (!dataReader.IsDBNull(2))
                             {
-                                machineModel.MachineName = dataReader.GetString(2);
+                                machineModel.MachineCode = dataReader.GetString(2);
                             }
-                            if (!dataReader.IsDBNull(7))
+                            if (!dataReader.IsDBNull(3))
                             {
-                                machineModel.MachineSerial = dataReader.GetString(7);
+                                machineModel.MachineSerial = dataReader.GetString(3);
                             }
-                            if (!dataReader.IsDBNull(11))
+                            if (!dataReader.IsDBNull(4))
                             {
-                                machineModel.CompanyID = dataReader.GetInt32(11);
+                                machineModel.CompanyID = dataReader.GetInt32(4);
                             }
                             machineList.Add(machineModel);
                         }
@@ -204,7 +206,7 @@ namespace VinamiToolUser.Repository
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"UpdateMachineSerial";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "machineID", MySqlDbType.Int32, machineID);
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "pMachineID", MySqlDbType.Int32, machineID);
                 cmd.Parameters.Add(prm);
                 MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "pSerial", MySqlDbType.String, serial);
                 cmd.Parameters.Add(prm2);

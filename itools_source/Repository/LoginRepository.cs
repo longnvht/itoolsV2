@@ -47,14 +47,9 @@ namespace VinamiToolUser.Repository
                                 userAccount.FullName = dataReader.GetString(2);
                             }
 
-                            if (!await dataReader.IsDBNullAsync(3)) // NameStaff
+                            if (!await dataReader.IsDBNullAsync(3)) // Permission
                             {
-                                userAccount.UserType = dataReader.GetString(3);
-                            }
-
-                            if (!await dataReader.IsDBNullAsync(4)) // Permission
-                            {
-                                userAccount.PermisionID = dataReader.GetString(4);
+                                userAccount.PermisionID = dataReader.GetString(3);
                             }
                             userList.Add(userAccount);
                         }

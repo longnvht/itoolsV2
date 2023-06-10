@@ -40,8 +40,8 @@ namespace VinamiToolUser.Views
             this.guna2Elipse_LoginView = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblMessage = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.lblDate = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblVersion = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblDate = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,7 +109,7 @@ namespace VinamiToolUser.Views
             this.txtPassword.BorderRadius = 10;
             this.tableLayoutPanel1.SetColumnSpan(this.txtPassword, 2);
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPassword.DefaultText = "123456";
+            this.txtPassword.DefaultText = "";
             this.txtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
@@ -132,7 +132,6 @@ namespace VinamiToolUser.Views
             this.txtPassword.SelectedText = "";
             this.txtPassword.Size = new System.Drawing.Size(394, 50);
             this.txtPassword.TabIndex = 1;
-            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // txtUserName
             // 
@@ -207,17 +206,6 @@ namespace VinamiToolUser.Views
             this.lblMessage.TabIndex = 9;
             this.lblMessage.Text = "...";
             // 
-            // lblDate
-            // 
-            this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(687, 399);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(38, 22);
-            this.lblDate.TabIndex = 10;
-            this.lblDate.Text = "Date:";
-            // 
             // lblVersion
             // 
             this.lblVersion.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -228,6 +216,17 @@ namespace VinamiToolUser.Views
             this.lblVersion.Size = new System.Drawing.Size(55, 22);
             this.lblVersion.TabIndex = 10;
             this.lblVersion.Text = "Version:";
+            // 
+            // lblDate
+            // 
+            this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(687, 399);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(38, 22);
+            this.lblDate.TabIndex = 10;
+            this.lblDate.Text = "Date:";
             // 
             // LoginView
             // 

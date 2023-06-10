@@ -11,7 +11,6 @@
         public int UserID { get => _userID; set => _userID = value; }
         public string UserName { get => _userName; set => _userName = value; }
         public string FullName { get => _fullName; set => _fullName = value; }
-        public string UserType { get => _userType; set => _userType = value; }
         public string PermisionID { get => _permisionID; set => _permisionID = value; }
     }
 }
