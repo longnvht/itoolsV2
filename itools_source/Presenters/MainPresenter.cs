@@ -75,7 +75,7 @@ namespace VinamiToolUser.Presenters
                 return result;
             }
 
-            if (_view.MachineConfig.HardDiskSerial != _currentMachine.MachineSerial || _view.MachineConfig.MachineID != _currentMachine.MachineID)
+            if (_view.MachineConfig.HardDiskSerial != _currentMachine.MachineSerial || _view.MachineConfig.MachineCode != _currentMachine.MachineCode)
             {
                 result = false;
                 _view.Message = "Cấu hình thiết bị không phù hợp, vui lòng thiết lập lại các thông số cho thiết bị";

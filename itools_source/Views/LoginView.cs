@@ -58,24 +58,12 @@ namespace VinamiToolUser.Views
             };
             txtPassword.IconRightClick += (s,e) =>  
             {
-                ShowHidePass();
+                PasswordHide = !PasswordHide;
             };
             txtPassword.MouseClick += (s, e) => { ShowKeyboard(); };
             txtUserName.MouseClick += (s, e) => { ShowKeyboard(); };
         }
 
-        private void ShowHidePass()
-        {
-            if (_passwordHide)
-            {
-                txtPassword.PasswordChar = '\0';
-            }
-            else 
-            { 
-                txtPassword.PasswordChar = '●';
-            }
-            _passwordHide = !_passwordHide;
-        }
 
         private void LoginViewLoad(object sender, EventArgs e)
         {
@@ -84,7 +72,7 @@ namespace VinamiToolUser.Views
             ILoginRepository repository = UnityDI.container.Resolve<ILoginRepository>();
             Presenter = new LoginPresenter(this, repository);
             _mainView = MainView.GetInstance();
-            _passwordHide = true;
+            PasswordHide = false;
 
         }
 
@@ -121,6 +109,24 @@ namespace VinamiToolUser.Views
 
         public LoginPresenter Presenter { private get; set; }
         public string Message { get => lblMessage.Text; set => lblMessage.Text = value; }
+        public bool PasswordHide 
+        { 
+            get => _passwordHide;
+            set
+            {
+                _passwordHide = value;
+                if (PasswordHide)
+                {
+                    txtPassword.PasswordChar = '\0';
+                    txtPassword.IconRight = Properties.Resources.pass_hide_24px;
+                }
+                else
+                {
+                    txtPassword.PasswordChar = '●';
+                    txtPassword.IconRight = Properties.Resources.pass_show_24px;
+                }
+            } 
+        }
 
         #endregion
 

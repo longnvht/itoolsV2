@@ -199,7 +199,7 @@
   <ItemGroup>
     <Compile Include="DTOs\ReportStock.cs" />
     <Compile Include="Models\Interface\IBaseRepository.cs" />
-    <Compile Include="Models\Interface\IGetToolRepositoryNew.cs" />
+    <Compile Include="Models\Interface\IGetToolRepository.cs" />
     <Compile Include="Models\Interface\IJobRepository.cs" />
     <Compile Include="Models\Interface\IMainRepository.cs" />
     <Compile Include="Models\Interface\IManageToolRepository.cs" />

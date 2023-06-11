@@ -50,7 +50,7 @@ namespace VinamiToolUser.Repository
                             }
                             if (!dataReader.IsDBNull(4))
                             {
-                                machineModel.CompanyID = dataReader.GetInt32(4);
+                                machineModel.CompanyCode = dataReader.GetString(4);
                             }
                             machineList.Add(machineModel);
                         }

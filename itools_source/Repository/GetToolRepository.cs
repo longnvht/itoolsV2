@@ -16,17 +16,17 @@ using static VinamiToolUser.Utils.MySqlConnect;
 
 namespace VinamiToolUser.Repository
 {
-    public class GetToolRepository : IGetToolRepositoryNew
+    public class GetToolRepository : IGetToolRepository
     {
-        public async Task<IEnumerable<ToolModel>> GetToolList(int opID)
+        public async Task<IEnumerable<ToolModel>> GetToolList(string companyCode)
         {
             var toolList = new List<ToolModel>();
             using (MySqlConnection connection = await OpenAsync())
             {
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"GetToolForOP";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@OPID", MySqlDbType.String, opID);
+                cmd.CommandText = @"GetToolList";
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@pCompanyCode", MySqlDbType.String, companyCode);
                 cmd.Parameters.Add(prm);
                 using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                 {
@@ -61,7 +61,7 @@ namespace VinamiToolUser.Repository
             return toolList;
         }
 
-        public async Task<IEnumerable<TrayModel>> GetCurrentTrayList(int toolID, int machineID)
+        public async Task<IEnumerable<TrayModel>> GetCurrentTrayList(string toolCode, string machineCode)
         {
             var trayList = new List<TrayModel>();
             using (MySqlConnection connection = await OpenAsync())
@@ -69,9 +69,9 @@ namespace VinamiToolUser.Repository
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"GetTrayStockForTool";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@toolID", MySqlDbType.Int32, toolID);
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@pToolCode", MySqlDbType.VarChar, toolCode);
                 cmd.Parameters.Add(prm);
-                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "@machineID", MySqlDbType.Int32, machineID);
+                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "@pMachineCode", MySqlDbType.VarChar, machineCode);
                 cmd.Parameters.Add(prm2);
                 using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                 {
@@ -94,7 +94,7 @@ namespace VinamiToolUser.Repository
                             }
                             if (!dataReader.IsDBNull(3))
                             {
-                                trayModel.MachineName = dataReader.GetString(3);
+                                trayModel.MachineCode = dataReader.GetString(3);
                             }
                             trayList.Add(trayModel);
                         }
@@ -106,7 +106,7 @@ namespace VinamiToolUser.Repository
             return trayList;
         }
 
-        public async Task<IEnumerable<TrayModel>> GetOtherTrayList(int toolID, int machineID)
+        public async Task<IEnumerable<TrayModel>> GetOtherTrayList(string toolCode, string machineCode)
         {
             var trayList = new List<TrayModel>();
             using (MySqlConnection connection = await OpenAsync())
@@ -114,9 +114,9 @@ namespace VinamiToolUser.Repository
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"GetOtherTrayStockForTool";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@toolID", MySqlDbType.Int32, toolID);
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@pToolCode", MySqlDbType.VarChar, toolCode);
                 cmd.Parameters.Add(prm);
-                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "@machineID", MySqlDbType.Int32, machineID);
+                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "@pMachineCode", MySqlDbType.VarChar, machineCode);
                 cmd.Parameters.Add(prm2);
                 using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                 {
@@ -139,7 +139,7 @@ namespace VinamiToolUser.Repository
                             }
                             if (!dataReader.IsDBNull(3))
                             {
-                                trayModel.MachineName = dataReader.GetString(3);
+                                trayModel.MachineCode = dataReader.GetString(3);
                             }
                             trayList.Add(trayModel);
                         }
@@ -182,7 +182,7 @@ namespace VinamiToolUser.Repository
                             }
                             if (!dataReader.IsDBNull(3))
                             {
-                                trayModel.MachineName = dataReader.GetString(3);
+                                trayModel.MachineCode = dataReader.GetString(3);
                             }
                             trayList.Add(trayModel);
                         }
@@ -194,17 +194,17 @@ namespace VinamiToolUser.Repository
             return trayList;
         }
 
-        public async Task<IEnumerable<ToolModel>> GetToolListByToolCode(int opID, string searchValue)
+        public async Task<IEnumerable<ToolModel>> GetToolListByToolCode(string companyCode, string searchValue)
         {
             var toolList = new List<ToolModel>();
             using (MySqlConnection connection = await OpenAsync())
             {
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"SearchToolForOP";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@OPID", MySqlDbType.String, opID);
+                cmd.CommandText = @"SearchToolCode";
+                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@pCompanyCode", MySqlDbType.String, companyCode);
                 cmd.Parameters.Add(prm);
-                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "@searchValue", MySqlDbType.String, searchValue);
+                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "@pSearchValue", MySqlDbType.String, searchValue);
                 cmd.Parameters.Add(prm2);
                 using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                 {

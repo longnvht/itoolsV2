@@ -171,11 +171,20 @@ namespace VinamiToolUser.Views.Components
                     var bottomtext = "";
                     if (!String.IsNullOrEmpty(itemTopDisplayMember))
                     {
-                        toptext = GetPropertyValue(item, itemTopDisplayMember).ToString();
+                        var str = GetPropertyValue(item, itemTopDisplayMember);
+                        if (str != null)
+                        {
+                            toptext = GetPropertyValue(item, itemTopDisplayMember).ToString();
+                        }
                     }
                     if (!String.IsNullOrEmpty(itemBottomDisplayMember))
                     {
-                        bottomtext = GetPropertyValue(item, itemBottomDisplayMember).ToString();
+                        var str = GetPropertyValue(item, itemBottomDisplayMember);
+                        if (str != null) 
+                        {
+                            bottomtext = GetPropertyValue(item, itemBottomDisplayMember).ToString(); 
+                        }
+                        
                     }
 
                     Guna2Button btn = new Guna2Button();

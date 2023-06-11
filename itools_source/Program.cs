@@ -35,7 +35,7 @@ namespace VinamiToolUser
             container.RegisterType<ISettingRepository, SettingRepository>();
             container.RegisterType<IOPViewNew, OpView>();
             container.RegisterType<IOpRepository, OpRepository>();
-            container.RegisterType<IGetToolRepositoryNew, GetToolRepository>();
+            container.RegisterType<IGetToolRepository, GetToolRepository>();
             container.RegisterType<IGetToolView, GetToolView>();
             container.RegisterType<IManageToolView, ManageToolView>();
             container.RegisterType<IManageToolRepository, ManageToolRepository>();

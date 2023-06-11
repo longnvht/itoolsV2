@@ -1,4 +1,5 @@
 ﻿using itools_source;
+using itools_source.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +27,6 @@ namespace VinamiToolUser.Views
         private ToolModel _curentTool;
         private TrayModel _currentTray;
         private IMainView _mainView;
-        private MachineConfigModel _currentMachine;
         private bool _resultGetTool;
         private int _actionTime=0;
         private string _textReceive;
@@ -99,9 +99,9 @@ namespace VinamiToolUser.Views
         {
             _mainView = MainView.GetInstance();
             serialPortGetTool.PortName = _mainView.MachineConfig.ComPort;
-            _mainView.PrevView = "Select Op";
+            _mainView.PrevView = "Menu";
             CurrentTray = null;
-            IGetToolRepositoryNew repository = UnityDI.container.Resolve<IGetToolRepositoryNew>();
+            IGetToolRepository repository = UnityDI.container.Resolve<IGetToolRepository>();
             Presenter = new GetToolPresenter(this, repository);
         }
 
@@ -331,7 +331,11 @@ namespace VinamiToolUser.Views
 
         public string JobNumber => _mainView.CurrentJob.JobNumber;
 
-        public MachineConfigModel CurrentMachine { get => _mainView.MachineConfig; }
+        public MachineConfigModel CurrentConfig =>  _mainView.MachineConfig;
+
+        public MachineModel CurrentMachine => _mainView.CurrentMachine;
+
+
         public event EventHandler SearchToolEvent;
         public event EventHandler UpdateToolStock;
         public event EventHandler SelectToolEvent;

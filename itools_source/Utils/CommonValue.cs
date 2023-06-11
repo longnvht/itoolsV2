@@ -42,15 +42,19 @@ namespace VinamiToolUser.Utils
                 // load config .datL
                 MachineConfigModel configModel = new MachineConfigModel();
                 var cfg = new ConfigParser(appConfig);
-                if (!Int32.TryParse(cfg.GetValue("CONFIG", "CompanyID"), out int companyID)) return null;
-                if (configModel.MachineID < 0) return null;
-                configModel.CompanyID = companyID;
-                if (!Int32.TryParse(cfg.GetValue("CONFIG", "MachineID"), out int machineID)) return null;
-                if (configModel.MachineID < 0) return null;
-                configModel.MachineID = machineID;
+
+                string companyCode = cfg.GetValue("CONFIG", "CompanyCode");
+                if (String.IsNullOrEmpty(companyCode)) return null;
+                configModel.CompanyCode = companyCode;
+
+                string machineCode = cfg.GetValue("CONFIG", "MachineCode");
+                if (String.IsNullOrEmpty(machineCode)) return null;
+                configModel.MachineCode = machineCode;
+
                 string comPort = cfg.GetValue("CONFIG", "ComPort");
                 if(String.IsNullOrEmpty(comPort)) return null;
                 configModel.ComPort = comPort;
+
                 string hardDiskSerial = cfg.GetValue("CONFIG", "HardDiskSerial");
                 if(String.IsNullOrEmpty(hardDiskSerial)) return null;
                 configModel.HardDiskSerial = hardDiskSerial;
@@ -68,8 +72,8 @@ namespace VinamiToolUser.Utils
             if(configModel != null)
             {
                 var cfg = new ConfigParser(appConfig);
-                cfg.SetValue("CONFIG", "CompanyID", configModel.CompanyID);
-                cfg.SetValue("CONFIG", "MachineID", configModel.MachineID);
+                cfg.SetValue("CONFIG", "CompanyCode", configModel.CompanyCode);
+                cfg.SetValue("CONFIG", "MachineCode", configModel.MachineCode);
                 cfg.SetValue("CONFIG", "ComPort", configModel.ComPort);
                 cfg.SetValue("CONFIG", "HardDiskSerial", configModel.HardDiskSerial);
                 cfg.Save();

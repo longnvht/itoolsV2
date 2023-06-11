@@ -52,7 +52,7 @@ namespace VinamiToolUser.Presenters
         {
             if(_view.CurrentMachine != null)
             {
-                _currentCompany = _companyList.Where(x => x.CompanyID == _view.CurrentMachine.CompanyID).FirstOrDefault();
+                _currentCompany = _companyList.Where(x => x.CompanyCode == _view.CurrentMachine.CompanyCode).FirstOrDefault();
                 _currentMachine = _view.CurrentMachine;
                 _view.CompanyNameSelect = _currentCompany.CompanyName;
                 _view.MachineName = _currentMachine.MachineName;
@@ -120,13 +120,13 @@ namespace VinamiToolUser.Presenters
         {
             MachineConfigModel machineConfig = new MachineConfigModel();
             //Assign Config Value
-            machineConfig.CompanyID = _currentCompany.CompanyID;
-            machineConfig.MachineID = _currentMachine.MachineID;
+            machineConfig.CompanyCode = _currentCompany.CompanyCode;
+            machineConfig.MachineCode = _currentMachine.MachineCode;
             machineConfig.ComPort = _view.ComPort;
             machineConfig.HardDiskSerial = _view.HddSerial;
             //Save Config Value
             
-            bool result = await _repository.UpdateMachineSerial(machineConfig.MachineID, machineConfig.HardDiskSerial);
+            bool result = await _repository.UpdateMachineSerial(machineConfig.MachineCode, machineConfig.HardDiskSerial);
             if (result) 
             {
                 CommonValue.ConfigModel = machineConfig;

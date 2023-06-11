@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace itools_source.Models
+namespace VinamiToolUser.Models
 {
     public class MachineModel
     {
@@ -8,12 +8,12 @@ namespace itools_source.Models
         private string machineCode;
         private string machineName;
         private string machineSerial;
-        private int companyID;
+        private string companyCode;
 
         public int MachineID { get => machineID; set => machineID = value; }
         public string MachineCode { get => machineCode; set => machineCode = value; }
         public string MachineName { get => machineName; set => machineName = value; }
         public string MachineSerial { get => machineSerial; set => machineSerial = value; }
-        public int CompanyID { get => companyID; set => companyID = value; }
+        public string CompanyCode { get => companyCode; set => companyCode = value; }
     }
 }

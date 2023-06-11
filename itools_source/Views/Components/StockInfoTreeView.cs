@@ -71,7 +71,7 @@ namespace VinamiToolUser.Views.Components
         {
             tvStock.Nodes.Clear();
             IEnumerable<TrayModel> trayList = (IEnumerable<TrayModel>)bindingSource.DataSource;
-            var groupedTray = trayList.GroupBy(t => t.MachineName);
+            var groupedTray = trayList.GroupBy(t => t.MachineCode);
             foreach (var group in groupedTray)
             {
                 // Tạo nút gốc cho Machine

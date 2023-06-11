@@ -25,9 +25,9 @@ namespace VinamiToolUser.Presenters
         private IEnumerable<TrayModel> _otherTrayList;
         private IGetToolView _view;
         private string _userLogin;
-        private IGetToolRepositoryNew _repository;
+        private IGetToolRepository _repository;
 
-        public GetToolPresenter(IGetToolView view, IGetToolRepositoryNew repository)
+        public GetToolPresenter(IGetToolView view, IGetToolRepository repository)
         {
             _toolSource= new BindingSource();
             _traySource = new BindingSource();
@@ -49,9 +49,9 @@ namespace VinamiToolUser.Presenters
         {
             var tool = (ToolModel)_toolSource.Current;
             _view.CurrentTool = tool;
-            _trayList = await _repository.GetCurrentTrayList(tool.ToolID, _view.CurrentMachine.MachineID);
+            _trayList = await _repository.GetCurrentTrayList(tool.ToolCode, _view.CurrentMachine.MachineCode);
             _traySource.DataSource = _trayList;
-            _otherTrayList = await _repository.GetOtherTrayList(tool.ToolID, _view.CurrentMachine.MachineID);
+            _otherTrayList = await _repository.GetOtherTrayList(tool.ToolCode, _view.CurrentMachine.MachineCode);
             _otherTraySource.DataSource = _otherTrayList;
         }
 
@@ -84,7 +84,7 @@ namespace VinamiToolUser.Presenters
 
         private async void LoadData()
         {
-            _toolList = await _repository.GetToolList(CommonValue.CurrentOP.OpID);
+            _toolList = await _repository.GetToolList(_view.CurrentConfig.CompanyCode);
             //_trayList = await _repository.GetAllTrayList();
             _toolSource.DataSource = _toolList;
             _traySource.DataSource = _trayList;
@@ -95,11 +95,11 @@ namespace VinamiToolUser.Presenters
             var searchValue = _view.SearchToolValue;
             if (String.IsNullOrEmpty(searchValue))
             {
-                _toolList = await _repository.GetToolList(CommonValue.CurrentOP.OpID);
+                _toolList = await _repository.GetToolList(_view.CurrentConfig.CompanyCode);
             }
             else
             {
-                _toolList = await _repository.GetToolListByToolCode(CommonValue.CurrentOP.OpID, _view.SearchToolValue);
+                _toolList = await _repository.GetToolListByToolCode(_view.CurrentConfig.CompanyCode, _view.SearchToolValue);
             }
             _toolSource.DataSource = _toolList;
         }

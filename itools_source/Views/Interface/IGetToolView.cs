@@ -1,4 +1,5 @@
-﻿using System;
+﻿using itools_source.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,10 @@ namespace VinamiToolUser.Views.Interface
         UserAccount UserLogin { get; }
         string OpNumber { get; }
         string JobNumber { get; }
-        MachineConfigModel CurrentMachine { get; }
+        MachineConfigModel CurrentConfig { get; }
         GetToolPresenter Presenter { set; }
+        MachineModel CurrentMachine { get; }
+
         #endregion
 
         #region Events
