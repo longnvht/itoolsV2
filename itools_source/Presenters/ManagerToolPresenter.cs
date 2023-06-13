@@ -30,18 +30,41 @@ namespace VinamiToolUser.Presenters
             _view.Presenter = this;
             _userLogin = _view.UserLogin.UserName;
             //_view.SearchTrayEvent += SearchTray;
-            _view.GetCurrentToolStock += GetCurrentToolStock;
             _view.SetTrayBindingSource(_traySource);
             _view.SetToolBindingSource(_toolSource);
             _view.SearchEvent += SearchEvent;
             _view.UpdateModifyEvent += UpdateModifyEvent;
+            _view.AddNewToolEvent += AddNewToolEvent;
             _view.GetStockToolList += GetStockToolList;
             LoadData();
         }
 
+        private async void AddNewToolEvent(object sender, EventArgs e)
+        {
+            bool result = false;
+            TempToolModel currenttool = _view.CurrentTool;
+            TrayModelManage currentTray = _view.CurrentTray;
+            string toolCode = currenttool.ToolCode;
+            string trayName = currentTray.TrayName;
+            _view.Log = "--- Giao Dịch:  " + _view.ModifyState;
+            _view.Log = "--- Tray Name:  " + currentTray.TrayName;
+            _view.Log = "--- Số lượng thêm mới:  " + _view.ModifyQty;
+            //Update Tray Quantity
+            result = await _repository.AddNewToolToTray(_view.CurrentConfig.MachineCode, toolCode, trayName, _view.NewQty);
+            if (result) _view.Log = "--- Thêm Tool Mới vào Tray thành công";
+            else _view.Log = "--- Thêm Tool Mới vào tray thất bại";
+            //Update Working Transaction
+            result = await _repository.UpdateTransaction(_view.CurrentConfig.CompanyCode, _view.CurrentMachine.MachineCode, _userLogin, toolCode, _view.CurrentTray.TrayName, _view.ModifyQty, _view.ModifyState, result.ToString());
+            if (result) _view.Log = "--- Cập nhật lịch sử giao dịch thành công";
+            else _view.Log = "--- Cập nhật lịch sử giao dịch thất bại";
+
+            LoadData();
+            _view.ViewAction = "";
+        }
+
         private async void GetStockToolList(object sender, EventArgs e)
         {
-            _toolList = await _repository.GetAllToolList(_userLogin);
+            _toolList = await _repository.GetAllToolList(_view.CurrentConfig.CompanyCode);
             _toolSource.DataSource = _toolList;
         }
 
@@ -49,7 +72,7 @@ namespace VinamiToolUser.Presenters
         {
             if(_view.SearchType == "Tray")
             {
-                _trayList = await _repository.GetTrayListByValue(4, _view.SearchValue);
+                _trayList = await _repository.GetTrayListByValue(_view.CurrentMachine.MachineCode, _view.SearchValue);
                 _traySource.DataSource = _trayList;
                 _view.ViewAction = "";
             }
@@ -66,30 +89,17 @@ namespace VinamiToolUser.Presenters
             bool result = false;
             TempToolModel currenttool = _view.CurrentTool;
             TrayModelManage currentTray = _view.CurrentTray;
-            int toolID = currentTray.ToolID;
-            if(_view.ModifyState == "AddNew")
-            {
-                toolID = currenttool.ToolID;
-            }
-            int? stockID = null;
-            if (currenttool != null)
-            {
-                stockID = currenttool.StockID;
-            }
+            string toolCode = currentTray.ToolCode;
             int trayID = currentTray.TrayId;
             _view.Log = "--- Giao Dịch:  " + _view.ModifyState;
             _view.Log = "--- Tray Name:  " + currentTray.TrayName;
             _view.Log = "--- Số lượng thao tác:  " + _view.ModifyQty;
             //Update Tray Quantity
-            result = await _repository.UpdateStockQuantity(trayID, toolID, _view.NewQty);
+            result = await _repository.UpdateStockQuantity(trayID, toolCode, _view.NewQty);
             if (result) _view.Log = "--- Cập nhật số lượng tool mới của Tray thành công";
             else _view.Log = "--- Cập nhật số lượng tool mới của Tray thất bại";
-            //Update Stock Quantity
-            result = await _repository.UpdateTempStockQuantity(stockID, toolID, _userLogin, _view.NewStock);
-            if (result) _view.Log = "--- Cập nhật số lượng tồn kho mới của Tool thành công";
-            else _view.Log = "--- Cập nhật số lượng tồn kho mới của Tool thất bại";
             //Update Working Transaction
-            result = await _repository.UpdateTransaction(4, _userLogin, toolID, _view.CurrentTray.TrayName, _view.ModifyQty, _view.ModifyState, result.ToString());
+            result = await _repository.UpdateTransaction(_view.CurrentConfig.CompanyCode, _view.CurrentMachine.MachineCode, _userLogin, toolCode, _view.CurrentTray.TrayName, _view.ModifyQty, _view.ModifyState, result.ToString());
             if (result) _view.Log = "--- Cập nhật lịch sử giao dịch thành công";
             else _view.Log = "--- Cập nhật lịch sử giao dịch thất bại";
 
@@ -97,16 +107,10 @@ namespace VinamiToolUser.Presenters
             _view.ViewAction = "";
         }
 
-        private async void GetCurrentToolStock(object sender, EventArgs e)
-        {
-            _toolList = await _repository.GetToolListByValue(_userLogin, _view.CurrentTray.ToolCode);
-            _view.CurrentTool = _toolList.FirstOrDefault();
-        }
-
         private async void LoadData()
         {
-            _trayList = await _repository.GetAllTrayList(4);
-            _toolList = await _repository.GetAllToolList(_userLogin);
+            _trayList = await _repository.GetAllTrayList(_view.CurrentMachine.MachineCode);
+            _toolList = await _repository.GetAllToolList(_view.CurrentConfig.CompanyCode);
             _traySource.DataSource = _trayList;
             _toolSource.DataSource = _toolList;
         }

@@ -62,28 +62,17 @@ namespace VinamiToolUser.Views
             };
             txtPassword.MouseClick += (s, e) => { ShowKeyboard(); };
             txtUserName.MouseClick += (s, e) => { ShowKeyboard(); };
+            txtPassword.TextChanged += (s, e) => { CheckValidInput(); };
+            txtUserName.TextChanged += (s, e) => { CheckValidInput(); };
         }
 
-
-        private void LoginViewLoad(object sender, EventArgs e)
+        private void TxtPassword_TextChanged(object sender, EventArgs e)
         {
-            lblVersion.Text = "Version: " + Application.ProductVersion;
-            lblDate.Text = DateTime.Now.ToString("d");
-            ILoginRepository repository = UnityDI.container.Resolve<ILoginRepository>();
-            Presenter = new LoginPresenter(this, repository);
-            _mainView = MainView.GetInstance();
-            PasswordHide = false;
-
+            throw new NotImplementedException();
         }
 
-        private void ShowKeyboard()
-        {
-            var Keyboard = KeyBoard.GetInstance();
-            int x = (Screen.PrimaryScreen.Bounds.Right - Keyboard.Width) / 2;
-            int y = Screen.PrimaryScreen.Bounds.Bottom - Keyboard.Height;
-            Keyboard.Show();
-            Keyboard.Location = new Point(x, y);
-        }
+
+
 
         #region Properties - Fields
         public string UserName
@@ -135,6 +124,38 @@ namespace VinamiToolUser.Views
         #endregion
 
         #region Methods
+        private void LoginViewLoad(object sender, EventArgs e)
+        {
+            lblVersion.Text = "Version: " + Application.ProductVersion;
+            lblDate.Text = DateTime.Now.ToString("d");
+            ILoginRepository repository = UnityDI.container.Resolve<ILoginRepository>();
+            Presenter = new LoginPresenter(this, repository);
+            _mainView = MainView.GetInstance();
+            PasswordHide = false;
+            CheckValidInput();
+
+        }
+
+        private void CheckValidInput()
+        {
+            string userName = txtUserName.Text;
+            string password = txtPassword.Text;
+            if(String.IsNullOrEmpty(userName) || String.IsNullOrEmpty(password))
+            {
+                btnLogin.Enabled = false;
+            }
+            else btnLogin.Enabled = true;
+        }
+
+        private void ShowKeyboard()
+        {
+            var Keyboard = KeyBoard.GetInstance();
+            int x = (Screen.PrimaryScreen.Bounds.Right - Keyboard.Width) / 2;
+            int y = Screen.PrimaryScreen.Bounds.Bottom - Keyboard.Height;
+            Keyboard.Show();
+            Keyboard.Location = new Point(x, y);
+        }
+
         #endregion
     }
 }

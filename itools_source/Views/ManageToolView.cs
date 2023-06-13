@@ -25,8 +25,6 @@ namespace VinamiToolUser.Views
         private static ManageToolView _instance;
         private const int maxQtyItem = 10;
         private int _newQty;
-        private int _newStock;
-        private int _crQtyStock;
         private string _searchType;
         private string _log;
         private string _modifyState;
@@ -56,18 +54,6 @@ namespace VinamiToolUser.Views
             set
             { 
                 _currentTool = value;
-
-                if (_currentTool != null)
-                {
-                    _crQtyStock = _currentTool.ToolQuantity;
-                    txtStockQty.Text = _crQtyStock.ToString();
-                }
-                else
-                {
-                    _crQtyStock = 0;
-                    txtStockQty.Text = "0";
-                }
-
             }
         }
         public string SearchValue { get => txtSearch.Text; set => txtSearch.Text = value; }
@@ -111,16 +97,6 @@ namespace VinamiToolUser.Views
                 else lblNewQty.Text = "New Qty: " + value.ToString();
             }
         }
-        public int NewStock
-        {
-            get => _newStock;
-            set
-            {
-                _newStock = value;
-                if (value < 0) lblNewStock.Text = "";
-                else lblNewStock.Text = "New Stock: " + value.ToString();
-            }
-        }
 
         public ManagerToolPresenter Presenter { private get; set; }
         public string SearchType 
@@ -150,6 +126,10 @@ namespace VinamiToolUser.Views
 
         public int ModifyQty { get => Int32.Parse(txtModifyQty.Text); set => txtModifyQty.Text = value.ToString(); }
         public UserAccount UserLogin { get => _mainView.UserLogin;}
+
+        public MachineModel CurrentMachine => _mainView.CurrentMachine;
+
+        public MachineConfigModel CurrentConfig => _mainView.MachineConfig;
 
         #endregion
 
@@ -186,13 +166,11 @@ namespace VinamiToolUser.Views
             { 
                 ModifyState = "PutIn";
                 ViewAction = "Modify";
-                GetCurrentToolStock?.Invoke(this, EventArgs.Empty);
             };
             btnTakeOut.Click += (s, e) => 
             { 
                 ModifyState = "TakeOut";
                 ViewAction = "Modify";
-                GetCurrentToolStock?.Invoke(this, EventArgs.Empty);
             };
             btnAddNew.Click += (s, e) => 
             { 
@@ -203,8 +181,8 @@ namespace VinamiToolUser.Views
             lstTool.ItemClick += SelectToolChange;
             btnSelect.Click += (s, e) =>
             {
-                ViewAction = "Modify";
                 ModifyState = "AddNew";
+                ViewAction = "Modify";
                 txtToolCode.Text = CurrentTool.ToolCode;
             };
             btnCancelSelect.Click += (s, e) =>
@@ -231,8 +209,26 @@ namespace VinamiToolUser.Views
             btnSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
             btnSave.Click += (s,e) => 
             {
+                KeyBoard.CloseKeyboard();
                 Log = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "- Cập nhật thông tin giao dịch vào database!";
-                UpdateModifyEvent?.Invoke(this, EventArgs.Empty); 
+                if(ModifyState == "AddNew")
+                {
+                    AddNewToolEvent?.Invoke(this, EventArgs.Empty);
+                }
+                else UpdateModifyEvent?.Invoke(this, EventArgs.Empty); 
+            };
+            txtModifyQty.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    KeyBoard.CloseKeyboard();
+                    Log = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "- Cập nhật thông tin giao dịch vào database!";
+                    if (ModifyState == "AddNew")
+                    {
+                        AddNewToolEvent?.Invoke(this, EventArgs.Empty);
+                    }
+                    else UpdateModifyEvent?.Invoke(this, EventArgs.Empty);
+                }
             };
         }
         private void ShowLog(RichTextBox box, string text, Color color, bool AddNewLine = false)
@@ -265,7 +261,6 @@ namespace VinamiToolUser.Views
         {
             bool result = true;
             NewQty = -1;
-            NewStock = -1;
             lblErrorProvider.Text = "";
             txtModifyQty.BorderColor = Color.FromArgb(213, 218, 223);
             var value = txtModifyQty.Text;
@@ -299,17 +294,15 @@ namespace VinamiToolUser.Views
             {
                 case "PutIn":
                     {
-                        if (actionQty > maxQtyItem - qty || actionQty > _crQtyStock)
+                        if (actionQty > maxQtyItem - qty)
                         {
                             txtModifyQty.BorderColor = Color.Red;
-                            lblErrorProvider.Text = "Số tool cho vào vượt quá số lượng tồn kho\n" +
-                                                   " hoặc vượt quá số lượng có thể chứa của Tray";
+                            lblErrorProvider.Text = "Số tool cho vượt quá số lượng có thể chứa của Tray";
                             result = false;
                         }
                         else
                         {
                             NewQty = qty + actionQty;
-                            NewStock = _crQtyStock - actionQty;
                         }
                     }
                     break;
@@ -324,24 +317,21 @@ namespace VinamiToolUser.Views
                         else
                         {
                             NewQty = qty - actionQty;
-                            NewStock = _crQtyStock + actionQty;
                         }
 
                     }
                     break;
                 case "AddNew":
                     {
-                        if (actionQty > maxQtyItem - qty || actionQty > _crQtyStock)
+                        if (actionQty > maxQtyItem - qty)
                         {
                             txtModifyQty.BorderColor = Color.Red;
-                            lblErrorProvider.Text = "Số tool cho vào vượt quá số lượng tồn kho\n" +
-                                                    " hoặc vượt quá số lượng có thể chứa của Tray";
+                            lblErrorProvider.Text = "Số tool cho vào vượt quá số lượng có thể chứa của Tray";
                             result = false;
                         }
                         else
                         {
                             NewQty = qty + actionQty;
-                            NewStock = _crQtyStock - actionQty;
                         }
                     }
                     break;
@@ -435,12 +425,9 @@ namespace VinamiToolUser.Views
         private void ShowModify(bool status)
         {
             lblModify.Visible = status;
-            lblStock.Visible = status;
             txtModifyQty.Visible = status;
-            txtStockQty.Visible = status;
             lblErrorProvider.Visible = status;
             lblNewQty.Visible = status;
-            lblNewStock.Visible = status;
         }
         private void DisplayTrayAction(string value)
         {
@@ -491,8 +478,8 @@ namespace VinamiToolUser.Views
         #region Event
         public event EventHandler TraySelected;
         public event EventHandler GetStockToolList;
-        public event EventHandler GetCurrentToolStock;
         public event EventHandler UpdateModifyEvent;
+        public event EventHandler AddNewToolEvent;
         public event EventHandler SearchEvent;
         #endregion
     }

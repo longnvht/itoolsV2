@@ -8,16 +8,14 @@ namespace VinamiToolUser.Models
 {
     public class TempToolModel
     {
-        private int stockID;
         private int toolID;
         private string toolCode;
         private string toolName;
-        private int toolQuantity;
+        private string toolDescription;
 
         public int ToolID { get => toolID; set => toolID = value; }
         public string ToolCode { get => toolCode; set => toolCode = value; }
         public string ToolName { get => toolName; set => toolName = value; }
-        public int ToolQuantity { get => toolQuantity; set => toolQuantity = value; }
-        public int StockID { get => stockID; set => stockID = value; }
+        public string ToolDescription { get => toolDescription; set => toolDescription = value; }
     }
 }

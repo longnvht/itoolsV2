@@ -60,22 +60,22 @@ namespace VinamiToolUser.Presenters
             bool result = false;
             int trayID = _view.CurrentTray.TrayId;
             string trayIndex = _view.CurrentTray.TrayName;
-            int toolID = _view.CurrentTool.ToolID;
+            string toolCode = _view.CurrentTool.ToolCode;
             int qty = _view.CurrentTray.QtyStock - 1;
             //Update Tray Quantity
             if (_view.GetToolResult)
             {
-                result = await _repository.UpdateToolStock(trayID, toolID, qty);
+                result = await _repository.UpdateToolStock(trayID, qty);
                 if (result) _view.LogMessage = "--- Cập nhật số lượng tool mới của Tray thành công";
                 else _view.LogMessage = "--- Cập nhật số lượng tool mới của Tray thất bại";
                 //Update Get Tool Transaction
-                result = await _repository.UpdateGetToolTransaction(4, _userLogin, _view.OpNumber, _view.JobNumber, toolID, trayIndex, 1, "Get Tool", _view.GetToolResult.ToString());
+                result = await _repository.UpdateGetToolTransaction(_view.CurrentMachine.MachineCode, _view.CurrentConfig.CompanyCode, _userLogin, toolCode, trayIndex, 1, "GetTool", _view.GetToolResult.ToString());
                 if (result) _view.LogMessage = "--- Cập nhật lịch sử giao dịch thành công";
                 else _view.LogMessage = "--- Cập nhật lịch sử giao dịch thất bại";
             }
             else
             {
-                result = await _repository.UpdateGetToolTransaction(4, _userLogin, _view.OpNumber, _view.JobNumber, toolID, trayIndex, 0, "Get Tool", _view.GetToolResult.ToString());
+                result = await _repository.UpdateGetToolTransaction(_view.CurrentMachine.MachineCode, _view.CurrentConfig.CompanyCode, _userLogin, toolCode, trayIndex, 1, "GetTool", _view.GetToolResult.ToString());
                 if (result) _view.LogMessage = "--- Cập nhật lịch sử giao dịch thành công";
                 else _view.LogMessage = "--- Cập nhật lịch sử giao dịch thất bại";
             }

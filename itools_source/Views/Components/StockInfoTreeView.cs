@@ -83,7 +83,7 @@ namespace VinamiToolUser.Views.Components
                 foreach (var tray in group)
                 {
                     // Tạo chuỗi thông tin cho công cụ
-                    string trayInfo = String.Format("Location: {0}, Qty: {1}", tray.TrayName, tray.QtyStock);
+                    string trayInfo = String.Format("{0}, Qty: {1}", tray.TrayName, tray.QtyStock);
 
                     // Tạo nút cho công cụ
                     TreeNode trayNode = new TreeNode(trayInfo);

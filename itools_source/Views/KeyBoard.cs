@@ -15,10 +15,32 @@ namespace VinamiToolUser.Views
     public partial class KeyBoard : Form
     {
         private static KeyBoard instance;
+        private int kbWith;
+        private int kbHigh;
         public KeyBoard()
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
+            SetKbWith();
+        }
+
+        private void SetKbWith()
+        {
+            var scrWith = Screen.PrimaryScreen.Bounds.Width;
+            if (scrWith < 1000)
+            {
+                kbWith = scrWith;
+                kbHigh = 280;
+                vtKeyBoard.LabelFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            }
+            else
+            {
+                kbWith = 1000;
+                kbHigh = 320;
+                vtKeyBoard.LabelFont = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            }
+            this.Width = kbWith;
+            this.Height = kbHigh;
         }
 
         public static KeyBoard GetInstance()
@@ -90,7 +112,7 @@ namespace VinamiToolUser.Views
             {
                 vtKeyBoard.IsNumeric = false;
                 txtStyle.Text = "ABC";
-                this.Width = 1000;
+                this.Width = kbWith;
             }
         }
     }

@@ -16,115 +16,127 @@ namespace VinamiToolUser.Repository
     {
         public async Task<IEnumerable<CompanyModel>> GetCompanyList()
         {
-            var companyList = new List<CompanyModel>();
-            using (MySqlConnection connection = await OpenAsync())
+            try
             {
-                MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = @"Select * from company Limit 100";
-                //MySqlParameter prm = CreateInputParameterForSQL(cmd, "@p_JobNumber", MySqlDbType.String, "6789");
-                //cmd.Parameters.Add(prm);
-                using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
+                var companyList = new List<CompanyModel>();
+                using (MySqlConnection connection = await OpenAsync())
                 {
-                    if (dataReader != null)
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = @"Select * from company Limit 100";
+                    //MySqlParameter prm = CreateInputParameterForSQL(cmd, "@p_JobNumber", MySqlDbType.String, "6789");
+                    //cmd.Parameters.Add(prm);
+                    using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                     {
-                        while (dataReader.Read())
+                        if (dataReader != null)
                         {
-                            var companyModel = new CompanyModel();
-                            if (!dataReader.IsDBNull(0))
+                            while (dataReader.Read())
                             {
-                                companyModel.CompanyID = dataReader.GetInt32(0);
+                                var companyModel = new CompanyModel();
+                                if (!dataReader.IsDBNull(0))
+                                {
+                                    companyModel.CompanyID = dataReader.GetInt32(0);
+                                }
+                                if (!dataReader.IsDBNull(1))
+                                {
+                                    companyModel.CompanyCode = dataReader.GetString(1);
+                                }
+                                if (!dataReader.IsDBNull(2))
+                                {
+                                    companyModel.CompanyName = dataReader.GetString(2);
+                                }
+                                if (!dataReader.IsDBNull(3))
+                                {
+                                    companyModel.CompanyAddress = dataReader.GetString(3);
+                                }
+                                if (!dataReader.IsDBNull(4))
+                                {
+                                    companyModel.CompanyLocation = dataReader.GetString(4);
+                                }
+                                companyList.Add(companyModel);
                             }
-                            if (!dataReader.IsDBNull(1))
-                            {
-                                companyModel.CompanyCode = dataReader.GetString(1);
-                            }
-                            if (!dataReader.IsDBNull(2))
-                            {
-                                companyModel.CompanyName = dataReader.GetString(2);
-                            }
-                            if (!dataReader.IsDBNull(3))
-                            {
-                                companyModel.CompanyAddress = dataReader.GetString(3);
-                            }
-                            if (!dataReader.IsDBNull(4))
-                            {
-                                companyModel.CompanyLocation = dataReader.GetString(4);
-                            }
-                            companyList.Add(companyModel);
                         }
+                        dataReader.Close();
                     }
-                    dataReader.Close();
+                    connection.Close();
                 }
-                connection.Close();
+                return companyList;
             }
-            return companyList;
+            catch (Exception ex) { return null; }
         }
 
 
         public async Task<IEnumerable<MachineModel>> GetValidMachine(int companyID)
         {
-            var machineList = new List<MachineModel>();
-            using (MySqlConnection connection = await OpenAsync())
+            try
             {
-                MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"GetValidMachine";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "companyID", MySqlDbType.Int32, companyID);
-                cmd.Parameters.Add(prm);
-                using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
+                var machineList = new List<MachineModel>();
+                using (MySqlConnection connection = await OpenAsync())
                 {
-                    if (dataReader != null)
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"GetValidMachine";
+                    MySqlParameter prm = CreateInputParameterForSQL(cmd, "companyID", MySqlDbType.Int32, companyID);
+                    cmd.Parameters.Add(prm);
+                    using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                     {
-                        while (dataReader.Read())
+                        if (dataReader != null)
                         {
-                            var machineModel = new MachineModel();
-                            if (!dataReader.IsDBNull(0))
+                            while (dataReader.Read())
                             {
-                                machineModel.MachineID = dataReader.GetInt32(0);
+                                var machineModel = new MachineModel();
+                                if (!dataReader.IsDBNull(0))
+                                {
+                                    machineModel.MachineID = dataReader.GetInt32(0);
+                                }
+                                if (!dataReader.IsDBNull(1))
+                                {
+                                    machineModel.MachineName = dataReader.GetString(1);
+                                }
+                                if (!dataReader.IsDBNull(2))
+                                {
+                                    machineModel.MachineCode = dataReader.GetString(2);
+                                }
+                                if (!dataReader.IsDBNull(3))
+                                {
+                                    machineModel.MachineSerial = dataReader.GetString(3);
+                                }
+                                if (!dataReader.IsDBNull(4))
+                                {
+                                    machineModel.CompanyCode = dataReader.GetString(4);
+                                }
+                                machineList.Add(machineModel);
                             }
-                            if (!dataReader.IsDBNull(1))
-                            {
-                                machineModel.MachineName = dataReader.GetString(1);
-                            }
-                            if (!dataReader.IsDBNull(2))
-                            {
-                                machineModel.MachineCode = dataReader.GetString(2);
-                            }
-                            if (!dataReader.IsDBNull(3))
-                            {
-                                machineModel.MachineSerial = dataReader.GetString(3);
-                            }
-                            if (!dataReader.IsDBNull(4))
-                            {
-                                machineModel.CompanyCode = dataReader.GetString(4);
-                            }
-                            machineList.Add(machineModel);
                         }
+                        dataReader.Close();
                     }
-                    dataReader.Close();
+                    connection.Close();
                 }
-                connection.Close();
+                return machineList;
             }
-            return machineList;
+            catch (Exception ex) { return null; }   
         }
 
         public async Task<bool> UpdateMachineSerial(string machineCode, string serial)
         {
-            bool result = false;
-            using (MySqlConnection connection = await OpenAsync())
+            try
             {
-                MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"UpdateMachineSerial";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "pMachineCode", MySqlDbType.VarChar, machineCode);
-                cmd.Parameters.Add(prm);
-                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "pSerial", MySqlDbType.VarChar, serial);
-                cmd.Parameters.Add(prm2);
-                result = await CmdExecutionProcedureAsync(cmd);
-                await connection.CloseAsync();
+                bool result = false;
+                using (MySqlConnection connection = await OpenAsync())
+                {
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"UpdateMachineSerial";
+                    MySqlParameter prm = CreateInputParameterForSQL(cmd, "pMachineCode", MySqlDbType.VarChar, machineCode);
+                    cmd.Parameters.Add(prm);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "pSerial", MySqlDbType.VarChar, serial);
+                    cmd.Parameters.Add(prm2);
+                    result = await CmdExecutionProcedureAsync(cmd);
+                    await connection.CloseAsync();
+                }
+                return result;
             }
-            return result;
+            catch (Exception ex) { return false; }
         }
     }
 }

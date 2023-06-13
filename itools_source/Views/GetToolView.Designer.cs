@@ -110,9 +110,9 @@
             this.grbToolInfo.Controls.Add(this.tableLayoutPanel2);
             this.grbToolInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbToolInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbToolInfo.Location = new System.Drawing.Point(556, 0);
+            this.grbToolInfo.Location = new System.Drawing.Point(540, 0);
             this.grbToolInfo.Name = "grbToolInfo";
-            this.grbToolInfo.Size = new System.Drawing.Size(316, 390);
+            this.grbToolInfo.Size = new System.Drawing.Size(332, 390);
             this.grbToolInfo.TabIndex = 1;
             this.grbToolInfo.TabStop = false;
             this.grbToolInfo.Text = "Tool Info";
@@ -142,7 +142,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(310, 366);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(326, 366);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -169,7 +169,7 @@
             this.btnGetTool.FillColor = System.Drawing.Color.WhiteSmoke;
             this.btnGetTool.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGetTool.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(38)))), ((int)(((byte)(113)))));
-            this.btnGetTool.Location = new System.Drawing.Point(94, 314);
+            this.btnGetTool.Location = new System.Drawing.Point(102, 314);
             this.btnGetTool.Name = "btnGetTool";
             this.btnGetTool.Size = new System.Drawing.Size(121, 44);
             this.btnGetTool.TabIndex = 0;
@@ -225,7 +225,7 @@
             this.txtToolCode.PlaceholderText = "";
             this.txtToolCode.ReadOnly = true;
             this.txtToolCode.SelectedText = "";
-            this.txtToolCode.Size = new System.Drawing.Size(202, 35);
+            this.txtToolCode.Size = new System.Drawing.Size(218, 35);
             this.txtToolCode.TabIndex = 1;
             // 
             // txtToolName
@@ -248,7 +248,7 @@
             this.txtToolName.PlaceholderText = "";
             this.txtToolName.ReadOnly = true;
             this.txtToolName.SelectedText = "";
-            this.txtToolName.Size = new System.Drawing.Size(202, 35);
+            this.txtToolName.Size = new System.Drawing.Size(218, 35);
             this.txtToolName.TabIndex = 1;
             // 
             // txtTrayNumber
@@ -271,7 +271,7 @@
             this.txtTrayNumber.PlaceholderText = "";
             this.txtTrayNumber.ReadOnly = true;
             this.txtTrayNumber.SelectedText = "";
-            this.txtTrayNumber.Size = new System.Drawing.Size(202, 35);
+            this.txtTrayNumber.Size = new System.Drawing.Size(218, 35);
             this.txtTrayNumber.TabIndex = 1;
             // 
             // txtQty
@@ -294,7 +294,7 @@
             this.txtQty.PlaceholderText = "";
             this.txtQty.ReadOnly = true;
             this.txtQty.SelectedText = "";
-            this.txtQty.Size = new System.Drawing.Size(202, 35);
+            this.txtQty.Size = new System.Drawing.Size(218, 35);
             this.txtQty.TabIndex = 1;
             // 
             // pnLog
@@ -305,7 +305,7 @@
             this.pnLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnLog.Location = new System.Drawing.Point(3, 183);
             this.pnLog.Name = "pnLog";
-            this.pnLog.Size = new System.Drawing.Size(304, 120);
+            this.pnLog.Size = new System.Drawing.Size(320, 120);
             this.pnLog.TabIndex = 3;
             // 
             // scrLog
@@ -315,7 +315,7 @@
             this.scrLog.BorderRadius = 8;
             this.scrLog.InUpdate = false;
             this.scrLog.LargeChange = 10;
-            this.scrLog.Location = new System.Drawing.Point(285, 1);
+            this.scrLog.Location = new System.Drawing.Point(301, 1);
             this.scrLog.Name = "scrLog";
             this.scrLog.ScrollbarSize = 18;
             this.scrLog.Size = new System.Drawing.Size(18, 118);
@@ -328,7 +328,7 @@
             this.rtbStatus.Margin = new System.Windows.Forms.Padding(15, 3, 3, 3);
             this.rtbStatus.Name = "rtbStatus";
             this.rtbStatus.ReadOnly = true;
-            this.rtbStatus.Size = new System.Drawing.Size(304, 120);
+            this.rtbStatus.Size = new System.Drawing.Size(320, 120);
             this.rtbStatus.TabIndex = 2;
             this.rtbStatus.Text = "";
             // 
@@ -407,7 +407,7 @@
             this.grbStockInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbStockInfo.Location = new System.Drawing.Point(260, 0);
             this.grbStockInfo.Name = "grbStockInfo";
-            this.grbStockInfo.Size = new System.Drawing.Size(296, 390);
+            this.grbStockInfo.Size = new System.Drawing.Size(280, 390);
             this.grbStockInfo.TabIndex = 4;
             this.grbStockInfo.TabStop = false;
             this.grbStockInfo.Text = "Stock Info";
@@ -417,11 +417,11 @@
             this.tclStock.Controls.Add(this.tabPage1);
             this.tclStock.Controls.Add(this.tabPage2);
             this.tclStock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tclStock.ItemSize = new System.Drawing.Size(142, 40);
+            this.tclStock.ItemSize = new System.Drawing.Size(132, 40);
             this.tclStock.Location = new System.Drawing.Point(3, 21);
             this.tclStock.Name = "tclStock";
             this.tclStock.SelectedIndex = 0;
-            this.tclStock.Size = new System.Drawing.Size(290, 366);
+            this.tclStock.Size = new System.Drawing.Size(274, 366);
             this.tclStock.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
             this.tclStock.TabButtonHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
             this.tclStock.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
@@ -437,7 +437,7 @@
             this.tclStock.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
             this.tclStock.TabButtonSelectedState.ForeColor = System.Drawing.Color.Navy;
             this.tclStock.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
-            this.tclStock.TabButtonSize = new System.Drawing.Size(142, 40);
+            this.tclStock.TabButtonSize = new System.Drawing.Size(132, 40);
             this.tclStock.TabIndex = 1;
             this.tclStock.TabMenuBackColor = System.Drawing.Color.Transparent;
             this.tclStock.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
@@ -448,7 +448,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 44);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(282, 318);
+            this.tabPage1.Size = new System.Drawing.Size(266, 318);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Current Machine";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -463,7 +463,7 @@
             this.tvStock.Margin = new System.Windows.Forms.Padding(4);
             this.tvStock.Name = "tvStock";
             this.tvStock.RootNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tvStock.Size = new System.Drawing.Size(276, 312);
+            this.tvStock.Size = new System.Drawing.Size(260, 312);
             this.tvStock.TabIndex = 0;
             // 
             // tabPage2
@@ -472,7 +472,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(282, 318);
+            this.tabPage2.Size = new System.Drawing.Size(266, 318);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Other Machine";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -487,7 +487,7 @@
             this.tvOtherStock.Margin = new System.Windows.Forms.Padding(5);
             this.tvOtherStock.Name = "tvOtherStock";
             this.tvOtherStock.RootNodeFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tvOtherStock.Size = new System.Drawing.Size(276, 312);
+            this.tvOtherStock.Size = new System.Drawing.Size(260, 312);
             this.tvOtherStock.TabIndex = 1;
             // 
             // tmGetTool

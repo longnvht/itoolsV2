@@ -15,50 +15,54 @@ namespace VinamiToolUser.Repository
     {
         public async Task<IEnumerable<UserAccount>> GetUserAccount(string strUserName, string strPassword)
         {
-            var userList = new List<UserAccount>();
-            using (MySqlConnection connection = await OpenAsync())
+            try
             {
-                MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"GetUserAccount";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@p_UserLogin", MySqlDbType.String, strUserName);
-                cmd.Parameters.Add(prm);
-                MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "@p_Pass", MySqlDbType.String, strPassword);
-                cmd.Parameters.Add(prm2);
-                using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
+                var userList = new List<UserAccount>();
+                using (MySqlConnection connection = await OpenAsync())
                 {
-                    if (dataReader != null)
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"GetUserAccount";
+                    MySqlParameter prm = CreateInputParameterForSQL(cmd, "@p_UserLogin", MySqlDbType.String, strUserName);
+                    cmd.Parameters.Add(prm);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "@p_Pass", MySqlDbType.String, strPassword);
+                    cmd.Parameters.Add(prm2);
+                    using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                     {
-                        while (dataReader.Read())
+                        if (dataReader != null)
                         {
-                            var userAccount = new UserAccount();
-                            if (!await dataReader.IsDBNullAsync(0)) // ID
+                            while (dataReader.Read())
                             {
-                                userAccount.UserID = dataReader.GetInt32(0);
-                            }
+                                var userAccount = new UserAccount();
+                                if (!await dataReader.IsDBNullAsync(0)) // ID
+                                {
+                                    userAccount.UserID = dataReader.GetInt32(0);
+                                }
 
-                            if (!await dataReader.IsDBNullAsync(1)) // UserLogin
-                            {
-                                userAccount.UserName = dataReader.GetString(1);
-                            }
+                                if (!await dataReader.IsDBNullAsync(1)) // UserLogin
+                                {
+                                    userAccount.UserName = dataReader.GetString(1);
+                                }
 
-                            if (!await dataReader.IsDBNullAsync(2)) // NameStaff
-                            {
-                                userAccount.FullName = dataReader.GetString(2);
-                            }
+                                if (!await dataReader.IsDBNullAsync(2)) // NameStaff
+                                {
+                                    userAccount.FullName = dataReader.GetString(2);
+                                }
 
-                            if (!await dataReader.IsDBNullAsync(3)) // Permission
-                            {
-                                userAccount.PermisionID = dataReader.GetString(3);
+                                if (!await dataReader.IsDBNullAsync(3)) // Permission
+                                {
+                                    userAccount.PermisionID = dataReader.GetString(3);
+                                }
+                                userList.Add(userAccount);
                             }
-                            userList.Add(userAccount);
                         }
+                        dataReader.Close();
                     }
-                    dataReader.Close();
+                    connection.Close();
                 }
-                connection.Close();
+                return userList;
             }
-            return userList;
+            catch (Exception ex) { return null; }
         }
     }
 }

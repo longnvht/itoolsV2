@@ -75,7 +75,7 @@ namespace VinamiToolUser.Views
             this.btnCancel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Navy;
-            this.btnCancel.Location = new System.Drawing.Point(374, 317);
+            this.btnCancel.Location = new System.Drawing.Point(174, 317);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(180, 45);
             this.btnCancel.TabIndex = 3;
@@ -97,7 +97,7 @@ namespace VinamiToolUser.Views
             this.btnLogin.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.Navy;
-            this.btnLogin.Location = new System.Drawing.Point(174, 317);
+            this.btnLogin.Location = new System.Drawing.Point(374, 317);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(180, 45);
             this.btnLogin.TabIndex = 2;
@@ -139,7 +139,7 @@ namespace VinamiToolUser.Views
             this.txtUserName.BorderRadius = 10;
             this.tableLayoutPanel1.SetColumnSpan(this.txtUserName, 2);
             this.txtUserName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUserName.DefaultText = "181119";
+            this.txtUserName.DefaultText = "longnv";
             this.txtUserName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtUserName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtUserName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
@@ -155,7 +155,7 @@ namespace VinamiToolUser.Views
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PasswordChar = '\0';
             this.txtUserName.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.txtUserName.PlaceholderText = "Tài Khoản";
+            this.txtUserName.PlaceholderText = "Tên đăng nhập";
             this.txtUserName.SelectedText = "";
             this.txtUserName.Size = new System.Drawing.Size(394, 50);
             this.txtUserName.TabIndex = 0;
@@ -174,11 +174,11 @@ namespace VinamiToolUser.Views
             this.tableLayoutPanel1.Controls.Add(this.txtPassword, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtUserName, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.guna2HtmlLabel1, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnCancel, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnLogin, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.lblMessage, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblVersion, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.lblDate, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btnLogin, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btnCancel, 1, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";

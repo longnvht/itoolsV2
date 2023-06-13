@@ -14,7 +14,7 @@ namespace VinamiToolUser.Models.Interface
         Task<IEnumerable<TrayModel>> GetCurrentTrayList(string toolCode, string machineCode);
         Task<IEnumerable<TrayModel>> GetOtherTrayList(string  toolCode, string machineCode);
         Task<IEnumerable<TrayModel>> GetAllTrayList();
-        Task<bool> UpdateToolStock(int trayID, int toolID, int newQty);
-        Task<bool> UpdateGetToolTransaction(int machineID, string userID, string opNumber, string jobNumber, int toolID, string trayIndex, int qtyExchange, string typeTransaction, string transactionStatus);
+        Task<bool> UpdateToolStock(int trayID, int newQty);
+        Task<bool> UpdateGetToolTransaction(string machineCode, string companyCode, string userLogin, string toolCode, string trayIndex, int qtyExchange, string typeTransaction, string transactionStatus);
     }
 }

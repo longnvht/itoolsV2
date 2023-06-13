@@ -10,14 +10,12 @@ namespace VinamiToolUser.Models
     {
         private int trayId;
         private string trayName;
-        private int toolID;
         private string toolCode;
         private int qtyStock;
 
         public int TrayId { get => trayId; set => trayId = value; }
         public string TrayName { get => trayName; set => trayName = value; }
         public int QtyStock { get => qtyStock; set => qtyStock = value; }
-        public int ToolID { get => toolID; set => toolID = value; }
         public string ToolCode { get => toolCode; set => toolCode = value; }
     }
 }

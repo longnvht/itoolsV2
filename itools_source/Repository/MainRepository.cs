@@ -17,49 +17,53 @@ namespace VinamiToolUser.Repository
     {
         public async Task<IEnumerable<MachineModel>> GetCurrentMachineInfo(string hddSerial)
         {
-            var machineList = new List<MachineModel>();
-            using (MySqlConnection connection = await OpenAsync())
+            try
             {
-                MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"GetCurrentMachine";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@hddSerial", MySqlDbType.VarChar, hddSerial);
-                cmd.Parameters.Add(prm);
-                using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
+                var machineList = new List<MachineModel>();
+                using (MySqlConnection connection = await OpenAsync())
                 {
-                    if (dataReader != null)
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"GetCurrentMachine";
+                    MySqlParameter prm = CreateInputParameterForSQL(cmd, "@hddSerial", MySqlDbType.VarChar, hddSerial);
+                    cmd.Parameters.Add(prm);
+                    using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                     {
-                        while (dataReader.Read())
+                        if (dataReader != null)
                         {
-                            var machineModel = new MachineModel();
-                            if (!dataReader.IsDBNull(0))
+                            while (dataReader.Read())
                             {
-                                machineModel.MachineID = dataReader.GetInt32(0);
+                                var machineModel = new MachineModel();
+                                if (!dataReader.IsDBNull(0))
+                                {
+                                    machineModel.MachineID = dataReader.GetInt32(0);
+                                }
+                                if (!dataReader.IsDBNull(1))
+                                {
+                                    machineModel.MachineName = dataReader.GetString(1);
+                                }
+                                if (!dataReader.IsDBNull(2))
+                                {
+                                    machineModel.MachineCode = dataReader.GetString(2);
+                                }
+                                if (!dataReader.IsDBNull(3))
+                                {
+                                    machineModel.MachineSerial = dataReader.GetString(3);
+                                }
+                                if (!dataReader.IsDBNull(4))
+                                {
+                                    machineModel.CompanyCode = dataReader.GetString(4);
+                                }
+                                machineList.Add(machineModel);
                             }
-                            if (!dataReader.IsDBNull(1))
-                            {
-                                machineModel.MachineName = dataReader.GetString(1);
-                            }
-                            if (!dataReader.IsDBNull(2))
-                            {
-                                machineModel.MachineCode = dataReader.GetString(2);
-                            }
-                            if (!dataReader.IsDBNull(3))
-                            {
-                                machineModel.MachineSerial = dataReader.GetString(3);
-                            }
-                            if (!dataReader.IsDBNull(4))
-                            {
-                                machineModel.CompanyCode = dataReader.GetString(4);
-                            }
-                            machineList.Add(machineModel);
                         }
+                        dataReader.Close();
                     }
-                    dataReader.Close();
+                    connection.Close();
                 }
-                connection.Close();
+                return machineList;
             }
-            return machineList;
+            catch(Exception ex) { return  null; }
         }
     }
 }

@@ -12,6 +12,8 @@ namespace VinamiToolUser.Views.Interface
     public interface IManageToolView
     {
         #region Properties
+        MachineModel CurrentMachine { get; }
+        MachineConfigModel CurrentConfig { get; }
         TrayModelManage CurrentTray { get; set; }
         TempToolModel CurrentTool { get; set; }
         UserAccount  UserLogin { get; }
@@ -21,7 +23,6 @@ namespace VinamiToolUser.Views.Interface
         string ModifyState { get; set; }
         string Log{ get; set; }
         int NewQty { get; set; }
-        int NewStock { get; set; }
         int ModifyQty { get; set; }
         ManagerToolPresenter Presenter { set; }
 
@@ -32,7 +33,7 @@ namespace VinamiToolUser.Views.Interface
         event EventHandler GetStockToolList;
         event EventHandler SearchEvent;
         event EventHandler UpdateModifyEvent;
-        event EventHandler GetCurrentToolStock;
+        event EventHandler AddNewToolEvent;
         #endregion
 
         #region Methods

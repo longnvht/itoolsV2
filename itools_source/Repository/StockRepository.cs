@@ -17,45 +17,49 @@ namespace VinamiToolUser.Repository
     {
         public async Task<IEnumerable<StockModel>> GetStockForMachine(int machineID)
         {
-            var stockList = new List<StockModel>();
-            using (MySqlConnection connection = await OpenAsync())
+            try
             {
-                MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"GetStockForMachine";
-                MySqlParameter prm = CreateInputParameterForSQL(cmd, "@machineID", MySqlDbType.Int32, machineID);
-                cmd.Parameters.Add(prm);
-                using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
+                var stockList = new List<StockModel>();
+                using (MySqlConnection connection = await OpenAsync())
                 {
-                    if (dataReader != null)
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"GetStockForMachine";
+                    MySqlParameter prm = CreateInputParameterForSQL(cmd, "@machineID", MySqlDbType.Int32, machineID);
+                    cmd.Parameters.Add(prm);
+                    using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                     {
-                        while (dataReader.Read())
+                        if (dataReader != null)
                         {
-                            var stockModel = new StockModel();
-                            if (!dataReader.IsDBNull(0))
+                            while (dataReader.Read())
                             {
-                                stockModel.TrayName = dataReader.GetString(0);
+                                var stockModel = new StockModel();
+                                if (!dataReader.IsDBNull(0))
+                                {
+                                    stockModel.TrayName = dataReader.GetString(0);
+                                }
+                                if (!dataReader.IsDBNull(1))
+                                {
+                                    stockModel.ToolCode = dataReader.GetString(1);
+                                }
+                                if (!dataReader.IsDBNull(2))
+                                {
+                                    stockModel.ToolName = dataReader.GetString(2);
+                                }
+                                if (!dataReader.IsDBNull(3))
+                                {
+                                    stockModel.StockQty = dataReader.GetInt32(3);
+                                }
+                                stockList.Add(stockModel);
                             }
-                            if (!dataReader.IsDBNull(1))
-                            {
-                                stockModel.ToolCode = dataReader.GetString(1);
-                            }
-                            if (!dataReader.IsDBNull(2))
-                            {
-                                stockModel.ToolName = dataReader.GetString(2);
-                            }
-                            if (!dataReader.IsDBNull(3))
-                            {
-                                stockModel.StockQty = dataReader.GetInt32(3);
-                            }
-                            stockList.Add(stockModel);
                         }
+                        dataReader.Close();
                     }
-                    dataReader.Close();
+                    connection.Close();
                 }
-                connection.Close();
+                return stockList;
             }
-            return stockList;
+            catch (Exception ex) { return null; }
         }
     }
 }

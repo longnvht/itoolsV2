@@ -28,6 +28,29 @@ namespace VinamiToolUser.Presenters
             _view.Presenter = this;
             _view.ConfigChange += ConfigChange;
             _hddSerial = GetHardDiskSerial();
+            SynchronizationData();
+        }
+
+        private void SynchronizationData()
+        {
+            SyncLocalToHost();
+            SyncHostToLocal();
+        }
+
+        private void SyncLocalToHost()
+        {
+            //SyncLocalToHost_ToolsMachineTray
+            //SyncLocalToHost_WorkingTransaction
+        }
+
+        private void SyncHostToLocal()
+        {
+            //SyncHostToLocal_Assessor
+            //SyncHostToLocal_RoleAssessor
+            //SyncHostToLocal_Machine
+            //SyncHostToLocal_Company
+            //SyncHostToLocal_CompanyMachine
+            //SyncHostToLocal_Tools
         }
 
         private void ConfigChange(object sender, EventArgs e)
