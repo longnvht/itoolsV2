@@ -78,7 +78,7 @@ namespace VinamiToolUser.Presenters
             }
             if (_view.SearchType == "Tool")
             {
-                _toolList = await _repository.GetToolListByValue(_userLogin, _view.SearchValue);
+                _toolList = await _repository.GetToolListByValue(_view.CurrentMachine.CompanyCode, _view.SearchValue);
                 _toolSource.DataSource = _toolList;
                 _view.ViewAction = "ShowTool";
             }

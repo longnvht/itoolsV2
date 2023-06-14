@@ -15,7 +15,7 @@ namespace VinamiToolUser.Repository
 {
     public class StockRepository : IStockRepository
     {
-        public async Task<IEnumerable<StockModel>> GetStockForMachine(int machineID)
+        public async Task<IEnumerable<StockModel>> GetStockForMachine(string machineCode)
         {
             try
             {
@@ -24,8 +24,8 @@ namespace VinamiToolUser.Repository
                 {
                     MySqlCommand cmd = connection.CreateCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = @"GetStockForMachine";
-                    MySqlParameter prm = CreateInputParameterForSQL(cmd, "@machineID", MySqlDbType.Int32, machineID);
+                    cmd.CommandText = @"GetReportStock";
+                    MySqlParameter prm = CreateInputParameterForSQL(cmd, "@pMachineCode", MySqlDbType.VarChar, machineCode);
                     cmd.Parameters.Add(prm);
                     using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                     {

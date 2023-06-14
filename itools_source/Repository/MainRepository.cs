@@ -1,6 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using itools_source.Models;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -64,6 +65,198 @@ namespace VinamiToolUser.Repository
                 return machineList;
             }
             catch(Exception ex) { return  null; }
+        }
+
+        public async Task<bool> SyncHostToLocal_Assessor(string machineCode, string companyCode)
+        {
+            try
+            {
+                bool result = false;
+                using (MySqlConnection connection = await OpenAsync())
+                {
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"SyncHostToLocal_Assessor";
+                    MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "MachineCode", MySqlDbType.VarBinary, machineCode);
+                    cmd.Parameters.Add(prm1);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "CompanyCode", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm2);
+                    MySqlParameter prm3 = CreateOutParameterForSQL(cmd, "returnResult", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm3);
+                    result = await CmdExecutionProcedureAsync(cmd);
+                    await connection.CloseAsync();
+                }
+                return result;
+            }
+            catch (Exception ex) { return false; }
+        }
+
+        public async Task<bool> SyncHostToLocal_Company(string machineCode, string companyCode)
+        {
+            try
+            {
+                bool result = false;
+                using (MySqlConnection connection = await OpenAsync())
+                {
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"SyncHostToLocal_Company";
+                    MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "MachineCode", MySqlDbType.VarBinary, machineCode);
+                    cmd.Parameters.Add(prm1);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "CompanyCode", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm2);
+                    MySqlParameter prm3 = CreateOutParameterForSQL(cmd, "returnResult", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm3);
+                    result = await CmdExecutionProcedureAsync(cmd);
+                    await connection.CloseAsync();
+                }
+                return result;
+            }
+            catch (Exception ex) { return false; }
+        }
+
+        public async Task<bool> SyncHostToLocal_CompanyMachine(string machineCode, string companyCode)
+        {
+            try
+            {
+                bool result = false;
+                using (MySqlConnection connection = await OpenAsync())
+                {
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"SyncHostToLocal_CompanyMachine";
+                    MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "MachineCode", MySqlDbType.VarBinary, machineCode);
+                    cmd.Parameters.Add(prm1);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "CompanyCode", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm2);
+                    MySqlParameter prm3 = CreateOutParameterForSQL(cmd, "returnResult", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm3);
+                    result = await CmdExecutionProcedureAsync(cmd);
+                    await connection.CloseAsync();
+                }
+                return result;
+            }
+            catch (Exception ex) { return false; }
+        }
+
+        public async Task<bool> SyncHostToLocal_Machine(string machineCode, string companyCode)
+        {
+            try
+            {
+                bool result = false;
+                using (MySqlConnection connection = await OpenAsync())
+                {
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"SyncHostToLocal_Machine";
+                    MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "MachineCode", MySqlDbType.VarBinary, machineCode);
+                    cmd.Parameters.Add(prm1);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "CompanyCode", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm2);
+                    MySqlParameter prm3 = CreateOutParameterForSQL(cmd, "returnResult", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm3);
+                    result = await CmdExecutionProcedureAsync(cmd);
+                    await connection.CloseAsync();
+                }
+                return result;
+            }
+            catch (Exception ex) { return false; }
+        }
+
+        public async Task<bool> SyncHostToLocal_RoleAssessor(string machineCode, string companyCode)
+        {
+            try
+            {
+                bool result = false;
+                using (MySqlConnection connection = await OpenAsync())
+                {
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"SyncHostToLocal_RoleAssessor";
+                    MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "MachineCode", MySqlDbType.VarBinary, machineCode);
+                    cmd.Parameters.Add(prm1);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "CompanyCode", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm2);
+                    MySqlParameter prm3 = CreateOutParameterForSQL(cmd, "returnResult", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm3);
+                    result = await CmdExecutionProcedureAsync(cmd);
+                    await connection.CloseAsync();
+                }
+                return result;
+            }
+            catch (Exception ex) { return false; }
+        }
+
+        public async Task<bool> SyncHostToLocal_Tools(string machineCode, string companyCode)
+        {
+            try
+            {
+                bool result = false;
+                using (MySqlConnection connection = await OpenAsync())
+                {
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"SyncHostToLocal_Tools";
+                    MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "MachineCode", MySqlDbType.VarBinary, machineCode);
+                    cmd.Parameters.Add(prm1);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "CompanyCode", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm2);
+                    MySqlParameter prm3 = CreateOutParameterForSQL(cmd, "returnResult", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm3);
+                    result = await CmdExecutionProcedureAsync(cmd);
+                    await connection.CloseAsync();
+                }
+                return result;
+            }
+            catch (Exception ex) { return false; }
+        }
+
+        public async Task<bool> SyncLocalToHost_ToolsMachineTray(string machineCode, string companyCode)
+        {
+            try
+            {
+                bool result = false;
+                using (MySqlConnection connection = await OpenAsync())
+                {
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"SyncLocalToHost_ToolsMachineTray";
+                    MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "MachineCode", MySqlDbType.VarBinary, machineCode);
+                    cmd.Parameters.Add(prm1);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "CompanyCode", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm2);
+                    MySqlParameter prm3 = CreateOutParameterForSQL(cmd, "returnResult", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm3);
+                    result = await CmdExecutionProcedureAsync(cmd);
+                    await connection.CloseAsync();
+                }
+                return result;
+            }
+            catch (Exception ex) { return false; }
+        }
+
+        public async Task<bool> SyncLocalToHost_WorkingTransaction(string machineCode, string companyCode)
+        {
+            try
+            {
+                bool result = false;
+                using (MySqlConnection connection = await OpenAsync())
+                {
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"SyncLocalToHost_WorkingTransaction";
+                    MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "MachineCode", MySqlDbType.VarBinary, machineCode);
+                    cmd.Parameters.Add(prm1);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "CompanyCode", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm2);
+                    MySqlParameter prm3 = CreateOutParameterForSQL(cmd, "returnResult", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm3);
+                    result = await CmdExecutionProcedureAsync(cmd);
+                    await connection.CloseAsync();
+                }
+                return result;
+            }
+            catch (Exception ex) { return false; }
         }
     }
 }

@@ -175,7 +175,7 @@ namespace VinamiToolUser.Repository
                     cmd.CommandText = @"SearchTrayStockForMachine";
                     MySqlParameter prm = CreateInputParameterForSQL(cmd, "pMachineCode", MySqlDbType.VarChar, machineCode);
                     cmd.Parameters.Add(prm);
-                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "searchValue", MySqlDbType.VarChar, searchValue);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "pSearchValue", MySqlDbType.VarChar, searchValue);
                     cmd.Parameters.Add(prm2);
                     using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                     {

@@ -145,6 +145,7 @@ namespace VinamiToolUser.Views
             if (!connectStatus) return false;
             bool getToolStatus = await SendGetToolComman();
             if (!getToolStatus) return false;
+            CloseComport();
             return true;
         }
 
@@ -172,7 +173,7 @@ namespace VinamiToolUser.Views
             (
                 () =>
                 {
-                    while (_actionTime < 10)
+                    while (_actionTime < 20)
                     {
                         if (_textReceive.Contains("121") & lastTextReceive != _textReceive) //Ghi nhận sự kiện Motor Start
                         {
@@ -240,6 +241,14 @@ namespace VinamiToolUser.Views
             tmGetTool.Stop();
             rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, message, Color.Orange, true); }));
             return result;
+        }
+
+        private void CloseComport()
+        {
+            if (serialPortGetTool.IsOpen == true)
+            {
+                serialPortGetTool.Close();
+            }
         }
 
         private async Task<bool> OpenComPort()

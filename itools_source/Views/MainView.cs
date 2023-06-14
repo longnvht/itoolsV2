@@ -80,7 +80,6 @@ namespace VinamiToolUser.Views
             tlpFooter.Visible = false;
             IMainRepository repository = UnityDI.container.Resolve<IMainRepository>();
             Presenter = new MainPresenter(this, repository);
-            LoadConfig();
         }
 
         public void AssignCurentView()

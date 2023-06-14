@@ -33,13 +33,13 @@
             this.btnPrev = new Guna.UI2.WinForms.Guna2Button();
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
+            this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.txtUserName = new System.Windows.Forms.Label();
+            this.btnLogOut = new Guna.UI2.WinForms.Guna2Button();
             this.txtStatus = new System.Windows.Forms.Label();
             this.txtCurrentView = new System.Windows.Forms.Label();
             this.tsInfo = new System.Windows.Forms.ToolStrip();
             this.tslMessage = new System.Windows.Forms.ToolStripLabel();
-            this.btnHome = new Guna.UI2.WinForms.Guna2Button();
-            this.btnLogOut = new Guna.UI2.WinForms.Guna2Button();
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             this.tsInfo.SuspendLayout();
@@ -58,7 +58,7 @@
             this.tlpFooter.Controls.Add(this.btnPrev, 0, 0);
             this.tlpFooter.Controls.Add(this.btnNext, 2, 0);
             this.tlpFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tlpFooter.Location = new System.Drawing.Point(0, 380);
+            this.tlpFooter.Location = new System.Drawing.Point(0, 355);
             this.tlpFooter.Margin = new System.Windows.Forms.Padding(4);
             this.tlpFooter.Name = "tlpFooter";
             this.tlpFooter.RowCount = 1;
@@ -131,6 +131,24 @@
             this.tlpHeader.Size = new System.Drawing.Size(800, 50);
             this.tlpHeader.TabIndex = 6;
             // 
+            // btnHome
+            // 
+            this.btnHome.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnHome.FillColor = System.Drawing.Color.Transparent;
+            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.HoverState.Image = global::VinamiToolUser.Properties.Resources.home_500px;
+            this.btnHome.Image = global::VinamiToolUser.Properties.Resources.home_512px;
+            this.btnHome.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnHome.Location = new System.Drawing.Point(6, 6);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(37, 37);
+            this.btnHome.TabIndex = 0;
+            // 
             // txtUserName
             // 
             this.txtUserName.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -144,6 +162,25 @@
             this.txtUserName.TabIndex = 9;
             this.txtUserName.Text = "Name";
             this.txtUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLogOut.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogOut.FillColor = System.Drawing.Color.Transparent;
+            this.btnLogOut.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnLogOut.ForeColor = System.Drawing.Color.Black;
+            this.btnLogOut.HoverState.Image = global::VinamiToolUser.Properties.Resources.Logout_Rounded_48pxr;
+            this.btnLogOut.Image = global::VinamiToolUser.Properties.Resources.Logout_Rounded_48px;
+            this.btnLogOut.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnLogOut.Location = new System.Drawing.Point(753, 3);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(44, 44);
+            this.btnLogOut.TabIndex = 6;
             // 
             // txtStatus
             // 
@@ -171,9 +208,11 @@
             // 
             // tsInfo
             // 
+            this.tsInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(96)))));
+            this.tsInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tsInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslMessage});
-            this.tsInfo.Location = new System.Drawing.Point(0, 50);
+            this.tsInfo.Location = new System.Drawing.Point(0, 425);
             this.tsInfo.Name = "tsInfo";
             this.tsInfo.Size = new System.Drawing.Size(800, 25);
             this.tsInfo.TabIndex = 8;
@@ -181,55 +220,19 @@
             // 
             // tslMessage
             // 
+            this.tslMessage.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.tslMessage.Name = "tslMessage";
             this.tslMessage.Size = new System.Drawing.Size(65, 22);
             this.tslMessage.Text = "tslMessage";
-            // 
-            // btnHome
-            // 
-            this.btnHome.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnHome.FillColor = System.Drawing.Color.Transparent;
-            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnHome.ForeColor = System.Drawing.Color.White;
-            this.btnHome.HoverState.Image = global::VinamiToolUser.Properties.Resources.home_500px;
-            this.btnHome.Image = global::VinamiToolUser.Properties.Resources.home_512px;
-            this.btnHome.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnHome.Location = new System.Drawing.Point(6, 6);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(37, 37);
-            this.btnHome.TabIndex = 0;
-            // 
-            // btnLogOut
-            // 
-            this.btnLogOut.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLogOut.BackColor = System.Drawing.Color.Transparent;
-            this.btnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogOut.FillColor = System.Drawing.Color.Transparent;
-            this.btnLogOut.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.btnLogOut.ForeColor = System.Drawing.Color.Black;
-            this.btnLogOut.HoverState.Image = global::VinamiToolUser.Properties.Resources.Logout_Rounded_48pxr;
-            this.btnLogOut.Image = global::VinamiToolUser.Properties.Resources.Logout_Rounded_48px;
-            this.btnLogOut.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLogOut.Location = new System.Drawing.Point(753, 3);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(44, 44);
-            this.btnLogOut.TabIndex = 6;
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tsInfo);
             this.Controls.Add(this.tlpFooter);
             this.Controls.Add(this.tlpHeader);
+            this.Controls.Add(this.tsInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;

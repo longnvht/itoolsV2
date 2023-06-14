@@ -23,7 +23,7 @@ namespace VinamiToolUser.Views
     public partial class ManageToolView : Form, IManageToolView
     {
         private static ManageToolView _instance;
-        private const int maxQtyItem = 10;
+        private const int maxQtyItem = 11;
         private int _newQty;
         private string _searchType;
         private string _log;

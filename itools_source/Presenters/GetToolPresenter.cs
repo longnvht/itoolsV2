@@ -51,7 +51,7 @@ namespace VinamiToolUser.Presenters
             _view.CurrentTool = tool;
             _trayList = await _repository.GetCurrentTrayList(tool.ToolCode, _view.CurrentMachine.MachineCode);
             _traySource.DataSource = _trayList;
-            _otherTrayList = await _repository.GetOtherTrayList(tool.ToolCode, _view.CurrentMachine.MachineCode);
+            _otherTrayList = await _repository.GetOtherTrayList(tool.ToolCode, _view.CurrentMachine.MachineCode, _view.CurrentConfig.CompanyCode);
             _otherTraySource.DataSource = _otherTrayList;
         }
 

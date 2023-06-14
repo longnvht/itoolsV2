@@ -32,12 +32,14 @@ namespace VinamiToolUser.Views
                 kbWith = scrWith;
                 kbHigh = 280;
                 vtKeyBoard.LabelFont = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                vtKeyBoard.LabelFontShiftDisabled = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             }
             else
             {
                 kbWith = 1000;
                 kbHigh = 320;
                 vtKeyBoard.LabelFont = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                vtKeyBoard.LabelFontShiftDisabled = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             }
             this.Width = kbWith;
             this.Height = kbHigh;

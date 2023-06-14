@@ -29,8 +29,8 @@ namespace VinamiToolUser.Presenters
 
         private async void LoadData()
         {
-            var machineID = _view.CurrentMachine.MachineID;
-            _stockList = await _repository.GetStockForMachine(machineID);
+            var machineCode = _view.CurrentMachine.MachineCode;
+            _stockList = await _repository.GetStockForMachine(machineCode);
             _stockSource.DataSource = _stockList;
         }
     }

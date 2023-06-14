@@ -18,21 +18,20 @@ namespace VinamiToolUser.Utils
 
         public static string ConnectionString()
         {
-            _strHOST = "192.168.0.50";
+            _strHOST = "localhost";
             _strPORT = "3306";
-            _strDATABASE_MAME = "vm1data";
+            _strDATABASE_MAME = "itools_v1p0";
             _strUSER_NAME = "admin";
-            _strPASSWORD = "Vinam@12345";
+            _strPASSWORD = "1qazxsw2";
             return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
-        }
-        public static string ConnectionStringTwo()
-        {
-            _strHOST = "192.168.0.50";
-            _strPORT = "3306";
-            _strDATABASE_MAME = "tqteamne_itools";
-            _strUSER_NAME = "admin";
-            _strPASSWORD = "Vinam@12345";
-            return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
+
+
+            //_strHOST = "192.168.0.50";
+            //_strPORT = "3306";
+            //_strDATABASE_MAME = "vm1data";
+            //_strUSER_NAME = "admin";
+            //_strPASSWORD = "Vinam@12345";
+            //return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
         }
 
         #region SqlParameter CreateInputParameterForSQL(MySqlCommand dbCmd, string prmName, MySqlDbType MySqlDbType, object value)
@@ -43,6 +42,19 @@ namespace VinamiToolUser.Utils
             sPrm.MySqlDbType = MySqlDbType;
             //sPrm.IsNullable = true;
             sPrm.Direction = ParameterDirection.Input;
+            sPrm.Value = value;
+            return sPrm;
+        }
+        #endregion
+
+        #region SqlParameter CreateOutParameterForSQL(MySqlCommand dbCmd, string prmName, MySqlDbType MySqlDbType, object value)
+        public static MySqlParameter CreateOutParameterForSQL(MySqlCommand sqlDbCmd, string prmName, MySqlDbType MySqlDbType, object value)
+        {
+            MySqlParameter sPrm = sqlDbCmd.CreateParameter();
+            sPrm.ParameterName = prmName;
+            sPrm.MySqlDbType = MySqlDbType;
+            //sPrm.IsNullable = true;
+            sPrm.Direction = ParameterDirection.Output;
             sPrm.Value = value;
             return sPrm;
         }
@@ -66,24 +78,6 @@ namespace VinamiToolUser.Utils
             }
             return null;
         }
-        public static MySqlConnection OpenTwo()
-        {
-            try
-            {
-                if (ConnectionStringTwo() == null)
-                {
-                    return null;
-                }
-                MySqlConnection conn = new MySqlConnection(ConnectionStringTwo());
-                conn.Open();
-                return conn;
-            }
-            catch (MySqlException e)
-            {
-                _log.Error(e.Message);
-            }
-            return null;
-        }
 
         public static async Task<MySqlConnection> OpenAsync()
         {
@@ -94,24 +88,6 @@ namespace VinamiToolUser.Utils
                     return null;
                 }
                 MySqlConnection conn = new MySqlConnection(ConnectionString());
-                await conn.OpenAsync();
-                return conn;
-            }
-            catch (MySqlException e)
-            {
-                _log.Error(e.Message);
-            }
-            return null;
-        }
-        public static async Task<MySqlConnection> OpenAsyncTwo()
-        {
-            try
-            {
-                if (ConnectionStringTwo() == null)
-                {
-                    return null;
-                }
-                MySqlConnection conn = new MySqlConnection(ConnectionStringTwo());
                 await conn.OpenAsync();
                 return conn;
             }

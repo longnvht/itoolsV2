@@ -28,22 +28,44 @@ namespace VinamiToolUser.Presenters
             _view.Presenter = this;
             _view.ConfigChange += ConfigChange;
             _hddSerial = GetHardDiskSerial();
-            SynchronizationData();
+            LoadingAndSyncData();
         }
 
-        private void SynchronizationData()
+        private async void LoadingAndSyncData()
         {
-            SyncLocalToHost();
-            SyncHostToLocal();
+            _view.MachineConfig = CommonValue.LoadConfig();
+            bool result = await CheckConfig();
+            if (result)
+            {
+                if (_view.UserLogin != null) _view.CurrentView = "Menu";
+                else _view.CurrentView = "Login";
+                SynchronizationData();
+            }
+            else _view.CurrentView = "Setting";
         }
 
-        private void SyncLocalToHost()
+        private async void SynchronizationData()
+        {
+            _view.Message = "Start Sync Data";
+            await SyncLocalToHost();
+            await SyncHostToLocal();
+            _view.Message = "";
+        }
+
+        private async Task SyncLocalToHost()
         {
             //SyncLocalToHost_ToolsMachineTray
             //SyncLocalToHost_WorkingTransaction
+            bool result = false;
+            _view.Message = "Start SyncLocalToHost_ToolsMachineTray";
+            result = await _repository.SyncLocalToHost_ToolsMachineTray(_currentMachine.MachineCode, _currentMachine.CompanyCode);
+            if (result) _view.Message = "Susces SyncLocalToHost_ToolsMachineTray";
+            _view.Message = "Start SyncLocalToHost_WorkingTransaction";
+            result = await _repository.SyncLocalToHost_WorkingTransaction(_currentMachine.MachineCode, _currentMachine.CompanyCode);
+            if (result) _view.Message = "Susces SyncLocalToHost_WorkingTransaction";
         }
 
-        private void SyncHostToLocal()
+        private async Task SyncHostToLocal()
         {
             //SyncHostToLocal_Assessor
             //SyncHostToLocal_RoleAssessor
@@ -51,6 +73,25 @@ namespace VinamiToolUser.Presenters
             //SyncHostToLocal_Company
             //SyncHostToLocal_CompanyMachine
             //SyncHostToLocal_Tools
+            bool result = false;
+            _view.Message = "Start SyncHostToLocal_Assessor";
+            result = await _repository.SyncHostToLocal_Assessor(_currentMachine.MachineCode, _currentMachine.CompanyCode);
+            if (result) _view.Message = "Susces SyncHostToLocal_Assessor";
+            _view.Message = "Start SyncHostToLocal_RoleAssessor";
+            result = await _repository.SyncHostToLocal_RoleAssessor(_currentMachine.MachineCode, _currentMachine.CompanyCode);
+            if (result) _view.Message = "Susces SyncHostToLocal_RoleAssessor";
+            _view.Message = "Start SyncHostToLocal_Machine";
+            result = await _repository.SyncHostToLocal_Machine(_currentMachine.MachineCode, _currentMachine.CompanyCode);
+            if (result) _view.Message = "Susces SyncHostToLocal_Machine";
+            _view.Message = "Start SyncHostToLocal_Company";
+            result = await _repository.SyncHostToLocal_Company(_currentMachine.MachineCode, _currentMachine.CompanyCode);
+            if (result) _view.Message = "Susces SyncHostToLocal_Company";
+            _view.Message = "Start SyncHostToLocal_CompanyMachine";
+            result = await _repository.SyncHostToLocal_CompanyMachine(_currentMachine.MachineCode, _currentMachine.CompanyCode);
+            if (result) _view.Message = "Susces SyncHostToLocal_CompanyMachine";
+            _view.Message = "Start SyncHostToLocal_Tools";
+            result = await _repository.SyncHostToLocal_Tools(_currentMachine.MachineCode, _currentMachine.CompanyCode);
+            if (result) _view.Message = "Susces SyncHostToLocal_Tools";
         }
 
         private void ConfigChange(object sender, EventArgs e)

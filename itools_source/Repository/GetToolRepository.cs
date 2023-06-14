@@ -122,7 +122,7 @@ namespace VinamiToolUser.Repository
             
         }
 
-        public async Task<IEnumerable<TrayModel>> GetOtherTrayList(string toolCode, string machineCode)
+        public async Task<IEnumerable<TrayModel>> GetOtherTrayList(string toolCode, string machineCode, string companyCode)
         {
             try
             {
@@ -136,6 +136,8 @@ namespace VinamiToolUser.Repository
                     cmd.Parameters.Add(prm);
                     MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "@pMachineCode", MySqlDbType.VarChar, machineCode);
                     cmd.Parameters.Add(prm2);
+                    MySqlParameter prm3 = CreateInputParameterForSQL(cmd, "@pCompanyCode", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm3);
                     using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                     {
                         if (dataReader != null)
@@ -280,8 +282,8 @@ namespace VinamiToolUser.Repository
                     cmd.CommandText = @"UpdateStockQuantity";
                     MySqlParameter prm = CreateInputParameterForSQL(cmd, "trayID", MySqlDbType.Int32, trayID);
                     cmd.Parameters.Add(prm);
-                    MySqlParameter prm3 = CreateInputParameterForSQL(cmd, "newQty", MySqlDbType.Int32, newQty);
-                    cmd.Parameters.Add(prm3);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "newQty", MySqlDbType.Int32, newQty);
+                    cmd.Parameters.Add(prm2);
                     result = await CmdExecutionProcedureAsync(cmd);
                     await connection.CloseAsync();
                 }
