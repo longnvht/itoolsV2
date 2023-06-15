@@ -39,7 +39,7 @@ namespace VinamiToolUser.Presenters
         {
             var job = (JobModel)_bindingSource.Current;
             _view.SelectedJob = job;
-            _view.NextView = "Select Op";
+            _view.NextView = "SelectOp";
         }
 
         private async void LoadJobList()
@@ -52,7 +52,7 @@ namespace VinamiToolUser.Presenters
         {
             var job = (JobModel)_bindingSource.Current;
             _view.SelectedJob = job;
-            _view.TempView = "Select Op";
+            _view.TempView = "SelectOp";
         }
 
         private async void SearchJob(object sender, EventArgs e)

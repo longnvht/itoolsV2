@@ -41,6 +41,7 @@ namespace VinamiToolUser
             container.RegisterType<IManageToolRepository, ManageToolRepository>();
             container.RegisterType<IStockView, StockView>();
             container.RegisterType<IStockRepository, StockRepository>();
+            container.RegisterType<IWorkInfoView, WorkInfoView>();
         }
     }
 

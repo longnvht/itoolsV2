@@ -251,12 +251,13 @@ namespace VinamiToolUser.Views
         {
             { "Login", typeof(LoginView) },
             { "Menu", typeof(MenuView) },
-            { "Select Job", typeof(JobView) },
-            { "Select Op", typeof(OpView) },
+            { "SelectJob", typeof(JobView) },
+            { "SelectOp", typeof(OpView) },
             { "Setting", typeof(SettingView) },
             { "GetToolView", typeof(GetToolView) },
             { "ManagerTool", typeof(ManageToolView) },
-            { "StockView", typeof(StockView) }
+            { "StockView", typeof(StockView) },
+            { "WorkInfo", typeof(WorkInfoView) }
         };
     }
 }

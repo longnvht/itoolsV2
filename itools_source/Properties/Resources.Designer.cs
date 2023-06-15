@@ -103,6 +103,16 @@ namespace VinamiToolUser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap check_document_64px {
+            get {
+                object obj = ResourceManager.GetObject("check_document_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_480px {
             get {
                 object obj = ResourceManager.GetObject("close_480px", resourceCulture);
@@ -186,6 +196,26 @@ namespace VinamiToolUser.Properties {
         internal static System.Drawing.Bitmap edit_property_48px {
             get {
                 object obj = ResourceManager.GetObject("edit_property_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_property_52px {
+            get {
+                object obj = ResourceManager.GetObject("edit_property_52px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_text_file_100px {
+            get {
+                object obj = ResourceManager.GetObject("edit_text_file_100px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

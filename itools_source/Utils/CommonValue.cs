@@ -18,6 +18,7 @@ namespace VinamiToolUser.Utils
         private static ToolModel _currentTool;
         private static TrayModel _currentTray;
         private static MachineConfigModel _configModel;
+        private static WorkInfoModel _currentWorkInfo;
 
 
         public static UserAccount UserLogin { get => _userLogin; set => _userLogin = value; }
@@ -34,6 +35,8 @@ namespace VinamiToolUser.Utils
                 SaveConfig(value);
             } 
         }
+
+        public static WorkInfoModel CurrentWorkInfo { get => _currentWorkInfo; set => _currentWorkInfo = value; }
 
         public static MachineConfigModel LoadConfig()
         {
