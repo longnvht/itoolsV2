@@ -54,8 +54,25 @@ namespace VinamiToolUser.Views
             };
             btnConfirm.Click += (s, e) => 
             {
+                KeyBoard.CloseKeyboard();
                 ConfirmWorkInfo();
             };
+            txtWorkCode.MouseClick += (s, e) =>
+            {
+                ShowKeyboard();
+            };
+            txtWorkMachineCode.MouseClick += (s, e) =>
+            {
+                ShowKeyboard();
+            };
+            txtWorkCode.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    txtWorkMachineCode.Focus();
+                }
+            };
+
             txtWorkCode.TextChanged += (s, e) => { CheckConfirmCondition(); };
             txtWorkMachineCode.TextChanged += (s, e) => { CheckConfirmCondition(); };
         }
@@ -75,6 +92,14 @@ namespace VinamiToolUser.Views
             string mcCode = txtWorkMachineCode.Text;
             if(String.IsNullOrEmpty(woCode) || String.IsNullOrEmpty(mcCode))btnConfirm.Enabled = false;
             else btnConfirm.Enabled = true;
+        }
+        private void ShowKeyboard()
+        {
+            var Keyboard = KeyBoard.GetInstance();
+            int x = (Screen.PrimaryScreen.Bounds.Right - Keyboard.Width) / 2;
+            int y = Screen.PrimaryScreen.Bounds.Bottom - Keyboard.Height;
+            Keyboard.Show();
+            Keyboard.Location = new Point(x, y);
         }
 
         private void WorkInfoView_Load(object sender, EventArgs e)

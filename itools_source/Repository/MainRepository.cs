@@ -245,9 +245,9 @@ namespace VinamiToolUser.Repository
                     MySqlCommand cmd = connection.CreateCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = @"SyncLocalToHost_WorkingTransaction";
-                    MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "MachineCode", MySqlDbType.VarBinary, machineCode);
+                    MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "pMachineCode", MySqlDbType.VarBinary, machineCode);
                     cmd.Parameters.Add(prm1);
-                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "CompanyCode", MySqlDbType.VarChar, companyCode);
+                    MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "pCompanyCode", MySqlDbType.VarChar, companyCode);
                     cmd.Parameters.Add(prm2);
                     MySqlParameter prm3 = CreateOutParameterForSQL(cmd, "returnResult", MySqlDbType.VarChar, companyCode);
                     cmd.Parameters.Add(prm3);

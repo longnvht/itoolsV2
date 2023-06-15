@@ -292,7 +292,7 @@ namespace VinamiToolUser.Repository
             catch(Exception ex) { return false; }
         }
 
-        public async Task<bool> UpdateGetToolTransaction(string machineCode, string companyCode, string userLogin, string toolCode, string trayIndex, int qtyExchange, string typeTransaction, string transactionStatus)
+        public async Task<bool> UpdateGetToolTransaction(string machineCode, string companyCode, string userLogin, string workCode, string workMachineCode, string toolCode, string trayIndex, int qtyExchange, string typeTransaction, string transactionStatus)
         {
             try
             {
@@ -301,23 +301,27 @@ namespace VinamiToolUser.Repository
                 {
                     MySqlCommand cmd = connection.CreateCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = @"UpdateTransaction";
+                    cmd.CommandText = @"UpdateGetToolTransaction";
                     MySqlParameter prm = CreateInputParameterForSQL(cmd, "pMachineCode", MySqlDbType.VarChar, machineCode);
                     cmd.Parameters.Add(prm);
                     MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "pCompanyCode", MySqlDbType.VarChar, companyCode);
                     cmd.Parameters.Add(prm1);
                     MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "pUserLogin", MySqlDbType.VarChar, userLogin);
                     cmd.Parameters.Add(prm2);
-                    MySqlParameter prm3 = CreateInputParameterForSQL(cmd, "pToolCode", MySqlDbType.VarChar, toolCode);
+                    MySqlParameter prm3 = CreateInputParameterForSQL(cmd, "pWorkCode", MySqlDbType.VarChar, workCode);
                     cmd.Parameters.Add(prm3);
-                    MySqlParameter prm4 = CreateInputParameterForSQL(cmd, "pTrayIndex", MySqlDbType.VarChar, trayIndex);
+                    MySqlParameter prm4 = CreateInputParameterForSQL(cmd, "pWorkMachineCode", MySqlDbType.VarChar, workMachineCode);
                     cmd.Parameters.Add(prm4);
-                    MySqlParameter prm5 = CreateInputParameterForSQL(cmd, "pQuantity", MySqlDbType.Int32, qtyExchange);
+                    MySqlParameter prm5 = CreateInputParameterForSQL(cmd, "pToolCode", MySqlDbType.VarChar, toolCode);
                     cmd.Parameters.Add(prm5);
-                    MySqlParameter prm6 = CreateInputParameterForSQL(cmd, "pTransactionType", MySqlDbType.VarChar, typeTransaction);
+                    MySqlParameter prm6 = CreateInputParameterForSQL(cmd, "pTrayIndex", MySqlDbType.VarChar, trayIndex);
                     cmd.Parameters.Add(prm6);
-                    MySqlParameter prm7 = CreateInputParameterForSQL(cmd, "pTransactioStatus", MySqlDbType.VarChar, transactionStatus);
+                    MySqlParameter prm7 = CreateInputParameterForSQL(cmd, "pQuantity", MySqlDbType.Int32, qtyExchange);
                     cmd.Parameters.Add(prm7);
+                    MySqlParameter prm8 = CreateInputParameterForSQL(cmd, "pTransactionType", MySqlDbType.VarChar, typeTransaction);
+                    cmd.Parameters.Add(prm8);
+                    MySqlParameter prm9 = CreateInputParameterForSQL(cmd, "pTransactioStatus", MySqlDbType.VarChar, transactionStatus);
+                    cmd.Parameters.Add(prm9);
                     result = await CmdExecutionProcedureAsync(cmd);
                     await connection.CloseAsync();
                 }

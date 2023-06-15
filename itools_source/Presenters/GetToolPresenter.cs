@@ -69,13 +69,13 @@ namespace VinamiToolUser.Presenters
                 if (result) _view.LogMessage = "--- Cập nhật số lượng tool mới của Tray thành công";
                 else _view.LogMessage = "--- Cập nhật số lượng tool mới của Tray thất bại";
                 //Update Get Tool Transaction
-                result = await _repository.UpdateGetToolTransaction(_view.CurrentMachine.MachineCode, _view.CurrentConfig.CompanyCode, _userLogin, toolCode, trayIndex, 1, "GetTool", _view.GetToolResult.ToString());
+                result = await _repository.UpdateGetToolTransaction(_view.CurrentMachine.MachineCode, _view.CurrentConfig.CompanyCode,  _userLogin, CommonValue.CurrentWorkInfo.WorkCode, CommonValue.CurrentWorkInfo.WorkMachineCode, toolCode, trayIndex, 1, "GetTool", _view.GetToolResult.ToString());
                 if (result) _view.LogMessage = "--- Cập nhật lịch sử giao dịch thành công";
                 else _view.LogMessage = "--- Cập nhật lịch sử giao dịch thất bại";
             }
             else
             {
-                result = await _repository.UpdateGetToolTransaction(_view.CurrentMachine.MachineCode, _view.CurrentConfig.CompanyCode, _userLogin, toolCode, trayIndex, 1, "GetTool", _view.GetToolResult.ToString());
+                result = await _repository.UpdateGetToolTransaction(_view.CurrentMachine.MachineCode, _view.CurrentConfig.CompanyCode,  _userLogin, CommonValue.CurrentWorkInfo.WorkCode, CommonValue.CurrentWorkInfo.WorkMachineCode, toolCode, trayIndex, 0, "GetTool", _view.GetToolResult.ToString());
                 if (result) _view.LogMessage = "--- Cập nhật lịch sử giao dịch thành công";
                 else _view.LogMessage = "--- Cập nhật lịch sử giao dịch thất bại";
             }

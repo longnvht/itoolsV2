@@ -18,7 +18,8 @@ using VinamiToolUser.Models.Interface;
 using VinamiToolUser.Presenters;
 using VinamiToolUser.Views.Components;
 using VinamiToolUser.Views.Interface;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using CustomMessageBox;
+using MySqlX.XDevAPI.Common;
 
 namespace VinamiToolUser.Views
 {
@@ -84,7 +85,17 @@ namespace VinamiToolUser.Views
             { 
                 _resultGetTool = await GetTool();
                 UpdateToolStock?.Invoke(this, new EventArgs());
-                btnGetTool.Enabled = false;
+                CurrentTray = null;
+                if(_resultGetTool)
+                {
+                    var result = RJMessageBox.Show("Lấy dụng cụ thành công!", "Thông Báo!", MessageBoxButtons.OK);
+                    if (result == DialogResult.OK) _mainView.CurrentView = "WorkInfo";
+                }
+                else
+                {
+                    var result = RJMessageBox.Show("Lấy dụng cụ thất bại!", "Thông Báo!", MessageBoxButtons.OK);
+                    if (result == DialogResult.OK) _mainView.CurrentView = "WorkInfo";
+                }
             };
             tmGetTool.Tick += (s, e) => 
             { 
@@ -99,7 +110,7 @@ namespace VinamiToolUser.Views
         {
             _mainView = MainView.GetInstance();
             serialPortGetTool.PortName = _mainView.MachineConfig.ComPort;
-            _mainView.PrevView = "Menu";
+            _mainView.PrevView = "WorkInfo";
             CurrentTray = null;
             IGetToolRepository repository = UnityDI.container.Resolve<IGetToolRepository>();
             Presenter = new GetToolPresenter(this, repository);
@@ -132,6 +143,7 @@ namespace VinamiToolUser.Views
             box.SelectionColor = color;
             box.AppendText(text);
             box.SelectionColor = box.ForeColor;
+            box.ScrollToCaret();
         }
 
         private async Task<bool> GetTool()

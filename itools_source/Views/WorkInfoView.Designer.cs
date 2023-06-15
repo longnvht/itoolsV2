@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.tblWorkInfo = new System.Windows.Forms.TableLayoutPanel();
-            this.grbWorkInfo = new System.Windows.Forms.GroupBox();
             this.lblWorkCode = new System.Windows.Forms.Label();
             this.lblWorkMachineCode = new System.Windows.Forms.Label();
             this.txtWorkCode = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtWorkMachineCode = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
+            this.grbWorkInfo = new System.Windows.Forms.GroupBox();
             this.tblWorkInfo.SuspendLayout();
             this.grbWorkInfo.SuspendLayout();
             this.SuspendLayout();
@@ -65,27 +65,15 @@
             this.tblWorkInfo.Size = new System.Drawing.Size(794, 426);
             this.tblWorkInfo.TabIndex = 0;
             // 
-            // grbWorkInfo
-            // 
-            this.grbWorkInfo.Controls.Add(this.tblWorkInfo);
-            this.grbWorkInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grbWorkInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbWorkInfo.Location = new System.Drawing.Point(0, 0);
-            this.grbWorkInfo.Name = "grbWorkInfo";
-            this.grbWorkInfo.Size = new System.Drawing.Size(800, 450);
-            this.grbWorkInfo.TabIndex = 1;
-            this.grbWorkInfo.TabStop = false;
-            this.grbWorkInfo.Text = "Thông tin công việc";
-            // 
             // lblWorkCode
             // 
             this.lblWorkCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblWorkCode.AutoSize = true;
             this.lblWorkCode.Location = new System.Drawing.Point(140, 143);
             this.lblWorkCode.Name = "lblWorkCode";
-            this.lblWorkCode.Size = new System.Drawing.Size(88, 17);
+            this.lblWorkCode.Size = new System.Drawing.Size(121, 17);
             this.lblWorkCode.TabIndex = 0;
-            this.lblWorkCode.Text = "Mã công việc";
+            this.lblWorkCode.Text = "Mã công việc (Job)";
             // 
             // lblWorkMachineCode
             // 
@@ -93,9 +81,9 @@
             this.lblWorkMachineCode.AutoSize = true;
             this.lblWorkMachineCode.Location = new System.Drawing.Point(140, 203);
             this.lblWorkMachineCode.Name = "lblWorkMachineCode";
-            this.lblWorkMachineCode.Size = new System.Drawing.Size(57, 17);
+            this.lblWorkMachineCode.Size = new System.Drawing.Size(126, 17);
             this.lblWorkMachineCode.TabIndex = 0;
-            this.lblWorkMachineCode.Text = "Mã máy";
+            this.lblWorkMachineCode.Text = "Mã công đoạn (OP)";
             // 
             // txtWorkCode
             // 
@@ -189,13 +177,25 @@
             this.btnConfirm.Text = "Xác nhận";
             this.btnConfirm.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // InputWorkView
+            // grbWorkInfo
+            // 
+            this.grbWorkInfo.Controls.Add(this.tblWorkInfo);
+            this.grbWorkInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grbWorkInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbWorkInfo.Location = new System.Drawing.Point(0, 0);
+            this.grbWorkInfo.Name = "grbWorkInfo";
+            this.grbWorkInfo.Size = new System.Drawing.Size(800, 450);
+            this.grbWorkInfo.TabIndex = 1;
+            this.grbWorkInfo.TabStop = false;
+            this.grbWorkInfo.Text = "Thông tin công việc";
+            // 
+            // WorkInfoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.grbWorkInfo);
-            this.Name = "InputWorkView";
+            this.Name = "WorkInfoView";
             this.Text = "InputWorkView";
             this.tblWorkInfo.ResumeLayout(false);
             this.tblWorkInfo.PerformLayout();
