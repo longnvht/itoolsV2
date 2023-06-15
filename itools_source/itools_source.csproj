@@ -282,6 +282,7 @@
       <DependentUpon>StockInfoTreeView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Interface\IStockView.cs" />
+    <Compile Include="Views\Interface\IWorkInfoView.cs" />
     <Compile Include="Views\SettingView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -350,6 +351,12 @@
     <Compile Include="Views\StockView.Designer.cs">
       <DependentUpon>StockView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\WorkInfoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WorkInfoView.Designer.cs">
+      <DependentUpon>WorkInfoView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -399,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\StockView.resx">
       <DependentUpon>StockView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WorkInfoView.resx">
+      <DependentUpon>WorkInfoView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
