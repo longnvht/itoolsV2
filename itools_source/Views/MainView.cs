@@ -81,7 +81,7 @@ namespace VinamiToolUser.Views
             tlpFooter.Visible = false;
             IMainRepository repository = UnityDI.container.Resolve<IMainRepository>();
             Presenter = new MainPresenter(this, repository);
-            _limitTime = TimeSpan.FromMinutes(1);
+            _limitTime = TimeSpan.FromMinutes(3);
         }
 
         public void AssignCurentView()

@@ -69,21 +69,23 @@
             // 
             this.lblWorkCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblWorkCode.AutoSize = true;
-            this.lblWorkCode.Location = new System.Drawing.Point(140, 143);
+            this.lblWorkCode.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWorkCode.Location = new System.Drawing.Point(140, 141);
             this.lblWorkCode.Name = "lblWorkCode";
-            this.lblWorkCode.Size = new System.Drawing.Size(121, 17);
+            this.lblWorkCode.Size = new System.Drawing.Size(118, 21);
             this.lblWorkCode.TabIndex = 0;
-            this.lblWorkCode.Text = "Mã công việc (Job)";
+            this.lblWorkCode.Text = "Mã Công Đoạn";
             // 
             // lblWorkMachineCode
             // 
             this.lblWorkMachineCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblWorkMachineCode.AutoSize = true;
-            this.lblWorkMachineCode.Location = new System.Drawing.Point(140, 203);
+            this.lblWorkMachineCode.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWorkMachineCode.Location = new System.Drawing.Point(140, 201);
             this.lblWorkMachineCode.Name = "lblWorkMachineCode";
-            this.lblWorkMachineCode.Size = new System.Drawing.Size(126, 17);
+            this.lblWorkMachineCode.Size = new System.Drawing.Size(68, 21);
             this.lblWorkMachineCode.TabIndex = 0;
-            this.lblWorkMachineCode.Text = "Mã công đoạn (OP)";
+            this.lblWorkMachineCode.Text = "Mã Máy";
             // 
             // txtWorkCode
             // 
@@ -98,7 +100,7 @@
             this.txtWorkCode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtWorkCode.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtWorkCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtWorkCode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtWorkCode.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWorkCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtWorkCode.Location = new System.Drawing.Point(290, 134);
             this.txtWorkCode.Name = "txtWorkCode";
@@ -121,7 +123,7 @@
             this.txtWorkMachineCode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtWorkMachineCode.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtWorkMachineCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtWorkMachineCode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtWorkMachineCode.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWorkMachineCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtWorkMachineCode.Location = new System.Drawing.Point(290, 194);
             this.txtWorkMachineCode.Name = "txtWorkMachineCode";

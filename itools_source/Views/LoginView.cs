@@ -110,6 +110,8 @@ namespace VinamiToolUser.Views
             } 
         }
 
+        public MachineConfigModel CurrentConfig => _mainView.MachineConfig;
+
         #endregion
 
         #region Events

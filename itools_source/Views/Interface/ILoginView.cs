@@ -13,6 +13,7 @@ namespace VinamiToolUser.Views.Interface
         string Message { get; set; }
         UserAccount UserLogin { get; set; }
         LoginPresenter Presenter {set; }
+        MachineConfigModel CurrentConfig { get; }
         #endregion
 
         #region Events

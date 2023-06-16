@@ -40,7 +40,7 @@ namespace VinamiToolUser.Presenter
             _log.Info("Login with username: " + strUserName);
             try
             {
-                _userList = await _repository.GetUserAccount(strUserName, strPassword);
+                _userList = await _repository.GetUserAccount(_view.CurrentConfig.CompanyCode, strUserName, strPassword);
 
                 if (_userList.Count() <= 0)
                 {
