@@ -1,19 +1,7 @@
-﻿using itools_source;
-using itools_source.Models;
-using itools_source.Views;
-using MySqlX.XDevAPI.Common;
+﻿using itools_source.Views;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Management;
-using System.Management.Instrumentation;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using Unity;
 using VinamiToolUser.Models;
@@ -21,11 +9,13 @@ using VinamiToolUser.Models.Interface;
 using VinamiToolUser.Presenters;
 using VinamiToolUser.Utils;
 using VinamiToolUser.Views.Interface;
+using System.Runtime.InteropServices;
 
 namespace VinamiToolUser.Views
 {
     public partial class MainView : Form, IMainView
     {
+        
         private MachineModel _currentMachine;
         private UserAccount _userLogin;
         private JobModel _currentJob;
@@ -38,6 +28,7 @@ namespace VinamiToolUser.Views
         private string _prevView;
         private string _hddSerial;
         private static MainView instance;
+        private TimeSpan _limitTime;
 
         public event EventHandler ConfigChange;
 
@@ -71,6 +62,16 @@ namespace VinamiToolUser.Views
                 UserLogin = null;
                 CurrentView = "Login";
             };
+            tmLogin.Tick += (s, e) =>
+            {
+                var logintime = CommonValue.GetIdleTime();
+                if(logintime > _limitTime)
+                {
+                    tmLogin.Stop();
+                    UserLogin = null;
+                    CurrentView = "Login";
+                }
+            };
         }
 
         private void MainViewLoad(object sender, EventArgs e)
@@ -80,6 +81,7 @@ namespace VinamiToolUser.Views
             tlpFooter.Visible = false;
             IMainRepository repository = UnityDI.container.Resolve<IMainRepository>();
             Presenter = new MainPresenter(this, repository);
+            _limitTime = TimeSpan.FromMinutes(1);
         }
 
         public void AssignCurentView()
@@ -97,6 +99,7 @@ namespace VinamiToolUser.Views
                 {
                     ReturnHome();
                     txtUserName.Text = _userLogin.FullName;
+                    tmLogin.Start();
                 }
             } 
         }

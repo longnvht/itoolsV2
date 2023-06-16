@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.tlpFooter = new System.Windows.Forms.TableLayoutPanel();
             this.btnPrev = new Guna.UI2.WinForms.Guna2Button();
@@ -40,6 +41,7 @@
             this.txtCurrentView = new System.Windows.Forms.Label();
             this.tsInfo = new System.Windows.Forms.ToolStrip();
             this.tslMessage = new System.Windows.Forms.ToolStripLabel();
+            this.tmLogin = new System.Windows.Forms.Timer(this.components);
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             this.tsInfo.SuspendLayout();
@@ -112,11 +114,11 @@
             // 
             this.tlpHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(96)))));
             this.tlpHeader.ColumnCount = 5;
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
-            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tlpHeader.Controls.Add(this.btnHome, 0, 0);
             this.tlpHeader.Controls.Add(this.txtUserName, 3, 0);
             this.tlpHeader.Controls.Add(this.btnLogOut, 4, 0);
@@ -128,25 +130,25 @@
             this.tlpHeader.Name = "tlpHeader";
             this.tlpHeader.RowCount = 1;
             this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpHeader.Size = new System.Drawing.Size(800, 50);
+            this.tlpHeader.Size = new System.Drawing.Size(800, 60);
             this.tlpHeader.TabIndex = 6;
             // 
             // btnHome
             // 
-            this.btnHome.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnHome.FillColor = System.Drawing.Color.Transparent;
             this.btnHome.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnHome.ForeColor = System.Drawing.Color.White;
             this.btnHome.HoverState.Image = global::VinamiToolUser.Properties.Resources.home_500px;
             this.btnHome.Image = global::VinamiToolUser.Properties.Resources.home_512px;
             this.btnHome.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnHome.Location = new System.Drawing.Point(6, 6);
+            this.btnHome.Location = new System.Drawing.Point(3, 3);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(37, 37);
+            this.btnHome.Size = new System.Drawing.Size(54, 54);
             this.btnHome.TabIndex = 0;
             // 
             // txtUserName
@@ -156,7 +158,7 @@
             this.txtUserName.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txtUserName.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.txtUserName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtUserName.Location = new System.Drawing.Point(698, 15);
+            this.txtUserName.Location = new System.Drawing.Point(683, 20);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(49, 20);
             this.txtUserName.TabIndex = 9;
@@ -165,21 +167,21 @@
             // 
             // btnLogOut
             // 
-            this.btnLogOut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnLogOut.BackColor = System.Drawing.Color.Transparent;
             this.btnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLogOut.FillColor = System.Drawing.Color.Transparent;
             this.btnLogOut.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.btnLogOut.ForeColor = System.Drawing.Color.Black;
             this.btnLogOut.HoverState.Image = global::VinamiToolUser.Properties.Resources.Logout_Rounded_48pxr;
             this.btnLogOut.Image = global::VinamiToolUser.Properties.Resources.Logout_Rounded_48px;
             this.btnLogOut.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLogOut.Location = new System.Drawing.Point(753, 3);
+            this.btnLogOut.Location = new System.Drawing.Point(738, 3);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(44, 44);
+            this.btnLogOut.Size = new System.Drawing.Size(59, 54);
             this.btnLogOut.TabIndex = 6;
             // 
             // txtStatus
@@ -188,7 +190,7 @@
             this.txtStatus.AutoSize = true;
             this.txtStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStatus.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtStatus.Location = new System.Drawing.Point(203, 14);
+            this.txtStatus.Location = new System.Drawing.Point(213, 19);
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.Size = new System.Drawing.Size(22, 21);
             this.txtStatus.TabIndex = 10;
@@ -200,7 +202,7 @@
             this.txtCurrentView.AutoSize = true;
             this.txtCurrentView.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrentView.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtCurrentView.Location = new System.Drawing.Point(53, 10);
+            this.txtCurrentView.Location = new System.Drawing.Point(63, 15);
             this.txtCurrentView.Name = "txtCurrentView";
             this.txtCurrentView.Size = new System.Drawing.Size(31, 30);
             this.txtCurrentView.TabIndex = 11;
@@ -224,6 +226,10 @@
             this.tslMessage.Name = "tslMessage";
             this.tslMessage.Size = new System.Drawing.Size(65, 22);
             this.tslMessage.Text = "tslMessage";
+            // 
+            // tmLogin
+            // 
+            this.tmLogin.Interval = 5000;
             // 
             // MainView
             // 
@@ -262,5 +268,6 @@
         private System.Windows.Forms.Label txtCurrentView;
         private System.Windows.Forms.ToolStrip tsInfo;
         private System.Windows.Forms.ToolStripLabel tslMessage;
+        private System.Windows.Forms.Timer tmLogin;
     }
 }

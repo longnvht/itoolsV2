@@ -3,6 +3,7 @@ using Salaros.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using VinamiToolUser.Models;
@@ -26,14 +27,14 @@ namespace VinamiToolUser.Utils
         public static OPModel CurrentOP { get => _currentOP; set => _currentOP = value; }
         public static ToolModel CurrentTool { get => _currentTool; set => _currentTool = value; }
         public static TrayModel CurrentTray { get => _currentTray; set => _currentTray = value; }
-        public static MachineConfigModel ConfigModel 
-        { 
-            get => _configModel; 
-            set 
-            { 
+        public static MachineConfigModel ConfigModel
+        {
+            get => _configModel;
+            set
+            {
                 _configModel = value;
                 SaveConfig(value);
-            } 
+            }
         }
 
         public static WorkInfoModel CurrentWorkInfo { get => _currentWorkInfo; set => _currentWorkInfo = value; }
@@ -55,11 +56,11 @@ namespace VinamiToolUser.Utils
                 configModel.MachineCode = machineCode;
 
                 string comPort = cfg.GetValue("CONFIG", "ComPort");
-                if(String.IsNullOrEmpty(comPort)) return null;
+                if (String.IsNullOrEmpty(comPort)) return null;
                 configModel.ComPort = comPort;
 
                 string hardDiskSerial = cfg.GetValue("CONFIG", "HardDiskSerial");
-                if(String.IsNullOrEmpty(hardDiskSerial)) return null;
+                if (String.IsNullOrEmpty(hardDiskSerial)) return null;
                 configModel.HardDiskSerial = hardDiskSerial;
                 return configModel;
             }
@@ -72,7 +73,7 @@ namespace VinamiToolUser.Utils
 
         private static void SaveConfig(MachineConfigModel configModel)
         {
-            if(configModel != null)
+            if (configModel != null)
             {
                 var cfg = new ConfigParser(appConfig);
                 cfg.SetValue("CONFIG", "CompanyCode", configModel.CompanyCode);
@@ -81,6 +82,27 @@ namespace VinamiToolUser.Utils
                 cfg.SetValue("CONFIG", "HardDiskSerial", configModel.HardDiskSerial);
                 cfg.Save();
             }
+        }
+
+        [DllImport("user32.dll")]
+        private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct LASTINPUTINFO
+        {
+            public uint cbSize;
+            public uint dwTime;
+        }
+
+        public static TimeSpan GetIdleTime()
+        {
+            var lastInputInfo = new LASTINPUTINFO();
+            lastInputInfo.cbSize = (uint)Marshal.SizeOf(lastInputInfo);
+            GetLastInputInfo(ref lastInputInfo);
+            var lastInputTime = lastInputInfo.dwTime;
+            var currentTickCount = Environment.TickCount;
+            var idleTime = currentTickCount - lastInputTime;
+            return TimeSpan.FromMilliseconds(idleTime);
         }
     }
 }

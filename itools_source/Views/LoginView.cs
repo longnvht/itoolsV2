@@ -46,12 +46,12 @@ namespace VinamiToolUser.Views
         private void AssociateAndRaiseViewEvents()
         {
             this.Load += LoginViewLoad;
-            btnLogin.Click += (s,e) => 
+            btnLogin.MouseClick += (s,e) => 
             { 
                 KeyBoard.CloseKeyboard();
                 LoginEvent?.Invoke(this, EventArgs.Empty); 
             };
-            btnCancel.Click += (s,e) => 
+            btnExit.MouseClick += (s,e) => 
             {
                 KeyBoard.CloseKeyboard();
                 Application.Exit();
@@ -65,13 +65,6 @@ namespace VinamiToolUser.Views
             txtPassword.TextChanged += (s, e) => { CheckValidInput(); };
             txtUserName.TextChanged += (s, e) => { CheckValidInput(); };
         }
-
-        private void TxtPassword_TextChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-
 
 
         #region Properties - Fields
@@ -133,14 +126,13 @@ namespace VinamiToolUser.Views
             _mainView = MainView.GetInstance();
             PasswordHide = false;
             CheckValidInput();
-
         }
 
         private void CheckValidInput()
         {
             string userName = txtUserName.Text;
             string password = txtPassword.Text;
-            if(String.IsNullOrEmpty(userName) || String.IsNullOrEmpty(password))
+            if(String.IsNullOrEmpty(userName.Trim()) || String.IsNullOrEmpty(password))
             {
                 btnLogin.Enabled = false;
             }
