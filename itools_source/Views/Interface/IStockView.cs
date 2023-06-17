@@ -14,9 +14,13 @@ namespace VinamiToolUser.Views.Interface
         #region Propesties
         MachineModel CurrentMachine { get; }
         StockPresenter Presenter { set; }
+        string SearchValue { get; set; }
         #endregion
         #region Method
         void SetStockBindingSource(BindingSource stockSource);
+        #endregion
+        #region Event
+        event EventHandler SearchTool;
         #endregion
     }
 }

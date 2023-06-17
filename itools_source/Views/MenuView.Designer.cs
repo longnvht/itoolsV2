@@ -104,11 +104,11 @@
             this.lstMenu.ItemFillColor = System.Drawing.Color.WhiteSmoke;
             this.lstMenu.ItemFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstMenu.ItemForceColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(117)))));
-            this.lstMenu.ItemHeight = 120;
+            this.lstMenu.ItemHeight = 150;
             this.lstMenu.ItemImagePath = "Icon";
             this.lstMenu.ItemSpace = 18;
             this.lstMenu.ItemTopDisplayMember = "";
-            this.lstMenu.ItemWidth = 120;
+            this.lstMenu.ItemWidth = 150;
             this.lstMenu.Location = new System.Drawing.Point(0, 50);
             this.lstMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lstMenu.MinMargin = 10;
@@ -116,14 +116,14 @@
             this.lstMenu.Size = new System.Drawing.Size(800, 400);
             this.lstMenu.TabIndex = 2;
             // 
-            // MenuViewNew
+            // MenuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lstMenu);
             this.Controls.Add(this.tblSearch);
-            this.Name = "MenuViewNew";
+            this.Name = "MenuView";
             this.Text = "MenuViewNew";
             this.tblSearch.ResumeLayout(false);
             this.ResumeLayout(false);

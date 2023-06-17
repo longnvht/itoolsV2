@@ -13,7 +13,7 @@ namespace VinamiToolUser.Repository
 {
     public class LoginRepository : ILoginRepository
     {
-        public async Task<IEnumerable<UserAccount>> GetUserAccount(string strUserName, string strPassword)
+        public async Task<IEnumerable<UserAccount>> GetUserAccount(string companyCode, string strUserName, string strPassword)
         {
             try
             {
@@ -27,6 +27,8 @@ namespace VinamiToolUser.Repository
                     cmd.Parameters.Add(prm);
                     MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "@p_Pass", MySqlDbType.String, strPassword);
                     cmd.Parameters.Add(prm2);
+                    MySqlParameter prm3 = CreateInputParameterForSQL(cmd, "@pCompanyCode", MySqlDbType.String, companyCode);
+                    cmd.Parameters.Add(prm3);
                     using (MySqlDataReader dataReader = await ExecuteReaderForSQLAsync(cmd))
                     {
                         if (dataReader != null)

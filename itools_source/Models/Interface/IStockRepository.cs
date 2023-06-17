@@ -9,6 +9,7 @@ namespace VinamiToolUser.Models.Interface
 {
     public interface IStockRepository
     {
-        Task<IEnumerable<StockModel>> GetStockForMachine(string machineCode);
+        Task<IEnumerable<StockModel>> GetStockForMachine(string companyCode);
+        Task<IEnumerable<StockModel>> SearchStockForMachine(string companyCode, string searchValue);
     }
 }

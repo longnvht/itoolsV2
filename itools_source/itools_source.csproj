@@ -202,9 +202,8 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CustomMessageBox\FormMessageBox.Designer.cs">
-	  <DependentUpon>FormMessageBox.cs</DependentUpon>
-	</Compile>
-	  
+      <DependentUpon>FormMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomMessageBox\RJMessageBox.cs" />
     <Compile Include="DTOs\ReportStock.cs" />
     <Compile Include="Models\Interface\IBaseRepository.cs" />
@@ -291,6 +290,12 @@
     </Compile>
     <Compile Include="Views\Interface\IStockView.cs" />
     <Compile Include="Views\Interface\IWorkInfoView.cs" />
+    <Compile Include="Views\LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,12 +327,6 @@
     </Compile>
     <Compile Include="Views\KeyBoard.Designer.cs">
       <DependentUpon>KeyBoard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LoginView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\LoginView.Designer.cs">
-      <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
@@ -366,8 +365,8 @@
       <DependentUpon>WorkInfoView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CustomMessageBox\FormMessageBox.resx">
-	  <DependentUpon>FormMessageBox.cs</DependentUpon>
-	</EmbeddedResource>
+      <DependentUpon>FormMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -387,6 +386,9 @@
     <EmbeddedResource Include="Views\Components\StockInfoTreeView.resx">
       <DependentUpon>StockInfoTreeView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\SettingView.resx">
       <DependentUpon>SettingView.cs</DependentUpon>
     </EmbeddedResource>
@@ -398,10 +400,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\KeyBoard.resx">
       <DependentUpon>KeyBoard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\LoginView.resx">
-      <DependentUpon>LoginView.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>

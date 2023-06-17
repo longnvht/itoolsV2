@@ -23,14 +23,32 @@ namespace VinamiToolUser.Presenters
             _view = view;
             _repository = repository;
             _view.Presenter = this;
+            _view.SearchTool += SearchToolStock;
             _view.SetStockBindingSource(_stockSource);
             LoadData();
         }
 
+        private async void SearchToolStock(object sender, EventArgs e)
+        {
+
+            var companyCode = _view.CurrentMachine.CompanyCode;
+            var serachValue = _view.SearchValue;
+            if (String.IsNullOrEmpty(serachValue))
+            {
+                _stockList = await _repository.GetStockForMachine(companyCode);
+                _stockSource.DataSource = _stockList;
+            }
+            else
+            {
+                _stockList = await _repository.SearchStockForMachine(companyCode, serachValue);
+                _stockSource.DataSource = _stockList;
+            }
+        }
+
         private async void LoadData()
         {
-            var machineCode = _view.CurrentMachine.MachineCode;
-            _stockList = await _repository.GetStockForMachine(machineCode);
+            var companyCode = _view.CurrentMachine.CompanyCode;
+            _stockList = await _repository.GetStockForMachine(companyCode);
             _stockSource.DataSource = _stockList;
         }
     }

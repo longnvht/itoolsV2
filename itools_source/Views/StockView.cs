@@ -20,9 +20,13 @@ namespace VinamiToolUser.Views
     {
         private MainView _mainView;
         private static StockView _instance;
+
+        public event EventHandler SearchTool;
+
         public MachineModel CurrentMachine => _mainView.CurrentMachine;
 
         public StockPresenter Presenter { private get; set; }
+        public string SearchValue { get => txtSearch.Text; set => txtSearch.Text = value; }
 
         public StockView()
         {
@@ -33,6 +37,14 @@ namespace VinamiToolUser.Views
         private void AssignEvent()
         {
             this.Load += StockViewLoad;
+            btnSearch.MouseClick += (s, e) => { SearchTool?.Invoke(this, EventArgs.Empty); };
+            txtSearch.KeyDown += (s, e) =>
+            {
+                if(e.KeyCode == Keys.Enter)
+                {
+                    SearchTool?.Invoke(this, EventArgs.Empty);
+                }
+            };
         }
 
         public static StockView GetInstance(Form parentContainer)

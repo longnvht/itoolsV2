@@ -8,14 +8,16 @@ namespace VinamiToolUser.Models
 {
     public class StockModel
     {
+
+        private string _machineCode;
         private string _trayName;
         private string _toolCode;
-        private string _toolName;
         private int _stockQty;
 
+        public string MachineCode { get => _machineCode; set => _machineCode = value; }
         public string TrayName { get => _trayName; set => _trayName = value; }
         public string ToolCode { get => _toolCode; set => _toolCode = value; }
-        public string ToolName { get => _toolName; set => _toolName = value; }
         public int StockQty { get => _stockQty; set => _stockQty = value; }
+        
     }
 }
