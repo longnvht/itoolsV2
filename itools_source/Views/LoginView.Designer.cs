@@ -208,15 +208,15 @@
             this.btnExit.Size = new System.Drawing.Size(50, 36);
             this.btnExit.TabIndex = 12;
             // 
-            // LoginView2
+            // LoginView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "LoginView2";
-            this.Text = "LoginView2";
+            this.Name = "LoginView";
+            this.Text = "LoginView";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

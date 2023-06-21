@@ -292,7 +292,7 @@ namespace VinamiToolUser.Repository
             catch(Exception ex) { return false; }
         }
 
-        public async Task<bool> UpdateGetToolTransaction(string machineCode, string companyCode, string userLogin, string workCode, string workMachineCode, string toolCode, string trayIndex, int qtyExchange, string typeTransaction, string transactionStatus)
+        public async Task<bool> UpdateGetToolTransaction( string companyCode, string machineCode, string userLogin, string workCode, string workMachineCode, string toolCode, string trayIndex, int qtyExchange, string typeTransaction, string transactionStatus)
         {
             try
             {
@@ -302,9 +302,10 @@ namespace VinamiToolUser.Repository
                     MySqlCommand cmd = connection.CreateCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = @"UpdateGetToolTransaction";
-                    MySqlParameter prm = CreateInputParameterForSQL(cmd, "pMachineCode", MySqlDbType.VarChar, machineCode);
-                    cmd.Parameters.Add(prm);
-                    MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "pCompanyCode", MySqlDbType.VarChar, companyCode);
+
+                    MySqlParameter prm0 = CreateInputParameterForSQL(cmd, "pCompanyCode", MySqlDbType.VarChar, companyCode);
+                    cmd.Parameters.Add(prm0);
+                    MySqlParameter prm1 = CreateInputParameterForSQL(cmd, "pMachineCode", MySqlDbType.VarChar, machineCode);
                     cmd.Parameters.Add(prm1);
                     MySqlParameter prm2 = CreateInputParameterForSQL(cmd, "pUserLogin", MySqlDbType.VarChar, userLogin);
                     cmd.Parameters.Add(prm2);
