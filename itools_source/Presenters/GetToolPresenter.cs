@@ -85,9 +85,9 @@ namespace VinamiToolUser.Presenters
         private async void LoadData()
         {
             _toolList = await _repository.GetToolList(_view.CurrentConfig.CompanyCode);
-            //_trayList = await _repository.GetAllTrayList();
+            _trayList = null;
             _toolSource.DataSource = _toolList;
-            _traySource.DataSource = null;
+            _traySource.DataSource = _trayList;
         }
 
         private async void SearchTool(object sender, EventArgs e)
