@@ -46,17 +46,17 @@ namespace VinamiToolUser.Presenters
             TrayModelManage currentTray = _view.CurrentTray;
             string toolCode = currenttool.ToolCode;
             string trayName = currentTray.TrayName;
-            _view.Log = "--- Giao Dịch:  " + _view.ModifyState;
+            _view.Log = "--- Transaction Type:  " + _view.ModifyState;
             _view.Log = "--- Tray Name:  " + currentTray.TrayName;
-            _view.Log = "--- Số lượng thêm mới:  " + _view.ModifyQty;
+            _view.Log = "--- Quantity:  " + _view.ModifyQty;
             //Update Tray Quantity
             result = await _repository.AddNewToolToTray(_view.CurrentConfig.MachineCode, toolCode, trayName, _view.NewQty);
-            if (result) _view.Log = "--- Thêm Tool Mới vào Tray thành công";
-            else _view.Log = "--- Thêm Tool Mới vào tray thất bại";
+            if (result) _view.Log = "--- Update New Tool And Quantity To DataBase Success!";
+            else _view.Log = "--- Update New Tool And Quantity To DataBase Fail!";
             //Update Working Transaction
             result = await _repository.UpdateTransaction(_view.CurrentConfig.CompanyCode, _view.CurrentMachine.MachineCode, _userLogin, toolCode, _view.CurrentTray.TrayName, _view.ModifyQty, _view.ModifyState, result.ToString());
-            if (result) _view.Log = "--- Cập nhật lịch sử giao dịch thành công";
-            else _view.Log = "--- Cập nhật lịch sử giao dịch thất bại";
+            if (result) _view.Log = "--- Update AddTool Transaction Success!";
+            else _view.Log = "--- Update AddTool Transaction Fail!";
 
             LoadData();
             _view.ViewAction = "";
@@ -91,17 +91,17 @@ namespace VinamiToolUser.Presenters
             TrayModelManage currentTray = _view.CurrentTray;
             string toolCode = currentTray.ToolCode;
             int trayID = currentTray.TrayId;
-            _view.Log = "--- Giao Dịch:  " + _view.ModifyState;
+            _view.Log = "--- Transaction Type:  " + _view.ModifyState;
             _view.Log = "--- Tray Name:  " + currentTray.TrayName;
-            _view.Log = "--- Số lượng thao tác:  " + _view.ModifyQty;
+            _view.Log = "--- Quantity:  " + _view.ModifyQty;
             //Update Tray Quantity
             result = await _repository.UpdateStockQuantity(trayID, toolCode, _view.NewQty);
-            if (result) _view.Log = "--- Cập nhật số lượng tool mới của Tray thành công";
-            else _view.Log = "--- Cập nhật số lượng tool mới của Tray thất bại";
+            if (result) _view.Log = "--- Update Tool Quantity To Database Success!";
+            else _view.Log = "--- Update Tool Quantity To Database fail!";
             //Update Working Transaction
             result = await _repository.UpdateTransaction(_view.CurrentConfig.CompanyCode, _view.CurrentMachine.MachineCode, _userLogin, toolCode, _view.CurrentTray.TrayName, _view.ModifyQty, _view.ModifyState, result.ToString());
-            if (result) _view.Log = "--- Cập nhật lịch sử giao dịch thành công";
-            else _view.Log = "--- Cập nhật lịch sử giao dịch thất bại";
+            if (result) _view.Log = "--- Update Transaction Success!";
+            else _view.Log = "--- Update Transaction Fail!";
 
             LoadData();
             _view.ViewAction = "";

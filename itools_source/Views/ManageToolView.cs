@@ -22,6 +22,7 @@ namespace VinamiToolUser.Views
 {
     public partial class ManageToolView : Form, IManageToolView
     {
+        private static log4net.ILog _logger = log4net.LogManager.GetLogger(typeof(ManageToolView).Name);
         private static ManageToolView _instance;
         private const int maxQtyItem = 11;
         private int _newQty;
@@ -210,7 +211,7 @@ namespace VinamiToolUser.Views
             btnSave.Click += (s,e) => 
             {
                 KeyBoard.CloseKeyboard();
-                Log = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "- Cập nhật thông tin giao dịch vào database!";
+                Log = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "- Update Transaction To Database!";
                 if(ModifyState == "AddNew")
                 {
                     AddNewToolEvent?.Invoke(this, EventArgs.Empty);
@@ -222,7 +223,7 @@ namespace VinamiToolUser.Views
                 if (e.KeyCode == Keys.Enter)
                 {
                     KeyBoard.CloseKeyboard();
-                    Log = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "- Cập nhật thông tin giao dịch vào database!";
+                    Log = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "- Update Transaction To Database!";
                     if (ModifyState == "AddNew")
                     {
                         AddNewToolEvent?.Invoke(this, EventArgs.Empty);
@@ -233,6 +234,7 @@ namespace VinamiToolUser.Views
         }
         private void ShowLog(RichTextBox box, string text, Color color, bool AddNewLine = false)
         {
+            _logger.Info(text);
             if (AddNewLine)
             {
                 text += Environment.NewLine;

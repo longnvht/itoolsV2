@@ -20,11 +20,13 @@ using VinamiToolUser.Views.Components;
 using VinamiToolUser.Views.Interface;
 using CustomMessageBox;
 using MySqlX.XDevAPI.Common;
+using VinamiToolUser.Utils;
 
 namespace VinamiToolUser.Views
 {
     public partial class GetToolView : Form, IGetToolView
     {
+        private static log4net.ILog _log = log4net.LogManager.GetLogger(typeof(GetToolView).Name);
         private ToolModel _curentTool;
         private TrayModel _currentTray;
         private IMainView _mainView;
@@ -86,16 +88,16 @@ namespace VinamiToolUser.Views
                 _resultGetTool = await GetTool();
                 UpdateToolStock?.Invoke(this, new EventArgs());
                 CurrentTray = null;
-                if(_resultGetTool)
-                {
-                    var result = RJMessageBox.Show("Lấy dụng cụ thành công!", "Thông Báo!", MessageBoxButtons.OK);
-                    if (result == DialogResult.OK) _mainView.CurrentView = "WorkInfo";
-                }
-                else
-                {
-                    var result = RJMessageBox.Show("Lấy dụng cụ thất bại!", "Thông Báo!", MessageBoxButtons.OK);
-                    if (result == DialogResult.OK) _mainView.CurrentView = "WorkInfo";
-                }
+                //if(_resultGetTool)
+                //{
+                //    var result = RJMessageBox.Show("Lấy dụng cụ thành công!", "Thông Báo!", MessageBoxButtons.OK);
+                //    if (result == DialogResult.OK) _mainView.CurrentView = "WorkInfo";
+                //}
+                //else
+                //{
+                //    var result = RJMessageBox.Show("Lấy dụng cụ thất bại!", "Thông Báo!", MessageBoxButtons.OK);
+                //    if (result == DialogResult.OK) _mainView.CurrentView = "WorkInfo";
+                //}
             };
             tmGetTool.Tick += (s, e) => 
             { 
@@ -132,6 +134,7 @@ namespace VinamiToolUser.Views
 
         private void AppendText(RichTextBox box, string text, Color color, bool AddNewLine = false)
         {
+            _log.Info(text);
             if (AddNewLine)
             {
                 text += Environment.NewLine;
@@ -163,7 +166,7 @@ namespace VinamiToolUser.Views
 
         private async Task<bool> SendGetToolComman()
         {
-            string message = "Lấy dụng cụ thất bại";
+            string message = "Get Tool Fail!";
             string comman = "";
             bool result = false;
             string trayName = CurrentTray.TrayName;
@@ -203,7 +206,7 @@ namespace VinamiToolUser.Views
                         {
                             lastTextReceive = _textReceive;
                             result = true;
-                            message = "Lấy dụng cụ thành công";
+                            message = "Get Tool Success!";
                             break;
                         }
 
@@ -226,7 +229,7 @@ namespace VinamiToolUser.Views
         private async Task<bool> CheckConnecttion()
         {
             rtbStatus.BeginInvoke(new Action ( () => {AppendText(rtbStatus, "Checking Connection ...", Color.Blue, true); }));
-            string message = "Không thể thiết lập kết nối tới bo mạch điều khiển";
+            string message = "Can Not Connect To Controler Board!";
             bool result = false;
             _actionTime = 0;
             _textReceive = "";
@@ -241,7 +244,7 @@ namespace VinamiToolUser.Views
                         if (_textReceive.Contains("120"))
                         {
                             result = true;
-                            message = "Kết nối tới bo mạch thành công";
+                            message = "Connected To Control Board Success!";
                             break;
                         }
                     }

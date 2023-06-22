@@ -66,18 +66,18 @@ namespace VinamiToolUser.Presenters
             if (_view.GetToolResult)
             {
                 result = await _repository.UpdateToolStock(trayID, qty);
-                if (result) _view.LogMessage = "--- Cập nhật số lượng tool mới của Tray thành công";
-                else _view.LogMessage = "--- Cập nhật số lượng tool mới của Tray thất bại";
+                if (result) _view.LogMessage = "--- Update Tool Quantity To DataBase Success!";
+                else _view.LogMessage = "--- Update Tool Quantity To DataBase Fail!";
                 //Update Get Tool Transaction
                 result = await _repository.UpdateGetToolTransaction(_view.CurrentConfig.CompanyCode, _view.CurrentMachine.MachineCode,  _userLogin, CommonValue.CurrentWorkInfo.WorkCode, CommonValue.CurrentWorkInfo.WorkMachineCode, toolCode, trayIndex, 1, "GetTools", _view.GetToolResult.ToString());
-                if (result) _view.LogMessage = "--- Cập nhật lịch sử giao dịch thành công";
-                else _view.LogMessage = "--- Cập nhật lịch sử giao dịch thất bại";
+                if (result) _view.LogMessage = "--- Update Get Tool Transaction Success!";
+                else _view.LogMessage = "---  Update Get Tool Transaction Fail!";
             }
             else
             {
                 result = await _repository.UpdateGetToolTransaction(_view.CurrentConfig.CompanyCode, _view.CurrentMachine.MachineCode, _userLogin, CommonValue.CurrentWorkInfo.WorkCode, CommonValue.CurrentWorkInfo.WorkMachineCode, toolCode, trayIndex, 0, "GetTools", _view.GetToolResult.ToString());
-                if (result) _view.LogMessage = "--- Cập nhật lịch sử giao dịch thành công";
-                else _view.LogMessage = "--- Cập nhật lịch sử giao dịch thất bại";
+                if (result) _view.LogMessage = "--- Update Get Tool Transaction Success!";
+                else _view.LogMessage = "--- Update Get Tool Transaction Fail";
             }
             LoadData();
         }
@@ -87,7 +87,7 @@ namespace VinamiToolUser.Presenters
             _toolList = await _repository.GetToolList(_view.CurrentConfig.CompanyCode);
             //_trayList = await _repository.GetAllTrayList();
             _toolSource.DataSource = _toolList;
-            _traySource.DataSource = _trayList;
+            _traySource.DataSource = null;
         }
 
         private async void SearchTool(object sender, EventArgs e)
