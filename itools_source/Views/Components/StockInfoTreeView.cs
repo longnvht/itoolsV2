@@ -70,35 +70,37 @@ namespace VinamiToolUser.Views.Components
         private void RefreshTreeView()
         {
             tvStock.Nodes.Clear();
-            IEnumerable<TrayModel> trayList = (IEnumerable<TrayModel>)bindingSource.DataSource;
-            var groupedTray = trayList.GroupBy(t => t.MachineCode);
-            foreach (var group in groupedTray)
+            if(bindingSource.DataSource!= null)
             {
-                // Tạo nút gốc cho Machine
-                TreeNode machineNode = new TreeNode("Machine " + group.Key);
-                machineNode.ForeColor = Color.BlueViolet;
-                machineNode.ImageIndex = 0;
-
-                // Duyệt qua từng công cụ trong nhóm và thêm nút con cho mỗi Tray
-                foreach (var tray in group)
+                IEnumerable<TrayModel> trayList = (IEnumerable<TrayModel>)bindingSource.DataSource;
+                var groupedTray = trayList.GroupBy(t => t.MachineCode);
+                foreach (var group in groupedTray)
                 {
-                    // Tạo chuỗi thông tin cho công cụ
-                    string trayInfo = String.Format("{0}, Qty: {1}", tray.TrayName, tray.QtyStock);
+                    // Tạo nút gốc cho Machine
+                    TreeNode machineNode = new TreeNode("Machine " + group.Key);
+                    machineNode.ForeColor = Color.BlueViolet;
+                    machineNode.ImageIndex = 0;
 
-                    // Tạo nút cho công cụ
-                    TreeNode trayNode = new TreeNode(trayInfo);
-                    trayNode.ForeColor = Color.OrangeRed;
-                    trayNode.ImageIndex = 1;
-                    trayNode.Tag = tray;
-                    // Thêm nút công cụ vào nút Machine
-                    machineNode.Nodes.Add(trayNode);
+                    // Duyệt qua từng công cụ trong nhóm và thêm nút con cho mỗi Tray
+                    foreach (var tray in group)
+                    {
+                        // Tạo chuỗi thông tin cho công cụ
+                        string trayInfo = String.Format("{0}, Qty: {1}", tray.TrayName, tray.QtyStock);
+
+                        // Tạo nút cho công cụ
+                        TreeNode trayNode = new TreeNode(trayInfo);
+                        trayNode.ForeColor = Color.OrangeRed;
+                        trayNode.ImageIndex = 1;
+                        trayNode.Tag = tray;
+                        // Thêm nút công cụ vào nút Machine
+                        machineNode.Nodes.Add(trayNode);
+                    }
+
+                    // Thêm nút Machine vào TreeView
+                    tvStock.Nodes.Add(machineNode);
                 }
-
-                // Thêm nút Machine vào TreeView
-                tvStock.Nodes.Add(machineNode);
+                tvStock.ExpandAll();
             }
-            tvStock.ExpandAll();
-
         }
 
         //public string ItemRootNode { get => itemRootNode; set => itemRootNode = value; }

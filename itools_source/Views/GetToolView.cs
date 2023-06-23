@@ -33,6 +33,7 @@ namespace VinamiToolUser.Views
         private bool _resultGetTool;
         private int _actionTime=0;
         private string _textReceive;
+        private string _lastTextReceive;
         private static GetToolView _instance;
         public GetToolView()
         {
@@ -179,8 +180,6 @@ namespace VinamiToolUser.Views
             rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Send Get Tool Command ...", Color.Blue, true); }));
             rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "ToolCode: " + CurrentTool.ToolCode , Color.Blue, true); }));
             rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Tray Number: Tray_" + trayNumber, Color.Blue, true); }));
-            string lastTextReceive = "";
-            _textReceive = "";
             _actionTime = 0;
             serialPortGetTool.WriteLine(comman);
             tmGetTool.Start();
@@ -190,30 +189,27 @@ namespace VinamiToolUser.Views
                 {
                     while (_actionTime < 20)
                     {
-                        if (_textReceive.Contains("121") & lastTextReceive != _textReceive) //Ghi nhận sự kiện Motor Start
+                        if (_lastTextReceive != _textReceive)
                         {
-                            lastTextReceive = _textReceive;
-                            rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Motor Start ...", Color.Blue, true); }));
-                        }
-
-                        if (_textReceive.Contains("122") & lastTextReceive != _textReceive) //Ghi nhận sự kiện Motor Stop
-                        {
-                            lastTextReceive = _textReceive;
-                            rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Motor Stop ...", Color.Blue, true); }));
-                        }
-
-                        if (_textReceive.Contains("123") & lastTextReceive != _textReceive) //Ghi nhận sự kiện Lấy Tool Thành công
-                        {
-                            lastTextReceive = _textReceive;
-                            result = true;
-                            message = "Get Tool Success!";
-                            break;
-                        }
-
-                        if (_textReceive.Contains("124") & lastTextReceive != _textReceive) //Ghi nhận sự kiện Lấy Tool Thất bại
-                        {
-                            lastTextReceive = _textReceive;
-                            break;
+                            _lastTextReceive = _textReceive;
+                            if (_textReceive.Contains("121"))
+                            {
+                                rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Motor Start ...", Color.Blue, true); }));
+                            }
+                            if (_textReceive.Contains("122"))
+                            {
+                                rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Motor Stop ...", Color.Blue, true); }));
+                            }
+                            if (_textReceive.Contains("123"))
+                            {
+                                result = true;
+                                message = "Get Tool Success!";
+                                break;
+                            }
+                            if (_textReceive.Contains("124")) //Ghi nhận sự kiện Lấy Tool Thất bại
+                            {
+                                break;
+                            }
                         }
                     }
                     return result;
