@@ -58,10 +58,10 @@
             this.tblWorkInfo.Location = new System.Drawing.Point(3, 21);
             this.tblWorkInfo.Name = "tblWorkInfo";
             this.tblWorkInfo.RowCount = 4;
-            this.tblWorkInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tblWorkInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tblWorkInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tblWorkInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tblWorkInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tblWorkInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tblWorkInfo.Size = new System.Drawing.Size(794, 426);
             this.tblWorkInfo.TabIndex = 0;
             // 
@@ -70,7 +70,7 @@
             this.lblWorkCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblWorkCode.AutoSize = true;
             this.lblWorkCode.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkCode.Location = new System.Drawing.Point(100, 141);
+            this.lblWorkCode.Location = new System.Drawing.Point(100, 80);
             this.lblWorkCode.Name = "lblWorkCode";
             this.lblWorkCode.Size = new System.Drawing.Size(147, 21);
             this.lblWorkCode.TabIndex = 0;
@@ -81,7 +81,7 @@
             this.lblWorkMachineCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblWorkMachineCode.AutoSize = true;
             this.lblWorkMachineCode.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkMachineCode.Location = new System.Drawing.Point(100, 201);
+            this.lblWorkMachineCode.Location = new System.Drawing.Point(100, 140);
             this.lblWorkMachineCode.Name = "lblWorkMachineCode";
             this.lblWorkMachineCode.Size = new System.Drawing.Size(150, 21);
             this.lblWorkMachineCode.TabIndex = 0;
@@ -102,12 +102,13 @@
             this.txtWorkCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtWorkCode.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWorkCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtWorkCode.Location = new System.Drawing.Point(270, 134);
+            this.txtWorkCode.Location = new System.Drawing.Point(271, 73);
+            this.txtWorkCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtWorkCode.Name = "txtWorkCode";
             this.txtWorkCode.PasswordChar = '\0';
             this.txtWorkCode.PlaceholderText = "";
             this.txtWorkCode.SelectedText = "";
-            this.txtWorkCode.Size = new System.Drawing.Size(294, 36);
+            this.txtWorkCode.Size = new System.Drawing.Size(292, 36);
             this.txtWorkCode.TabIndex = 1;
             // 
             // txtWorkMachineCode
@@ -125,12 +126,13 @@
             this.txtWorkMachineCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtWorkMachineCode.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWorkMachineCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtWorkMachineCode.Location = new System.Drawing.Point(270, 194);
+            this.txtWorkMachineCode.Location = new System.Drawing.Point(271, 133);
+            this.txtWorkMachineCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtWorkMachineCode.Name = "txtWorkMachineCode";
             this.txtWorkMachineCode.PasswordChar = '\0';
             this.txtWorkMachineCode.PlaceholderText = "";
             this.txtWorkMachineCode.SelectedText = "";
-            this.txtWorkMachineCode.Size = new System.Drawing.Size(294, 36);
+            this.txtWorkMachineCode.Size = new System.Drawing.Size(292, 36);
             this.txtWorkMachineCode.TabIndex = 2;
             // 
             // btnEdit
@@ -149,7 +151,7 @@
             this.btnEdit.Image = global::VinamiToolUser.Properties.Resources.edit_text_file_100px;
             this.btnEdit.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnEdit.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnEdit.Location = new System.Drawing.Point(270, 245);
+            this.btnEdit.Location = new System.Drawing.Point(270, 184);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(144, 45);
             this.btnEdit.TabIndex = 3;
@@ -172,7 +174,7 @@
             this.btnConfirm.Image = global::VinamiToolUser.Properties.Resources.check_document_64px;
             this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnConfirm.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnConfirm.Location = new System.Drawing.Point(420, 245);
+            this.btnConfirm.Location = new System.Drawing.Point(420, 184);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(144, 45);
             this.btnConfirm.TabIndex = 4;
