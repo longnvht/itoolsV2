@@ -156,11 +156,23 @@ namespace VinamiToolUser.Views
             AppendText(rtbStatus, "/*******************************/", Color.Green, true);
             AppendText(rtbStatus, "Start Get Tool ...", Color.Blue, true);
             bool comportStatus =  await OpenComPort();
-            if (!comportStatus) return false;
+            if (!comportStatus)
+            {
+                CloseComport();
+                return false;
+            }
             bool connectStatus = await CheckConnecttion();
-            if (!connectStatus) return false;
+            if (!connectStatus)
+            {
+                CloseComport();
+                return false;
+            }
             bool getToolStatus = await SendGetToolComman();
-            if (!getToolStatus) return false;
+            if (!getToolStatus)
+            {
+                CloseComport();
+                return false;
+            }
             CloseComport();
             return true;
         }
@@ -259,6 +271,7 @@ namespace VinamiToolUser.Views
             if (serialPortGetTool.IsOpen == true)
             {
                 serialPortGetTool.Close();
+                rtbStatus.BeginInvoke(new Action(() => { AppendText(rtbStatus, "Comport is Close!", Color.Blue, true); }));
             }
         }
 
