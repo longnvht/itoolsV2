@@ -37,14 +37,20 @@ namespace VinamiToolUser.Views
         private void AssignEvent()
         {
             this.Load += StockViewLoad;
-            btnSearch.MouseClick += (s, e) => { SearchTool?.Invoke(this, EventArgs.Empty); };
+            btnSearch.MouseClick += (s, e) => 
+            {
+                KeyBoard.CloseKeyboard(); 
+                SearchTool?.Invoke(this, EventArgs.Empty); 
+            };
             txtSearch.KeyDown += (s, e) =>
             {
                 if(e.KeyCode == Keys.Enter)
                 {
+                    KeyBoard.CloseKeyboard();
                     SearchTool?.Invoke(this, EventArgs.Empty);
                 }
             };
+            txtSearch.MouseClick += (s, e) => { ShowKeyboard(); };
         }
 
         public static StockView GetInstance(Form parentContainer)
@@ -77,6 +83,14 @@ namespace VinamiToolUser.Views
         public void SetStockBindingSource(BindingSource stockSource)
         {
             dgvTool.DataSource = stockSource;
+        }
+        private void ShowKeyboard()
+        {
+            var Keyboard = KeyBoard.GetInstance();
+            int x = (Screen.PrimaryScreen.Bounds.Right - Keyboard.Width) / 2;
+            int y = Screen.PrimaryScreen.Bounds.Bottom - Keyboard.Height;
+            Keyboard.Show();
+            Keyboard.Location = new Point(x, y);
         }
     }
 }
