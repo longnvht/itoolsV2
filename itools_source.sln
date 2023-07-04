@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "itools_source", "itools_source\itools_source.csproj", "{2887013A-D096-423F-B1AB-3B8ACF6FC699}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IToolSetup", "IToolSetup\IToolSetup.vdproj", "{EA5CC82A-CF91-4DEF-AD3B-84E811F05164}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IToolsSetup", "IToolsSetup\IToolsSetup.vdproj", "{0EF27322-D7BD-491F-8AB6-4C6F8F5D612C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{2887013A-D096-423F-B1AB-3B8ACF6FC699}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2887013A-D096-423F-B1AB-3B8ACF6FC699}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2887013A-D096-423F-B1AB-3B8ACF6FC699}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA5CC82A-CF91-4DEF-AD3B-84E811F05164}.Debug|Any CPU.ActiveCfg = Debug
-		{EA5CC82A-CF91-4DEF-AD3B-84E811F05164}.Release|Any CPU.ActiveCfg = Release
+		{0EF27322-D7BD-491F-8AB6-4C6F8F5D612C}.Debug|Any CPU.ActiveCfg = Debug
+		{0EF27322-D7BD-491F-8AB6-4C6F8F5D612C}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

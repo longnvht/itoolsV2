@@ -84,8 +84,9 @@ namespace VinamiToolUser.Views
             };
             this.Load += FormGetToolLoad;
             tvStock.TrayNodeSelect += (s,e) => CurrentTray = e.Tray;
-            btnGetTool.Click += async (s, e) => 
-            { 
+            btnGetTool.MouseClick += async (s, e) => 
+            {
+                btnGetTool.Enabled = false;
                 _resultGetTool = await GetTool();
                 UpdateToolStock?.Invoke(this, new EventArgs());
                 CurrentTray = null;
