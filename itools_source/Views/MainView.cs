@@ -31,6 +31,7 @@ namespace VinamiToolUser.Views
         private TimeSpan _limitTime;
 
         public event EventHandler ConfigChange;
+        public event EventHandler SyncDataEvent;
 
         public MainView()
         {
@@ -61,6 +62,7 @@ namespace VinamiToolUser.Views
             {
                 UserLogin = null;
                 CurrentView = "Login";
+                tmSync.Start();
             };
             tmLogin.Tick += (s, e) =>
             {
@@ -70,7 +72,13 @@ namespace VinamiToolUser.Views
                     tmLogin.Stop();
                     UserLogin = null;
                     CurrentView = "Login";
+                    tmSync.Start();
                 }
+            };
+            tmSync.Tick += (s, e) =>
+            {
+                tmSync.Stop();
+                SyncDataEvent?.Invoke(this, EventArgs.Empty);
             };
         }
 
@@ -100,6 +108,7 @@ namespace VinamiToolUser.Views
                     ReturnHome();
                     txtUserName.Text = _userLogin.FullName;
                     tmLogin.Start();
+                    tmSync.Stop();
                 }
             } 
         }

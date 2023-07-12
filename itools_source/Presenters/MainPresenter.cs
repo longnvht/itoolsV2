@@ -27,8 +27,14 @@ namespace VinamiToolUser.Presenters
             this._repository = repository;
             _view.Presenter = this;
             _view.ConfigChange += ConfigChange;
+            _view.SyncDataEvent += SyncData;
             _hddSerial = GetHardDiskSerial();
             LoadingAndSyncData();
+        }
+
+        private void SyncData(object sender, EventArgs e)
+        {
+            SynchronizationData();
         }
 
         private async void LoadingAndSyncData()

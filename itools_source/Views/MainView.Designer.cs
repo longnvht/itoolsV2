@@ -42,6 +42,7 @@
             this.tsInfo = new System.Windows.Forms.ToolStrip();
             this.tslMessage = new System.Windows.Forms.ToolStripLabel();
             this.tmLogin = new System.Windows.Forms.Timer(this.components);
+            this.tmSync = new System.Windows.Forms.Timer(this.components);
             this.tlpFooter.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             this.tsInfo.SuspendLayout();
@@ -231,6 +232,10 @@
             // 
             this.tmLogin.Interval = 5000;
             // 
+            // tmSync
+            // 
+            this.tmSync.Interval = 30000;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,5 +274,6 @@
         private System.Windows.Forms.ToolStrip tsInfo;
         private System.Windows.Forms.ToolStripLabel tslMessage;
         private System.Windows.Forms.Timer tmLogin;
+        private System.Windows.Forms.Timer tmSync;
     }
 }

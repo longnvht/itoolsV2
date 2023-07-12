@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Example;
+using Keyboard;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -101,6 +103,10 @@ namespace VinamiToolUser.Views
                 SetStyle(swStyle.Checked);
             };
             btnClose.Click += (s, e) => { this.Close(); };
+            vtKeyBoard.ButtonClick += (s, e) =>
+            {
+                StateHelpers.ApplyState(vtKeyBoard);
+            };
         }
         private void SetStyle(bool style)
         {

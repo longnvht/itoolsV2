@@ -31,6 +31,7 @@ namespace VinamiToolUser.Views.Interface
         #region Events
 
         event EventHandler ConfigChange;
+        event EventHandler SyncDataEvent;
 
         #endregion
 
