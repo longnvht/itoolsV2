@@ -33,6 +33,8 @@
             this.tvStock = new System.Windows.Forms.TreeView();
             this.imTrayList = new System.Windows.Forms.ImageList(this.components);
             this.guna2VScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
+            this.pnTreeView = new System.Windows.Forms.Panel();
+            this.pnTreeView.SuspendLayout();
             this.SuspendLayout();
             // 
             // tvStock
@@ -47,7 +49,7 @@
             this.tvStock.Location = new System.Drawing.Point(0, 0);
             this.tvStock.Name = "tvStock";
             this.tvStock.SelectedImageIndex = 2;
-            this.tvStock.Size = new System.Drawing.Size(470, 309);
+            this.tvStock.Size = new System.Drawing.Size(287, 309);
             this.tvStock.TabIndex = 0;
             // 
             // imTrayList
@@ -60,24 +62,37 @@
             // 
             // guna2VScrollBar1
             // 
-            this.guna2VScrollBar1.BindingContainer = this.tvStock;
+            this.guna2VScrollBar1.BindingContainer = this.pnTreeView;
             this.guna2VScrollBar1.BorderRadius = 6;
             this.guna2VScrollBar1.InUpdate = false;
-            this.guna2VScrollBar1.LargeChange = 10;
-            this.guna2VScrollBar1.Location = new System.Drawing.Point(451, 1);
+            this.guna2VScrollBar1.LargeChange = 309;
+            this.guna2VScrollBar1.Location = new System.Drawing.Point(269, 0);
+            this.guna2VScrollBar1.Maximum = 312;
             this.guna2VScrollBar1.Name = "guna2VScrollBar1";
             this.guna2VScrollBar1.ScrollbarSize = 18;
-            this.guna2VScrollBar1.Size = new System.Drawing.Size(18, 307);
+            this.guna2VScrollBar1.Size = new System.Drawing.Size(18, 309);
+            this.guna2VScrollBar1.SmallChange = 5;
             this.guna2VScrollBar1.TabIndex = 1;
+            // 
+            // pnTreeView
+            // 
+            this.pnTreeView.AutoScroll = true;
+            this.pnTreeView.Controls.Add(this.tvStock);
+            this.pnTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnTreeView.Location = new System.Drawing.Point(0, 0);
+            this.pnTreeView.Name = "pnTreeView";
+            this.pnTreeView.Size = new System.Drawing.Size(287, 309);
+            this.pnTreeView.TabIndex = 2;
             // 
             // StockInfoTreeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.guna2VScrollBar1);
-            this.Controls.Add(this.tvStock);
+            this.Controls.Add(this.pnTreeView);
             this.Name = "StockInfoTreeView";
-            this.Size = new System.Drawing.Size(470, 309);
+            this.Size = new System.Drawing.Size(287, 309);
+            this.pnTreeView.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -87,5 +102,6 @@
         private System.Windows.Forms.TreeView tvStock;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar1;
         private System.Windows.Forms.ImageList imTrayList;
+        private System.Windows.Forms.Panel pnTreeView;
     }
 }

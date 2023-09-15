@@ -15,7 +15,7 @@ namespace VinamiToolUser.Views
     public partial class LoginView : Form, ILoginView
     {
         private static LoginView instance;
-        private MainView _mainView;
+        private IMainView _mainView;
         UserAccount _userLogin;
         private bool _passwordHide;
         public LoginView()
