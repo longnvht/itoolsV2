@@ -29,6 +29,7 @@ namespace VinamiToolUser.Views.Components
         private Color itemForceColor = Color.FromArgb(70,71,117);
         private Font itemFont = new Font("Segoe UI", 10);
         private BindingSource bindingSource;
+        private Point _mouseDownPoint;
         public ListButton()
         {
             InitializeComponent();
@@ -200,8 +201,31 @@ namespace VinamiToolUser.Views.Components
                     btn.Size = new Size(itemWidth, itemHeight);
                     btn.Click += Button_Click;
                     btn.DoubleClick += Btn_DoubleClick;
+                    btn.MouseDown += Btn_MouseDown;
+                    btn.MouseMove += Btn_MouseMove;
                     flpList.Controls.Add(btn);
                 }
+            }
+        }
+
+        private void Btn_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Point pointDefference = new Point(Cursor.Position.X + _mouseDownPoint.X, Cursor.Position.Y - _mouseDownPoint.Y);
+                if ((_mouseDownPoint.X == Cursor.Position.X) && (_mouseDownPoint.Y == Cursor.Position.Y))
+                    return;
+                Point currAutos = flpList.AutoScrollPosition;
+                flpList.AutoScrollPosition = new Point(Math.Abs(currAutos.X) - pointDefference.X, Math.Abs(currAutos.Y) - pointDefference.Y);
+                _mouseDownPoint = Cursor.Position;
+            }
+        }
+
+        private void Btn_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                _mouseDownPoint = Cursor.Position;
             }
         }
 

@@ -261,12 +261,11 @@ namespace VinamiToolUser.Views
 
         private void CheckInpuValue(object sender, EventArgs e)
         {
-            bool result = true;
             NewQty = -1;
             lblErrorProvider.Text = "";
             txtModifyQty.BorderColor = Color.FromArgb(213, 218, 223);
             var value = txtModifyQty.Text;
-            result = CheckValueForModifyState(ModifyState, value);
+            bool result = CheckValueForModifyState(ModifyState, value);
             if (result) btnSave.Enabled = true;
             else
             {
