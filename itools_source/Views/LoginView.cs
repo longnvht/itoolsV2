@@ -68,6 +68,15 @@ namespace VinamiToolUser.Views
             {
                 if(e.KeyCode == Keys.Enter)
                 {
+                    if (CheckValidInput())
+                    {
+                        KeyBoard.CloseKeyboard();
+                        LoginEvent?.Invoke(this, EventArgs.Empty);
+                    }
+                    else
+                    {
+                        Message = "Tên đăng nhập và mật khẩu không được để trống!";
+                    }
 
                 }
             };
