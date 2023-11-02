@@ -64,6 +64,13 @@ namespace VinamiToolUser.Views
             txtUserName.MouseClick += (s, e) => { ShowKeyboard(); };
             txtPassword.TextChanged += (s, e) => { CheckValidInput(); };
             txtUserName.TextChanged += (s, e) => { CheckValidInput(); };
+            txtPassword.KeyDown += (s, e) =>
+            {
+                if(e.KeyCode == Keys.Enter)
+                {
+
+                }
+            };
         }
 
 
