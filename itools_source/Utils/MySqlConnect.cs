@@ -18,20 +18,20 @@ namespace VinamiToolUser.Utils
 
         public static string ConnectionString()
         {
-            //_strHOST = "localhost";
-            //_strPORT = "3306";
-            //_strDATABASE_MAME = "itools_v1p0";
-            //_strUSER_NAME = "admin";
-            //_strPASSWORD = "1qazxsw2";
-            //return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
-
-
-            _strHOST = "192.168.0.50";
+            _strHOST = "localhost";
             _strPORT = "3306";
-            _strDATABASE_MAME = "vm1data";
+            _strDATABASE_MAME = "itools_v1p0";
             _strUSER_NAME = "admin";
-            _strPASSWORD = "Vinam@12345";
+            _strPASSWORD = "1qazxsw2";
             return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
+
+
+            //_strHOST = "127.0.0.1";
+            //_strPORT = "3306";
+            //_strDATABASE_MAME = "vm1data";
+            //_strUSER_NAME = "admin";
+            //_strPASSWORD = "Vinam@12345";
+            //return ("server=" + _strHOST + ";Port=" + _strPORT + ";Database=" + _strDATABASE_MAME + ";User ID=" + _strUSER_NAME + ";Password=" + _strPASSWORD);
         }
 
         #region SqlParameter CreateInputParameterForSQL(MySqlCommand dbCmd, string prmName, MySqlDbType MySqlDbType, object value)
