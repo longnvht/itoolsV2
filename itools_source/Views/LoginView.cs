@@ -146,15 +146,15 @@ namespace VinamiToolUser.Views
             CheckValidInput();
         }
 
-        private void CheckValidInput()
+        private bool CheckValidInput()
         {
             string userName = txtUserName.Text;
             string password = txtPassword.Text;
-            if(String.IsNullOrEmpty(userName.Trim()) || String.IsNullOrEmpty(password))
+            if (String.IsNullOrEmpty(userName.Trim()) || String.IsNullOrEmpty(password))
             {
-                btnLogin.Enabled = false;
+                return false;
             }
-            else btnLogin.Enabled = true;
+            else return true;
         }
 
         private void ShowKeyboard()
