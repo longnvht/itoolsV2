@@ -1,28 +1,31 @@
-﻿using VinamiToolUser.Views.Interface;
-using System;
-using System.Windows.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
-using VinamiToolUser.Views;
-using System.Management.Instrumentation;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using Unity;
+using VinamiToolUser.Models.Interface;
 using VinamiToolUser.Models;
 using VinamiToolUser.Presenter;
-using VinamiToolUser.Models.Interface;
-using VinamiToolUser.Presenters;
+using VinamiToolUser.Views.Interface;
 
 namespace VinamiToolUser.Views
 {
     public partial class LoginView : Form, ILoginView
     {
-        private static LoginView instance;
-        private IMainView _mainView;
-        UserAccount _userLogin;
-        private bool _passwordHide;
         public LoginView()
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
         }
+        private static LoginView instance;
+        private MainView _mainView;
+        UserAccount _userLogin;
+        private bool _passwordHide;
 
         public static LoginView GetInstance(Form container)
         {
@@ -46,27 +49,32 @@ namespace VinamiToolUser.Views
         private void AssociateAndRaiseViewEvents()
         {
             this.Load += LoginViewLoad;
-            btnLogin.MouseClick += (s,e) => 
-            { 
-                KeyBoard.CloseKeyboard();
-                LoginEvent?.Invoke(this, EventArgs.Empty); 
+            btnLogin.MouseClick += (s, e) =>
+            {
+                if (CheckValidInput())
+                {
+                    KeyBoard.CloseKeyboard();
+                    LoginEvent?.Invoke(this, EventArgs.Empty);
+                }
+                else
+                {
+                    Message = "Tên đăng nhập và mật khẩu không được để trống!";
+                }
+
             };
-            btnExit.MouseClick += (s,e) => 
+            btnExit.MouseClick += (s, e) =>
             {
                 KeyBoard.CloseKeyboard();
                 Application.Exit();
             };
-            txtPassword.IconRightClick += (s,e) =>  
+            txtPassword.IconRightClick += (s, e) =>
             {
                 PasswordHide = !PasswordHide;
             };
-            txtPassword.MouseClick += (s, e) => { ShowKeyboard(); };
-            txtUserName.MouseClick += (s, e) => { ShowKeyboard(); };
-            txtPassword.TextChanged += (s, e) => { CheckValidInput(); };
-            txtUserName.TextChanged += (s, e) => { CheckValidInput(); };
+
             txtPassword.KeyDown += (s, e) =>
             {
-                if(e.KeyCode == Keys.Enter)
+                if (e.KeyCode == Keys.Enter)
                 {
                     if (CheckValidInput())
                     {
@@ -77,9 +85,22 @@ namespace VinamiToolUser.Views
                     {
                         Message = "Tên đăng nhập và mật khẩu không được để trống!";
                     }
-
                 }
+
+
             };
+
+            txtUserName.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    txtPassword.Focus();
+                }
+
+            };
+
+            txtPassword.MouseClick += (s, e) => { ShowKeyboard(); };
+            txtUserName.MouseClick += (s, e) => { ShowKeyboard(); };
         }
 
 
@@ -95,20 +116,20 @@ namespace VinamiToolUser.Views
             set { txtPassword.Text = value; }
         }
 
-        public UserAccount UserLogin 
-        { 
+        public UserAccount UserLogin
+        {
             get => _userLogin;
-            set 
-            { 
-                _userLogin = value; 
+            set
+            {
+                _userLogin = value;
                 _mainView.UserLogin = _userLogin;
             }
         }
 
         public LoginPresenter Presenter { private get; set; }
         public string Message { get => lblMessage.Text; set => lblMessage.Text = value; }
-        public bool PasswordHide 
-        { 
+        public bool PasswordHide
+        {
             get => _passwordHide;
             set
             {
@@ -123,10 +144,11 @@ namespace VinamiToolUser.Views
                     txtPassword.PasswordChar = '●';
                     txtPassword.IconRight = Properties.Resources.pass_show_24px;
                 }
-            } 
+            }
         }
 
         public MachineConfigModel CurrentConfig => _mainView.MachineConfig;
+
 
         #endregion
 
@@ -143,7 +165,6 @@ namespace VinamiToolUser.Views
             Presenter = new LoginPresenter(this, repository);
             _mainView = MainView.GetInstance();
             PasswordHide = false;
-            CheckValidInput();
         }
 
         private bool CheckValidInput()
