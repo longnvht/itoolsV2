@@ -72,9 +72,9 @@
             this.lblWorkCode.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWorkCode.Location = new System.Drawing.Point(100, 80);
             this.lblWorkCode.Name = "lblWorkCode";
-            this.lblWorkCode.Size = new System.Drawing.Size(147, 21);
+            this.lblWorkCode.Size = new System.Drawing.Size(118, 21);
             this.lblWorkCode.TabIndex = 0;
-            this.lblWorkCode.Text = "Mã công việc (Job)";
+            this.lblWorkCode.Text = "Mã Công Đoạn";
             // 
             // lblWorkMachineCode
             // 
@@ -83,9 +83,9 @@
             this.lblWorkMachineCode.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWorkMachineCode.Location = new System.Drawing.Point(100, 140);
             this.lblWorkMachineCode.Name = "lblWorkMachineCode";
-            this.lblWorkMachineCode.Size = new System.Drawing.Size(150, 21);
+            this.lblWorkMachineCode.Size = new System.Drawing.Size(68, 21);
             this.lblWorkMachineCode.TabIndex = 0;
-            this.lblWorkMachineCode.Text = "Mã công đoạn (OP)";
+            this.lblWorkMachineCode.Text = "Mã Máy";
             // 
             // txtWorkCode
             // 

@@ -80,6 +80,7 @@ namespace VinamiToolUser.Presenters
                 else _view.LogMessage = "--- Update Get Tool Transaction Fail";
             }
             LoadData();
+            _view.IsRunning = false;
         }
 
         private async void LoadData()

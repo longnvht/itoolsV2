@@ -18,6 +18,8 @@ namespace VinamiToolUser.Views.Interface
         string SearchToolValue { get; set; }
         string LogMessage { set; }
         bool GetToolResult { get; set; }
+        bool IsRunning { get; set; }
+
         UserAccount UserLogin { get; }
         string OpNumber { get; }
         string JobNumber { get; }

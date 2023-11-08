@@ -27,8 +27,11 @@ namespace VinamiToolUser.Views
         private string _tempView;
         private string _prevView;
         private string _hddSerial;
+        private bool _isRunning;
+
         private static MainView instance;
         private TimeSpan _limitTime;
+
 
         public event EventHandler ConfigChange;
         public event EventHandler SyncDataEvent;
@@ -210,6 +213,25 @@ namespace VinamiToolUser.Views
                 tslMessage.Text = value; 
                 if(String.IsNullOrEmpty(value)) { tsInfo.Visible = false; }
                 else tsInfo.Visible = true;
+            }
+        }
+
+        public bool IsRunning
+        {
+            get => _isRunning;
+            set
+            {
+                _isRunning = value;
+                if(_isRunning)
+                {
+                    btnHome.Enabled = false;
+                    btnLogOut.Enabled = false;
+                }
+                else
+                {
+                    btnHome.Enabled = true;
+                    btnLogOut.Enabled = true;
+                }
             }
         }
 
