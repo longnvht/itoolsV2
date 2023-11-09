@@ -20,6 +20,7 @@ namespace VinamiToolUser.Views.Interface
         string PrevView { get; set; }
         string HddSerial { get; set; }
         string Message { get; set; }
+        bool IsRunning { get; set; }
         MachineConfigModel MachineConfig { get; set; }
         OPModel CurrentOP { get; set; }
         ToolModel CurrentTool { get; set; }

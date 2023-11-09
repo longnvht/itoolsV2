@@ -27,6 +27,7 @@ namespace VinamiToolUser.Views
         private string _tempView;
         private string _prevView;
         private string _hddSerial;
+        private bool _isRunning;
         private static MainView instance;
         private TimeSpan _limitTime;
 
@@ -212,6 +213,8 @@ namespace VinamiToolUser.Views
                 else tsInfo.Visible = true;
             }
         }
+
+        public bool IsRunning { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void CloseChildView()
         {
