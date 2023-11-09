@@ -226,11 +226,13 @@ namespace VinamiToolUser.Views
                 {
                     btnHome.Enabled = false;
                     btnLogOut.Enabled = false;
+                    btnPrev.Enabled = false;
                 }
                 else
                 {
                     btnHome.Enabled = true;
                     btnLogOut.Enabled = true;
+                    btnPrev.Enabled = true;
                 }
             }
         }
