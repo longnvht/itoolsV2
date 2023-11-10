@@ -138,7 +138,7 @@
             // 
             this.btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnHome.DisabledState.FillColor = System.Drawing.Color.Transparent;
             this.btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnHome.FillColor = System.Drawing.Color.Transparent;
@@ -171,7 +171,7 @@
             this.btnLogOut.BackColor = System.Drawing.Color.Transparent;
             this.btnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogOut.DisabledState.FillColor = System.Drawing.Color.Transparent;
             this.btnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLogOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLogOut.FillColor = System.Drawing.Color.Transparent;

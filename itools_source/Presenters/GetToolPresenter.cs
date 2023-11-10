@@ -79,6 +79,7 @@ namespace VinamiToolUser.Presenters
                 if (result) _view.LogMessage = "--- Update Get Tool Transaction Success!";
                 else _view.LogMessage = "--- Update Get Tool Transaction Fail";
             }
+            _view.IsRunning = false;
             LoadData();
         }
 

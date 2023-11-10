@@ -86,6 +86,7 @@ namespace VinamiToolUser.Views
             tvStock.TrayNodeSelect += (s,e) => CurrentTray = e.Tray;
             btnGetTool.MouseClick += async (s, e) => 
             {
+                IsRunning = true;
                 btnGetTool.Enabled = false;
                 _resultGetTool = await GetTool();
                 UpdateToolStock?.Invoke(this, new EventArgs());
@@ -369,6 +370,7 @@ namespace VinamiToolUser.Views
 
         public MachineModel CurrentMachine => _mainView.CurrentMachine;
 
+        public bool IsRunning { get => _mainView.IsRunning; set => _mainView.IsRunning = value; }
 
         public event EventHandler SearchToolEvent;
         public event EventHandler UpdateToolStock;

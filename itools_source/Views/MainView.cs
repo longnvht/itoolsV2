@@ -214,7 +214,26 @@ namespace VinamiToolUser.Views
             }
         }
 
-        public bool IsRunning { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool IsRunning 
+        { 
+            get => _isRunning; 
+            set
+            {
+                _isRunning = value;
+                if(_isRunning)
+                {
+                    btnHome.Enabled = false;
+                    btnLogOut.Enabled = false;
+                    btnPrev.Enabled = false;
+                }
+                else
+                {
+                    btnHome.Enabled = true;
+                    btnLogOut.Enabled = true;
+                    btnPrev.Enabled = true;
+                }
+            }
+        }
 
         public void CloseChildView()
         {
