@@ -22,6 +22,7 @@ namespace VinamiToolUser.Views.Interface
         string ViewAction { get; set; }
         string ModifyState { get; set; }
         string Log{ get; set; }
+        bool IsRunning { get; set; }
         int NewQty { get; set; }
         int ModifyQty { get; set; }
         ManagerToolPresenter Presenter { set; }

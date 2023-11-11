@@ -57,8 +57,9 @@ namespace VinamiToolUser.Presenters
             result = await _repository.UpdateTransaction(_view.CurrentConfig.CompanyCode, _view.CurrentMachine.MachineCode, _userLogin, toolCode, _view.CurrentTray.TrayName, _view.ModifyQty, _view.ModifyState, result.ToString());
             if (result) _view.Log = "--- Update AddTool Transaction Success!";
             else _view.Log = "--- Update AddTool Transaction Fail!";
-
+            
             LoadData();
+            _view.IsRunning = false;
             _view.ViewAction = "";
         }
 
@@ -102,8 +103,9 @@ namespace VinamiToolUser.Presenters
             result = await _repository.UpdateTransaction(_view.CurrentConfig.CompanyCode, _view.CurrentMachine.MachineCode, _userLogin, toolCode, _view.CurrentTray.TrayName, _view.ModifyQty, _view.ModifyState, result.ToString());
             if (result) _view.Log = "--- Update Transaction Success!";
             else _view.Log = "--- Update Transaction Fail!";
-
+            
             LoadData();
+            _view.IsRunning = false;
             _view.ViewAction = "";
         }
 

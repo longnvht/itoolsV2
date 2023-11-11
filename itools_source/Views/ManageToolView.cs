@@ -132,6 +132,8 @@ namespace VinamiToolUser.Views
 
         public MachineConfigModel CurrentConfig => _mainView.MachineConfig;
 
+        public bool IsRunning { get => _mainView.IsRunning; set => _mainView.IsRunning = value; }
+
         #endregion
 
         #region Methods
@@ -210,6 +212,7 @@ namespace VinamiToolUser.Views
             btnSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
             btnSave.Click += (s,e) => 
             {
+                IsRunning = true;
                 KeyBoard.CloseKeyboard();
                 Log = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "- Update Transaction To Database!";
                 if(ModifyState == "AddNew")
